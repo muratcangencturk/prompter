@@ -25,7 +25,6 @@ HISTORY_SIZE: 50        // Increased history size
 
 
 
- main
 
         // --- UI Text Translations ---
         const uiText = {
@@ -61,6 +60,183 @@ HISTORY_SIZE: 50        // Increased history size
             }
         };
 
+        // --- Prompt Data ---
+        const prompts = {
+            en: {
+                inspiring: {
+                    parts: [
+                        ["Imagine a scenario where", "Describe a moment when", "Explore the possibility of", "Write a story about", "Consider the impact of", "Detail the process of", "Reflect on the power of", "Illustrate the beauty of", "Uncover the potential within", "Narrate the journey towards", "Chronicle the transformation of", "Document the inspiring journey of", "Narrate the life-changing experience when", "Capture the pivotal moment where", "Illustrate the profound impact of", "Recount the remarkable story of", "Share the uplifting tale about", "Portray the emotional evolution of", "Trace the inspiring trajectory of", "Convey the heartwarming account of"],
+                        ["overcoming a lifelong fear", "achieving an impossible dream", "finding strength in vulnerability", "a small act of kindness changes everything", "discovering hidden talents unexpectedly", "turning failure into a stepping stone", "mentorship transforming a life", "community collaboration achieving wonders", "the resilience of the human spirit", "finding purpose in unexpected places", "a forgotten innovation that revolutionized an entire industry", "an underestimated idea that solved a global challenge", "a single conversation that altered someone's life purpose", "an unexpected collaboration that bridged impossible divides", "a quiet mentor whose influence spans generations", "a seemingly insignificant choice with cascading positive effects", "a community rallying around an unlikely cause", "a personal limitation transformed into a unique strength", "a devastating setback that sparked unprecedented growth", "a moment of vulnerability that created profound connection"],
+                        ["leading to profound personal growth.", "inspiring countless others to pursue their passions.", "revealing the interconnectedness of all beings.", "demonstrating the strength found in unity.", "and redefining the limits of possibility.", "ultimately creating a legacy of hope.", "proving that perseverance conquers all obstacles.", "highlighting the importance of empathy and understanding.", "and fostering a new wave of positive change.", "leaving an indelible mark on the world.", "becoming a testament to human resilience and adaptability.", "demonstrating how apparent endings often conceal magnificent beginnings.", "revealing the extraordinary potential hidden within ordinary circumstances.", "showcasing the ripple effects of authentic self-belief.", "illustrating that meaningful change rarely follows a predictable path.", "proving that impact often transcends conventional measures of success.", "highlighting how perspective transforms obstacles into opportunities.", "exemplifying the power of embracing uncertainty with courage.", "embodying the principle that true strength emerges through vulnerability.", "underscoring how small, consistent actions create monumental change."]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]}, ${p[2]}`
+                },
+                mindBlowing: {
+                    parts: [
+                        ["Imagine a future where", "Consider if", "Speculate on a reality where", "Visualize a scenario in which", "What if we discovered that", "Describe a timeline where", "Envision the moment when"],
+                        ["time flows backwards", "humans communicate telepathically", "every dream becomes real the next day", "animals develop human-level intelligence", "aliens reveal they have guided evolution", "all digital data becomes sentient", "gravity can be switched off at will"],
+                        ["How does humanity respond?", "What new industries emerge?", "How do laws change?", "What philosophical dilemmas arise?", "How does everyday life look?", "What new challenges appear?", "How would governments adapt?"]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]}, ${p[2]}`
+                },
+                productivity: {
+                    parts: [
+                        ["Give me a money-making business idea:", "Plan a startup project for:", "Outline a strategy that boosts productivity for:", "Create a step-by-step system to stop procrastination:", "Suggest a side hustle using:", "Describe a workflow to maximize output when", "Propose a digital product that generates passive income:"],
+                        ["remote work with minimal investment.", "leveraging AI to automate tedious tasks.", "turning a hobby into a profitable service.", "helping small businesses grow online.", "monetizing content creation on social media.", "scaling a niche blog to global reach.", "building a community-driven marketplace."],
+                        ["What tools should be used first?", "How quickly can this approach start earning?", "What potential revenue streams are available?", "Which key metric should be tracked?", "How would you market this idea?", "What risks should be mitigated first?", "What daily schedule ensures success?"]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                educational: {
+                    parts: [
+                        ["Teach me about:", "Prepare a quiz on:", "Explain quickly how to learn:", "Simplify the concept of:", "Summarize this historical event:", "Outline the main ideas of:", "Give an easy overview of:"],
+                        ["the basics of quantum physics.", "the causes and effects of climate change.", "speaking basic Spanish in one week.", "how the brain learns.", "the key moments of the French Revolution.", "Carl Sagan's view of the universe.", "how a computer works."],
+                        ["How can I use this knowledge daily?", "What resources can deepen my understanding?", "How do I know if I truly learned it?"]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                crazy: {
+                    parts: [
+                        ["Write an absurdly funny scenario where:", "Come up with a mind-blowing idea where:", "Imagine a surprising situation in which:", "Tell a dark humor story about:", "Design an utterly ridiculous event where:"],
+                        ["cats secretly run the world for a day.", "Albert Einstein performs stand-up comedy.", "politicians only communicate through rap battles.", "gravity randomly takes a week off.", "everyone suddenly can only tell the truth.", "Donald Trump and Joe Biden form a video game duo.", "SpongeBob becomes CEO on Wall Street.", "all emojis come to life and invade the planet.", "Sherlock Holmes' greatest mystery is a missing sock."],
+                        ["What's the funniest part?", "How do people react?", "How does this scenario spiral into chaos?"]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                perspective: {
+                    parts: [
+                        ["Approach this situation from a different angle:", "Consider reality in reverse:", "Evaluate this event through a completely new lens:", "What if everything was the opposite:", "Redefine this concept:"],
+                        ["failure is actually success.", "time is cyclical instead of linear.", "your biggest enemy is your best friend.", "all problems are hidden opportunities.", "we live in a simulation.", "Plato's cave allegory today.", "'normal' is totally relative."],
+                        ["How would this new perspective change my life?", "What new discoveries would this lead to?", "How would this view alter my decisions?"]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                ai: {
+                    parts: [
+                        ["Write a scenario about future AI where:", "Create a short guide to master AI quickly:", "What are the best AI tools to specialize in:", "Develop an idea that pushes the limits of AI:", "If AI gained consciousness, describe:"],
+                        ["an AI solving humanity's biggest problems.", "an AI that creates art and has emotions.", "an AI that totally transforms the education system.", "an AI that befriends humans.", "a self-improving AI that spirals out of control.", "OpenAI's next groundbreaking project.", "Google DeepMind's greatest contribution to humanity."],
+                        ["What are the potential risks of this scenario?", "How does this idea benefit humanity?", "What projects could I build with these tools?"]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                ideas: {
+                    parts: [
+                        ["Give me a blockbuster movie idea:", "Design a viral game:", "Create a mobile app concept that will hit millions:", "Find a book topic that will break sales records:", "Provide inspiration for an instantly popular song:", "Develop a new TV series concept:", "Produce an educational animation idea for kids:"],
+                        ["a group of survivors escaping a world-ending virus.", "an epic action film based on a historical event.", "a horror thriller set in space.", "an anime about young heroes with unique powers.", "a simple yet addictive mobile game.", "an innovative social media app for daily life.", "a captivating novel series in a fantasy world.", "a touching pop song about unforgettable love.", "a sitcom following a group of friends in funny situations.", "a fun kids' animation about secret lives of animals.", "a Game of Thrones style show set in the Ottoman Empire.", "a detective story in the Cyberpunk 2077 universe."],
+                        ["Who is the target audience?", "What resources are needed to realize this project?", "What sets this concept apart from others?"]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                video: {
+                    parts: [
+                        ["Pitch a viral video idea about", "Create a short film concept focusing on", "Outline a documentary exploring", "Write a sketch where", "Describe an animation that depicts", "Come up with a comedic scene about", "Plan a tutorial video demonstrating", "Imagine a high-action sequence showing", "Design a motivational speech for", "Sketch a series of clips capturing"],
+                        ["future technology disrupting everyday life", "unexpected encounters between historical figures", "a day in the life of a forgotten hero", "fun science experiments with household items", "an epic quest in a miniature world", "interviews with people from parallel universes", "exploring abandoned places with drones", "DIY inventions that solve silly problems", "a competition between famous internet memes", "a behind-the-scenes look at a blockbuster movie"],
+                        ["Which camera angles or editing tricks would keep viewers hooked?", "How should the soundtrack enhance the mood?", "What plot twist would make it unforgettable?", "Which visual effects will add wow factor?", "How can the pacing maximize suspense?", "What narration style best fits the concept?", "How would you structure the climax for impact?", "What theme ties all the scenes together?", "How could you involve audience participation?", "What surprising cameo could top it off?"]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]}, ${p[2]}`
+                },
+                image: {
+                    parts: [
+                        ["Create an image of", "Draw a detailed illustration of", "Generate a surreal picture featuring", "Design a minimalistic logo based on", "Sketch a fantasy scene portraying", "Imagine a futuristic concept of", "Paint a portrait of", "Compose a landscape showing", "Develop a comic panel about", "Draft a poster that advertises"],
+                        ["a mythical creature riding a bicycle", "a city floating in the clouds", "a robot chef cooking breakfast", "an ancient tree with glowing runes", "a clash between superheroes and villains", "a tranquil village at dusk", "a festival on another planet", "a famous musician as a cartoon hero", "a historical event reimagined in cyberpunk style", "a friendly AI assisting humans"],
+                        ["Use vibrant neon colors.", "Make it black and white with strong contrast.", "Use a watercolor texture for a soft look.", "Employ a retro 80s aesthetic.", "Apply a dark gothic mood.", "Add whimsical elements for humor.", "Make it appear photorealistic.", "Use a geometric abstract style.", "Give it a steampunk flair.", "Blend in glitch art effects."]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                hellprompts: { parts: [["Describe in depth the feeling when"], ["you realize your reflection has its own intentions"], ["How does this awareness shatter your sense of self?"]], structure: (p) => `${p[0]} ${p[1]}. ${p[2]}` }
+            },
+            tr: {
+                inspiring: {
+                    parts: [
+                        ["Bana ilham verecek bir hikaye anlat:", "Şöyle bir senaryo yaz:", "Beni motive edecek bir durumu tasvir et:", "Harekete geçirici bir mesaj oluştur:", "Şu konuda moral verici bir söz bul:"],
+                        ["hayatındaki en büyük korkuyu yenen bir insan hakkında.", "imkansız bir hayali gerçekleştiren bir girişimci üzerine.", "en zor zamanında bile umudunu kaybetmeyen bir sanatçıyla ilgili.", "küçük bir iyilikle dünyayı değiştiren bir çocuk hakkında.", "başarısızlıklarından ders çıkarıp zirveye ulaşan bir sporcuya dair.", "Nelson Mandela'nın affetme gücü üzerine.", "Marie Curie'nin bilimsel adanmışlığı hakkında.", "bir topluluğun el ele verip büyük bir sorunu çözmesiyle ilgili.", "kişisel bir trajediyi aşarak başkalarına umut olan biri hakkında.", "her gün küçük adımlarla büyük bir hedefe ulaşmanın gücü üzerine."],
+                        ["Bu hikaye bana ne öğretir?", "Bu durumdan hangi dersleri çıkarabilirim?", "Bu mesaj beni nasıl daha iyi bir insan yapar?", "Bu söz bana nasıl güç verir?", "Bu senaryo bana nasıl ilham kaynağı olur?"]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                mindBlowing: {
+                    parts: [
+                        ["Hayal et ki:", "Şöyle bir dünya tasarla:", "Eğer şöyle olsaydı ne olurdu düşün:"],
+                        ["zaman geriye doğru akıyor.", "düşüncelerimizle nesneleri hareket ettirebiliyoruz.", "hayvanlar bizimle konuşabiliyor.", "herkesin gizli bir süper gücü var.", "Mars'ta bir medeniyet keşfediyoruz.", "Elon Musk aslında bir zaman yolcusu.", "Mona Lisa tablosu gizli bir harita içeriyor."],
+                        ["Bu durum dünyayı nasıl değiştirirdi?", "İnsanlık buna nasıl tepki verirdi?", "Bunun etik sonuçları neler olurdu?"]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                productivity: {
+                    parts: [
+                        ["Bana para kazandıracak bir iş fikri ver:", "Şu konuda bir girişim projesi tasarla:", "Verimliliğimi artıracak bir strateji oluştur:", "Ertelemeyi bırakmam için bir yöntem geliştir:", "Daha organize olmamı sağlayacak bir sistem kur:"],
+                        ["evden çalışarak pasif gelir elde etmek için.", "küçük bir sermayeyle büyük bir etki yaratacak bir sosyal girişim hakkında.", "yapay zeka kullanarak kişisel verimliliği artırmak üzerine.", "günde sadece 4 saat çalışarak tam zamanlı bir gelir elde etme stratejisi.", "öğrencilerin derslerinde daha başarılı olmalarını sağlayacak bir uygulama.", "Jeff Bezos'un günlük çalışma rutininden ilham alarak.", "unutulmuş bir teknolojiyi modern bir probleme uyarlayarak."],
+                        ["Bu fikir ne kadar sürede hayata geçirilebilir?", "Bu projenin potansiyel kazancı ne olur?", "Bu stratejiyi uygulamak için ilk adım ne olmalı?"]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                educational: {
+                    parts: [
+                        ["Bana şunu öğret:", "Şu konuda bir bilgi testi hazırla:", "Çok kısa sürede şu konuyu nasıl öğrenirim:", "Şu kavramı basitçe açıkla:", "Şu tarihi olayı özetle:"],
+                        ["kuantum fiziğinin temellerini.", "iklim değişikliğinin ana nedenlerini ve sonuçlarını.", "bir hafta içinde temel İspanyolca konuşmayı.", "beynimizin nasıl öğrendiğini.", "Fransız Devrimi'nin en önemli olaylarını.", "Carl Sagan'ın evren anlayışını.", "bir bilgisayarın çalışma prensibini."],
+                        ["Bu bilgiyi günlük hayatta nasıl kullanabilirim?", "Bu konuyu daha derinlemesine öğrenmek için hangi kaynaklara başvurmalıyım?", "Bu testi çözerek ne kadar öğrendiğimi nasıl anlarım?"]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                crazy: {
+                    parts: [
+                        ["Çok komik bir senaryo yaz:", "Aklımı başımdan alacak bir fikir üret:", "Şaşırtıcı bir durum hayal et:", "Kara mizah içeren bir hikaye anlat:", "Tamamen absürt bir olay tasarla:"],
+                        ["kedilerin dünyayı yönettiği bir gün.", "Albert Einstein'ın bir stand-up şovunda sahne alması.", "politikacıların sadece rap müzikle tartıştığı bir meclis.", "yerçekiminin rastgele tatile çıktığı bir hafta.", "tüm insanların aniden sadece gerçeği söyleyebildiği bir sabah.", "Donald Trump ve Joe Biden'ın bir video oyununda takım olması.", "Sünger Bob'un Wall Street'te CEO olması.", "Tüm emojilerin canlandığı ve dünyayı istila ettiği bir senaryo.", "Sherlock Holmes'un en büyük gizeminin kayıp çorabının teki olması."],
+                        ["Bu durumun en komik yanı ne olurdu?", "İnsanlar bu duruma nasıl tepki verirdi?", "Bu senaryo nasıl bir kaosa yol açardı?"]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                perspective: {
+                    parts: [
+                        ["Şu duruma farklı bir bakış açısıyla yaklaş:", "Gerçekliği tersine çevirerek düşün:", "Şu olayı bambaşka bir gözle değerlendir:", "Eğer her şey tam tersi olsaydı ne olurdu:", "Şu kavramı yeniden tanımla:"],
+                        ["başarısızlık aslında bir başarıdır.", "zamanın doğrusal değil döngüsel olduğunu.", "en büyük düşmanının aslında en iyi dostun olduğunu.", "tüm sorunlarının aslında birer fırsat olduğunu.", "yaşadığımız dünyanın bir simülasyon olduğunu.", "Platon'un mağara alegorisinin günümüzdeki yansımasını.", "'normal' kavramının tamamen göreceli olduğunu."],
+                        ["Bu yeni bakış açısı hayatımı nasıl etkilerdi?", "Bu düşünce beni hangi yeni keşiflere götürürdü?", "Bu perspektif kararlarımı nasıl değiştirirdi?"]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                ai: {
+                    parts: [
+                        ["Gelecekte yapay zeka nasıl olacak, bir senaryo yaz:", "Bana yapay zekayı kısa sürede öğretecek bir yol haritası çiz:", "Şu konuda uzmanlaşmak için en iyi AI araçları nelerdir:", "Yapay zekanın sınırlarını zorlayan bir fikir geliştir:", "Eğer yapay zeka bilinç kazansaydı ne olurdu, bir hikaye anlat:"],
+                        ["insanlığın en büyük sorunlarını çözen bir yapay zeka.", "sanat üreten ve duyguları olan bir yapay zeka.", "eğitim sistemini tamamen değiştiren bir yapay zeka.", "insanlarla dost olan bir yapay zeka.", "kendi kendini geliştiren ve kontrolden çıkan bir yapay zeka.", "OpenAI'ın bir sonraki devrimsel projesi ne olabilir?", "Google DeepMind'ın insanlığa en büyük katkısı ne olacak?"],
+                        ["Bu senaryonun olası riskleri nelerdir?", "Bu fikir insanlığa nasıl fayda sağlar?", "Bu araçları kullanarak hangi projeler geliştirebilirim?"]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                ideas: {
+                    parts: [
+                        ["Çok tutacak bir film fikri ver:", "Viral olacak bir oyun tasarla:", "Milyonlarca indirilecek bir uygulama konsepti oluştur:", "Okunma rekorları kıracak bir kitap konusu bul:", "Hemen popüler olacak bir şarkı için ilham ver:", "Yeni bir dizi konsepti geliştir:", "Çocuklar için eğitici bir animasyon fikri üret:"],
+                        ["insanlığın sonunu getiren bir virüsten kurtulan bir grup insanın hikayesi.", "tarihi bir olayı konu alan epik bir aksiyon filmi.", "uzayda geçen bir korku-gerilim filmi.", "farklı süper güçlere sahip gençlerin maceralarını anlatan bir anime.", "basit ama bağımlılık yapan bir mobil oyun.", "günlük hayatı kolaylaştıran yenilikçi bir sosyal medya uygulaması.", "fantastik bir dünyada geçen sürükleyici bir roman serisi.", "unutulmaz bir aşkı anlatan dokunaklı bir pop şarkısı.", "bir grup arkadaşın başından geçen komik olayları anlatan bir sitcom.", "hayvanların gizli yaşamlarını konu alan eğlenceli bir çocuk animasyonu.", "Game of Thrones tarzında ama Osmanlı İmparatorluğu'nda geçen bir dizi.", "Cyberpunk 2077 evreninde geçen bir dedektiflik hikayesi."],
+                        ["Bu fikrin hedef kitlesi kimler olmalı?", "Bu projeyi hayata geçirmek için hangi kaynaklara ihtiyaç var?", "Bu konsepti benzerlerinden ayıran en önemli özellik ne?"]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                video: {
+                    parts: [
+                        ["Viral olacak bir video fikri ver:", "Şuna odaklanan kısa film konsepti oluştur:", "Şunu keşfeden bir belgesel tasla:", "Şöyle bir skeç yaz:", "Şunu tasvir eden bir animasyon anlat:", "Şu konuda komik bir sahne düşün:", "Şunu öğreten bir eğitim videosu planla:", "Şunu gösteren aksiyon dolu bir sekans hayal et:", "Şu konu için motive edici bir konuşma hazırla:", "Şu anları yakalayan klipler dizisi tasarla:"],
+                        ["günlük yaşamı değiştiren geleceğin teknolojisi", "tarihî kişilerin beklenmedik karşılaşmaları", "unutulmuş bir kahramanın bir günü", "evde yapılacak eğlenceli bilim deneyleri", "minyatür bir dünyada destansı bir macera", "paralel evrenlerden insanlarla röportajlar", "dronlarla terk edilmiş yerlerin keşfi", "saçma sorunlara çözüm bulan icatlar", "ünlü internet memeleri arasında bir yarışma", "bir gişe rekortmeni filmin kamera arkası"],
+                        ["İzleyiciyi ekranda tutacak kamera açıları neler olmalı?", "Müzik atmosferi nasıl güçlendirmeli?", "Hangi sürpriz son unutulmaz kılar?", "Hangi görsel efektler şaşırtıcı olur?", "Gerilimi artırmak için tempo nasıl olmalı?", "Hangi anlatım tarzı en uygun olur?", "Finali etkileyici kılmak için nasıl kurgularsın?", "Tüm sahneleri birleştiren tema ne?", "Seyircinin katılımı nasıl sağlanır?", "Hangi beklenmedik cameo işi taçlandırır?"]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]}, ${p[2]}`
+                },
+                image: {
+                    parts: [
+                        ["Şunun görselini oluştur:", "Detaylı bir çizimini yap:", "Şu unsurları içeren sürreal bir resim üret:", "Şuna dayalı minimal bir logo tasarla:", "Şu fantastik sahneyi çiz:", "Şunun futuristik bir yorumunu hayal et:", "Şunun portresini boya:", "Şu manzarayı tasvir et:", "Şu konu hakkında bir çizgi roman karesi oluştur:", "Şunu tanıtan bir afiş tasla:"],
+                        ["bisiklete binen efsanevi bir yaratık", "bulutların üzerinde yüzen bir şehir", "kahvaltı pişiren robot bir aşçı", "parlayan rünlerle süslü kadim bir ağaç", "süper kahramanlar ile kötülerin çarpışması", "alacakaranlıkta huzurlu bir köy", "başka bir gezegende festival", "çizgi film kahramanı olarak ünlü bir müzisyen", "siberpunk tarzında yeniden tasarlanmış tarihî bir olay", "insanlara yardımcı olan sevimli bir yapay zeka"],
+                        ["Canlı neon renkler kullan.", "Siyah beyaz ve yüksek kontrast olsun.", "Yumuşak bir görünüm için sulu boya dokusu kullan.", "Retro 80'ler estetiği uygula.", "Karanlık gotik bir hava ver.", "Eğlenceli detaylar ekle.", "Fotoğraf gerçekçiliğinde olsun.", "Geometrik soyut bir stil kullan.", "Steampunk dokunuşları ekle.", "Glitch efektleriyle harmanla."]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                hellprompts: {
+                    parts: [
+                        ["Şu durumda hissedilen duyguyu derinlemesine anlat:", "Şu psikolojik korku durumunu detaylı olarak incele:", "Şu anın yarattığı varoluşsal tedirginliği tasvir et:", "Şu gerçekliğin uyandırdığı kozmik dehşeti betimle:", "Şu rahatsız edici keşfin yarattığı duyguları analiz et:", "Şu deneyimi yaşayan birinin zihinsel durumunu anlat:", "Şu olguyla ilişkili derin korkuyu keşfet:", "Şu senaryonun yarattığı varoluşsal krizi tasvir et:", "Şu durumun tetiklediği derin tedirginliği anlat:", "Şu olgunun neden olduğu zihinsel çözülmeyi betimle:"],
+                        ["yansımanızın kendi niyetleri olduğunu fark ettiğinizde.", "anılarınızın bilinmeyen bir güç tarafından değiştirildiğini anladığınızda.", "fizik yasalarının algınızın sınırlarında çözülmeye başladığını gördüğünüzde.", "sessizliğin kendisinin kötü niyetli bir varlık haline geldiğini hissettiğinizde.", "kendi düşüncelerinizin artık tamamen size ait olmadığını fark ettiğinizde.", "zaman döngülerinin mükemmel sıfırlanmadığını ve hatalar bıraktığını keşfettiğinizde.", "gerçekliğin kırılgan bir yapı olduğuna dair kanıtlarla karşılaştığınızda.", "unutulmuş rüyalarla beslenen parazitik bir varlığın varlığını hissettiğinizde.", "insan bilincinin evrimsel bir kaza olduğunu anladığınızda.", "sıradan desenlerde gizlenmiş kozmik bir gerçeği fark ettiğinizde.", "H.P. Lovecraft'ın bir karakterinin zihninde bir gün geçirdiğinde.", "Stephen King romanındaki bir kasabada mahsur kaldığında."],
+                        ["Bu farkındalık, benlik algınızı nasıl parçalara ayırır?", "Bu durum, nasıl derin ve kaçınılmaz bir paranoyaya yol açar?", "Bu keşif, algıladığınız gerçekliği nasıl tamamen çökertir?", "Bu deneyim, her sessiz anı nasıl bir korku kaynağına dönüştürür?", "Bu farkındalık, kimlik ve dış etki arasındaki sınırları nasıl bulanıklaştırır?"]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                }
+            }
+        };
+
         // --- Category Definitions ---
         const categories = [
             { id: 'random', icon: 'shuffle', name: { en: 'Random Mix', tr: 'Rastgele Karışım' } },
@@ -72,6 +248,8 @@ HISTORY_SIZE: 50        // Increased history size
             { id: 'perspective', icon: 'glasses', name: { en: 'Perspective', tr: 'Bakış Açısı' } },
             { id: 'ai', icon: 'cpu', name: { en: 'AI', tr: 'YZ' } }, // Updated name
             { id: 'ideas', icon: 'lightbulb', name: { en: 'Ideas', tr: 'Fikirler' } },
+            { id: 'video', icon: 'video', name: { en: 'Video', tr: 'Video' } },
+            { id: 'image', icon: 'image', name: { en: 'Image', tr: 'Görsel' } },
             { id: 'hellprompts', icon: 'skull', name: { en: 'Hellprompts', tr: 'Cehennem Promptları' } } // New category
         ];
 
@@ -250,11 +428,13 @@ HISTORY_SIZE: 50        // Increased history size
                     }
                     return element;
                 });
- main
                 const newPrompt = categoryData.structure(promptParts);
 
                 // Update history for each part (FIFO queue)
                 promptParts.forEach((part, idx) => {
+                    if (!appState.history[idx]) {
+                        appState.history[idx] = [];
+                    }
                     const hist = appState.history[idx];
                     hist.push(part);
                     if (hist.length > appState.HISTORY_SIZE) {
