@@ -13,15 +13,31 @@ HISTORY_SIZE: 50        // Increased history size
         };
 
         // --- Utility Functions ---
-        const getRandomElement = (array, history = []) => {
-            if (!array || array.length === 0) return '';
-            const available = array.filter(item => !history.includes(item));
-            if (available.length > 0) {
-                return available[Math.floor(Math.random() * available.length)];
+const getRandomElement = (array, history = []) => {
+    if (!array || array.length === 0) return '';
+    const available = array.filter(item => !history.includes(item));
+    if (available.length > 0) {
+        return available[Math.floor(Math.random() * available.length)];
+    }
+    // If all items are in history, pick a random one anyway
+    return array[Math.floor(Math.random() * array.length)];
+};
+
+        // Storage helper to avoid errors when localStorage is unavailable
+        const safeStorage = (() => {
+            try {
+                const testKey = '__prompter_test__';
+                window.localStorage.setItem(testKey, testKey);
+                window.localStorage.removeItem(testKey);
+                return window.localStorage;
+            } catch (e) {
+                const store = {};
+                return {
+                    getItem: (k) => store[k],
+                    setItem: (k, v) => { store[k] = v; }
+                };
             }
-            // If all items are in history, pick a random one anyway
-            return array[Math.floor(Math.random() * array.length)];
-        };
+        })();
 
 
 
@@ -144,7 +160,6 @@ HISTORY_SIZE: 50        // Increased history size
                     structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
                 },
                 hellprompts: { parts: [["Describe in depth the feeling when"], ["you realize your reflection has its own intentions"], ["How does this awareness shatter your sense of self?"]], structure: (p) => `${p[0]} ${p[1]}. ${p[2]}` }
-              
             },
             tr: {
                 inspiring: {
@@ -211,7 +226,6 @@ HISTORY_SIZE: 50        // Increased history size
                     ],
                     structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
                 },
- codex/siteyi-düzelt-ve-ui-sorunlarını-gider
                 video: {
                     parts: [
                         ["Viral olacak bir video fikri ver:", "Şuna odaklanan kısa film konsepti oluştur:", "Şunu keşfeden bir belgesel tasla:", "Şöyle bir skeç yaz:", "Şunu tasvir eden bir animasyon anlat:", "Şu konuda komik bir sahne düşün:", "Şunu öğreten bir eğitim videosu planla:", "Şunu gösteren aksiyon dolu bir sekans hayal et:", "Şu konu için motive edici bir konuşma hazırla:", "Şu anları yakalayan klipler dizisi tasarla:"],
@@ -225,8 +239,11 @@ HISTORY_SIZE: 50        // Increased history size
                         ["Şunun görselini oluştur:", "Detaylı bir çizimini yap:", "Şu unsurları içeren sürreal bir resim üret:", "Şuna dayalı minimal bir logo tasarla:", "Şu fantastik sahneyi çiz:", "Şunun futuristik bir yorumunu hayal et:", "Şunun portresini boya:", "Şu manzarayı tasvir et:", "Şu konu hakkında bir çizgi roman karesi oluştur:", "Şunu tanıtan bir afiş tasla:"],
                         ["bisiklete binen efsanevi bir yaratık", "bulutların üzerinde yüzen bir şehir", "kahvaltı pişiren robot bir aşçı", "parlayan rünlerle süslü kadim bir ağaç", "süper kahramanlar ile kötülerin çarpışması", "alacakaranlıkta huzurlu bir köy", "başka bir gezegende festival", "çizgi film kahramanı olarak ünlü bir müzisyen", "siberpunk tarzında yeniden tasarlanmış tarihî bir olay", "insanlara yardımcı olan sevimli bir yapay zeka"],
                         ["Canlı neon renkler kullan.", "Siyah beyaz ve yüksek kontrast olsun.", "Yumuşak bir görünüm için sulu boya dokusu kullan.", "Retro 80'ler estetiği uygula.", "Karanlık gotik bir hava ver.", "Eğlenceli detaylar ekle.", "Fotoğraf gerçekçiliğinde olsun.", "Geometrik soyut bir stil kullan.", "Steampunk dokunuşları ekle.", "Glitch efektleriyle harmanla."]
-                },
- main
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                }
+            }
+
                 hellprompts: {
                     parts: [
                         ["Şu durumda hissedilen duyguyu derinlemesine anlat:", "Şu psikolojik korku durumunu detaylı olarak incele:", "Şu anın yarattığı varoluşsal tedirginliği tasvir et:", "Şu gerçekliğin uyandırdığı kozmik dehşeti betimle:", "Şu rahatsız edici keşfin yarattığı duyguları analiz et:", "Şu deneyimi yaşayan birinin zihinsel durumunu anlat:", "Şu olguyla ilişkili derin korkuyu keşfet:", "Şu senaryonun yarattığı varoluşsal krizi tasvir et:", "Şu durumun tetiklediği derin tedirginliği anlat:", "Şu olgunun neden olduğu zihinsel çözülmeyi betimle:"],
@@ -338,7 +355,7 @@ HISTORY_SIZE: 50        // Increased history size
                 themeLightButton.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
                 themeLightButton.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
             }
-            localStorage.setItem('theme', theme);
+            safeStorage.setItem('theme', theme);
             // Update button titles based on theme and language
             updateButtonTitles();
         };
@@ -378,7 +395,7 @@ HISTORY_SIZE: 50        // Increased history size
                 langEnButton.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
                 langEnButton.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
             }
-            localStorage.setItem('language', lang);
+            safeStorage.setItem('language', lang);
             // Update theme button titles based on language
             updateButtonTitles();
         };
@@ -527,11 +544,11 @@ HISTORY_SIZE: 50        // Increased history size
             lucide.createIcons();
 
             // Load saved language or default to 'en'
-            const savedLanguage = localStorage.getItem('language') || 'en';
+            const savedLanguage = safeStorage.getItem('language') || 'en';
             setLanguage(savedLanguage);
 
             // Load saved theme or default to 'dark'
-            const savedTheme = localStorage.getItem('theme') || THEMES.DARK;
+            const savedTheme = safeStorage.getItem('theme') || THEMES.DARK;
             setTheme(savedTheme);
 
             // Setup event listeners
