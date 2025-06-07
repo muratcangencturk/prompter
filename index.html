@@ -337,6 +337,158 @@ HISTORY_SIZE: 50        // Increased history size
             { id: 'hellprompts', icon: 'skull', name: { en: 'Hellprompts', tr: 'Cehennem Promptları' } } // New category
         ];
 
+        // --- Prompt Templates ---
+        const prompts = {
+            en: {
+                inspiring: {
+                    parts: [
+                        ["Imagine", "Describe", "Write about"],
+                        ["overcoming a challenge", "finding unexpected hope", "joining together for change"],
+                        ["to inspire others.", "for a brighter future.", "and transform lives."]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                mindBlowing: {
+                    parts: [
+                        ["Consider a world where", "Imagine if", "What if"],
+                        ["gravity reversed", "humans could teleport", "time flowed backwards"],
+                        ["How would society react?", "What would change?", "Would we adapt?"]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]}. ${p[2]}`
+                },
+                productivity: {
+                    parts: [
+                        ["Develop a system to", "Create a plan to", "Design a routine that"],
+                        ["avoid distractions", "maximize focus", "boost efficiency"],
+                        ["for sustained results.", "without burnout.", "each day."]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                educational: {
+                    parts: [
+                        ["Explain", "Teach", "Break down"],
+                        ["quantum physics", "the human brain", "machine learning"],
+                        ["in simple terms.", "for beginners.", "with real-world examples."]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                crazy: {
+                    parts: [
+                        ["Write a scene where", "Imagine a situation where", "Describe a world where"],
+                        ["cats rule the earth", "bananas are sentient", "gravity is optional"],
+                        ["resulting in chaos.", "with hilarious outcomes.", "confusing everyone."]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                perspective: {
+                    parts: [
+                        ["From a different point of view,", "Looking from space,", "Through the eyes of a child,"],
+                        ["consider love", "see the daily routine", "understand conflict"],
+                        ["to gain new insight.", "and feel small.", "in a fresh way."]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                ai: {
+                    parts: [
+                        ["Design an AI that", "Imagine artificial intelligence that", "Write about a robot that"],
+                        ["solves world hunger", "creates art autonomously", "learns emotions"],
+                        ["and benefits humanity.", "challenging ethics.", "changing our future."]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                ideas: {
+                    parts: [
+                        ["Come up with a business idea for", "Brainstorm a project involving", "Propose a product based on"],
+                        ["renewable energy", "virtual reality", "smart home tech"],
+                        ["that stands out.", "for mass adoption.", "with minimal cost."]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                hellprompts: {
+                    parts: [
+                        ["Describe the feeling when", "Imagine the horror of", "Write about the moment"],
+                        ["shadows whisper", "time stops", "your reflection moves"],
+                        ["driving you insane.", "beyond comprehension.", "and nothing feels real."]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                }
+            },
+            tr: {
+                inspiring: {
+                    parts: [
+                        ["Şunu hayal et:", "Şunu anlat:", "Bunu yaz:"],
+                        ["zorluğun üstesinden gelmek", "beklenmedik umut bulmak", "değişim için bir araya gelmek"],
+                        ["başkalarına ilham vermek için.", "daha parlak bir gelecek için.", "ve hayatları dönüştürmek için."]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                mindBlowing: {
+                    parts: [
+                        ["Şöyle bir dünya düşün:", "Ya şöyle olsaydı:", "Şu olasılığı hayal et:"],
+                        ["yerçekimi tersine dönse", "insanlar ışınlansa", "zaman geriye aksa"],
+                        ["Toplum nasıl tepki verir?", "Neler değişirdi?", "Uyum sağlayabilir miydik?"]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]}. ${p[2]}`
+                },
+                productivity: {
+                    parts: [
+                        ["Bir sistem geliştir:", "Bir plan oluştur:", "Bir rutin tasarla:"],
+                        ["dikkat dağıtıcıları önlemek", "odaklanmayı artırmak", "verimliliği yükseltmek"],
+                        ["kalıcı sonuçlar için.", "yorulmadan.", "her gün."]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                educational: {
+                    parts: [
+                        ["Şunu açıkla:", "Şunu öğret:", "Şunu basitleştir:"],
+                        ["kuantum fiziği", "insan beyni", "makine öğrenimi"],
+                        ["basit terimlerle.", "yeni başlayanlara.", "gerçek örneklerle."]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                crazy: {
+                    parts: [
+                        ["Şöyle bir sahne yaz:", "Şu durumu düşün:", "Şöyle bir dünya anlat:"],
+                        ["kediler dünyayı yönetse", "muzlar bilinçli olsa", "yerçekimi isteğe bağlı olsa"],
+                        ["tam bir kaos olur.", "komik sonuçlarla.", "herkes şaşırır."]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                perspective: {
+                    parts: [
+                        ["Farklı bir bakış açısıyla,", "Uzaydan bakıldığında,", "Bir çocuğun gözünden,"],
+                        ["aşkı düşün", "günlük rutine bak", "çatışmayı anla"],
+                        ["yeni bir anlayış için.", "ve kendini küçük hisset.", "farklı bir şekilde."]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                ai: {
+                    parts: [
+                        ["Şöyle bir YZ tasarla:", "Şöyle bir yapay zeka düşün:", "Bir robot hakkında yaz:"],
+                        ["dünyadaki açlığı çözen", "kendi başına sanat üreten", "duyguları öğrenen"],
+                        ["ve insanlığa faydalı olan.", "etik tartışmalara yol açan.", "geleceğimizi değiştiren."]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                ideas: {
+                    parts: [
+                        ["Şu alan için bir iş fikri:", "Şöyle bir proje öner:", "Şu ürünü tasarla:"],
+                        ["yenilenebilir enerji", "sanal gerçeklik", "akıllı ev teknolojisi"],
+                        ["fark yaratacak.", "geniş kitlelere hitap eden.", "düşük maliyetli."]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                hellprompts: {
+                    parts: [
+                        ["Şu anı tarif et:", "Şu korkuyu hayal et:", "Şu anı yaz:"],
+                        ["gölgeler fısıldadığında", "zaman durduğunda", "yansıman hareket ettiğinde"],
+                        ["akıl sağlığını yitirirsin.", "anlamanın ötesinde.", "ve gerçeklik kaybolur."]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                }
+            }
+        };
+
         // --- DOM Elements ---
         const categoryButtonsContainer = document.getElementById('category-buttons');
         const generateButton = document.getElementById('generate-button');
