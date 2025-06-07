@@ -503,6 +503,7 @@ const getRandomElement = (array, history = []) => {
                 });
             });
 
+            categoryButtonsContainer.innerHTML = '';
             // Download button
             downloadButton.addEventListener('click', () => {
                 if (!appState.generatedPrompt) return;
