@@ -269,7 +269,7 @@
             copySuccess: false,
             language: 'en',
             theme: 'dark', // Default theme
-            history: [],
+            history: [], // Will store arrays of previously used parts per prompt section
             HISTORY_SIZE: 50 // Increased history size
         };
 
@@ -663,14 +663,20 @@
                     return;
                 }
 
-                const promptParts = categoryData.parts.map(partArray => getRandomElement(partArray, appState.history));
+                if (!Array.isArray(appState.history) || appState.history.length !== categoryData.parts.length) {
+                    appState.history = categoryData.parts.map(() => []);
+                }
+                const promptParts = categoryData.parts.map((partArray, idx) => getRandomElement(partArray, appState.history[idx]));
                 const newPrompt = categoryData.structure(promptParts);
 
-                // Update history (FIFO queue)
-                appState.history.push(newPrompt);
-                if (appState.history.length > appState.HISTORY_SIZE) {
-                    appState.history.shift();
-                }
+                // Update history for each part (FIFO queue)
+                promptParts.forEach((part, idx) => {
+                    const hist = appState.history[idx];
+                    hist.push(part);
+                    if (hist.length > appState.HISTORY_SIZE) {
+                        hist.shift();
+                    }
+                });
 
                 appState.generatedPrompt = newPrompt;
                 generatedPromptText.textContent = newPrompt;
