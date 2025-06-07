@@ -241,6 +241,7 @@ const getRandomElement = (array, history = []) => {
                         ["Canlı neon renkler kullan.", "Siyah beyaz ve yüksek kontrast olsun.", "Yumuşak bir görünüm için sulu boya dokusu kullan.", "Retro 80'ler estetiği uygula.", "Karanlık gotik bir hava ver.", "Eğlenceli detaylar ekle.", "Fotoğraf gerçekçiliğinde olsun.", "Geometrik soyut bir stil kullan.", "Steampunk dokunuşları ekle.", "Glitch efektleriyle harmanla."]
                     ],
                     structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+
                 }
             }
 
@@ -410,7 +411,9 @@ const getRandomElement = (array, history = []) => {
             appState.isGenerating = true;
             generateButton.disabled = true;
             generatedPromptText.innerHTML = '<div class="flex justify-center items-center h-20"><i data-lucide="loader-2" class="w-6 h-6 animate-spin"></i></div>';
-            lucide.createIcons(); // Render spinner icon
+            if (window.lucide && typeof window.lucide.createIcons === 'function') {
+                window.lucide.createIcons(); // Render spinner icon
+            }
             promptDisplayArea.classList.remove('hidden');
             promptDisplayArea.classList.add('animate-fadeIn');
 
@@ -540,8 +543,10 @@ const getRandomElement = (array, history = []) => {
                 categoryButtonsContainer.appendChild(button);
             });
 
-            // Initialize Lucide icons
-            lucide.createIcons();
+            // Initialize Lucide icons if available
+            if (window.lucide && typeof window.lucide.createIcons === 'function') {
+                window.lucide.createIcons();
+            }
 
             // Load saved language or default to 'en'
             const savedLanguage = safeStorage.getItem('language') || 'en';
@@ -556,5 +561,9 @@ const getRandomElement = (array, history = []) => {
         };
 
         // --- Run Initialization ---
-        document.addEventListener('DOMContentLoaded', initializeApp);
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeApp);
+        } else {
+            initializeApp();
+        }
 
