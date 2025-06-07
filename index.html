@@ -268,9 +268,10 @@
             copySuccess: false,
             language: 'en',
             theme: 'dark', // Default theme
-            history: [],
-            partHistory: [], // Track history for each prompt part
-            HISTORY_SIZE: 50 // Increased history size
+history: [],            // overall prompt history
+partHistory: [],        // Track history for each prompt part
+HISTORY_SIZE: 50        // Increased history size
+
         };
 
         // --- Utility Functions ---
@@ -496,6 +497,7 @@
                     return;
                 }
 
+
                 const promptParts = categoryData.parts.map((partArray, idx) => {
                     if (!appState.partHistory[idx]) {
                         appState.partHistory[idx] = [];
@@ -507,13 +509,17 @@
                     }
                     return element;
                 });
+ main
                 const newPrompt = categoryData.structure(promptParts);
 
-                // Update history (FIFO queue)
-                appState.history.push(newPrompt);
-                if (appState.history.length > appState.HISTORY_SIZE) {
-                    appState.history.shift();
-                }
+                // Update history for each part (FIFO queue)
+                promptParts.forEach((part, idx) => {
+                    const hist = appState.history[idx];
+                    hist.push(part);
+                    if (hist.length > appState.HISTORY_SIZE) {
+                        hist.shift();
+                    }
+                });
 
                 appState.generatedPrompt = newPrompt;
                 generatedPromptText.textContent = newPrompt;
