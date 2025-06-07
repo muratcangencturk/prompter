@@ -6,7 +6,6 @@
     <title>AI Prompt Generator - Prompter</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="optimized_prompts.js"></script>
     <style>
         /* Custom styles */
         body {
@@ -487,7 +486,7 @@
                     selectedCatId = availableCategories[Math.floor(Math.random() * availableCategories.length)].id;
                 }
 
-                categoryData = optimizedPrompts[appState.language][selectedCatId];
+                categoryData = prompts[appState.language][selectedCatId];
 
                 if (!categoryData || !categoryData.parts || !Array.isArray(categoryData.parts)) {
                     console.error(`Invalid data for category: ${selectedCatId}, language: ${appState.language}`);
