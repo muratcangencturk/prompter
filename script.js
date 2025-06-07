@@ -144,6 +144,7 @@ HISTORY_SIZE: 50        // Increased history size
                     structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
                 },
                 hellprompts: { parts: [["Describe in depth the feeling when"], ["you realize your reflection has its own intentions"], ["How does this awareness shatter your sense of self?"]], structure: (p) => `${p[0]} ${p[1]}. ${p[2]}` }
+              
             },
             tr: {
                 inspiring: {
@@ -210,6 +211,7 @@ HISTORY_SIZE: 50        // Increased history size
                     ],
                     structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
                 },
+ codex/siteyi-düzelt-ve-ui-sorunlarını-gider
                 video: {
                     parts: [
                         ["Viral olacak bir video fikri ver:", "Şuna odaklanan kısa film konsepti oluştur:", "Şunu keşfeden bir belgesel tasla:", "Şöyle bir skeç yaz:", "Şunu tasvir eden bir animasyon anlat:", "Şu konuda komik bir sahne düşün:", "Şunu öğreten bir eğitim videosu planla:", "Şunu gösteren aksiyon dolu bir sekans hayal et:", "Şu konu için motive edici bir konuşma hazırla:", "Şu anları yakalayan klipler dizisi tasarla:"],
@@ -223,9 +225,8 @@ HISTORY_SIZE: 50        // Increased history size
                         ["Şunun görselini oluştur:", "Detaylı bir çizimini yap:", "Şu unsurları içeren sürreal bir resim üret:", "Şuna dayalı minimal bir logo tasarla:", "Şu fantastik sahneyi çiz:", "Şunun futuristik bir yorumunu hayal et:", "Şunun portresini boya:", "Şu manzarayı tasvir et:", "Şu konu hakkında bir çizgi roman karesi oluştur:", "Şunu tanıtan bir afiş tasla:"],
                         ["bisiklete binen efsanevi bir yaratık", "bulutların üzerinde yüzen bir şehir", "kahvaltı pişiren robot bir aşçı", "parlayan rünlerle süslü kadim bir ağaç", "süper kahramanlar ile kötülerin çarpışması", "alacakaranlıkta huzurlu bir köy", "başka bir gezegende festival", "çizgi film kahramanı olarak ünlü bir müzisyen", "siberpunk tarzında yeniden tasarlanmış tarihî bir olay", "insanlara yardımcı olan sevimli bir yapay zeka"],
                         ["Canlı neon renkler kullan.", "Siyah beyaz ve yüksek kontrast olsun.", "Yumuşak bir görünüm için sulu boya dokusu kullan.", "Retro 80'ler estetiği uygula.", "Karanlık gotik bir hava ver.", "Eğlenceli detaylar ekle.", "Fotoğraf gerçekçiliğinde olsun.", "Geometrik soyut bir stil kullan.", "Steampunk dokunuşları ekle.", "Glitch efektleriyle harmanla."]
-                    ],
-                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
                 },
+ main
                 hellprompts: {
                     parts: [
                         ["Şu durumda hissedilen duyguyu derinlemesine anlat:", "Şu psikolojik korku durumunu detaylı olarak incele:", "Şu anın yarattığı varoluşsal tedirginliği tasvir et:", "Şu gerçekliğin uyandırdığı kozmik dehşeti betimle:", "Şu rahatsız edici keşfin yarattığı duyguları analiz et:", "Şu deneyimi yaşayan birinin zihinsel durumunu anlat:", "Şu olguyla ilişkili derin korkuyu keşfet:", "Şu senaryonun yarattığı varoluşsal krizi tasvir et:", "Şu durumun tetiklediği derin tedirginliği anlat:", "Şu olgunun neden olduğu zihinsel çözülmeyi betimle:"],
