@@ -95,3 +95,8 @@ const optimizedPrompts = {
         }
     }
 };
+
+// Support both Node.js and browser environments
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = optimizedPrompts;
+}
