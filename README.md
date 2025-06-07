@@ -16,6 +16,13 @@ Simply open `index.html` in any modern web browser. You can double‑click the f
 - Prompter currently supports **English** (`EN`) and **Turkish** (`TR`).
 - Use the language switcher in the top‑right corner to choose your interface language. The setting persists in your browser.
 
+### Categories
+Prompter offers several prompt categories: **Random Mix**, **Inspiring**, **Mind‑blowing**, **Productivity**, **Educational**, **Crazy**, **Perspective**, **AI**, **Ideas**, **Video**, **Image**, and **Hellprompts**.
+
+The new **Video** option focuses on concepts for short films, documentaries, and other clips. The **Image** option helps you imagine visually striking scenes or designs.
+
+To select a category, open `index.html` and look for the buttons under **Select Your Prompt Inspiration**. Click a category icon—such as the *Video* camera icon—to highlight it and then press **Generate New Prompt**.
+
 ## License
 
 This project is licensed under the Apache License 2.0. See [LICENSE](LICENSE) for the full text.
