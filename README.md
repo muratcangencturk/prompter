@@ -32,6 +32,8 @@ Prompter offers a variety of prompt themes. Select a category by clicking its ic
 - **Image** – descriptions for unique visuals or logos
 - **Hellprompts** – unsettling horror themes
 
+If icon fonts fail to load, the app falls back to emoji symbols so the buttons remain visible.
+
 Example: click the **Video** icon, then press **Generate New Prompt** to create a video-related idea.
 
 ## License

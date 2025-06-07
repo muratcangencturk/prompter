@@ -257,7 +257,7 @@ const getRandomElement = (array, history = []) => {
         };
 
         // --- Category Definitions ---
-        const categories = [
+const categories = [
             { id: 'random', icon: 'shuffle', name: { en: 'Random Mix', tr: 'Rastgele Karışım' } },
             { id: 'inspiring', icon: 'sunrise', name: { en: 'Inspiring', tr: 'İlham Verici' } },
             { id: 'mindBlowing', icon: 'brain-circuit', name: { en: 'Mind-blowing', tr: 'Ufuk Açıcı' } },
@@ -270,7 +270,23 @@ const getRandomElement = (array, history = []) => {
             { id: 'video', icon: 'video', name: { en: 'Video', tr: 'Video' } },
             { id: 'image', icon: 'image', name: { en: 'Image', tr: 'Görsel' } },
             { id: 'hellprompts', icon: 'skull', name: { en: 'Hellprompts', tr: 'Cehennem Promptları' } } // New category
-        ];
+];
+
+        // Fallback emoji icons if Lucide cannot load
+        const fallbackIcons = {
+            random: '🔀',
+            inspiring: '🌅',
+            mindBlowing: '🤯',
+            productivity: '⚡',
+            educational: '🎓',
+            crazy: '😂',
+            perspective: '🕶️',
+            ai: '🤖',
+            ideas: '💡',
+            video: '🎬',
+            image: '🖼️',
+            hellprompts: '💀'
+        };
 
         // --- DOM Elements ---
         const categoryButtonsContainer = document.getElementById('category-buttons');
@@ -528,7 +544,10 @@ const getRandomElement = (array, history = []) => {
 
         // --- Initialization ---
         const initializeApp = () => {
+            const hasLucide = window.lucide && typeof window.lucide.createIcons === 'function';
+
             // Load categories
+            categoryButtonsContainer.innerHTML = '';
             categories.forEach(category => {
                 const button = document.createElement('button');
                 button.id = `category-${category.id}`;
@@ -536,15 +555,16 @@ const getRandomElement = (array, history = []) => {
                 if (category.id === appState.selectedCategory) {
                     button.classList.add('selected');
                 }
-                button.innerHTML = `
-                    <i data-lucide="${category.icon}" class="lucide"></i>
-                    <span>${category.name[appState.language]}</span>
-                `;
+                button.innerHTML = hasLucide
+                    ? `<i data-lucide="${category.icon}" class="lucide"></i><span>${category.name[appState.language]}</span>`
+                    : `<span class="mr-1">${fallbackIcons[category.id] || ''}</span><span>${category.name[appState.language]}</span>`;
                 categoryButtonsContainer.appendChild(button);
             });
 
             // Initialize Lucide icons if available
+
             if (window.lucide && typeof window.lucide.createIcons === 'function') {
+
                 window.lucide.createIcons();
             }
 
