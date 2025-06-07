@@ -349,6 +349,9 @@ HISTORY_SIZE: 50        // Increased history size
 
                 // Update history for each part (FIFO queue)
                 promptParts.forEach((part, idx) => {
+                    if (!appState.history[idx]) {
+                        appState.history[idx] = [];
+                    }
                     const hist = appState.history[idx];
                     hist.push(part);
                     if (hist.length > appState.HISTORY_SIZE) {
