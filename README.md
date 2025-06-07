@@ -16,12 +16,23 @@ Simply open `index.html` in any modern web browser. You can double‑click the f
 - Prompter currently supports **English** (`EN`) and **Turkish** (`TR`).
 - Use the language switcher in the top‑right corner to choose your interface language. The setting persists in your browser.
 
-### Categories
-Prompter offers several prompt categories: **Random Mix**, **Inspiring**, **Mind‑blowing**, **Productivity**, **Educational**, **Crazy**, **Perspective**, **AI**, **Ideas**, **Video**, **Image**, and **Hellprompts**.
+## Categories
+Prompter offers a variety of prompt themes. Select a category by clicking its icon in the **Select Your Prompt Inspiration** area.
 
-The new **Video** option focuses on concepts for short films, documentaries, and other clips. The **Image** option helps you imagine visually striking scenes or designs.
+- **Random Mix** – picks from all categories
+- **Inspiring** – motivational or uplifting scenarios
+- **Mind-blowing** – speculative or reality‑bending ideas
+- **Productivity** – business and money-making strategies
+- **Educational** – quick lessons and knowledge tests
+- **Crazy** – absurd, darkly humorous situations
+- **Perspective** – rethink a situation from another angle
+- **AI** – prompts about artificial intelligence and the future
+- **Ideas** – pitches for apps, movies, books, and more
+- **Video** – concepts for short films or viral clips
+- **Image** – descriptions for unique visuals or logos
+- **Hellprompts** – unsettling horror themes
 
-To select a category, open `index.html` and look for the buttons under **Select Your Prompt Inspiration**. Click a category icon—such as the *Video* camera icon—to highlight it and then press **Generate New Prompt**.
+Example: click the **Video** icon, then press **Generate New Prompt** to create a video-related idea.
 
 ## License
 
