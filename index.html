@@ -423,6 +423,11 @@
             { id: 'hellprompts', icon: 'skull', emoji: '💀', name: { en: 'Hellprompts', tr: 'Cehennem Promptları' } } // New category
         ];
 
+        // Optional fallback icons in case a name is not supported by Lucide
+        const ICON_FALLBACKS = {
+            'brain-circuits': 'brain-circuit'
+        };
+
 
 
         // --- DOM Elements ---
@@ -702,8 +707,34 @@
             const runLucide = () => {
                 if (window.lucide && typeof window.lucide.createIcons === 'function') {
                     window.lucide.createIcons();
-                    document.querySelectorAll('.emoji-icon').forEach(el => el.classList.add('hidden'));
-                    document.querySelectorAll('.category-button .lucide').forEach(el => el.style.display = 'block');
+
+                    document.querySelectorAll('#category-buttons .category-button').forEach(button => {
+                        const iconEl = button.querySelector('i[data-lucide]');
+                        const emojiEl = button.querySelector('.emoji-icon');
+                        if (!iconEl) return;
+
+                        let iconName = iconEl.getAttribute('data-lucide');
+                        const pascal = iconName.replace(/(^.|-.)/g, s => s.replace('-', '').toUpperCase());
+                        if (!window.lucide.icons || !window.lucide.icons[pascal]) {
+                            const fallback = ICON_FALLBACKS[iconName];
+                            if (fallback) {
+                                iconName = fallback;
+                                iconEl.setAttribute('data-lucide', iconName);
+                            }
+                        }
+
+                        const hasSvg = iconEl.querySelector('svg');
+                        if (!hasSvg) {
+                            emojiEl && emojiEl.classList.remove('hidden');
+                            iconEl.style.display = 'none';
+                        } else {
+                            iconEl.style.display = 'block';
+                            emojiEl && emojiEl.classList.add('hidden');
+                        }
+                    });
+
+                    // Re-run in case any icons were replaced
+                    window.lucide.createIcons();
                     return true;
                 }
                 return false;
