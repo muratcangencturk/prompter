@@ -166,6 +166,7 @@
             width: 1.5rem;
             height: 1.5rem;
             margin-bottom: 0.25rem;
+            display: none;
         }
         .emoji-icon {
             font-size: 1.5rem;
@@ -237,6 +238,7 @@
         }
         .category-button .lucide {
             color: white !important;
+            display: none;
         }
         #app-title {
             background-image: linear-gradient(to right, #22d3ee, #c084fc) !important;
@@ -407,35 +409,21 @@
 
         // --- Category Definitions ---
         const categories = [
-            { id: 'random', icon: 'shuffle', name: { en: 'Random Mix', tr: 'Rastgele Karışım' } },
-            { id: 'inspiring', icon: 'sunrise', name: { en: 'Inspiring', tr: 'İlham Verici' } },
-            { id: 'mindBlowing', icon: 'brain-circuit', name: { en: 'Mind-blowing', tr: 'Ufuk Açıcı' } },
-            { id: 'productivity', icon: 'zap', name: { en: 'Productivity', tr: 'Üretkenlik' } },
-            { id: 'educational', icon: 'graduation-cap', name: { en: 'Educational', tr: 'Eğitici' } },
-            { id: 'crazy', icon: 'laugh', name: { en: 'Crazy', tr: 'Çılgın Fikirler' } }, // Updated name
-            { id: 'perspective', icon: 'glasses', name: { en: 'Perspective', tr: 'Bakış Açısı' } },
-            { id: 'ai', icon: 'cpu', name: { en: 'AI', tr: 'YZ' } }, // Updated name
-            { id: 'ideas', icon: 'lightbulb', name: { en: 'Ideas', tr: 'Fikirler' } },
-            { id: 'video', icon: 'video', name: { en: 'Video', tr: 'Video' } },
-            { id: 'image', icon: 'image', name: { en: 'Image', tr: 'Görsel' } },
-            { id: 'hellprompts', icon: 'skull', name: { en: 'Hellprompts', tr: 'Cehennem Promptları' } } // New category
+            { id: 'random', icon: 'shuffle', emoji: '🔀', name: { en: 'Random Mix', tr: 'Rastgele Karışım' } },
+            { id: 'inspiring', icon: 'sunrise', emoji: '🌅', name: { en: 'Inspiring', tr: 'İlham Verici' } },
+            { id: 'mindBlowing', icon: 'brain-circuit', emoji: '🤯', name: { en: 'Mind-blowing', tr: 'Ufuk Açıcı' } },
+            { id: 'productivity', icon: 'zap', emoji: '⚡', name: { en: 'Productivity', tr: 'Üretkenlik' } },
+            { id: 'educational', icon: 'graduation-cap', emoji: '🎓', name: { en: 'Educational', tr: 'Eğitici' } },
+            { id: 'crazy', icon: 'laugh', emoji: '😂', name: { en: 'Crazy', tr: 'Çılgın Fikirler' } },
+            { id: 'perspective', icon: 'glasses', emoji: '🕶️', name: { en: 'Perspective', tr: 'Bakış Açısı' } },
+            { id: 'ai', icon: 'cpu', emoji: '🤖', name: { en: 'AI', tr: 'YZ' } },
+            { id: 'ideas', icon: 'lightbulb', emoji: '💡', name: { en: 'Ideas', tr: 'Fikirler' } },
+            { id: 'video', icon: 'video', emoji: '🎬', name: { en: 'Video', tr: 'Video' } },
+            { id: 'image', icon: 'image', emoji: '🖼️', name: { en: 'Image', tr: 'Görsel' } },
+            { id: 'hellprompts', icon: 'skull', emoji: '💀', name: { en: 'Hellprompts', tr: 'Cehennem Promptları' } } // New category
         ];
 
-        // Fallback emoji icons if Lucide cannot load
-        const fallbackIcons = {
-            random: '🔀',
-            inspiring: '🌅',
-            mindBlowing: '🤯',
-            productivity: '⚡',
-            educational: '🎓',
-            crazy: '😂',
-            perspective: '🕶️',
-            ai: '🤖',
-            ideas: '💡',
-            video: '🎬',
-            image: '🖼️',
-            hellprompts: '💀'
-        };
+
 
         // --- DOM Elements ---
         const categoryButtonsContainer = document.getElementById('category-buttons');
@@ -469,7 +457,7 @@
                 .category-button { background-color: rgba(0, 0, 0, 0.08) !important; color: #1a1a2e !important; border: 1px solid rgba(0, 0, 0, 0.1) !important; }
                 .category-button:hover { background-color: rgba(0, 0, 0, 0.15) !important; }
                 .category-button.selected { background-image: linear-gradient(to right, #6366f1, #8b5cf6) !important; color: white !important; border-color: transparent !important; }
-                .category-button .lucide { color: #4f46e5 !important; }
+                .category-button .lucide { color: #4f46e5 !important; display: none; }
                 .category-button.selected .lucide { color: white !important; }
                 .category-button .emoji-icon { color: #4f46e5 !important; }
                 .category-button.selected .emoji-icon { color: white !important; }
@@ -497,7 +485,7 @@
                 .category-button { background-color: rgba(255, 255, 255, 0.2) !important; color: white !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; }
                 .category-button:hover { background-color: rgba(255, 255, 255, 0.3) !important; }
                 .category-button.selected { background-image: linear-gradient(to right, #a855f7, #ec4899) !important; color: white !important; border-color: transparent !important; }
-                .category-button .lucide { color: white !important; }
+                .category-button .lucide { color: white !important; display: none; }
                 .category-button .emoji-icon { color: white !important; }
                 #app-title { background-image: linear-gradient(to right, #22d3ee, #c084fc) !important; }
                 #choose-style-title, #your-prompt-title { color: white !important; }
@@ -711,10 +699,20 @@
             const runLucide = () => {
                 if (window.lucide && typeof window.lucide.createIcons === 'function') {
                     window.lucide.createIcons();
+                    document.querySelectorAll('.emoji-icon').forEach(el => el.classList.add('hidden'));
+                    document.querySelectorAll('.category-button .lucide').forEach(el => el.style.display = 'block');
                     return true;
                 }
                 return false;
             };
+
+            // Load saved language or default to 'en'
+            const savedLanguage = localStorage.getItem('language') || 'en';
+            setLanguage(savedLanguage);
+
+            // Load saved theme or default to 'dark'
+            const savedTheme = localStorage.getItem('theme') || THEMES.DARK;
+            setTheme(savedTheme);
 
             const hasLucide = runLucide();
 
@@ -727,9 +725,10 @@
                 if (category.id === appState.selectedCategory) {
                     button.classList.add('selected');
                 }
-                button.innerHTML = hasLucide
-                    ? `<i data-lucide="${category.icon}" class="lucide" aria-hidden="true"></i><span>${category.name[appState.language]}</span>`
-                    : `<span class="emoji-icon mr-1" aria-hidden="true">${fallbackIcons[category.id] || ''}</span><span>${category.name[appState.language]}</span>`;
+                button.innerHTML = `\
+                    <span class="emoji-icon mr-1" aria-hidden="true">${category.emoji}</span>\
+                    <i data-lucide="${category.icon}" class="lucide" aria-hidden="true"></i>\
+                    <span>${category.name[appState.language]}</span>`;
                 categoryButtonsContainer.appendChild(button);
             });
             runLucide();
@@ -740,14 +739,6 @@
                     script && script.addEventListener('load', runLucide, { once: true });
                 });
             }
-
-            // Load saved language or default to 'en'
-            const savedLanguage = localStorage.getItem('language') || 'en';
-            setLanguage(savedLanguage);
-
-            // Load saved theme or default to 'dark'
-            const savedTheme = localStorage.getItem('theme') || THEMES.DARK;
-            setTheme(savedTheme);
 
             // Setup event listeners
             setupEventListeners();
