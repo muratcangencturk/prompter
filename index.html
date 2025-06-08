@@ -13,7 +13,7 @@
       document.head.appendChild(s);
     }
     load('https://cdn.tailwindcss.com', 'tailwind.js');
-    load('https://unpkg.com/lucide@latest');
+    load('https://unpkg.com/lucide@latest', 'lucide.min.js');
   })();
 </script>
     <style>
@@ -96,6 +96,16 @@
             box-shadow: 0 0 0 2px var(--tw-ring-color);
         }
         .category-button .lucide {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+        .emoji-icon {
+            font-size: 1.5rem;
+            display: inline-block;
+            color: currentColor;
+        }
+        .category-button .emoji-icon {
             width: 1.5rem;
             height: 1.5rem;
             margin-bottom: 0.25rem;
@@ -577,6 +587,8 @@
                 .category-button.selected { background-image: linear-gradient(to right, #6366f1, #8b5cf6) !important; color: white !important; border-color: transparent !important; }
                 .category-button .lucide { color: #4f46e5 !important; }
                 .category-button.selected .lucide { color: white !important; }
+                .category-button .emoji-icon { color: #4f46e5 !important; }
+                .category-button.selected .emoji-icon { color: white !important; }
                 #app-title { background-image: linear-gradient(to right, #4f46e5, #7c3aed) !important; }
                 #choose-style-title, #your-prompt-title { color: #1e293b !important; }
                 #lang-en, #lang-tr { color: #4338ca !important; }
@@ -602,6 +614,7 @@
                 .category-button:hover { background-color: rgba(255, 255, 255, 0.3) !important; }
                 .category-button.selected { background-image: linear-gradient(to right, #a855f7, #ec4899) !important; color: white !important; border-color: transparent !important; }
                 .category-button .lucide { color: white !important; }
+                .category-button .emoji-icon { color: white !important; }
                 #app-title { background-image: linear-gradient(to right, #22d3ee, #c084fc) !important; }
                 #choose-style-title, #your-prompt-title { color: white !important; }
                 #lang-en, #lang-tr { color: #bfdbfe !important; }
@@ -820,7 +833,7 @@
                 }
                 button.innerHTML = hasLucide
                     ? `<i data-lucide="${category.icon}" class="lucide"></i><span>${category.name[appState.language]}</span>`
-                    : `<span class="mr-1">${fallbackIcons[category.id] || ''}</span><span>${category.name[appState.language]}</span>`;
+                    : `<span class="emoji-icon mr-1">${fallbackIcons[category.id] || ''}</span><span>${category.name[appState.language]}</span>`;
                 categoryButtonsContainer.appendChild(button);
             });
 
