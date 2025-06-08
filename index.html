@@ -14,17 +14,30 @@
       return s;
     }
 
+    function fetchWithTimeout(url, timeout = 500) {
+      return Promise.race([
+        fetch(url, { method: 'HEAD', mode: 'no-cors' }),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), timeout))
+      ]);
+    }
+
     function loadWithFallback(primary, local) {
+      const addLocal = () => addScript(local);
       if (!navigator.onLine) {
-        addScript(local);
+        addLocal();
         return;
       }
+      let fallbackTimer = setTimeout(addLocal, 750);
+      fetchWithTimeout(primary).catch(() => {
+        clearTimeout(fallbackTimer);
+        fallbackTimer = null;
+        addLocal();
+      });
       const cdn = addScript(primary);
-      const timer = setTimeout(() => addScript(local), 3000);
-      cdn.onload = () => clearTimeout(timer);
+      cdn.onload = () => fallbackTimer && clearTimeout(fallbackTimer);
       cdn.onerror = () => {
-        clearTimeout(timer);
-        addScript(local);
+        if (fallbackTimer) clearTimeout(fallbackTimer);
+        addLocal();
       };
     }
 
