@@ -540,7 +540,10 @@
             categories.forEach(category => {
                 const button = document.getElementById(`category-${category.id}`);
                 if (button) {
-                    button.querySelector('span').textContent = category.name[lang];
+                    const labelSpan = button.querySelector('.category-label');
+                    if (labelSpan) {
+                        labelSpan.textContent = category.name[lang];
+                    }
                     button.setAttribute('aria-label', `${category.name[lang]} category`);
                 }
             });
@@ -728,7 +731,7 @@
                 button.innerHTML = `\
                     <span class="emoji-icon mr-1" aria-hidden="true">${category.emoji}</span>\
                     <i data-lucide="${category.icon}" class="lucide" aria-hidden="true"></i>\
-                    <span>${category.name[appState.language]}</span>`;
+                    <span class="category-label">${category.name[appState.language]}</span>`;
                 categoryButtonsContainer.appendChild(button);
             });
             runLucide();
