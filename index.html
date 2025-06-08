@@ -22,27 +22,67 @@
     }
 
     function loadWithFallback(primary, local) {
-      const addLocal = () => addScript(local);
-      if (!navigator.onLine) {
-        addLocal();
-        return;
-      }
-      let fallbackTimer = setTimeout(addLocal, 750);
-      fetchWithTimeout(primary).catch(() => {
-        clearTimeout(fallbackTimer);
-        fallbackTimer = null;
-        addLocal();
-      });
-      const cdn = addScript(primary);
-      cdn.onload = () => fallbackTimer && clearTimeout(fallbackTimer);
-      cdn.onerror = () => {
-        if (fallbackTimer) clearTimeout(fallbackTimer);
-        addLocal();
+const addLocal = () => {
+  const localScript = document.createElement('script');
+  localScript.src = local;
+  localScript.async = true;
+  document.head.appendChild(localScript);
+  return localScript;
+};
+
+// If offline, load local immediately
+if (!navigator.onLine) {
+  const localScript = addLocal();
+  return { cdn: null, local: localScript };
+}
+
+// Online: Try CDN with fallback
+let cdnScript = null;
+let fallbackTimer = null;
+
+// Set up fallback timer (3 seconds seems more reasonable than 750ms)
+fallbackTimer = setTimeout(() => {
+  addLocal();
+  fallbackTimer = null;
+}, 3000);
+
+// Try to fetch from CDN first
+fetchWithTimeout(primary).catch(() => {
+  if (fallbackTimer) {
+    clearTimeout(fallbackTimer);
+    fallbackTimer = null;
+  }
+  addLocal();
+});
+
+// Add CDN script
+cdnScript = addScript(primary);
+
+// Handle CDN script events
+cdnScript.onload = () => {
+  if (fallbackTimer) {
+    clearTimeout(fallbackTimer);
+    fallbackTimer = null;
+  }
+};
+
+cdnScript.onerror = () => {
+  if (fallbackTimer) {
+    clearTimeout(fallbackTimer);
+    fallbackTimer = null;
+  }
+  addLocal();
+};
+
+// Return both script elements for reference
+return { cdn: cdnScript, local: null };
       };
+
+      return { cdn: cdnScript, local: localScript };
     }
 
     loadWithFallback('https://cdn.tailwindcss.com', 'tailwind.js');
-    loadWithFallback('https://unpkg.com/lucide@latest', 'lucide.min.js');
+    window.lucideScripts = loadWithFallback('https://unpkg.com/lucide@latest', 'lucide.min.js');
   })();
 </script>
     <style>
@@ -1839,9 +1879,11 @@
                 categoryButtonsContainer.appendChild(button);
             });
 
-            if (!hasLucide) {
-                const lucideScript = document.querySelector('script[src*="lucide"]');
-                lucideScript && lucideScript.addEventListener('load', runLucide, { once: true });
+            if (!hasLucide && window.lucideScripts) {
+                const { cdn, local } = window.lucideScripts;
+                [cdn, local].forEach(script => {
+                    script && script.addEventListener('load', runLucide, { once: true });
+                });
             }
 
             // Load saved language or default to 'en'
