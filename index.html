@@ -1680,7 +1680,9 @@
             appState.isGenerating = true;
             generateButton.disabled = true;
             generatedPromptText.innerHTML = '<div class="flex justify-center items-center h-20"><i data-lucide="loader-2" class="w-6 h-6 animate-spin"></i></div>';
-            lucide.createIcons(); // Render spinner icon
+            if (window.lucide && typeof window.lucide.createIcons === 'function') {
+                window.lucide.createIcons();
+            }
             promptDisplayArea.classList.remove('hidden');
             promptDisplayArea.classList.add('animate-fadeIn');
 
