@@ -241,7 +241,7 @@ const getRandomElement = (array, history = []) => {
                         ["Canlı neon renkler kullan.", "Siyah beyaz ve yüksek kontrast olsun.", "Yumuşak bir görünüm için sulu boya dokusu kullan.", "Retro 80'ler estetiği uygula.", "Karanlık gotik bir hava ver.", "Eğlenceli detaylar ekle.", "Fotoğraf gerçekçiliğinde olsun.", "Geometrik soyut bir stil kullan.", "Steampunk dokunuşları ekle.", "Glitch efektleriyle harmanla."]
                     ],
                     structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
-                },
+},
                 hellprompts: {
                     parts: [
                         ["Şu durumda hissedilen duyguyu derinlemesine anlat:", "Şu psikolojik korku durumunu detaylı olarak incele:", "Şu anın yarattığı varoluşsal tedirginliği tasvir et:", "Şu gerçekliğin uyandırdığı kozmik dehşeti betimle:", "Şu rahatsız edici keşfin yarattığı duyguları analiz et:", "Şu deneyimi yaşayan birinin zihinsel durumunu anlat:", "Şu olguyla ilişkili derin korkuyu keşfet:", "Şu senaryonun yarattığı varoluşsal krizi tasvir et:", "Şu durumun tetiklediği derin tedirginliği anlat:", "Şu olgunun neden olduğu zihinsel çözülmeyi betimle:"],
@@ -254,20 +254,20 @@ const getRandomElement = (array, history = []) => {
         };
 
         // --- Category Definitions ---
-const categories = [
+        const categories = [
             { id: 'random', icon: 'shuffle', name: { en: 'Random Mix', tr: 'Rastgele Karışım' } },
             { id: 'inspiring', icon: 'sunrise', name: { en: 'Inspiring', tr: 'İlham Verici' } },
             { id: 'mindBlowing', icon: 'brain-circuit', name: { en: 'Mind-blowing', tr: 'Ufuk Açıcı' } },
             { id: 'productivity', icon: 'zap', name: { en: 'Productivity', tr: 'Üretkenlik' } },
             { id: 'educational', icon: 'graduation-cap', name: { en: 'Educational', tr: 'Eğitici' } },
-            { id: 'crazy', icon: 'laugh', name: { en: 'Crazy', tr: 'Çılgın Fikirler' } }, // Updated name
+            { id: 'crazy', icon: 'laugh', name: { en: 'Crazy', tr: 'Çılgın Fikirler' } },
             { id: 'perspective', icon: 'glasses', name: { en: 'Perspective', tr: 'Bakış Açısı' } },
-            { id: 'ai', icon: 'cpu', name: { en: 'AI', tr: 'YZ' } }, // Updated name
+            { id: 'ai', icon: 'cpu', name: { en: 'AI', tr: 'YZ' } },
             { id: 'ideas', icon: 'lightbulb', name: { en: 'Ideas', tr: 'Fikirler' } },
             { id: 'video', icon: 'video', name: { en: 'Video', tr: 'Video' } },
             { id: 'image', icon: 'image', name: { en: 'Image', tr: 'Görsel' } },
-            { id: 'hellprompts', icon: 'skull', name: { en: 'Hellprompts', tr: 'Cehennem Promptları' } } // New category
-];
+            { id: 'hellprompts', icon: 'skull', name: { en: 'Hellprompts', tr: 'Cehennem Promptları' } }
+        ];
 
         // Fallback emoji icons if Lucide cannot load
         const fallbackIcons = {
@@ -370,14 +370,12 @@ const categories = [
                 themeLightButton.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
             }
             safeStorage.setItem('theme', theme);
-            // Update button titles based on theme and language
             updateButtonTitles();
         };
 
         // --- Language Switching Logic ---
         const setLanguage = (lang) => {
             appState.language = lang;
-            // Update UI text
             document.getElementById('app-title').textContent = uiText[lang].appTitle;
             document.getElementById('app-subtitle').textContent = uiText[lang].appSubtitle;
             document.getElementById('choose-style-title').textContent = uiText[lang].chooseStyleTitle;
@@ -389,7 +387,6 @@ const categories = [
             document.getElementById('app-stats').textContent = uiText[lang].appStats;
             document.getElementById('footer-prompter').textContent = uiText[lang].footerPrompter;
 
-            // Update category button text
             categories.forEach(category => {
                 const button = document.getElementById(`category-${category.id}`);
                 if (button) {
@@ -397,7 +394,6 @@ const categories = [
                 }
             });
 
-            // Update language button styles
             if (lang === 'en') {
                 langEnButton.classList.add('active', 'bg-white/30', 'text-white', 'shadow-md');
                 langEnButton.classList.remove('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
@@ -410,13 +406,12 @@ const categories = [
                 langEnButton.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
             }
             safeStorage.setItem('language', lang);
-            // Update theme button titles based on language
             updateButtonTitles();
         };
 
         const updateButtonTitles = () => {
-             themeLightButton.title = uiText[appState.language].themeLightTitle;
-             themeDarkButton.title = uiText[appState.language].themeDarkTitle;
+            themeLightButton.title = uiText[appState.language].themeLightTitle;
+            themeDarkButton.title = uiText[appState.language].themeDarkTitle;
         };
 
         // --- Prompt Generation Logic ---
@@ -425,7 +420,7 @@ const categories = [
             generateButton.disabled = true;
             generatedPromptText.innerHTML = '<div class="flex justify-center items-center h-20"><i data-lucide="loader-2" class="w-6 h-6 animate-spin"></i></div>';
             if (window.lucide && typeof window.lucide.createIcons === 'function') {
-                window.lucide.createIcons(); // Render spinner icon
+                window.lucide.createIcons();
             }
             promptDisplayArea.classList.remove('hidden');
             promptDisplayArea.classList.add('animate-fadeIn');
@@ -435,7 +430,6 @@ const categories = [
                 let selectedCatId = appState.selectedCategory;
 
                 if (selectedCatId === 'random') {
-                    // Exclude 'random' itself from random selection
                     const availableCategories = categories.filter(c => c.id !== 'random');
                     selectedCatId = availableCategories[Math.floor(Math.random() * availableCategories.length)].id;
                 }
@@ -450,7 +444,6 @@ const categories = [
                     return;
                 }
 
-
                 const promptParts = categoryData.parts.map((partArray, idx) => {
                     if (!appState.partHistory[idx]) {
                         appState.partHistory[idx] = [];
@@ -464,28 +457,15 @@ const categories = [
                 });
                 const newPrompt = categoryData.structure(promptParts);
 
-                // Update history for each part (FIFO queue)
-                promptParts.forEach((part, idx) => {
-                    if (!appState.promptHistory[idx]) {
-                        appState.promptHistory[idx] = [];
-                    }
-                    const hist = appState.promptHistory[idx];
-                    hist.push(part);
-                    if (hist.length > appState.HISTORY_SIZE) {
-                        hist.shift();
-                    }
-                });
-
                 appState.generatedPrompt = newPrompt;
                 generatedPromptText.textContent = newPrompt;
                 appState.isGenerating = false;
                 generateButton.disabled = false;
-            }, 300); // Simulate generation time
+            }, 300);
         };
 
         // --- Event Listeners ---
         const setupEventListeners = () => {
-            // Category buttons
             categories.forEach(category => {
                 const button = document.getElementById(`category-${category.id}`);
                 if (button) {
@@ -497,10 +477,8 @@ const categories = [
                 }
             });
 
-            // Generate button
             generateButton.addEventListener('click', generatePrompt);
 
-            // Copy button
             copyButton.addEventListener('click', () => {
                 if (!appState.generatedPrompt) return;
                 navigator.clipboard.writeText(appState.generatedPrompt).then(() => {
@@ -516,7 +494,6 @@ const categories = [
                 });
             });
 
-            // Download button
             downloadButton.addEventListener('click', () => {
                 if (!appState.generatedPrompt) return;
                 const blob = new Blob([appState.generatedPrompt], { type: 'text/plain' });
@@ -530,11 +507,9 @@ const categories = [
                 URL.revokeObjectURL(url);
             });
 
-            // Language buttons
             langEnButton.addEventListener('click', () => setLanguage('en'));
             langTrButton.addEventListener('click', () => setLanguage('tr'));
 
-            // Theme buttons
             themeLightButton.addEventListener('click', () => setTheme(THEMES.LIGHT));
             themeDarkButton.addEventListener('click', () => setTheme(THEMES.DARK));
         };
@@ -543,7 +518,6 @@ const categories = [
         const initializeApp = () => {
             const hasLucide = window.lucide && typeof window.lucide.createIcons === 'function';
 
-            // Load categories
             categoryButtonsContainer.innerHTML = '';
             categories.forEach(category => {
                 const button = document.createElement('button');
@@ -558,10 +532,10 @@ const categories = [
                 categoryButtonsContainer.appendChild(button);
             });
 
-            // Initialize Lucide icons if available
             if (hasLucide) {
                 window.lucide.createIcons();
             }
+        };
 
             // Load saved language or default to 'en'
             const savedLanguage = safeStorage.getItem('language') || 'en';
