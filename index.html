@@ -338,6 +338,8 @@
             { id: 'perspective', icon: 'glasses', name: { en: 'Perspective', tr: 'Bakış Açısı' } },
             { id: 'ai', icon: 'cpu', name: { en: 'AI', tr: 'YZ' } }, // Updated name
             { id: 'ideas', icon: 'lightbulb', name: { en: 'Ideas', tr: 'Fikirler' } },
+            { id: 'video', icon: 'video', name: { en: 'Video', tr: 'Video' } },
+            { id: 'image', icon: 'image', name: { en: 'Image', tr: 'Görsel' } },
             { id: 'hellprompts', icon: 'skull', name: { en: 'Hellprompts', tr: 'Cehennem Promptları' } } // New category
         ];
 
@@ -405,6 +407,22 @@
                         ["Come up with a business idea for", "Brainstorm a project involving", "Propose a product based on"],
                         ["renewable energy", "virtual reality", "smart home tech"],
                         ["that stands out.", "for mass adoption.", "with minimal cost."]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                video: {
+                    parts: [
+                        ["Pitch a viral video idea about", "Create a short film concept focusing on", "Outline a documentary exploring", "Write a sketch where", "Describe an animation that depicts", "Come up with a comedic scene about", "Plan a tutorial video demonstrating", "Imagine a high-action sequence showing", "Design a motivational speech for", "Sketch a series of clips capturing"],
+                        ["future technology disrupting everyday life", "unexpected encounters between historical figures", "a day in the life of a forgotten hero", "fun science experiments with household items", "an epic quest in a miniature world", "interviews with people from parallel universes", "exploring abandoned places with drones", "DIY inventions that solve silly problems", "a competition between famous internet memes", "a behind-the-scenes look at a blockbuster movie"],
+                        ["Which camera angles or editing tricks would keep viewers hooked?", "How should the soundtrack enhance the mood?", "What plot twist would make it unforgettable?", "Which visual effects will add wow factor?", "How can the pacing maximize suspense?", "What narration style best fits the concept?", "How would you structure the climax for impact?", "What theme ties all the scenes together?", "How could you involve audience participation?", "What surprising cameo could top it off?"]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]}, ${p[2]}`
+                },
+                image: {
+                    parts: [
+                        ["Create an image of", "Draw a detailed illustration of", "Generate a surreal picture featuring", "Design a minimalistic logo based on", "Sketch a fantasy scene portraying", "Imagine a futuristic concept of", "Paint a portrait of", "Compose a landscape showing", "Develop a comic panel about", "Draft a poster that advertises"],
+                        ["a mythical creature riding a bicycle", "a city floating in the clouds", "a robot chef cooking breakfast", "an ancient tree with glowing runes", "a clash between superheroes and villains", "a tranquil village at dusk", "a festival on another planet", "a famous musician as a cartoon hero", "a historical event reimagined in cyberpunk style", "a friendly AI assisting humans"],
+                        ["Use vibrant neon colors.", "Make it black and white with strong contrast.", "Use a watercolor texture for a soft look.", "Employ a retro 80s aesthetic.", "Apply a dark gothic mood.", "Add whimsical elements for humor.", "Make it appear photorealistic.", "Use a geometric abstract style.", "Give it a steampunk flair.", "Blend in glitch art effects."]
                     ],
                     structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
                 },
@@ -479,6 +497,22 @@
                         ["Şu alan için bir iş fikri:", "Şöyle bir proje öner:", "Şu ürünü tasarla:"],
                         ["yenilenebilir enerji", "sanal gerçeklik", "akıllı ev teknolojisi"],
                         ["fark yaratacak.", "geniş kitlelere hitap eden.", "düşük maliyetli."]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
+                },
+                video: {
+                    parts: [
+                        ["Viral olacak bir video fikri ver:", "Şuna odaklanan kısa film konsepti oluştur:", "Şunu keşfeden bir belgesel tasla:", "Şöyle bir skeç yaz:", "Şunu tasvir eden bir animasyon anlat:", "Şu konuda komik bir sahne düşün:", "Şunu öğreten bir eğitim videosu planla:", "Şunu gösteren aksiyon dolu bir sekans hayal et:", "Şu konu için motive edici bir konuşma hazırla:", "Şu anları yakalayan klipler dizisi tasarla:"],
+                        ["günlük yaşamı değiştiren geleceğin teknolojisi", "tarihî kişilerin beklenmedik karşılaşmaları", "unutulmuş bir kahramanın bir günü", "evde yapılacak eğlenceli bilim deneyleri", "minyatür bir dünyada destansı bir macera", "paralel evrenlerden insanlarla röportajlar", "dronlarla terk edilmiş yerlerin keşfi", "saçma sorunlara çözüm bulan icatlar", "ünlü internet memeleri arasında bir yarışma", "bir gişe rekortmeni filmin kamera arkası"],
+                        ["İzleyiciyi ekranda tutacak kamera açıları neler olmalı?", "Müzik atmosferi nasıl güçlendirmeli?", "Hangi sürpriz son unutulmaz kılar?", "Hangi görsel efektler şaşırtıcı olur?", "Gerilimi artırmak için tempo nasıl olmalı?", "Hangi anlatım tarzı en uygun olur?", "Finali etkileyici kılmak için nasıl kurgularsın?", "Tüm sahneleri birleştiren tema ne?", "Seyircinin katılımı nasıl sağlanır?", "Hangi beklenmedik cameo işi taçlandırır?"]
+                    ],
+                    structure: (p) => `${p[0]} ${p[1]}, ${p[2]}`
+                },
+                image: {
+                    parts: [
+                        ["Şunun görselini oluştur:", "Detaylı bir çizimini yap:", "Şu unsurları içeren sürreal bir resim üret:", "Şuna dayalı minimal bir logo tasarla:", "Şu fantastik sahneyi çiz:", "Şunun futuristik bir yorumunu hayal et:", "Şunun portresini boya:", "Şu manzarayı tasvir et:", "Şu konu hakkında bir çizgi roman karesi oluştur:", "Şunu tanıtan bir afiş tasla:"],
+                        ["bisiklete binen efsanevi bir yaratık", "bulutların üzerinde yüzen bir şehir", "kahvaltı pişiren robot bir aşçı", "parlayan rünlerle süslü kadim bir ağaç", "süper kahramanlar ile kötülerin çarpışması", "alacakaranlıkta huzurlu bir köy", "başka bir gezegende festival", "çizgi film kahramanı olarak ünlü bir müzisyen", "siberpunk tarzında yeniden tasarlanmış tarihî bir olay", "insanlara yardımcı olan sevimli bir yapay zeka"],
+                        ["Canlı neon renkler kullan.", "Siyah beyaz ve yüksek kontrast olsun.", "Yumuşak bir görünüm için sulu boya dokusu kullan.", "Retro 80'ler estetiği uygula.", "Karanlık gotik bir hava ver.", "Eğlenceli detaylar ekle.", "Fotoğraf gerçekçiliğinde olsun.", "Geometrik soyut bir stil kullan.", "Steampunk dokunuşları ekle.", "Glitch efektleriyle harmanla."]
                     ],
                     structure: (p) => `${p[0]} ${p[1]} ${p[2]}`
                 },
