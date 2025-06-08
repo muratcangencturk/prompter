@@ -15,21 +15,31 @@
     }
 
     function loadWithFallback(primary, local) {
+      let cdnScript = null;
+      const localScript = document.createElement('script');
+      localScript.src = local;
+      localScript.async = true;
+
       if (!navigator.onLine) {
-        addScript(local);
-        return;
+        document.head.appendChild(localScript);
+        return { cdn: null, local: localScript };
       }
-      const cdn = addScript(primary);
-      const timer = setTimeout(() => addScript(local), 3000);
-      cdn.onload = () => clearTimeout(timer);
-      cdn.onerror = () => {
+
+      cdnScript = addScript(primary);
+      const timer = setTimeout(() => {
+        document.head.appendChild(localScript);
+      }, 3000);
+      cdnScript.onload = () => clearTimeout(timer);
+      cdnScript.onerror = () => {
         clearTimeout(timer);
-        addScript(local);
+        document.head.appendChild(localScript);
       };
+
+      return { cdn: cdnScript, local: localScript };
     }
 
     loadWithFallback('https://cdn.tailwindcss.com', 'tailwind.js');
-    loadWithFallback('https://unpkg.com/lucide@latest', 'lucide.min.js');
+    window.lucideScripts = loadWithFallback('https://unpkg.com/lucide@latest', 'lucide.min.js');
   })();
 </script>
     <style>
@@ -1826,9 +1836,11 @@
                 categoryButtonsContainer.appendChild(button);
             });
 
-            if (!hasLucide) {
-                const lucideScript = document.querySelector('script[src*="lucide"]');
-                lucideScript && lucideScript.addEventListener('load', runLucide, { once: true });
+            if (!hasLucide && window.lucideScripts) {
+                const { cdn, local } = window.lucideScripts;
+                [cdn, local].forEach(script => {
+                    script && script.addEventListener('load', runLucide, { once: true });
+                });
             }
 
             // Load saved language or default to 'en'
