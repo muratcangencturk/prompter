@@ -1,9 +1,11 @@
-const CACHE_NAME = 'prompter-v1';
+const CACHE_NAME = 'prompter-v2';
 const ASSETS = [
   './',
   './index.html',
   './tailwind.js',
-  './lucide.min.js'
+  './lucide.min.js',
+  './sw.js',
+  './icons/logo.svg'
 ];
 
 self.addEventListener('install', event => {

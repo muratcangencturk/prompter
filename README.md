@@ -6,7 +6,7 @@ Prompter is a small web application that generates creative prompts for AI model
 
 Simply open `index.html` in any modern web browser. You can double‑click the file or use your browser's **Open File** option. No server setup is required.
 
-When served from a local web server (for example `python3 -m http.server`) the app installs a small service worker that caches `index.html`, `tailwind.js` and `lucide.min.js`. After an initial visit you can disconnect from the network and the generator will still load and function normally.
+When served from a local web server (for example `python3 -m http.server`) the app installs a small service worker that caches `index.html`, `tailwind.js`, `lucide.min.js`, `sw.js` and other static assets like the site icon. After an initial visit you can disconnect from the network and the generator will still load and function normally.
 
 ## Customization
 
