@@ -33,6 +33,7 @@ Prompter offers a variety of prompt themes. Select a category by clicking its ic
 - **Hellprompts** – unsettling horror themes
 
 If icon fonts fail to load, the app falls back to emoji symbols so the buttons remain visible.
+
 If the TailwindCSS CDN is unreachable, a local copy bundled with the app is loaded automatically so the interface still looks correct.
 
 Example: click the **Video** icon, then press **Generate New Prompt** to create a video-related idea.
