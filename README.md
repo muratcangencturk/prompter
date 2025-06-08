@@ -34,6 +34,8 @@ Prompter offers a variety of prompt themes. Select a category by clicking its ic
 - **Image** – descriptions for unique visuals or logos
 - **Hellprompts** – unsettling horror themes
 
+With at least four parts and ten choices per part, each category now provides around 10,000 unique prompts. Across all categories this adds up to more than **110,000** possible combinations.
+
 If icon fonts fail to load, the app falls back to emoji symbols so the buttons remain visible.
 
 If the TailwindCSS CDN is unreachable, a local copy bundled with the app is loaded automatically so the interface still looks correct.
