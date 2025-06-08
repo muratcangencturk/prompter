@@ -42,11 +42,11 @@
       // Online: Try CDN with fallback
       let fallbackTimer = null;
 
-      // Set up fallback timer (3 seconds seems more reasonable than 750ms)
+      // Set up fallback timer (500ms to quickly load local icons if CDN is slow)
       fallbackTimer = setTimeout(() => {
         addLocal();
         fallbackTimer = null;
-      }, 3000);
+      }, 500);
 
       // Try to fetch from CDN first
       fetchWithTimeout(primary).catch(() => {
