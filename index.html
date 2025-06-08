@@ -263,17 +263,17 @@
     <div id="app-container" class="max-w-6xl mx-auto relative">
         <!-- Theme Toggle -->
         <div class="theme-toggle-container absolute top-4 left-4 flex items-center gap-2 bg-black/20 backdrop-blur-sm p-1 rounded-lg border border-white/20 z-10">
-           <button id="theme-light" class="p-1.5 rounded-md text-sm font-medium" title="Light Theme">
-             <i data-lucide="sun" class="w-5 h-5"></i>
-           </button>
-           <button id="theme-dark" class="p-1.5 rounded-md text-sm font-medium" title="Dark Theme">
-             <i data-lucide="moon" class="w-5 h-5"></i>
-           </button>
+            <button id="theme-light" class="p-1.5 rounded-md text-sm font-medium" title="Light Theme" aria-label="Light Theme">
+              <i data-lucide="sun" class="w-5 h-5" aria-hidden="true"></i>
+            </button>
+            <button id="theme-dark" class="p-1.5 rounded-md text-sm font-medium" title="Dark Theme" aria-label="Dark Theme">
+              <i data-lucide="moon" class="w-5 h-5" aria-hidden="true"></i>
+            </button>
         </div>
 
         <!-- Language Switcher -->
         <div class="absolute top-4 right-4 flex items-center gap-2 bg-black/20 backdrop-blur-sm p-1 rounded-lg border border-white/20 z-10">
-           <i data-lucide="languages" class="w-5 h-5 text-blue-300 ml-1"></i>
+           <i data-lucide="languages" class="w-5 h-5 text-blue-300 ml-1" aria-hidden="true"></i>
            <button id="lang-en" class="px-3 py-1 rounded-md text-sm font-medium">
              EN
            </button>
@@ -304,9 +304,9 @@
 
         <!-- Generate Button -->
         <div class="text-center mb-4">
-          <button id="generate-button" class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 disabled:opacity-50 disabled:cursor-not-allowed font-bold py-3 px-6 rounded-xl text-base transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 focus:ring-offset-purple-900">
+          <button id="generate-button" class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 disabled:opacity-50 disabled:cursor-not-allowed font-bold py-3 px-6 rounded-xl text-base transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 focus:ring-offset-purple-900" aria-label="Generate New Prompt">
             <div class="flex items-center justify-center">
-              <i data-lucide="sparkles" class="w-4 h-4 mr-2"></i>
+              <i data-lucide="sparkles" class="w-4 h-4 mr-2" aria-hidden="true"></i>
               <span id="generate-button-text">Generate New Prompt</span>
             </div>
           </button>
@@ -319,11 +319,11 @@
                 Your Unique Prompt:
               </h3>
               <div class="flex gap-2">
-                <button id="copy-button" class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50" title="Copy to clipboard">
-                  <i data-lucide="copy" class="w-4 h-4"></i>
+                <button id="copy-button" class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50" title="Copy to clipboard" aria-label="Copy to clipboard">
+                  <i data-lucide="copy" class="w-4 h-4" aria-hidden="true"></i>
                 </button>
-                <button id="download-button" class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50" title="Download as .txt">
-                  <i data-lucide="download" class="w-4 h-4"></i>
+                <button id="download-button" class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50" title="Download as .txt" aria-label="Download as .txt">
+                  <i data-lucide="download" class="w-4 h-4" aria-hidden="true"></i>
                 </button>
               </div>
             </div>
@@ -538,9 +538,12 @@
             document.getElementById('app-subtitle').textContent = uiText[lang].appSubtitle;
             document.getElementById('choose-style-title').textContent = uiText[lang].chooseStyleTitle;
             document.getElementById('generate-button-text').textContent = uiText[lang].generateButtonText;
+            generateButton.setAttribute('aria-label', uiText[lang].generateButtonText);
             document.getElementById('your-prompt-title').textContent = uiText[lang].yourPromptTitle;
             copyButton.title = uiText[lang].copyButtonTitle;
+            copyButton.setAttribute('aria-label', uiText[lang].copyButtonTitle);
             downloadButton.title = uiText[lang].downloadButtonTitle;
+            downloadButton.setAttribute('aria-label', uiText[lang].downloadButtonTitle);
             copySuccessMessage.textContent = uiText[lang].copySuccessMessage;
             document.getElementById('app-stats').textContent = uiText[lang].appStats;
             document.getElementById('footer-prompter').textContent = uiText[lang].footerPrompter;
@@ -549,10 +552,8 @@
             categories.forEach(category => {
                 const button = document.getElementById(`category-${category.id}`);
                 if (button) {
-                    const label = button.querySelector('.data-label');
-                    if (label) {
-                        label.textContent = category.name[lang];
-                    }
+                    button.querySelector('span').textContent = category.name[lang];
+                    button.setAttribute('aria-label', `${category.name[lang]} category`);
                 }
             });
 
@@ -573,16 +574,18 @@
             updateButtonTitles();
         };
 
-        const updateButtonTitles = () => {
+       const updateButtonTitles = () => {
              themeLightButton.title = uiText[appState.language].themeLightTitle;
+             themeLightButton.setAttribute('aria-label', uiText[appState.language].themeLightTitle);
              themeDarkButton.title = uiText[appState.language].themeDarkTitle;
-        };
+             themeDarkButton.setAttribute('aria-label', uiText[appState.language].themeDarkTitle);
+       };
 
         // --- Prompt Generation Logic ---
         const generatePrompt = () => {
             appState.isGenerating = true;
             generateButton.disabled = true;
-            generatedPromptText.innerHTML = '<div class="flex justify-center items-center h-20"><i data-lucide="loader-2" class="w-6 h-6 animate-spin"></i></div>';
+            generatedPromptText.innerHTML = '<div class="flex justify-center items-center h-20"><i data-lucide="loader-2" class="w-6 h-6 animate-spin" aria-hidden="true"></i></div>';
             if (window.lucide && typeof window.lucide.createIcons === 'function') {
                 window.lucide.createIcons();
             }
@@ -720,12 +723,13 @@
                 const button = document.createElement('button');
                 button.id = `category-${category.id}`;
                 button.className = 'category-button';
+                button.setAttribute('aria-label', `${category.name[appState.language]} category`);
                 if (category.id === appState.selectedCategory) {
                     button.classList.add('selected');
                 }
                 button.innerHTML = hasLucide
-                    ? `<i data-lucide="${category.icon}" class="lucide"></i><span class="data-label">${category.name[appState.language]}</span>`
-                    : `<span class="emoji-icon mr-1">${fallbackIcons[category.id] || ''}</span><span class="data-label">${category.name[appState.language]}</span>`;
+                    ? `<i data-lucide="${category.icon}" class="lucide" aria-hidden="true"></i><span>${category.name[appState.language]}</span>`
+                    : `<span class="emoji-icon mr-1" aria-hidden="true">${fallbackIcons[category.id] || ''}</span><span>${category.name[appState.language]}</span>`;
                 categoryButtonsContainer.appendChild(button);
             });
             runLucide();
