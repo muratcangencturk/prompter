@@ -6,14 +6,30 @@
     <title>AI Prompt Generator - Prompter</title>
 <script>
   (function() {
-    function load(src, fallback) {
+    function addScript(src) {
       const s = document.createElement('script');
       s.src = src;
-      s.onerror = () => fallback && load(fallback);
+      s.async = true;
       document.head.appendChild(s);
+      return s;
     }
-    load('https://cdn.tailwindcss.com', 'tailwind.js');
-    load('https://unpkg.com/lucide@latest', 'lucide.min.js');
+
+    function loadWithFallback(primary, local) {
+      if (!navigator.onLine) {
+        addScript(local);
+        return;
+      }
+      const cdn = addScript(primary);
+      const timer = setTimeout(() => addScript(local), 3000);
+      cdn.onload = () => clearTimeout(timer);
+      cdn.onerror = () => {
+        clearTimeout(timer);
+        addScript(local);
+      };
+    }
+
+    loadWithFallback('https://cdn.tailwindcss.com', 'tailwind.js');
+    loadWithFallback('https://unpkg.com/lucide@latest', 'lucide.min.js');
   })();
 </script>
     <style>
