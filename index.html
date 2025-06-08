@@ -549,7 +549,10 @@
             categories.forEach(category => {
                 const button = document.getElementById(`category-${category.id}`);
                 if (button) {
-                    button.querySelector('span').textContent = category.name[lang];
+                    const label = button.querySelector('.data-label');
+                    if (label) {
+                        label.textContent = category.name[lang];
+                    }
                 }
             });
 
@@ -721,8 +724,8 @@
                     button.classList.add('selected');
                 }
                 button.innerHTML = hasLucide
-                    ? `<i data-lucide="${category.icon}" class="lucide"></i><span>${category.name[appState.language]}</span>`
-                    : `<span class="emoji-icon mr-1">${fallbackIcons[category.id] || ''}</span><span>${category.name[appState.language]}</span>`;
+                    ? `<i data-lucide="${category.icon}" class="lucide"></i><span class="data-label">${category.name[appState.language]}</span>`
+                    : `<span class="emoji-icon mr-1">${fallbackIcons[category.id] || ''}</span><span class="data-label">${category.name[appState.language]}</span>`;
                 categoryButtonsContainer.appendChild(button);
             });
             runLucide();
