@@ -1616,6 +1616,7 @@
         // --- Language Switching Logic ---
         const setLanguage = (lang) => {
             appState.language = lang;
+            document.documentElement.lang = lang;
             // Update UI text
             document.getElementById('app-title').textContent = uiText[lang].appTitle;
             document.getElementById('app-subtitle').textContent = uiText[lang].appSubtitle;
