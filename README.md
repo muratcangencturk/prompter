@@ -6,6 +6,8 @@ Prompter is a small web application that generates creative prompts for AI model
 
 Simply open `index.html` in any modern web browser. You can double‑click the file or use your browser's **Open File** option. No server setup is required.
 
+If you open the page offline, the UI falls back to the bundled Tailwind file and emoji icons, so its appearance may differ slightly.
+
 ## Customization
 
 ### Theme
