@@ -1,9 +1,9 @@
 const CACHE_NAME = 'prompter-v1';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/tailwind.js',
-  '/lucide.min.js'
+  './',
+  './index.html',
+  './tailwind.js',
+  './lucide.min.js'
 ];
 
 self.addEventListener('install', event => {
