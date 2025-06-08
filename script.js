@@ -516,7 +516,15 @@ const categories = [
 
         // --- Initialization ---
         const initializeApp = () => {
-            const hasLucide = window.lucide && typeof window.lucide.createIcons === 'function';
+            const runLucide = () => {
+                if (window.lucide && typeof window.lucide.createIcons === 'function') {
+                    window.lucide.createIcons();
+                    return true;
+                }
+                return false;
+            };
+
+            const hasLucide = runLucide();
 
             categoryButtonsContainer.innerHTML = '';
             categories.forEach(category => {
@@ -532,8 +540,9 @@ const categories = [
                 categoryButtonsContainer.appendChild(button);
             });
 
-            if (hasLucide) {
-                window.lucide.createIcons();
+            if (!hasLucide) {
+                const lucideScript = document.querySelector('script[src*="lucide"]');
+                lucideScript && lucideScript.addEventListener('load', runLucide, { once: true });
             }
         };
 
