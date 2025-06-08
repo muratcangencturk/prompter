@@ -341,6 +341,22 @@
             { id: 'hellprompts', icon: 'skull', name: { en: 'Hellprompts', tr: 'Cehennem Promptları' } } // New category
         ];
 
+        // Fallback emoji icons if Lucide cannot load
+        const fallbackIcons = {
+            random: '🔀',
+            inspiring: '🌅',
+            mindBlowing: '🤯',
+            productivity: '⚡',
+            educational: '🎓',
+            crazy: '😂',
+            perspective: '🕶️',
+            ai: '🤖',
+            ideas: '💡',
+            video: '🎬',
+            image: '🖼️',
+            hellprompts: '💀'
+        };
+
         // --- Prompt Templates ---
         const prompts = {
             en: {
@@ -745,7 +761,17 @@
 
         // --- Initialization ---
         const initializeApp = () => {
-            // Load categories
+            const runLucide = () => {
+                if (window.lucide && typeof window.lucide.createIcons === 'function') {
+                    window.lucide.createIcons();
+                    return true;
+                }
+                return false;
+            };
+
+            const hasLucide = runLucide();
+
+            categoryButtonsContainer.innerHTML = '';
             categories.forEach(category => {
                 const button = document.createElement('button');
                 button.id = `category-${category.id}`;
@@ -753,15 +779,16 @@
                 if (category.id === appState.selectedCategory) {
                     button.classList.add('selected');
                 }
-                button.innerHTML = `
-                    <i data-lucide="${category.icon}" class="lucide"></i>
-                    <span>${category.name[appState.language]}</span>
-                `;
+                button.innerHTML = hasLucide
+                    ? `<i data-lucide="${category.icon}" class="lucide"></i><span>${category.name[appState.language]}</span>`
+                    : `<span class="mr-1">${fallbackIcons[category.id] || ''}</span><span>${category.name[appState.language]}</span>`;
                 categoryButtonsContainer.appendChild(button);
             });
 
-            // Initialize Lucide icons
-            lucide.createIcons();
+            if (!hasLucide) {
+                const lucideScript = document.querySelector('script[src*="lucide"]');
+                lucideScript && lucideScript.addEventListener('load', runLucide, { once: true });
+            }
 
             // Load saved language or default to 'en'
             const savedLanguage = localStorage.getItem('language') || 'en';
