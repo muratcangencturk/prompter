@@ -725,6 +725,7 @@
                     : `<span class="emoji-icon mr-1">${fallbackIcons[category.id] || ''}</span><span>${category.name[appState.language]}</span>`;
                 categoryButtonsContainer.appendChild(button);
             });
+            runLucide();
 
             if (!hasLucide && window.lucideScripts) {
                 const { cdn, local } = window.lucideScripts;
