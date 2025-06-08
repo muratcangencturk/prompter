@@ -661,6 +661,9 @@
                     if (!appState.partHistory[idx]) {
                         appState.partHistory[idx] = [];
                     }
+                    if (!appState.history[idx]) {
+                        appState.history[idx] = [];
+                    }
                     const element = getRandomElement(partArray, appState.partHistory[idx]);
                     appState.partHistory[idx].push(element);
                     if (appState.partHistory[idx].length > appState.HISTORY_SIZE) {
@@ -668,11 +671,13 @@
                     }
                     return element;
                 });
- main
                 const newPrompt = categoryData.structure(promptParts);
 
                 // Update history for each part (FIFO queue)
                 promptParts.forEach((part, idx) => {
+                    if (!appState.history[idx]) {
+                        appState.history[idx] = [];
+                    }
                     const hist = appState.history[idx];
                     hist.push(part);
                     if (hist.length > appState.HISTORY_SIZE) {
@@ -779,7 +784,6 @@
         document.addEventListener('DOMContentLoaded', initializeApp);
 
     </script>
-    <script src="script.js" defer></script>
 </body>
 </html>
 
