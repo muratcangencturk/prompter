@@ -14,25 +14,68 @@
       return s;
     }
 
+    function fetchWithTimeout(url, timeout = 500) {
+      return Promise.race([
+        fetch(url, { method: 'HEAD', mode: 'no-cors' }),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), timeout))
+      ]);
+    }
+
     function loadWithFallback(primary, local) {
-      let cdnScript = null;
-      const localScript = document.createElement('script');
-      localScript.src = local;
-      localScript.async = true;
+const addLocal = () => {
+  const localScript = document.createElement('script');
+  localScript.src = local;
+  localScript.async = true;
+  document.head.appendChild(localScript);
+  return localScript;
+};
 
-      if (!navigator.onLine) {
-        document.head.appendChild(localScript);
-        return { cdn: null, local: localScript };
-      }
+// If offline, load local immediately
+if (!navigator.onLine) {
+  const localScript = addLocal();
+  return { cdn: null, local: localScript };
+}
 
-      cdnScript = addScript(primary);
-      const timer = setTimeout(() => {
-        document.head.appendChild(localScript);
-      }, 3000);
-      cdnScript.onload = () => clearTimeout(timer);
-      cdnScript.onerror = () => {
-        clearTimeout(timer);
-        document.head.appendChild(localScript);
+// Online: Try CDN with fallback
+let cdnScript = null;
+let fallbackTimer = null;
+
+// Set up fallback timer (3 seconds seems more reasonable than 750ms)
+fallbackTimer = setTimeout(() => {
+  addLocal();
+  fallbackTimer = null;
+}, 3000);
+
+// Try to fetch from CDN first
+fetchWithTimeout(primary).catch(() => {
+  if (fallbackTimer) {
+    clearTimeout(fallbackTimer);
+    fallbackTimer = null;
+  }
+  addLocal();
+});
+
+// Add CDN script
+cdnScript = addScript(primary);
+
+// Handle CDN script events
+cdnScript.onload = () => {
+  if (fallbackTimer) {
+    clearTimeout(fallbackTimer);
+    fallbackTimer = null;
+  }
+};
+
+cdnScript.onerror = () => {
+  if (fallbackTimer) {
+    clearTimeout(fallbackTimer);
+    fallbackTimer = null;
+  }
+  addLocal();
+};
+
+// Return both script elements for reference
+return { cdn: cdnScript, local: null };
       };
 
       return { cdn: cdnScript, local: localScript };
