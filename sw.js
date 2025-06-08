@@ -1,8 +1,9 @@
-const CACHE_NAME = 'prompter-v1';
+const CACHE_NAME = 'prompter-v2';
 const ASSETS = [
   './',
   './index.html',
   './tailwind.js',
+  './prompts.js',
   './lucide.min.js'
 ];
 
