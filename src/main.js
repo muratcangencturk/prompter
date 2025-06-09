@@ -1,3 +1,4 @@
+/* global prompts */
 (() => {
     // --- Core Application Logic ---
     const appState = {
@@ -9,7 +10,10 @@
         theme: 'dark', // Default theme
         history: [],        // overall prompt history
         partHistory: [],    // per-part history
-        HISTORY_SIZE: 100    // Increased history size
+        HISTORY_SIZE: 100,   // Increased history size
+        storedHistory: [],   // prompts stored in localStorage
+        favorites: [],       // favorite prompts
+        isHistoryVisible: false
     };
 
     // --- Utility Functions ---
@@ -37,7 +41,13 @@
             footerPrompter: "Prompter",
             randomCategory: "Random Mix",
             themeLightTitle: "Light Theme",
-            themeDarkTitle: "Dark Theme"
+            themeDarkTitle: "Dark Theme",
+            showHistory: "Show History",
+            hideHistory: "Hide History",
+            historyTab: "History",
+            favoritesTab: "Favorites",
+            favoriteButton: "Add to favorites",
+            unfavoriteButton: "Remove from favorites"
         },
         tr: {
             appTitle: "YZ Prompt Üretici - Prompter",
@@ -52,7 +62,13 @@
             footerPrompter: "Prompter",
             randomCategory: "Rastgele Karışım",
             themeLightTitle: "Açık Tema",
-            themeDarkTitle: "Koyu Tema"
+            themeDarkTitle: "Koyu Tema",
+            showHistory: "Geçmişi Göster",
+            hideHistory: "Geçmişi Gizle",
+            historyTab: "Geçmiş",
+            favoritesTab: "Favoriler",
+            favoriteButton: "Favorilere ekle",
+            unfavoriteButton: "Favoriden çıkar"
         }
     };
 
@@ -92,6 +108,12 @@
         const themeLightButton = document.getElementById('theme-light');
         const themeDarkButton = document.getElementById('theme-dark');
         const themeLinkElement = document.getElementById('theme-css');
+        const toggleHistoryBtn = document.getElementById('toggle-history-btn');
+        const historyContainer = document.getElementById('history-container');
+        const historyTab = document.getElementById('history-tab');
+        const favoritesTab = document.getElementById('favorites-tab');
+        const historyListEl = document.getElementById('history-list');
+        const favoritesListEl = document.getElementById('favorites-list');
 
         // --- Theme Toggle Logic ---
         const THEMES = { LIGHT: 'light', DARK: 'dark' };
@@ -115,6 +137,11 @@
             localStorage.setItem('theme', theme);
             // Update button titles based on theme and language
             updateButtonTitles();
+            if (historyTab) historyTab.textContent = uiText[lang].historyTab;
+            if (favoritesTab) favoritesTab.textContent = uiText[lang].favoritesTab;
+            if (toggleHistoryBtn) {
+                toggleHistoryBtn.textContent = appState.isHistoryVisible ? uiText[lang].hideHistory : uiText[lang].showHistory;
+            }
         };
 
         // --- Language Switching Logic ---
@@ -166,10 +193,103 @@
         };
 
        const updateButtonTitles = () => {
-             themeLightButton.title = uiText[appState.language].themeLightTitle;
-             themeLightButton.setAttribute('aria-label', uiText[appState.language].themeLightTitle);
-             themeDarkButton.title = uiText[appState.language].themeDarkTitle;
-             themeDarkButton.setAttribute('aria-label', uiText[appState.language].themeDarkTitle);
+            themeLightButton.title = uiText[appState.language].themeLightTitle;
+            themeLightButton.setAttribute('aria-label', uiText[appState.language].themeLightTitle);
+            themeDarkButton.title = uiText[appState.language].themeDarkTitle;
+            themeDarkButton.setAttribute('aria-label', uiText[appState.language].themeDarkTitle);
+       };
+
+       const HISTORY_STORAGE_KEY = 'promptHistory';
+       const FAVORITES_STORAGE_KEY = 'favoritePrompts';
+
+       const saveHistory = () => {
+             localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(appState.storedHistory));
+       };
+
+       const saveFavorites = () => {
+             localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(appState.favorites));
+       };
+
+       const toggleFavorite = (prompt) => {
+             const idx = appState.favorites.indexOf(prompt);
+             if (idx === -1) {
+                 appState.favorites.push(prompt);
+             } else {
+                 appState.favorites.splice(idx, 1);
+             }
+             saveFavorites();
+             renderHistory();
+             renderFavorites();
+       };
+
+       const renderHistory = () => {
+             if (!historyListEl) return;
+             historyListEl.innerHTML = '';
+             appState.storedHistory.forEach(prompt => {
+                 const item = document.createElement('div');
+                 item.className = 'flex justify-between items-start bg-black/30 rounded-lg p-2 text-sm';
+                 const span = document.createElement('span');
+                 span.className = 'flex-1 mr-2 break-words';
+                 span.textContent = prompt;
+                 const actions = document.createElement('div');
+                 actions.className = 'flex gap-2';
+                 const copyBtn = document.createElement('button');
+                 copyBtn.className = 'p-1.5 rounded-lg bg-white/20 hover:bg-white/30';
+                 copyBtn.title = uiText[appState.language].copyButtonTitle;
+                 copyBtn.setAttribute('aria-label', uiText[appState.language].copyButtonTitle);
+                 copyBtn.innerHTML = '<i data-lucide="copy" class="w-4 h-4" aria-hidden="true"></i>';
+                 copyBtn.addEventListener('click', () => navigator.clipboard.writeText(prompt));
+                 const favBtn = document.createElement('button');
+                 favBtn.className = 'p-1.5 rounded-lg bg-white/20 hover:bg-white/30';
+                 const fav = appState.favorites.includes(prompt);
+                 if (fav) favBtn.classList.add('text-yellow-400');
+                 favBtn.title = fav ? uiText[appState.language].unfavoriteButton : uiText[appState.language].favoriteButton;
+                 favBtn.setAttribute('aria-label', favBtn.title);
+                 favBtn.innerHTML = '<i data-lucide="star" class="w-4 h-4" aria-hidden="true"></i>';
+                 favBtn.addEventListener('click', () => toggleFavorite(prompt));
+                 actions.appendChild(copyBtn);
+                 actions.appendChild(favBtn);
+                 item.appendChild(span);
+                 item.appendChild(actions);
+                 historyListEl.appendChild(item);
+             });
+             if (window.lucide && typeof window.lucide.createIcons === 'function') {
+                 window.lucide.createIcons();
+             }
+       };
+
+       const renderFavorites = () => {
+             if (!favoritesListEl) return;
+             favoritesListEl.innerHTML = '';
+             appState.favorites.forEach(prompt => {
+                 const item = document.createElement('div');
+                 item.className = 'flex justify-between items-start bg-black/30 rounded-lg p-2 text-sm';
+                 const span = document.createElement('span');
+                 span.className = 'flex-1 mr-2 break-words';
+                 span.textContent = prompt;
+                 const actions = document.createElement('div');
+                 actions.className = 'flex gap-2';
+                 const copyBtn = document.createElement('button');
+                 copyBtn.className = 'p-1.5 rounded-lg bg-white/20 hover:bg-white/30';
+                 copyBtn.title = uiText[appState.language].copyButtonTitle;
+                 copyBtn.setAttribute('aria-label', uiText[appState.language].copyButtonTitle);
+                 copyBtn.innerHTML = '<i data-lucide="copy" class="w-4 h-4" aria-hidden="true"></i>';
+                 copyBtn.addEventListener('click', () => navigator.clipboard.writeText(prompt));
+                 const removeBtn = document.createElement('button');
+                 removeBtn.className = 'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 text-yellow-400';
+                 removeBtn.title = uiText[appState.language].unfavoriteButton;
+                 removeBtn.setAttribute('aria-label', uiText[appState.language].unfavoriteButton);
+                 removeBtn.innerHTML = '<i data-lucide="star" class="w-4 h-4" aria-hidden="true"></i>';
+                 removeBtn.addEventListener('click', () => toggleFavorite(prompt));
+                 actions.appendChild(copyBtn);
+                 actions.appendChild(removeBtn);
+                 item.appendChild(span);
+                 item.appendChild(actions);
+                 favoritesListEl.appendChild(item);
+             });
+             if (window.lucide && typeof window.lucide.createIcons === 'function') {
+                 window.lucide.createIcons();
+             }
        };
 
         // --- Prompt Generation Logic ---
@@ -236,6 +356,13 @@
 
                 appState.generatedPrompt = newPrompt;
                 generatedPromptText.textContent = newPrompt;
+                appState.storedHistory.unshift(newPrompt);
+                if (appState.storedHistory.length > appState.HISTORY_SIZE) {
+                    appState.storedHistory.pop();
+                }
+                saveHistory();
+                renderHistory();
+                renderFavorites();
                 appState.isGenerating = false;
                 generateButton.disabled = false;
             }, 300); // Simulate generation time
@@ -295,6 +422,29 @@
             // Theme buttons
             themeLightButton.addEventListener('click', () => setTheme(THEMES.LIGHT));
             themeDarkButton.addEventListener('click', () => setTheme(THEMES.DARK));
+
+            if (toggleHistoryBtn) {
+                toggleHistoryBtn.addEventListener('click', () => {
+                    appState.isHistoryVisible = !appState.isHistoryVisible;
+                    if (historyContainer) historyContainer.classList.toggle('hidden', !appState.isHistoryVisible);
+                    toggleHistoryBtn.textContent = appState.isHistoryVisible ? uiText[appState.language].hideHistory : uiText[appState.language].showHistory;
+                });
+            }
+
+            if (historyTab && favoritesTab && historyListEl && favoritesListEl) {
+                historyTab.addEventListener('click', () => {
+                    historyListEl.classList.remove('hidden');
+                    favoritesListEl.classList.add('hidden');
+                    historyTab.classList.add('bg-white/20');
+                    favoritesTab.classList.remove('bg-white/20');
+                });
+                favoritesTab.addEventListener('click', () => {
+                    favoritesListEl.classList.remove('hidden');
+                    historyListEl.classList.add('hidden');
+                    favoritesTab.classList.add('bg-white/20');
+                    historyTab.classList.remove('bg-white/20');
+                });
+            }
         };
 
         // --- Initialization ---
@@ -342,6 +492,13 @@
             // Load saved theme or default to 'dark'
             const savedTheme = localStorage.getItem('theme') || THEMES.DARK;
             setTheme(savedTheme);
+
+            appState.storedHistory = JSON.parse(localStorage.getItem(HISTORY_STORAGE_KEY) || '[]');
+            appState.favorites = JSON.parse(localStorage.getItem(FAVORITES_STORAGE_KEY) || '[]');
+            renderHistory();
+            renderFavorites();
+            if (historyContainer) historyContainer.classList.toggle('hidden', !appState.isHistoryVisible);
+            if (toggleHistoryBtn) toggleHistoryBtn.textContent = uiText[appState.language].showHistory;
 
             categoryButtonsContainer.innerHTML = '';
             categories.forEach(category => {
