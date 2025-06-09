@@ -6,7 +6,8 @@ const ASSETS = [
   './prompts.js',
   './lucide.min.js',
   './icons/logo.svg',
-  './manifest.json'
+  './css/theme-dark.css',
+  './css/theme-light.css'
 ];
 
 self.addEventListener('install', event => {
