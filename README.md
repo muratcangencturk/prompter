@@ -53,6 +53,9 @@ If icon fonts fail to load, the app falls back to emoji symbols so the buttons r
 If the TailwindCSS CDN is unreachable, a local copy bundled with the app is loaded automatically so the interface still looks correct.
 
 Example: click the **Video** icon, then press **Generate New Prompt** to create a video-related idea.
+## Automatic Deployment
+
+Pushes to the `main` branch are automatically deployed to GitHub Pages using a GitHub Actions workflow. The action installs Node dependencies, runs formatting and lint checks, then publishes the repository contents.
 
 ## License
 
