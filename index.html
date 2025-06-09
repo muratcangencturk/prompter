@@ -313,6 +313,9 @@
                 <button id="download-button" class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50" title="Download as .txt" aria-label="Download as .txt">
                   <i data-lucide="download" class="w-4 h-4" aria-hidden="true"></i>
                 </button>
+                <button id="share-button" class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50" title="Share" aria-label="Share">
+                  <i data-lucide="share-2" class="w-4 h-4" aria-hidden="true"></i>
+                </button>
               </div>
             </div>
             <div id="generated-prompt-text" class="bg-black/30 rounded-xl p-3 leading-relaxed whitespace-pre-wrap text-base font-mono selection:bg-purple-500 selection:text-white">
@@ -369,6 +372,8 @@
             yourPromptTitle: "Your Unique Prompt:",
             copyButtonTitle: "Copy to clipboard",
             downloadButtonTitle: "Download as .txt",
+            shareButtonTitle: "Share",
+            shareButtonFallback: "Prompt copied to clipboard!",
             copySuccessMessage: "Prompt copied successfully!",
             appStats: "Prompts that will unlock the potential of your mind",
             footerPrompter: "Prompter",
@@ -384,6 +389,8 @@
             yourPromptTitle: "Benzersiz Promptunuz:",
             copyButtonTitle: "Panoya kopyala",
             downloadButtonTitle: ".txt olarak indir",
+            shareButtonTitle: "Paylaş",
+            shareButtonFallback: "Prompt panoya kopyalandı!",
             copySuccessMessage: "Prompt başarıyla kopyalandı!",
             appStats: "Zihninizin potansiyelini açığa çıkaracak promptlar",
             footerPrompter: "Prompter",
@@ -423,6 +430,7 @@
         const generatedPromptText = document.getElementById('generated-prompt-text');
         const copyButton = document.getElementById('copy-button');
         const downloadButton = document.getElementById('download-button');
+        const shareButton = document.getElementById('share-button');
         const copySuccessMessage = document.getElementById('copy-success-message');
         const langEnButton = document.getElementById('lang-en');
         const langTrButton = document.getElementById('lang-tr');
@@ -469,6 +477,8 @@
             copyButton.setAttribute('aria-label', uiText[lang].copyButtonTitle);
             downloadButton.title = uiText[lang].downloadButtonTitle;
             downloadButton.setAttribute('aria-label', uiText[lang].downloadButtonTitle);
+            shareButton.title = uiText[lang].shareButtonTitle;
+            shareButton.setAttribute('aria-label', uiText[lang].shareButtonTitle);
             copySuccessMessage.textContent = uiText[lang].copySuccessMessage;
             document.getElementById('app-stats').textContent = uiText[lang].appStats;
             document.getElementById('footer-prompter').textContent = uiText[lang].footerPrompter;
@@ -623,6 +633,31 @@
                 a.click();
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
+            });
+
+            // Share button
+            shareButton.addEventListener('click', async () => {
+                if (!appState.generatedPrompt) return;
+                const shareData = {
+                    title: 'Prompter',
+                    text: appState.generatedPrompt,
+                    url: window.location.href
+                };
+                if (navigator.share) {
+                    try {
+                        await navigator.share(shareData);
+                    } catch (err) {
+                        console.error('Share failed:', err);
+                    }
+                } else if (navigator.clipboard) {
+                    try {
+                        await navigator.clipboard.writeText(`${shareData.text}\n\n${shareData.url}`);
+                        alert(uiText[appState.language].shareButtonFallback);
+                    } catch (err) {
+                        console.error('Fallback share failed:', err);
+                        alert('Failed to share prompt. Please try again.');
+                    }
+                }
             });
 
             // Language buttons

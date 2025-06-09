@@ -11,6 +11,7 @@ Prompt templates are now loaded from a separate `prompts.js` file for faster pag
 - Light and dark themes
 - English and Turkish interface
 - Twelve prompt categories with over 1.7M combinations
+- Share prompts via the Web Share API or copy link fallback
 This **AI prompt generator** delivers **creative prompt ideas** in a lightweight **offline web app** that runs directly in your browser.
 
 
@@ -18,7 +19,7 @@ This **AI prompt generator** delivers **creative prompt ideas** in a lightweight
 
 Simply open `index.html` in any modern web browser. You can double‑click the file or use your browser's **Open File** option. No server setup is required.
 
-When served from a local web server (for example `python3 -m http.server`) the app installs a small service worker that caches `index.html`, `tailwind.js`, `lucide.min.js`, `prompts.js` and the logo in `icons/logo.svg`. After an initial visit you can disconnect from the network and the generator will still load and function normally.
+When served from a local web server (for example `python3 -m http.server`) the app installs a small service worker that caches `index.html`, `tailwind.js`, `lucide.min.js`, `prompts.js`, both theme CSS files and the logo in `icons/logo.svg`. After an initial visit you can disconnect from the network and the generator will still load and function normally.
 
 ## Customization
 
