@@ -9,7 +9,8 @@
         theme: 'dark', // Default theme
         history: [],        // overall prompt history
         partHistory: [],    // per-part history
-        HISTORY_SIZE: 100    // Increased history size
+        HISTORY_SIZE: 100,    // Increased history size
+        ui: {}               // loaded UI strings
     };
 
     // --- Utility Functions ---
@@ -22,38 +23,25 @@
         return array[Math.floor(Math.random() * array.length)];
     };
 
-    // --- UI Text Translations ---
-    const uiText = {
-        en: {
-            appTitle: "AI Prompt Generator - Prompter",
-            appSubtitle: "Prompt generator for AI - unprecedented, limitless creativity",
-            chooseStyleTitle: "Select Your Prompt Inspiration",
-            generateButtonText: "Generate New Prompt",
-            yourPromptTitle: "Your Unique Prompt:",
-            copyButtonTitle: "Copy to clipboard",
-            downloadButtonTitle: "Download as .txt",
-            copySuccessMessage: "Prompt copied successfully!",
-            appStats: "Prompts that will unlock the potential of your mind",
-            footerPrompter: "Prompter",
-            randomCategory: "Random Mix",
-            themeLightTitle: "Light Theme",
-            themeDarkTitle: "Dark Theme"
-        },
-        tr: {
-            appTitle: "YZ Prompt Üretici - Prompter",
-            appSubtitle: "YZ için prompt üretici - eşi benzeri görülmemiş sınırsız yaratıcılık",
-            chooseStyleTitle: "Prompt İlhamınızı Seçin",
-            generateButtonText: "Yeni Prompt Üret",
-            yourPromptTitle: "Benzersiz Promptunuz:",
-            copyButtonTitle: "Panoya kopyala",
-            downloadButtonTitle: ".txt olarak indir",
-            copySuccessMessage: "Prompt başarıyla kopyalandı!",
-            appStats: "Zihninizin potansiyelini açığa çıkaracak promptlar",
-            footerPrompter: "Prompter",
-            randomCategory: "Rastgele Karışım",
-            themeLightTitle: "Açık Tema",
-            themeDarkTitle: "Koyu Tema"
+    // --- UI Text Translations loaded from /i18n/*.json ---
+    const languages = [
+        { code: 'en', label: 'EN' },
+        { code: 'tr', label: 'TR' }
+    ];
+
+    const translations = {};
+
+    const loadLanguage = async (lang) => {
+        if (!translations[lang]) {
+            try {
+                const res = await fetch(`i18n/${lang}.json`);
+                translations[lang] = await res.json();
+            } catch (err) {
+                console.error(`Failed to load language file for ${lang}`, err);
+                translations[lang] = {};
+            }
         }
+        return translations[lang];
     };
 
         // --- Category Definitions ---
@@ -87,11 +75,11 @@
         const copyButton = document.getElementById('copy-button');
         const downloadButton = document.getElementById('download-button');
         const copySuccessMessage = document.getElementById('copy-success-message');
-        const langEnButton = document.getElementById('lang-en');
-        const langTrButton = document.getElementById('lang-tr');
+        const languageSwitcher = document.getElementById('language-switcher');
         const themeLightButton = document.getElementById('theme-light');
         const themeDarkButton = document.getElementById('theme-dark');
         const themeLinkElement = document.getElementById('theme-css');
+        const languageButtons = {};
 
         // --- Theme Toggle Logic ---
         const THEMES = { LIGHT: 'light', DARK: 'dark' };
@@ -118,23 +106,26 @@
         };
 
         // --- Language Switching Logic ---
-        const setLanguage = (lang) => {
+        const setLanguage = async (lang) => {
             appState.language = lang;
             document.documentElement.lang = lang;
+
+            const uiText = await loadLanguage(lang);
+            appState.ui = uiText;
             // Update UI text
-            document.getElementById('app-title').textContent = uiText[lang].appTitle;
-            document.getElementById('app-subtitle').textContent = uiText[lang].appSubtitle;
-            document.getElementById('choose-style-title').textContent = uiText[lang].chooseStyleTitle;
-            document.getElementById('generate-button-text').textContent = uiText[lang].generateButtonText;
-            generateButton.setAttribute('aria-label', uiText[lang].generateButtonText);
-            document.getElementById('your-prompt-title').textContent = uiText[lang].yourPromptTitle;
-            copyButton.title = uiText[lang].copyButtonTitle;
-            copyButton.setAttribute('aria-label', uiText[lang].copyButtonTitle);
-            downloadButton.title = uiText[lang].downloadButtonTitle;
-            downloadButton.setAttribute('aria-label', uiText[lang].downloadButtonTitle);
-            copySuccessMessage.textContent = uiText[lang].copySuccessMessage;
-            document.getElementById('app-stats').textContent = uiText[lang].appStats;
-            document.getElementById('footer-prompter').textContent = uiText[lang].footerPrompter;
+            document.getElementById('app-title').textContent = uiText.appTitle || '';
+            document.getElementById('app-subtitle').textContent = uiText.appSubtitle || '';
+            document.getElementById('choose-style-title').textContent = uiText.chooseStyleTitle || '';
+            document.getElementById('generate-button-text').textContent = uiText.generateButtonText || '';
+            generateButton.setAttribute('aria-label', uiText.generateButtonText || '');
+            document.getElementById('your-prompt-title').textContent = uiText.yourPromptTitle || '';
+            copyButton.title = uiText.copyButtonTitle || '';
+            copyButton.setAttribute('aria-label', uiText.copyButtonTitle || '');
+            downloadButton.title = uiText.downloadButtonTitle || '';
+            downloadButton.setAttribute('aria-label', uiText.downloadButtonTitle || '');
+            copySuccessMessage.textContent = uiText.copySuccessMessage || '';
+            document.getElementById('app-stats').textContent = uiText.appStats || '';
+            document.getElementById('footer-prompter').textContent = uiText.footerPrompter || '';
 
             // Update category button text
             categories.forEach(category => {
@@ -149,27 +140,28 @@
             });
 
             // Update language button styles
-            if (lang === 'en') {
-                langEnButton.classList.add('active', 'bg-white/30', 'text-white', 'shadow-md');
-                langEnButton.classList.remove('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
-                langTrButton.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
-                langTrButton.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
-            } else {
-                langTrButton.classList.add('active', 'bg-white/30', 'text-white', 'shadow-md');
-                langTrButton.classList.remove('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
-                langEnButton.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
-                langEnButton.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
-            }
+            Object.keys(languageButtons).forEach(code => {
+                const btn = languageButtons[code];
+                if (!btn) return;
+                if (code === lang) {
+                    btn.classList.add('active', 'bg-white/30', 'text-white', 'shadow-md');
+                    btn.classList.remove('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
+                } else {
+                    btn.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
+                    btn.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
+                }
+            });
             localStorage.setItem('language', lang);
             // Update theme button titles based on language
             updateButtonTitles();
         };
 
        const updateButtonTitles = () => {
-             themeLightButton.title = uiText[appState.language].themeLightTitle;
-             themeLightButton.setAttribute('aria-label', uiText[appState.language].themeLightTitle);
-             themeDarkButton.title = uiText[appState.language].themeDarkTitle;
-             themeDarkButton.setAttribute('aria-label', uiText[appState.language].themeDarkTitle);
+             const uiText = appState.ui || {};
+             themeLightButton.title = uiText.themeLightTitle || '';
+             themeLightButton.setAttribute('aria-label', uiText.themeLightTitle || '');
+             themeDarkButton.title = uiText.themeDarkTitle || '';
+             themeDarkButton.setAttribute('aria-label', uiText.themeDarkTitle || '');
        };
 
         // --- Prompt Generation Logic ---
@@ -289,8 +281,10 @@
             });
 
             // Language buttons
-            langEnButton.addEventListener('click', () => setLanguage('en'));
-            langTrButton.addEventListener('click', () => setLanguage('tr'));
+            Object.keys(languageButtons).forEach(code => {
+                const btn = languageButtons[code];
+                btn.addEventListener('click', () => setLanguage(code));
+            });
 
             // Theme buttons
             themeLightButton.addEventListener('click', () => setTheme(THEMES.LIGHT));
@@ -298,7 +292,7 @@
         };
 
         // --- Initialization ---
-        const initializeApp = () => {
+        const initializeApp = async () => {
             const runLucide = () => {
                 if (window.lucide && typeof window.lucide.createIcons === 'function') {
                     window.lucide.createIcons();
@@ -335,9 +329,20 @@
                 return false;
             };
 
+            // Build language buttons
+            languageSwitcher.innerHTML = '';
+            languages.forEach(lang => {
+                const btn = document.createElement('button');
+                btn.id = `lang-${lang.code}`;
+                btn.className = 'px-3 py-1 rounded-md text-sm font-medium';
+                btn.textContent = lang.label;
+                languageSwitcher.appendChild(btn);
+                languageButtons[lang.code] = btn;
+            });
+
             // Load saved language or default to 'en'
             const savedLanguage = localStorage.getItem('language') || 'en';
-            setLanguage(savedLanguage);
+            await setLanguage(savedLanguage);
 
             // Load saved theme or default to 'dark'
             const savedTheme = localStorage.getItem('theme') || THEMES.DARK;

@@ -1,0 +1,15 @@
+{
+  "appTitle": "YZ Prompt Üretici - Prompter",
+  "appSubtitle": "YZ için prompt üretici - eşi benzeri görülmemiş sınırsız yaratıcılık",
+  "chooseStyleTitle": "Prompt İlhamınızı Seçin",
+  "generateButtonText": "Yeni Prompt Üret",
+  "yourPromptTitle": "Benzersiz Promptunuz:",
+  "copyButtonTitle": "Panoya kopyala",
+  "downloadButtonTitle": ".txt olarak indir",
+  "copySuccessMessage": "Prompt başarıyla kopyalandı!",
+  "appStats": "Zihninizin potansiyelini açığa çıkaracak promptlar",
+  "footerPrompter": "Prompter",
+  "randomCategory": "Rastgele Karışım",
+  "themeLightTitle": "Açık Tema",
+  "themeDarkTitle": "Koyu Tema"
+}

@@ -34,6 +34,13 @@ The service worker reads the `version` field from `manifest.json` and names its 
 
 - Prompter currently supports **English** (`EN`) and **Turkish** (`TR`).
 - Use the language switcher in the top‑right corner to choose your interface language. The setting persists in your browser.
+- UI strings live in the `i18n/` directory as JSON files.
+
+#### Adding a new translation
+
+1. Copy `i18n/en.json` to `i18n/your-language-code.json` and translate the values.
+2. Add the language code and button label to the `languages` array in `src/main.js`.
+3. Reload the app and a new button will appear automatically.
 
 ## Categories
 
