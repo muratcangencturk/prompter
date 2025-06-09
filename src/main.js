@@ -22,6 +22,54 @@
         return array[Math.floor(Math.random() * array.length)];
     };
 
+    const loadedPrompts = {};
+    const join = arr => arr.join(' ').replace(/\s+([,.!?])/g, '$1').replace(/\s+\n/g, ' ').trim();
+    const punctuate = str => /[.!?]$/.test(str) ? str : str + '.';
+
+    const structures = {
+        singleSentence: parts => join(parts),
+        twoSentence: parts => {
+            const first = punctuate(join(parts.slice(0, 3)));
+            return `${first} ${parts[3].trim()}`;
+        },
+        questionThenInstruction: parts => {
+            const first = punctuate(join(parts.slice(0, 2)));
+            return `${first} ${parts[2].trim()} ${parts[3].trim()}`;
+        },
+        imageStructure: parts => {
+            const first = punctuate(join(parts.slice(0, 2)));
+            return `${first} ${parts[2].trim()} ${parts[3].trim()}`;
+        }
+    };
+
+    const catMap = {
+        inspiring: 'singleSentence',
+        mindBlowing: 'questionThenInstruction',
+        productivity: 'twoSentence',
+        educational: 'twoSentence',
+        crazy: 'twoSentence',
+        perspective: 'twoSentence',
+        ai: 'twoSentence',
+        ideas: 'twoSentence',
+        video: 'questionThenInstruction',
+        image: 'imageStructure',
+        hellprompts: 'twoSentence'
+    };
+
+    const loadCategory = async (lang, cat) => {
+        loadedPrompts[lang] = loadedPrompts[lang] || {};
+        if (loadedPrompts[lang][cat]) return loadedPrompts[lang][cat];
+        if (window.prompts && window.prompts[lang] && window.prompts[lang][cat]) {
+            loadedPrompts[lang][cat] = window.prompts[lang][cat];
+            return loadedPrompts[lang][cat];
+        }
+        const res = await fetch(`prompts/${lang}/${cat}.json`);
+        const data = await res.json();
+        data.structure = structures[catMap[cat]];
+        loadedPrompts[lang][cat] = data;
+        return data;
+    };
+
     // --- UI Text Translations ---
     const uiText = {
         en: {
@@ -173,7 +221,7 @@
        };
 
         // --- Prompt Generation Logic ---
-        const generatePrompt = () => {
+        const generatePrompt = async () => {
             appState.isGenerating = true;
             generateButton.disabled = true;
             generatedPromptText.innerHTML = '<div class="flex justify-center items-center h-20"><i data-lucide="loader-2" class="w-6 h-6 animate-spin" aria-hidden="true"></i></div>';
@@ -182,9 +230,7 @@
             }
             promptDisplayArea.classList.remove('hidden');
             promptDisplayArea.classList.add('animate-fadeIn');
-
-            setTimeout(() => {
-                let categoryData;
+            try {
                 let selectedCatId = appState.selectedCategory;
 
                 if (selectedCatId === 'random') {
@@ -193,7 +239,7 @@
                     selectedCatId = availableCategories[Math.floor(Math.random() * availableCategories.length)].id;
                 }
 
-                categoryData = prompts[appState.language][selectedCatId];
+                const categoryData = await loadCategory(appState.language, selectedCatId);
 
                 if (!categoryData || !categoryData.parts || !Array.isArray(categoryData.parts)) {
                     console.error(`Invalid data for category: ${selectedCatId}, language: ${appState.language}`);
@@ -202,7 +248,6 @@
                     generateButton.disabled = false;
                     return;
                 }
-
 
                 const promptParts = categoryData.parts.map((partArray, idx) => {
                     if (!appState.partHistory[idx]) {
@@ -238,7 +283,12 @@
                 generatedPromptText.textContent = newPrompt;
                 appState.isGenerating = false;
                 generateButton.disabled = false;
-            }, 300); // Simulate generation time
+            } catch (err) {
+                console.error(err);
+                generatedPromptText.textContent = 'Error loading prompts.';
+                appState.isGenerating = false;
+                generateButton.disabled = false;
+            }
         };
 
         // --- Event Listeners ---
