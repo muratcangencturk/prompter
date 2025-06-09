@@ -5,7 +5,9 @@ const ASSETS = [
   './tailwind.js',
   './prompts.js',
   './lucide.min.js',
-  './icons/logo.svg'
+  './icons/logo.svg',
+  './css/theme-dark.css',
+  './css/theme-light.css'
 ];
 
 self.addEventListener('install', event => {
