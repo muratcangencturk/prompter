@@ -4,6 +4,8 @@ Prompter is a small web application that generates creative prompts for AI model
 
 Prompt templates are now loaded from a separate `prompts.js` file for faster page loading.
 
+![Screenshot](icons/logo.svg)
+
 ## Features
 
 - Works offline after the first visit
