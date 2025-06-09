@@ -1,0 +1,14 @@
+{
+  "name": "prompter",
+  "version": "1.0.0",
+  "description": "Prompter web application",
+  "scripts": {
+    "lint": "eslint .",
+    "format": "prettier --write \"**/*.{js,json,md,css,html}\"",
+    "test": "npm run lint"
+  },
+  "devDependencies": {
+    "eslint": "^8.47.0",
+    "prettier": "^2.8.8"
+  }
+}

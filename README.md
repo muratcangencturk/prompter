@@ -1,9 +1,9 @@
 # Prompter
 
-
 Prompter is a small web application that generates creative prompts for AI models. It runs entirely in the browser using HTML, TailwindCSS and vanilla JavaScript.
 
 Prompt templates are now loaded from a separate `prompts.js` file for faster page loading.
+
 ## Features
 
 - Works offline after the first visit
@@ -11,8 +11,7 @@ Prompt templates are now loaded from a separate `prompts.js` file for faster pag
 - Light and dark themes
 - English and Turkish interface
 - Twelve prompt categories with over 1.7M combinations
-This **AI prompt generator** delivers **creative prompt ideas** in a lightweight **offline web app** that runs directly in your browser.
-
+  This **AI prompt generator** delivers **creative prompt ideas** in a lightweight **offline web app** that runs directly in your browser.
 
 ## Opening the application
 
@@ -23,14 +22,17 @@ When served from a local web server (for example `python3 -m http.server`) the a
 ## Customization
 
 ### Theme
+
 - **Dark theme** (default) and **Light theme** are available.
 - Use the sun/moon buttons in the top‑left corner to switch themes. Your preference is saved locally.
 
 ### Language
+
 - Prompter currently supports **English** (`EN`) and **Turkish** (`TR`).
 - Use the language switcher in the top‑right corner to choose your interface language. The setting persists in your browser.
 
 ## Categories
+
 Prompter offers a variety of prompt themes. Select a category by clicking its icon in the **Select Your Prompt Inspiration** area.
 
 - **Random Mix** – picks from all categories
@@ -53,6 +55,26 @@ If icon fonts fail to load, the app falls back to emoji symbols so the buttons r
 If the TailwindCSS CDN is unreachable, a local copy bundled with the app is loaded automatically so the interface still looks correct.
 
 Example: click the **Video** icon, then press **Generate New Prompt** to create a video-related idea.
+
+## Development
+
+This repository uses ESLint and Prettier for code quality. After cloning the
+project, run `npm install` to install the dependencies.
+
+Before committing changes run:
+
+```bash
+npm test
+```
+
+to execute the linter. To automatically format files run:
+
+```bash
+npm run format
+```
+
+Running `npm install` and `npm test` helps ensure consistent code style across
+contributions.
 
 ## License
 
