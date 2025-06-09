@@ -1,9 +1,11 @@
-const CACHE_NAME = 'prompter-v3';
+const CACHE_NAME = 'prompter-v4';
 const ASSETS = [
   './',
   './index.html',
   './tailwind.js',
-  './prompts.js',
+  './main.js',
+  './prompts/en.js',
+  './prompts/tr.js',
   './lucide.min.js',
   './icons/logo.svg',
   './css/theme-dark.css',

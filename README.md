@@ -3,11 +3,11 @@
 
 Prompter is a small web application that generates creative prompts for AI models. It runs entirely in the browser using HTML, TailwindCSS and vanilla JavaScript.
 
-Prompt templates are now loaded from a separate `prompts.js` file for faster page loading.
+Prompt templates are now loaded from a separate language files in `prompts/` for faster page loading.
 ## Features
 
 - Works offline after the first visit
-- Fast loading thanks to the local `prompts.js` file
+- Fast loading thanks to the local prompt files
 - Light and dark themes
 - English and Turkish interface
 - Twelve prompt categories with over 1.7M combinations
@@ -18,7 +18,7 @@ This **AI prompt generator** delivers **creative prompt ideas** in a lightweight
 
 Simply open `index.html` in any modern web browser. You can double‑click the file or use your browser's **Open File** option. No server setup is required.
 
-When served from a local web server (for example `python3 -m http.server`) the app installs a small service worker that caches `index.html`, `tailwind.js`, `lucide.min.js`, `prompts.js` and the logo in `icons/logo.svg`. After an initial visit you can disconnect from the network and the generator will still load and function normally.
+When served from a local web server (for example `python3 -m http.server`) the app installs a small service worker that caches `index.html`, `tailwind.js`, `lucide.min.js`, `main.js`, `prompts/en.js`, `prompts/tr.js` and the logo in `icons/logo.svg`. After an initial visit you can disconnect from the network and the generator will still load and function normally.
 
 ## Customization
 
@@ -29,6 +29,11 @@ When served from a local web server (for example `python3 -m http.server`) the a
 ### Language
 - Prompter currently supports **English** (`EN`) and **Turkish** (`TR`).
 - Use the language switcher in the top‑right corner to choose your interface language. The setting persists in your browser.
+### Adding a new language
+- Create a new file `prompts/<lang>.js` containing the prompt definitions.
+- Update `sw.js` to cache the new file for offline use.
+- The application will load it automatically when that language is selected.
+
 
 ## Categories
 Prompter offers a variety of prompt themes. Select a category by clicking its icon in the **Select Your Prompt Inspiration** area.
