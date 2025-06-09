@@ -1,0 +1,13 @@
+{
+  "name": "Prompter",
+  "short_name": "Prompter",
+  "theme_color": "#000000",
+  "start_url": "./",
+  "icons": [
+    {
+      "src": "icons/logo.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    }
+  ]
+}
