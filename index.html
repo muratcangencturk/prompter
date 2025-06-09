@@ -268,6 +268,9 @@
            <button id="lang-tr" class="px-3 py-1 rounded-md text-sm font-medium">
              TR
            </button>
+           <button id="lang-es" class="px-3 py-1 rounded-md text-sm font-medium">
+             🇪🇸 ES
+           </button>
         </div>
 
         <!-- Header -->
@@ -335,6 +338,7 @@
     </div>
 
 <script src="prompts.js"></script>
+<script src="prompts/es.js"></script>
 <script>
     // --- Core Application Logic ---
     const appState = {
@@ -390,23 +394,38 @@
             randomCategory: "Rastgele Karışım",
             themeLightTitle: "Açık Tema",
             themeDarkTitle: "Koyu Tema"
+        },
+        es: {
+            appTitle: "Generador de Prompts IA - Prompter",
+            appSubtitle: "Generador de prompts para IA - creatividad sin límites",
+            chooseStyleTitle: "Elige tu Inspiración",
+            generateButtonText: "Generar Nuevo Prompt",
+            yourPromptTitle: "Tu Prompt Único:",
+            copyButtonTitle: "Copiar al portapapeles",
+            downloadButtonTitle: "Descargar como .txt",
+            copySuccessMessage: "¡Prompt copiado con éxito!",
+            appStats: "Prompts que liberarán el potencial de tu mente",
+            footerPrompter: "Prompter",
+            randomCategory: "Mezcla Aleatoria",
+            themeLightTitle: "Tema Claro",
+            themeDarkTitle: "Tema Oscuro"
         }
     };
 
         // --- Category Definitions ---
         const categories = [
-            { id: 'random', icon: 'shuffle', emoji: '🔀', name: { en: 'Random Mix', tr: 'Rastgele Karışım' } },
-            { id: 'inspiring', icon: 'sunrise', emoji: '🌅', name: { en: 'Inspiring', tr: 'İlham Verici' } },
-            { id: 'mindBlowing', icon: 'brain-circuit', emoji: '🤯', name: { en: 'Mind-blowing', tr: 'Ufuk Açıcı' } },
-            { id: 'productivity', icon: 'zap', emoji: '⚡', name: { en: 'Productivity', tr: 'Üretkenlik' } },
-            { id: 'educational', icon: 'graduation-cap', emoji: '🎓', name: { en: 'Educational', tr: 'Eğitici' } },
-            { id: 'crazy', icon: 'laugh', emoji: '😂', name: { en: 'Crazy', tr: 'Çılgın Fikirler' } },
-            { id: 'perspective', icon: 'glasses', emoji: '🕶️', name: { en: 'Perspective', tr: 'Bakış Açısı' } },
-            { id: 'ai', icon: 'cpu', emoji: '🤖', name: { en: 'AI', tr: 'YZ' } },
-            { id: 'ideas', icon: 'lightbulb', emoji: '💡', name: { en: 'Ideas', tr: 'Fikirler' } },
-            { id: 'video', icon: 'video', emoji: '🎬', name: { en: 'Video', tr: 'Video' } },
-            { id: 'image', icon: 'image', emoji: '🖼️', name: { en: 'Image', tr: 'Görsel' } },
-            { id: 'hellprompts', icon: 'skull', emoji: '💀', name: { en: 'Hellprompts', tr: 'Cehennem Promptları' } } // New category
+            { id: 'random', icon: 'shuffle', emoji: '🔀', name: { en: 'Random Mix', tr: 'Rastgele Karışım', es: 'Mezcla Aleatoria' } },
+            { id: 'inspiring', icon: 'sunrise', emoji: '🌅', name: { en: 'Inspiring', tr: 'İlham Verici', es: 'Inspirador' } },
+            { id: 'mindBlowing', icon: 'brain-circuit', emoji: '🤯', name: { en: 'Mind-blowing', tr: 'Ufuk Açıcı', es: 'Alucinante' } },
+            { id: 'productivity', icon: 'zap', emoji: '⚡', name: { en: 'Productivity', tr: 'Üretkenlik', es: 'Productividad' } },
+            { id: 'educational', icon: 'graduation-cap', emoji: '🎓', name: { en: 'Educational', tr: 'Eğitici', es: 'Educativo' } },
+            { id: 'crazy', icon: 'laugh', emoji: '😂', name: { en: 'Crazy', tr: 'Çılgın Fikirler', es: 'Ideas Locas' } },
+            { id: 'perspective', icon: 'glasses', emoji: '🕶️', name: { en: 'Perspective', tr: 'Bakış Açısı', es: 'Perspectiva' } },
+            { id: 'ai', icon: 'cpu', emoji: '🤖', name: { en: 'AI', tr: 'YZ', es: 'IA' } },
+            { id: 'ideas', icon: 'lightbulb', emoji: '💡', name: { en: 'Ideas', tr: 'Fikirler', es: 'Ideas' } },
+            { id: 'video', icon: 'video', emoji: '🎬', name: { en: 'Video', tr: 'Video', es: 'Video' } },
+            { id: 'image', icon: 'image', emoji: '🖼️', name: { en: 'Image', tr: 'Görsel', es: 'Imagen' } },
+            { id: 'hellprompts', icon: 'skull', emoji: '💀', name: { en: 'Hellprompts', tr: 'Cehennem Promptları', es: 'Prompts del Infierno' } } // New category
         ];
 
         // Optional fallback icons in case a name is not supported by Lucide
@@ -426,6 +445,7 @@
         const copySuccessMessage = document.getElementById('copy-success-message');
         const langEnButton = document.getElementById('lang-en');
         const langTrButton = document.getElementById('lang-tr');
+        const langEsButton = document.getElementById('lang-es');
         const themeLightButton = document.getElementById('theme-light');
         const themeDarkButton = document.getElementById('theme-dark');
         const themeLinkElement = document.getElementById('theme-css');
@@ -486,16 +506,20 @@
             });
 
             // Update language button styles
+            langEnButton.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
+            langTrButton.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
+            langEsButton.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
+            [langEnButton, langTrButton, langEsButton].forEach(btn => btn.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10'));
+
             if (lang === 'en') {
                 langEnButton.classList.add('active', 'bg-white/30', 'text-white', 'shadow-md');
                 langEnButton.classList.remove('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
-                langTrButton.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
-                langTrButton.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
-            } else {
+            } else if (lang === 'tr') {
                 langTrButton.classList.add('active', 'bg-white/30', 'text-white', 'shadow-md');
                 langTrButton.classList.remove('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
-                langEnButton.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
-                langEnButton.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
+            } else {
+                langEsButton.classList.add('active', 'bg-white/30', 'text-white', 'shadow-md');
+                langEsButton.classList.remove('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
             }
             localStorage.setItem('language', lang);
             // Update theme button titles based on language
@@ -628,6 +652,7 @@
             // Language buttons
             langEnButton.addEventListener('click', () => setLanguage('en'));
             langTrButton.addEventListener('click', () => setLanguage('tr'));
+            langEsButton.addEventListener('click', () => setLanguage('es'));
 
             // Theme buttons
             themeLightButton.addEventListener('click', () => setTheme(THEMES.LIGHT));

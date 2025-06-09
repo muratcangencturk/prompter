@@ -2244,7 +2244,7 @@ window.prompts = {
         hellprompts: 'twoSentence'
     };
 
-    ['en', 'tr'].forEach(lang => {
+    ['en', 'tr', 'es'].forEach(lang => {
         const langPrompts = prompts[lang];
         if (!langPrompts) return;
         Object.keys(catMap).forEach(cat => {

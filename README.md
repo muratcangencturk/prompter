@@ -9,7 +9,7 @@ Prompt templates are now loaded from a separate `prompts.js` file for faster pag
 - Works offline after the first visit
 - Fast loading thanks to the local `prompts.js` file
 - Light and dark themes
-- English and Turkish interface
+- English, Turkish and Spanish interface
 - Twelve prompt categories with over 1.7M combinations
 This **AI prompt generator** delivers **creative prompt ideas** in a lightweight **offline web app** that runs directly in your browser.
 
@@ -27,8 +27,15 @@ When served from a local web server (for example `python3 -m http.server`) the a
 - Use the sun/moon buttons in the top‑left corner to switch themes. Your preference is saved locally.
 
 ### Language
-- Prompter currently supports **English** (`EN`) and **Turkish** (`TR`).
+- Prompter currently supports **English** (`EN`), **Turkish** (`TR`) and **Spanish** (`ES`).
 - Use the language switcher in the top‑right corner to choose your interface language. The setting persists in your browser.
+
+### Translating
+Contributions for other languages are welcome. To add a translation:
+1. Create a new file under `prompts/` matching the structure of the existing language files. You can copy `prompts/es.js` as a starting point.
+2. Extend the `uiText` object in `main.js` with the new translations.
+3. Add a button in the language switcher and hook it up in the script with `setLanguage()`.
+4. Include the language code in the array near the bottom of `prompts.js` so prompt structures are applied.
 
 ## Categories
 Prompter offers a variety of prompt themes. Select a category by clicking its icon in the **Select Your Prompt Inspiration** area.
