@@ -1,3 +1,4 @@
+/* global prompts */
 (() => {
     // --- Core Application Logic ---
     const appState = {
@@ -25,34 +26,38 @@
     // --- UI Text Translations ---
     const uiText = {
         en: {
-            appTitle: "AI Prompt Generator - Prompter",
-            appSubtitle: "Prompt generator for AI - unprecedented, limitless creativity",
-            chooseStyleTitle: "Select Your Prompt Inspiration",
-            generateButtonText: "Generate New Prompt",
-            yourPromptTitle: "Your Unique Prompt:",
-            copyButtonTitle: "Copy to clipboard",
-            downloadButtonTitle: "Download as .txt",
-            copySuccessMessage: "Prompt copied successfully!",
-            appStats: "Prompts that will unlock the potential of your mind",
-            footerPrompter: "Prompter",
-            randomCategory: "Random Mix",
-            themeLightTitle: "Light Theme",
-            themeDarkTitle: "Dark Theme"
+            appTitle: 'AI Prompt Generator - Prompter',
+            appSubtitle: 'Prompt generator for AI - unprecedented, limitless creativity',
+            chooseStyleTitle: 'Select Your Prompt Inspiration',
+            generateButtonText: 'Generate New Prompt',
+            yourPromptTitle: 'Your Unique Prompt:',
+            copyButtonTitle: 'Copy to clipboard',
+            downloadButtonTitle: 'Download as .txt',
+            copySuccessMessage: 'Prompt copied successfully!',
+            appStats: 'Prompts that will unlock the potential of your mind',
+            footerPrompter: 'Prompter',
+            randomCategory: 'Random Mix',
+            themeLightTitle: 'Light Theme',
+            themeDarkTitle: 'Dark Theme',
+            langEnLabel: 'Switch to English',
+            langTrLabel: 'Switch to Turkish'
         },
         tr: {
-            appTitle: "YZ Prompt Üretici - Prompter",
-            appSubtitle: "YZ için prompt üretici - eşi benzeri görülmemiş sınırsız yaratıcılık",
-            chooseStyleTitle: "Prompt İlhamınızı Seçin",
-            generateButtonText: "Yeni Prompt Üret",
-            yourPromptTitle: "Benzersiz Promptunuz:",
-            copyButtonTitle: "Panoya kopyala",
-            downloadButtonTitle: ".txt olarak indir",
-            copySuccessMessage: "Prompt başarıyla kopyalandı!",
-            appStats: "Zihninizin potansiyelini açığa çıkaracak promptlar",
-            footerPrompter: "Prompter",
-            randomCategory: "Rastgele Karışım",
-            themeLightTitle: "Açık Tema",
-            themeDarkTitle: "Koyu Tema"
+            appTitle: 'YZ Prompt Üretici - Prompter',
+            appSubtitle: 'YZ için prompt üretici - eşi benzeri görülmemiş sınırsız yaratıcılık',
+            chooseStyleTitle: 'Prompt İlhamınızı Seçin',
+            generateButtonText: 'Yeni Prompt Üret',
+            yourPromptTitle: 'Benzersiz Promptunuz:',
+            copyButtonTitle: 'Panoya kopyala',
+            downloadButtonTitle: '.txt olarak indir',
+            copySuccessMessage: 'Prompt başarıyla kopyalandı!',
+            appStats: 'Zihninizin potansiyelini açığa çıkaracak promptlar',
+            footerPrompter: 'Prompter',
+            randomCategory: 'Rastgele Karışım',
+            themeLightTitle: 'Açık Tema',
+            themeDarkTitle: 'Koyu Tema',
+            langEnLabel: 'İngilizce\'ye geç',
+            langTrLabel: 'Türkçe\'ye geç'
         }
     };
 
@@ -135,6 +140,10 @@
             copySuccessMessage.textContent = uiText[lang].copySuccessMessage;
             document.getElementById('app-stats').textContent = uiText[lang].appStats;
             document.getElementById('footer-prompter').textContent = uiText[lang].footerPrompter;
+            langEnButton.title = uiText[lang].langEnLabel;
+            langEnButton.setAttribute('aria-label', uiText[lang].langEnLabel);
+            langTrButton.title = uiText[lang].langTrLabel;
+            langTrButton.setAttribute('aria-label', uiText[lang].langTrLabel);
 
             // Update category button text
             categories.forEach(category => {
@@ -347,7 +356,7 @@
             categories.forEach(category => {
                 const button = document.createElement('button');
                 button.id = `category-${category.id}`;
-                button.className = 'category-button';
+                button.className = 'category-button focus:outline-none focus:ring-2 focus:ring-white/50';
                 button.setAttribute('aria-label', `${category.name[appState.language]} category`);
                 if (category.id === appState.selectedCategory) {
                     button.classList.add('selected');
