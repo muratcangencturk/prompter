@@ -20,6 +20,10 @@ Simply open `index.html` in any modern web browser. You can double‑click the f
 
 When served from a local web server (for example `python3 -m http.server`) the app installs a small service worker that caches `index.html`, `tailwind.js`, `lucide.min.js`, `prompts.js` and the logo in `icons/logo.svg`. After an initial visit you can disconnect from the network and the generator will still load and function normally.
 
+### Versioning
+
+The service worker reads the `version` field from `manifest.json` and names its cache accordingly (for example `prompter-v3`). When the version changes, any old caches are removed automatically during activation so users receive the latest files.
+
 ## Customization
 
 ### Theme
