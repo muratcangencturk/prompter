@@ -5,6 +5,7 @@ const ASSETS = [
   './tailwind.js',
   './prompts.js',
   './lucide.min.js',
+  './src/main.js',
   './icons/logo.svg',
   './css/theme-dark.css',
   './css/theme-light.css'
