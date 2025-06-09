@@ -22,7 +22,9 @@ window.prompts = {
                     "Recall a time when",
                     "Write a letter that",
                     "Imagine a speech where",
-                    "Describe a path to"
+                    "Describe a path to",
+                    "Map a path that",
+                    "Write a monologue about"
                 ],
                 [
                     "overcoming a challenge",
@@ -44,7 +46,9 @@ window.prompts = {
                     ,"building trust"
                     ,"spreading kindness"
                     ,"finding common ground"
-                    ,"helping communities thrive"
+                    ,"helping communities thrive",
+                    "turning doubt into action",
+                    "supporting a noble cause"
                 ],
                 [
                     "that sparks motivation",
@@ -66,7 +70,9 @@ window.prompts = {
                     ,"with a message of hope"
                     ,"that encourages growth"
                     ,"for a ripple effect"
-                    ,"leading to new beginnings"
+                    ,"leading to new beginnings",
+                    "that awakens inner strength",
+                    "that fosters lasting change"
                 ],
                 [
                     "for the next generation.",
@@ -88,7 +94,9 @@ window.prompts = {
                     "to guide future efforts.",
                     "that resonates for years.",
                     "for personal fulfillment.",
-                    "to strengthen communities."
+                    "to strengthen communities.",
+                    "for generations to come.",
+                    "to influence future leaders."
                 ]
             ]
         },
@@ -114,7 +122,9 @@ window.prompts = {
                     ,"Suppose a discovery revealed"
                     ,"Dream about a universe where"
                     ,"Think of a day when"
-                    ,"Consider the possibility that"
+                    ,"Consider the possibility that",
+                    "Envision the moment when",
+                    "Picture reality shift as"
                 ],
                 [
                     "gravity reversed",
@@ -136,7 +146,9 @@ window.prompts = {
                     "every object was conscious",
                     "humans colonized the ocean",
                     "computers wrote our laws",
-                    "memories could be sold"
+                    "memories could be sold",
+                    "reality became programmable",
+                    "dreams shaped existence"
                 ],
                 [
                     "How would society react?",
@@ -158,7 +170,9 @@ window.prompts = {
                     ,"Would morals change?"
                     ,"Could science keep up?"
                     ,"How would leaders react?"
-                    ,"Would traditions survive?"
+                    ,"Would traditions survive?",
+                    "Would creativity explode?",
+                    "Could beliefs transform?"
                 ],
                 [
                     "Explore the consequences.",
@@ -180,7 +194,9 @@ window.prompts = {
                     "Predict cultural responses.",
                     "Analyze possible benefits.",
                     "Consider legal questions.",
-                    "Speculate on the aftermath."
+                    "Speculate on the aftermath.",
+                    "Consider the endless questions.",
+                    "Imagine surprising resolutions."
                 ]
             ]
         },
@@ -206,7 +222,9 @@ window.prompts = {
                     ,"Map priorities so you can"
                     ,"Build routines that"
                     ,"Develop guidelines to"
-                    ,"Create reminders that"
+                    ,"Create reminders that",
+                    "Outline routines to",
+                    "Plan checkpoints that"
                 ],
                 [
                     "avoid distractions",
@@ -228,7 +246,9 @@ window.prompts = {
                     "stay on top of deadlines",
                     "maximize team synergy",
                     "improve decision making",
-                    "keep track of goals"
+                    "keep track of goals",
+                    "maintain sharp concentration",
+                    "manage daily priorities"
                 ],
                 [
                     "for sustained results",
@@ -250,7 +270,9 @@ window.prompts = {
                     ,"when unexpected issues arise"
                     ,"as workloads grow"
                     ,"while collaborating remotely"
-                    ,"during challenging projects"
+                    ,"during challenging projects",
+                    "even under pressure",
+                    "amid constant change"
                 ],
                 [
                     "Use practical examples.",
@@ -272,7 +294,9 @@ window.prompts = {
                     "Highlight proven methods.",
                     "Show tracking techniques.",
                     "Keep language clear.",
-                    "Encourage regular reviews."
+                    "Encourage regular reviews.",
+                    "Focus on quick wins.",
+                    "Keep steps adaptable."
                 ]
             ]
         },
@@ -298,7 +322,9 @@ window.prompts = {
                     ,"Provide a breakdown of"
                     ,"Outline the evolution of"
                     ,"Summarize the challenges of"
-                    ,"Discuss the basics of"
+                    ,"Discuss the basics of",
+                    "Detail the theory of",
+                    "Explain core ideas behind"
                 ],
                 [
                     "quantum physics",
@@ -320,7 +346,9 @@ window.prompts = {
                     ,"planetary orbits"
                     ,"biotechnology"
                     ,"market dynamics"
-                    ,"climate change science"
+                    ,"climate change science",
+                    "artificial intelligence ethics",
+                    "digital security policies"
                 ],
                 [
                     "in simple terms",
@@ -342,7 +370,9 @@ window.prompts = {
                     ,"highlighting key discoveries"
                     ,"through engaging stories"
                     ,"using step-by-step explanations"
-                    ,"including quick exercises"
+                    ,"including quick exercises",
+                    "with approachable metaphors",
+                    "using real challenges"
                 ],
                 [
                     "Keep it short.",
@@ -364,7 +394,9 @@ window.prompts = {
                     "Focus on clarity.",
                     "Encourage curiosity.",
                     "Offer practice tasks.",
-                    "Summarize key points."
+                    "Summarize key points.",
+                    "Include practice exercises.",
+                    "Encourage further study."
                 ]
             ]
         },
@@ -390,7 +422,9 @@ window.prompts = {
                     ,"Invent a bizarre scenario in which"
                     ,"Create a parody where"
                     ,"Craft a world in which"
-                    ,"Develop a storyline where"
+                    ,"Develop a storyline where",
+                    "Spin a fable where",
+                    "Craft a wild legend where"
                 ],
                 [
                     "cats rule the earth",
@@ -412,7 +446,9 @@ window.prompts = {
                     ,"pens control minds"
                     ,"rocks dance at night"
                     ,"trees move around"
-                    ,"sand turns into gold"
+                    ,"sand turns into gold",
+                    "rain tastes like chocolate",
+                    "gravity sings lullabies"
                 ],
                 [
                     "resulting in chaos",
@@ -434,7 +470,9 @@ window.prompts = {
                     ,"upending social norms"
                     ,"generating endless fun"
                     ,"that reshapes reality"
-                    ,"bringing surprises daily"
+                    ,"bringing surprises daily",
+                    "turning days into adventures",
+                    "making boredom extinct"
                 ],
                 [
                     "Make it witty.",
@@ -456,7 +494,9 @@ window.prompts = {
                     "Twist clichés unexpectedly.",
                     "End with a comic punchline.",
                     "Blend absurdity with warmth.",
-                    "Leave readers grinning."
+                    "Leave readers grinning.",
+                    "Amp up the absurdity.",
+                    "Keep the chaos cheerful."
                 ]
             ]
         },
@@ -482,7 +522,9 @@ window.prompts = {
                     ,"As a historical artifact,"
                     ,"From a child's toy,"
                     ,"Through the lens of music,"
-                    ,"From the point of view of a mentor,"
+                    ,"From the point of view of a mentor,",
+                    "Through the veil of memory,",
+                    "From a wanderer's stance,"
                 ],
                 [
                     "consider love",
@@ -504,7 +546,9 @@ window.prompts = {
                     ,"analyze cultural norms"
                     ,"observe everyday miracles"
                     ,"ponder scientific progress"
-                    ,"consider social roles"
+                    ,"consider social roles",
+                    "retrace past choices",
+                    "explore inner voices"
                 ],
                 [
                     "to gain new insight",
@@ -526,7 +570,9 @@ window.prompts = {
                     ,"for greater empathy"
                     ,"and challenge traditions"
                     ,"to inspire wonder"
-                    ,"to foster unity"
+                    ,"to foster unity",
+                    "for renewed gratitude",
+                    "to cherish small moments"
                 ],
                 [
                     "Keep it reflective.",
@@ -548,7 +594,9 @@ window.prompts = {
                     "Make observations vivid.",
                     "Balance humor and depth.",
                     "Conclude with insight.",
-                    "Keep tone thoughtful."
+                    "Keep tone thoughtful.",
+                    "Invite quiet reflection.",
+                    "Leave space for wonder."
                 ]
             ]
         },
@@ -574,7 +622,9 @@ window.prompts = {
                     ,"Imagine a virtual companion that"
                     ,"Conceptualize a device that"
                     ,"Design software capable of"
-                    ,"Detail an AI service that"
+                    ,"Detail an AI service that",
+                    "Imagine a neural net that",
+                    "Prototype a helper that"
                 ],
                 [
                     "solves world hunger",
@@ -596,7 +646,9 @@ window.prompts = {
                     ,"optimizes personal health"
                     ,"manages household chores"
                     ,"grows food efficiently"
-                    ,"maps unexplored oceans"
+                    ,"maps unexplored oceans",
+                    "predicts human creativity",
+                    "forecasts global trends"
                 ],
                 [
                     "and benefits humanity",
@@ -618,7 +670,9 @@ window.prompts = {
                     ,"that sparks ethical debates"
                     ,"changing daily life"
                     ,"empowering every user"
-                    ,"pushing technological limits"
+                    ,"pushing technological limits",
+                    "transforming entire industries",
+                    "reshaping daily routines"
                 ],
                 [
                     "Focus on possibilities.",
@@ -641,7 +695,9 @@ window.prompts = {
                     "Discuss environmental impact.",
                     "Outline ongoing maintenance.",
                     "Explain training needs.",
-                    "Note long-term implications."
+                    "Note long-term implications.",
+                    "Describe ethical safeguards.",
+                    "Address user trust."
                 ]
             ]
         },
@@ -667,7 +723,9 @@ window.prompts = {
                     ,"Design a tool helping with"
                     ,"Invent a platform centered on"
                     ,"Create a competition about"
-                    ,"Sketch an online community for"
+                    ,"Sketch an online community for",
+                    "Envision a charity project for",
+                    "Design a crowdfunding plan for"
                 ],
                 [
                     "renewable energy",
@@ -689,7 +747,9 @@ window.prompts = {
                     ,"space tourism"
                     ,"handmade jewelry"
                     ,"crowdsourced art"
-                    ,"recycling innovations"
+                    ,"recycling innovations",
+                    "urban community gardens",
+                    "local arts collectives"
                 ],
                 [
                     "that stands out",
@@ -711,7 +771,9 @@ window.prompts = {
                     ,"with global potential"
                     ,"driven by user feedback"
                     ,"through collaborative funding"
-                    ,"built on open-source tools"
+                    ,"built on open-source tools",
+                    "funded by local crowds",
+                    "empowered by volunteers"
                 ],
                 [
                     "Outline key features.",
@@ -733,7 +795,9 @@ window.prompts = {
                     "Detail operational needs.",
                     "Explain why it's timely.",
                     "Identify possible risks.",
-                    "Show expansion potential."
+                    "Show expansion potential.",
+                    "Outline volunteer roles.",
+                    "Highlight community impact."
                 ]
             ]
         },
@@ -759,7 +823,9 @@ window.prompts = {
                     ,"Create a livestream event covering"
                     ,"Draft an advertisement featuring"
                     ,"Visualize a time-lapse showing"
-                    ,"Outline a travel montage about"
+                    ,"Outline a travel montage about",
+                    "Draft a viral challenge featuring",
+                    "Plan a reaction video for"
                 ],
                 [
                     "future technology disrupting everyday life",
@@ -781,7 +847,9 @@ window.prompts = {
                     ,"the rise of new trends"
                     ,"a challenge between friends"
                     ,"an exploration of abandoned castles"
-                    ,"the secret life of gadgets"
+                    ,"the secret life of gadgets",
+                    "unexpected dance mashups",
+                    "behind tiny miracles"
                 ],
                 [
                     "Which camera angles or editing tricks would keep viewers hooked?",
@@ -803,7 +871,9 @@ window.prompts = {
                     ,"What visual motif ties scenes?"
                     ,"Where is the climax?"
                     ,"What interactive elements fit?"
-                    ,"How will viewers share it?"
+                    ,"How will viewers share it?",
+                    "What trending hashtag would boost it?",
+                    "Which platform suits it best?"
                 ],
                 [
                     "Keep it short and snappy.",
@@ -826,7 +896,9 @@ window.prompts = {
                     "Include a catchy hook.",
                     "Add easy-to-read captions.",
                     "Consider diverse locations.",
-                    "Wrap up with a memorable line."
+                    "Wrap up with a memorable line.",
+                    "Share it widely online.",
+                    "Encourage followers to tag friends."
                 ]
             ]
         },
@@ -852,7 +924,9 @@ window.prompts = {
                     ,"Imagine a whimsical scene featuring"
                     ,"Render a 3D model of"
                     ,"Develop a silhouette of"
-                    ,"Compose a detailed map of"
+                    ,"Compose a detailed map of",
+                    "Illustrate the concept of",
+                    "Sketch an emblem for"
                 ],
                 [
                     "a mythical creature riding a bicycle",
@@ -874,7 +948,9 @@ window.prompts = {
                     ,"an explorer meeting aliens"
                     ,"a robot playing violin"
                     ,"an enchanted forest at night"
-                    ,"a futuristic city underwater"
+                    ,"a futuristic city underwater",
+                    "a time-warping portal",
+                    "a forest of floating lights"
                 ],
                 [
                     "Use vibrant neon colors.",
@@ -896,7 +972,9 @@ window.prompts = {
                     ,"Experiment with bold outlines."
                     ,"Add playful patterns."
                     ,"Keep a minimalist approach."
-                    ,"Mix photographic elements."
+                    ,"Mix photographic elements.",
+                    "Use bold, swirling colors.",
+                    "Experiment with cosmic patterns."
                 ],
                 [
                     "Use bold colors.",
@@ -918,7 +996,9 @@ window.prompts = {
                     ,"Let creativity shine."
                     ,"Keep proportions consistent."
                     ,"Add subtle gradients."
-                    ,"Invite viewer interpretation."
+                    ,"Invite viewer interpretation.",
+                    "Balance detail and clarity.",
+                    "Keep lines dynamic."
                 ]
             ]
         },
@@ -944,7 +1024,9 @@ window.prompts = {
                     ,"Share the dread of"
                     ,"Write about the chill when"
                     ,"Convey the fear as"
-                    ,"Paint the scene where"
+                    ,"Paint the scene where",
+                    "Whisper about the dream when",
+                    "Describe the silent dread as"
                 ],
                 [
                     "shadows whisper",
@@ -966,7 +1048,9 @@ window.prompts = {
                     ,"figures appear in mirrors"
                     ,"a heartbeat pounds in the silence"
                     ,"footsteps follow from nowhere"
-                    ,"doors slam by themselves"
+                    ,"doors slam by themselves",
+                    "shadows stretch endlessly",
+                    "echoes drown your thoughts"
                 ],
                 [
                     "driving you insane",
@@ -988,7 +1072,9 @@ window.prompts = {
                     ,"while fear grips tighter"
                     ,"until time loses meaning"
                     ,"while reality distorts"
-                    ,"and terror reigns supreme"
+                    ,"and terror reigns supreme",
+                    "until hope turns to ash",
+                    "while nightmares whisper"
                 ],
                 [
                     "Make it unsettling.",
@@ -1010,7 +1096,9 @@ window.prompts = {
                     "Avoid overused tropes.",
                     "End with lingering fear.",
                     "Write from the heart.",
-                    "Keep sentences sharp."
+                    "Keep sentences sharp.",
+                    "Leave readers unsettled.",
+                    "Whisper the final fear."
                 ]
             ]
         }
@@ -1038,7 +1126,9 @@ window.prompts = {
                     ,"Şu zamanı hatırla"
                     ,"Şu mektubu yaz"
                     ,"Şöyle bir konuşma hayal et"
-                    ,"Şu yolu tasvir et"
+                    ,"Şu yolu tasvir et",
+                    "Şöyle bir yol haritası çıkar ki",
+                    "Şu konuda monolog yaz"
                 ],
                 [
                     "bir zorluğu aşmayı",
@@ -1060,7 +1150,9 @@ window.prompts = {
                     ,"güven inşa etmeyi"
                     ,"nazik davranışlar yaymayı"
                     ,"ortak noktalar bulmayı"
-                    ,"toplulukların gelişmesine yardım etmeyi"
+                    ,"toplulukların gelişmesine yardım etmeyi",
+                    "zorlukları başarıya dönüştürmek",
+                    "bir amacı sahiplenmek"
                 ],
                 [
                     "motive eden",
@@ -1082,7 +1174,9 @@ window.prompts = {
                     ,"umut dolu mesajlarla"
                     ,"büyümeyi teşvik eden"
                     ,"dalga etkisi yaratan"
-                    ,"yeni başlangıçlara yol açan"
+                    ,"yeni başlangıçlara yol açan",
+                    "iç motivasyonu tetikleyen",
+                    "kalıcı değişim yaratan"
                 ],
                 [
                     "gelecek nesil için.",
@@ -1104,7 +1198,9 @@ window.prompts = {
                     ,"gelecekteki çabalara rehber olmak için."
                     ,"yıllarca yankılanacak şekilde."
                     ,"kişisel tatmin için."
-                    ,"toplulukları güçlendirmek için."
+                    ,"toplulukları güçlendirmek için.",
+                    "gelecek nesilleri heveslendirmek için.",
+                    "uzun süre ilham vermesi için."
                 ]
             ]
         },
@@ -1130,7 +1226,9 @@ window.prompts = {
                     ,"Bir keşfin şunu ortaya çıkardığını varsay"
                     ,"Şöyle bir evrende yaşadığını düşün"
                     ,"Şu gün geldiğinde"
-                    ,"Şu ihtimali değerlendir ki"
+                    ,"Şu ihtimali değerlendir ki",
+                    "Şu anda hayal et ki",
+                    "Birden gerçeklik bükülse"
                 ],
                 [
                     "yerçekimi ters dönüyor",
@@ -1152,7 +1250,9 @@ window.prompts = {
                     ,"her nesne bilinç kazanıyor"
                     ,"insanlar okyanusu kolonileştiriyor"
                     ,"bilgisayarlar yasalarımızı yazıyor"
-                    ,"anıların satılabildiğini"
+                    ,"anıların satılabildiğini",
+                    "gerçeklik istediğin gibi bükülüyor",
+                    "düşünceler maddeye dönüşüyor"
                 ],
                 [
                     "Toplum nasıl tepki verir?",
@@ -1174,7 +1274,9 @@ window.prompts = {
                     ,"Ahlak değişir mi?"
                     ,"Bilim buna yetişebilir mi?"
                     ,"Liderler nasıl tepki verir?"
-                    ,"Gelenekler sürer mi?"
+                    ,"Gelenekler sürer mi?",
+                    "Yaratıcılık patlar mı?",
+                    "İnançlar dönüşür mü?"
                 ],
                 [
                     "Sonuçlarını keşfet.",
@@ -1196,7 +1298,9 @@ window.prompts = {
                     "Kültürel sonuçları tahmin et.",
                     "Olası faydaları analiz et.",
                     "Hukuki soruları düşün.",
-                    "Sonrasını kestirmeye çalış."
+                    "Sonrasını kestirmeye çalış.",
+                    "Sonsuz soruları düşün.",
+                    "Beklenmedik çözümleri hayal et."
                 ]
             ]
         },
@@ -1222,7 +1326,9 @@ window.prompts = {
                     ,"Öncelikleri şöyle haritala"
                     ,"Şu rutinleri oluştur"
                     ,"Şu yönergeleri geliştir"
-                    ,"Şu hatırlatıcıları yarat"
+                    ,"Şu hatırlatıcıları yarat",
+                    "Şu adımları planla",
+                    "Şu kontrol noktalarını belirle"
                 ],
                 [
                     "dikkat dağıtıcıları önlemek",
@@ -1244,7 +1350,9 @@ window.prompts = {
                     ,"son teslim tarihlerine yetişmek"
                     ,"ekip uyumunu en üst düzeye çıkarmak"
                     ,"karar verme sürecini iyileştirmek"
-                    ,"hedefleri takip etmek"
+                    ,"hedefleri takip etmek",
+                    "dalgınlığı azaltmak",
+                    "günlük öncelikleri yönetmek"
                 ],
                 [
                     "kalıcı sonuçlar için",
@@ -1266,7 +1374,9 @@ window.prompts = {
                     ,"beklenmedik sorunlar çıktığında"
                     ,"iş yükü artarken"
                     ,"uzaktan çalışırken"
-                    ,"zorlu projelerde"
+                    ,"zorlu projelerde",
+                    "baskı altındayken bile",
+                    "sürekli değişimde"
                 ],
                 [
                     "Pratik örnekler kullan.",
@@ -1288,7 +1398,9 @@ window.prompts = {
                     ,"Kanıtlanmış yöntemleri vurgula."
                     ,"Takip tekniklerini göster."
                     ,"Dili anlaşılır tut."
-                    ,"Düzenli değerlendirmeyi teşvik et."
+                    ,"Düzenli değerlendirmeyi teşvik et.",
+                    "Hızlı kazanımlara odaklan.",
+                    "Adımları esnek tut."
                 ]
             ]
         },
@@ -1315,7 +1427,9 @@ window.prompts = {
                     "Şu başlıkları açıkla",
                     "Gelişimini özetle",
                     "Zorluklarını anlat",
-                    "Temellerini tartış"
+                    "Temellerini tartış",
+                    "Şu teoriyi ayrıntılı açıkla:",
+                    "Ana fikirleri belirt"
 
                 ],
                 [
@@ -1338,7 +1452,9 @@ window.prompts = {
                     "gezegen yörüngelerini",
                     "biyoteknolojiyi",
                     "pazar dinamiklerini",
-                    "iklim bilimini"
+                    "iklim bilimini",
+                    "yapay zeka etiği",
+                    "dijital güvenlik politikaları"
                 ],
                 [
                     "basit terimlerle",
@@ -1360,7 +1476,9 @@ window.prompts = {
                     "önemli keşiflere değinerek",
                     "ilgi çekici hikayelerle",
                     "adım adım açıklamalarla",
-                    "kısa alıştırmalar ekleyerek"
+                    "kısa alıştırmalar ekleyerek",
+                    "anlaşılır benzetmelerle",
+                    "gerçek sorunlarla"
                 ],
                 [
                     "Kısa tut.",
@@ -1382,7 +1500,9 @@ window.prompts = {
                     "Anlaşılır olmaya odaklan.",
                     "Merakı teşvik et.",
                     "Alıştırma görevleri öner.",
-                    "Ana noktaları özetle."
+                    "Ana noktaları özetle.",
+                    "Ek alıştırmalar ver.",
+                    "Daha fazla araştırma teşvik et."
                 ]
             ]
         },
@@ -1408,7 +1528,9 @@ window.prompts = {
                     ,"Şu tuhaf senaryoyu kur ki"
                     ,"Şöyle bir parodi oluştur"
                     ,"Şöyle bir dünya inşa et"
-                    ,"Şu olay örgüsünü geliştir"
+                    ,"Şu olay örgüsünü geliştir",
+                    "Şöyle bir masal uydur ki",
+                    "Çılgın bir efsane yarat"
                 ],
                 [
                     "kediler dünyayı yönetse",
@@ -1430,7 +1552,9 @@ window.prompts = {
                     ,"kalemler zihinleri kontrol etse"
                     ,"kayalar geceleri dans etse"
                     ,"ağaçlar yer değiştirse"
-                    ,"kum altına dönüşse"
+                    ,"kum altına dönüşse",
+                    "cupcake'ler galaksileri ele geçirse",
+                    "yerçekimi ninni söylese"
                 ],
                 [
                     "tam bir kaos olur",
@@ -1452,7 +1576,9 @@ window.prompts = {
                     ,"toplumsal normları yıkarak"
                     ,"sonsuz eğlence üreterek"
                     ,"gerçekliği yeniden şekillendirerek"
-                    ,"her gün sürprizler getirerek"
+                    ,"her gün sürprizler getirerek",
+                    "günleri maceraya çevirerek",
+                    "sıkıntıyı yok ederek"
                 ],
                 [
                     "Mizahi olsun.",
@@ -1474,7 +1600,9 @@ window.prompts = {
                     ,"Klişeleri tersine çevir."
                     ,"Komik bir sonla bitir."
                     ,"Absürtlüğü sıcaklıkla harmanla."
-                    ,"Okuyucuyu gülümseterek bitir."
+                    ,"Okuyucuyu gülümseterek bitir.",
+                    "Absürtlüğü artır.",
+                    "Kaosu neşeli tut."
                 ]
             ]
         },
@@ -1500,7 +1628,9 @@ window.prompts = {
                     ,"Tarihi bir eserin diliyle,"
                     ,"Bir çocuğun oyuncağından,"
                     ,"Müziğin perspektifinden,"
-                    ,"Bir rehberin bakış açısından,"
+                    ,"Bir rehberin bakış açısından,",
+                    "Anı penceresinden bakarak,",
+                    "Bir gezginin duruşuyla,"
                 ],
                 [
                     "aşkı düşün",
@@ -1522,7 +1652,9 @@ window.prompts = {
                     ,"kültürel normları değerlendir"
                     ,"gündelik mucizeleri gözlemle"
                     ,"bilimsel ilerlemeyi düşün"
-                    ,"toplumsal rolleri ele al"
+                    ,"toplumsal rolleri ele al",
+                    "geçmiş seçimleri hatırla",
+                    "iç sesleri dinle"
                 ],
                 [
                     "yeni bir anlayış için",
@@ -1544,7 +1676,9 @@ window.prompts = {
                     ,"daha fazla empati için"
                     ,"gelenekleri sorgulamak için"
                     ,"hayranlık uyandırmak için"
-                    ,"birlik duygusu yaratmak için"
+                    ,"birlik duygusu yaratmak için",
+                    "yeniden şükran duymak için",
+                    "küçük anları takdir etmek için"
                 ],
                 [
                     "Düşündürücü olsun.",
@@ -1566,7 +1700,9 @@ window.prompts = {
                     ,"Gözlemleri canlı tut."
                     ,"Mizah ve derinliği dengede tut."
                     ,"Bir içgörüyle bitir."
-                    ,"Düşünceli bir ton koru."
+                    ,"Düşünceli bir ton koru.",
+                    "Sessizce düşündür.",
+                    "Hayranlık için alan bırak."
                 ]
             ]
         },
@@ -1592,7 +1728,9 @@ window.prompts = {
                     ,"Sanal bir arkadaş hayal et ki"
                     ,"Şu cihazın konseptini oluştur:"
                     ,"Şu yazılımı tasarla ki"
-                    ,"Böyle bir YZ hizmeti açıkla:"
+                    ,"Böyle bir YZ hizmeti açıkla:",
+                    "Şu sinir ağını hayal et ki",
+                    "Yeni bir yardımcı prototip yap"
                 ],
                 [
                     "dünyadaki açlığı çözen",
@@ -1614,7 +1752,9 @@ window.prompts = {
                     ,"kişisel sağlığı optimize eden"
                     ,"ev işlerini yöneten"
                     ,"verimli gıda üreten"
-                    ,"keşfedilmemiş okyanusları haritalayan"
+                    ,"keşfedilmemiş okyanusları haritalayan",
+                    "insan yaratıcılığını öngören",
+                    "küresel trendleri tahmin eden"
                 ],
                 [
                     "ve insanlığa faydalı olan",
@@ -1636,7 +1776,9 @@ window.prompts = {
                     ,"etik tartışmalar yaratan"
                     ,"günlük yaşamı değiştiren"
                     ,"her kullanıcıyı güçlendiren"
-                    ,"teknolojik sınırları zorlayan"
+                    ,"teknolojik sınırları zorlayan",
+                    "tüm sektörleri dönüştüren",
+                    "günlük rutinleri değiştiren"
                 ],
                 [
                     "Olasılıkları vurgula.",
@@ -1658,7 +1800,9 @@ window.prompts = {
                     "Çevresel etkileri tartış.",
                     "Bakım gerekliliklerini belirt.",
                     "Eğitim ihtiyaçlarını açıkla.",
-                    "Uzun vadeli sonuçları not et."
+                    "Uzun vadeli sonuçları not et.",
+                    "Etik önlemleri anlat.",
+                    "Kullanıcı güvenini vurgula."
                 ]
             ]
         },
@@ -1684,7 +1828,9 @@ window.prompts = {
                     ,"Şu konuda yardımcı bir araç tasarla"
                     ,"Şu odaklı bir platform icat et"
                     ,"Şu konuda bir yarışma düzenle"
-                    ,"Şu alanda çevrimiçi bir topluluk kur"
+                    ,"Şu alanda çevrimiçi bir topluluk kur",
+                    "Şu konuda bir yardım projesi düşün",
+                    "Bağış kampanyası tasarla"
                 ],
                 [
                     "yenilenebilir enerji",
@@ -1706,7 +1852,9 @@ window.prompts = {
                     ,"uzay turizmi"
                     ,"el yapımı takılar"
                     ,"kitlesel sanat"
-                    ,"geri dönüşüm yenilikleri"
+                    ,"geri dönüşüm yenilikleri",
+                    "kentsel toplum bahçeleri",
+                    "yerel sanat kolektifleri"
                 ],
                 [
                     "fark yaratacak",
@@ -1728,7 +1876,9 @@ window.prompts = {
                     ,"küresel potansiyelli"
                     ,"kullanıcı geri bildirimiyle"
                     ,"ortak finansman yoluyla"
-                    ,"açık kaynak araçlarıyla"
+                    ,"açık kaynak araçlarıyla",
+                    "yerel bağışlarla desteklenen",
+                    "gönüllülerle güçlenen"
                 ],
                 [
                     "Temel özellikleri özetle.",
@@ -1750,7 +1900,9 @@ window.prompts = {
                     ,"Operasyonel ihtiyaçları belirt."
                     ,"Neden şimdi uygun olduğunu açıkla."
                     ,"Olası riskleri belirle."
-                    ,"Büyüme potansiyelini göster."
+                    ,"Büyüme potansiyelini göster.",
+                    "Gönüllü rollerini özetle.",
+                    "Topluluk etkisini vurgula."
                 ]
             ]
         },
@@ -1776,7 +1928,9 @@ window.prompts = {
                     ,"Şu konuyu işleyen bir canlı yayın tasarla"
                     ,"Şunu içeren bir reklam senaryosu yaz"
                     ,"Şunu gösteren bir hızlandırılmış çekim kurgula"
-                    ,"Şu konulu bir gezi montajı planla"
+                    ,"Şu konulu bir gezi montajı planla",
+                    "Şu konulu viral bir meydan okuma tasarla",
+                    "Bir tepki videosu düşün"
                 ],
                 [
                     "günlük yaşamı değiştiren geleceğin teknolojisi",
@@ -1798,7 +1952,9 @@ window.prompts = {
                     ,"yeni trendlerin yükselişi"
                     ,"arkadaşlar arasındaki bir meydan okuma"
                     ,"terkedilmiş kalelerin keşfi"
-                    ,"aygıtların gizli yaşamı"
+                    ,"aygıtların gizli yaşamı",
+                    "beklenmedik dans karışımları",
+                    "küçük mucizelerin peşinde"
                 ],
                 [
                     "İzleyiciyi ekranda tutacak kamera açıları neler olmalı?",
@@ -1820,7 +1976,9 @@ window.prompts = {
                     ,"Hangi görsel motif sahneleri bağlar?"
                     ,"Doruk noktası nerede?"
                     ,"Hangi etkileşimli öğeler yakışır?"
-                    ,"İzleyiciler bunu nasıl paylaşır?"
+                    ,"İzleyiciler bunu nasıl paylaşır?",
+                    "Hangi popüler etiket işi büyütür?",
+                    "Hangi platform en iyisi?"
                 ],
                 [
                     "Kısa ve akıcı tut.",
@@ -1842,7 +2000,9 @@ window.prompts = {
                     ,"Aklı çekici bir açılış ekle."
                     ,"Kolay okunur altyazılar ekle."
                     ,"Çeşitli mekanlar düşün."
-                    ,"Akılda kalıcı bir cümleyle bitir."
+                    ,"Akılda kalıcı bir cümleyle bitir.",
+                    "Çevrimiçi yay.",
+                    "Takipçileri etiketlemeye teşvik et."
                 ]
             ]
         },
@@ -1869,7 +2029,9 @@ window.prompts = {
                     ,"Şu unsurları içeren hayal dolu bir sahne yarat:"
                     ,"Şunun 3B modelini çiz:"
                     ,"Şunun silüetini hazırla:"
-                    ,"Şu konuda ayrıntılı bir harita oluştur:"
+                    ,"Şu konuda ayrıntılı bir harita oluştur:",
+                    "Şu kavramı resmet:",
+                    "Bir arma taslağı çiz"
                 ],
                 [
                     "bisiklete binen efsanevi bir yaratık",
@@ -1891,7 +2053,9 @@ window.prompts = {
                     ,"uzaylılarla karşılaşan bir kaşif"
                     ,"keman çalan bir robot"
                     ,"gece parıldayan büyülü bir orman"
-                    ,"sualtı geleceğinin bir şehri"
+                    ,"sualtı geleceğinin bir şehri",
+                    "zaman büken bir geçit",
+                    "havada süzülen ışık ormanı"
                 ],
                 [
                     "Canlı neon renkler kullan.",
@@ -1913,7 +2077,9 @@ window.prompts = {
                     ,"Kalın çizgiler dene."
                     ,"Eğlenceli desenler ekle."
                     ,"Minimalist kal."
-                    ,"Fotoğrafik unsurlar karıştır."
+                    ,"Fotoğrafik unsurlar karıştır.",
+                    "Canlı dönen renkler kullan.",
+                    "Kozmik desenlerle dene."
                 ],
                 [
                     "Canlı renkler kullan.",
@@ -1935,7 +2101,9 @@ window.prompts = {
                     ,"Yaratıcılığı öne çıkar."
                     ,"Oranları koru."
                     ,"Hafif geçişler ekle."
-                    ,"Yorum payı bırak."
+                    ,"Yorum payı bırak.",
+                    "Detay ve netliği dengede tut.",
+                    "Çizgileri dinamik tut."
                 ]
             ]
         },
@@ -1961,7 +2129,9 @@ window.prompts = {
                     ,"Şu korkuyu dile getir"
                     ,"Soğuk terleri hissettir"
                     ,"Korkuyu yansıt"
-                    ,"Gecenin sessizliğini boz"
+                    ,"Gecenin sessizliğini boz",
+                    "Şu rüyayı fısılda ki",
+                    "Sessiz korkuyu anlat"
                 ],
                 [
                     "gölgeler fısıldadığında",
@@ -1983,7 +2153,9 @@ window.prompts = {
                     ,"yansımalarda siluetler belirdiğinde"
                     ,"sessizlikte bir kalp atışı duyulduğunda"
                     ,"adımlar boşluktan geldiğinde"
-                    ,"kapılar kendi kendine çarptığında"
+                    ,"kapılar kendi kendine çarptığında",
+                    "gölgeler sonsuza uzandığında",
+                    "yankılar düşünceni boğduğunda"
                 ],
                 [
                     "aklını kaçırırsın",
@@ -2005,7 +2177,9 @@ window.prompts = {
                     ,"korku gittikçe sıkılaşana dek"
                     ,"zaman anlamını yitirene dek"
                     ,"gerçeklik bükülene dek"
-                    ,"dehşet hükmedene dek"
+                    ,"dehşet hükmedene dek",
+                    "umut küle dönene dek",
+                    "kabuslar fısıldayana dek"
                 ],
                 [
                     "Rahatsız edici olsun.",
@@ -2027,7 +2201,9 @@ window.prompts = {
                     ,"Klişe ifadelerden kaçın."
                     ,"Kalıcı bir korku bırak."
                     ,"İçten bir anlatım kullan."
-                    ,"Kısa cümlelerle bitir."
+                    ,"Kısa cümlelerle bitir.",
+                    "Okuru huzursuz bırak.",
+                    "Son korkuyu fısılda."
                 ]
             ]
         }
