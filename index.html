@@ -85,8 +85,10 @@
       return { cdn: cdnScript, local: localScript, loadPromise };
     }
 
-    loadWithFallback('https://cdn.tailwindcss.com', 'tailwind.js');
+    const tailwindScripts = loadWithFallback('https://cdn.tailwindcss.com', 'tailwind.js');
     window.lucideScripts = loadWithFallback('https://unpkg.com/lucide@latest/dist/umd/lucide.min.js', 'lucide.min.js');
+    Promise.all([tailwindScripts.loadPromise, window.lucideScripts.loadPromise])
+      .finally(() => { document.body.style.visibility = 'visible'; });
   })();
 </script>
     <style>
@@ -266,7 +268,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen p-4">
+<body class="min-h-screen p-4" style="visibility:hidden;">
 
     <div id="app-container" class="max-w-6xl mx-auto relative">
         <!-- Theme Toggle -->
