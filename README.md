@@ -1,8 +1,19 @@
 # Prompter
 
+
 Prompter is a small web application that generates creative prompts for AI models. It runs entirely in the browser using HTML, TailwindCSS and vanilla JavaScript.
 
 Prompt templates are now loaded from a separate `prompts.js` file for faster page loading.
+## Features
+
+- Works offline after the first visit
+- Fast loading thanks to the local `prompts.js` file
+- Light and dark themes
+- English and Turkish interface
+- Twelve prompt categories with over 1.7M combinations
+This **AI prompt generator** delivers **creative prompt ideas** in a lightweight **offline web app** that runs directly in your browser.
+
+
 ## Opening the application
 
 Simply open `index.html` in any modern web browser. You can double‑click the file or use your browser's **Open File** option. No server setup is required.
