@@ -313,6 +313,9 @@
                 <button id="download-button" class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50" title="Download as .txt" aria-label="Download as .txt">
                   <i data-lucide="download" class="w-4 h-4" aria-hidden="true"></i>
                 </button>
+                <button id="share-button" class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50" title="Share prompt" aria-label="Share prompt">
+                  <i data-lucide="share-2" class="w-4 h-4" aria-hidden="true"></i>
+                </button>
               </div>
             </div>
             <div id="generated-prompt-text" class="bg-black/30 rounded-xl p-3 leading-relaxed whitespace-pre-wrap text-base font-mono selection:bg-purple-500 selection:text-white">
@@ -321,6 +324,17 @@
             <p id="copy-success-message" class="text-green-400 text-sm mt-2 animate-pulse hidden">
               Prompt copied successfully!
             </p>
+        </div>
+
+        <!-- History Section -->
+        <div id="history-section" class="hidden bg-white/10 backdrop-blur-md rounded-2xl p-4 mt-6 border border-white/20 shadow-lg">
+          <div class="flex justify-between items-center mb-3">
+            <h3 id="history-title" class="text-lg font-semibold">History</h3>
+            <button id="clear-history" class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50" title="Clear history" aria-label="Clear history">
+              <i data-lucide="trash" class="w-4 h-4" aria-hidden="true"></i>
+            </button>
+          </div>
+          <ul id="history-list" class="list-disc pl-5 space-y-1 text-sm"></ul>
         </div>
 
         <!-- Footer/Stats -->

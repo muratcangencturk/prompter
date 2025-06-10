@@ -1,4 +1,4 @@
-/* global prompts */
+
 (() => {
     // --- Core Application Logic ---
     const appState = {
@@ -10,7 +10,8 @@
         theme: 'dark', // Default theme
         history: [],        // overall prompt history
         partHistory: [],    // per-part history
-        HISTORY_SIZE: 100    // Increased history size
+        HISTORY_SIZE: 100,   // Increased history size
+        promptHistory: []    // generated prompts history
     };
 
     // --- Utility Functions ---
@@ -87,6 +88,9 @@
             randomCategory: 'Random Mix',
             themeLightTitle: 'Light Theme',
             themeDarkTitle: 'Dark Theme',
+            shareButtonTitle: 'Share prompt',
+            historyTitle: 'History',
+            clearHistoryTitle: 'Clear history',
             langEnLabel: 'Switch to English',
             langTrLabel: 'Switch to Turkish'
         },
@@ -104,6 +108,9 @@
             randomCategory: 'Rastgele Karışım',
             themeLightTitle: 'Açık Tema',
             themeDarkTitle: 'Koyu Tema',
+            shareButtonTitle: 'Promptu paylaş',
+            historyTitle: 'Geçmiş',
+            clearHistoryTitle: 'Geçmişi temizle',
             langEnLabel: 'İngilizce\'ye geç',
             langTrLabel: 'Türkçe\'ye geç'
         }
@@ -139,6 +146,10 @@
         const generatedPromptText = document.getElementById('generated-prompt-text');
         const copyButton = document.getElementById('copy-button');
         const downloadButton = document.getElementById('download-button');
+        const shareButton = document.getElementById('share-button');
+        const historySection = document.getElementById('history-section');
+        const historyList = document.getElementById('history-list');
+        const clearHistoryButton = document.getElementById('clear-history');
         const copySuccessMessage = document.getElementById('copy-success-message');
         const langEnButton = document.getElementById('lang-en');
         const langTrButton = document.getElementById('lang-tr');
@@ -171,7 +182,7 @@
         };
 
         // --- Language Switching Logic ---
-        const setLanguage = (lang) => {
+       const setLanguage = (lang) => {
             appState.language = lang;
             document.documentElement.lang = lang;
             // Update UI text
@@ -185,6 +196,11 @@
             copyButton.setAttribute('aria-label', uiText[lang].copyButtonTitle);
             downloadButton.title = uiText[lang].downloadButtonTitle;
             downloadButton.setAttribute('aria-label', uiText[lang].downloadButtonTitle);
+            shareButton.title = uiText[lang].shareButtonTitle;
+            shareButton.setAttribute('aria-label', uiText[lang].shareButtonTitle);
+            document.getElementById('history-title').textContent = uiText[lang].historyTitle;
+            clearHistoryButton.title = uiText[lang].clearHistoryTitle;
+            clearHistoryButton.setAttribute('aria-label', uiText[lang].clearHistoryTitle);
             copySuccessMessage.textContent = uiText[lang].copySuccessMessage;
             document.getElementById('app-stats').textContent = uiText[lang].appStats;
             document.getElementById('footer-prompter').textContent = uiText[lang].footerPrompter;
@@ -219,8 +235,35 @@
             }
             localStorage.setItem('language', lang);
             // Update theme button titles based on language
-            updateButtonTitles();
-        };
+           updateButtonTitles();
+       };
+
+       const renderHistory = () => {
+            if (!historySection) return;
+            historyList.innerHTML = '';
+            if (!appState.promptHistory.length) {
+                historySection.classList.add('hidden');
+                return;
+            }
+            appState.promptHistory.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                historyList.appendChild(li);
+            });
+            historySection.classList.remove('hidden');
+       };
+
+       const loadHistory = () => {
+            try {
+                const saved = JSON.parse(localStorage.getItem('promptHistory'));
+                if (Array.isArray(saved)) {
+                    appState.promptHistory = saved;
+                }
+            } catch (e) {
+                appState.promptHistory = [];
+            }
+            renderHistory();
+       };
 
        const updateButtonTitles = () => {
              themeLightButton.title = uiText[appState.language].themeLightTitle;
@@ -230,7 +273,7 @@
        };
 
         // --- Prompt Generation Logic ---
-        const generatePrompt = async () => {
+       const generatePrompt = async () => {
             appState.isGenerating = true;
             generateButton.disabled = true;
             generatedPromptText.innerHTML = '<div class="flex justify-center items-center h-20"><i data-lucide="loader-2" class="w-6 h-6 animate-spin" aria-hidden="true"></i></div>';
@@ -290,6 +333,12 @@
 
                 appState.generatedPrompt = newPrompt;
                 generatedPromptText.textContent = newPrompt;
+                appState.promptHistory.unshift(newPrompt);
+                if (appState.promptHistory.length > appState.HISTORY_SIZE) {
+                    appState.promptHistory.pop();
+                }
+                localStorage.setItem('promptHistory', JSON.stringify(appState.promptHistory));
+                renderHistory();
                 appState.isGenerating = false;
                 generateButton.disabled = false;
             } catch (err) {
@@ -347,6 +396,22 @@
                 URL.revokeObjectURL(url);
             });
 
+            // Share button
+            shareButton.addEventListener('click', () => {
+                if (!appState.generatedPrompt) return;
+                const shareData = {
+                    title: 'Prompter',
+                    text: appState.generatedPrompt,
+                    url: window.location.href
+                };
+                if (navigator.share) {
+                    navigator.share(shareData).catch(() => {});
+                } else {
+                    const tweet = encodeURIComponent(`${appState.generatedPrompt}\n${window.location.href}`);
+                    window.open(`https://twitter.com/intent/tweet?text=${tweet}`, '_blank');
+                }
+            });
+
             // Language buttons
             langEnButton.addEventListener('click', () => setLanguage('en'));
             langTrButton.addEventListener('click', () => setLanguage('tr'));
@@ -354,7 +419,14 @@
             // Theme buttons
             themeLightButton.addEventListener('click', () => setTheme(THEMES.LIGHT));
             themeDarkButton.addEventListener('click', () => setTheme(THEMES.DARK));
-        };
+
+            // Clear history button
+            clearHistoryButton.addEventListener('click', () => {
+                appState.promptHistory = [];
+                localStorage.removeItem('promptHistory');
+                renderHistory();
+            });
+       };
 
         // --- Initialization ---
         const initializeApp = () => {
@@ -401,6 +473,8 @@
             // Load saved theme or default to 'dark'
             const savedTheme = localStorage.getItem('theme') || THEMES.DARK;
             setTheme(savedTheme);
+
+            loadHistory();
 
             categoryButtonsContainer.innerHTML = '';
             categories.forEach(category => {
