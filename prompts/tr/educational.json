@@ -24,7 +24,10 @@
       "Şu teoriyi ayrıntılı açıkla:",
       "Ana fikirleri belirt",
       "Şunun kökenlerini açıkla",
-      "Şunu açıklayan bir rehber sun"
+      "Şunu açıklayan bir rehber sun",
+      "Kısa bir giriş yap:",
+      "Temellerini tanıt:",
+      "Yeni başlayanları adım adım yönlendir:"
     ],
     [
       "kuantum fiziği",
@@ -50,7 +53,11 @@
       "yapay zeka etiği",
       "dijital güvenlik politikaları",
       "kuantum hesaplama",
-      "kriptografi prensipleri"
+      "kriptografi prensipleri",
+      "yenilenebilir enerji depolaması",
+      "blokzincirin temelleri",
+      "eski felsefi metinler",
+      "okyanus biliminin temelleri"
     ],
     [
       "basit terimlerle",
@@ -76,7 +83,10 @@
       "anlaşılır benzetmelerle",
       "gerçek sorunlarla",
       "adım adım görsellerle",
-      "basit şemalarla"
+      "basit şemalarla",
+      "günlük benzetmelerle",
+      "uygulamalı etkinliklerle",
+      "kısa video örnekleriyle"
     ],
     [
       "Kısa tut.",
@@ -102,7 +112,10 @@
       "Ek alıştırmalar ver.",
       "Daha fazla araştırma teşvik et.",
       "Sonunda sorulara yer ver.",
-      "Uygulamalı çalışma kağıtları ekle."
+      "Uygulamalı çalışma kağıtları ekle.",
+      "Katılımı teşvik et.",
+      "Hızlı başvuru çizelgeleri sun.",
+      "Kısaca özetle."
     ]
   ]
 }
