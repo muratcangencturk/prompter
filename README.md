@@ -85,6 +85,15 @@ contributions.
 See [CONTRIBUTING.md](CONTRIBUTING.md) for full setup instructions and the pull
 request workflow.
 
+## Deployment
+
+The site is published automatically using GitHub Pages. The workflow
+[`pages.yml`](.github/workflows/pages.yml) installs dependencies, runs
+`npm run build` to generate `prompts.js` and then uploads the artifact
+to GitHub Pages using `actions/upload-pages-artifact` and
+`actions/deploy-pages`. Pushes to the `main` branch trigger a new
+deployment and the site becomes available at the repository's Pages URL.
+
 ## License
 
 This project is licensed under the Apache License 2.0. See [LICENSE](LICENSE) for the full text.
