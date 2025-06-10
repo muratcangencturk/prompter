@@ -54,7 +54,7 @@ Prompter offers a variety of prompt themes. Select a category by clicking its ic
 - **Image** – descriptions for unique visuals or logos
 - **Hellprompts** – unsettling horror themes
 
-Prompter includes **12 categories** in total—the **Random Mix** plus 11 themed options listed above. Each prompt is composed of four parts with 22 choices in each. Most categories therefore generate **234,256** unique prompts, while the **Video** category offers a bit more with **244,904** possibilities. Across all categories this adds up to roughly **2,587,464** different combinations.
+Prompter includes **12 categories** in total—the **Random Mix** plus 11 themed options listed above. Each prompt is composed of four parts with 22 choices in each, meaning every category yields **234,256** unique prompts. Summed across the 11 themed categories this comes to **2,576,816** possible prompts.
 
 If icon fonts fail to load, the app falls back to emoji symbols so the buttons remain visible.
 
