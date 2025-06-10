@@ -14,6 +14,8 @@ This guide explains how to set up the project, run tests, lint and format the co
    ```bash
    npm install
    ```
+   This project uses **ESLint v8.57.0**, which is installed as a dev
+   dependency. Make sure your editor uses this version for linting.
 4. (Optional) Start a local web server to use the app:
    ```bash
    python3 -m http.server
