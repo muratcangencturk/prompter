@@ -11,5 +11,12 @@
   "rules": {
     "semi": ["error", "always"],
     "quotes": ["error", "single"]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["scripts/*.js"],
+      "env": {"node": true},
+      "parserOptions": {"sourceType": "script"}
+    }
+  ]
 }

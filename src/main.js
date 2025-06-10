@@ -1,4 +1,3 @@
-/* global prompts */
 (() => {
     // --- Core Application Logic ---
     const appState = {
