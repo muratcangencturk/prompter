@@ -26,7 +26,7 @@ jobs:
           node-version: 18
       - name: Install dependencies
         run: npm install
-      - name: Build prompts.js
+      - name: Generate prompts.js
         run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
