@@ -24,7 +24,10 @@
       "Detail the theory of",
       "Explain core ideas behind",
       "Describe the origins of",
-      "Offer an explainer on"
+      "Offer an explainer on",
+      "Offer a crash course on",
+      "Introduce the fundamentals of",
+      "Guide absolute beginners through"
     ],
     [
       "quantum physics",
@@ -50,7 +53,11 @@
       "artificial intelligence ethics",
       "digital security policies",
       "quantum computing",
-      "cryptographic principles"
+      "cryptographic principles",
+      "renewable energy storage",
+      "the basics of blockchain",
+      "ancient philosophical texts",
+      "oceanography fundamentals"
     ],
     [
       "in simple terms",
@@ -76,7 +83,10 @@
       "with approachable metaphors",
       "using real challenges",
       "with step-by-step visuals",
-      "with straightforward diagrams"
+      "with straightforward diagrams",
+      "through real-life analogies",
+      "using short video demonstrations",
+      "with fun trivia breaks"
     ],
     [
       "Keep it short.",
@@ -102,7 +112,10 @@
       "Include practice exercises.",
       "Encourage further study.",
       "Invite questions at the end.",
-      "Provide hands-on worksheets."
+      "Provide hands-on worksheets.",
+      "Invite audience participation.",
+      "Provide quick reference charts.",
+      "Offer a brief recap."
     ]
   ]
 }
