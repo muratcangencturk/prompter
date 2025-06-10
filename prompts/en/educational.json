@@ -22,7 +22,8 @@
       "Summarize the challenges of",
       "Discuss the basics of",
       "Detail the theory of",
-      "Explain core ideas behind"
+      "Explain core ideas behind",
+      "Describe the origins of"
     ],
     [
       "quantum physics",
@@ -46,7 +47,8 @@
       "market dynamics",
       "climate change science",
       "artificial intelligence ethics",
-      "digital security policies"
+      "digital security policies",
+      "quantum computing"
     ],
     [
       "in simple terms",
@@ -70,7 +72,8 @@
       "using step-by-step explanations",
       "including quick exercises",
       "with approachable metaphors",
-      "using real challenges"
+      "using real challenges",
+      "with step-by-step visuals"
     ],
     [
       "Keep it short.",
@@ -94,7 +97,8 @@
       "Offer practice tasks.",
       "Summarize key points.",
       "Include practice exercises.",
-      "Encourage further study."
+      "Encourage further study.",
+      "Invite questions at the end."
     ]
   ]
 }
