@@ -252,16 +252,16 @@
         <!-- Theme Toggle -->
         <div class="theme-toggle-container absolute top-4 left-4 flex items-center gap-2 bg-black/20 backdrop-blur-sm p-1 rounded-lg border border-white/20 z-10">
             <button id="theme-light" class="p-1.5 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50" title="Light Theme" aria-label="Light Theme">
-              <i data-lucide="sun" class="w-5 h-5" aria-hidden="true"></i>
+              <i data-lucide="sun" class="w-5 h-5" role="img" aria-label="Sun icon"></i>
             </button>
             <button id="theme-dark" class="p-1.5 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50" title="Dark Theme" aria-label="Dark Theme">
-              <i data-lucide="moon" class="w-5 h-5" aria-hidden="true"></i>
+              <i data-lucide="moon" class="w-5 h-5" role="img" aria-label="Moon icon"></i>
             </button>
         </div>
 
         <!-- Language Switcher -->
         <div class="absolute top-4 right-4 flex items-center gap-2 bg-black/20 backdrop-blur-sm p-1 rounded-lg border border-white/20 z-10">
-           <i data-lucide="languages" class="w-5 h-5 text-blue-300 ml-1" aria-hidden="true"></i>
+           <i data-lucide="languages" class="w-5 h-5 text-blue-300 ml-1" role="img" aria-label="Languages icon"></i>
            <button id="lang-en" class="px-3 py-1 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50" aria-label="Switch to English">
              EN
            </button>
@@ -272,6 +272,7 @@
 
         <!-- Header -->
         <div class="text-center mb-6 pt-16 md:pt-12">
+          <img src="icons/logo.svg" alt="Prompter logo" class="mx-auto mb-4 w-16 h-16" id="app-logo">
           <h1 id="app-title" class="text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
             AI Prompt Generator - Prompter
           </h1>
@@ -294,7 +295,7 @@
         <div class="text-center mb-4">
           <button id="generate-button" class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 disabled:opacity-50 disabled:cursor-not-allowed font-bold py-3 px-6 rounded-xl text-base transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 focus:ring-offset-purple-900" aria-label="Generate New Prompt">
             <div class="flex items-center justify-center">
-              <i data-lucide="sparkles" class="w-4 h-4 mr-2" aria-hidden="true"></i>
+              <i data-lucide="sparkles" class="w-4 h-4 mr-2" role="img" aria-label="Sparkles icon"></i>
               <span id="generate-button-text">Generate New Prompt</span>
             </div>
           </button>
@@ -308,10 +309,10 @@
               </h3>
               <div class="flex gap-2">
                 <button id="copy-button" class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50" title="Copy to clipboard" aria-label="Copy to clipboard">
-                  <i data-lucide="copy" class="w-4 h-4" aria-hidden="true"></i>
+                  <i data-lucide="copy" class="w-4 h-4" role="img" aria-label="Copy icon"></i>
                 </button>
                 <button id="download-button" class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50" title="Download as .txt" aria-label="Download as .txt">
-                  <i data-lucide="download" class="w-4 h-4" aria-hidden="true"></i>
+                  <i data-lucide="download" class="w-4 h-4" role="img" aria-label="Download icon"></i>
                 </button>
               </div>
             </div>
