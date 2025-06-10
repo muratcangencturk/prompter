@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{js,json,md,css,html}\"",
-    "test": "npm run lint"
+    "test": "npm run lint",
+    "build": "node scripts/build.js"
   },
   "devDependencies": {
     "eslint": "8.57.0",

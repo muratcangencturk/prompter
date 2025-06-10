@@ -62,6 +62,30 @@ If the TailwindCSS CDN is unreachable, a local copy bundled with the app is load
 
 Example: click the **Video** icon, then press **Generate New Prompt** to create a video-related idea.
 
+## Prompt file format
+
+Prompt data lives in the `prompts/` directory. Files are organised by language and category:
+`prompts/<language>/<category>.json`. Each JSON file contains a `parts` array with four arrays
+of strings. These arrays represent the beginning, topic, continuation and ending of a prompt:
+
+```json
+{
+  "parts": [
+    ["First part option", "..."],
+    ["Second part option", "..."],
+    ["Third part option", "..."],
+    ["Fourth part option", "..."]
+  ]
+}
+```
+
+### Creating categories or translations
+
+1. Add a new JSON file under `prompts/<language>/` following the structure above.
+2. Register the category in `src/main.js` with an icon, emoji and names.
+3. Provide corresponding files for other languages to offer translations.
+4. Run `npm run build` to regenerate `prompts.js` so deployments include your changes.
+
 ## Development
 
 This repository uses ESLint and Prettier for code quality. After cloning the
