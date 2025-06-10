@@ -32,7 +32,8 @@ window.prompts = {
           "Imagine an autonomous system that",
           "Draft an interactive AI that",
           "Imagine a sentient algorithm that",
-          "Imagine Tony Stark and Albert Einstein designing an AI that"
+          "Imagine Tony Stark and Albert Einstein designing an AI that",
+          "Design an autonomous system that"
         ],
         [
           "solves world hunger",
@@ -62,7 +63,8 @@ window.prompts = {
           "predicts market shifts instantly",
           "creates immersive virtual worlds",
           "mediates global conflicts",
-          "rivals Tesla's innovations"
+          "rivals Tesla's innovations",
+          "creates passive income"
         ],
         [
           "and benefits humanity",
@@ -92,7 +94,8 @@ window.prompts = {
           "while earning public trust",
           "and inspires collaboration",
           "with transparent algorithms",
-          "with guidance from NASA"
+          "with guidance from NASA",
+          "using only a laptop, phone, and internet"
         ],
         [
           "Focus on possibilities.",
@@ -122,7 +125,10 @@ window.prompts = {
           "Highlight ethical frameworks.",
           "Consider lifelong learning.",
           "Mention open-source benefits.",
-          "Mention ties to the Avengers."
+          "Mention ties to the Avengers.",
+          "You have only three days.",
+          "Start with zero budget.",
+          "Act like your life depends on it."
         ]
       ]
     },
@@ -157,7 +163,8 @@ window.prompts = {
           "Draft a bizarre saga where",
           "Write a comedy sketch in which",
           "Stage a surreal festival where",
-          "Envision Albert Einstein debating Tony Stark where"
+          "Envision Albert Einstein debating Tony Stark where",
+          "Design an autonomous system that"
         ],
         [
           "cats rule the earth",
@@ -187,7 +194,8 @@ window.prompts = {
           "pizzas control the weather",
           "time travel is a daily chore",
           "ghosts host talk shows",
-          "a quest begins in Hogwarts"
+          "a quest begins in Hogwarts",
+          "creates passive income"
         ],
         [
           "resulting in chaos",
@@ -217,7 +225,8 @@ window.prompts = {
           "causing delightful confusion",
           "opening portals to chaos",
           "turning logic into jelly",
-          "with Gandalf narrating"
+          "with Gandalf narrating",
+          "using only a laptop, phone, and internet"
         ],
         [
           "Make it witty.",
@@ -247,7 +256,10 @@ window.prompts = {
           "Go over-the-top.",
           "Keep dialogue quirky.",
           "Let imagination explode.",
-          "Include cameo appearances from Star Wars."
+          "Include cameo appearances from Star Wars.",
+          "You have only three days.",
+          "Start with zero budget.",
+          "Act like your life depends on it."
         ]
       ]
     },
@@ -282,7 +294,8 @@ window.prompts = {
           "Introduce the fundamentals of",
           "Guide absolute beginners through",
           "Offer a quick tutorial on",
-          "Explain how Tony Stark and Albert Einstein would approach"
+          "Explain how Tony Stark and Albert Einstein would approach",
+          "Design an autonomous system that"
         ],
         [
           "quantum physics",
@@ -313,7 +326,8 @@ window.prompts = {
           "the basics of blockchain",
           "ancient philosophical texts",
           "oceanography fundamentals",
-          "innovation at SpaceX"
+          "innovation at SpaceX",
+          "creates passive income"
         ],
         [
           "in simple terms",
@@ -343,7 +357,8 @@ window.prompts = {
           "through real-life analogies",
           "using short video demonstrations",
           "with fun trivia breaks",
-          "drawing from lessons at MIT"
+          "drawing from lessons at MIT",
+          "using only a laptop, phone, and internet"
         ],
         [
           "Keep it short.",
@@ -373,7 +388,10 @@ window.prompts = {
           "Invite audience participation.",
           "Provide quick reference charts.",
           "Offer a brief recap.",
-          "Reference discoveries at CERN."
+          "Reference discoveries at CERN.",
+          "You have only three days.",
+          "Start with zero budget.",
+          "Act like your life depends on it."
         ]
       ]
     },
@@ -408,7 +426,8 @@ window.prompts = {
           "Share the chilling silence when",
           "Reveal the terror that begins as",
           "Portray the anguish when",
-          "Describe the terror when Voldemort confronts Darth Vader"
+          "Describe the terror when Voldemort confronts Darth Vader",
+          "Design an autonomous system that"
         ],
         [
           "shadows whisper",
@@ -438,7 +457,8 @@ window.prompts = {
           "whispers crawl from the floor",
           "the moon bleeds red",
           "a distant scream never ends",
-          "the sky turns green on Tatooine"
+          "the sky turns green on Tatooine",
+          "creates passive income"
         ],
         [
           "driving you insane",
@@ -468,7 +488,8 @@ window.prompts = {
           "until sanity dissolves",
           "while fear twists reality",
           "as darkness devours hope",
-          "while demons chant lines from Macbeth"
+          "while demons chant lines from Macbeth",
+          "using only a laptop, phone, and internet"
         ],
         [
           "Make it unsettling.",
@@ -498,7 +519,10 @@ window.prompts = {
           "Keep tension suffocating.",
           "Focus on sensory horror.",
           "End on a haunting echo.",
-          "Hint at a crossover with Stranger Things."
+          "Hint at a crossover with Stranger Things.",
+          "You have only three days.",
+          "Start with zero budget.",
+          "Act like your life depends on it."
         ]
       ]
     },
@@ -533,7 +557,8 @@ window.prompts = {
           "Suggest a community project centered on",
           "Imagine a pop-up shop featuring",
           "Invent a wearable device for",
-          "Pitch a startup rivaling Tesla that focuses on"
+          "Pitch a startup rivaling Tesla that focuses on",
+          "Design an autonomous system that"
         ],
         [
           "renewable energy",
@@ -563,7 +588,8 @@ window.prompts = {
           "interactive storytelling",
           "eco-tourism for families",
           "smart wearable health trackers",
-          "technology from Stark Industries"
+          "technology from Stark Industries",
+          "creates passive income"
         ],
         [
           "that stands out",
@@ -593,7 +619,8 @@ window.prompts = {
           "that builds loyal followers",
           "leveraging local partnerships",
           "driven by community feedback",
-          "attracting investors like Elon Musk"
+          "attracting investors like Elon Musk",
+          "using only a laptop, phone, and internet"
         ],
         [
           "Outline key features.",
@@ -623,7 +650,10 @@ window.prompts = {
           "Include a catchy slogan.",
           "Define a rollout timeline.",
           "Mention potential investors.",
-          "Mention inspiration from Silicon Valley giants."
+          "Mention inspiration from Silicon Valley giants.",
+          "You have only three days.",
+          "Start with zero budget.",
+          "Act like your life depends on it."
         ]
       ]
     },
@@ -658,7 +688,8 @@ window.prompts = {
           "Create pixel art featuring",
           "Generate a concept poster of",
           "Create an infographic illustrating",
-          "Illustrate a crossover with Tony Stark featuring"
+          "Illustrate a crossover with Tony Stark featuring",
+          "Design an autonomous system that"
         ],
         [
           "a mythical creature riding a bicycle",
@@ -688,7 +719,8 @@ window.prompts = {
           "a cyberpunk coffee shop",
           "a futuristic wildlife preserve",
           "a whimsical underwater parade",
-          "a quest in Hogwarts"
+          "a quest in Hogwarts",
+          "creates passive income"
         ],
         [
           "Use vibrant neon colors.",
@@ -718,7 +750,8 @@ window.prompts = {
           "using bold neon highlights",
           "with delicate watercolor tones",
           "in a retro comic-book style",
-          "in a Marvel comic style"
+          "in a Marvel comic style",
+          "using only a laptop, phone, and internet"
         ],
         [
           "Use bold colors.",
@@ -748,7 +781,10 @@ window.prompts = {
           "Aim for eye-catching symmetry.",
           "Keep the palette consistent.",
           "Use dynamic lighting for depth.",
-          "Include a nod to Star Wars."
+          "Include a nod to Star Wars.",
+          "You have only three days.",
+          "Start with zero budget.",
+          "Act like your life depends on it."
         ]
       ]
     },
@@ -783,7 +819,8 @@ window.prompts = {
           "Record a reflective journal entry that",
           "Compose a keynote speech that",
           "Capture an inspiring quote that",
-          "Describe how Albert Einstein inspired Tony Stark when"
+          "Describe how Albert Einstein inspired Tony Stark when",
+          "Design an autonomous system that"
         ],
         [
           "overcoming a challenge",
@@ -813,7 +850,8 @@ window.prompts = {
           "turning passion into purpose",
           "building bridges across generations",
           "finding hope after loss",
-          "launching a company like SpaceX"
+          "launching a company like SpaceX",
+          "creates passive income"
         ],
         [
           "that sparks motivation",
@@ -843,7 +881,8 @@ window.prompts = {
           "that sparks creative collaboration",
           "that restores faith in humanity",
           "that ignites positive change",
-          "that echoes Marvel heroism"
+          "that echoes Marvel heroism",
+          "using only a laptop, phone, and internet"
         ],
         [
           "for the next generation.",
@@ -873,7 +912,10 @@ window.prompts = {
           "that inspires daily courage.",
           "for a community of dreamers.",
           "to share hope with the world.",
-          "End with a quote from Star Wars."
+          "End with a quote from Star Wars.",
+          "You have only three days.",
+          "Start with zero budget.",
+          "Act like your life depends on it."
         ]
       ]
     },
@@ -908,7 +950,8 @@ window.prompts = {
           "Speculate how life changes when",
           "Imagine an epoch where",
           "Visualize a galaxy where",
-          "Imagine if Albert Einstein teamed up with Tony Stark and"
+          "Imagine if Albert Einstein teamed up with Tony Stark and",
+          "Design an autonomous system that"
         ],
         [
           "gravity reversed",
@@ -938,7 +981,8 @@ window.prompts = {
           "dreams merge with waking life",
           "humans share consciousness with animals",
           "the universe resets every day",
-          "Hogwarts suddenly appeared on Mars"
+          "Hogwarts suddenly appeared on Mars",
+          "creates passive income"
         ],
         [
           "How would society react?",
@@ -968,7 +1012,8 @@ window.prompts = {
           "Would language evolve?",
           "Could technology keep pace?",
           "How would emotions adapt?",
-          "How would the Avengers respond?"
+          "How would the Avengers respond?",
+          "using only a laptop, phone, and internet"
         ],
         [
           "Explore the consequences.",
@@ -998,7 +1043,10 @@ window.prompts = {
           "Delve into possible paradoxes.",
           "Highlight emotional turmoil.",
           "Imagine world-changing breakthroughs.",
-          "Reference popular sci-fi films."
+          "Reference popular sci-fi films.",
+          "You have only three days.",
+          "Start with zero budget.",
+          "Act like your life depends on it."
         ]
       ]
     },
@@ -1033,7 +1081,8 @@ window.prompts = {
           "From a robot's perspective,",
           "As a wandering poet,",
           "Through a dreamer's eyes,",
-          "Through the lens of Tony Stark,"
+          "Through the lens of Tony Stark,",
+          "Design an autonomous system that"
         ],
         [
           "consider love",
@@ -1063,7 +1112,8 @@ window.prompts = {
           "rethink our daily rituals",
           "question digital addictions",
           "discover forgotten traditions",
-          "observe a duel at Hogwarts"
+          "observe a duel at Hogwarts",
+          "creates passive income"
         ],
         [
           "to gain new insight",
@@ -1093,7 +1143,8 @@ window.prompts = {
           "to gain unexpected clarity",
           "and spark inner growth",
           "to unearth hidden humor",
-          "to impress the Avengers"
+          "to impress the Avengers",
+          "using only a laptop, phone, and internet"
         ],
         [
           "Keep it reflective.",
@@ -1123,7 +1174,10 @@ window.prompts = {
           "Keep the tone introspective.",
           "Invite readers to reconsider.",
           "Finish with a hopeful note.",
-          "Mention Marvel inspirations."
+          "Mention Marvel inspirations.",
+          "You have only three days.",
+          "Start with zero budget.",
+          "Act like your life depends on it."
         ]
       ]
     },
@@ -1158,7 +1212,8 @@ window.prompts = {
           "Set up an automation workflow that",
           "Develop a daily review habit so you can",
           "Craft a priority list to",
-          "Model habits from companies like Tesla to"
+          "Model habits from companies like Tesla to",
+          "Design an autonomous system that"
         ],
         [
           "avoid distractions",
@@ -1188,7 +1243,8 @@ window.prompts = {
           "free up creative energy",
           "track long-term progress",
           "avoid unnecessary meetings",
-          "achieve results like SpaceX"
+          "achieve results like SpaceX",
+          "creates passive income"
         ],
         [
           "for sustained results",
@@ -1218,7 +1274,8 @@ window.prompts = {
           "while minimizing digital clutter",
           "with sustainable daily habits",
           "and maintain peak performance",
-          "as Tony Stark would approve"
+          "as Tony Stark would approve",
+          "using only a laptop, phone, and internet"
         ],
         [
           "Use practical examples.",
@@ -1248,7 +1305,10 @@ window.prompts = {
           "Track progress weekly.",
           "Share quick success stories.",
           "Use visuals for clarity.",
-          "Include tips from Elon Musk's playbook."
+          "Include tips from Elon Musk's playbook.",
+          "You have only three days.",
+          "Start with zero budget.",
+          "Act like your life depends on it."
         ]
       ]
     },
@@ -1283,7 +1343,8 @@ window.prompts = {
           "Design a virtual tour showcasing",
           "Plan a live Q&A session about",
           "Develop an interview segment with",
-          "Pitch an epic crossover with Tony Stark and Albert Einstein where"
+          "Pitch an epic crossover with Tony Stark and Albert Einstein where",
+          "Design an autonomous system that"
         ],
         [
           "future technology disrupting everyday life",
@@ -1313,7 +1374,8 @@ window.prompts = {
           "unexpected partnerships between rivals",
           "a hidden world beneath the city",
           "the evolution of street art",
-          "a quest unfolds in Hogwarts"
+          "a quest unfolds in Hogwarts",
+          "creates passive income"
         ],
         [
           "Which camera angles or editing tricks would keep viewers hooked?",
@@ -1343,7 +1405,8 @@ window.prompts = {
           "What angle best showcases the setting?",
           "How can subtitles enhance engagement?",
           "What pacing keeps viewers binge-watching?",
-          "Which Marvel cameo would excite fans?"
+          "Which Marvel cameo would excite fans?",
+          "using only a laptop, phone, and internet"
         ],
         [
           "Keep it short and snappy.",
@@ -1373,7 +1436,10 @@ window.prompts = {
           "Highlight behind-the-scenes moments.",
           "Invite viewers to submit ideas.",
           "Tease a follow-up series.",
-          "Add background music inspired by Star Wars."
+          "Add background music inspired by Star Wars.",
+          "You have only three days.",
+          "Start with zero budget.",
+          "Act like your life depends on it."
         ]
       ]
     }
@@ -1410,7 +1476,8 @@ window.prompts = {
           "Tam otonom bir sistem hayal et ki",
           "Etkileşimli bir YZ taslağı çıkar ki",
           "Duyarlı bir algoritma hayal et ki",
-          "Tony Stark ve Albert Einstein'in şöyle bir YZ tasarladığını hayal et ki"
+          "Tony Stark ve Albert Einstein'in şöyle bir YZ tasarladığını hayal et ki",
+          "Otonom bir sistem tasarla ki"
         ],
         [
           "dünyadaki açlığı çözen",
@@ -1440,7 +1507,8 @@ window.prompts = {
           "piyasa trendlerini anında öngörsün",
           "sürükleyici sanal dünyalar yaratsın",
           "küresel çatışmaları çözsün",
-          "Tesla'nın yenilikleriyle yarışan"
+          "Tesla'nın yenilikleriyle yarışan",
+          "pasif gelir oluşturan"
         ],
         [
           "ve insanlığa faydalı olan",
@@ -1470,7 +1538,8 @@ window.prompts = {
           "ve kamu güveni kazansın",
           "insanları iş birliğine teşvik etsin",
           "şeffaf algoritmalar kullansın",
-          "NASA'nın rehberliğinde"
+          "NASA'nın rehberliğinde",
+          "yalnızca bir laptop, telefon ve internet kullanarak"
         ],
         [
           "Olasılıkları vurgula.",
@@ -1500,7 +1569,10 @@ window.prompts = {
           "Etik çerçeveyi vurgula.",
           "Ömür boyu öğrenmeye değin.",
           "Açık kaynak faydalarından bahset.",
-          "Yenilmezler ile bağlantısına değin."
+          "Yenilmezler ile bağlantısına değin.",
+          "Sadece üç günün var.",
+          "Sıfır bütçeyle başla.",
+          "Hayatın buna bağlıymış gibi davran."
         ]
       ]
     },
@@ -1535,7 +1607,8 @@ window.prompts = {
           "Tuhaf bir destan tasarla ki",
           "Komik bir skeç kaleme al ki",
           "Sürreal bir festival sahnele ki",
-          "Albert Einstein'ın Tony Stark'la tartıştığını hayal et ki"
+          "Albert Einstein'ın Tony Stark'la tartıştığını hayal et ki",
+          "Otonom bir sistem tasarla ki"
         ],
         [
           "kediler dünyayı yönetse",
@@ -1565,7 +1638,8 @@ window.prompts = {
           "pizzalar havayı kontrol etsin",
           "zaman yolculuğu günlük iş olsun",
           "hayaletler talk show sunsun",
-          "Hogwarts'ta bir macera başlıyor"
+          "Hogwarts'ta bir macera başlıyor",
+          "pasif gelir oluşturan"
         ],
         [
           "tam bir kaos olur",
@@ -1595,7 +1669,8 @@ window.prompts = {
           "tatlı bir karmaşa yaratsın",
           "kaosa açılan kapılar açılsın",
           "mantık jöleye dönsün",
-          "Gandalf anlatıyor"
+          "Gandalf anlatıyor",
+          "yalnızca bir laptop, telefon ve internet kullanarak"
         ],
         [
           "Mizahi olsun.",
@@ -1625,7 +1700,10 @@ window.prompts = {
           "Abartıya kaç.",
           "Diyalogları tuhaf tut.",
           "Hayal gücü sınır tanımasın.",
-          "Yıldız Savaşları'ndan konuk oyuncular ekle."
+          "Yıldız Savaşları'ndan konuk oyuncular ekle.",
+          "Sadece üç günün var.",
+          "Sıfır bütçeyle başla.",
+          "Hayatın buna bağlıymış gibi davran."
         ]
       ]
     },
@@ -1660,7 +1738,8 @@ window.prompts = {
           "Temellerini tanıt:",
           "Yeni başlayanları adım adım yönlendir:",
           "Kısa bir eğitim ver:",
-          "Tony Stark ve Albert Einstein'in nasıl yaklaşacağını açıkla"
+          "Tony Stark ve Albert Einstein'in nasıl yaklaşacağını açıkla",
+          "Otonom bir sistem tasarla ki"
         ],
         [
           "kuantum fiziği",
@@ -1691,7 +1770,8 @@ window.prompts = {
           "blokzincirin temelleri",
           "eski felsefi metinler",
           "okyanus biliminin temelleri",
-          "SpaceX'teki yenilikleri"
+          "SpaceX'teki yenilikleri",
+          "pasif gelir oluşturan"
         ],
         [
           "basit terimlerle",
@@ -1721,7 +1801,8 @@ window.prompts = {
           "günlük benzetmelerle",
           "uygulamalı etkinliklerle",
           "kısa video örnekleriyle",
-          "MIT derslerinden yararlanarak"
+          "MIT derslerinden yararlanarak",
+          "yalnızca bir laptop, telefon ve internet kullanarak"
         ],
         [
           "Kısa tut.",
@@ -1751,7 +1832,10 @@ window.prompts = {
           "Katılımı teşvik et.",
           "Hızlı başvuru çizelgeleri sun.",
           "Kısaca özetle.",
-          "CERN'deki keşiflere değin."
+          "CERN'deki keşiflere değin.",
+          "Sadece üç günün var.",
+          "Sıfır bütçeyle başla.",
+          "Hayatın buna bağlıymış gibi davran."
         ]
       ]
     },
@@ -1786,7 +1870,8 @@ window.prompts = {
           "Sessizlik çökerken ürperdiğini anlat",
           "Dehşetin başladığı anı göster",
           "Acının yaşandığı anı betimle",
-          "Voldemort Darth Vader'la karşılaştığında duyulan dehşeti anlat"
+          "Voldemort Darth Vader'la karşılaştığında duyulan dehşeti anlat",
+          "Otonom bir sistem tasarla ki"
         ],
         [
           "gölgeler fısıldadığında",
@@ -1816,7 +1901,8 @@ window.prompts = {
           "fısıltılar yerden yükseldiğinde",
           "ay kan rengine büründüğünde",
           "uzaktan gelen çığlık dinmediğinde",
-          "Tatooine'de gökyüzü yeşile döndüğünde"
+          "Tatooine'de gökyüzü yeşile döndüğünde",
+          "pasif gelir oluşturan"
         ],
         [
           "aklını kaçırırsın",
@@ -1846,7 +1932,8 @@ window.prompts = {
           "ta ki akıl eriyene dek",
           "korku gerçekliği bükene dek",
           "karanlık umutları yutana dek",
-          "iblisler Macbeth'ten dizeler okurken"
+          "iblisler Macbeth'ten dizeler okurken",
+          "yalnızca bir laptop, telefon ve internet kullanarak"
         ],
         [
           "Rahatsız edici olsun.",
@@ -1876,7 +1963,10 @@ window.prompts = {
           "Gerilimi boğucu kıl.",
           "Duyusal korkuya odaklan.",
           "Sonunda yankılayan bir ürperti bırak.",
-          "Stranger Things ile bir kesişme ima et."
+          "Stranger Things ile bir kesişme ima et.",
+          "Sadece üç günün var.",
+          "Sıfır bütçeyle başla.",
+          "Hayatın buna bağlıymış gibi davran."
         ]
       ]
     },
@@ -1911,7 +2001,8 @@ window.prompts = {
           "Şu tema etrafında bir topluluk projesi öner",
           "Şu ürünü tanıtan geçici bir mağaza tasarla",
           "Şu amaçla giyilebilir bir cihaz icat et",
-          "Tesla'yla yarışacak bir girişim fikri sun, odak noktası"
+          "Tesla'yla yarışacak bir girişim fikri sun, odak noktası",
+          "Otonom bir sistem tasarla ki"
         ],
         [
           "yenilenebilir enerji",
@@ -1941,7 +2032,8 @@ window.prompts = {
           "etkileşimli hikaye anlatımı",
           "ailelere özel eko-turizm",
           "akıllı sağlık takip cihazları",
-          "Stark Industries teknolojisi"
+          "Stark Industries teknolojisi",
+          "pasif gelir oluşturan"
         ],
         [
           "fark yaratacak",
@@ -1971,7 +2063,8 @@ window.prompts = {
           "sadık kullanıcı kitlesi oluşturacak",
           "yerel ortaklıkları kullanarak",
           "topluluk geri bildiriminden güç alan",
-          "Elon Musk gibi yatırımcıları çeken"
+          "Elon Musk gibi yatırımcıları çeken",
+          "yalnızca bir laptop, telefon ve internet kullanarak"
         ],
         [
           "Temel özellikleri özetle.",
@@ -2001,7 +2094,10 @@ window.prompts = {
           "Çekici bir slogan ekle.",
           "Uygulama takvimini belirle.",
           "Olası yatırımcıları belirt.",
-          "Silicon Valley devlerinden ilham alındığını belirt."
+          "Silicon Valley devlerinden ilham alındığını belirt.",
+          "Sadece üç günün var.",
+          "Sıfır bütçeyle başla.",
+          "Hayatın buna bağlıymış gibi davran."
         ]
       ]
     },
@@ -2036,7 +2132,8 @@ window.prompts = {
           "Piksel sanatı içeren bir çalışma yap:",
           "Şu konseptte bir poster üret:",
           "Şunu gösteren bir infografik oluştur:",
-          "Tony Stark'lı bir kesişim tasvir et, içinde"
+          "Tony Stark'lı bir kesişim tasvir et, içinde",
+          "Otonom bir sistem tasarla ki"
         ],
         [
           "bisiklete binen efsanevi bir yaratık",
@@ -2066,7 +2163,8 @@ window.prompts = {
           "siberpunk bir kahve dükkânı",
           "geleceğin vahşi yaşam parkı",
           "sürreal bir su altı geçidi",
-          "Hogwarts'ta bir macera"
+          "Hogwarts'ta bir macera",
+          "pasif gelir oluşturan"
         ],
         [
           "Canlı neon renkler kullan.",
@@ -2096,7 +2194,8 @@ window.prompts = {
           "canlı neon vurgularla",
           "yumuşak sulu boya tonlarıyla",
           "retro çizgi roman stilinde",
-          "Marvel çizgi roman tarzında"
+          "Marvel çizgi roman tarzında",
+          "yalnızca bir laptop, telefon ve internet kullanarak"
         ],
         [
           "Canlı renkler kullan.",
@@ -2126,7 +2225,10 @@ window.prompts = {
           "Simetriyi dikkat çekici kıl.",
           "Renk paletini uyumlu tut.",
           "Derinlik için dinamik ışık kullan.",
-          "Yıldız Savaşları'na selam ver."
+          "Yıldız Savaşları'na selam ver.",
+          "Sadece üç günün var.",
+          "Sıfır bütçeyle başla.",
+          "Hayatın buna bağlıymış gibi davran."
         ]
       ]
     },
@@ -2161,7 +2263,8 @@ window.prompts = {
           "Duygusal bir günlük sayfası kaleme al ki",
           "Dinleyicilere yönelik bir konuşma yaz ki",
           "Şöyle ilham verici bir alıntı yakala ki",
-          "Albert Einstein'ın Tony Stark'a nasıl ilham verdiğini anlat, o sırada"
+          "Albert Einstein'ın Tony Stark'a nasıl ilham verdiğini anlat, o sırada",
+          "Otonom bir sistem tasarla ki"
         ],
         [
           "bir zorluğu aşmayı",
@@ -2191,7 +2294,8 @@ window.prompts = {
           "tutkuyu amaca dönüştürmeyi",
           "nesiller arasında köprü kurmayı",
           "kaybın ardından umut bulmayı",
-          "SpaceX benzeri bir şirket kurarken"
+          "SpaceX benzeri bir şirket kurarken",
+          "pasif gelir oluşturan"
         ],
         [
           "motive eden",
@@ -2221,7 +2325,8 @@ window.prompts = {
           "yaratıcı iş birliğini tetikleyen",
           "insanlığa güveni tazeleyen",
           "pozitif değişim kıvılcımı yakan",
-          "Marvel kahramanlığını yansıtan"
+          "Marvel kahramanlığını yansıtan",
+          "yalnızca bir laptop, telefon ve internet kullanarak"
         ],
         [
           "gelecek nesil için.",
@@ -2251,7 +2356,10 @@ window.prompts = {
           "günlük cesarete ilham olsun.",
           "hayalperestleri birleştirsin.",
           "umudu dünyayla paylaşmak için.",
-          "Yıldız Savaşları'ndan bir alıntıyla bitir."
+          "Yıldız Savaşları'ndan bir alıntıyla bitir.",
+          "Sadece üç günün var.",
+          "Sıfır bütçeyle başla.",
+          "Hayatın buna bağlıymış gibi davran."
         ]
       ]
     },
@@ -2286,7 +2394,8 @@ window.prompts = {
           "Hayatın kökten değiştiği bir dönem hayal et",
           "Düşün ki bir çağ geliyor",
           "Şöyle bir galaksi hayal et ki",
-          "Albert Einstein'ın Tony Stark'la güçlerini birleştirdiğini ve"
+          "Albert Einstein'ın Tony Stark'la güçlerini birleştirdiğini ve",
+          "Otonom bir sistem tasarla ki"
         ],
         [
           "yerçekimi ters dönüyor",
@@ -2316,7 +2425,8 @@ window.prompts = {
           "rüyalar uyanık hayatla birleşiyor",
           "insanlar hayvanlarla bilinç paylaşıyor",
           "evren her gün yeniden başlıyor",
-          "Hogwarts'ın aniden Mars'ta belirdiğini"
+          "Hogwarts'ın aniden Mars'ta belirdiğini",
+          "pasif gelir oluşturan"
         ],
         [
           "Toplum nasıl tepki verir?",
@@ -2346,7 +2456,8 @@ window.prompts = {
           "Dil değişir mi?",
           "Teknoloji buna yetişebilir mi?",
           "Duygular nasıl evrilir?",
-          "Yenilmezler nasıl tepki verir?"
+          "Yenilmezler nasıl tepki verir?",
+          "yalnızca bir laptop, telefon ve internet kullanarak"
         ],
         [
           "Sonuçlarını keşfet.",
@@ -2376,7 +2487,10 @@ window.prompts = {
           "Muhtemel paradokslara değin.",
           "Duygusal çalkantıyı vurgula.",
           "Dünyayı değiştiren atılımlar hayal et.",
-          "Ünlü bilimkurgu filmlerine gönderme yap."
+          "Ünlü bilimkurgu filmlerine gönderme yap.",
+          "Sadece üç günün var.",
+          "Sıfır bütçeyle başla.",
+          "Hayatın buna bağlıymış gibi davran."
         ]
       ]
     },
@@ -2411,7 +2525,8 @@ window.prompts = {
           "Bir robotun bakış açısından,",
           "Gezgin bir şair olarak,",
           "Bir hayalperestin gözünden,",
-          "Tony Stark'ın gözünden,"
+          "Tony Stark'ın gözünden,",
+          "Otonom bir sistem tasarla ki"
         ],
         [
           "aşkı düşün",
@@ -2441,7 +2556,8 @@ window.prompts = {
           "günlük ritüelleri yeniden düşün",
           "dijital bağımlılıkları sorgula",
           "unutulmuş gelenekleri keşfet",
-          "Hogwarts'taki bir düelloyu gözlemle"
+          "Hogwarts'taki bir düelloyu gözlemle",
+          "pasif gelir oluşturan"
         ],
         [
           "yeni bir anlayış için",
@@ -2471,7 +2587,8 @@ window.prompts = {
           "beklenmedik bir netlik için",
           "içsel gelişimi tetiklemek için",
           "gizli mizahı ortaya çıkarmak için",
-          "Yenilmezleri etkilemek için"
+          "Yenilmezleri etkilemek için",
+          "yalnızca bir laptop, telefon ve internet kullanarak"
         ],
         [
           "Düşündürücü olsun.",
@@ -2501,7 +2618,10 @@ window.prompts = {
           "Tonu içten tut.",
           "Okuyucu yeniden düşünmeye davet et.",
           "Umutlu bir notla bitir.",
-          "Marvel esintilerine değin."
+          "Marvel esintilerine değin.",
+          "Sadece üç günün var.",
+          "Sıfır bütçeyle başla.",
+          "Hayatın buna bağlıymış gibi davran."
         ]
       ]
     },
@@ -2536,7 +2656,8 @@ window.prompts = {
           "Otomatik iş akışı oluştur",
           "Günlük değerlendirme alışkanlığı geliştir",
           "Öncelik listesi oluştur ki",
-          "Tesla gibi şirketlerin alışkanlıklarını örnek alarak"
+          "Tesla gibi şirketlerin alışkanlıklarını örnek alarak",
+          "Otonom bir sistem tasarla ki"
         ],
         [
           "dikkat dağıtıcıları önlemek",
@@ -2566,7 +2687,8 @@ window.prompts = {
           "yaratıcı enerjiyi serbest bırakmak",
           "uzun vadeli ilerlemeyi takip etmek",
           "gereksiz toplantılardan kaçınmak",
-          "SpaceX kadar başarılı sonuçlar elde etmek"
+          "SpaceX kadar başarılı sonuçlar elde etmek",
+          "pasif gelir oluşturan"
         ],
         [
           "kalıcı sonuçlar için",
@@ -2596,7 +2718,8 @@ window.prompts = {
           "dijital karmaşayı azaltarak",
           "sürdürülebilir alışkanlıklarla",
           "en yüksek performansı koruyarak",
-          "Tony Stark'ın onaylayacağı şekilde"
+          "Tony Stark'ın onaylayacağı şekilde",
+          "yalnızca bir laptop, telefon ve internet kullanarak"
         ],
         [
           "Pratik örnekler kullan.",
@@ -2626,7 +2749,10 @@ window.prompts = {
           "İlerlemeyi haftalık takip et.",
           "Kısa başarı hikayeleri paylaş.",
           "Anlaşılır görseller kullan.",
-          "Elon Musk'ın taktiklerinden ipuçları ekle."
+          "Elon Musk'ın taktiklerinden ipuçları ekle.",
+          "Sadece üç günün var.",
+          "Sıfır bütçeyle başla.",
+          "Hayatın buna bağlıymış gibi davran."
         ]
       ]
     },
@@ -2661,7 +2787,8 @@ window.prompts = {
           "Şu mekanı gezdiren sanal tur tasarla",
           "Şu konuda canlı Soru-Cevap planla",
           "Şu kişiyle bir röportaj bölümü hazırla",
-          "Tony Stark ve Albert Einstein'ın yer aldığı destansı bir kesişim öner, burada"
+          "Tony Stark ve Albert Einstein'ın yer aldığı destansı bir kesişim öner, burada",
+          "Otonom bir sistem tasarla ki"
         ],
         [
           "günlük yaşamı değiştiren geleceğin teknolojisi",
@@ -2691,7 +2818,8 @@ window.prompts = {
           "rakipler arasındaki beklenmedik ortaklıklar",
           "şehrin altındaki gizli dünya",
           "sokak sanatının evrimi",
-          "Hogwarts'ta bir macera gelişir"
+          "Hogwarts'ta bir macera gelişir",
+          "pasif gelir oluşturan"
         ],
         [
           "İzleyiciyi ekranda tutacak kamera açıları neler olmalı?",
@@ -2721,7 +2849,8 @@ window.prompts = {
           "Hangi açı mekanı en iyi gösterir?",
           "Altyazılar ilgiyi nasıl artırır?",
           "Hangi tempo izleyiciyi ekranda tutar?",
-          "Hangi Marvel cameo'su hayranları heyecanlandırır?"
+          "Hangi Marvel cameo'su hayranları heyecanlandırır?",
+          "yalnızca bir laptop, telefon ve internet kullanarak"
         ],
         [
           "Kısa ve akıcı tut.",
@@ -2751,7 +2880,10 @@ window.prompts = {
           "Perde arkası anları vurgula.",
           "Seyircilerden fikir toplamasını sağla.",
           "Devam serisini önceden müjdele.",
-          "Yıldız Savaşları esintili fon müziği ekle."
+          "Yıldız Savaşları esintili fon müziği ekle.",
+          "Sadece üç günün var.",
+          "Sıfır bütçeyle başla.",
+          "Hayatın buna bağlıymış gibi davran."
         ]
       ]
     }

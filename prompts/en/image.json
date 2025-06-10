@@ -29,7 +29,8 @@
       "Create pixel art featuring",
       "Generate a concept poster of",
       "Create an infographic illustrating",
-      "Illustrate a crossover with Tony Stark featuring"
+      "Illustrate a crossover with Tony Stark featuring",
+      "Design an autonomous system that"
     ],
     [
       "a mythical creature riding a bicycle",
@@ -59,7 +60,8 @@
       "a cyberpunk coffee shop",
       "a futuristic wildlife preserve",
       "a whimsical underwater parade",
-      "a quest in Hogwarts"
+      "a quest in Hogwarts",
+      "creates passive income"
     ],
     [
       "Use vibrant neon colors.",
@@ -89,7 +91,8 @@
       "using bold neon highlights",
       "with delicate watercolor tones",
       "in a retro comic-book style",
-      "in a Marvel comic style"
+      "in a Marvel comic style",
+      "using only a laptop, phone, and internet"
     ],
     [
       "Use bold colors.",
@@ -119,7 +122,10 @@
       "Aim for eye-catching symmetry.",
       "Keep the palette consistent.",
       "Use dynamic lighting for depth.",
-      "Include a nod to Star Wars."
+      "Include a nod to Star Wars.",
+      "You have only three days.",
+      "Start with zero budget.",
+      "Act like your life depends on it."
     ]
   ]
 }
