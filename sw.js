@@ -7,7 +7,7 @@ async function updateCacheName() {
     if (manifest.version) {
       CACHE_NAME = `prompter-v${manifest.version}`;
     }
-  } catch (e) {
+  } catch {
     // ignore and use default
   }
 }

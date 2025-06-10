@@ -1,4 +1,4 @@
-/* global prompts */
+
 (() => {
     // --- Core Application Logic ---
     const appState = {
@@ -104,7 +104,9 @@
             randomCategory: 'Rastgele Karışım',
             themeLightTitle: 'Açık Tema',
             themeDarkTitle: 'Koyu Tema',
+            // prettier-ignore
             langEnLabel: 'İngilizce\'ye geç',
+            // prettier-ignore
             langTrLabel: 'Türkçe\'ye geç'
         }
     };
@@ -140,8 +142,9 @@
         const copyButton = document.getElementById('copy-button');
         const downloadButton = document.getElementById('download-button');
         const copySuccessMessage = document.getElementById('copy-success-message');
-        const langEnButton = document.getElementById('lang-en');
-        const langTrButton = document.getElementById('lang-tr');
+        const languageSwitcher = document.getElementById('language-switcher');
+        const langButtons = {};
+        let availableLanguages = [];
         const themeLightButton = document.getElementById('theme-light');
         const themeDarkButton = document.getElementById('theme-dark');
         const themeLinkElement = document.getElementById('theme-css');
@@ -188,10 +191,14 @@
             copySuccessMessage.textContent = uiText[lang].copySuccessMessage;
             document.getElementById('app-stats').textContent = uiText[lang].appStats;
             document.getElementById('footer-prompter').textContent = uiText[lang].footerPrompter;
-            langEnButton.title = uiText[lang].langEnLabel;
-            langEnButton.setAttribute('aria-label', uiText[lang].langEnLabel);
-            langTrButton.title = uiText[lang].langTrLabel;
-            langTrButton.setAttribute('aria-label', uiText[lang].langTrLabel);
+            if (langButtons.en && uiText[lang].langEnLabel) {
+                langButtons.en.title = uiText[lang].langEnLabel;
+                langButtons.en.setAttribute('aria-label', uiText[lang].langEnLabel);
+            }
+            if (langButtons.tr && uiText[lang].langTrLabel) {
+                langButtons.tr.title = uiText[lang].langTrLabel;
+                langButtons.tr.setAttribute('aria-label', uiText[lang].langTrLabel);
+            }
 
             // Update category button text
             categories.forEach(category => {
@@ -206,17 +213,17 @@
             });
 
             // Update language button styles
-            if (lang === 'en') {
-                langEnButton.classList.add('active', 'bg-white/30', 'text-white', 'shadow-md');
-                langEnButton.classList.remove('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
-                langTrButton.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
-                langTrButton.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
-            } else {
-                langTrButton.classList.add('active', 'bg-white/30', 'text-white', 'shadow-md');
-                langTrButton.classList.remove('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
-                langEnButton.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
-                langEnButton.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
-            }
+            availableLanguages.forEach(code => {
+                const btn = langButtons[code];
+                if (!btn) return;
+                if (code === lang) {
+                    btn.classList.add('active', 'bg-white/30', 'text-white', 'shadow-md');
+                    btn.classList.remove('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
+                } else {
+                    btn.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
+                    btn.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
+                }
+            });
             localStorage.setItem('language', lang);
             // Update theme button titles based on language
             updateButtonTitles();
@@ -348,8 +355,9 @@
             });
 
             // Language buttons
-            langEnButton.addEventListener('click', () => setLanguage('en'));
-            langTrButton.addEventListener('click', () => setLanguage('tr'));
+            Object.keys(langButtons).forEach(code => {
+                langButtons[code].addEventListener('click', () => setLanguage(code));
+            });
 
             // Theme buttons
             themeLightButton.addEventListener('click', () => setTheme(THEMES.LIGHT));
@@ -394,8 +402,24 @@
                 return false;
             };
 
-            // Load saved language or default to 'en'
-            const savedLanguage = localStorage.getItem('language') || 'en';
+            // Determine available languages
+            if (window.prompts) {
+                availableLanguages = Object.keys(window.prompts);
+            } else {
+                availableLanguages = Object.keys(uiText);
+            }
+
+            languageSwitcher.innerHTML = '';
+            availableLanguages.forEach(code => {
+                const btn = document.createElement('button');
+                btn.id = `lang-${code}`;
+                btn.className = 'px-3 py-1 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50';
+                btn.textContent = code.toUpperCase();
+                languageSwitcher.appendChild(btn);
+                langButtons[code] = btn;
+            });
+
+            const savedLanguage = localStorage.getItem('language') || availableLanguages[0] || 'en';
             setLanguage(savedLanguage);
 
             // Load saved theme or default to 'dark'

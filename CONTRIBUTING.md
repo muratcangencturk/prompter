@@ -20,6 +20,14 @@ This guide explains how to set up the project, run tests, lint and format the co
    ```
    Then open `http://localhost:8000` in your browser or simply open `index.html` directly.
 
+## Translations
+
+We welcome new language contributions.
+
+1. Create a folder under `prompts/<lang>` with JSON files for each category.
+2. Add the interface text and category names for the language in `src/main.js`.
+3. Run `npm run build` to regenerate `prompts.js` before opening a pull request.
+
 ## Running tests
 
 The project uses **ESLint** as its test suite. Run:

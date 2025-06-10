@@ -34,8 +34,22 @@ The service worker reads the `version` field from `manifest.json` and names its 
 
 ### Language
 
-- Prompter currently supports **English** (`EN`) and **Turkish** (`TR`).
-- Use the language switcher in the top‑right corner to choose your interface language. The setting persists in your browser.
+- Available languages are detected from folders under `prompts`. Add a directory
+  like `prompts/es` and the switcher will offer Spanish once the JSON files are
+  in place.
+- Use the language switcher in the top‑right corner to choose your interface
+  language. The setting persists in your browser.
+
+#### Adding a new language
+
+1. Create a folder `prompts/<lang>` where `<lang>` is the language code (e.g.
+   `prompts/es`).
+2. Copy the files from `prompts/en` as a starting point and translate the prompt
+   parts.
+3. Add UI text and category labels in `src/main.js` within the `uiText` object
+   and `categories` array.
+4. Run `npm run build` to regenerate `prompts.js` if you include the bundled
+   prompts file.
 
 ## Categories
 
