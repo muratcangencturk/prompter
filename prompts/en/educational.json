@@ -23,7 +23,8 @@
       "Discuss the basics of",
       "Detail the theory of",
       "Explain core ideas behind",
-      "Describe the origins of"
+      "Describe the origins of",
+      "Offer an explainer on"
     ],
     [
       "quantum physics",
@@ -48,7 +49,8 @@
       "climate change science",
       "artificial intelligence ethics",
       "digital security policies",
-      "quantum computing"
+      "quantum computing",
+      "cryptographic principles"
     ],
     [
       "in simple terms",
@@ -73,7 +75,8 @@
       "including quick exercises",
       "with approachable metaphors",
       "using real challenges",
-      "with step-by-step visuals"
+      "with step-by-step visuals",
+      "with straightforward diagrams"
     ],
     [
       "Keep it short.",
@@ -98,7 +101,8 @@
       "Summarize key points.",
       "Include practice exercises.",
       "Encourage further study.",
-      "Invite questions at the end."
+      "Invite questions at the end.",
+      "Provide hands-on worksheets."
     ]
   ]
 }
