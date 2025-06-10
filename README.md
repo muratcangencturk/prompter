@@ -17,9 +17,15 @@ Prompt templates are stored in small JSON files under the `prompts/` directory a
 
 ## Opening the application
 
-Simply open `index.html` in any modern web browser. You can double‑click the file or use your browser's **Open File** option. No server setup is required.
+It is recommended to serve the project directory with a simple HTTP server for reliable loading. From the root folder run for example:
 
-When served from a local web server (for example `python3 -m http.server`) the app installs a small service worker that caches `index.html`, `tailwind.js`, `lucide.min.js`, all JSON files under `prompts/` and the logo in `icons/logo.svg`. After an initial visit you can disconnect from the network and the generator will still load and function normally.
+```bash
+python3 -m http.server
+```
+
+and then visit `http://localhost:8000`. This allows the service worker to cache `index.html`, `tailwind.js`, `lucide.min.js`, all JSON files under `prompts/` and the logo in `icons/logo.svg` so the generator works offline after the first visit.
+
+You can still open `index.html` directly from your file system, but offline mode only works if `prompts.js` is loaded because the JSON prompt files cannot be fetched when using the `file://` protocol.
 
 ### Versioning
 
