@@ -17,6 +17,10 @@
       "files": ["scripts/*.js"],
       "env": {"node": true},
       "parserOptions": {"sourceType": "script"}
+    },
+    {
+      "files": ["sw.js"],
+      "env": {"worker": true}
     }
   ]
 }
