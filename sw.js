@@ -70,6 +70,21 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request).then((resp) => resp || fetch(event.request))
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
+      const cachedResponse = await cache.match(event.request);
+
+      const networkFetch = fetch(event.request).then((response) => {
+        cache.put(event.request, response.clone());
+        return response;
+      });
+
+      if (cachedResponse) {
+        event.waitUntil(networkFetch.catch(() => {}));
+        return cachedResponse;
+      }
+
+      return networkFetch;
+    })()
   );
 });
