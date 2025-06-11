@@ -78,7 +78,7 @@
   // --- UI Text Translations ---
   const uiText = {
     en: {
-      appTitle: 'AI Prompt Generator - Prompter',
+      appTitle: 'PROMPTER',
       appSubtitle:
         'Prompt generator for AI - unprecedented, limitless creativity',
       chooseStyleTitle: 'Select Your Prompt Inspiration',
@@ -96,7 +96,7 @@
       langTrLabel: 'Switch to Turkish',
     },
     tr: {
-      appTitle: 'YZ Prompt Üretici - Prompter',
+      appTitle: 'PROMPTER',
       appSubtitle:
         'YZ için prompt üretici - eşi benzeri görülmemiş sınırsız yaratıcılık',
       chooseStyleTitle: 'Prompt İlhamınızı Seçin',
