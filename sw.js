@@ -73,9 +73,15 @@ self.addEventListener('fetch', (event) => {
     (async () => {
       const cache = await caches.open(CACHE_NAME);
       const cachedResponse = await cache.match(event.request);
-
+      // Fetch from network and conditionally cache the result
       const networkFetch = fetch(event.request).then((response) => {
-        cache.put(event.request, response.clone());
+        // Only cache GET requests from our own origin
+        if (
+          event.request.method === 'GET' &&
+          new URL(event.request.url).origin === self.location.origin
+        ) {
+          cache.put(event.request, response.clone());
+        }
         return response;
       });
 
