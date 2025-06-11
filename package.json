@@ -6,10 +6,12 @@
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{js,json,md,css,html}\"",
     "test": "npm run lint",
-    "build": "node scripts/build-prompts.js"
+    "build": "node scripts/build-prompts.js",
+    "start": "http-server -c-1"
   },
   "devDependencies": {
     "eslint": "8.57.0",
+    "http-server": "^14.1.1",
     "prettier": "^2.8.8"
   }
 }

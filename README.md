@@ -110,7 +110,11 @@ npm run format
 ```
 
 Running `npm install` and `npm test` helps ensure consistent code style across
-contributions.
+contributions. To serve the application locally during development run:
+
+```bash
+npm start
+```
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for full setup instructions and the pull
 request workflow.
