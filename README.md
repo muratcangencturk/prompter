@@ -90,7 +90,7 @@ of strings. These arrays represent the beginning, topic, continuation and ending
 1. Add a new JSON file under `prompts/<language>/` following the structure above.
 2. Register the category in `src/main.js` with an icon, emoji and names.
 3. Provide corresponding files for other languages to offer translations.
-4. Run `npm run build` to regenerate `prompts.js` so deployments include your changes.
+4. Run `npm run build` to regenerate `prompts.js` and update `sw.js` so deployments include your changes.
 
 ## Development
 
@@ -119,8 +119,7 @@ request workflow.
 
 The site is published automatically using GitHub Pages. The workflow
 [`pages.yml`](.github/workflows/pages.yml) installs dependencies, runs
-`npm run build` (which executes `scripts/build-prompts.js`) to generate
-`prompts.js` and then uploads the artifact to GitHub Pages using
+`npm run build` (which executes `scripts/build-prompts.js`) to generate `prompts.js`, update `sw.js` and then uploads the artifact to GitHub Pages using
 `actions/upload-pages-artifact` and `actions/deploy-pages`. Pushes to the
 `main` branch trigger a new deployment and the site becomes available at
 the repository's Pages URL.
