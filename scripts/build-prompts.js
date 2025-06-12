@@ -52,11 +52,12 @@ function updateServiceWorker(promptFiles) {
     './index.html',
     './tailwind.js',
     './lucide.min.js',
-    './src/main.js',
-    './icons/logo.svg',
-    './css/theme-dark.css',
-    './css/theme-light.css',
-  ];
+  './src/main.js',
+  './icons/logo.svg',
+  './css/app.css',
+  './css/theme-dark.css',
+  './css/theme-light.css',
+];
   const assets = [...baseAssets, ...promptFiles];
   const indent = '  ';
   const newLines = [
