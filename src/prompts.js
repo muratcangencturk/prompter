@@ -93,6 +93,7 @@ export const loadCategory = async (lang, cat) => {
     const res = await fetch(`prompts/${lang}/${cat}.json`);
     data = await res.json();
   }
+
   data = { ...data, structure: structures[catMap[cat]] };
   loadedPrompts[lang][cat] = data;
   return data;
