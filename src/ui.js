@@ -50,6 +50,7 @@ let langTrButton;
 let themeLightButton;
 let themeDarkButton;
 let themeLinkElement;
+let lastGeneratedCategoryId = appState.selectedCategory;
 
 const setTheme = (theme) => {
   appState.theme = theme;
@@ -134,8 +135,9 @@ const handleGenerate = async () => {
   promptDisplayArea.classList.remove('hidden');
   promptDisplayArea.classList.add('animate-fadeIn');
   try {
-    const prompt = await generatePrompt();
+    const { prompt, categoryId } = await generatePrompt();
     generatedPromptText.textContent = prompt;
+    lastGeneratedCategoryId = categoryId;
   } catch (err) {
     console.error(err);
     generatedPromptText.textContent = 'Error generating prompt. Please try again.';
@@ -186,7 +188,7 @@ const setupEventListeners = () => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `prompt_${appState.selectedCategory}_${Date.now()}.txt`;
+    a.download = `prompt_${lastGeneratedCategoryId}_${Date.now()}.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

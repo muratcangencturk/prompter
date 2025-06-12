@@ -105,7 +105,9 @@ export const generatePrompt = async () => {
 
   if (selectedCatId === 'random') {
     const availableCategories = categories.filter((c) => c.id !== 'random');
-    selectedCatId = availableCategories[Math.floor(Math.random() * availableCategories.length)].id;
+    selectedCatId =
+      availableCategories[Math.floor(Math.random() * availableCategories.length)]
+        .id;
   }
 
   const categoryData = await loadCategory(appState.language, selectedCatId);
@@ -144,5 +146,5 @@ export const generatePrompt = async () => {
 
   appState.generatedPrompt = newPrompt;
   appState.isGenerating = false;
-  return newPrompt;
+  return { prompt: newPrompt, categoryId: selectedCatId };
 };
