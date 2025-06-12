@@ -59,7 +59,13 @@ window.prompts = {
           "Tell in ten words how",
           "Give three options for",
           "Explain key concepts of",
-          "You are this character;"
+          "You are this character;",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "solves world hunger",
@@ -116,7 +122,13 @@ window.prompts = {
           "summarized in ten words",
           "giving three options",
           "explaining key concepts",
-          "as if you are this character"
+          "as if you are this character",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "and benefits humanity",
@@ -173,7 +185,13 @@ window.prompts = {
           "using exactly ten words",
           "offering three options",
           "clarifying key concepts",
-          "staying in character"
+          "staying in character",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "Focus on possibilities.",
@@ -231,7 +249,13 @@ window.prompts = {
           "Tell it in ten words.",
           "Give three options to end.",
           "Explain key concepts clearly.",
-          "Stay in character until the end."
+          "Stay in character until the end.",
+          "Write from that perspective as a skeptic.",
+          "What would your plan be next?",
+          "Tell it in ten words exactly.",
+          "Give three options to finish.",
+          "Explain key concepts thoroughly.",
+          "Stay in character for this scenario."
         ]
       ]
     },
@@ -283,7 +307,13 @@ window.prompts = {
           "Tell in ten words how",
           "Give three options for",
           "Explain key concepts of",
-          "You are this character;"
+          "You are this character;",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "cats rule the earth",
@@ -330,7 +360,13 @@ window.prompts = {
           "summarized in ten words",
           "giving three options",
           "explaining key concepts",
-          "as if you are this character"
+          "as if you are this character",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "resulting in chaos",
@@ -377,7 +413,13 @@ window.prompts = {
           "using exactly ten words",
           "offering three options",
           "clarifying key concepts",
-          "staying in character"
+          "staying in character",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "Make it witty.",
@@ -425,7 +467,13 @@ window.prompts = {
           "Tell it in ten words.",
           "Give three options to end.",
           "Explain key concepts clearly.",
-          "Stay in character until the end."
+          "Stay in character until the end.",
+          "Write from that perspective as a skeptic.",
+          "What would your plan be next?",
+          "Tell it in ten words exactly.",
+          "Give three options to finish.",
+          "Explain key concepts thoroughly.",
+          "Stay in character for this scenario."
         ]
       ]
     },
@@ -477,7 +525,13 @@ window.prompts = {
           "Tell in ten words how",
           "Give three options for",
           "Explain key concepts of",
-          "You are this character;"
+          "You are this character;",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "quantum physics",
@@ -525,7 +579,13 @@ window.prompts = {
           "summarized in ten words",
           "giving three options",
           "explaining key concepts",
-          "as if you are this character"
+          "as if you are this character",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "in simple terms",
@@ -572,7 +632,13 @@ window.prompts = {
           "using exactly ten words",
           "offering three options",
           "clarifying key concepts",
-          "staying in character"
+          "staying in character",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "Keep it short.",
@@ -619,7 +685,13 @@ window.prompts = {
           "Tell it in ten words.",
           "Give three options to end.",
           "Explain key concepts clearly.",
-          "Stay in character until the end."
+          "Stay in character until the end.",
+          "Write from that perspective as a skeptic.",
+          "What would your plan be next?",
+          "Tell it in ten words exactly.",
+          "Give three options to finish.",
+          "Explain key concepts thoroughly.",
+          "Stay in character for this scenario."
         ]
       ]
     },
@@ -671,7 +743,13 @@ window.prompts = {
           "Tell in ten words how",
           "Give three options for",
           "Explain key concepts of",
-          "You are this character;"
+          "You are this character;",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "shadows whisper",
@@ -718,7 +796,13 @@ window.prompts = {
           "summarized in ten words",
           "giving three options",
           "explaining key concepts",
-          "as if you are this character"
+          "as if you are this character",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "driving you insane",
@@ -765,7 +849,13 @@ window.prompts = {
           "using exactly ten words",
           "offering three options",
           "clarifying key concepts",
-          "staying in character"
+          "staying in character",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "Make it unsettling.",
@@ -813,7 +903,13 @@ window.prompts = {
           "Tell it in ten words.",
           "Give three options to end.",
           "Explain key concepts clearly.",
-          "Stay in character until the end."
+          "Stay in character until the end.",
+          "Write from that perspective as a skeptic.",
+          "What would your plan be next?",
+          "Tell it in ten words exactly.",
+          "Give three options to finish.",
+          "Explain key concepts thoroughly.",
+          "Stay in character for this scenario."
         ]
       ]
     },
@@ -865,7 +961,13 @@ window.prompts = {
           "Tell in ten words how",
           "Give three options for",
           "Explain key concepts of",
-          "You are this character;"
+          "You are this character;",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "renewable energy",
@@ -917,7 +1019,13 @@ window.prompts = {
           "summarized in ten words",
           "giving three options",
           "explaining key concepts",
-          "as if you are this character"
+          "as if you are this character",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "that stands out",
@@ -969,7 +1077,13 @@ window.prompts = {
           "using exactly ten words",
           "offering three options",
           "clarifying key concepts",
-          "staying in character"
+          "staying in character",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "Outline key features.",
@@ -1018,7 +1132,13 @@ window.prompts = {
           "Tell it in ten words.",
           "Give three options to end.",
           "Explain key concepts clearly.",
-          "Stay in character until the end."
+          "Stay in character until the end.",
+          "Write from that perspective as a skeptic.",
+          "What would your plan be next?",
+          "Tell it in ten words exactly.",
+          "Give three options to finish.",
+          "Explain key concepts thoroughly.",
+          "Stay in character for this scenario."
         ]
       ]
     },
@@ -1070,7 +1190,13 @@ window.prompts = {
           "Tell in ten words how",
           "Give three options for",
           "Explain key concepts of",
-          "You are this character;"
+          "You are this character;",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "a mythical creature riding a bicycle",
@@ -1117,7 +1243,13 @@ window.prompts = {
           "summarized in ten words",
           "giving three options",
           "explaining key concepts",
-          "as if you are this character"
+          "as if you are this character",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "Use vibrant neon colors.",
@@ -1164,7 +1296,13 @@ window.prompts = {
           "using exactly ten words",
           "offering three options",
           "clarifying key concepts",
-          "staying in character"
+          "staying in character",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "Use bold colors.",
@@ -1212,7 +1350,13 @@ window.prompts = {
           "Tell it in ten words.",
           "Give three options to end.",
           "Explain key concepts clearly.",
-          "Stay in character until the end."
+          "Stay in character until the end.",
+          "Write from that perspective as a skeptic.",
+          "What would your plan be next?",
+          "Tell it in ten words exactly.",
+          "Give three options to finish.",
+          "Explain key concepts thoroughly.",
+          "Stay in character for this scenario."
         ]
       ]
     },
@@ -1264,7 +1408,13 @@ window.prompts = {
           "Tell in ten words how",
           "Give three options for",
           "Explain key concepts of",
-          "You are this character;"
+          "You are this character;",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "overcoming a challenge",
@@ -1311,7 +1461,13 @@ window.prompts = {
           "summarized in ten words",
           "giving three options",
           "explaining key concepts",
-          "as if you are this character"
+          "as if you are this character",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "that sparks motivation",
@@ -1358,7 +1514,13 @@ window.prompts = {
           "using exactly ten words",
           "offering three options",
           "clarifying key concepts",
-          "staying in character"
+          "staying in character",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "for the next generation.",
@@ -1406,7 +1568,13 @@ window.prompts = {
           "Tell it in ten words.",
           "Give three options to end.",
           "Explain key concepts clearly.",
-          "Stay in character until the end."
+          "Stay in character until the end.",
+          "Write from that perspective as a skeptic.",
+          "What would your plan be next?",
+          "Tell it in ten words exactly.",
+          "Give three options to finish.",
+          "Explain key concepts thoroughly.",
+          "Stay in character for this scenario."
         ]
       ]
     },
@@ -1458,7 +1626,13 @@ window.prompts = {
           "Tell in ten words how",
           "Give three options for",
           "Explain key concepts of",
-          "You are this character;"
+          "You are this character;",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "gravity reversed",
@@ -1505,7 +1679,13 @@ window.prompts = {
           "summarized in ten words",
           "giving three options",
           "explaining key concepts",
-          "as if you are this character"
+          "as if you are this character",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "How would society react?",
@@ -1552,7 +1732,13 @@ window.prompts = {
           "using exactly ten words",
           "offering three options",
           "clarifying key concepts",
-          "staying in character"
+          "staying in character",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "Explore the consequences.",
@@ -1600,7 +1786,13 @@ window.prompts = {
           "Tell it in ten words.",
           "Give three options to end.",
           "Explain key concepts clearly.",
-          "Stay in character until the end."
+          "Stay in character until the end.",
+          "Write from that perspective as a skeptic.",
+          "What would your plan be next?",
+          "Tell it in ten words exactly.",
+          "Give three options to finish.",
+          "Explain key concepts thoroughly.",
+          "Stay in character for this scenario."
         ]
       ]
     },
@@ -1651,7 +1843,13 @@ window.prompts = {
           "Tell in ten words how",
           "Give three options for",
           "Explain key concepts of",
-          "You are this character;"
+          "You are this character;",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "consider love",
@@ -1698,7 +1896,13 @@ window.prompts = {
           "summarized in ten words",
           "giving three options",
           "explaining key concepts",
-          "as if you are this character"
+          "as if you are this character",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "to gain new insight",
@@ -1745,7 +1949,13 @@ window.prompts = {
           "using exactly ten words",
           "offering three options",
           "clarifying key concepts",
-          "staying in character"
+          "staying in character",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "Keep it reflective.",
@@ -1794,7 +2004,13 @@ window.prompts = {
           "Tell it in ten words.",
           "Give three options to end.",
           "Explain key concepts clearly.",
-          "Stay in character until the end."
+          "Stay in character until the end.",
+          "Write from that perspective as a skeptic.",
+          "What would your plan be next?",
+          "Tell it in ten words exactly.",
+          "Give three options to finish.",
+          "Explain key concepts thoroughly.",
+          "Stay in character for this scenario."
         ]
       ]
     },
@@ -1846,7 +2062,13 @@ window.prompts = {
           "Tell in ten words how",
           "Give three options for",
           "Explain key concepts of",
-          "You are this character;"
+          "You are this character;",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "avoid distractions",
@@ -1893,7 +2115,13 @@ window.prompts = {
           "summarized in ten words",
           "giving three options",
           "explaining key concepts",
-          "as if you are this character"
+          "as if you are this character",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "for sustained results",
@@ -1940,7 +2168,13 @@ window.prompts = {
           "using exactly ten words",
           "offering three options",
           "clarifying key concepts",
-          "staying in character"
+          "staying in character",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "Use practical examples.",
@@ -1988,7 +2222,13 @@ window.prompts = {
           "Tell it in ten words.",
           "Give three options to end.",
           "Explain key concepts clearly.",
-          "Stay in character until the end."
+          "Stay in character until the end.",
+          "Write from that perspective as a skeptic.",
+          "What would your plan be next?",
+          "Tell it in ten words exactly.",
+          "Give three options to finish.",
+          "Explain key concepts thoroughly.",
+          "Stay in character for this scenario."
         ]
       ]
     },
@@ -2040,7 +2280,13 @@ window.prompts = {
           "Tell in ten words how",
           "Give three options for",
           "Explain key concepts of",
-          "You are this character;"
+          "You are this character;",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "future technology disrupting everyday life",
@@ -2087,7 +2333,13 @@ window.prompts = {
           "summarized in ten words",
           "giving three options",
           "explaining key concepts",
-          "as if you are this character"
+          "as if you are this character",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "Which camera angles or editing tricks would keep viewers hooked?",
@@ -2134,7 +2386,13 @@ window.prompts = {
           "using exactly ten words",
           "offering three options",
           "clarifying key concepts",
-          "staying in character"
+          "staying in character",
+          "From the perspective of a skeptic,",
+          "What would your plan be next",
+          "Tell in ten words or fewer",
+          "Give three options to continue",
+          "Explain key concepts in detail",
+          "You are this character in the story"
         ],
         [
           "Keep it short and snappy.",
@@ -2182,7 +2440,13 @@ window.prompts = {
           "Tell it in ten words.",
           "Give three options to end.",
           "Explain key concepts clearly.",
-          "Stay in character until the end."
+          "Stay in character until the end.",
+          "Write from that perspective as a skeptic.",
+          "What would your plan be next?",
+          "Tell it in ten words exactly.",
+          "Give three options to finish.",
+          "Explain key concepts thoroughly.",
+          "Stay in character for this scenario."
         ]
       ]
     }
@@ -2246,7 +2510,13 @@ window.prompts = {
           "On kelimeyle nasıl",
           "Üç seçenek vererek",
           "Temel kavramları açıklayarak",
-          "Bu karakter sensin;"
+          "Bu karakter sensin;",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "dünyadaki açlığı çözen",
@@ -2303,7 +2573,13 @@ window.prompts = {
           "on kelimeyle özetleyerek",
           "üç seçenek sunarak",
           "temel kavramları açıklayarak",
-          "bu karaktermiş gibi"
+          "bu karaktermiş gibi",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "ve insanlığa faydalı olan",
@@ -2360,7 +2636,13 @@ window.prompts = {
           "tam on kelime kullanarak",
           "üç seçenek önererek",
           "ana kavramları netleştirerek",
-          "karakterde kalarak"
+          "karakterde kalarak",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "Olasılıkları vurgula.",
@@ -2418,7 +2700,13 @@ window.prompts = {
           "On kelimeyle anlat.",
           "Son için üç seçenek ver.",
           "Temel kavramları açıkla.",
-          "Sona kadar karakterde kal."
+          "Sona kadar karakterde kal.",
+          "Şüpheci bir bakış açısıyla yaz.",
+          "Planın bundan sonra ne olurdu?",
+          "Tam on kelimeyle anlat.",
+          "Bitirmek için üç seçenek ver.",
+          "Temel kavramları ayrıntılı açıkla.",
+          "Bu senaryoda karakterde kal."
         ]
       ]
     },
@@ -2470,7 +2758,13 @@ window.prompts = {
           "On kelimeyle nasıl",
           "Üç seçenek vererek",
           "Temel kavramları açıklayarak",
-          "Bu karakter sensin;"
+          "Bu karakter sensin;",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "kediler dünyayı yönetse",
@@ -2517,7 +2811,13 @@ window.prompts = {
           "on kelimeyle özetleyerek",
           "üç seçenek sunarak",
           "temel kavramları açıklayarak",
-          "bu karaktermiş gibi"
+          "bu karaktermiş gibi",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "tam bir kaos olur",
@@ -2564,7 +2864,13 @@ window.prompts = {
           "tam on kelime kullanarak",
           "üç seçenek önererek",
           "ana kavramları netleştirerek",
-          "karakterde kalarak"
+          "karakterde kalarak",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "Mizahi olsun.",
@@ -2612,7 +2918,13 @@ window.prompts = {
           "On kelimeyle anlat.",
           "Son için üç seçenek ver.",
           "Temel kavramları açıkla.",
-          "Sona kadar karakterde kal."
+          "Sona kadar karakterde kal.",
+          "Şüpheci bir bakış açısıyla yaz.",
+          "Planın bundan sonra ne olurdu?",
+          "Tam on kelimeyle anlat.",
+          "Bitirmek için üç seçenek ver.",
+          "Temel kavramları ayrıntılı açıkla.",
+          "Bu senaryoda karakterde kal."
         ]
       ]
     },
@@ -2664,7 +2976,13 @@ window.prompts = {
           "On kelimeyle nasıl",
           "Üç seçenek vererek",
           "Temel kavramları açıklayarak",
-          "Bu karakter sensin;"
+          "Bu karakter sensin;",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "kuantum fiziği",
@@ -2712,7 +3030,13 @@ window.prompts = {
           "on kelimeyle özetleyerek",
           "üç seçenek sunarak",
           "temel kavramları açıklayarak",
-          "bu karaktermiş gibi"
+          "bu karaktermiş gibi",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "basit terimlerle",
@@ -2759,7 +3083,13 @@ window.prompts = {
           "tam on kelime kullanarak",
           "üç seçenek önererek",
           "ana kavramları netleştirerek",
-          "karakterde kalarak"
+          "karakterde kalarak",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "Kısa tut.",
@@ -2806,7 +3136,13 @@ window.prompts = {
           "On kelimeyle anlat.",
           "Son için üç seçenek ver.",
           "Temel kavramları açıkla.",
-          "Sona kadar karakterde kal."
+          "Sona kadar karakterde kal.",
+          "Şüpheci bir bakış açısıyla yaz.",
+          "Planın bundan sonra ne olurdu?",
+          "Tam on kelimeyle anlat.",
+          "Bitirmek için üç seçenek ver.",
+          "Temel kavramları ayrıntılı açıkla.",
+          "Bu senaryoda karakterde kal."
         ]
       ]
     },
@@ -2858,7 +3194,13 @@ window.prompts = {
           "On kelimeyle nasıl",
           "Üç seçenek vererek",
           "Temel kavramları açıklayarak",
-          "Bu karakter sensin;"
+          "Bu karakter sensin;",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "gölgeler fısıldadığında",
@@ -2905,7 +3247,13 @@ window.prompts = {
           "on kelimeyle özetleyerek",
           "üç seçenek sunarak",
           "temel kavramları açıklayarak",
-          "bu karaktermiş gibi"
+          "bu karaktermiş gibi",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "aklını kaçırırsın",
@@ -2952,7 +3300,13 @@ window.prompts = {
           "tam on kelime kullanarak",
           "üç seçenek önererek",
           "ana kavramları netleştirerek",
-          "karakterde kalarak"
+          "karakterde kalarak",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "Rahatsız edici olsun.",
@@ -3000,7 +3354,13 @@ window.prompts = {
           "On kelimeyle anlat.",
           "Son için üç seçenek ver.",
           "Temel kavramları açıkla.",
-          "Sona kadar karakterde kal."
+          "Sona kadar karakterde kal.",
+          "Şüpheci bir bakış açısıyla yaz.",
+          "Planın bundan sonra ne olurdu?",
+          "Tam on kelimeyle anlat.",
+          "Bitirmek için üç seçenek ver.",
+          "Temel kavramları ayrıntılı açıkla.",
+          "Bu senaryoda karakterde kal."
         ]
       ]
     },
@@ -3052,7 +3412,13 @@ window.prompts = {
           "On kelimeyle nasıl",
           "Üç seçenek vererek",
           "Temel kavramları açıklayarak",
-          "Bu karakter sensin;"
+          "Bu karakter sensin;",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "yenilenebilir enerji",
@@ -3104,7 +3470,13 @@ window.prompts = {
           "on kelimeyle özetleyerek",
           "üç seçenek sunarak",
           "temel kavramları açıklayarak",
-          "bu karaktermiş gibi"
+          "bu karaktermiş gibi",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "fark yaratacak",
@@ -3156,7 +3528,13 @@ window.prompts = {
           "tam on kelime kullanarak",
           "üç seçenek önererek",
           "ana kavramları netleştirerek",
-          "karakterde kalarak"
+          "karakterde kalarak",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "Temel özellikleri özetle.",
@@ -3205,7 +3583,13 @@ window.prompts = {
           "On kelimeyle anlat.",
           "Son için üç seçenek ver.",
           "Temel kavramları açıkla.",
-          "Sona kadar karakterde kal."
+          "Sona kadar karakterde kal.",
+          "Şüpheci bir bakış açısıyla yaz.",
+          "Planın bundan sonra ne olurdu?",
+          "Tam on kelimeyle anlat.",
+          "Bitirmek için üç seçenek ver.",
+          "Temel kavramları ayrıntılı açıkla.",
+          "Bu senaryoda karakterde kal."
         ]
       ]
     },
@@ -3257,7 +3641,13 @@ window.prompts = {
           "On kelimeyle nasıl",
           "Üç seçenek vererek",
           "Temel kavramları açıklayarak",
-          "Bu karakter sensin;"
+          "Bu karakter sensin;",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "bisiklete binen efsanevi bir yaratık",
@@ -3304,7 +3694,13 @@ window.prompts = {
           "on kelimeyle özetleyerek",
           "üç seçenek sunarak",
           "temel kavramları açıklayarak",
-          "bu karaktermiş gibi"
+          "bu karaktermiş gibi",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "Canlı neon renkler kullan.",
@@ -3351,7 +3747,13 @@ window.prompts = {
           "tam on kelime kullanarak",
           "üç seçenek önererek",
           "ana kavramları netleştirerek",
-          "karakterde kalarak"
+          "karakterde kalarak",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "Canlı renkler kullan.",
@@ -3399,7 +3801,13 @@ window.prompts = {
           "On kelimeyle anlat.",
           "Son için üç seçenek ver.",
           "Temel kavramları açıkla.",
-          "Sona kadar karakterde kal."
+          "Sona kadar karakterde kal.",
+          "Şüpheci bir bakış açısıyla yaz.",
+          "Planın bundan sonra ne olurdu?",
+          "Tam on kelimeyle anlat.",
+          "Bitirmek için üç seçenek ver.",
+          "Temel kavramları ayrıntılı açıkla.",
+          "Bu senaryoda karakterde kal."
         ]
       ]
     },
@@ -3451,7 +3859,13 @@ window.prompts = {
           "On kelimeyle nasıl",
           "Üç seçenek vererek",
           "Temel kavramları açıklayarak",
-          "Bu karakter sensin;"
+          "Bu karakter sensin;",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "bir zorluğu aşmayı",
@@ -3498,7 +3912,13 @@ window.prompts = {
           "on kelimeyle özetleyerek",
           "üç seçenek sunarak",
           "temel kavramları açıklayarak",
-          "bu karaktermiş gibi"
+          "bu karaktermiş gibi",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "motive eden",
@@ -3545,7 +3965,13 @@ window.prompts = {
           "tam on kelime kullanarak",
           "üç seçenek önererek",
           "ana kavramları netleştirerek",
-          "karakterde kalarak"
+          "karakterde kalarak",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "gelecek nesil için.",
@@ -3593,7 +4019,13 @@ window.prompts = {
           "On kelimeyle anlat.",
           "Son için üç seçenek ver.",
           "Temel kavramları açıkla.",
-          "Sona kadar karakterde kal."
+          "Sona kadar karakterde kal.",
+          "Şüpheci bir bakış açısıyla yaz.",
+          "Planın bundan sonra ne olurdu?",
+          "Tam on kelimeyle anlat.",
+          "Bitirmek için üç seçenek ver.",
+          "Temel kavramları ayrıntılı açıkla.",
+          "Bu senaryoda karakterde kal."
         ]
       ]
     },
@@ -3645,7 +4077,13 @@ window.prompts = {
           "On kelimeyle nasıl",
           "Üç seçenek vererek",
           "Temel kavramları açıklayarak",
-          "Bu karakter sensin;"
+          "Bu karakter sensin;",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "yerçekimi ters dönüyor",
@@ -3692,7 +4130,13 @@ window.prompts = {
           "on kelimeyle özetleyerek",
           "üç seçenek sunarak",
           "temel kavramları açıklayarak",
-          "bu karaktermiş gibi"
+          "bu karaktermiş gibi",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "Toplum nasıl tepki verir?",
@@ -3739,7 +4183,13 @@ window.prompts = {
           "tam on kelime kullanarak",
           "üç seçenek önererek",
           "ana kavramları netleştirerek",
-          "karakterde kalarak"
+          "karakterde kalarak",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "Sonuçlarını keşfet.",
@@ -3787,7 +4237,13 @@ window.prompts = {
           "On kelimeyle anlat.",
           "Son için üç seçenek ver.",
           "Temel kavramları açıkla.",
-          "Sona kadar karakterde kal."
+          "Sona kadar karakterde kal.",
+          "Şüpheci bir bakış açısıyla yaz.",
+          "Planın bundan sonra ne olurdu?",
+          "Tam on kelimeyle anlat.",
+          "Bitirmek için üç seçenek ver.",
+          "Temel kavramları ayrıntılı açıkla.",
+          "Bu senaryoda karakterde kal."
         ]
       ]
     },
@@ -3838,7 +4294,13 @@ window.prompts = {
           "On kelimeyle nasıl",
           "Üç seçenek vererek",
           "Temel kavramları açıklayarak",
-          "Bu karakter sensin;"
+          "Bu karakter sensin;",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "aşkı düşün",
@@ -3885,7 +4347,13 @@ window.prompts = {
           "on kelimeyle özetleyerek",
           "üç seçenek sunarak",
           "temel kavramları açıklayarak",
-          "bu karaktermiş gibi"
+          "bu karaktermiş gibi",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "yeni bir anlayış için",
@@ -3932,7 +4400,13 @@ window.prompts = {
           "tam on kelime kullanarak",
           "üç seçenek önererek",
           "ana kavramları netleştirerek",
-          "karakterde kalarak"
+          "karakterde kalarak",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "Düşündürücü olsun.",
@@ -3981,7 +4455,13 @@ window.prompts = {
           "On kelimeyle anlat.",
           "Son için üç seçenek ver.",
           "Temel kavramları açıkla.",
-          "Sona kadar karakterde kal."
+          "Sona kadar karakterde kal.",
+          "Şüpheci bir bakış açısıyla yaz.",
+          "Planın bundan sonra ne olurdu?",
+          "Tam on kelimeyle anlat.",
+          "Bitirmek için üç seçenek ver.",
+          "Temel kavramları ayrıntılı açıkla.",
+          "Bu senaryoda karakterde kal."
         ]
       ]
     },
@@ -4033,7 +4513,13 @@ window.prompts = {
           "On kelimeyle nasıl",
           "Üç seçenek vererek",
           "Temel kavramları açıklayarak",
-          "Bu karakter sensin;"
+          "Bu karakter sensin;",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "dikkat dağıtıcıları önlemek",
@@ -4080,7 +4566,13 @@ window.prompts = {
           "on kelimeyle özetleyerek",
           "üç seçenek sunarak",
           "temel kavramları açıklayarak",
-          "bu karaktermiş gibi"
+          "bu karaktermiş gibi",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "kalıcı sonuçlar için",
@@ -4127,7 +4619,13 @@ window.prompts = {
           "tam on kelime kullanarak",
           "üç seçenek önererek",
           "ana kavramları netleştirerek",
-          "karakterde kalarak"
+          "karakterde kalarak",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "Pratik örnekler kullan.",
@@ -4175,7 +4673,13 @@ window.prompts = {
           "On kelimeyle anlat.",
           "Son için üç seçenek ver.",
           "Temel kavramları açıkla.",
-          "Sona kadar karakterde kal."
+          "Sona kadar karakterde kal.",
+          "Şüpheci bir bakış açısıyla yaz.",
+          "Planın bundan sonra ne olurdu?",
+          "Tam on kelimeyle anlat.",
+          "Bitirmek için üç seçenek ver.",
+          "Temel kavramları ayrıntılı açıkla.",
+          "Bu senaryoda karakterde kal."
         ]
       ]
     },
@@ -4227,7 +4731,13 @@ window.prompts = {
           "On kelimeyle nasıl",
           "Üç seçenek vererek",
           "Temel kavramları açıklayarak",
-          "Bu karakter sensin;"
+          "Bu karakter sensin;",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "günlük yaşamı değiştiren geleceğin teknolojisi",
@@ -4274,7 +4784,13 @@ window.prompts = {
           "on kelimeyle özetleyerek",
           "üç seçenek sunarak",
           "temel kavramları açıklayarak",
-          "bu karaktermiş gibi"
+          "bu karaktermiş gibi",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "İzleyiciyi ekranda tutacak kamera açıları neler olmalı?",
@@ -4321,7 +4837,13 @@ window.prompts = {
           "tam on kelime kullanarak",
           "üç seçenek önererek",
           "ana kavramları netleştirerek",
-          "karakterde kalarak"
+          "karakterde kalarak",
+          "Şüpheci bakış açısıyla,",
+          "Planın bundan sonra ne olurdu",
+          "On kelimeyle ya da daha az anlat",
+          "Devam için üç seçenek ver",
+          "Temel kavramları ayrıntılı açıkla",
+          "Bu hikâyedeki karakter sensin"
         ],
         [
           "Kısa ve akıcı tut.",
@@ -4369,7 +4891,13 @@ window.prompts = {
           "On kelimeyle anlat.",
           "Son için üç seçenek ver.",
           "Temel kavramları açıkla.",
-          "Sona kadar karakterde kal."
+          "Sona kadar karakterde kal.",
+          "Şüpheci bir bakış açısıyla yaz.",
+          "Planın bundan sonra ne olurdu?",
+          "Tam on kelimeyle anlat.",
+          "Bitirmek için üç seçenek ver.",
+          "Temel kavramları ayrıntılı açıkla.",
+          "Bu senaryoda karakterde kal."
         ]
       ]
     }
