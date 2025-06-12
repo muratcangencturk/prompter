@@ -16,6 +16,7 @@ This guide explains how to set up the project, run tests, lint and format the co
    ```
    This project uses **ESLint v8.57.0**, which is installed as a dev
    dependency. Make sure your editor uses this version for linting.
+   Run this command before executing `npm test` so the linter can run correctly.
 4. (Optional) Start a local web server to use the app:
    ```bash
    python3 -m http.server
@@ -29,6 +30,9 @@ The project uses **ESLint** as its test suite. Run:
 ```bash
 npm test
 ```
+
+Make sure you have run `npm install` at least once before running the tests so
+that all required packages are available.
 
 This will lint the codebase and report any issues.
 
