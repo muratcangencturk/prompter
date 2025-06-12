@@ -4,6 +4,12 @@ const path = require('path');
 
 const promptsDir = path.join(__dirname, '..', 'prompts');
 
+const preservePunctuation = {
+  mindBlowing: [2],
+  video: [2],
+  image: [2],
+};
+
 function listPromptFiles() {
   const files = [];
   for (const lang of fs.readdirSync(promptsDir)) {
@@ -22,14 +28,18 @@ function checkFile(file) {
   const data = JSON.parse(fs.readFileSync(file, 'utf8'));
   const errors = [];
   if (!Array.isArray(data.parts)) return errors;
+  const key = path.basename(file, '.json');
   data.parts.slice(0, 3).forEach((arr, partIdx) => {
     if (!Array.isArray(arr)) return;
+    const allowPunct = (preservePunctuation[key] || []).includes(partIdx);
     arr.forEach((str, idx) => {
       if (typeof str !== 'string') return;
       const hasSpace = str.trim() !== str;
       const hasPunct = /[.!?]$/.test(str);
-      if (hasSpace || hasPunct) {
-        errors.push(`${path.relative(process.cwd(), file)} [${partIdx}:${idx}] "${str}"`);
+      if (hasSpace || (hasPunct && !allowPunct)) {
+        errors.push(
+          `${path.relative(process.cwd(), file)} [${partIdx}:${idx}] "${str}"`
+        );
       }
     });
   });
