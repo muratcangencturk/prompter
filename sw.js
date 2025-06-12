@@ -18,6 +18,7 @@ const ASSETS = [
   './lucide.min.js',
   './src/main.js',
   './icons/logo.svg',
+  './css/app.css',
   './css/theme-dark.css',
   './css/theme-light.css',
   './prompts/en/ai.json',
@@ -41,7 +42,7 @@ const ASSETS = [
   './prompts/tr/mindBlowing.json',
   './prompts/tr/perspective.json',
   './prompts/tr/productivity.json',
-  './prompts/tr/video.json',
+  './prompts/tr/video.json'
 ];
 
 self.addEventListener('install', (event) => {
