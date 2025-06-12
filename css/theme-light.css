@@ -11,7 +11,7 @@ body { background-image: linear-gradient(to bottom right, #f0f4ff, #d9e2ff, #c4d
 .focus\:ring-white\/50:focus { --tw-ring-color: rgba(0, 0, 0, 0.3) !important; }
 .category-button { background-color: rgba(0, 0, 0, 0.08) !important; color: #1a1a2e !important; border: 1px solid rgba(0, 0, 0, 0.1) !important; }
 .category-button:hover { background-color: rgba(0, 0, 0, 0.15) !important; }
-.category-button.selected { background-image: linear-gradient(to right, #6366f1, #8b5cf6) !important; color: white !important; border-color: transparent !important; }
+.category-button.selected { background-image: linear-gradient(to right, #4f46e5, #4338ca) !important; color: white !important; border-color: transparent !important; }
 .category-button .lucide { color: #4f46e5 !important; display: none; }
 .category-button.selected .lucide { color: white !important; }
 .category-button .emoji-icon { color: #4f46e5 !important; }

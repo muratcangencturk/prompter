@@ -42,6 +42,9 @@ The service worker reads the `version` field from `manifest.json` and names its 
 
 - Prompter currently supports **English** (`EN`) and **Turkish** (`TR`).
 - Use the language switcher in the top‑right corner to choose your interface language. The setting persists in your browser.
+## Accessibility
+
+Colors for both light and dark themes meet WCAG AA contrast requirements. Gradients and button styles were tested with automated tools and adjusted so text has at least a 4.5:1 contrast ratio against its background.
 
 ## Categories
 
