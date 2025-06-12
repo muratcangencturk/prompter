@@ -35,7 +35,12 @@
       "Şuna yönelik bir ders planı tasarla:",
       "Şu konuda bir sınav hazırla:",
       "Şu konuda etkileşimli slaytlar taslağı çıkar:",
-      "Şu konu için pratik egzersizler özetle:"
+      "Şu konu için pratik egzersizler özetle:",
+      "Şu konu hakkında uzman ipuçları paylaş:",
+      "Ana teorileri basitleştirerek açıkla:",
+      "Gerçek dünya vaka çalışmalarını sun:",
+      "Son gelişmeleri araştır:",
+      "Pratik uygulamaları anlat:"
     ],
     [
       "kuantum fiziği",
@@ -72,7 +77,12 @@
       "tarihi problem çözme yöntemleri",
       "öğrenme stilleri araştırması",
       "çocuk gelişim evreleri",
-      "eğitimin geleceği"
+      "eğitimin geleceği",
+      "yenilenebilir okyanus enerjisi",
+      "robotik cerrahi",
+      "antik navigasyon yöntemleri",
+      "kripto para piyasaları",
+      "sanal gerçeklik eğitimi"
     ],
     [
       "basit terimlerle",
@@ -108,7 +118,12 @@
       "gerçek değerlendirme ipuçlarıyla",
       "sınıf örnekleri kullanarak",
       "uzaktan öğrenmede başarı için",
-      "eleştirel düşünceyi tetikleyen"
+      "eleştirel düşünceyi tetikleyen",
+      "uygulamalı projelerle",
+      "net örnekler kullanarak",
+      "görsel şemalarla",
+      "etkileşimli testlerle",
+      "günlük senaryolarla"
     ],
     [
       "Kısa tut.",
@@ -144,7 +159,12 @@
       "Ek okumalar öner.",
       "Kavramları hayata bağla.",
       "Önemli noktalarla bitir.",
-      "Öğrencileri keşfetmeye davet et."
+      "Öğrencileri keşfetmeye davet et.",
+      "Adım adım rehberlik ver.",
+      "Grup tartışmalarını teşvik et.",
+      "Kısa alıştırmalar ekle.",
+      "Temel çıkarımları vurgula.",
+      "Olumlu pekiştirme kullan."
     ]
   ]
 }

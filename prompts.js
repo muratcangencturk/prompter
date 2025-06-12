@@ -48,7 +48,12 @@ window.prompts = {
           "Envision a brain-inspired chip that",
           "Conceptualize a new language model that",
           "Write about a helper bot that",
-          "Detail a futuristic assistant that"
+          "Detail a futuristic assistant that",
+          "Envision a transparent AI that",
+          "Develop a collaborative robot that",
+          "Design a privacy-first algorithm that",
+          "Create an adaptive interface that",
+          "Plan a universal translator that"
         ],
         [
           "solves world hunger",
@@ -94,7 +99,12 @@ window.prompts = {
           "translates speech in real time",
           "creates custom medications",
           "manages renewable energy grids",
-          "simulates human intuition"
+          "simulates human intuition",
+          "anticipates user needs",
+          "adapts to emotions",
+          "operates entirely off-grid",
+          "optimizes remote collaboration",
+          "guards against deepfakes"
         ],
         [
           "and benefits humanity",
@@ -140,7 +150,12 @@ window.prompts = {
           "earning trust worldwide",
           "challenging existing norms",
           "while empowering creativity",
-          "with far-reaching effects"
+          "with far-reaching effects",
+          "while respecting user freedom",
+          "without invading privacy",
+          "while inspiring public trust",
+          "without draining resources",
+          "and evolves with feedback"
         ],
         [
           "Focus on possibilities.",
@@ -187,7 +202,12 @@ window.prompts = {
           "Encourage responsible innovation.",
           "Explore future partnerships.",
           "Point out technical hurdles.",
-          "End on an optimistic note."
+          "End on an optimistic note.",
+          "Consider real-world deployment.",
+          "Include security measures.",
+          "Keep the language concise.",
+          "Show global collaboration.",
+          "Close with future possibilities."
         ]
       ]
     },
@@ -228,7 +248,12 @@ window.prompts = {
           "Write a chaotic adventure as",
           "Invent a prank that",
           "Describe a silly rumor that",
-          "Reveal a wild conspiracy where"
+          "Reveal a wild conspiracy where",
+          "Draft a comic strip where",
+          "Imagine a radio show where",
+          "Design a board game in which",
+          "Compose a folk tale where",
+          "Outline a circus act where"
         ],
         [
           "cats rule the earth",
@@ -264,7 +289,12 @@ window.prompts = {
           "every dream predicts tomorrow",
           "humans swap bodies randomly",
           "music controls emotions",
-          "gravity changes each hour"
+          "gravity changes each hour",
+          "toasters gain sentience",
+          "ice cream falls from the sky",
+          "shoes talk in riddles",
+          "mountains start to dance",
+          "fish fly through cities"
         ],
         [
           "resulting in chaos",
@@ -300,7 +330,12 @@ window.prompts = {
           "turning chaos into art",
           "confusing every bystander",
           "starting a wacky revolution",
-          "leaving everyone speechless"
+          "leaving everyone speechless",
+          "sparking endless laughter",
+          "creating surreal confusion",
+          "launching spontaneous songs",
+          "turning boredom into mayhem",
+          "igniting magical mischief"
         ],
         [
           "Make it witty.",
@@ -337,7 +372,12 @@ window.prompts = {
           "Embrace outrageous ideas.",
           "Make scenes vivid.",
           "Wrap up with a giggle.",
-          "Invite readers to laugh."
+          "Invite readers to laugh.",
+          "Let creativity soar.",
+          "Keep humor playful.",
+          "Add colorful surprises.",
+          "Use quick pacing.",
+          "Finish with a quirky twist."
         ]
       ]
     },
@@ -378,7 +418,12 @@ window.prompts = {
           "Design a lesson plan for",
           "Create a quiz about",
           "Draft interactive slides on",
-          "Outline practical exercises for"
+          "Outline practical exercises for",
+          "Share expert tips on",
+          "Break down key theories of",
+          "Present real-world case studies about",
+          "Explore recent advances in",
+          "Explain practical applications of"
         ],
         [
           "quantum physics",
@@ -415,7 +460,12 @@ window.prompts = {
           "historical problem-solving",
           "learning styles research",
           "child development stages",
-          "the future of education"
+          "the future of education",
+          "renewable ocean energy",
+          "robotic surgery",
+          "ancient navigation methods",
+          "cryptocurrency markets",
+          "virtual reality education"
         ],
         [
           "in simple terms",
@@ -451,7 +501,12 @@ window.prompts = {
           "with real assessment tips",
           "using classroom examples",
           "for remote learning success",
-          "that spark critical thinking"
+          "that spark critical thinking",
+          "with hands-on projects",
+          "using clear examples",
+          "with visual diagrams",
+          "through interactive quizzes",
+          "with everyday scenarios"
         ],
         [
           "Keep it short.",
@@ -487,7 +542,12 @@ window.prompts = {
           "Suggest further reading.",
           "Relate concepts to life.",
           "End with key takeaways.",
-          "Invite students to explore."
+          "Invite students to explore.",
+          "Provide step-by-step guidance.",
+          "Encourage group discussion.",
+          "Include short practice tasks.",
+          "Highlight core takeaways.",
+          "Use positive reinforcement."
         ]
       ]
     },
@@ -528,7 +588,12 @@ window.prompts = {
           "Describe a haunted ritual that",
           "Reveal the terror unleashed when",
           "Paint a bleak prophecy that",
-          "Whisper a forbidden secret where"
+          "Whisper a forbidden secret where",
+          "Write the chilling moment when",
+          "Whisper the nightmare where",
+          "Detail the sorrow as",
+          "Reveal the cursed hour when",
+          "Convey the dread that"
         ],
         [
           "shadows whisper",
@@ -564,7 +629,12 @@ window.prompts = {
           "every shadow grows teeth",
           "mirrors reveal twisted faces",
           "time runs backward screaming",
-          "the sky rains ash"
+          "the sky rains ash",
+          "mirrors scream silently",
+          "clocks bleed sand",
+          "the wind moans names",
+          "candles flicker blue",
+          "stairs twist endlessly"
         ],
         [
           "driving you insane",
@@ -600,7 +670,12 @@ window.prompts = {
           "tearing sanity apart",
           "feeding endless fear",
           "echoing through eternity",
-          "fading every last light"
+          "fading every last light",
+          "while hope crumbles away",
+          "as reality warps within",
+          "while silence grows louder",
+          "until fear devours reason",
+          "as despair settles in"
         ],
         [
           "Make it unsettling.",
@@ -637,7 +712,12 @@ window.prompts = {
           "Blur the line of reality.",
           "Make terror personal.",
           "End in chilling silence.",
-          "Leave fear unresolved."
+          "Leave fear unresolved.",
+          "Keep suspense relentless.",
+          "Use haunting metaphors.",
+          "Let dread seep slowly.",
+          "Avoid predictable scares.",
+          "Close with a chilling whisper."
         ]
       ]
     },
@@ -678,7 +758,12 @@ window.prompts = {
           "Describe a crowdfunding pitch that",
           "Forecast market trends when",
           "Design a user survey that",
-          "Plan a launch event where"
+          "Plan a launch event where",
+          "Create a social platform for",
+          "Develop a subscription service about",
+          "Design a hackathon theme around",
+          "Invent a DIY kit for",
+          "Sketch a mentorship program about"
         ],
         [
           "renewable energy",
@@ -719,7 +804,12 @@ window.prompts = {
           "bridges online and offline events",
           "turns hobbies into careers",
           "grows through community challenges",
-          "focuses on micro-learning bursts"
+          "focuses on micro-learning bursts",
+          "smart recycling bins",
+          "home automation AI",
+          "virtual pet companions",
+          "eco-friendly fashion",
+          "online language tutoring"
         ],
         [
           "that stands out",
@@ -760,7 +850,12 @@ window.prompts = {
           "encouraging creative mashups",
           "inspiring local collaborations",
           "turning feedback into features",
-          "growing with each new update"
+          "growing with each new update",
+          "that scales with demand",
+          "with community-driven goals",
+          "that adapts to trends",
+          "supported by micro-investments",
+          "rooted in local culture"
         ],
         [
           "Outline key features.",
@@ -798,7 +893,12 @@ window.prompts = {
           "Draw examples from small startups.",
           "Highlight real community impact.",
           "Encourage creative experimentation.",
-          "Invite open-source collaboration."
+          "Invite open-source collaboration.",
+          "List possible revenue streams.",
+          "Include timeline for rollout.",
+          "Note key partnerships needed.",
+          "Suggest customer engagement ideas.",
+          "Finish with a bold vision."
         ]
       ]
     },
@@ -839,7 +939,12 @@ window.prompts = {
           "Paint a mythic battle that",
           "Sketch futuristic vehicles where",
           "Visualize a dramatic logo that",
-          "Capture a fleeting moment when"
+          "Capture a fleeting moment when",
+          "Illustrate a magical doorway to",
+          "Compose a dramatic scene showing",
+          "Draft a futuristic gadget featuring",
+          "Imagine a celestial event involving",
+          "Design a character portrait of"
         ],
         [
           "a mythical creature riding a bicycle",
@@ -875,7 +980,12 @@ window.prompts = {
           "old photos reveal secret portals",
           "futuristic robots sculpt monuments",
           "flying cars dominate skylines",
-          "hidden worlds emerge from shadows"
+          "hidden worlds emerge from shadows",
+          "a city made of mirrors",
+          "a robot delivering pizzas",
+          "a sunrise on another galaxy",
+          "a library floating in space",
+          "a festival of glowing lanterns"
         ],
         [
           "Use vibrant neon colors.",
@@ -911,7 +1021,12 @@ window.prompts = {
           "sparking fresh creative visions",
           "giving life to forgotten tales",
           "inspiring fantastical daydreams",
-          "redefining visual storytelling"
+          "redefining visual storytelling",
+          "inspired by classic ukiyo-e.",
+          "with bold brush strokes.",
+          "using vibrant gradient hues.",
+          "in a minimalist flat style.",
+          "with playful cartoon tones."
         ],
         [
           "Use bold colors.",
@@ -948,7 +1063,12 @@ window.prompts = {
           "Keep backgrounds uncluttered.",
           "Apply subtle color gradients.",
           "End with an inviting caption.",
-          "Encourage artistic exploration."
+          "Encourage artistic exploration.",
+          "Balance positive and negative space.",
+          "Choose a consistent color theme.",
+          "Keep the file size manageable.",
+          "Add notes for animators.",
+          "Wrap up with an inspiring caption."
         ]
       ]
     },
@@ -989,7 +1109,12 @@ window.prompts = {
           "Recall an encouraging speech that",
           "Write a motivational letter describing how",
           "Describe a journey that begins when",
-          "Imagine a courageous leader who"
+          "Imagine a courageous leader who",
+          "Paint a picture of how",
+          "Share a lesson where",
+          "Write a speech that",
+          "Show how perseverance",
+          "Compose a diary entry where"
         ],
         [
           "overcoming a challenge",
@@ -1025,7 +1150,12 @@ window.prompts = {
           "communities build lasting bonds",
           "dreamers push beyond limits",
           "simple kindness sparks change",
-          "voices rise in harmony"
+          "voices rise in harmony",
+          "turning obstacles into opportunities",
+          "finding mentors in unexpected places",
+          "unlocking the power of gratitude",
+          "transforming fear into focus",
+          "celebrating everyday heroes"
         ],
         [
           "that sparks motivation",
@@ -1061,7 +1191,12 @@ window.prompts = {
           "showing resilience in adversity",
           "building bridges of hope",
           "kindling dreams across borders",
-          "lighting a path forward"
+          "lighting a path forward",
+          "that spreads courage",
+          "that leads to shared triumph",
+          "that inspires lifelong dreams",
+          "that brings communities together",
+          "that multiplies hope"
         ],
         [
           "for the next generation.",
@@ -1098,7 +1233,12 @@ window.prompts = {
           "Encourage positive action.",
           "Focus on achievable goals.",
           "Close with genuine gratitude.",
-          "Invite others to inspire."
+          "Invite others to inspire.",
+          "Keep the tone uplifting.",
+          "Focus on real experiences.",
+          "Invite reflection at the end.",
+          "Use clear and hopeful language.",
+          "Encourage small daily actions."
         ]
       ]
     },
@@ -1139,7 +1279,12 @@ window.prompts = {
           "Describe a mind-bending device that",
           "Imagine time shattering when",
           "Write about a quantum realm where",
-          "Sketch a reality-twisting portal that"
+          "Sketch a reality-twisting portal that",
+          "Visualize the instant when",
+          "Think of a dimension where",
+          "Picture technology unlocking",
+          "Imagine a discovery that",
+          "Speculate on a twist where"
         ],
         [
           "gravity reversed",
@@ -1175,7 +1320,12 @@ window.prompts = {
           "music manipulates the cosmos",
           "memories trade like currency",
           "dreams design our future",
-          "consciousness spans the galaxy"
+          "consciousness spans the galaxy",
+          "light bends in circles",
+          "thoughts become visible",
+          "animals speak ancient languages",
+          "time loops every hour",
+          "dreams craft new worlds"
         ],
         [
           "How would society react?",
@@ -1211,7 +1361,12 @@ window.prompts = {
           "reshaping what we call normal",
           "pushing imagination beyond limits",
           "uniting species across worlds",
-          "opening doors to infinity"
+          "opening doors to infinity",
+          "Would morality shift rapidly?",
+          "How would history rewrite itself?",
+          "Could imagination keep pace?",
+          "Would chaos bring creativity?",
+          "Could we harness unlimited power?"
         ],
         [
           "Explore the consequences.",
@@ -1248,7 +1403,12 @@ window.prompts = {
           "Maintain a sense of wonder.",
           "Keep the reader questioning.",
           "Build suspense carefully.",
-          "Conclude with limitless possibilities."
+          "Conclude with limitless possibilities.",
+          "Push the limits of imagination.",
+          "Question existing beliefs.",
+          "Leave no detail unexplored.",
+          "Highlight startling possibilities.",
+          "Conclude with open questions."
         ]
       ]
     },
@@ -1288,7 +1448,12 @@ window.prompts = {
           "Through the eyes of history,",
           "From a storyteller's voice,",
           "As a wandering philosopher,",
-          "Through a camera drone,"
+          "Through a camera drone,",
+          "From the eyes of a statue,",
+          "As a wandering ghost,",
+          "From an ant's perspective,",
+          "From a distant galaxy,",
+          "Through the mind of a machine,"
         ],
         [
           "consider love",
@@ -1324,7 +1489,12 @@ window.prompts = {
           "unexpected mentors appear",
           "traditions weave new paths",
           "old maps hide secrets",
-          "dreams lead to discovery"
+          "dreams lead to discovery",
+          "question modern technology",
+          "experience endless silence",
+          "witness ancient rituals",
+          "observe shifting seasons",
+          "discover hidden cities"
         ],
         [
           "to gain new insight",
@@ -1360,7 +1530,12 @@ window.prompts = {
           "bridging diverse opinions",
           "guiding thoughtful reflection",
           "sparking mindful choices",
-          "uncovering surprising insights"
+          "uncovering surprising insights",
+          "revealing profound emotions",
+          "to highlight silent struggles",
+          "uncovering forgotten wisdom",
+          "revealing universal truths",
+          "to inspire quiet wonder"
         ],
         [
           "Keep it reflective.",
@@ -1398,7 +1573,12 @@ window.prompts = {
           "Blend personal details gently.",
           "Keep closing remarks soft.",
           "Invite ongoing curiosity.",
-          "Finish with a peaceful tone."
+          "Finish with a peaceful tone.",
+          "Write with gentle curiosity.",
+          "Show subtle emotions.",
+          "Keep sentences flowing smoothly.",
+          "Offer space for reflection.",
+          "End on a thoughtful note."
         ]
       ]
     },
@@ -1439,7 +1619,12 @@ window.prompts = {
           "Explain a habit-forming routine where",
           "Map out an automation that",
           "Create a daily review plan that",
-          "Show a morning ritual when"
+          "Show a morning ritual when",
+          "Introduce a weekly review to",
+          "Design automation tools that",
+          "Plan a workspace layout to",
+          "Create focus rituals that",
+          "Develop accountability groups to"
         ],
         [
           "avoid distractions",
@@ -1475,7 +1660,12 @@ window.prompts = {
           "organizes tasks automatically",
           "keeps projects on target",
           "analyses productivity trends",
-          "stores all notes securely"
+          "stores all notes securely",
+          "boost long-term motivation",
+          "reduce decision fatigue",
+          "maintain steady progress",
+          "balance intense workloads",
+          "simplify complex tasks"
         ],
         [
           "for sustained results",
@@ -1511,7 +1701,12 @@ window.prompts = {
           "boosting morale each week",
           "tracking habits with ease",
           "simplifying remote work flows",
-          "encouraging small daily wins"
+          "encouraging small daily wins",
+          "while adapting to change",
+          "with minimal overhead",
+          "during high-pressure days",
+          "while keeping teams aligned",
+          "without losing enthusiasm"
         ],
         [
           "Use practical examples.",
@@ -1548,7 +1743,12 @@ window.prompts = {
           "Offer quick troubleshooting.",
           "Remind to take breaks.",
           "End with a success vision.",
-          "Invite feedback for improvement."
+          "Invite feedback for improvement.",
+          "Offer templates for tracking.",
+          "Stress the value of rest.",
+          "Use clear action verbs.",
+          "Add links to extra resources.",
+          "Conclude with encouraging words."
         ]
       ]
     },
@@ -1589,7 +1789,12 @@ window.prompts = {
           "Describe a behind-the-scenes look as",
           "Map out a cinematic journey when",
           "Draft a short trailer that",
-          "Envision a montage sequence where"
+          "Envision a montage sequence where",
+          "Plan a cinematic short about",
+          "Create a timelapse capturing",
+          "Write a parody scene where",
+          "Design a tutorial series about",
+          "Film a mini-documentary on"
         ],
         [
           "future technology disrupting everyday life",
@@ -1625,7 +1830,12 @@ window.prompts = {
           "unexpected stunts steal the show",
           "music drives the narrative",
           "DIY sets come to life",
-          "virtual crowds cheer loudly"
+          "virtual crowds cheer loudly",
+          "a secret city under water",
+          "an unlikely hero's first day",
+          "robots learning to dance",
+          "nature reclaiming skyscrapers",
+          "time travelers stuck in traffic"
         ],
         [
           "Which camera angles or editing tricks would keep viewers hooked?",
@@ -1661,7 +1871,12 @@ window.prompts = {
           "boosting shares overnight",
           "sparking comments worldwide",
           "inspiring fan-made content",
-          "leading to viral follow-ups"
+          "leading to viral follow-ups",
+          "What lighting tricks will set the mood?",
+          "Could split-screen add excitement?",
+          "Imagine cameo appearances from influencers.",
+          "Would slow motion heighten drama?",
+          "How might narration tie scenes together?"
         ],
         [
           "Keep it short and snappy.",
@@ -1698,7 +1913,12 @@ window.prompts = {
           "Keep editing tight.",
           "Add engaging titles.",
           "Finish with a memorable tagline.",
-          "Encourage viewers to subscribe."
+          "Encourage viewers to subscribe.",
+          "Film with clear audio.",
+          "Test different transitions.",
+          "Keep scenes under one minute.",
+          "Post behind-the-scenes footage.",
+          "Invite viewers to comment."
         ]
       ]
     }
@@ -1751,7 +1971,12 @@ window.prompts = {
           "Beyin esintili bir çip düşün ki",
           "Şöyle yeni bir dil modeli kurgula ki",
           "Şöyle yardımcı bir bot anlat ki",
-          "Şöyle futuristik bir asistanı detaylandır ki"
+          "Şöyle futuristik bir asistanı detaylandır ki",
+          "Şeffaf bir YZ tasarla ki",
+          "İşbirlikçi bir robot geliştir ki",
+          "Gizliliği önceleyen bir algoritma tasarla ki",
+          "Uyum sağlayan bir arayüz oluştur ki",
+          "Evrensel bir çevirmen planla ki"
         ],
         [
           "dünyadaki açlığı çözen",
@@ -1797,7 +2022,12 @@ window.prompts = {
           "konuşmayı anında çeviren",
           "kişiye özel ilaçlar üreten",
           "yenilenebilir enerji ağlarını yöneten",
-          "insan sezgisini simüle eden"
+          "insan sezgisini simüle eden",
+          "kullanıcı ihtiyaçlarını öngören",
+          "duygulara uyum sağlayan",
+          "tamamen çevrimdışı çalışan",
+          "uzaktan işbirliğini optimize eden",
+          "sahte videolara karşı koruyan"
         ],
         [
           "ve insanlığa faydalı olan",
@@ -1843,7 +2073,12 @@ window.prompts = {
           "dünya çapında güven kazanarak",
           "mevcut normlara meydan okuyarak",
           "yaratıcılığı güçlendirerek",
-          "geniş kapsamlı etkilerle"
+          "geniş kapsamlı etkilerle",
+          "kullanıcı özgürlüğüne saygı duyarken",
+          "mahremiyeti ihlal etmeden",
+          "kamu güvenini artırırken",
+          "kaynakları tüketmeden",
+          "geri bildirimle gelişerek"
         ],
         [
           "Olasılıkları vurgula.",
@@ -1890,7 +2125,12 @@ window.prompts = {
           "Sorumlu yeniliği teşvik et.",
           "Gelecekteki işbirliklerini ara.",
           "Teknik engellere işaret et.",
-          "İyimser bir notla bitir."
+          "İyimser bir notla bitir.",
+          "Gerçek dünya uygulamasını düşün.",
+          "Güvenlik önlemlerini dahil et.",
+          "Dili kısa tut.",
+          "Küresel işbirliğini göster.",
+          "Gelecek olasılıklarıyla bitir."
         ]
       ]
     },
@@ -1931,7 +2171,12 @@ window.prompts = {
           "Şöyle karmaşık bir macera yaz ki",
           "Şöyle bir şaka icat et ki",
           "Şöyle saçma bir söylentiyi anlat ki",
-          "Şöyle çılgın bir komployu ortaya çıkar ki"
+          "Şöyle çılgın bir komployu ortaya çıkar ki",
+          "Şöyle bir çizgi roman taslağı yaz ki",
+          "Şöyle bir radyo programı hayal et ki",
+          "Şöyle bir kutu oyunu tasarla ki",
+          "Şöyle bir halk masalı kurgula ki",
+          "Şöyle bir sirk gösterisi taslağı çıkar ki"
         ],
         [
           "kediler dünyayı yönetse",
@@ -1967,7 +2212,12 @@ window.prompts = {
           "her rüya yarını öngörüyor",
           "insanlar rastgele beden değiştiriyor",
           "müzik duyguları kontrol ediyor",
-          "yerçekimi her saat değişiyor"
+          "yerçekimi her saat değişiyor",
+          "ekmek kızartma makineleri bilinç kazanır",
+          "gökten dondurma yağar",
+          "ayakkabılar bilmece söyler",
+          "dağlar dans etmeye başlar",
+          "balıklar şehirlerde uçar"
         ],
         [
           "tam bir kaos olur",
@@ -2003,7 +2253,12 @@ window.prompts = {
           "kaosu sanata dönüştürüyor",
           "herkesi şaşkına çeviriyor",
           "çılgın bir devrim başlatıyor",
-          "herkesi dilsiz bırakıyor"
+          "herkesi dilsiz bırakıyor",
+          "sonu bitmeyen kahkahalar getirir",
+          "gerçeküstü bir karmaşa yaratır",
+          "kendiliğinden şarkılar başlatır",
+          "sıkıcılığı çılgınlığa çevirir",
+          "büyülü yaramazlıkları ateşler"
         ],
         [
           "Mizahi olsun.",
@@ -2040,7 +2295,12 @@ window.prompts = {
           "Aşırı fikirlere kucak aç.",
           "Sahneleri canlı kıl.",
           "Bir kıkırdamayla bitir.",
-          "Okurları gülmeye davet et."
+          "Okurları gülmeye davet et.",
+          "Yaratıcılığı zirveye taşı.",
+          "Espriyi neşeli tut.",
+          "Renkli sürprizler ekle.",
+          "Temposunu canlı tut.",
+          "Tuhaf bir sonla noktala."
         ]
       ]
     },
@@ -2081,7 +2341,12 @@ window.prompts = {
           "Şuna yönelik bir ders planı tasarla:",
           "Şu konuda bir sınav hazırla:",
           "Şu konuda etkileşimli slaytlar taslağı çıkar:",
-          "Şu konu için pratik egzersizler özetle:"
+          "Şu konu için pratik egzersizler özetle:",
+          "Şu konu hakkında uzman ipuçları paylaş:",
+          "Ana teorileri basitleştirerek açıkla:",
+          "Gerçek dünya vaka çalışmalarını sun:",
+          "Son gelişmeleri araştır:",
+          "Pratik uygulamaları anlat:"
         ],
         [
           "kuantum fiziği",
@@ -2118,7 +2383,12 @@ window.prompts = {
           "tarihi problem çözme yöntemleri",
           "öğrenme stilleri araştırması",
           "çocuk gelişim evreleri",
-          "eğitimin geleceği"
+          "eğitimin geleceği",
+          "yenilenebilir okyanus enerjisi",
+          "robotik cerrahi",
+          "antik navigasyon yöntemleri",
+          "kripto para piyasaları",
+          "sanal gerçeklik eğitimi"
         ],
         [
           "basit terimlerle",
@@ -2154,7 +2424,12 @@ window.prompts = {
           "gerçek değerlendirme ipuçlarıyla",
           "sınıf örnekleri kullanarak",
           "uzaktan öğrenmede başarı için",
-          "eleştirel düşünceyi tetikleyen"
+          "eleştirel düşünceyi tetikleyen",
+          "uygulamalı projelerle",
+          "net örnekler kullanarak",
+          "görsel şemalarla",
+          "etkileşimli testlerle",
+          "günlük senaryolarla"
         ],
         [
           "Kısa tut.",
@@ -2190,7 +2465,12 @@ window.prompts = {
           "Ek okumalar öner.",
           "Kavramları hayata bağla.",
           "Önemli noktalarla bitir.",
-          "Öğrencileri keşfetmeye davet et."
+          "Öğrencileri keşfetmeye davet et.",
+          "Adım adım rehberlik ver.",
+          "Grup tartışmalarını teşvik et.",
+          "Kısa alıştırmalar ekle.",
+          "Temel çıkarımları vurgula.",
+          "Olumlu pekiştirme kullan."
         ]
       ]
     },
@@ -2231,7 +2511,12 @@ window.prompts = {
           "Şöyle ürkütücü bir ritüeli anlat ki",
           "Şu dehşetin serbest kaldığını göster ki",
           "Kasvetli bir kehanet resmet ki",
-          "Yasak bir sırrı fısılda ki"
+          "Yasak bir sırrı fısılda ki",
+          "Şöyle ürpertici anı yaz ki",
+          "Şöyle bir kabusu fısılda ki",
+          "Şu kederli anı detaylandır ki",
+          "Lanetten doğan saati açıkla ki",
+          "Şu korkuyu dile getir ki"
         ],
         [
           "gölgeler fısıldadığında",
@@ -2267,7 +2552,12 @@ window.prompts = {
           "her gölge dişleniyor",
           "ayna çarpık yüzler gösteriyor",
           "zaman çığlık atarak geriye akıyor",
-          "gökten kül yağıyor"
+          "gökten kül yağıyor",
+          "aynalar sessizce çığlık atar",
+          "saatler kum akıtır",
+          "rüzgar isimleri inler",
+          "mumlar mavi titrer",
+          "merdivenler sonsuza kıvrılır"
         ],
         [
           "aklını kaçırırsın",
@@ -2303,7 +2593,12 @@ window.prompts = {
           "aklı parçalara ayırarak",
           "sonsuz korkuyu besleyerek",
           "ebediyete yankılanarak",
-          "son ışığı söndürerek"
+          "son ışığı söndürerek",
+          "umut yavaşça çökerken",
+          "gerçeklik içten bükülürken",
+          "sessizlik gittikçe büyürken",
+          "korku aklı tüketene dek",
+          "umutsuzluk yerleşirken"
         ],
         [
           "Rahatsız edici olsun.",
@@ -2340,7 +2635,12 @@ window.prompts = {
           "Gerçeklik sınırını bulanıklaştır.",
           "Korkuyu kişisel kıl.",
           "Ürpertici bir sessizlikle bitir.",
-          "Korkuyu çözümsüz bırak."
+          "Korkuyu çözümsüz bırak.",
+          "Gerginliği kesintisiz tut.",
+          "Uğursuz metaforlar kullan.",
+          "Korkuyu yavaşça sızdır.",
+          "Tahmin edilebilir korkulardan kaçın.",
+          "Ürpertici bir fısıltıyla bitir."
         ]
       ]
     },
@@ -2381,7 +2681,12 @@ window.prompts = {
           "Şöyle bir kitlesel fonlama sunumunu anlat ki",
           "Pazar trendlerini şöyle tahmin et ki",
           "Şöyle bir kullanıcı anketi tasarla ki",
-          "Şöyle bir lansman etkinliği planla ki"
+          "Şöyle bir lansman etkinliği planla ki",
+          "Şöyle bir sosyal platform kur:",
+          "Şöyle bir abonelik hizmeti geliştir:",
+          "Şu konuyu temel alan bir hackathon tasarla:",
+          "Şöyle bir kendin-yap seti icat et:",
+          "Şöyle bir mentorluk programı kurgula:"
         ],
         [
           "yenilenebilir enerji",
@@ -2422,7 +2727,12 @@ window.prompts = {
           "çevrim içi ve çevrim dışı etkinlikleri birleştiren",
           "hobileri kariyere dönüştüren",
           "topluluk meydan okumalarıyla büyüyen",
-          "mikro öğrenme ataklarına odaklanan"
+          "mikro öğrenme ataklarına odaklanan",
+          "akıllı geri dönüşüm kutuları",
+          "ev otomasyon YZ'si",
+          "sanal evcil hayvanlar",
+          "çevreci moda",
+          "online dil eğitimi"
         ],
         [
           "fark yaratacak",
@@ -2463,7 +2773,12 @@ window.prompts = {
           "yaratıcı birleşimleri teşvik eden",
           "yerel işbirliklerini teşvik eden",
           "geri bildirimleri özelliklere dönüştüren",
-          "her yeni güncellemeyle büyüyen"
+          "her yeni güncellemeyle büyüyen",
+          "talebe göre ölçeklenen",
+          "topluluk odaklı hedeflerle",
+          "trendlere uyum sağlayan",
+          "mikro yatırımlarla desteklenen",
+          "yerel kültüre dayanan"
         ],
         [
           "Temel özellikleri özetle.",
@@ -2501,7 +2816,12 @@ window.prompts = {
           "Küçük girişimlerden örnekler ver.",
           "Gerçek topluluk etkisini vurgula.",
           "Yaratıcı denemeleri teşvik et.",
-          "Açık kaynak işbirliğine davet et."
+          "Açık kaynak işbirliğine davet et.",
+          "Olası gelir kaynaklarını listele.",
+          "Yayım takvimini ekle.",
+          "Gerekli kilit ortaklıkları belirt.",
+          "Müşteri etkileşimi öner.",
+          "Cesur bir vizyonla bitir."
         ]
       ]
     },
@@ -2542,7 +2862,12 @@ window.prompts = {
           "Şöyle efsanevi bir savaş resmet ki",
           "Şöyle futuristik araçlar çiz ki",
           "Şöyle çarpıcı bir logo hayal et ki",
-          "Şöyle kısa bir anı yakala ki"
+          "Şöyle kısa bir anı yakala ki",
+          "Büyülü bir kapıyı resmet ki",
+          "Dramatik bir sahne oluştur ki",
+          "Gelecekten bir aygıt taslağı çiz ki",
+          "Göksel bir olayı hayal et ki",
+          "Bir karakter portresi tasarla ki"
         ],
         [
           "bisiklete binen efsanevi bir yaratık",
@@ -2578,7 +2903,12 @@ window.prompts = {
           "eski fotoğraflar gizli geçitler açıyor",
           "futuristik robotlar anıtlar oyuyor",
           "uçan arabalar ufku kaplıyor",
-          "gizli dünyalar gölgelerden doğuyor"
+          "gizli dünyalar gölgelerden doğuyor",
+          "aynalarla dolu bir şehir",
+          "pizzaları teslim eden bir robot",
+          "başka bir galakside gün doğumu",
+          "uzayda yüzen bir kütüphane",
+          "parlayan fenerlerden bir festival"
         ],
         [
           "Canlı neon renkler kullan.",
@@ -2614,7 +2944,12 @@ window.prompts = {
           "yeni yaratıcı vizyonlar ateşleyerek",
           "unutulmuş hikayelere hayat vererek",
           "fantastik hayallere ilham vererek",
-          "görsel hikaye anlatımını yeniden tanımlayarak"
+          "görsel hikaye anlatımını yeniden tanımlayarak",
+          "klasik ukiyo-e esintisiyle.",
+          "kalın fırça darbeleriyle.",
+          "canlı gradyan tonlarıyla.",
+          "minimalist düz bir tarzda.",
+          "oyuncu çizgi film tonlarıyla."
         ],
         [
           "Canlı renkler kullan.",
@@ -2651,7 +2986,12 @@ window.prompts = {
           "Arka planı sade tut.",
           "Hafif renk geçişleri uygula.",
           "Davette bulunan bir altyazıyla bitir.",
-          "Sanatsal keşfi teşvik et."
+          "Sanatsal keşfi teşvik et.",
+          "Pozitif ve negatif alanı dengede tut.",
+          "Tutarlı bir renk teması seç.",
+          "Dosya boyutunu makul tut.",
+          "Animatörler için notlar ekle.",
+          "İlham verici bir altyazıyla bitir."
         ]
       ]
     },
@@ -2692,7 +3032,12 @@ window.prompts = {
           "Cesaret veren bir konuşmayı anlat ki",
           "Motivasyon dolu bir mektupta nasıl",
           "Şöyle başlayan bir yolculuğu tarif et ki",
-          "Cesur bir lider hayal et ki"
+          "Cesur bir lider hayal et ki",
+          "Şöyle bir tablo çiz ki",
+          "Şöyle bir ders paylaş ki",
+          "Şöyle bir konuşma yaz ki",
+          "Azmin nasıl olduğunu göster",
+          "Şöyle bir günlük kaydı yaz ki"
         ],
         [
           "bir zorluğu aşmayı",
@@ -2728,7 +3073,12 @@ window.prompts = {
           "topluluklar kalıcı bağlar kuruyor",
           "hayalciler sınırları aşıyor",
           "basit iyilik değişimi tetikliyor",
-          "sesler uyum içinde yükseliyor"
+          "sesler uyum içinde yükseliyor",
+          "zorlukları fırsata çevirmek",
+          "beklenmedik yerlerde mentorlar bulmak",
+          "şükran gücünü keşfetmek",
+          "korkuyu odağa dönüştürmek",
+          "günlük kahramanları kutlamak"
         ],
         [
           "motive eden",
@@ -2764,7 +3114,12 @@ window.prompts = {
           "zorlukta direnç göstererek",
           "umut köprüleri kurarak",
           "hayalleri sınırlar ötesine taşıyarak",
-          "ileriye giden yolu aydınlatarak"
+          "ileriye giden yolu aydınlatarak",
+          "cesaret yayarak",
+          "ortak zaferlere yol açarak",
+          "ömür boyu hayaller ilham ederek",
+          "toplulukları bir araya getirerek",
+          "umudu katlayarak"
         ],
         [
           "gelecek nesil için.",
@@ -2801,7 +3156,12 @@ window.prompts = {
           "Pozitif eylemi teşvik et.",
           "Ulaşılabilir hedeflere odaklan.",
           "Gerçek bir minnettarlıkla bitir.",
-          "Başkalarını da ilham vermeye çağır."
+          "Başkalarını da ilham vermeye çağır.",
+          "Tonunu yükseltici tut.",
+          "Gerçek deneyimlere odaklan.",
+          "Sonda düşünmeye çağır.",
+          "Açık ve umutlu bir dil kullan.",
+          "Küçük günlük eylemleri teşvik et."
         ]
       ]
     },
@@ -2842,7 +3202,12 @@ window.prompts = {
           "Zihin büken bir cihazı tasvir et ki",
           "Zamanın paramparça olduğu anı düşün ki",
           "Kuantum bir diyarı yaz ki",
-          "Gerçekliği büken bir portal çiz ki"
+          "Gerçekliği büken bir portal çiz ki",
+          "Şu anı gözünde canlandır ki",
+          "Şöyle bir boyut düşün ki",
+          "Teknolojinin açtığı kapıyı hayal et ki",
+          "Şöyle bir keşif düşün ki",
+          "Şöyle bir değişimi varsay ki"
         ],
         [
           "yerçekimi ters dönüyor",
@@ -2878,7 +3243,12 @@ window.prompts = {
           "müzik kozmosu yönlendiriyor",
           "anılar para gibi takas ediliyor",
           "rüyalar geleceğimizi tasarlıyor",
-          "bilinç galaksiye yayılıyor"
+          "bilinç galaksiye yayılıyor",
+          "ışık daireler çizer",
+          "düşünceler görünür olur",
+          "hayvanlar eski diller konuşur",
+          "zaman her saat döngüye girer",
+          "rüyalar yeni dünyalar yaratır"
         ],
         [
           "Toplum nasıl tepki verir?",
@@ -2914,7 +3284,12 @@ window.prompts = {
           "normal dediğimizi yeniden şekillendirerek",
           "hayal gücünü sınırların ötesine iterek",
           "dünyalar arası türleri birleştirerek",
-          "sonsuzluğa kapılar açarak"
+          "sonsuzluğa kapılar açarak",
+          "ahlak hızla değişir mi?",
+          "tarih kendini yeniden mi yazar?",
+          "hayal gücü yetişebilir mi?",
+          "kaos yaratıcılığı getirir mi?",
+          "sınırsız gücü kullanabilir miyiz?"
         ],
         [
           "Sonuçlarını keşfet.",
@@ -2951,7 +3326,12 @@ window.prompts = {
           "Merak duygusunu koru.",
           "Okuyucunun soru sormasını sağla.",
           "Gerilimi dikkatle artır.",
-          "Sonsuz olasılıklarla bitir."
+          "Sonsuz olasılıklarla bitir.",
+          "Hayal gücünün sınırlarını zorla.",
+          "Mevcut inançları sorgula.",
+          "Hiçbir ayrıntıyı atlama.",
+          "Şaşırtıcı olasılıkları vurgula.",
+          "Açık sorularla bitir."
         ]
       ]
     },
@@ -2991,7 +3371,12 @@ window.prompts = {
           "Tarihin gözünden,",
           "Bir hikaye anlatıcısının sesiyle,",
           "Gezgin bir filozof olarak,",
-          "Bir kamera dronu aracılığıyla,"
+          "Bir kamera dronu aracılığıyla,",
+          "Bir heykelin gözünden,",
+          "Gezgin bir hayalet olarak,",
+          "Bir karıncanın bakış açısından,",
+          "Uzak bir galaksiden,",
+          "Bir makinenin zihninden,"
         ],
         [
           "aşkı düşün",
@@ -3027,7 +3412,12 @@ window.prompts = {
           "beklenmedik mentorler çıkıyor",
           "gelenekler yeni yollar örüyor",
           "eski haritalar sırlar saklıyor",
-          "rüyalar keşfe götürüyor"
+          "rüyalar keşfe götürüyor",
+          "modern teknolojiyi sorgula",
+          "sonsuz sessizliği deneyimle",
+          "antik ritüellere tanık ol",
+          "değişen mevsimleri gözlemle",
+          "gizli şehirleri keşfet"
         ],
         [
           "yeni bir anlayış için",
@@ -3063,7 +3453,12 @@ window.prompts = {
           "farklı görüşleri köprüleyerek",
           "düşünceli yansımalar rehberlik ederek",
           "farkındalıklı seçimleri tetikleyerek",
-          "şaşırtıcı içgörüler ortaya çıkararak"
+          "şaşırtıcı içgörüler ortaya çıkararak",
+          "derin duyguları ortaya çıkararak",
+          "sessiz mücadeleleri öne çıkararak",
+          "unutulmuş bilgeliği gün yüzüne çıkararak",
+          "evrensel gerçekleri açığa çıkararak",
+          "sessiz merak uyandırarak"
         ],
         [
           "Düşündürücü olsun.",
@@ -3101,7 +3496,12 @@ window.prompts = {
           "Kişisel detayları nazikçe harmanla.",
           "Kapanış sözlerini yumuşak tut.",
           "Sürekli merak uyandır.",
-          "Huzurlu bir tonla bitir."
+          "Huzurlu bir tonla bitir.",
+          "Nazik bir merakla yaz.",
+          "Hafif duygular göster.",
+          "Cümleleri akıcı tut.",
+          "Düşünmeye alan bırak.",
+          "Düşündürücü bir notla bitir."
         ]
       ]
     },
@@ -3142,7 +3542,12 @@ window.prompts = {
           "Alışkanlık kazandıran bir rutin açıkla ki",
           "Şöyle bir otomasyon haritası çıkar ki",
           "Günlük değerlendirme planı yap ki",
-          "Şöyle bir sabah ritüeli göster ki"
+          "Şöyle bir sabah ritüeli göster ki",
+          "Şöyle haftalık bir değerlendirme planla ki",
+          "Otomasyon araçları tasarla ki",
+          "Çalışma alanı düzeni planla ki",
+          "Odak ritüelleri oluştur ki",
+          "Sorumluluk grupları geliştir ki"
         ],
         [
           "dikkat dağıtıcıları önlemek",
@@ -3178,7 +3583,12 @@ window.prompts = {
           "görevleri otomatik organize eden",
           "projeleri hedefte tutan",
           "verimlilik eğilimlerini analiz eden",
-          "tüm notları güvenli biçimde saklayan"
+          "tüm notları güvenli biçimde saklayan",
+          "uzun vadeli motivasyonu artırmak için",
+          "karar yorgunluğunu azaltmak için",
+          "istikrarlı ilerlemeyi sürdürmek için",
+          "yoğun iş yüklerini dengelemek için",
+          "karmaşık görevleri basitleştirmek için"
         ],
         [
           "kalıcı sonuçlar için",
@@ -3214,7 +3624,12 @@ window.prompts = {
           "her hafta morali yükselterek",
           "alışkanlıkları kolayca takip ederek",
           "uzaktan çalışma akışlarını basitleştirerek",
-          "küçük günlük başarıları teşvik ederek"
+          "küçük günlük başarıları teşvik ederek",
+          "değişime uyum sağlarken",
+          "minimum ek yükle",
+          "yüksek baskı günlerinde",
+          "ekipleri uyumlu tutarak",
+          "hevesi kaybetmeden"
         ],
         [
           "Pratik örnekler kullan.",
@@ -3251,7 +3666,12 @@ window.prompts = {
           "Hızlı sorun giderme sun.",
           "Mola vermeyi hatırlat.",
           "Başarı vizyonuyla bitir.",
-          "Gelişim için geri bildirim iste."
+          "Gelişim için geri bildirim iste.",
+          "Takip şablonları sun.",
+          "Dinlenmenin değerini vurgula.",
+          "Net eylem fiilleri kullan.",
+          "Ek kaynak bağlantıları ekle.",
+          "Cesaret verici sözlerle bitir."
         ]
       ]
     },
@@ -3292,7 +3712,12 @@ window.prompts = {
           "Sahne arkasını şöyle anlat ki",
           "Sinematik bir yolculuğu haritala ki",
           "Kısa bir fragman taslağı yap ki",
-          "Şöyle bir montaj dizisi hayal et ki"
+          "Şöyle bir montaj dizisi hayal et ki",
+          "Şöyle sinematik bir kısa film planla ki",
+          "Şöyle bir hızlandırılmış çekim kurgula ki",
+          "Şöyle bir parodi sahnesi yaz ki",
+          "Şu konuda bir eğitim serisi tasarla ki",
+          "Şöyle mini bir belgesel çek ki"
         ],
         [
           "günlük yaşamı değiştiren geleceğin teknolojisi",
@@ -3328,7 +3753,12 @@ window.prompts = {
           "beklenmedik gösteriler öne çıkıyor",
           "müzik anlatımı yönlendiriyor",
           "kendin yap setler hayat buluyor",
-          "sanal kalabalıklar coşkuyla tezahürat yapıyor"
+          "sanal kalabalıklar coşkuyla tezahürat yapıyor",
+          "su altında gizli bir şehir",
+          "beklenmedik bir kahramanın ilk günü",
+          "robotların dans öğrenmesi",
+          "doğa gökdelenleri geri alırken",
+          "zaman yolcuları trafikte sıkışırken"
         ],
         [
           "İzleyiciyi ekranda tutacak kamera açıları neler olmalı?",
@@ -3364,7 +3794,12 @@ window.prompts = {
           "geceleri paylaşımları artırarak",
           "dünya çapında yorumlar ateşleyerek",
           "hayran yapımı içerikler ilham vererek",
-          "viral devamlara yol açarak"
+          "viral devamlara yol açarak",
+          "Hangi ışık hileleri havayı belirler?",
+          "Bölünmüş ekran heyecan katar mı?",
+          "Fenomenlerin sürpriz konuk olması nasıl olur?",
+          "Ağır çekim dramayı artırır mı?",
+          "Anlatım sahneleri nasıl bağlar?"
         ],
         [
           "Kısa ve akıcı tut.",
@@ -3401,7 +3836,12 @@ window.prompts = {
           "Kurguyu sıkı tut.",
           "Etkileyici başlıklar ekle.",
           "Akılda kalıcı bir sloganla bitir.",
-          "İzleyicileri abone olmaya teşvik et."
+          "İzleyicileri abone olmaya teşvik et.",
+          "Net sesle çekim yap.",
+          "Farklı geçişleri dene.",
+          "Sahneleri bir dakikanın altında tut.",
+          "Kamera arkası görüntüler paylaş.",
+          "Yorum yapmaları için izleyicileri davet et."
         ]
       ]
     }
