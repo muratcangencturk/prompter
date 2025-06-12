@@ -38,7 +38,17 @@ window.prompts = {
           "Describe an AI lab accident where",
           "Map out the evolution of algorithms when",
           "Share a futuristic daydream where",
-          "Predict a quantum leap when"
+          "Predict a quantum leap when",
+          "Draw up specifications for a program that",
+          "Plan a digital platform where",
+          "Describe a service robot that",
+          "Imagine a research project where",
+          "Outline a breakthrough system that",
+          "Draft new software capable of",
+          "Envision a brain-inspired chip that",
+          "Conceptualize a new language model that",
+          "Write about a helper bot that",
+          "Detail a futuristic assistant that"
         ],
         [
           "solves world hunger",
@@ -74,7 +84,17 @@ window.prompts = {
           "helps scientists decode alien signals",
           "predicts medical breakthroughs",
           "designs sustainable smart cities",
-          "evolves beyond human control"
+          "evolves beyond human control",
+          "optimizes global logistics",
+          "automates complex surgery",
+          "interprets human emotions accurately",
+          "secures data seamlessly",
+          "learns new skills on the fly",
+          "predicts traffic before it forms",
+          "translates speech in real time",
+          "creates custom medications",
+          "manages renewable energy grids",
+          "simulates human intuition"
         ],
         [
           "and benefits humanity",
@@ -110,7 +130,17 @@ window.prompts = {
           "sparking debates about consciousness",
           "transforming jobs worldwide",
           "causing rapid technological leaps",
-          "challenging the definition of life"
+          "challenging the definition of life",
+          "transforming healthcare",
+          "with minimal human oversight",
+          "while protecting civil rights",
+          "shaping future societies",
+          "inspiring new industries",
+          "while adapting continuously",
+          "earning trust worldwide",
+          "challenging existing norms",
+          "while empowering creativity",
+          "with far-reaching effects"
         ],
         [
           "Focus on possibilities.",
@@ -147,7 +177,17 @@ window.prompts = {
           "Ask provocative questions.",
           "Showcase potential benefits.",
           "Encourage thoughtful debate.",
-          "Conclude with a forward look."
+          "Conclude with a forward look.",
+          "Keep a practical focus.",
+          "Consider realistic challenges.",
+          "Highlight user benefits.",
+          "Address long-term maintenance.",
+          "Discuss ethical obligations.",
+          "Mention current research.",
+          "Encourage responsible innovation.",
+          "Explore future partnerships.",
+          "Point out technical hurdles.",
+          "End on an optimistic note."
         ]
       ]
     },
@@ -1701,7 +1741,17 @@ window.prompts = {
           "Şöyle bir senaryo kur ki",
           "Şöyle bir an hayal et ki",
           "Şu şekilde başlayan kısa bir hikaye yaz:",
-          "Şöyle bir başlangıç hayal et ki"
+          "Şöyle bir başlangıç hayal et ki",
+          "Şöyle bir programın teknik şartnamesini çıkar:",
+          "Şöyle bir dijital platform tasarla ki",
+          "Şu hizmet robotunu tarif et:",
+          "Şöyle bir araştırma projesi hayal et ki",
+          "Böyle bir çığır açan sistemi özetle:",
+          "Şu yeni yazılımı tasarla ki",
+          "Beyin esintili bir çip düşün ki",
+          "Şöyle yeni bir dil modeli kurgula ki",
+          "Şöyle yardımcı bir bot anlat ki",
+          "Şöyle futuristik bir asistanı detaylandır ki"
         ],
         [
           "dünyadaki açlığı çözen",
@@ -1737,7 +1787,17 @@ window.prompts = {
           "bilim insanlarının uzaylı sinyallerini çözmesine yardım eden",
           "tıbbi atılımları öngören",
           "sürdürülebilir akıllı şehirler tasarlayan",
-          "insan kontrolünün ötesine evrilen"
+          "insan kontrolünün ötesine evrilen",
+          "küresel lojistiği optimize eden",
+          "karmaşık ameliyatları otomatik yapan",
+          "insan duygularını doğru yorumlayan",
+          "verileri sorunsuz koruyan",
+          "anında yeni beceriler öğrenen",
+          "trafiği oluşmadan önce tahmin eden",
+          "konuşmayı anında çeviren",
+          "kişiye özel ilaçlar üreten",
+          "yenilenebilir enerji ağlarını yöneten",
+          "insan sezgisini simüle eden"
         ],
         [
           "ve insanlığa faydalı olan",
@@ -1773,7 +1833,17 @@ window.prompts = {
           "bilinç üzerine tartışmalar başlatarak",
           "dünya çapında işleri dönüştürerek",
           "hızlı teknolojik sıçramalara yol açarak",
-          "yaşam tanımını sorgulayarak"
+          "yaşam tanımını sorgulayarak",
+          "sağlık hizmetlerini dönüştüren",
+          "minimum insan kontrolüyle",
+          "vatandaş haklarını koruyarak",
+          "gelecek toplumları şekillendirerek",
+          "yeni endüstrilere ilham vererek",
+          "sürekli uyum sağlayarak",
+          "dünya çapında güven kazanarak",
+          "mevcut normlara meydan okuyarak",
+          "yaratıcılığı güçlendirerek",
+          "geniş kapsamlı etkilerle"
         ],
         [
           "Olasılıkları vurgula.",
@@ -1810,7 +1880,17 @@ window.prompts = {
           "Kışkırtıcı sorular sor.",
           "Olası faydaları vurgula.",
           "Düşündürücü tartışmaları teşvik et.",
-          "İleriye dönük bir bakışla bitir."
+          "İleriye dönük bir bakışla bitir.",
+          "Pratik bir bakış açısı koru.",
+          "Gerçekçi zorlukları düşün.",
+          "Kullanıcı faydalarını vurgula.",
+          "Uzun vadeli bakımı ele al.",
+          "Etik sorumlulukları tartış.",
+          "Güncel araştırmalara değin.",
+          "Sorumlu yeniliği teşvik et.",
+          "Gelecekteki işbirliklerini ara.",
+          "Teknik engellere işaret et.",
+          "İyimser bir notla bitir."
         ]
       ]
     },
