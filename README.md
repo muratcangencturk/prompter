@@ -98,7 +98,8 @@ of strings. These arrays represent the beginning, topic, continuation and ending
 ## Development
 
 This repository uses ESLint and Prettier for code quality. After cloning the
-project, run `npm install` to install the dependencies.
+project, run `npm install` to install the dependencies. Always run this command
+before executing `npm test` so the required tooling is available.
 
 Before committing changes run:
 

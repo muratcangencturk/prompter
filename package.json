@@ -5,6 +5,7 @@
   "scripts": {
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{js,json,md,css,html}\"",
+    "pretest": "node scripts/check-node-modules.js",
     "test": "npm run lint && npm run lint:prompts",
     "lint:prompts": "node scripts/check-prompts.js",
     "build": "node scripts/build-prompts.js",
