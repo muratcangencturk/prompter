@@ -33,12 +33,12 @@ window.prompts = {
           "Draft an interactive AI that",
           "Imagine a sentient algorithm that",
           "Imagine Tony Stark and Albert Einstein designing an AI that",
-          "Design an autonomous system that",
-          "Write an outline where",
-          "Draft a scenario in which",
-          "Imagine a moment when",
-          "Craft a short tale that begins when",
-          "Picture an opening where"
+          "Plan a neural upgrade that",
+          "Illustrate how a robot uprising starts when",
+          "Describe an AI lab accident where",
+          "Map out the evolution of algorithms when",
+          "Share a futuristic daydream where",
+          "Predict a quantum leap when"
         ],
         [
           "solves world hunger",
@@ -69,12 +69,12 @@ window.prompts = {
           "creates immersive virtual worlds",
           "mediates global conflicts",
           "rivals Tesla's innovations",
-          "creates passive income",
-          "ordinary objects gain superpowers",
-          "a simple idea changes the world",
-          "a secret society controls everything",
-          "technology meets ancient magic",
-          "the line between dream and reality blurs"
+          "masters every language instantly",
+          "optimizes global supply chains",
+          "helps scientists decode alien signals",
+          "predicts medical breakthroughs",
+          "designs sustainable smart cities",
+          "evolves beyond human control"
         ],
         [
           "and benefits humanity",
@@ -105,12 +105,12 @@ window.prompts = {
           "and inspires collaboration",
           "with transparent algorithms",
           "with guidance from NASA",
-          "using only a laptop, phone, and internet",
-          "leading to unexpected alliances",
-          "causing joyful chaos",
-          "sparking worldwide curiosity",
-          "revealing hidden truths",
-          "challenging everything we know"
+          "powered by quantum processors",
+          "earning the trust of humankind",
+          "sparking debates about consciousness",
+          "transforming jobs worldwide",
+          "causing rapid technological leaps",
+          "challenging the definition of life"
         ],
         [
           "Focus on possibilities.",
@@ -140,15 +140,14 @@ window.prompts = {
           "Highlight ethical frameworks.",
           "Consider lifelong learning.",
           "Mention open-source benefits.",
-          "Mention ties to the Avengers.",
-          "You have only three days.",
-          "Start with zero budget.",
-          "Act like your life depends on it.",
-          "Keep the tone adventurous.",
-          "Highlight lessons learned.",
-          "Make it feel personal.",
-          "Leave room for wonder.",
-          "End on a hopeful note."
+          "Reference historic milestones.",
+          "Include major innovators.",
+          "Consider practical limitations.",
+          "Keep the tone informative.",
+          "Ask provocative questions.",
+          "Showcase potential benefits.",
+          "Encourage thoughtful debate.",
+          "Conclude with a forward look."
         ]
       ]
     },
@@ -184,12 +183,12 @@ window.prompts = {
           "Write a comedy sketch in which",
           "Stage a surreal festival where",
           "Envision Albert Einstein debating Tony Stark where",
-          "Design an autonomous system that",
-          "Write an outline where",
-          "Draft a scenario in which",
-          "Imagine a moment when",
-          "Craft a short tale that begins when",
-          "Picture an opening where"
+          "Draft a crazy law that",
+          "Imagine a festival where",
+          "Write a chaotic adventure as",
+          "Invent a prank that",
+          "Describe a silly rumor that",
+          "Reveal a wild conspiracy where"
         ],
         [
           "cats rule the earth",
@@ -220,12 +219,12 @@ window.prompts = {
           "time travel is a daily chore",
           "ghosts host talk shows",
           "a quest begins in Hogwarts",
-          "creates passive income",
-          "ordinary objects gain superpowers",
-          "a simple idea changes the world",
-          "a secret society controls everything",
-          "technology meets ancient magic",
-          "the line between dream and reality blurs"
+          "animals talk only at night",
+          "breakfast foods become alive",
+          "every dream predicts tomorrow",
+          "humans swap bodies randomly",
+          "music controls emotions",
+          "gravity changes each hour"
         ],
         [
           "resulting in chaos",
@@ -256,12 +255,12 @@ window.prompts = {
           "opening portals to chaos",
           "turning logic into jelly",
           "with Gandalf narrating",
-          "using only a laptop, phone, and internet",
-          "leading to unexpected alliances",
-          "causing joyful chaos",
-          "sparking worldwide curiosity",
-          "revealing hidden truths",
-          "challenging everything we know"
+          "recorded on a dancing smartphone",
+          "creating laughter worldwide",
+          "turning chaos into art",
+          "confusing every bystander",
+          "starting a wacky revolution",
+          "leaving everyone speechless"
         ],
         [
           "Make it witty.",
@@ -291,15 +290,14 @@ window.prompts = {
           "Go over-the-top.",
           "Keep dialogue quirky.",
           "Let imagination explode.",
-          "Include cameo appearances from Star Wars.",
-          "You have only three days.",
-          "Start with zero budget.",
-          "Act like your life depends on it.",
-          "Keep the tone adventurous.",
-          "Highlight lessons learned.",
-          "Make it feel personal.",
-          "Leave room for wonder.",
-          "End on a hopeful note."
+          "Keep jokes fast and fun.",
+          "Add playful absurdity.",
+          "Surprise with unexpected turns.",
+          "Use colorful language.",
+          "Embrace outrageous ideas.",
+          "Make scenes vivid.",
+          "Wrap up with a giggle.",
+          "Invite readers to laugh."
         ]
       ]
     },
@@ -335,12 +333,12 @@ window.prompts = {
           "Guide absolute beginners through",
           "Offer a quick tutorial on",
           "Explain how Tony Stark and Albert Einstein would approach",
-          "Design an autonomous system that",
-          "Write an outline where",
-          "Draft a scenario in which",
-          "Imagine a moment when",
-          "Craft a short tale that begins when",
-          "Picture an opening where"
+          "Prepare a workshop that explains",
+          "Summarize key findings about",
+          "Design a lesson plan for",
+          "Create a quiz about",
+          "Draft interactive slides on",
+          "Outline practical exercises for"
         ],
         [
           "quantum physics",
@@ -372,12 +370,12 @@ window.prompts = {
           "ancient philosophical texts",
           "oceanography fundamentals",
           "innovation at SpaceX",
-          "creates passive income",
-          "ordinary objects gain superpowers",
-          "a simple idea changes the world",
-          "a secret society controls everything",
-          "technology meets ancient magic",
-          "the line between dream and reality blurs"
+          "classroom technology",
+          "hands-on science demos",
+          "historical problem-solving",
+          "learning styles research",
+          "child development stages",
+          "the future of education"
         ],
         [
           "in simple terms",
@@ -408,12 +406,12 @@ window.prompts = {
           "using short video demonstrations",
           "with fun trivia breaks",
           "drawing from lessons at MIT",
-          "using only a laptop, phone, and internet",
-          "leading to unexpected alliances",
-          "causing joyful chaos",
-          "sparking worldwide curiosity",
-          "revealing hidden truths",
-          "challenging everything we know"
+          "accessible on any school tablet",
+          "to engage students effectively",
+          "with real assessment tips",
+          "using classroom examples",
+          "for remote learning success",
+          "that spark critical thinking"
         ],
         [
           "Keep it short.",
@@ -442,16 +440,14 @@ window.prompts = {
           "Provide hands-on worksheets.",
           "Invite audience participation.",
           "Provide quick reference charts.",
-          "Offer a brief recap.",
-          "Reference discoveries at CERN.",
-          "You have only three days.",
-          "Start with zero budget.",
-          "Act like your life depends on it.",
-          "Keep the tone adventurous.",
-          "Highlight lessons learned.",
-          "Make it feel personal.",
-          "Leave room for wonder.",
-          "End on a hopeful note."
+          "Use plain language.",
+          "Include helpful visuals.",
+          "Offer quick summaries.",
+          "Encourage active practice.",
+          "Suggest further reading.",
+          "Relate concepts to life.",
+          "End with key takeaways.",
+          "Invite students to explore."
         ]
       ]
     },
@@ -487,12 +483,12 @@ window.prompts = {
           "Reveal the terror that begins as",
           "Portray the anguish when",
           "Describe the terror when Voldemort confronts Darth Vader",
-          "Design an autonomous system that",
-          "Write an outline where",
-          "Draft a scenario in which",
-          "Imagine a moment when",
-          "Craft a short tale that begins when",
-          "Picture an opening where"
+          "Foretell the nightmare that begins when",
+          "Write a cursed diary entry where",
+          "Describe a haunted ritual that",
+          "Reveal the terror unleashed when",
+          "Paint a bleak prophecy that",
+          "Whisper a forbidden secret where"
         ],
         [
           "shadows whisper",
@@ -523,12 +519,12 @@ window.prompts = {
           "the moon bleeds red",
           "a distant scream never ends",
           "the sky turns green on Tatooine",
-          "creates passive income",
-          "ordinary objects gain superpowers",
-          "a simple idea changes the world",
-          "a secret society controls everything",
-          "technology meets ancient magic",
-          "the line between dream and reality blurs"
+          "the ground swallows you whole",
+          "flames write messages",
+          "every shadow grows teeth",
+          "mirrors reveal twisted faces",
+          "time runs backward screaming",
+          "the sky rains ash"
         ],
         [
           "driving you insane",
@@ -559,12 +555,12 @@ window.prompts = {
           "while fear twists reality",
           "as darkness devours hope",
           "while demons chant lines from Macbeth",
-          "using only a laptop, phone, and internet",
-          "leading to unexpected alliances",
-          "causing joyful chaos",
-          "sparking worldwide curiosity",
-          "revealing hidden truths",
-          "challenging everything we know"
+          "whispered through broken speakers",
+          "dragging hope into darkness",
+          "tearing sanity apart",
+          "feeding endless fear",
+          "echoing through eternity",
+          "fading every last light"
         ],
         [
           "Make it unsettling.",
@@ -594,15 +590,14 @@ window.prompts = {
           "Keep tension suffocating.",
           "Focus on sensory horror.",
           "End on a haunting echo.",
-          "Hint at a crossover with Stranger Things.",
-          "You have only three days.",
-          "Start with zero budget.",
-          "Act like your life depends on it.",
-          "Keep the tone adventurous.",
-          "Highlight lessons learned.",
-          "Make it feel personal.",
-          "Leave room for wonder.",
-          "End on a hopeful note."
+          "Let horror creep slowly.",
+          "Use unsettling whispers.",
+          "Focus on eerie details.",
+          "Keep dread relentless.",
+          "Blur the line of reality.",
+          "Make terror personal.",
+          "End in chilling silence.",
+          "Leave fear unresolved."
         ]
       ]
     },
@@ -638,17 +633,12 @@ window.prompts = {
           "Imagine a pop-up shop featuring",
           "Invent a wearable device for",
           "Pitch a startup rivaling Tesla that focuses on",
-          "Design an autonomous system that",
-          "Design a game concept for",
-          "Invent a multiplayer app for",
-          "Create a gamified experience using",
-          "Develop a cross-platform game around",
-          "Pitch an AR game based on",
-          "Write an outline where",
-          "Draft a scenario in which",
-          "Imagine a moment when",
-          "Craft a short tale that begins when",
-          "Picture an opening where"
+          "Draft a business roadmap that",
+          "Outline a unique partnership where",
+          "Describe a crowdfunding pitch that",
+          "Forecast market trends when",
+          "Design a user survey that",
+          "Plan a launch event where"
         ],
         [
           "renewable energy",
@@ -685,11 +675,11 @@ window.prompts = {
           "immersive AR worlds",
           "open-source learning apps",
           "e-sports tournaments",
-          "ordinary objects gain superpowers",
-          "a simple idea changes the world",
-          "a secret society controls everything",
-          "technology meets ancient magic",
-          "the line between dream and reality blurs"
+          "connects local artisans globally",
+          "bridges online and offline events",
+          "turns hobbies into careers",
+          "grows through community challenges",
+          "focuses on micro-learning bursts"
         ],
         [
           "that stands out",
@@ -720,17 +710,17 @@ window.prompts = {
           "leveraging local partnerships",
           "driven by community feedback",
           "attracting investors like Elon Musk",
-          "using only a laptop, phone, and internet",
+          "shared via an online forum",
           "that attracts diverse players",
           "with viral monetization",
           "leveraging cross-play features",
           "with user-generated content",
           "for quick global launches",
-          "leading to unexpected alliances",
-          "causing joyful chaos",
-          "sparking worldwide curiosity",
-          "revealing hidden truths",
-          "challenging everything we know"
+          "attracting enthusiastic beta testers",
+          "encouraging creative mashups",
+          "inspiring local collaborations",
+          "turning feedback into features",
+          "growing with each new update"
         ],
         [
           "Outline key features.",
@@ -761,19 +751,14 @@ window.prompts = {
           "Define a rollout timeline.",
           "Mention potential investors.",
           "Mention inspiration from Silicon Valley giants.",
-          "You have only three days.",
-          "Start with zero budget.",
-          "Act like your life depends on it.",
-          "List monetization strategies.",
-          "Explain the gameplay loop.",
-          "Describe the core mechanics.",
-          "Show possible expansion packs.",
-          "Suggest cross-promotion tactics.",
-          "Keep the tone adventurous.",
-          "Highlight lessons learned.",
-          "Make it feel personal.",
-          "Leave room for wonder.",
-          "End on a hopeful note."
+          "Set achievable milestones.",
+          "Include early adopter incentives.",
+          "Focus on long-term vision.",
+          "Use plain yet inspiring language.",
+          "Draw examples from small startups.",
+          "Highlight real community impact.",
+          "Encourage creative experimentation.",
+          "Invite open-source collaboration."
         ]
       ]
     },
@@ -809,12 +794,12 @@ window.prompts = {
           "Generate a concept poster of",
           "Create an infographic illustrating",
           "Illustrate a crossover with Tony Stark featuring",
-          "Design an autonomous system that",
-          "Write an outline where",
-          "Draft a scenario in which",
-          "Imagine a moment when",
-          "Craft a short tale that begins when",
-          "Picture an opening where"
+          "Compose an album cover that",
+          "Draft a surreal landscape where",
+          "Paint a mythic battle that",
+          "Sketch futuristic vehicles where",
+          "Visualize a dramatic logo that",
+          "Capture a fleeting moment when"
         ],
         [
           "a mythical creature riding a bicycle",
@@ -845,12 +830,12 @@ window.prompts = {
           "a futuristic wildlife preserve",
           "a whimsical underwater parade",
           "a quest in Hogwarts",
-          "creates passive income",
-          "ordinary objects gain superpowers",
-          "a simple idea changes the world",
-          "a secret society controls everything",
-          "technology meets ancient magic",
-          "the line between dream and reality blurs"
+          "art bursts from everyday scenes",
+          "colors blend into new dimensions",
+          "old photos reveal secret portals",
+          "futuristic robots sculpt monuments",
+          "flying cars dominate skylines",
+          "hidden worlds emerge from shadows"
         ],
         [
           "Use vibrant neon colors.",
@@ -881,12 +866,12 @@ window.prompts = {
           "with delicate watercolor tones",
           "in a retro comic-book style",
           "in a Marvel comic style",
-          "using only a laptop, phone, and internet",
-          "leading to unexpected alliances",
-          "causing joyful chaos",
-          "sparking worldwide curiosity",
-          "revealing hidden truths",
-          "challenging everything we know"
+          "drawn on a digital sketchpad",
+          "inviting viewers to explore",
+          "sparking fresh creative visions",
+          "giving life to forgotten tales",
+          "inspiring fantastical daydreams",
+          "redefining visual storytelling"
         ],
         [
           "Use bold colors.",
@@ -916,15 +901,14 @@ window.prompts = {
           "Aim for eye-catching symmetry.",
           "Keep the palette consistent.",
           "Use dynamic lighting for depth.",
-          "Include a nod to Star Wars.",
-          "You have only three days.",
-          "Start with zero budget.",
-          "Act like your life depends on it.",
-          "Keep the tone adventurous.",
-          "Highlight lessons learned.",
-          "Make it feel personal.",
-          "Leave room for wonder.",
-          "End on a hopeful note."
+          "Stay consistent with style.",
+          "Use clear focal points.",
+          "Play with unexpected textures.",
+          "Include balanced framing.",
+          "Keep backgrounds uncluttered.",
+          "Apply subtle color gradients.",
+          "End with an inviting caption.",
+          "Encourage artistic exploration."
         ]
       ]
     },
@@ -960,12 +944,12 @@ window.prompts = {
           "Compose a keynote speech that",
           "Capture an inspiring quote that",
           "Describe how Albert Einstein inspired Tony Stark when",
-          "Design an autonomous system that",
-          "Write an outline where",
-          "Draft a scenario in which",
-          "Imagine a moment when",
-          "Craft a short tale that begins when",
-          "Picture an opening where"
+          "Relive a turning point when",
+          "Share a heartfelt memory where",
+          "Recall an encouraging speech that",
+          "Write a motivational letter describing how",
+          "Describe a journey that begins when",
+          "Imagine a courageous leader who"
         ],
         [
           "overcoming a challenge",
@@ -996,12 +980,12 @@ window.prompts = {
           "building bridges across generations",
           "finding hope after loss",
           "launching a company like SpaceX",
-          "creates passive income",
-          "ordinary objects gain superpowers",
-          "a simple idea changes the world",
-          "a secret society controls everything",
-          "technology meets ancient magic",
-          "the line between dream and reality blurs"
+          "people unite for a cause",
+          "hidden talents shine brightly",
+          "communities build lasting bonds",
+          "dreamers push beyond limits",
+          "simple kindness sparks change",
+          "voices rise in harmony"
         ],
         [
           "that sparks motivation",
@@ -1032,12 +1016,12 @@ window.prompts = {
           "that restores faith in humanity",
           "that ignites positive change",
           "that echoes Marvel heroism",
-          "using only a laptop, phone, and internet",
-          "leading to unexpected alliances",
-          "causing joyful chaos",
-          "sparking worldwide curiosity",
-          "revealing hidden truths",
-          "challenging everything we know"
+          "spread through community blogs",
+          "lifting spirits everywhere",
+          "showing resilience in adversity",
+          "building bridges of hope",
+          "kindling dreams across borders",
+          "lighting a path forward"
         ],
         [
           "for the next generation.",
@@ -1067,15 +1051,14 @@ window.prompts = {
           "that inspires daily courage.",
           "for a community of dreamers.",
           "to share hope with the world.",
-          "End with a quote from Star Wars.",
-          "You have only three days.",
-          "Start with zero budget.",
-          "Act like your life depends on it.",
-          "Keep the tone adventurous.",
-          "Highlight lessons learned.",
-          "Make it feel personal.",
-          "Leave room for wonder.",
-          "End on a hopeful note."
+          "Keep the message sincere.",
+          "Offer relatable insights.",
+          "Use uplifting language.",
+          "Share brief real examples.",
+          "Encourage positive action.",
+          "Focus on achievable goals.",
+          "Close with genuine gratitude.",
+          "Invite others to inspire."
         ]
       ]
     },
@@ -1111,12 +1094,12 @@ window.prompts = {
           "Imagine an epoch where",
           "Visualize a galaxy where",
           "Imagine if Albert Einstein teamed up with Tony Stark and",
-          "Design an autonomous system that",
-          "Write an outline where",
-          "Draft a scenario in which",
-          "Imagine a moment when",
-          "Craft a short tale that begins when",
-          "Picture an opening where"
+          "Hypothesize about a parallel universe where",
+          "Envision a cosmic event that",
+          "Describe a mind-bending device that",
+          "Imagine time shattering when",
+          "Write about a quantum realm where",
+          "Sketch a reality-twisting portal that"
         ],
         [
           "gravity reversed",
@@ -1147,12 +1130,12 @@ window.prompts = {
           "humans share consciousness with animals",
           "the universe resets every day",
           "Hogwarts suddenly appeared on Mars",
-          "creates passive income",
-          "ordinary objects gain superpowers",
-          "a simple idea changes the world",
-          "a secret society controls everything",
-          "technology meets ancient magic",
-          "the line between dream and reality blurs"
+          "humans evolve new senses",
+          "cities float above oceans",
+          "music manipulates the cosmos",
+          "memories trade like currency",
+          "dreams design our future",
+          "consciousness spans the galaxy"
         ],
         [
           "How would society react?",
@@ -1183,12 +1166,12 @@ window.prompts = {
           "Could technology keep pace?",
           "How would emotions adapt?",
           "How would the Avengers respond?",
-          "using only a laptop, phone, and internet",
-          "leading to unexpected alliances",
-          "causing joyful chaos",
-          "sparking worldwide curiosity",
-          "revealing hidden truths",
-          "challenging everything we know"
+          "broadcast from a secret satellite",
+          "forcing science to rethink basics",
+          "reshaping what we call normal",
+          "pushing imagination beyond limits",
+          "uniting species across worlds",
+          "opening doors to infinity"
         ],
         [
           "Explore the consequences.",
@@ -1218,15 +1201,14 @@ window.prompts = {
           "Delve into possible paradoxes.",
           "Highlight emotional turmoil.",
           "Imagine world-changing breakthroughs.",
-          "Reference popular sci-fi films.",
-          "You have only three days.",
-          "Start with zero budget.",
-          "Act like your life depends on it.",
-          "Keep the tone adventurous.",
-          "Highlight lessons learned.",
-          "Make it feel personal.",
-          "Leave room for wonder.",
-          "End on a hopeful note."
+          "Pose thought-provoking scenarios.",
+          "Reference groundbreaking theories.",
+          "Challenge usual perceptions.",
+          "Encourage wild speculation.",
+          "Maintain a sense of wonder.",
+          "Keep the reader questioning.",
+          "Build suspense carefully.",
+          "Conclude with limitless possibilities."
         ]
       ]
     },
@@ -1261,13 +1243,12 @@ window.prompts = {
           "From a robot's perspective,",
           "As a wandering poet,",
           "Through a dreamer's eyes,",
-          "Through the lens of Tony Stark,",
-          "Design an autonomous system that",
-          "Write an outline where",
-          "Draft a scenario in which",
-          "Imagine a moment when",
-          "Craft a short tale that begins when",
-          "Picture an opening where"
+          "From a painter's perspective,",
+          "As a mountain climber,",
+          "Through the eyes of history,",
+          "From a storyteller's voice,",
+          "As a wandering philosopher,",
+          "Through a camera drone,"
         ],
         [
           "consider love",
@@ -1298,12 +1279,12 @@ window.prompts = {
           "question digital addictions",
           "discover forgotten traditions",
           "observe a duel at Hogwarts",
-          "creates passive income",
-          "ordinary objects gain superpowers",
-          "a simple idea changes the world",
-          "a secret society controls everything",
-          "technology meets ancient magic",
-          "the line between dream and reality blurs"
+          "families share wisdom",
+          "routines reveal creativity",
+          "unexpected mentors appear",
+          "traditions weave new paths",
+          "old maps hide secrets",
+          "dreams lead to discovery"
         ],
         [
           "to gain new insight",
@@ -1334,12 +1315,12 @@ window.prompts = {
           "and spark inner growth",
           "to unearth hidden humor",
           "to impress the Avengers",
-          "using only a laptop, phone, and internet",
-          "leading to unexpected alliances",
-          "causing joyful chaos",
-          "sparking worldwide curiosity",
-          "revealing hidden truths",
-          "challenging everything we know"
+          "captured through a virtual lens",
+          "opening new horizons",
+          "bridging diverse opinions",
+          "guiding thoughtful reflection",
+          "sparking mindful choices",
+          "uncovering surprising insights"
         ],
         [
           "Keep it reflective.",
@@ -1370,14 +1351,14 @@ window.prompts = {
           "Invite readers to reconsider.",
           "Finish with a hopeful note.",
           "Mention Marvel inspirations.",
-          "You have only three days.",
-          "Start with zero budget.",
-          "Act like your life depends on it.",
-          "Keep the tone adventurous.",
-          "Highlight lessons learned.",
-          "Make it feel personal.",
-          "Leave room for wonder.",
-          "End on a hopeful note."
+          "Use calm storytelling.",
+          "Provide relatable angles.",
+          "Stay grounded yet curious.",
+          "Encourage mindful pauses.",
+          "Blend personal details gently.",
+          "Keep closing remarks soft.",
+          "Invite ongoing curiosity.",
+          "Finish with a peaceful tone."
         ]
       ]
     },
@@ -1413,12 +1394,12 @@ window.prompts = {
           "Develop a daily review habit so you can",
           "Craft a priority list to",
           "Model habits from companies like Tesla to",
-          "Design an autonomous system that",
-          "Write an outline where",
-          "Draft a scenario in which",
-          "Imagine a moment when",
-          "Craft a short tale that begins when",
-          "Picture an opening where"
+          "Develop a focus timer that",
+          "Draft a time-saving template for",
+          "Explain a habit-forming routine where",
+          "Map out an automation that",
+          "Create a daily review plan that",
+          "Show a morning ritual when"
         ],
         [
           "avoid distractions",
@@ -1449,12 +1430,12 @@ window.prompts = {
           "track long-term progress",
           "avoid unnecessary meetings",
           "achieve results like SpaceX",
-          "creates passive income",
-          "ordinary objects gain superpowers",
-          "a simple idea changes the world",
-          "a secret society controls everything",
-          "technology meets ancient magic",
-          "the line between dream and reality blurs"
+          "turns meetings into quick chats",
+          "helps teams sync effortlessly",
+          "organizes tasks automatically",
+          "keeps projects on target",
+          "analyses productivity trends",
+          "stores all notes securely"
         ],
         [
           "for sustained results",
@@ -1485,12 +1466,12 @@ window.prompts = {
           "with sustainable daily habits",
           "and maintain peak performance",
           "as Tony Stark would approve",
-          "using only a laptop, phone, and internet",
-          "leading to unexpected alliances",
-          "causing joyful chaos",
-          "sparking worldwide curiosity",
-          "revealing hidden truths",
-          "challenging everything we know"
+          "synced across cloud devices",
+          "building consistency over time",
+          "boosting morale each week",
+          "tracking habits with ease",
+          "simplifying remote work flows",
+          "encouraging small daily wins"
         ],
         [
           "Use practical examples.",
@@ -1520,15 +1501,14 @@ window.prompts = {
           "Track progress weekly.",
           "Share quick success stories.",
           "Use visuals for clarity.",
-          "Include tips from Elon Musk's playbook.",
-          "You have only three days.",
-          "Start with zero budget.",
-          "Act like your life depends on it.",
-          "Keep the tone adventurous.",
-          "Highlight lessons learned.",
-          "Make it feel personal.",
-          "Leave room for wonder.",
-          "End on a hopeful note."
+          "Keep instructions direct.",
+          "Suggest simple tools.",
+          "Emphasize steady progress.",
+          "Share motivating examples.",
+          "Offer quick troubleshooting.",
+          "Remind to take breaks.",
+          "End with a success vision.",
+          "Invite feedback for improvement."
         ]
       ]
     },
@@ -1564,12 +1544,12 @@ window.prompts = {
           "Plan a live Q&A session about",
           "Develop an interview segment with",
           "Pitch an epic crossover with Tony Stark and Albert Einstein where",
-          "Design an autonomous system that",
-          "Write an outline where",
-          "Draft a scenario in which",
-          "Imagine a moment when",
-          "Craft a short tale that begins when",
-          "Picture an opening where"
+          "Outline a storyboard where",
+          "Plan a viral challenge that",
+          "Describe a behind-the-scenes look as",
+          "Map out a cinematic journey when",
+          "Draft a short trailer that",
+          "Envision a montage sequence where"
         ],
         [
           "future technology disrupting everyday life",
@@ -1600,12 +1580,12 @@ window.prompts = {
           "a hidden world beneath the city",
           "the evolution of street art",
           "a quest unfolds in Hogwarts",
-          "creates passive income",
-          "ordinary objects gain superpowers",
-          "a simple idea changes the world",
-          "a secret society controls everything",
-          "technology meets ancient magic",
-          "the line between dream and reality blurs"
+          "viewers choose the next scene",
+          "animation mixes with live action",
+          "unexpected stunts steal the show",
+          "music drives the narrative",
+          "DIY sets come to life",
+          "virtual crowds cheer loudly"
         ],
         [
           "Which camera angles or editing tricks would keep viewers hooked?",
@@ -1636,12 +1616,12 @@ window.prompts = {
           "How can subtitles enhance engagement?",
           "What pacing keeps viewers binge-watching?",
           "Which Marvel cameo would excite fans?",
-          "using only a laptop, phone, and internet",
-          "leading to unexpected alliances",
-          "causing joyful chaos",
-          "sparking worldwide curiosity",
-          "revealing hidden truths",
-          "challenging everything we know"
+          "streamed from a home studio",
+          "keeping audiences on edge",
+          "boosting shares overnight",
+          "sparking comments worldwide",
+          "inspiring fan-made content",
+          "leading to viral follow-ups"
         ],
         [
           "Keep it short and snappy.",
@@ -1671,15 +1651,14 @@ window.prompts = {
           "Highlight behind-the-scenes moments.",
           "Invite viewers to submit ideas.",
           "Tease a follow-up series.",
-          "Add background music inspired by Star Wars.",
-          "You have only three days.",
-          "Start with zero budget.",
-          "Act like your life depends on it.",
-          "Keep the tone adventurous.",
-          "Highlight lessons learned.",
-          "Make it feel personal.",
-          "Leave room for wonder.",
-          "End on a hopeful note."
+          "Shoot in crisp resolution.",
+          "Use steady pacing.",
+          "Mix close-ups with wide shots.",
+          "Highlight unique locations.",
+          "Keep editing tight.",
+          "Add engaging titles.",
+          "Finish with a memorable tagline.",
+          "Encourage viewers to subscribe."
         ]
       ]
     }
@@ -1753,12 +1732,12 @@ window.prompts = {
           "sürükleyici sanal dünyalar yaratsın",
           "küresel çatışmaları çözsün",
           "Tesla'nın yenilikleriyle yarışan",
-          "pasif gelir oluşturan",
-          "sıradan eşyalar süper güçler kazanır",
-          "basit bir fikir dünyayı değiştirir",
-          "gizli bir tarikat her şeyi kontrol eder",
-          "teknoloji eski büyüyle buluşur",
-          "rüya ile gerçek arasındaki çizgi bulanıklaşır"
+          "tüm dilleri anında çözen",
+          "küresel tedarik zincirlerini optimize eden",
+          "bilim insanlarının uzaylı sinyallerini çözmesine yardım eden",
+          "tıbbi atılımları öngören",
+          "sürdürülebilir akıllı şehirler tasarlayan",
+          "insan kontrolünün ötesine evrilen"
         ],
         [
           "ve insanlığa faydalı olan",
@@ -1789,12 +1768,12 @@ window.prompts = {
           "insanları iş birliğine teşvik etsin",
           "şeffaf algoritmalar kullansın",
           "NASA'nın rehberliğinde",
-          "yalnızca bir laptop, telefon ve internet kullanarak",
-          "beklenmedik ittifaklara yol açarak",
-          "neşeli bir kaosa neden olarak",
-          "dünya çapında merak uyandırarak",
-          "gizli gerçekleri açığa çıkararak",
-          "bildiğimiz her şeyi sorgulayarak"
+          "kuantum işlemcilerle güçlendirilmiş",
+          "insanlığın güvenini kazanarak",
+          "bilinç üzerine tartışmalar başlatarak",
+          "dünya çapında işleri dönüştürerek",
+          "hızlı teknolojik sıçramalara yol açarak",
+          "yaşam tanımını sorgulayarak"
         ],
         [
           "Olasılıkları vurgula.",
@@ -1824,15 +1803,14 @@ window.prompts = {
           "Etik çerçeveyi vurgula.",
           "Ömür boyu öğrenmeye değin.",
           "Açık kaynak faydalarından bahset.",
-          "Yenilmezler ile bağlantısına değin.",
-          "Sadece üç günün var.",
-          "Sıfır bütçeyle başla.",
-          "Hayatın buna bağlıymış gibi davran.",
-          "Tonu maceracı tut.",
-          "Çıkarılan dersleri vurgula.",
-          "Kişisel hissettirmesini sağla.",
-          "Merak için alan bırak.",
-          "Umuda dair bir notla bitir."
+          "Tarihi dönüm noktalarına değin.",
+          "Büyük yenilikçileri dahil et.",
+          "Pratik sınırlamaları düşün.",
+          "Tonu bilgilendirici tut.",
+          "Kışkırtıcı sorular sor.",
+          "Olası faydaları vurgula.",
+          "Düşündürücü tartışmaları teşvik et.",
+          "İleriye dönük bir bakışla bitir."
         ]
       ]
     },
@@ -1868,12 +1846,12 @@ window.prompts = {
           "Komik bir skeç kaleme al ki",
           "Sürreal bir festival sahnele ki",
           "Albert Einstein'ın Tony Stark'la tartıştığını hayal et ki",
-          "Otonom bir sistem tasarla ki",
-          "Şöyle bir taslak yaz ki",
-          "Şöyle bir senaryo kur ki",
-          "Şöyle bir an hayal et ki",
-          "Şu şekilde başlayan kısa bir hikaye yaz:",
-          "Şöyle bir başlangıç hayal et ki"
+          "Şöyle çılgın bir yasa taslağı yaz ki",
+          "Şöyle bir festival hayal et ki",
+          "Şöyle karmaşık bir macera yaz ki",
+          "Şöyle bir şaka icat et ki",
+          "Şöyle saçma bir söylentiyi anlat ki",
+          "Şöyle çılgın bir komployu ortaya çıkar ki"
         ],
         [
           "kediler dünyayı yönetse",
@@ -1904,12 +1882,12 @@ window.prompts = {
           "zaman yolculuğu günlük iş olsun",
           "hayaletler talk show sunsun",
           "Hogwarts'ta bir macera başlıyor",
-          "pasif gelir oluşturan",
-          "sıradan eşyalar süper güçler kazanır",
-          "basit bir fikir dünyayı değiştirir",
-          "gizli bir tarikat her şeyi kontrol eder",
-          "teknoloji eski büyüyle buluşur",
-          "rüya ile gerçek arasındaki çizgi bulanıklaşır"
+          "hayvanlar yalnız gece konuşuyor",
+          "kahvaltılık yiyecekler canlanıyor",
+          "her rüya yarını öngörüyor",
+          "insanlar rastgele beden değiştiriyor",
+          "müzik duyguları kontrol ediyor",
+          "yerçekimi her saat değişiyor"
         ],
         [
           "tam bir kaos olur",
@@ -1940,12 +1918,12 @@ window.prompts = {
           "kaosa açılan kapılar açılsın",
           "mantık jöleye dönsün",
           "Gandalf anlatıyor",
-          "yalnızca bir laptop, telefon ve internet kullanarak",
-          "beklenmedik ittifaklara yol açarak",
-          "neşeli bir kaosa neden olarak",
-          "dünya çapında merak uyandırarak",
-          "gizli gerçekleri açığa çıkararak",
-          "bildiğimiz her şeyi sorgulayarak"
+          "dans eden bir akıllı telefonla kaydedilerek",
+          "dünyaya kahkaha saçıyor",
+          "kaosu sanata dönüştürüyor",
+          "herkesi şaşkına çeviriyor",
+          "çılgın bir devrim başlatıyor",
+          "herkesi dilsiz bırakıyor"
         ],
         [
           "Mizahi olsun.",
@@ -1975,15 +1953,14 @@ window.prompts = {
           "Abartıya kaç.",
           "Diyalogları tuhaf tut.",
           "Hayal gücü sınır tanımasın.",
-          "Yıldız Savaşları'ndan konuk oyuncular ekle.",
-          "Sadece üç günün var.",
-          "Sıfır bütçeyle başla.",
-          "Hayatın buna bağlıymış gibi davran.",
-          "Tonu maceracı tut.",
-          "Çıkarılan dersleri vurgula.",
-          "Kişisel hissettirmesini sağla.",
-          "Merak için alan bırak.",
-          "Umuda dair bir notla bitir."
+          "Şakaları hızlı ve eğlenceli tut.",
+          "Oyuncu absürtlük ekle.",
+          "Beklenmedik dönüşlerle şaşırt.",
+          "Renkli bir dil kullan.",
+          "Aşırı fikirlere kucak aç.",
+          "Sahneleri canlı kıl.",
+          "Bir kıkırdamayla bitir.",
+          "Okurları gülmeye davet et."
         ]
       ]
     },
@@ -2019,12 +1996,12 @@ window.prompts = {
           "Yeni başlayanları adım adım yönlendir:",
           "Kısa bir eğitim ver:",
           "Tony Stark ve Albert Einstein'in nasıl yaklaşacağını açıkla",
-          "Otonom bir sistem tasarla ki",
-          "Şöyle bir taslak yaz ki",
-          "Şöyle bir senaryo kur ki",
-          "Şöyle bir an hayal et ki",
-          "Şu şekilde başlayan kısa bir hikaye yaz:",
-          "Şöyle bir başlangıç hayal et ki"
+          "Şunu anlatan bir atölye hazırla ki",
+          "Şunun temel bulgularını özetle:",
+          "Şuna yönelik bir ders planı tasarla:",
+          "Şu konuda bir sınav hazırla:",
+          "Şu konuda etkileşimli slaytlar taslağı çıkar:",
+          "Şu konu için pratik egzersizler özetle:"
         ],
         [
           "kuantum fiziği",
@@ -2056,12 +2033,12 @@ window.prompts = {
           "eski felsefi metinler",
           "okyanus biliminin temelleri",
           "SpaceX'teki yenilikleri",
-          "pasif gelir oluşturan",
-          "sıradan eşyalar süper güçler kazanır",
-          "basit bir fikir dünyayı değiştirir",
-          "gizli bir tarikat her şeyi kontrol eder",
-          "teknoloji eski büyüyle buluşur",
-          "rüya ile gerçek arasındaki çizgi bulanıklaşır"
+          "sınıf teknolojileri",
+          "uygulamalı bilim deneyleri",
+          "tarihi problem çözme yöntemleri",
+          "öğrenme stilleri araştırması",
+          "çocuk gelişim evreleri",
+          "eğitimin geleceği"
         ],
         [
           "basit terimlerle",
@@ -2092,12 +2069,12 @@ window.prompts = {
           "uygulamalı etkinliklerle",
           "kısa video örnekleriyle",
           "MIT derslerinden yararlanarak",
-          "yalnızca bir laptop, telefon ve internet kullanarak",
-          "beklenmedik ittifaklara yol açarak",
-          "neşeli bir kaosa neden olarak",
-          "dünya çapında merak uyandırarak",
-          "gizli gerçekleri açığa çıkararak",
-          "bildiğimiz her şeyi sorgulayarak"
+          "her okul tabletinde erişilebilir şekilde",
+          "öğrencileri etkili şekilde dahil etmek için",
+          "gerçek değerlendirme ipuçlarıyla",
+          "sınıf örnekleri kullanarak",
+          "uzaktan öğrenmede başarı için",
+          "eleştirel düşünceyi tetikleyen"
         ],
         [
           "Kısa tut.",
@@ -2126,16 +2103,14 @@ window.prompts = {
           "Uygulamalı çalışma kağıtları ekle.",
           "Katılımı teşvik et.",
           "Hızlı başvuru çizelgeleri sun.",
-          "Kısaca özetle.",
-          "CERN'deki keşiflere değin.",
-          "Sadece üç günün var.",
-          "Sıfır bütçeyle başla.",
-          "Hayatın buna bağlıymış gibi davran.",
-          "Tonu maceracı tut.",
-          "Çıkarılan dersleri vurgula.",
-          "Kişisel hissettirmesini sağla.",
-          "Merak için alan bırak.",
-          "Umuda dair bir notla bitir."
+          "Basit bir dil kullan.",
+          "Faydalı görseller ekle.",
+          "Kısa özetler sun.",
+          "Aktif uygulamayı teşvik et.",
+          "Ek okumalar öner.",
+          "Kavramları hayata bağla.",
+          "Önemli noktalarla bitir.",
+          "Öğrencileri keşfetmeye davet et."
         ]
       ]
     },
@@ -2171,12 +2146,12 @@ window.prompts = {
           "Dehşetin başladığı anı göster",
           "Acının yaşandığı anı betimle",
           "Voldemort Darth Vader'la karşılaştığında duyulan dehşeti anlat",
-          "Otonom bir sistem tasarla ki",
-          "Şöyle bir taslak yaz ki",
-          "Şöyle bir senaryo kur ki",
-          "Şöyle bir an hayal et ki",
-          "Şu şekilde başlayan kısa bir hikaye yaz:",
-          "Şöyle bir başlangıç hayal et ki"
+          "Kabusu başlatan felaketi kehanet et ki",
+          "Lanetlenmiş bir günlük girişi yaz ki",
+          "Şöyle ürkütücü bir ritüeli anlat ki",
+          "Şu dehşetin serbest kaldığını göster ki",
+          "Kasvetli bir kehanet resmet ki",
+          "Yasak bir sırrı fısılda ki"
         ],
         [
           "gölgeler fısıldadığında",
@@ -2207,12 +2182,12 @@ window.prompts = {
           "ay kan rengine büründüğünde",
           "uzaktan gelen çığlık dinmediğinde",
           "Tatooine'de gökyüzü yeşile döndüğünde",
-          "pasif gelir oluşturan",
-          "sıradan eşyalar süper güçler kazanır",
-          "basit bir fikir dünyayı değiştirir",
-          "gizli bir tarikat her şeyi kontrol eder",
-          "teknoloji eski büyüyle buluşur",
-          "rüya ile gerçek arasındaki çizgi bulanıklaşır"
+          "yer seni tamamen yutuyor",
+          "alevler mesajlar yazıyor",
+          "her gölge dişleniyor",
+          "ayna çarpık yüzler gösteriyor",
+          "zaman çığlık atarak geriye akıyor",
+          "gökten kül yağıyor"
         ],
         [
           "aklını kaçırırsın",
@@ -2243,12 +2218,12 @@ window.prompts = {
           "korku gerçekliği bükene dek",
           "karanlık umutları yutana dek",
           "iblisler Macbeth'ten dizeler okurken",
-          "yalnızca bir laptop, telefon ve internet kullanarak",
-          "beklenmedik ittifaklara yol açarak",
-          "neşeli bir kaosa neden olarak",
-          "dünya çapında merak uyandırarak",
-          "gizli gerçekleri açığa çıkararak",
-          "bildiğimiz her şeyi sorgulayarak"
+          "kırık hoparlörlerden fısıldanarak",
+          "umudu karanlığa sürükleyerek",
+          "aklı parçalara ayırarak",
+          "sonsuz korkuyu besleyerek",
+          "ebediyete yankılanarak",
+          "son ışığı söndürerek"
         ],
         [
           "Rahatsız edici olsun.",
@@ -2278,15 +2253,14 @@ window.prompts = {
           "Gerilimi boğucu kıl.",
           "Duyusal korkuya odaklan.",
           "Sonunda yankılayan bir ürperti bırak.",
-          "Stranger Things ile bir kesişme ima et.",
-          "Sadece üç günün var.",
-          "Sıfır bütçeyle başla.",
-          "Hayatın buna bağlıymış gibi davran.",
-          "Tonu maceracı tut.",
-          "Çıkarılan dersleri vurgula.",
-          "Kişisel hissettirmesini sağla.",
-          "Merak için alan bırak.",
-          "Umuda dair bir notla bitir."
+          "Korkunun yavaşça sızmasına izin ver.",
+          "Rahatsız edici fısıltılar kullan.",
+          "Uğursuz detaylara odaklan.",
+          "Dehşeti durmaksızın sürdür.",
+          "Gerçeklik sınırını bulanıklaştır.",
+          "Korkuyu kişisel kıl.",
+          "Ürpertici bir sessizlikle bitir.",
+          "Korkuyu çözümsüz bırak."
         ]
       ]
     },
@@ -2322,17 +2296,12 @@ window.prompts = {
           "Şu ürünü tanıtan geçici bir mağaza tasarla",
           "Şu amaçla giyilebilir bir cihaz icat et",
           "Tesla'yla yarışacak bir girişim fikri sun, odak noktası",
-          "Otonom bir sistem tasarla ki",
-          "Şu konu için bir oyun konsepti tasarla",
-          "Çok oyunculu bir uygulama icat et",
-          "Şunu kullanarak oyunlaştırılmış bir deneyim yarat",
-          "Çapraz platform bir oyun geliştir",
-          "Artırılmış gerçeklikle bir oyun öner",
-          "Şöyle bir taslak yaz ki",
-          "Şöyle bir senaryo kur ki",
-          "Şöyle bir an hayal et ki",
-          "Şu şekilde başlayan kısa bir hikaye yaz:",
-          "Şöyle bir başlangıç hayal et ki"
+          "Şöyle bir iş yol haritası çıkar ki",
+          "Benzersiz bir ortaklığı özetle ki",
+          "Şöyle bir kitlesel fonlama sunumunu anlat ki",
+          "Pazar trendlerini şöyle tahmin et ki",
+          "Şöyle bir kullanıcı anketi tasarla ki",
+          "Şöyle bir lansman etkinliği planla ki"
         ],
         [
           "yenilenebilir enerji",
@@ -2363,17 +2332,17 @@ window.prompts = {
           "ailelere özel eko-turizm",
           "akıllı sağlık takip cihazları",
           "Stark Industries teknolojisi",
-          "pasif gelir oluşturan",
+          "yerel zanaatkârları küresel ölçekte buluşturan",
           "mobil strateji oyunları",
           "bağımsız bulmaca maceraları",
           "sürükleyici AR dünyaları",
           "açık kaynaklı öğrenme uygulamaları",
           "e-spor turnuvaları",
-          "sıradan eşyalar süper güçler kazanır",
-          "basit bir fikir dünyayı değiştirir",
-          "gizli bir tarikat her şeyi kontrol eder",
-          "teknoloji eski büyüyle buluşur",
-          "rüya ile gerçek arasındaki çizgi bulanıklaşır"
+          "yerel zanaatkârları küresel ölçekte buluşturan",
+          "çevrim içi ve çevrim dışı etkinlikleri birleştiren",
+          "hobileri kariyere dönüştüren",
+          "topluluk meydan okumalarıyla büyüyen",
+          "mikro öğrenme ataklarına odaklanan"
         ],
         [
           "fark yaratacak",
@@ -2404,17 +2373,17 @@ window.prompts = {
           "yerel ortaklıkları kullanarak",
           "topluluk geri bildiriminden güç alan",
           "Elon Musk gibi yatırımcıları çeken",
-          "yalnızca bir laptop, telefon ve internet kullanarak",
+          "çevrim içi bir forumda paylaşılarak",
           "çeşitli oyuncuları çekecek",
           "viral gelir modelleriyle",
           "çapraz oyun özellikleri kullanarak",
           "kullanıcı üretimi içerikle",
           "hızlı küresel lansmanlar için",
-          "beklenmedik ittifaklara yol açarak",
-          "neşeli bir kaosa neden olarak",
-          "dünya çapında merak uyandırarak",
-          "gizli gerçekleri açığa çıkararak",
-          "bildiğimiz her şeyi sorgulayarak"
+          "hevesli beta testçilerini çeken",
+          "yaratıcı birleşimleri teşvik eden",
+          "yerel işbirliklerini teşvik eden",
+          "geri bildirimleri özelliklere dönüştüren",
+          "her yeni güncellemeyle büyüyen"
         ],
         [
           "Temel özellikleri özetle.",
@@ -2445,19 +2414,14 @@ window.prompts = {
           "Uygulama takvimini belirle.",
           "Olası yatırımcıları belirt.",
           "Silicon Valley devlerinden ilham alındığını belirt.",
-          "Sadece üç günün var.",
-          "Sıfır bütçeyle başla.",
-          "Hayatın buna bağlıymış gibi davran.",
-          "Kazanç stratejilerini listele.",
-          "Oynanış döngüsünü açıkla.",
-          "Temel mekanikleri tanımla.",
-          "Olası genişleme paketlerini göster.",
-          "Çapraz promosyon taktikleri öner.",
-          "Tonu maceracı tut.",
-          "Çıkarılan dersleri vurgula.",
-          "Kişisel hissettirmesini sağla.",
-          "Merak için alan bırak.",
-          "Umuda dair bir notla bitir."
+          "Ulaşılabilir kilometre taşları belirle.",
+          "Erken kullanıcı teşvikleri ekle.",
+          "Uzun vadeli vizyona odaklan.",
+          "Sade ama ilham verici bir dil kullan.",
+          "Küçük girişimlerden örnekler ver.",
+          "Gerçek topluluk etkisini vurgula.",
+          "Yaratıcı denemeleri teşvik et.",
+          "Açık kaynak işbirliğine davet et."
         ]
       ]
     },
@@ -2493,12 +2457,12 @@ window.prompts = {
           "Şu konseptte bir poster üret:",
           "Şunu gösteren bir infografik oluştur:",
           "Tony Stark'lı bir kesişim tasvir et, içinde",
-          "Otonom bir sistem tasarla ki",
-          "Şöyle bir taslak yaz ki",
-          "Şöyle bir senaryo kur ki",
-          "Şöyle bir an hayal et ki",
-          "Şu şekilde başlayan kısa bir hikaye yaz:",
-          "Şöyle bir başlangıç hayal et ki"
+          "Şöyle bir albüm kapağı tasarla ki",
+          "Şöyle sürreal bir manzara çiz ki",
+          "Şöyle efsanevi bir savaş resmet ki",
+          "Şöyle futuristik araçlar çiz ki",
+          "Şöyle çarpıcı bir logo hayal et ki",
+          "Şöyle kısa bir anı yakala ki"
         ],
         [
           "bisiklete binen efsanevi bir yaratık",
@@ -2529,12 +2493,12 @@ window.prompts = {
           "geleceğin vahşi yaşam parkı",
           "sürreal bir su altı geçidi",
           "Hogwarts'ta bir macera",
-          "pasif gelir oluşturan",
-          "sıradan eşyalar süper güçler kazanır",
-          "basit bir fikir dünyayı değiştirir",
-          "gizli bir tarikat her şeyi kontrol eder",
-          "teknoloji eski büyüyle buluşur",
-          "rüya ile gerçek arasındaki çizgi bulanıklaşır"
+          "sanat günlük sahnelerden fışkırıyor",
+          "renkler yeni boyutlara karışıyor",
+          "eski fotoğraflar gizli geçitler açıyor",
+          "futuristik robotlar anıtlar oyuyor",
+          "uçan arabalar ufku kaplıyor",
+          "gizli dünyalar gölgelerden doğuyor"
         ],
         [
           "Canlı neon renkler kullan.",
@@ -2565,12 +2529,12 @@ window.prompts = {
           "yumuşak sulu boya tonlarıyla",
           "retro çizgi roman stilinde",
           "Marvel çizgi roman tarzında",
-          "yalnızca bir laptop, telefon ve internet kullanarak",
-          "beklenmedik ittifaklara yol açarak",
-          "neşeli bir kaosa neden olarak",
-          "dünya çapında merak uyandırarak",
-          "gizli gerçekleri açığa çıkararak",
-          "bildiğimiz her şeyi sorgulayarak"
+          "dijital bir çizim tabletiyle",
+          "izleyicileri keşfe davet ederek",
+          "yeni yaratıcı vizyonlar ateşleyerek",
+          "unutulmuş hikayelere hayat vererek",
+          "fantastik hayallere ilham vererek",
+          "görsel hikaye anlatımını yeniden tanımlayarak"
         ],
         [
           "Canlı renkler kullan.",
@@ -2600,15 +2564,14 @@ window.prompts = {
           "Simetriyi dikkat çekici kıl.",
           "Renk paletini uyumlu tut.",
           "Derinlik için dinamik ışık kullan.",
-          "Yıldız Savaşları'na selam ver.",
-          "Sadece üç günün var.",
-          "Sıfır bütçeyle başla.",
-          "Hayatın buna bağlıymış gibi davran.",
-          "Tonu maceracı tut.",
-          "Çıkarılan dersleri vurgula.",
-          "Kişisel hissettirmesini sağla.",
-          "Merak için alan bırak.",
-          "Umuda dair bir notla bitir."
+          "Stil tutarlılığını koru.",
+          "Net odak noktaları kullan.",
+          "Beklenmedik dokularla oyna.",
+          "Dengeli kadraj kullan.",
+          "Arka planı sade tut.",
+          "Hafif renk geçişleri uygula.",
+          "Davette bulunan bir altyazıyla bitir.",
+          "Sanatsal keşfi teşvik et."
         ]
       ]
     },
@@ -2644,12 +2607,12 @@ window.prompts = {
           "Dinleyicilere yönelik bir konuşma yaz ki",
           "Şöyle ilham verici bir alıntı yakala ki",
           "Albert Einstein'ın Tony Stark'a nasıl ilham verdiğini anlat, o sırada",
-          "Otonom bir sistem tasarla ki",
-          "Şöyle bir taslak yaz ki",
-          "Şöyle bir senaryo kur ki",
-          "Şöyle bir an hayal et ki",
-          "Şu şekilde başlayan kısa bir hikaye yaz:",
-          "Şöyle bir başlangıç hayal et ki"
+          "Bir dönüm noktasını yeniden yaşat ki",
+          "Yürekten bir anıyı paylaş ki",
+          "Cesaret veren bir konuşmayı anlat ki",
+          "Motivasyon dolu bir mektupta nasıl",
+          "Şöyle başlayan bir yolculuğu tarif et ki",
+          "Cesur bir lider hayal et ki"
         ],
         [
           "bir zorluğu aşmayı",
@@ -2680,12 +2643,12 @@ window.prompts = {
           "nesiller arasında köprü kurmayı",
           "kaybın ardından umut bulmayı",
           "SpaceX benzeri bir şirket kurarken",
-          "pasif gelir oluşturan",
-          "sıradan eşyalar süper güçler kazanır",
-          "basit bir fikir dünyayı değiştirir",
-          "gizli bir tarikat her şeyi kontrol eder",
-          "teknoloji eski büyüyle buluşur",
-          "rüya ile gerçek arasındaki çizgi bulanıklaşır"
+          "insanlar ortak bir amaç için birleşiyor",
+          "gizli yetenekler parıldıyor",
+          "topluluklar kalıcı bağlar kuruyor",
+          "hayalciler sınırları aşıyor",
+          "basit iyilik değişimi tetikliyor",
+          "sesler uyum içinde yükseliyor"
         ],
         [
           "motive eden",
@@ -2695,7 +2658,7 @@ window.prompts = {
           "pozitifliği yayan",
           "insanları bir araya getiren",
           "yeni ufuklar açan",
-          "yaratıcılığı teşvik eden",
+          "yaratıcı ruhu ortaya çıkaran",
           "bakış açısını değiştiren",
           "kalpleri hareketlendiren",
           "umut yeşerten",
@@ -2716,12 +2679,12 @@ window.prompts = {
           "insanlığa güveni tazeleyen",
           "pozitif değişim kıvılcımı yakan",
           "Marvel kahramanlığını yansıtan",
-          "yalnızca bir laptop, telefon ve internet kullanarak",
-          "beklenmedik ittifaklara yol açarak",
-          "neşeli bir kaosa neden olarak",
-          "dünya çapında merak uyandırarak",
-          "gizli gerçekleri açığa çıkararak",
-          "bildiğimiz her şeyi sorgulayarak"
+          "topluluk blogları aracılığıyla",
+          "her yerde ruhları yükselterek",
+          "zorlukta direnç göstererek",
+          "umut köprüleri kurarak",
+          "hayalleri sınırlar ötesine taşıyarak",
+          "ileriye giden yolu aydınlatarak"
         ],
         [
           "gelecek nesil için.",
@@ -2751,15 +2714,14 @@ window.prompts = {
           "günlük cesarete ilham olsun.",
           "hayalperestleri birleştirsin.",
           "umudu dünyayla paylaşmak için.",
-          "Yıldız Savaşları'ndan bir alıntıyla bitir.",
-          "Sadece üç günün var.",
-          "Sıfır bütçeyle başla.",
-          "Hayatın buna bağlıymış gibi davran.",
-          "Tonu maceracı tut.",
-          "Çıkarılan dersleri vurgula.",
-          "Kişisel hissettirmesini sağla.",
-          "Merak için alan bırak.",
-          "Umuda dair bir notla bitir."
+          "Mesajı içten tut.",
+          "İlgili içgörüler sun.",
+          "Yüreklendirici bir dil kullan.",
+          "Kısa gerçek örnekler paylaş.",
+          "Pozitif eylemi teşvik et.",
+          "Ulaşılabilir hedeflere odaklan.",
+          "Gerçek bir minnettarlıkla bitir.",
+          "Başkalarını da ilham vermeye çağır."
         ]
       ]
     },
@@ -2795,12 +2757,12 @@ window.prompts = {
           "Düşün ki bir çağ geliyor",
           "Şöyle bir galaksi hayal et ki",
           "Albert Einstein'ın Tony Stark'la güçlerini birleştirdiğini ve",
-          "Otonom bir sistem tasarla ki",
-          "Şöyle bir taslak yaz ki",
-          "Şöyle bir senaryo kur ki",
-          "Şöyle bir an hayal et ki",
-          "Şu şekilde başlayan kısa bir hikaye yaz:",
-          "Şöyle bir başlangıç hayal et ki"
+          "Şöyle paralel bir evren varsay ki",
+          "Şöyle kozmik bir olay hayal et ki",
+          "Zihin büken bir cihazı tasvir et ki",
+          "Zamanın paramparça olduğu anı düşün ki",
+          "Kuantum bir diyarı yaz ki",
+          "Gerçekliği büken bir portal çiz ki"
         ],
         [
           "yerçekimi ters dönüyor",
@@ -2831,12 +2793,12 @@ window.prompts = {
           "insanlar hayvanlarla bilinç paylaşıyor",
           "evren her gün yeniden başlıyor",
           "Hogwarts'ın aniden Mars'ta belirdiğini",
-          "pasif gelir oluşturan",
-          "sıradan eşyalar süper güçler kazanır",
-          "basit bir fikir dünyayı değiştirir",
-          "gizli bir tarikat her şeyi kontrol eder",
-          "teknoloji eski büyüyle buluşur",
-          "rüya ile gerçek arasındaki çizgi bulanıklaşır"
+          "insanlar yeni duyular geliştiriyor",
+          "şehirler okyanuslar üzerinde yüzüyor",
+          "müzik kozmosu yönlendiriyor",
+          "anılar para gibi takas ediliyor",
+          "rüyalar geleceğimizi tasarlıyor",
+          "bilinç galaksiye yayılıyor"
         ],
         [
           "Toplum nasıl tepki verir?",
@@ -2867,12 +2829,12 @@ window.prompts = {
           "Teknoloji buna yetişebilir mi?",
           "Duygular nasıl evrilir?",
           "Yenilmezler nasıl tepki verir?",
-          "yalnızca bir laptop, telefon ve internet kullanarak",
-          "beklenmedik ittifaklara yol açarak",
-          "neşeli bir kaosa neden olarak",
-          "dünya çapında merak uyandırarak",
-          "gizli gerçekleri açığa çıkararak",
-          "bildiğimiz her şeyi sorgulayarak"
+          "gizli bir uydudan yayınlanarak",
+          "bilimi temelinden sorgulamaya zorlayarak",
+          "normal dediğimizi yeniden şekillendirerek",
+          "hayal gücünü sınırların ötesine iterek",
+          "dünyalar arası türleri birleştirerek",
+          "sonsuzluğa kapılar açarak"
         ],
         [
           "Sonuçlarını keşfet.",
@@ -2902,15 +2864,14 @@ window.prompts = {
           "Muhtemel paradokslara değin.",
           "Duygusal çalkantıyı vurgula.",
           "Dünyayı değiştiren atılımlar hayal et.",
-          "Ünlü bilimkurgu filmlerine gönderme yap.",
-          "Sadece üç günün var.",
-          "Sıfır bütçeyle başla.",
-          "Hayatın buna bağlıymış gibi davran.",
-          "Tonu maceracı tut.",
-          "Çıkarılan dersleri vurgula.",
-          "Kişisel hissettirmesini sağla.",
-          "Merak için alan bırak.",
-          "Umuda dair bir notla bitir."
+          "Düşündürücü senaryolar sun.",
+          "Çığır açan teorilere değin.",
+          "Alışılagelmiş algıları sars.",
+          "Çılgınca spekülasyonları teşvik et.",
+          "Merak duygusunu koru.",
+          "Okuyucunun soru sormasını sağla.",
+          "Gerilimi dikkatle artır.",
+          "Sonsuz olasılıklarla bitir."
         ]
       ]
     },
@@ -2945,13 +2906,12 @@ window.prompts = {
           "Bir robotun bakış açısından,",
           "Gezgin bir şair olarak,",
           "Bir hayalperestin gözünden,",
-          "Tony Stark'ın gözünden,",
-          "Otonom bir sistem tasarla ki",
-          "Şöyle bir taslak yaz ki",
-          "Şöyle bir senaryo kur ki",
-          "Şöyle bir an hayal et ki",
-          "Şu şekilde başlayan kısa bir hikaye yaz:",
-          "Şöyle bir başlangıç hayal et ki"
+          "Bir ressam gözüyle,",
+          "Bir dağcı olarak,",
+          "Tarihin gözünden,",
+          "Bir hikaye anlatıcısının sesiyle,",
+          "Gezgin bir filozof olarak,",
+          "Bir kamera dronu aracılığıyla,"
         ],
         [
           "aşkı düşün",
@@ -2982,12 +2942,12 @@ window.prompts = {
           "dijital bağımlılıkları sorgula",
           "unutulmuş gelenekleri keşfet",
           "Hogwarts'taki bir düelloyu gözlemle",
-          "pasif gelir oluşturan",
-          "sıradan eşyalar süper güçler kazanır",
-          "basit bir fikir dünyayı değiştirir",
-          "gizli bir tarikat her şeyi kontrol eder",
-          "teknoloji eski büyüyle buluşur",
-          "rüya ile gerçek arasındaki çizgi bulanıklaşır"
+          "aileler bilgeliği paylaşıyor",
+          "rutinler yaratıcılığı ortaya çıkarıyor",
+          "beklenmedik mentorler çıkıyor",
+          "gelenekler yeni yollar örüyor",
+          "eski haritalar sırlar saklıyor",
+          "rüyalar keşfe götürüyor"
         ],
         [
           "yeni bir anlayış için",
@@ -3018,12 +2978,12 @@ window.prompts = {
           "içsel gelişimi tetiklemek için",
           "gizli mizahı ortaya çıkarmak için",
           "Yenilmezleri etkilemek için",
-          "yalnızca bir laptop, telefon ve internet kullanarak",
-          "beklenmedik ittifaklara yol açarak",
-          "neşeli bir kaosa neden olarak",
-          "dünya çapında merak uyandırarak",
-          "gizli gerçekleri açığa çıkararak",
-          "bildiğimiz her şeyi sorgulayarak"
+          "sanal bir mercekten yakalanarak",
+          "yeni ufuklar açarak",
+          "farklı görüşleri köprüleyerek",
+          "düşünceli yansımalar rehberlik ederek",
+          "farkındalıklı seçimleri tetikleyerek",
+          "şaşırtıcı içgörüler ortaya çıkararak"
         ],
         [
           "Düşündürücü olsun.",
@@ -3054,14 +3014,14 @@ window.prompts = {
           "Okuyucu yeniden düşünmeye davet et.",
           "Umutlu bir notla bitir.",
           "Marvel esintilerine değin.",
-          "Sadece üç günün var.",
-          "Sıfır bütçeyle başla.",
-          "Hayatın buna bağlıymış gibi davran.",
-          "Tonu maceracı tut.",
-          "Çıkarılan dersleri vurgula.",
-          "Kişisel hissettirmesini sağla.",
-          "Merak için alan bırak.",
-          "Umuda dair bir notla bitir."
+          "Sakin bir anlatım kullan.",
+          "İlişkilendirilebilir açılar sun.",
+          "Ayakları yere basan ama meraklı kal.",
+          "Farkındalık dolu duraklamaları teşvik et.",
+          "Kişisel detayları nazikçe harmanla.",
+          "Kapanış sözlerini yumuşak tut.",
+          "Sürekli merak uyandır.",
+          "Huzurlu bir tonla bitir."
         ]
       ]
     },
@@ -3097,12 +3057,12 @@ window.prompts = {
           "Günlük değerlendirme alışkanlığı geliştir",
           "Öncelik listesi oluştur ki",
           "Tesla gibi şirketlerin alışkanlıklarını örnek alarak",
-          "Otonom bir sistem tasarla ki",
-          "Şöyle bir taslak yaz ki",
-          "Şöyle bir senaryo kur ki",
-          "Şöyle bir an hayal et ki",
-          "Şu şekilde başlayan kısa bir hikaye yaz:",
-          "Şöyle bir başlangıç hayal et ki"
+          "Şöyle bir odaklayıcı zamanlayıcı geliştir ki",
+          "Şuna yönelik zaman kazandıran bir şablon oluştur ki",
+          "Alışkanlık kazandıran bir rutin açıkla ki",
+          "Şöyle bir otomasyon haritası çıkar ki",
+          "Günlük değerlendirme planı yap ki",
+          "Şöyle bir sabah ritüeli göster ki"
         ],
         [
           "dikkat dağıtıcıları önlemek",
@@ -3133,12 +3093,12 @@ window.prompts = {
           "uzun vadeli ilerlemeyi takip etmek",
           "gereksiz toplantılardan kaçınmak",
           "SpaceX kadar başarılı sonuçlar elde etmek",
-          "pasif gelir oluşturan",
-          "sıradan eşyalar süper güçler kazanır",
-          "basit bir fikir dünyayı değiştirir",
-          "gizli bir tarikat her şeyi kontrol eder",
-          "teknoloji eski büyüyle buluşur",
-          "rüya ile gerçek arasındaki çizgi bulanıklaşır"
+          "toplantıları kısa sohbetlere dönüştüren",
+          "ekiplerin sorunsuz uyum sağlamasına yardım eden",
+          "görevleri otomatik organize eden",
+          "projeleri hedefte tutan",
+          "verimlilik eğilimlerini analiz eden",
+          "tüm notları güvenli biçimde saklayan"
         ],
         [
           "kalıcı sonuçlar için",
@@ -3169,12 +3129,12 @@ window.prompts = {
           "sürdürülebilir alışkanlıklarla",
           "en yüksek performansı koruyarak",
           "Tony Stark'ın onaylayacağı şekilde",
-          "yalnızca bir laptop, telefon ve internet kullanarak",
-          "beklenmedik ittifaklara yol açarak",
-          "neşeli bir kaosa neden olarak",
-          "dünya çapında merak uyandırarak",
-          "gizli gerçekleri açığa çıkararak",
-          "bildiğimiz her şeyi sorgulayarak"
+          "bulut cihazları arasında senkronize edilerek",
+          "zamanla tutarlılık sağlayarak",
+          "her hafta morali yükselterek",
+          "alışkanlıkları kolayca takip ederek",
+          "uzaktan çalışma akışlarını basitleştirerek",
+          "küçük günlük başarıları teşvik ederek"
         ],
         [
           "Pratik örnekler kullan.",
@@ -3204,15 +3164,14 @@ window.prompts = {
           "İlerlemeyi haftalık takip et.",
           "Kısa başarı hikayeleri paylaş.",
           "Anlaşılır görseller kullan.",
-          "Elon Musk'ın taktiklerinden ipuçları ekle.",
-          "Sadece üç günün var.",
-          "Sıfır bütçeyle başla.",
-          "Hayatın buna bağlıymış gibi davran.",
-          "Tonu maceracı tut.",
-          "Çıkarılan dersleri vurgula.",
-          "Kişisel hissettirmesini sağla.",
-          "Merak için alan bırak.",
-          "Umuda dair bir notla bitir."
+          "Talimatları doğrudan ver.",
+          "Basit araçlar öner.",
+          "Sürekli ilerlemeyi vurgula.",
+          "Motivasyon örnekleri paylaş.",
+          "Hızlı sorun giderme sun.",
+          "Mola vermeyi hatırlat.",
+          "Başarı vizyonuyla bitir.",
+          "Gelişim için geri bildirim iste."
         ]
       ]
     },
@@ -3248,12 +3207,12 @@ window.prompts = {
           "Şu konuda canlı Soru-Cevap planla",
           "Şu kişiyle bir röportaj bölümü hazırla",
           "Tony Stark ve Albert Einstein'ın yer aldığı destansı bir kesişim öner, burada",
-          "Otonom bir sistem tasarla ki",
-          "Şöyle bir taslak yaz ki",
-          "Şöyle bir senaryo kur ki",
-          "Şöyle bir an hayal et ki",
-          "Şu şekilde başlayan kısa bir hikaye yaz:",
-          "Şöyle bir başlangıç hayal et ki"
+          "Şöyle bir hikâye tahtası taslağı çıkar ki",
+          "Viral olacak bir meydan okumayı planla ki",
+          "Sahne arkasını şöyle anlat ki",
+          "Sinematik bir yolculuğu haritala ki",
+          "Kısa bir fragman taslağı yap ki",
+          "Şöyle bir montaj dizisi hayal et ki"
         ],
         [
           "günlük yaşamı değiştiren geleceğin teknolojisi",
@@ -3284,12 +3243,12 @@ window.prompts = {
           "şehrin altındaki gizli dünya",
           "sokak sanatının evrimi",
           "Hogwarts'ta bir macera gelişir",
-          "pasif gelir oluşturan",
-          "sıradan eşyalar süper güçler kazanır",
-          "basit bir fikir dünyayı değiştirir",
-          "gizli bir tarikat her şeyi kontrol eder",
-          "teknoloji eski büyüyle buluşur",
-          "rüya ile gerçek arasındaki çizgi bulanıklaşır"
+          "izleyiciler bir sonraki sahneyi seçiyor",
+          "animasyon canlı aksiyonla karışıyor",
+          "beklenmedik gösteriler öne çıkıyor",
+          "müzik anlatımı yönlendiriyor",
+          "kendin yap setler hayat buluyor",
+          "sanal kalabalıklar coşkuyla tezahürat yapıyor"
         ],
         [
           "İzleyiciyi ekranda tutacak kamera açıları neler olmalı?",
@@ -3320,12 +3279,12 @@ window.prompts = {
           "Altyazılar ilgiyi nasıl artırır?",
           "Hangi tempo izleyiciyi ekranda tutar?",
           "Hangi Marvel cameo'su hayranları heyecanlandırır?",
-          "yalnızca bir laptop, telefon ve internet kullanarak",
-          "beklenmedik ittifaklara yol açarak",
-          "neşeli bir kaosa neden olarak",
-          "dünya çapında merak uyandırarak",
-          "gizli gerçekleri açığa çıkararak",
-          "bildiğimiz her şeyi sorgulayarak"
+          "ev stüdyosundan yayınlanarak",
+          "izleyicileri tetikte tutarak",
+          "geceleri paylaşımları artırarak",
+          "dünya çapında yorumlar ateşleyerek",
+          "hayran yapımı içerikler ilham vererek",
+          "viral devamlara yol açarak"
         ],
         [
           "Kısa ve akıcı tut.",
@@ -3355,15 +3314,14 @@ window.prompts = {
           "Perde arkası anları vurgula.",
           "Seyircilerden fikir toplamasını sağla.",
           "Devam serisini önceden müjdele.",
-          "Yıldız Savaşları esintili fon müziği ekle.",
-          "Sadece üç günün var.",
-          "Sıfır bütçeyle başla.",
-          "Hayatın buna bağlıymış gibi davran.",
-          "Tonu maceracı tut.",
-          "Çıkarılan dersleri vurgula.",
-          "Kişisel hissettirmesini sağla.",
-          "Merak için alan bırak.",
-          "Umuda dair bir notla bitir."
+          "Net çözünürlükte çek.",
+          "Dengeli bir tempo kullan.",
+          "Yakın ve geniş planları karıştır.",
+          "Benzersiz mekanları öne çıkar.",
+          "Kurguyu sıkı tut.",
+          "Etkileyici başlıklar ekle.",
+          "Akılda kalıcı bir sloganla bitir.",
+          "İzleyicileri abone olmaya teşvik et."
         ]
       ]
     }
