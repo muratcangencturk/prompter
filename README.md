@@ -136,6 +136,10 @@ the repository's Pages URL.
 
 This project is licensed under the Apache License 2.0. See [LICENSE](LICENSE) for the full text.
 
+## Attributions
+
+Prompter uses [TailwindCSS](https://tailwindcss.com/) and [Lucide](https://lucide.dev/) under their respective open source licenses. Their local copies—`tailwind.js` and `lucide.min.js`—are bundled in this repository so the application works offline. See the [TailwindCSS MIT license](https://github.com/tailwindlabs/tailwindcss/blob/master/LICENSE) and the [Lucide ISC license](https://github.com/lucide-icons/lucide/blob/main/LICENSE) for details.
+
 ## Disclaimer
 
 The prompt files are provided "AS IS" and may produce unexpected content. Review generated outputs carefully before using or sharing them. See the "Disclaimer of Warranty" section in the [Apache 2.0 License](LICENSE) for details.
