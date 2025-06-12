@@ -12,7 +12,7 @@ Prompt templates are stored in small JSON files under the `prompts/` directory a
 - Fast loading thanks to lightweight JSON prompt files
 - Light and dark themes
 - English and Turkish interface
-- Twelve prompt categories with over 17M combinations per language
+- Twelve prompt categories with over 31M combinations per language (more than 62M across EN and TR)
   This **AI prompt generator** delivers **creative prompt ideas** in a lightweight **offline web app** that runs directly in your browser.
 
 ## Opening the application
@@ -63,7 +63,7 @@ Prompter offers a variety of prompt themes. Select a category by clicking its ic
 - **Image** – descriptions for unique visuals or logos
 - **Hellprompts** – unsettling horror themes
 
-Prompter includes **12 categories** in total—the **Random Mix** plus 11 themed options listed above. Each prompt is composed of four parts. The first section now has 35 entries and the remaining three have about 34 each (the **Educational** category has 35 in its second section). This means most categories yield **1,456,560** unique prompts, while **Educational** produces **1,499,400**. Summed across the 11 themed categories this comes to **17,102,880** possible prompts in each language.
+Prompter includes **12 categories** in total—the **Random Mix** plus 11 themed options listed above. Each prompt is composed of four parts. Most categories now have **40** openings and endings and around **39** middle lines. The **AI** set was expanded to **50** entries for its first and last sections, while **Ideas** and **Perspective** gained extra variations. As a result, most categories generate **2,433,600** prompts each. **Perspective** yields **2,432,079**, **Ideas** produces **3,175,040** and **AI** reaches **6,002,500**. In total the 11 themed categories provide **31,078,419** unique prompts per language—**62,156,838** across both English and Turkish.
 
 If icon fonts fail to load, the app falls back to emoji symbols so the buttons remain visible.
 
