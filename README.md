@@ -12,7 +12,7 @@ Prompt templates are stored in small JSON files under the `prompts/` directory a
 - Fast loading thanks to lightweight JSON prompt files
 - Light and dark themes
 - English and Turkish interface
-- Twelve prompt categories with over 31M combinations per language (more than 62M across EN and TR)
+- Twelve prompt categories with over 53M combinations per language (more than 106M across EN and TR)
   This **AI prompt generator** delivers **creative prompt ideas** in a lightweight **offline web app** that runs directly in your browser.
 
 ## Opening the application
@@ -63,7 +63,7 @@ Prompter offers a variety of prompt themes. Select a category by clicking its ic
 - **Image** – descriptions for unique visuals or logos
 - **Hellprompts** – unsettling horror themes
 
-Prompter includes **12 categories** in total—the **Random Mix** plus 11 themed options listed above. Each prompt is composed of four parts. Most categories now have **40** openings and endings and around **39** middle lines. The **AI** set was expanded to **50** entries for its first and last sections, while **Ideas** and **Perspective** gained extra variations. As a result, most categories generate **2,433,600** prompts each. **Perspective** yields **2,432,079**, **Ideas** produces **3,175,040** and **AI** reaches **6,002,500**. In total the 11 themed categories provide **31,078,419** unique prompts per language—**62,156,838** across both English and Turkish.
+Prompter includes **12 categories** in total—the **Random Mix** plus 11 themed options listed above. Each prompt is composed of four parts. Most categories now have **46** openings and endings and around **45** middle lines. The **AI** set now has **56** entries for its first and last sections, while **Ideas** and **Perspective** gained extra variations. As a result, most categories generate **4,284,900** prompts each. **Perspective** yields **4,282,875**, **Ideas** produces **5,405,000** and **AI** reaches **9,486,400**. In total the 11 themed categories provide **53,453,475** unique prompts per language—**106,906,950** across both English and Turkish.
 
 If icon fonts fail to load, the app falls back to emoji symbols so the buttons remain visible.
 
