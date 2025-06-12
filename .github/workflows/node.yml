@@ -20,4 +20,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm install
+      - name: Run formatter
+        run: npm run format
+      - name: Verify formatting
+        run: git diff --exit-code
       - run: npm test
