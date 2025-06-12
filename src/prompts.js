@@ -73,14 +73,23 @@ export const ICON_FALLBACKS = {
 
 export const loadCategory = async (lang, cat) => {
   loadedPrompts[lang] = loadedPrompts[lang] || {};
-  if (loadedPrompts[lang][cat]) return loadedPrompts[lang][cat];
-  if (window.prompts && window.prompts[lang] && window.prompts[lang][cat]) {
-    loadedPrompts[lang][cat] = window.prompts[lang][cat];
+  if (loadedPrompts[lang][cat]) {
+    if (!loadedPrompts[lang][cat].structure) {
+      loadedPrompts[lang][cat] = {
+        ...loadedPrompts[lang][cat],
+        structure: structures[catMap[cat]],
+      };
+    }
     return loadedPrompts[lang][cat];
   }
-  const res = await fetch(`prompts/${lang}/${cat}.json`);
-  const data = await res.json();
-  data.structure = structures[catMap[cat]];
+  let data;
+  if (window.prompts && window.prompts[lang] && window.prompts[lang][cat]) {
+    data = { ...window.prompts[lang][cat] };
+  } else {
+    const res = await fetch(`prompts/${lang}/${cat}.json`);
+    data = await res.json();
+  }
+  data = { ...data, structure: structures[catMap[cat]] };
   loadedPrompts[lang][cat] = data;
   return data;
 };
