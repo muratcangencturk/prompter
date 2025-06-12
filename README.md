@@ -42,6 +42,7 @@ The service worker reads the `version` field from `manifest.json` and names its 
 
 - Prompter currently supports **English** (`EN`) and **Turkish** (`TR`).
 - Use the language switcher in the top‑right corner to choose your interface language. The setting persists in your browser.
+
 ## Accessibility
 
 Colors for both light and dark themes meet WCAG AA contrast requirements. Gradients and button styles were tested with automated tools and adjusted so text has at least a 4.5:1 contrast ratio against its background.
@@ -94,6 +95,7 @@ of strings. These arrays represent the beginning, topic, continuation and ending
 2. Register the category in `src/main.js` with an icon, emoji and names.
 3. Provide corresponding files for other languages to offer translations.
 4. Run `npm run build` to regenerate `prompts.js`, update `sw.js`, and bump the version in `manifest.json` so deployments include your changes.
+5. Run `node scripts/count-prompts.js` to see how many unique prompts each category provides per language.
 
 ## Development
 
