@@ -20,18 +20,21 @@ const join = (arr) =>
 const punctuate = (str) => (/[.!?]$/.test(str) ? str : str + '.');
 
 const structures = {
-  singleSentence: (parts) => join(parts),
+  singleSentence: (parts) => punctuate(join(parts)),
   twoSentence: (parts) => {
     const first = punctuate(join(parts.slice(0, 3)));
-    return `${first} ${parts[3].trim()}`;
+    const second = punctuate(parts[3].trim());
+    return `${first} ${second}`;
   },
   questionThenInstruction: (parts) => {
     const first = punctuate(join(parts.slice(0, 2)));
-    return `${first} ${parts[2].trim()} ${parts[3].trim()}`;
+    const rest = `${parts[2].trim()} ${parts[3].trim()}`;
+    return `${first} ${punctuate(rest)}`;
   },
   imageStructure: (parts) => {
     const first = punctuate(join(parts.slice(0, 2)));
-    return `${first} ${parts[2].trim()} ${parts[3].trim()}`;
+    const rest = `${parts[2].trim()} ${parts[3].trim()}`;
+    return `${first} ${punctuate(rest)}`;
   },
 };
 
