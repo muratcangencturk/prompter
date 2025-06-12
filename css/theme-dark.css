@@ -11,7 +11,7 @@ body { background-image: linear-gradient(to bottom right, #581c87, #1e3a8a, #312
 .focus\:ring-white\/50:focus { --tw-ring-color: rgba(255, 255, 255, 0.5) !important; }
 .category-button { background-color: rgba(255, 255, 255, 0.2) !important; color: white !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; }
 .category-button:hover { background-color: rgba(255, 255, 255, 0.3) !important; }
-.category-button.selected { background-image: linear-gradient(to right, #a855f7, #ec4899) !important; color: white !important; border-color: transparent !important; }
+.category-button.selected { background-image: linear-gradient(to right, #7e22ce, #a21caf) !important; color: white !important; border-color: transparent !important; }
 .category-button .lucide { color: white !important; display: none; }
 .category-button .emoji-icon { color: white !important; }
 #app-title { background-image: linear-gradient(to right, #22d3ee, #c084fc) !important; }
