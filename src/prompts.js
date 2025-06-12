@@ -73,6 +73,7 @@ export const ICON_FALLBACKS = {
 
 export const loadCategory = async (lang, cat) => {
   loadedPrompts[lang] = loadedPrompts[lang] || {};
+
   if (loadedPrompts[lang][cat]) {
     if (!loadedPrompts[lang][cat].structure) {
       loadedPrompts[lang][cat] = {
@@ -89,6 +90,7 @@ export const loadCategory = async (lang, cat) => {
     const res = await fetch(`prompts/${lang}/${cat}.json`);
     data = await res.json();
   }
+
   data = { ...data, structure: structures[catMap[cat]] };
   loadedPrompts[lang][cat] = data;
   return data;
