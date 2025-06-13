@@ -127,14 +127,19 @@ request workflow.
 
 ## SEO Optimizations
 
-Prompter includes a few built‑in optimizations to help search engines crawl and
-index the site efficiently:
+Prompter includes a range of optimizations to help search engines crawl and index the site efficiently:
 
 - `robots.txt` allows all bots and references the generated `sitemap.xml`.
-- `index.html` provides structured data with `FAQPage` markup and lazy‑loads the
-  logo image for better page speed.
-- The icons folder can be optimized using `npm run optimize:images` which runs
-  **SVGO** on all SVG assets.
+- `index.html` and `tr/index.html` embed `WebSite` and `FAQPage` schema markup.
+- Key assets are preloaded and images are lazy loaded with explicit size attributes for faster rendering.
+- The icons folder can be optimized using `npm run optimize:images` which runs **SVGO** on all SVG assets.
+- Pages are fully responsive – check with Google’s [Mobile‑Friendly Test](https://search.google.com/test/mobile-friendly).
+- HTTPS is enforced via a `Content-Security-Policy` upgrade header.
+- A service worker caches content for offline use and better performance.
+- Image `alt` text and descriptive file names improve visual search results.
+- `scripts/generate-sitemap.js` keeps the sitemap up to date for search engines.
+- Use analytics tools such as Google Search Console or Ahrefs to monitor crawl errors and Core Web Vitals.
+- Prompt JSON files include additional lines to keep content fresh across all categories.
 
 ## Deployment
 
