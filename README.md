@@ -125,6 +125,22 @@ npm start
 See [CONTRIBUTING.md](CONTRIBUTING.md) for full setup instructions and the pull
 request workflow.
 
+## SEO Optimizations
+
+Prompter includes a range of optimizations to help search engines crawl and index the site efficiently:
+
+- `robots.txt` allows all bots and references the generated `sitemap.xml`.
+- `index.html` and `tr/index.html` embed `WebSite` and `FAQPage` schema markup.
+- Key assets are preloaded and images are lazy loaded with explicit size attributes for faster rendering.
+- The icons folder can be optimized using `npm run optimize:images` which runs **SVGO** on all SVG assets.
+- Pages are fully responsive – check with Google’s [Mobile‑Friendly Test](https://search.google.com/test/mobile-friendly).
+- HTTPS is enforced via a `Content-Security-Policy` upgrade header.
+- A service worker caches content for offline use and better performance.
+- Image `alt` text and descriptive file names improve visual search results.
+- `scripts/generate-sitemap.js` keeps the sitemap up to date for search engines.
+- Use analytics tools such as Google Search Console or Ahrefs to monitor crawl errors and Core Web Vitals.
+- Prompt JSON files include additional lines to keep content fresh across all categories.
+
 ## Deployment
 
 The site is published automatically using GitHub Pages. The workflow

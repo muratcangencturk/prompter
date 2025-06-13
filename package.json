@@ -10,11 +10,14 @@
     "lint:prompts": "node scripts/check-prompts.js",
     "build": "node scripts/build-prompts.js",
     "build:sitemap": "node scripts/generate-sitemap.js",
-    "start": "http-server -c-1"
+    "start": "http-server -c-1",
+    "optimize:images": "svgo -r icons",
+    "add:content": "node scripts/add-seo-lines.js"
   },
   "devDependencies": {
     "eslint": "8.57.0",
     "http-server": "^14.1.1",
-    "prettier": "^2.8.8"
+    "prettier": "^2.8.8",
+    "svgo": "^3.3.2"
   }
 }
