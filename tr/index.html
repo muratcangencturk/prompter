@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PROMPTER</title>
-    <link rel="icon" type="image/svg+xml" href="icons/logo.svg">
-    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="../icons/logo.svg">
+    <link rel="manifest" href="../manifest.json">
     <meta name="theme-color" content="#000000">
     <meta name="description" content="Creative AI prompt generator that works offline.">
     <meta property="og:title" content="PROMPTER">
     <meta property="og:description" content="Creative AI prompt generator that works offline.">
-    <meta property="og:image" content="icons/logo.svg">
+    <meta property="og:image" content="../icons/logo.svg">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="PROMPTER">
     <meta name="twitter:description" content="Creative AI prompt generator that works offline.">
-    <meta name="twitter:image" content="icons/logo.svg">
-    <link rel="canonical" href="https://example.com/">
+    <meta name="twitter:image" content="../icons/logo.svg">
+    <link rel="canonical" href="https://example.com/tr/">
     <link rel="alternate" href="https://example.com/" hreflang="en">
     <link rel="alternate" href="https://example.com/tr/" hreflang="tr">
+    <script>localStorage.setItem('language', 'tr');</script>
 <script>
   (function() {
     function addScript(src, onLoad) {
@@ -99,8 +100,8 @@
       return { cdn: cdnScript, local: localScript, loadPromise };
     }
 
-    const tailwindScripts = loadWithFallback('https://cdn.tailwindcss.com', 'tailwind.js');
-    window.lucideScripts = loadWithFallback('https://unpkg.com/lucide@latest/dist/umd/lucide.min.js', 'lucide.min.js');
+    const tailwindScripts = loadWithFallback('https://cdn.tailwindcss.com', '../tailwind.js');
+    window.lucideScripts = loadWithFallback('https://unpkg.com/lucide@latest/dist/umd/lucide.min.js', '../lucide.min.js');
     Promise.all([tailwindScripts.loadPromise, window.lucideScripts.loadPromise])
       .finally(() => {
         const appContainer = document.getElementById('app-container');
@@ -110,15 +111,15 @@
       });
   })();
 </script>
-    <link rel="stylesheet" href="css/app.css">
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css">
+    <link rel="stylesheet" href="../css/app.css">
+    <link id="theme-css" rel="stylesheet" href="../css/theme-dark.css">
     <script>
       (function() {
         const savedTheme = localStorage.getItem('theme');
         if (!savedTheme) return;
         const linkEl = document.getElementById('theme-css');
         if (linkEl) {
-          linkEl.href = `css/theme-${savedTheme}.css`;
+          linkEl.href = `../css/theme-${savedTheme}.css`;
         }
       })();
     </script>
@@ -153,7 +154,7 @@
 
         <!-- Header -->
         <div class="text-center mb-6 pt-16 md:pt-12">
-          <img src="icons/logo.svg" alt="Prompter logo" class="mx-auto mb-4 w-16 h-16" id="app-logo">
+          <img src="../icons/logo.svg" alt="Prompter logo" class="mx-auto mb-4 w-16 h-16" id="app-logo">
           <h1 id="app-title" class="text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
             PROMPTER
           </h1>
@@ -216,8 +217,8 @@
         </div>
     </div>
 
-<script src="prompts.js"></script>
-<script type="module" src="src/main.js"></script>
+<script src="../prompts.js"></script>
+<script type="module" src="../src/main.js"></script>
 </body>
 </html>
 
