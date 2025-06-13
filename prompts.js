@@ -2371,6 +2371,272 @@ window.prompts = {
       ]
     }
   },
+  "es": {
+    "ai": {
+      "parts": [
+        [
+          "Diseña una IA que",
+          "Imagina una inteligencia artificial que",
+          "Escribe sobre un robot que"
+        ],
+        [
+          "ayuda a las personas",
+          "resuelve problemas complejos",
+          "aprende de su entorno"
+        ],
+        [
+          "de manera creativa",
+          "sin causar daño",
+          "con total autonomía"
+        ],
+        [
+          "en un futuro cercano",
+          "como si fuera real",
+          "en pocas palabras"
+        ]
+      ]
+    },
+    "crazy": {
+      "parts": [
+        [
+          "Escribe una escena donde",
+          "Imagina una situación en la que",
+          "Describe un mundo donde"
+        ],
+        [
+          "los animales hablan",
+          "las leyes de la física fallan",
+          "todo está al revés"
+        ],
+        [
+          "un héroe improbable",
+          "un objeto cotidiano",
+          "un villano cómico"
+        ],
+        [
+          "salva el día",
+          "provoca risas",
+          "causa un desastre"
+        ]
+      ]
+    },
+    "educational": {
+      "parts": [
+        [
+          "Explica brevemente",
+          "Enseña paso a paso",
+          "Resume la idea de"
+        ],
+        [
+          "la teoría de la relatividad",
+          "cómo funciona Internet",
+          "la historia de tu país"
+        ],
+        [
+          "para un principiante",
+          "en términos simples",
+          "con ejemplos"
+        ],
+        [
+          "en un párrafo",
+          "usando viñetas",
+          "con un tono amigable"
+        ]
+      ]
+    },
+    "hellprompts": {
+      "parts": [
+        [
+          "Describe el momento en que",
+          "Imagina el horror de",
+          "Cuenta la pesadilla donde"
+        ],
+        [
+          "la oscuridad te rodea",
+          "sientes un frío eterno",
+          "nada es lo que parece"
+        ],
+        [
+          "una sombra susurra",
+          "un grito rompe el silencio",
+          "todo se vuelve rojo"
+        ],
+        [
+          "sin esperanza",
+          "con un final trágico",
+          "en tono sombrío"
+        ]
+      ]
+    },
+    "ideas": {
+      "parts": [
+        [
+          "Propón una idea para",
+          "Crea un concepto sobre",
+          "Escribe una sinopsis de"
+        ],
+        [
+          "una aplicación móvil",
+          "una novela de misterio",
+          "una startup innovadora"
+        ],
+        [
+          "que ayude a la gente",
+          "que atrape al lector",
+          "que mejore el mundo"
+        ],
+        [
+          "en pocas líneas",
+          "con un enfoque creativo",
+          "para un público amplio"
+        ]
+      ]
+    },
+    "image": {
+      "parts": [
+        [
+          "Describe una imagen de",
+          "Imagina una ilustración que muestre",
+          "Piensa en un logo para"
+        ],
+        [
+          "una ciudad futurista",
+          "un paisaje surrealista",
+          "un animal mítico"
+        ],
+        [
+          "con colores vibrantes",
+          "en blanco y negro",
+          "con estilo minimalista"
+        ],
+        [
+          "para una portada",
+          "como referencia artística",
+          "para inspiración"
+        ]
+      ]
+    },
+    "inspiring": {
+      "parts": [
+        [
+          "Imagina",
+          "Describe",
+          "Cuenta una historia donde"
+        ],
+        [
+          "una persona supera un reto",
+          "un equipo trabaja unido",
+          "la creatividad cambia el mundo"
+        ],
+        [
+          "con determinación",
+          "con pasión",
+          "con gran valentía"
+        ],
+        [
+          "de forma optimista",
+          "en tono motivador",
+          "con final feliz"
+        ]
+      ]
+    },
+    "mindBlowing": {
+      "parts": [
+        [
+          "Imagina un futuro donde",
+          "Piensa en un universo donde",
+          "Describe una realidad alternativa en la que"
+        ],
+        [
+          "la humanidad viaja por el tiempo",
+          "las máquinas gobiernan",
+          "los sueños se comparten"
+        ],
+        [
+          "y todo cambia para siempre?",
+          "y nada vuelve a ser igual?",
+          "¿qué sucedería entonces?"
+        ],
+        [
+          "hazlo en tono filosófico",
+          "responde brevemente",
+          "en dos frases"
+        ]
+      ]
+    },
+    "perspective": {
+      "parts": [
+        [
+          "Analiza la situación desde",
+          "Considera el problema según",
+          "Explica el tema visto por"
+        ],
+        [
+          "un niño curioso",
+          "un experto veterano",
+          "un observador neutral"
+        ],
+        [
+          "para entender mejor",
+          "para cuestionar creencias",
+          "para descubrir nuevas ideas"
+        ],
+        [
+          "de manera objetiva",
+          "con ejemplos claros",
+          "en pocos párrafos"
+        ]
+      ]
+    },
+    "productivity": {
+      "parts": [
+        [
+          "Comparte un consejo sobre",
+          "Explica una estrategia para",
+          "Escribe una lista de"
+        ],
+        [
+          "mejorar la concentración",
+          "organizar el tiempo",
+          "ahorrar recursos"
+        ],
+        [
+          "en el trabajo diario",
+          "en proyectos personales",
+          "en equipo"
+        ],
+        [
+          "de forma clara",
+          "paso a paso",
+          "con ejemplos prácticos"
+        ]
+      ]
+    },
+    "video": {
+      "parts": [
+        [
+          "Propón una idea de video viral sobre",
+          "Crea un concepto de cortometraje centrado en",
+          "Escribe un guion donde"
+        ],
+        [
+          "un héroe inesperado",
+          "una causa social",
+          "un hecho histórico"
+        ],
+        [
+          "¿cómo terminaría?",
+          "¿qué mensaje deja?",
+          "¿por qué impactaría?"
+        ],
+        [
+          "en formato breve",
+          "con humor",
+          "de manera emocionante"
+        ]
+      ]
+    }
+  },
   "tr": {
     "ai": {
       "parts": [
