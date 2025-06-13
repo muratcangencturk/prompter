@@ -125,6 +125,17 @@ npm start
 See [CONTRIBUTING.md](CONTRIBUTING.md) for full setup instructions and the pull
 request workflow.
 
+## SEO Optimizations
+
+Prompter includes a few built‑in optimizations to help search engines crawl and
+index the site efficiently:
+
+- `robots.txt` allows all bots and references the generated `sitemap.xml`.
+- `index.html` provides structured data with `FAQPage` markup and lazy‑loads the
+  logo image for better page speed.
+- The icons folder can be optimized using `npm run optimize:images` which runs
+  **SVGO** on all SVG assets.
+
 ## Deployment
 
 The site is published automatically using GitHub Pages. The workflow
