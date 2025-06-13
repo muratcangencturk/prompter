@@ -1,24 +1,91 @@
-body { background-image: linear-gradient(to bottom right, #581c87, #1e3a8a, #312e81) !important; color: white !important; }
-.bg-white\/10 { background-color: rgba(255, 255, 255, 0.1) !important; border-color: rgba(255, 255, 255, 0.2) !important; }
-.bg-black\/30 { background-color: rgba(0, 0, 0, 0.3) !important; color: white !important; }
-.text-blue-200 { color: #bfdbfe !important; }
-.text-blue-300 { color: #93c5fd !important; }
-.border-white\/20 { border-color: rgba(255, 255, 255, 0.2) !important; }
-.bg-black\/20 { background-color: rgba(0, 0, 0, 0.2) !important; }
-.hover\:bg-white\/10:hover { background-color: rgba(255, 255, 255, 0.1) !important; }
-.bg-white\/30 { background-color: rgba(255, 255, 255, 0.3) !important; }
-.hover\:bg-white\/30:hover { background-color: rgba(255, 255, 255, 0.3) !important; }
-.focus\:ring-white\/50:focus { --tw-ring-color: rgba(255, 255, 255, 0.5) !important; }
-.category-button { background-color: rgba(255, 255, 255, 0.2) !important; color: white !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; }
-.category-button:hover { background-color: rgba(255, 255, 255, 0.3) !important; }
-.category-button.selected { background-image: linear-gradient(to right, #7e22ce, #a21caf) !important; color: white !important; border-color: transparent !important; }
-.category-button .lucide { color: white !important; display: none; }
-.category-button .emoji-icon { color: white !important; }
-#app-title { background-image: linear-gradient(to right, #22d3ee, #c084fc) !important; }
-#choose-style-title, #your-prompt-title { color: white !important; }
-#lang-en, #lang-tr { color: #bfdbfe !important; }
-#lang-en.active, #lang-tr.active { background-color: rgba(255, 255, 255, 0.3) !important; color: white !important; }
-.theme-toggle-container i { color: #bfdbfe !important; }
-.theme-toggle-container button { color: #bfdbfe !important; }
-.theme-toggle-container button.active { background-color: rgba(255, 255, 255, 0.3) !important; color: white !important; }
-.absolute.top-4.right-4 i { color: #93c5fd !important; }
+body {
+  background-image: linear-gradient(
+    to bottom right,
+    #581c87,
+    #1e3a8a,
+    #312e81
+  ) !important;
+  color: white !important;
+}
+.bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.bg-black\/30 {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  color: white !important;
+}
+.text-blue-200 {
+  color: #bfdbfe !important;
+}
+.text-blue-300 {
+  color: #93c5fd !important;
+}
+.border-white\/20 {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.bg-black\/20 {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
+.hover\:bg-white\/10:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+.bg-white\/30 {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+.hover\:bg-white\/30:hover {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+.focus\:ring-white\/50:focus {
+  --tw-ring-color: rgba(255, 255, 255, 0.5) !important;
+}
+.category-button {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+.category-button:hover {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+.category-button.selected {
+  background-image: linear-gradient(to right, #7e22ce, #a21caf) !important;
+  color: white !important;
+  border-color: transparent !important;
+}
+.category-button .lucide {
+  color: white !important;
+  display: none;
+}
+.category-button .emoji-icon {
+  color: white !important;
+}
+#app-title {
+  background-image: linear-gradient(to right, #22d3ee, #c084fc) !important;
+}
+#choose-style-title,
+#your-prompt-title,
+#history-title {
+  color: white !important;
+}
+#lang-en,
+#lang-tr {
+  color: #bfdbfe !important;
+}
+#lang-en.active,
+#lang-tr.active {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+}
+.theme-toggle-container i {
+  color: #bfdbfe !important;
+}
+.theme-toggle-container button {
+  color: #bfdbfe !important;
+}
+.theme-toggle-container button.active {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+}
+.absolute.top-4.right-4 i {
+  color: #93c5fd !important;
+}

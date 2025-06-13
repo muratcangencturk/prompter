@@ -4,12 +4,15 @@ import { categories, ICON_FALLBACKS, generatePrompt } from './prompts.js';
 const uiText = {
   en: {
     appTitle: 'PROMPTER',
-    appSubtitle: 'Prompt generator for AI - unprecedented, limitless creativity',
+    appSubtitle:
+      'Prompt generator for AI - unprecedented, limitless creativity',
     chooseStyleTitle: 'Select Your Prompt Inspiration',
     generateButtonText: 'Generate New Prompt',
     yourPromptTitle: 'Your Unique Prompt:',
     copyButtonTitle: 'Copy to clipboard',
     downloadButtonTitle: 'Download as .txt',
+    historyTitle: 'Previous Prompts',
+    clearHistoryTitle: 'Clear history',
     copySuccessMessage: 'Prompt copied successfully!',
     appStats: 'Prompts that will unlock the potential of your mind',
     footerPrompter: 'Prompter',
@@ -22,20 +25,23 @@ const uiText = {
   },
   tr: {
     appTitle: 'PROMPTER',
-    appSubtitle: 'YZ için prompt üretici - eşi benzeri görülmemiş sınırsız yaratıcılık',
+    appSubtitle:
+      'YZ için prompt üretici - eşi benzeri görülmemiş sınırsız yaratıcılık',
     chooseStyleTitle: 'Prompt İlhamınızı Seçin',
     generateButtonText: 'Yeni Prompt Üret',
     yourPromptTitle: 'Benzersiz Promptunuz:',
     copyButtonTitle: 'Panoya kopyala',
     downloadButtonTitle: '.txt olarak indir',
+    historyTitle: 'Önceki Promptlar',
+    clearHistoryTitle: 'Geçmişi temizle',
     copySuccessMessage: 'Prompt başarıyla kopyalandı!',
     appStats: 'Zihninizin potansiyelini açığa çıkaracak promptlar',
     footerPrompter: 'Prompter',
     randomCategory: 'Rastgele Karışım',
     themeLightTitle: 'Açık Tema',
     themeDarkTitle: 'Koyu Tema',
-    langEnLabel: 'İngilizce\'ye geç',
-    langTrLabel: 'Türkçe\'ye geç',
+    langEnLabel: "İngilizce'ye geç",
+    langTrLabel: "Türkçe'ye geç",
     appLogoAlt: 'Prompter logosu',
   },
 };
@@ -53,6 +59,9 @@ let themeLightButton;
 let themeDarkButton;
 let themeLinkElement;
 let appLogo;
+let historyPanel;
+let historyList;
+let clearHistoryButton;
 let lastGeneratedCategoryId = appState.selectedCategory;
 
 const setTheme = (theme) => {
@@ -61,15 +70,51 @@ const setTheme = (theme) => {
     themeLinkElement.href = `css/theme-${theme}.css`;
   }
   if (theme === THEMES.LIGHT) {
-    themeLightButton.classList.add('active', 'bg-white/30', 'text-white', 'shadow-md');
-    themeLightButton.classList.remove('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
-    themeDarkButton.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
-    themeDarkButton.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
+    themeLightButton.classList.add(
+      'active',
+      'bg-white/30',
+      'text-white',
+      'shadow-md',
+    );
+    themeLightButton.classList.remove(
+      'bg-transparent',
+      'text-blue-200',
+      'hover:bg-white/10',
+    );
+    themeDarkButton.classList.remove(
+      'active',
+      'bg-white/30',
+      'text-white',
+      'shadow-md',
+    );
+    themeDarkButton.classList.add(
+      'bg-transparent',
+      'text-blue-200',
+      'hover:bg-white/10',
+    );
   } else {
-    themeDarkButton.classList.add('active', 'bg-white/30', 'text-white', 'shadow-md');
-    themeDarkButton.classList.remove('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
-    themeLightButton.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
-    themeLightButton.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
+    themeDarkButton.classList.add(
+      'active',
+      'bg-white/30',
+      'text-white',
+      'shadow-md',
+    );
+    themeDarkButton.classList.remove(
+      'bg-transparent',
+      'text-blue-200',
+      'hover:bg-white/10',
+    );
+    themeLightButton.classList.remove(
+      'active',
+      'bg-white/30',
+      'text-white',
+      'shadow-md',
+    );
+    themeLightButton.classList.add(
+      'bg-transparent',
+      'text-blue-200',
+      'hover:bg-white/10',
+    );
   }
   localStorage.setItem('theme', theme);
   updateButtonTitles();
@@ -79,11 +124,15 @@ const setLanguage = (lang) => {
   appState.language = lang;
   document.documentElement.lang = lang;
   document.getElementById('app-title').textContent = uiText[lang].appTitle;
-  document.getElementById('app-subtitle').textContent = uiText[lang].appSubtitle;
-  document.getElementById('choose-style-title').textContent = uiText[lang].chooseStyleTitle;
-  document.getElementById('generate-button-text').textContent = uiText[lang].generateButtonText;
+  document.getElementById('app-subtitle').textContent =
+    uiText[lang].appSubtitle;
+  document.getElementById('choose-style-title').textContent =
+    uiText[lang].chooseStyleTitle;
+  document.getElementById('generate-button-text').textContent =
+    uiText[lang].generateButtonText;
   generateButton.setAttribute('aria-label', uiText[lang].generateButtonText);
-  document.getElementById('your-prompt-title').textContent = uiText[lang].yourPromptTitle;
+  document.getElementById('your-prompt-title').textContent =
+    uiText[lang].yourPromptTitle;
   if (appLogo) {
     appLogo.alt = uiText[lang].appLogoAlt;
   }
@@ -92,8 +141,13 @@ const setLanguage = (lang) => {
   downloadButton.title = uiText[lang].downloadButtonTitle;
   downloadButton.setAttribute('aria-label', uiText[lang].downloadButtonTitle);
   copySuccessMessage.textContent = uiText[lang].copySuccessMessage;
+  document.getElementById('history-title').textContent =
+    uiText[lang].historyTitle;
+  clearHistoryButton.title = uiText[lang].clearHistoryTitle;
+  clearHistoryButton.setAttribute('aria-label', uiText[lang].clearHistoryTitle);
   document.getElementById('app-stats').textContent = uiText[lang].appStats;
-  document.getElementById('footer-prompter').textContent = uiText[lang].footerPrompter;
+  document.getElementById('footer-prompter').textContent =
+    uiText[lang].footerPrompter;
   langEnButton.title = uiText[lang].langEnLabel;
   langEnButton.setAttribute('aria-label', uiText[lang].langEnLabel);
   langTrButton.title = uiText[lang].langTrLabel;
@@ -111,25 +165,95 @@ const setLanguage = (lang) => {
   });
 
   if (lang === 'en') {
-    langEnButton.classList.add('active', 'bg-white/30', 'text-white', 'shadow-md');
-    langEnButton.classList.remove('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
-    langTrButton.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
-    langTrButton.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
+    langEnButton.classList.add(
+      'active',
+      'bg-white/30',
+      'text-white',
+      'shadow-md',
+    );
+    langEnButton.classList.remove(
+      'bg-transparent',
+      'text-blue-200',
+      'hover:bg-white/10',
+    );
+    langTrButton.classList.remove(
+      'active',
+      'bg-white/30',
+      'text-white',
+      'shadow-md',
+    );
+    langTrButton.classList.add(
+      'bg-transparent',
+      'text-blue-200',
+      'hover:bg-white/10',
+    );
   } else {
-    langTrButton.classList.add('active', 'bg-white/30', 'text-white', 'shadow-md');
-    langTrButton.classList.remove('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
-    langEnButton.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
-    langEnButton.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
+    langTrButton.classList.add(
+      'active',
+      'bg-white/30',
+      'text-white',
+      'shadow-md',
+    );
+    langTrButton.classList.remove(
+      'bg-transparent',
+      'text-blue-200',
+      'hover:bg-white/10',
+    );
+    langEnButton.classList.remove(
+      'active',
+      'bg-white/30',
+      'text-white',
+      'shadow-md',
+    );
+    langEnButton.classList.add(
+      'bg-transparent',
+      'text-blue-200',
+      'hover:bg-white/10',
+    );
   }
   localStorage.setItem('language', lang);
   updateButtonTitles();
+  renderHistory();
 };
 
 const updateButtonTitles = () => {
   themeLightButton.title = uiText[appState.language].themeLightTitle;
-  themeLightButton.setAttribute('aria-label', uiText[appState.language].themeLightTitle);
+  themeLightButton.setAttribute(
+    'aria-label',
+    uiText[appState.language].themeLightTitle,
+  );
   themeDarkButton.title = uiText[appState.language].themeDarkTitle;
-  themeDarkButton.setAttribute('aria-label', uiText[appState.language].themeDarkTitle);
+  themeDarkButton.setAttribute(
+    'aria-label',
+    uiText[appState.language].themeDarkTitle,
+  );
+};
+
+const renderHistory = () => {
+  if (!historyPanel || !historyList) return;
+  historyList.innerHTML = '';
+  appState.history.forEach((prompt, idx) => {
+    const li = document.createElement('li');
+    li.className = 'flex justify-between items-start gap-2';
+    const span = document.createElement('span');
+    span.className = 'flex-1 whitespace-pre-wrap font-mono';
+    span.textContent = prompt;
+    const btn = document.createElement('button');
+    btn.className =
+      'history-copy p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+    btn.title = uiText[appState.language].copyButtonTitle;
+    btn.setAttribute('aria-label', uiText[appState.language].copyButtonTitle);
+    btn.setAttribute('data-index', idx);
+    btn.innerHTML =
+      '<i data-lucide="copy" class="w-3 h-3" aria-hidden="true"></i>';
+    li.appendChild(span);
+    li.appendChild(btn);
+    historyList.appendChild(li);
+  });
+  historyPanel.classList.toggle('hidden', appState.history.length === 0);
+  if (window.lucide && typeof window.lucide.createIcons === 'function') {
+    window.lucide.createIcons();
+  }
 };
 
 const handleGenerate = async () => {
@@ -143,10 +267,16 @@ const handleGenerate = async () => {
   try {
     const { prompt, categoryId } = await generatePrompt();
     generatedPromptText.textContent = prompt;
+    appState.history.push(prompt);
+    if (appState.history.length > appState.HISTORY_SIZE) {
+      appState.history.shift();
+    }
+    renderHistory();
     lastGeneratedCategoryId = categoryId;
   } catch (err) {
     console.error(err);
-    generatedPromptText.textContent = 'Error generating prompt. Please try again.';
+    generatedPromptText.textContent =
+      'Error generating prompt. Please try again.';
   } finally {
     appState.isGenerating = false;
     generateButton.disabled = false;
@@ -159,7 +289,9 @@ const setupEventListeners = () => {
     if (button) {
       button.addEventListener('click', () => {
         appState.selectedCategory = category.id;
-        document.querySelectorAll('.category-button').forEach((btn) => btn.classList.remove('selected'));
+        document
+          .querySelectorAll('.category-button')
+          .forEach((btn) => btn.classList.remove('selected'));
         button.classList.add('selected');
       });
     }
@@ -201,6 +333,22 @@ const setupEventListeners = () => {
     URL.revokeObjectURL(url);
   });
 
+  clearHistoryButton.addEventListener('click', () => {
+    appState.history = [];
+    renderHistory();
+  });
+
+  historyList.addEventListener('click', (e) => {
+    const btn = e.target.closest('.history-copy');
+    if (!btn) return;
+    const index = parseInt(btn.getAttribute('data-index'), 10);
+    const text = appState.history[index];
+    if (!text) return;
+    navigator.clipboard.writeText(text).catch((err) => {
+      console.error('Failed to copy text: ', err);
+    });
+  });
+
   langEnButton.addEventListener('click', () => setLanguage('en'));
   langTrButton.addEventListener('click', () => setLanguage('tr'));
 
@@ -222,35 +370,42 @@ export const initializeApp = () => {
   themeDarkButton = document.getElementById('theme-dark');
   themeLinkElement = document.getElementById('theme-css');
   appLogo = document.getElementById('app-logo');
+  historyPanel = document.getElementById('history-panel');
+  historyList = document.getElementById('history-list');
+  clearHistoryButton = document.getElementById('clear-history');
 
   const runLucide = () => {
     if (window.lucide && typeof window.lucide.createIcons === 'function') {
       window.lucide.createIcons();
 
-      document.querySelectorAll('#category-buttons .category-button').forEach((button) => {
-        const iconEl = button.querySelector('i[data-lucide]');
-        const emojiEl = button.querySelector('.emoji-icon');
-        if (!iconEl) return;
+      document
+        .querySelectorAll('#category-buttons .category-button')
+        .forEach((button) => {
+          const iconEl = button.querySelector('i[data-lucide]');
+          const emojiEl = button.querySelector('.emoji-icon');
+          if (!iconEl) return;
 
-        let iconName = iconEl.getAttribute('data-lucide');
-        const pascal = iconName.replace(/(^.|-.)/g, (s) => s.replace('-', '').toUpperCase());
-        if (!window.lucide.icons || !window.lucide.icons[pascal]) {
-          const fallback = ICON_FALLBACKS[iconName];
-          if (fallback) {
-            iconName = fallback;
-            iconEl.setAttribute('data-lucide', iconName);
+          let iconName = iconEl.getAttribute('data-lucide');
+          const pascal = iconName.replace(/(^.|-.)/g, (s) =>
+            s.replace('-', '').toUpperCase(),
+          );
+          if (!window.lucide.icons || !window.lucide.icons[pascal]) {
+            const fallback = ICON_FALLBACKS[iconName];
+            if (fallback) {
+              iconName = fallback;
+              iconEl.setAttribute('data-lucide', iconName);
+            }
           }
-        }
 
-        const hasSvg = iconEl.querySelector('svg');
-        if (!hasSvg) {
-          emojiEl && emojiEl.classList.remove('hidden');
-          iconEl.style.display = 'none';
-        } else {
-          iconEl.style.display = 'block';
-          emojiEl && emojiEl.classList.add('hidden');
-        }
-      });
+          const hasSvg = iconEl.querySelector('svg');
+          if (!hasSvg) {
+            emojiEl && emojiEl.classList.remove('hidden');
+            iconEl.style.display = 'none';
+          } else {
+            iconEl.style.display = 'block';
+            emojiEl && emojiEl.classList.add('hidden');
+          }
+        });
 
       window.lucide.createIcons();
       return true;
@@ -268,8 +423,12 @@ export const initializeApp = () => {
   categories.forEach((category) => {
     const button = document.createElement('button');
     button.id = `category-${category.id}`;
-    button.className = 'category-button focus:outline-none focus:ring-2 focus:ring-white/50';
-    button.setAttribute('aria-label', `${category.name[appState.language]} category`);
+    button.className =
+      'category-button focus:outline-none focus:ring-2 focus:ring-white/50';
+    button.setAttribute(
+      'aria-label',
+      `${category.name[appState.language]} category`,
+    );
     if (category.id === appState.selectedCategory) {
       button.classList.add('selected');
     }
@@ -282,6 +441,8 @@ export const initializeApp = () => {
   if (window.lucideScripts && window.lucideScripts.loadPromise) {
     window.lucideScripts.loadPromise.then(runLucide);
   }
+
+  renderHistory();
 
   setupEventListeners();
 };
