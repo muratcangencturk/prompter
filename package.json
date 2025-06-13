@@ -9,6 +9,7 @@
     "test": "npm run lint && npm run lint:prompts",
     "lint:prompts": "node scripts/check-prompts.js",
     "build": "node scripts/build-prompts.js",
+    "build:sitemap": "node scripts/generate-sitemap.js",
     "start": "http-server -c-1"
   },
   "devDependencies": {

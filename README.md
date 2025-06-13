@@ -129,7 +129,7 @@ request workflow.
 
 The site is published automatically using GitHub Pages. The workflow
 [`pages.yml`](.github/workflows/pages.yml) installs dependencies, runs
-`npm run build` (which executes `scripts/build-prompts.js`) to generate `prompts.js`, update `sw.js`, bump the version in `manifest.json` and then uploads the artifact to GitHub Pages using
+`npm run build` (which executes `scripts/build-prompts.js`) and `npm run build:sitemap` to generate `prompts.js`, update `sw.js`, bump the version in `manifest.json`, create `sitemap.xml` and then upload the artifact using
 `actions/upload-pages-artifact` and `actions/deploy-pages`. Pushes to the
 `main` branch trigger a new deployment and the site becomes available at
 the repository's Pages URL.
