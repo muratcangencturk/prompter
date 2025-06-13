@@ -14,6 +14,7 @@ async function updateCacheName() {
 const ASSETS = [
   './',
   './index.html',
+  './tr/index.html',
   './tailwind.js',
   './lucide.min.js',
   './src/main.js',
