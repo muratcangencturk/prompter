@@ -141,6 +141,17 @@ Prompter includes a range of optimizations to help search engines crawl and inde
 - Use analytics tools such as Google Search Console or Ahrefs to monitor crawl errors and Core Web Vitals.
 - Prompt JSON files include additional lines to keep content fresh across all categories.
 
+## Changing the base URL
+
+Before deploying your own instance, update all references to the default GitHub
+Pages address (`https://muratcangencturk.github.io/prompter`).
+
+- Edit the canonical `<link>` tags in `index.html` and `tr/index.html` so they
+  point to your final site.
+- In `scripts/generate-sitemap.js` replace the `BASE_URL` constant and run
+  `npm run build:sitemap` to regenerate `sitemap.xml`.
+- Update the `Sitemap:` line inside `robots.txt` with your new domain.
+
 ## Deployment
 
 The site is published automatically using GitHub Pages. The workflow
