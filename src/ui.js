@@ -18,6 +18,7 @@ const uiText = {
     themeDarkTitle: 'Dark Theme',
     langEnLabel: 'Switch to English',
     langTrLabel: 'Switch to Turkish',
+    appLogoAlt: 'Prompter logo',
   },
   tr: {
     appTitle: 'PROMPTER',
@@ -35,6 +36,7 @@ const uiText = {
     themeDarkTitle: 'Koyu Tema',
     langEnLabel: 'İngilizce\'ye geç',
     langTrLabel: 'Türkçe\'ye geç',
+    appLogoAlt: 'Prompter logosu',
   },
 };
 
@@ -50,6 +52,7 @@ let langTrButton;
 let themeLightButton;
 let themeDarkButton;
 let themeLinkElement;
+let appLogo;
 let lastGeneratedCategoryId = appState.selectedCategory;
 
 const setTheme = (theme) => {
@@ -81,6 +84,9 @@ const setLanguage = (lang) => {
   document.getElementById('generate-button-text').textContent = uiText[lang].generateButtonText;
   generateButton.setAttribute('aria-label', uiText[lang].generateButtonText);
   document.getElementById('your-prompt-title').textContent = uiText[lang].yourPromptTitle;
+  if (appLogo) {
+    appLogo.alt = uiText[lang].appLogoAlt;
+  }
   copyButton.title = uiText[lang].copyButtonTitle;
   copyButton.setAttribute('aria-label', uiText[lang].copyButtonTitle);
   downloadButton.title = uiText[lang].downloadButtonTitle;
@@ -215,6 +221,7 @@ export const initializeApp = () => {
   themeLightButton = document.getElementById('theme-light');
   themeDarkButton = document.getElementById('theme-dark');
   themeLinkElement = document.getElementById('theme-css');
+  appLogo = document.getElementById('app-logo');
 
   const runLucide = () => {
     if (window.lucide && typeof window.lucide.createIcons === 'function') {
