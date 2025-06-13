@@ -53,18 +53,73 @@ const catMap = {
 };
 
 export const categories = [
-  { id: 'random', icon: 'shuffle', emoji: '🔀', name: { en: 'Random Mix', tr: 'Rastgele Karışım' } },
-  { id: 'inspiring', icon: 'sunrise', emoji: '🌅', name: { en: 'Inspiring', tr: 'İlham Verici' } },
-  { id: 'mindBlowing', icon: 'brain-circuit', emoji: '🤯', name: { en: 'Mind-blowing', tr: 'Ufuk Açıcı' } },
-  { id: 'productivity', icon: 'zap', emoji: '⚡', name: { en: 'Productivity', tr: 'Üretkenlik' } },
-  { id: 'educational', icon: 'graduation-cap', emoji: '🎓', name: { en: 'Educational', tr: 'Eğitici' } },
-  { id: 'crazy', icon: 'laugh', emoji: '😂', name: { en: 'Crazy', tr: 'Çılgın Fikirler' } },
-  { id: 'perspective', icon: 'glasses', emoji: '🕶️', name: { en: 'Perspective', tr: 'Bakış Açısı' } },
+  {
+    id: 'random',
+    icon: 'shuffle',
+    emoji: '🔀',
+    name: { en: 'Random Mix', tr: 'Rastgele Karışım' },
+  },
+  {
+    id: 'inspiring',
+    icon: 'sunrise',
+    emoji: '🌅',
+    name: { en: 'Inspiring', tr: 'İlham Verici' },
+  },
+  {
+    id: 'mindBlowing',
+    icon: 'brain-circuit',
+    emoji: '🤯',
+    name: { en: 'Mind-blowing', tr: 'Ufuk Açıcı' },
+  },
+  {
+    id: 'productivity',
+    icon: 'zap',
+    emoji: '⚡',
+    name: { en: 'Productivity', tr: 'Üretkenlik' },
+  },
+  {
+    id: 'educational',
+    icon: 'graduation-cap',
+    emoji: '🎓',
+    name: { en: 'Educational', tr: 'Eğitici' },
+  },
+  {
+    id: 'crazy',
+    icon: 'laugh',
+    emoji: '😂',
+    name: { en: 'Crazy', tr: 'Çılgın Fikirler' },
+  },
+  {
+    id: 'perspective',
+    icon: 'glasses',
+    emoji: '🕶️',
+    name: { en: 'Perspective', tr: 'Bakış Açısı' },
+  },
   { id: 'ai', icon: 'cpu', emoji: '🤖', name: { en: 'AI', tr: 'YZ' } },
-  { id: 'ideas', icon: 'lightbulb', emoji: '💡', name: { en: 'Ideas', tr: 'Fikirler' } },
-  { id: 'video', icon: 'video', emoji: '🎬', name: { en: 'Video', tr: 'Video' } },
-  { id: 'image', icon: 'image', emoji: '🖼️', name: { en: 'Image', tr: 'Görsel' } },
-  { id: 'hellprompts', icon: 'skull', emoji: '💀', name: { en: 'Hellprompts', tr: 'Cehennem Promptları' } },
+  {
+    id: 'ideas',
+    icon: 'lightbulb',
+    emoji: '💡',
+    name: { en: 'Ideas', tr: 'Fikirler' },
+  },
+  {
+    id: 'video',
+    icon: 'video',
+    emoji: '🎬',
+    name: { en: 'Video', tr: 'Video' },
+  },
+  {
+    id: 'image',
+    icon: 'image',
+    emoji: '🖼️',
+    name: { en: 'Image', tr: 'Görsel' },
+  },
+  {
+    id: 'hellprompts',
+    icon: 'skull',
+    emoji: '💀',
+    name: { en: 'Hellprompts', tr: 'Cehennem Promptları' },
+  },
 ];
 
 export const ICON_FALLBACKS = {
@@ -106,13 +161,18 @@ export const generatePrompt = async () => {
   if (selectedCatId === 'random') {
     const availableCategories = categories.filter((c) => c.id !== 'random');
     selectedCatId =
-      availableCategories[Math.floor(Math.random() * availableCategories.length)]
-        .id;
+      availableCategories[
+        Math.floor(Math.random() * availableCategories.length)
+      ].id;
   }
 
   const categoryData = await loadCategory(appState.language, selectedCatId);
 
-  if (!categoryData || !categoryData.parts || !Array.isArray(categoryData.parts)) {
+  if (
+    !categoryData ||
+    !categoryData.parts ||
+    !Array.isArray(categoryData.parts)
+  ) {
     appState.isGenerating = false;
     throw new Error('Invalid category data');
   }
@@ -121,9 +181,6 @@ export const generatePrompt = async () => {
     if (!appState.partHistory[idx]) {
       appState.partHistory[idx] = [];
     }
-    if (!appState.history[idx]) {
-      appState.history[idx] = [];
-    }
     const element = getRandomElement(partArray, appState.partHistory[idx]);
     appState.partHistory[idx].push(element);
     if (appState.partHistory[idx].length > appState.HISTORY_SIZE) {
@@ -131,18 +188,9 @@ export const generatePrompt = async () => {
     }
     return element;
   });
-  const newPrompt = categoryData.structure ? categoryData.structure(promptParts) : promptParts.join(' ');
-
-  promptParts.forEach((part, idx) => {
-    if (!appState.history[idx]) {
-      appState.history[idx] = [];
-    }
-    const hist = appState.history[idx];
-    hist.push(part);
-    if (hist.length > appState.HISTORY_SIZE) {
-      hist.shift();
-    }
-  });
+  const newPrompt = categoryData.structure
+    ? categoryData.structure(promptParts)
+    : promptParts.join(' ');
 
   appState.generatedPrompt = newPrompt;
   appState.isGenerating = false;

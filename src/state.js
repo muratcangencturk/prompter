@@ -7,7 +7,7 @@ export const appState = {
   copySuccess: false,
   language: 'en',
   theme: THEMES.DARK,
-  history: [],
+  history: [], // generated prompts
   partHistory: [],
   HISTORY_SIZE: 100,
 };
