@@ -274,7 +274,8 @@
           id="my-prompts-link"
           href="my-prompts.html"
           class="px-2 py-1 rounded-md text-sm font-medium bg-white/20 hover:bg-white/30 transition-all duration-200"
-          >My Prompts</a>
+          >My Prompts</a
+        >
       </div>
 
       <!-- Header -->
@@ -375,7 +376,12 @@
               title="Save prompt"
               aria-label="Save prompt"
             >
-              <i data-lucide="save" class="w-4 h-4" role="img" aria-label="Save icon"></i>
+              <i
+                data-lucide="save"
+                class="w-4 h-4"
+                role="img"
+                aria-label="Save icon"
+              ></i>
             </button>
             <button
               id="share-twitter"
@@ -401,6 +407,18 @@
           class="text-green-400 text-sm mt-2 animate-pulse hidden"
         >
           Prompt copied successfully!
+        </p>
+        <p
+          id="download-success-message"
+          class="text-green-400 text-sm mt-2 animate-pulse hidden"
+        >
+          Downloading...
+        </p>
+        <p
+          id="save-success-message"
+          class="text-green-400 text-sm mt-2 animate-pulse hidden"
+        >
+          Prompt saved!
         </p>
       </div>
 

@@ -85,7 +85,8 @@ const renderList = () => {
     actions.className = 'flex gap-2 mt-2';
     const saveBtn = document.createElement('button');
     saveBtn.textContent = uiText[appState.language].saveChanges;
-    saveBtn.className = 'save-change px-3 py-1 rounded bg-white/20 hover:bg-white/30';
+    saveBtn.className =
+      'save-change px-3 py-1 rounded bg-white/20 hover:bg-white/30';
     saveBtn.dataset.index = i.toString();
     const delBtn = document.createElement('button');
     delBtn.className =
@@ -93,7 +94,8 @@ const renderList = () => {
     delBtn.title = uiText[appState.language].deletePrompt;
     delBtn.setAttribute('aria-label', uiText[appState.language].deletePrompt);
     delBtn.dataset.index = i.toString();
-    delBtn.innerHTML = '<i data-lucide="trash" class="w-3 h-3" aria-hidden="true"></i>';
+    delBtn.innerHTML =
+      '<i data-lucide="trash" class="w-3 h-3" aria-hidden="true"></i>';
     actions.appendChild(saveBtn);
     actions.appendChild(delBtn);
     wrapper.appendChild(textarea);
@@ -108,9 +110,15 @@ const renderList = () => {
 const setupEvents = () => {
   themeLightButton.addEventListener('click', () => setTheme(THEMES.LIGHT));
   themeDarkButton.addEventListener('click', () => setTheme(THEMES.DARK));
-  document.getElementById('lang-en')?.addEventListener('click', () => setLanguage('en'));
-  document.getElementById('lang-tr')?.addEventListener('click', () => setLanguage('tr'));
-  document.getElementById('lang-es')?.addEventListener('click', () => setLanguage('es'));
+  document
+    .getElementById('lang-en')
+    ?.addEventListener('click', () => setLanguage('en'));
+  document
+    .getElementById('lang-tr')
+    ?.addEventListener('click', () => setLanguage('tr'));
+  document
+    .getElementById('lang-es')
+    ?.addEventListener('click', () => setLanguage('es'));
 
   listContainer.addEventListener('click', (e) => {
     const save = e.target.closest('.save-change');
@@ -120,15 +128,27 @@ const setupEvents = () => {
     const idx = parseInt(btn.dataset.index, 10);
     if (Number.isNaN(idx)) return;
     if (save) {
-      const textarea = listContainer.querySelector(`textarea[data-index="${idx}"]`);
+      const textarea = listContainer.querySelector(
+        `textarea[data-index="${idx}"]`
+      );
       if (textarea) {
         appState.savedPrompts[idx] = textarea.value;
-        localStorage.setItem('savedPrompts', JSON.stringify(appState.savedPrompts));
+        localStorage.setItem(
+          'savedPrompts',
+          JSON.stringify(appState.savedPrompts)
+        );
       }
     } else if (del) {
-      appState.savedPrompts.splice(idx, 1);
-      localStorage.setItem('savedPrompts', JSON.stringify(appState.savedPrompts));
-      renderList();
+      const wrapper = del.closest('div');
+      if (wrapper) wrapper.classList.add('fade-out');
+      setTimeout(() => {
+        appState.savedPrompts.splice(idx, 1);
+        localStorage.setItem(
+          'savedPrompts',
+          JSON.stringify(appState.savedPrompts)
+        );
+        renderList();
+      }, 300);
     }
   });
 };
