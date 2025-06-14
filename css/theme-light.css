@@ -1,25 +1,25 @@
 body {
   background-image: linear-gradient(
     to bottom right,
-    #f0f4ff,
-    #d9e2ff,
-    #c4d1ff
+    #e2e8f0,
+    #cbd5e1,
+    #94a3b8
   ) !important;
-  color: #1a1a2e !important;
+  color: #2d3748 !important;
 }
 .bg-white\/10 {
-  background-color: rgba(255, 255, 255, 0.8) !important;
+  background-color: rgba(255, 255, 255, 0.6) !important;
   border-color: rgba(0, 0, 0, 0.1) !important;
 }
 .bg-black\/30 {
   background-color: rgba(0, 0, 0, 0.05) !important;
-  color: #1e293b !important;
+  color: #334155 !important;
 }
 .text-blue-200 {
-  color: #4338ca !important;
+  color: #6366f1 !important;
 }
 .text-blue-300 {
-  color: #3730a3 !important;
+  color: #4f46e5 !important;
 }
 .border-white\/20 {
   border-color: rgba(0, 0, 0, 0.1) !important;
@@ -40,65 +40,65 @@ body {
   --tw-ring-color: rgba(0, 0, 0, 0.3) !important;
 }
 .category-button {
-  background-color: rgba(0, 0, 0, 0.08) !important;
-  color: #1a1a2e !important;
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  color: #2d3748 !important;
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
 .category-button:hover {
-  background-color: rgba(0, 0, 0, 0.15) !important;
+  background-color: rgba(0, 0, 0, 0.1) !important;
 }
 .category-button.selected {
-  background-image: linear-gradient(to right, #4f46e5, #4338ca) !important;
+  background-image: linear-gradient(to right, #6366f1, #4f46e5) !important;
   color: white !important;
   border-color: transparent !important;
 }
 .category-button .lucide {
-  color: #4f46e5 !important;
+  color: #6366f1 !important;
   display: none;
 }
 .category-button.selected .lucide {
   color: white !important;
 }
 .category-button .emoji-icon {
-  color: #4f46e5 !important;
+  color: #6366f1 !important;
 }
 .category-button.selected .emoji-icon {
   color: white !important;
 }
 #app-title {
-  background-image: linear-gradient(to right, #4f46e5, #7c3aed) !important;
+  background-image: linear-gradient(to right, #6366f1, #7c3aed) !important;
 }
 #choose-style-title,
 #your-prompt-title,
 #history-title {
-  color: #1e293b !important;
+  color: #334155 !important;
 }
 #lang-en,
 #lang-tr {
-  color: #4338ca !important;
+  color: #6366f1 !important;
 }
 #lang-en.active,
 #lang-tr.active {
-  background-color: rgba(0, 0, 0, 0.2) !important;
-  color: #1e293b !important;
+  background-color: rgba(0, 0, 0, 0.15) !important;
+  color: #334155 !important;
 }
 .theme-toggle-container i {
-  color: #4338ca !important;
+  color: #6366f1 !important;
 }
 .theme-toggle-container button {
-  color: #4338ca !important;
+  color: #6366f1 !important;
 }
 .theme-toggle-container button.active {
-  background-color: rgba(0, 0, 0, 0.2) !important;
-  color: #1e293b !important;
+  background-color: rgba(0, 0, 0, 0.15) !important;
+  color: #334155 !important;
 }
 .absolute.top-4.right-4 i {
-  color: #4338ca !important;
+  color: #6366f1 !important;
 }
 
 #lang-menu {
-  background-color: rgba(255, 255, 255, 0.8) !important;
-  color: #1e293b !important;
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  color: #334155 !important;
 }
 #lang-menu button:hover {
   background-color: rgba(0, 0, 0, 0.1) !important;
