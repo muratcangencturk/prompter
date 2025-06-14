@@ -13,6 +13,7 @@ const uiText = {
     downloadButtonTitle: 'Download as .txt',
     shareTwitterTitle: 'Share on Twitter',
     shareMastodonTitle: 'Share on Mastodon',
+    saveButtonTitle: 'Save prompt',
     historyTitle: 'Previous Prompts',
     clearHistoryTitle: 'Clear history',
     copySuccessMessage: 'Prompt copied successfully!',
@@ -37,6 +38,7 @@ const uiText = {
     downloadButtonTitle: '.txt olarak indir',
     shareTwitterTitle: "Twitter'da paylaş",
     shareMastodonTitle: "Mastodon'da paylaş",
+    saveButtonTitle: 'Promptu kaydet',
     historyTitle: 'Önceki Promptlar',
     clearHistoryTitle: 'Geçmişi temizle',
     copySuccessMessage: 'Prompt başarıyla kopyalandı!',
@@ -60,6 +62,7 @@ const uiText = {
     downloadButtonTitle: 'Descargar como .txt',
     shareTwitterTitle: 'Compartir en Twitter',
     shareMastodonTitle: 'Compartir en Mastodon',
+    saveButtonTitle: 'Guardar prompt',
     historyTitle: 'Prompts anteriores',
     clearHistoryTitle: 'Borrar historial',
     copySuccessMessage: '¡Prompt copiado con éxito!',
@@ -81,6 +84,7 @@ let promptDisplayArea;
 let generatedPromptText;
 let copyButton;
 let downloadButton;
+let saveButton;
 let shareTwitterButton;
 let shareMastodonButton;
 let copySuccessMessage;
@@ -172,6 +176,10 @@ const setLanguage = (lang) => {
   copyButton.setAttribute('aria-label', uiText[lang].copyButtonTitle);
   downloadButton.title = uiText[lang].downloadButtonTitle;
   downloadButton.setAttribute('aria-label', uiText[lang].downloadButtonTitle);
+  if (saveButton) {
+    saveButton.title = uiText[lang].saveButtonTitle;
+    saveButton.setAttribute('aria-label', uiText[lang].saveButtonTitle);
+  }
   if (shareTwitterButton) {
     shareTwitterButton.title = uiText[lang].shareTwitterTitle;
     shareTwitterButton.setAttribute(
@@ -339,6 +347,10 @@ const updateButtonTitles = () => {
     'aria-label',
     uiText[appState.language].themeDarkTitle
   );
+  if (saveButton) {
+    saveButton.title = uiText[appState.language].saveButtonTitle;
+    saveButton.setAttribute('aria-label', uiText[appState.language].saveButtonTitle);
+  }
   if (shareTwitterButton) {
     shareTwitterButton.title = uiText[appState.language].shareTwitterTitle;
     shareTwitterButton.setAttribute(
@@ -397,6 +409,7 @@ const handleGenerate = async () => {
     if (appState.history.length > appState.HISTORY_SIZE) {
       appState.history.shift();
     }
+    localStorage.setItem('promptHistory', JSON.stringify(appState.history));
     renderHistory();
     lastGeneratedCategoryId = categoryId;
   } catch (err) {
@@ -465,6 +478,18 @@ const setupEventListeners = () => {
     URL.revokeObjectURL(url);
   });
 
+  if (saveButton) {
+    saveButton.addEventListener('click', () => {
+      if (!appState.generatedPrompt) return;
+      appState.savedPrompts.push(appState.generatedPrompt);
+      localStorage.setItem('savedPrompts', JSON.stringify(appState.savedPrompts));
+      saveButton.disabled = true;
+      setTimeout(() => {
+        saveButton.disabled = false;
+      }, 500);
+    });
+  }
+
   if (shareTwitterButton) {
     shareTwitterButton.addEventListener('click', () =>
       sharePrompt('https://twitter.com/intent/tweet?text=')
@@ -478,6 +503,7 @@ const setupEventListeners = () => {
 
   clearHistoryButton.addEventListener('click', () => {
     appState.history = [];
+    localStorage.setItem('promptHistory', JSON.stringify(appState.history));
     renderHistory();
   });
 
@@ -509,6 +535,7 @@ export const initializeApp = () => {
   generatedPromptText = document.getElementById('generated-prompt-text');
   copyButton = document.getElementById('copy-button');
   downloadButton = document.getElementById('download-button');
+  saveButton = document.getElementById('save-button');
   shareTwitterButton = document.getElementById('share-twitter');
   shareMastodonButton = document.getElementById('share-mastodon');
   copySuccessMessage = document.getElementById('copy-success-message');
