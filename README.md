@@ -51,9 +51,9 @@ Colors for both light and dark themes meet WCAG AA contrast requirements. Gradie
 
 Prompter offers a variety of prompt themes. Select a category by clicking its icon in the **Select Your Prompt Inspiration** area.
 
-- **Random Mix** – picks from all categories
+- **Random** – picks from all categories
 - **Inspiring** – motivational or uplifting scenarios
-- **Mind-blowing** – speculative or reality‑bending ideas
+- **Interesting** – speculative or reality‑bending ideas
 - **Productivity** – business and money-making strategies
 - **Educational** – quick lessons and knowledge tests
 - **Crazy** – absurd, darkly humorous situations
@@ -64,7 +64,7 @@ Prompter offers a variety of prompt themes. Select a category by clicking its ic
 - **Image** – descriptions for unique visuals or logos
 - **Hellprompts** – unsettling horror themes
 
-Prompter includes **12 categories** in total—the **Random Mix** plus 11 themed options listed above. Each prompt is composed of four parts. Most categories now have **52** openings and endings and around **51** middle lines. The **AI** set now has **62** entries for its first and last sections, while **Ideas** and **Perspective** gained extra variations. As a result, most categories generate **7,033,104** prompts each. **Perspective** yields **7,030,503**, **Ideas** produces **8,642,816** and **AI** reaches **14,303,524**. In total the 11 themed categories provide **86,241,675** unique prompts per language—**258,725,025** across English, Turkish and Spanish.
+Prompter includes **12 categories** in total—the **Random** plus 11 themed options listed above. Each prompt is composed of four parts. Most categories now have **52** openings and endings and around **51** middle lines. The **AI** set now has **62** entries for its first and last sections, while **Ideas** and **Perspective** gained extra variations. As a result, most categories generate **7,033,104** prompts each. **Perspective** yields **7,030,503**, **Ideas** produces **8,642,816** and **AI** reaches **14,303,524**. In total the 11 themed categories provide **86,241,675** unique prompts per language—**258,725,025** across English, Turkish and Spanish.
 
 If icon fonts fail to load, the app falls back to emoji symbols so the buttons remain visible.
 
