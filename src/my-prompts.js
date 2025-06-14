@@ -62,6 +62,10 @@ const updateTexts = () => {
   if (backLink) {
     backLink.title = uiText[appState.language].back;
     backLink.setAttribute('aria-label', uiText[appState.language].back);
+    const label = backLink.querySelector('span');
+    if (label) {
+      label.textContent = uiText[appState.language].back;
+    }
   }
 };
 
@@ -139,6 +143,7 @@ const init = () => {
 
   renderList();
   setupEvents();
+  window.lucide?.createIcons();
 };
 
 document.addEventListener('DOMContentLoaded', init);
