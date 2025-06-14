@@ -11,6 +11,8 @@ const uiText = {
     yourPromptTitle: 'Your Unique Prompt:',
     copyButtonTitle: 'Copy to clipboard',
     downloadButtonTitle: 'Download as .txt',
+    shareTwitterTitle: 'Share on Twitter',
+    shareMastodonTitle: 'Share on Mastodon',
     historyTitle: 'Previous Prompts',
     clearHistoryTitle: 'Clear history',
     copySuccessMessage: 'Prompt copied successfully!',
@@ -33,6 +35,8 @@ const uiText = {
     yourPromptTitle: 'Benzersiz Promptunuz:',
     copyButtonTitle: 'Panoya kopyala',
     downloadButtonTitle: '.txt olarak indir',
+    shareTwitterTitle: "Twitter'da paylaş",
+    shareMastodonTitle: "Mastodon'da paylaş",
     historyTitle: 'Önceki Promptlar',
     clearHistoryTitle: 'Geçmişi temizle',
     copySuccessMessage: 'Prompt başarıyla kopyalandı!',
@@ -54,6 +58,8 @@ const uiText = {
     yourPromptTitle: 'Tu prompt único:',
     copyButtonTitle: 'Copiar al portapapeles',
     downloadButtonTitle: 'Descargar como .txt',
+    shareTwitterTitle: 'Compartir en Twitter',
+    shareMastodonTitle: 'Compartir en Mastodon',
     historyTitle: 'Prompts anteriores',
     clearHistoryTitle: 'Borrar historial',
     copySuccessMessage: '¡Prompt copiado con éxito!',
@@ -75,6 +81,8 @@ let promptDisplayArea;
 let generatedPromptText;
 let copyButton;
 let downloadButton;
+let shareTwitterButton;
+let shareMastodonButton;
 let copySuccessMessage;
 let langEnButton;
 let langTrButton;
@@ -98,46 +106,46 @@ const setTheme = (theme) => {
       'active',
       'bg-white/30',
       'text-white',
-      'shadow-md',
+      'shadow-md'
     );
     themeLightButton.classList.remove(
       'bg-transparent',
       'text-blue-200',
-      'hover:bg-white/10',
+      'hover:bg-white/10'
     );
     themeDarkButton.classList.remove(
       'active',
       'bg-white/30',
       'text-white',
-      'shadow-md',
+      'shadow-md'
     );
     themeDarkButton.classList.add(
       'bg-transparent',
       'text-blue-200',
-      'hover:bg-white/10',
+      'hover:bg-white/10'
     );
   } else {
     themeDarkButton.classList.add(
       'active',
       'bg-white/30',
       'text-white',
-      'shadow-md',
+      'shadow-md'
     );
     themeDarkButton.classList.remove(
       'bg-transparent',
       'text-blue-200',
-      'hover:bg-white/10',
+      'hover:bg-white/10'
     );
     themeLightButton.classList.remove(
       'active',
       'bg-white/30',
       'text-white',
-      'shadow-md',
+      'shadow-md'
     );
     themeLightButton.classList.add(
       'bg-transparent',
       'text-blue-200',
-      'hover:bg-white/10',
+      'hover:bg-white/10'
     );
   }
   localStorage.setItem('theme', theme);
@@ -164,6 +172,20 @@ const setLanguage = (lang) => {
   copyButton.setAttribute('aria-label', uiText[lang].copyButtonTitle);
   downloadButton.title = uiText[lang].downloadButtonTitle;
   downloadButton.setAttribute('aria-label', uiText[lang].downloadButtonTitle);
+  if (shareTwitterButton) {
+    shareTwitterButton.title = uiText[lang].shareTwitterTitle;
+    shareTwitterButton.setAttribute(
+      'aria-label',
+      uiText[lang].shareTwitterTitle
+    );
+  }
+  if (shareMastodonButton) {
+    shareMastodonButton.title = uiText[lang].shareMastodonTitle;
+    shareMastodonButton.setAttribute(
+      'aria-label',
+      uiText[lang].shareMastodonTitle
+    );
+  }
   copySuccessMessage.textContent = uiText[lang].copySuccessMessage;
   document.getElementById('history-title').textContent =
     uiText[lang].historyTitle;
@@ -193,32 +215,113 @@ const setLanguage = (lang) => {
   });
 
   if (lang === 'en') {
-    langEnButton.classList.add('active', 'bg-white/30', 'text-white', 'shadow-md');
-    langEnButton.classList.remove('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
-    langTrButton.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
-    langTrButton.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
+    langEnButton.classList.add(
+      'active',
+      'bg-white/30',
+      'text-white',
+      'shadow-md'
+    );
+    langEnButton.classList.remove(
+      'bg-transparent',
+      'text-blue-200',
+      'hover:bg-white/10'
+    );
+    langTrButton.classList.remove(
+      'active',
+      'bg-white/30',
+      'text-white',
+      'shadow-md'
+    );
+    langTrButton.classList.add(
+      'bg-transparent',
+      'text-blue-200',
+      'hover:bg-white/10'
+    );
     if (langEsButton) {
-      langEsButton.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
-      langEsButton.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
+      langEsButton.classList.remove(
+        'active',
+        'bg-white/30',
+        'text-white',
+        'shadow-md'
+      );
+      langEsButton.classList.add(
+        'bg-transparent',
+        'text-blue-200',
+        'hover:bg-white/10'
+      );
     }
   } else if (lang === 'tr') {
-    langTrButton.classList.add('active', 'bg-white/30', 'text-white', 'shadow-md');
-    langTrButton.classList.remove('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
-    langEnButton.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
-    langEnButton.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
+    langTrButton.classList.add(
+      'active',
+      'bg-white/30',
+      'text-white',
+      'shadow-md'
+    );
+    langTrButton.classList.remove(
+      'bg-transparent',
+      'text-blue-200',
+      'hover:bg-white/10'
+    );
+    langEnButton.classList.remove(
+      'active',
+      'bg-white/30',
+      'text-white',
+      'shadow-md'
+    );
+    langEnButton.classList.add(
+      'bg-transparent',
+      'text-blue-200',
+      'hover:bg-white/10'
+    );
     if (langEsButton) {
-      langEsButton.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
-      langEsButton.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
+      langEsButton.classList.remove(
+        'active',
+        'bg-white/30',
+        'text-white',
+        'shadow-md'
+      );
+      langEsButton.classList.add(
+        'bg-transparent',
+        'text-blue-200',
+        'hover:bg-white/10'
+      );
     }
   } else {
     if (langEsButton) {
-      langEsButton.classList.add('active', 'bg-white/30', 'text-white', 'shadow-md');
-      langEsButton.classList.remove('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
+      langEsButton.classList.add(
+        'active',
+        'bg-white/30',
+        'text-white',
+        'shadow-md'
+      );
+      langEsButton.classList.remove(
+        'bg-transparent',
+        'text-blue-200',
+        'hover:bg-white/10'
+      );
     }
-    langEnButton.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
-    langEnButton.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
-    langTrButton.classList.remove('active', 'bg-white/30', 'text-white', 'shadow-md');
-    langTrButton.classList.add('bg-transparent', 'text-blue-200', 'hover:bg-white/10');
+    langEnButton.classList.remove(
+      'active',
+      'bg-white/30',
+      'text-white',
+      'shadow-md'
+    );
+    langEnButton.classList.add(
+      'bg-transparent',
+      'text-blue-200',
+      'hover:bg-white/10'
+    );
+    langTrButton.classList.remove(
+      'active',
+      'bg-white/30',
+      'text-white',
+      'shadow-md'
+    );
+    langTrButton.classList.add(
+      'bg-transparent',
+      'text-blue-200',
+      'hover:bg-white/10'
+    );
   }
   localStorage.setItem('language', lang);
   updateButtonTitles();
@@ -229,13 +332,27 @@ const updateButtonTitles = () => {
   themeLightButton.title = uiText[appState.language].themeLightTitle;
   themeLightButton.setAttribute(
     'aria-label',
-    uiText[appState.language].themeLightTitle,
+    uiText[appState.language].themeLightTitle
   );
   themeDarkButton.title = uiText[appState.language].themeDarkTitle;
   themeDarkButton.setAttribute(
     'aria-label',
-    uiText[appState.language].themeDarkTitle,
+    uiText[appState.language].themeDarkTitle
   );
+  if (shareTwitterButton) {
+    shareTwitterButton.title = uiText[appState.language].shareTwitterTitle;
+    shareTwitterButton.setAttribute(
+      'aria-label',
+      uiText[appState.language].shareTwitterTitle
+    );
+  }
+  if (shareMastodonButton) {
+    shareMastodonButton.title = uiText[appState.language].shareMastodonTitle;
+    shareMastodonButton.setAttribute(
+      'aria-label',
+      uiText[appState.language].shareMastodonTitle
+    );
+  }
 };
 
 const renderHistory = () => {
@@ -292,6 +409,12 @@ const handleGenerate = async () => {
   }
 };
 
+const sharePrompt = (baseUrl) => {
+  if (!appState.generatedPrompt) return;
+  const url = `${baseUrl}${encodeURIComponent(appState.generatedPrompt)}`;
+  window.open(url, '_blank');
+};
+
 const setupEventListeners = () => {
   categories.forEach((category) => {
     const button = document.getElementById(`category-${category.id}`);
@@ -342,6 +465,17 @@ const setupEventListeners = () => {
     URL.revokeObjectURL(url);
   });
 
+  if (shareTwitterButton) {
+    shareTwitterButton.addEventListener('click', () =>
+      sharePrompt('https://twitter.com/intent/tweet?text=')
+    );
+  }
+  if (shareMastodonButton) {
+    shareMastodonButton.addEventListener('click', () =>
+      sharePrompt('https://mastodon.social/share?text=')
+    );
+  }
+
   clearHistoryButton.addEventListener('click', () => {
     appState.history = [];
     renderHistory();
@@ -375,6 +509,8 @@ export const initializeApp = () => {
   generatedPromptText = document.getElementById('generated-prompt-text');
   copyButton = document.getElementById('copy-button');
   downloadButton = document.getElementById('download-button');
+  shareTwitterButton = document.getElementById('share-twitter');
+  shareMastodonButton = document.getElementById('share-mastodon');
   copySuccessMessage = document.getElementById('copy-success-message');
   langEnButton = document.getElementById('lang-en');
   langTrButton = document.getElementById('lang-tr');
@@ -400,7 +536,7 @@ export const initializeApp = () => {
 
           let iconName = iconEl.getAttribute('data-lucide');
           const pascal = iconName.replace(/(^.|-.)/g, (s) =>
-            s.replace('-', '').toUpperCase(),
+            s.replace('-', '').toUpperCase()
           );
           if (!window.lucide.icons || !window.lucide.icons[pascal]) {
             const fallback = ICON_FALLBACKS[iconName];
@@ -440,15 +576,21 @@ export const initializeApp = () => {
       'category-button focus:outline-none focus:ring-2 focus:ring-white/50';
     button.setAttribute(
       'aria-label',
-      `${category.name[appState.language]} category`,
+      `${category.name[appState.language]} category`
     );
     if (category.id === appState.selectedCategory) {
       button.classList.add('selected');
     }
     button.innerHTML = `
-                    <span class="emoji-icon mr-1" aria-hidden="true">${category.emoji}</span>
-                    <i data-lucide="${category.icon}" class="lucide" aria-hidden="true"></i>
-                    <span class="category-label">${category.name[appState.language]}</span>`;
+                    <span class="emoji-icon mr-1" aria-hidden="true">${
+                      category.emoji
+                    }</span>
+                    <i data-lucide="${
+                      category.icon
+                    }" class="lucide" aria-hidden="true"></i>
+                    <span class="category-label">${
+                      category.name[appState.language]
+                    }</span>`;
     categoryButtonsContainer.appendChild(button);
   });
   if (window.lucideScripts && window.lucideScripts.loadPromise) {
