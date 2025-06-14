@@ -87,7 +87,7 @@ export const categories = [
     id: 'crazy',
     icon: 'laugh',
     emoji: '😂',
-    name: { en: 'Crazy', tr: 'Çılgın Fikirler', es: 'Ideas Locas' },
+    name: { en: 'Crazy', tr: 'Uçuk', es: 'Ideas Locas' },
   },
   {
     id: 'perspective',
@@ -123,7 +123,7 @@ export const categories = [
     id: 'hellprompts',
     icon: 'skull',
     emoji: '💀',
-    name: { en: 'Hellprompts', tr: 'Cehennem Promptları', es: 'Prompts Infernales' },
+    name: { en: 'hellprompts', tr: 'hellprompts', es: 'hellprompts' },
   },
 ];
 
