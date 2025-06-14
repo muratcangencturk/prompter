@@ -87,15 +87,21 @@ const renderList = () => {
     saveBtn.className = 'save-change px-3 py-1 rounded bg-white/20 hover:bg-white/30';
     saveBtn.dataset.index = idx;
     const delBtn = document.createElement('button');
-    delBtn.textContent = uiText[appState.language].deletePrompt;
-    delBtn.className = 'delete-prompt px-3 py-1 rounded bg-red-500/80 hover:bg-red-600';
+    delBtn.className =
+      'delete-prompt p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+    delBtn.title = uiText[appState.language].deletePrompt;
+    delBtn.setAttribute('aria-label', uiText[appState.language].deletePrompt);
     delBtn.dataset.index = idx;
+    delBtn.innerHTML = '<i data-lucide="trash" class="w-3 h-3" aria-hidden="true"></i>';
     actions.appendChild(saveBtn);
     actions.appendChild(delBtn);
     wrapper.appendChild(textarea);
     wrapper.appendChild(actions);
     listContainer.appendChild(wrapper);
   });
+  if (window.lucide && typeof window.lucide.createIcons === 'function') {
+    window.lucide.createIcons();
+  }
 };
 
 const setupEvents = () => {
@@ -108,16 +114,17 @@ const setupEvents = () => {
   listContainer.addEventListener('click', (e) => {
     const save = e.target.closest('.save-change');
     const del = e.target.closest('.delete-prompt');
+    const btn = save || del;
+    if (!btn) return;
+    const idx = parseInt(btn.dataset.index, 10);
+    if (Number.isNaN(idx)) return;
     if (save) {
-      const idx = Number(save.dataset.index);
       const textarea = listContainer.querySelector(`textarea[data-index="${idx}"]`);
       if (textarea) {
         appState.savedPrompts[idx] = textarea.value;
         localStorage.setItem('savedPrompts', JSON.stringify(appState.savedPrompts));
       }
-    }
-    if (del) {
-      const idx = Number(del.dataset.index);
+    } else if (del) {
       appState.savedPrompts.splice(idx, 1);
       localStorage.setItem('savedPrompts', JSON.stringify(appState.savedPrompts));
       renderList();
