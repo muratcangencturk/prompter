@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const BASE_URL = 'https://muratcangencturk.github.io/prompter';
+const BASE_URL = 'https://prompterai.space';
 
 const urls = [`${BASE_URL}/`, `${BASE_URL}/tr/`];
 

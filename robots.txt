@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://muratcangencturk.github.io/prompter/sitemap.xml
+Sitemap: https://prompterai.space/sitemap.xml

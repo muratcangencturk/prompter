@@ -143,8 +143,8 @@ Prompter includes a range of optimizations to help search engines crawl and inde
 
 ## Changing the base URL
 
-Before deploying your own instance, update all references to the default GitHub
-Pages address (`https://muratcangencturk.github.io/prompter`).
+Before deploying your own instance, update all references to the default domain
+(`https://prompterai.space`).
 
 - Edit the canonical `<link>` tags in `index.html` and `tr/index.html` so they
   point to your final site.

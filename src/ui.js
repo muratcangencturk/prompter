@@ -5,7 +5,7 @@ const uiText = {
   en: {
     appTitle: 'PROMPTER',
     appSubtitle:
-      'Prompt generator for AI - unprecedented, limitless creativity',
+      'Prompt generator for AI - the ultimate prompt engineering online space',
     chooseStyleTitle: 'Select Your Prompt Inspiration',
     generateButtonText: 'Generate New Prompt',
     yourPromptTitle: 'Your Unique Prompt:',
@@ -34,7 +34,7 @@ const uiText = {
   tr: {
     appTitle: 'PROMPTER',
     appSubtitle:
-      'YZ için prompt üretici - eşi benzeri görülmemiş sınırsız yaratıcılık',
+      'YZ için prompt üretici - prompt mühendisliğinin online adresi',
     chooseStyleTitle: 'Prompt İlhamınızı Seçin',
     generateButtonText: 'Yeni Prompt Üret',
     yourPromptTitle: 'Benzersiz Promptunuz:',
