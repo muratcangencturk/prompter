@@ -417,6 +417,19 @@ const renderHistory = () => {
       '<i data-lucide="download" class="w-3 h-3" aria-hidden="true"></i>';
     actions.appendChild(downloadBtn);
 
+    const copyFeedback = document.createElement('span');
+    copyFeedback.className =
+      'history-copy-feedback text-green-400 text-xs ml-1 hidden';
+    copyFeedback.textContent = uiText[appState.language].copySuccessMessage;
+    actions.appendChild(copyFeedback);
+
+    const downloadFeedback = document.createElement('span');
+    downloadFeedback.className =
+      'history-download-feedback text-green-400 text-xs ml-1 hidden';
+    downloadFeedback.textContent =
+      uiText[appState.language].downloadSuccessMessage;
+    actions.appendChild(downloadFeedback);
+
     if (saveButton) {
       const saveBtn = document.createElement('button');
       saveBtn.className =
@@ -652,23 +665,33 @@ const setupEventListeners = () => {
       navigator.clipboard
         .writeText(text)
         .then(() => {
-          copySuccessMessage.classList.remove('hidden');
+          const feedback = copyBtn.parentElement.querySelector(
+            '.history-copy-feedback'
+          );
+          if (feedback) {
+            feedback.classList.remove('hidden');
+            setTimeout(() => feedback.classList.add('hidden'), 1000);
+          }
           copyBtn.classList.add('button-pop');
           setTimeout(() => {
-            copySuccessMessage.classList.add('hidden');
             copyBtn.classList.remove('button-pop');
-          }, 2000);
+          }, 300);
         })
         .catch((err) => {
           console.error('Failed to copy text: ', err);
         });
     } else if (downloadBtn) {
-      downloadSuccessMessage.classList.remove('hidden');
+      const feedback = downloadBtn.parentElement.querySelector(
+        '.history-download-feedback'
+      );
+      if (feedback) {
+        feedback.classList.remove('hidden');
+        setTimeout(() => feedback.classList.add('hidden'), 1000);
+      }
       downloadBtn.classList.add('button-pop');
       setTimeout(() => {
-        downloadSuccessMessage.classList.add('hidden');
         downloadBtn.classList.remove('button-pop');
-      }, 2000);
+      }, 300);
       const blob = new Blob([text], { type: 'text/plain' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
