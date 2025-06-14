@@ -355,7 +355,9 @@ const updateButtonTitles = () => {
 const renderHistory = () => {
   if (!historyPanel || !historyList) return;
   historyList.innerHTML = '';
-  appState.history.forEach((prompt, idx) => {
+  const reversed = appState.history.slice().reverse();
+  reversed.forEach((prompt, revIdx) => {
+    const idx = appState.history.length - 1 - revIdx;
     const li = document.createElement('li');
     li.className = 'flex justify-between items-start gap-2';
     const textarea = document.createElement('textarea');
