@@ -9,6 +9,7 @@ const uiText = {
     light: 'Light Theme',
     dark: 'Dark Theme',
     back: 'Back',
+    saveFeedback: 'Saved!',
   },
   tr: {
     pageTitle: 'Kayıtlı Promptlarım',
@@ -18,6 +19,7 @@ const uiText = {
     light: 'Açık Tema',
     dark: 'Koyu Tema',
     back: 'Geri',
+    saveFeedback: 'Kaydedildi!',
   },
   es: {
     pageTitle: 'Mis Prompts',
@@ -27,6 +29,7 @@ const uiText = {
     light: 'Tema Claro',
     dark: 'Tema Oscuro',
     back: 'Volver',
+    saveFeedback: '¡Guardado!',
   },
 };
 
@@ -96,7 +99,11 @@ const renderList = () => {
     delBtn.dataset.index = i.toString();
     delBtn.innerHTML =
       '<i data-lucide="trash" class="w-3 h-3" aria-hidden="true"></i>';
+    const feedback = document.createElement('span');
+    feedback.className = 'save-feedback text-green-400 text-xs ml-1 hidden';
+    feedback.textContent = uiText[appState.language].saveFeedback;
     actions.appendChild(saveBtn);
+    actions.appendChild(feedback);
     actions.appendChild(delBtn);
     wrapper.appendChild(textarea);
     wrapper.appendChild(actions);
@@ -137,10 +144,19 @@ const setupEvents = () => {
           'savedPrompts',
           JSON.stringify(appState.savedPrompts)
         );
+        const feedback = save.nextElementSibling;
+        if (feedback && feedback.classList.contains('save-feedback')) {
+          feedback.classList.remove('hidden');
+          setTimeout(() => feedback.classList.add('hidden'), 1000);
+        }
+        save.classList.add('button-pop');
+        setTimeout(() => save.classList.remove('button-pop'), 300);
       }
     } else if (del) {
       const wrapper = del.closest('div');
       if (wrapper) wrapper.classList.add('fade-out');
+      del.classList.add('button-pop');
+      setTimeout(() => del.classList.remove('button-pop'), 300);
       setTimeout(() => {
         appState.savedPrompts.splice(idx, 1);
         localStorage.setItem(

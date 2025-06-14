@@ -19,6 +19,7 @@ const uiText = {
     copySuccessMessage: 'Prompt copied successfully!',
     saveSuccessMessage: 'Prompt saved!',
     downloadSuccessMessage: 'Downloading...',
+    saveFeedback: 'Saved!',
     appStats: 'Prompts that will unlock the potential of your mind',
     footerPrompter: 'Prompter',
     randomCategory: 'Random',
@@ -46,6 +47,7 @@ const uiText = {
     copySuccessMessage: 'Kopyalandı!',
     saveSuccessMessage: 'Kaydedildi!',
     downloadSuccessMessage: 'İndiriliyor...',
+    saveFeedback: 'Kaydedildi!',
     appStats: 'Zihninizin potansiyelini açığa çıkaracak promptlar',
     footerPrompter: 'Prompter',
     randomCategory: 'Rastgele',
@@ -72,6 +74,7 @@ const uiText = {
     copySuccessMessage: '¡Copiado!',
     saveSuccessMessage: '¡Guardado!',
     downloadSuccessMessage: 'Descargando...',
+    saveFeedback: '¡Guardado!',
     appStats: 'Prompts que liberarán el potencial de tu mente',
     footerPrompter: 'Prompter',
     randomCategory: 'Aleatorio',
@@ -450,6 +453,11 @@ const renderHistory = () => {
       '<i data-lucide="trash" class="w-3 h-3" aria-hidden="true"></i>';
     actions.appendChild(deleteBtn);
 
+    const feedback = document.createElement('span');
+    feedback.className = 'save-feedback text-green-400 text-xs ml-1 hidden';
+    feedback.textContent = uiText[appState.language].saveFeedback;
+    actions.appendChild(feedback);
+
     li.appendChild(textarea);
     li.appendChild(actions);
     historyList.appendChild(li);
@@ -568,6 +576,10 @@ const setupEventListeners = () => {
       setTimeout(() => {
         saveSuccessMessage.classList.add('hidden');
       }, 2000);
+      saveButton.classList.add('button-pop');
+      setTimeout(() => {
+        saveButton.classList.remove('button-pop');
+      }, 300);
       saveButton.disabled = true;
       setTimeout(() => {
         saveButton.disabled = false;
@@ -604,6 +616,10 @@ const setupEventListeners = () => {
     if (deleteBtn) {
       const li = deleteBtn.closest('li');
       if (li) li.classList.add('fade-out');
+      deleteBtn.classList.add('button-pop');
+      setTimeout(() => {
+        deleteBtn.classList.remove('button-pop');
+      }, 300);
       setTimeout(() => {
         appState.history.splice(index, 1);
         localStorage.setItem('promptHistory', JSON.stringify(appState.history));
@@ -631,6 +647,17 @@ const setupEventListeners = () => {
         'savedPrompts',
         JSON.stringify(appState.savedPrompts)
       );
+      const feedback = saveBtn.parentElement.querySelector('.save-feedback');
+      if (feedback) {
+        feedback.classList.remove('hidden');
+        setTimeout(() => {
+          feedback.classList.add('hidden');
+        }, 1000);
+      }
+      saveBtn.classList.add('button-pop');
+      setTimeout(() => {
+        saveBtn.classList.remove('button-pop');
+      }, 300);
     } else if (shareBtn) {
       sharePrompt(text, 'https://twitter.com/intent/tweet?text=');
     }
