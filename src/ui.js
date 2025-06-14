@@ -13,6 +13,7 @@ const uiText = {
     downloadButtonTitle: 'Download as .txt',
     shareTwitterTitle: 'Share on Twitter',
     saveButtonTitle: 'Save prompt',
+    deleteButtonTitle: 'Delete prompt',
     historyTitle: 'Previous Prompts',
     clearHistoryTitle: 'Clear history',
     copySuccessMessage: 'Prompt copied successfully!',
@@ -37,6 +38,7 @@ const uiText = {
     downloadButtonTitle: '.txt olarak indir',
     shareTwitterTitle: "Twitter'da paylaş",
     saveButtonTitle: 'Promptu kaydet',
+    deleteButtonTitle: 'Sil',
     historyTitle: 'Önceki Promptlar',
     clearHistoryTitle: 'Geçmişi temizle',
     copySuccessMessage: 'Prompt başarıyla kopyalandı!',
@@ -60,6 +62,7 @@ const uiText = {
     downloadButtonTitle: 'Descargar como .txt',
     shareTwitterTitle: 'Compartir en Twitter',
     saveButtonTitle: 'Guardar prompt',
+    deleteButtonTitle: 'Eliminar',
     historyTitle: 'Prompts anteriores',
     clearHistoryTitle: 'Borrar historial',
     copySuccessMessage: '¡Prompt copiado con éxito!',
@@ -359,16 +362,60 @@ const renderHistory = () => {
     textarea.className = 'history-edit flex-1 whitespace-pre-wrap font-mono bg-transparent p-1 rounded-md';
     textarea.value = prompt;
     textarea.setAttribute('data-index', idx);
-    const btn = document.createElement('button');
-      btn.className =
-        'history-copy p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-      btn.title = uiText[appState.language].copyButtonTitle;
-      btn.setAttribute('aria-label', uiText[appState.language].copyButtonTitle);
-      btn.setAttribute('data-index', idx);
-      btn.innerHTML =
-        '<i data-lucide="copy" class="w-3 h-3" aria-hidden="true"></i>';
+    const actions = document.createElement('div');
+    actions.className = 'flex gap-2';
+
+    const copyBtn = document.createElement('button');
+    copyBtn.className =
+      'history-copy p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+    copyBtn.title = uiText[appState.language].copyButtonTitle;
+    copyBtn.setAttribute('aria-label', uiText[appState.language].copyButtonTitle);
+    copyBtn.setAttribute('data-index', idx);
+    copyBtn.innerHTML = '<i data-lucide="copy" class="w-3 h-3" aria-hidden="true"></i>';
+    actions.appendChild(copyBtn);
+
+    const downloadBtn = document.createElement('button');
+    downloadBtn.className =
+      'history-download p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+    downloadBtn.title = uiText[appState.language].downloadButtonTitle;
+    downloadBtn.setAttribute('aria-label', uiText[appState.language].downloadButtonTitle);
+    downloadBtn.setAttribute('data-index', idx);
+    downloadBtn.innerHTML = '<i data-lucide="download" class="w-3 h-3" aria-hidden="true"></i>';
+    actions.appendChild(downloadBtn);
+
+    if (saveButton) {
+      const saveBtn = document.createElement('button');
+      saveBtn.className =
+        'history-save p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+      saveBtn.title = uiText[appState.language].saveButtonTitle;
+      saveBtn.setAttribute('aria-label', uiText[appState.language].saveButtonTitle);
+      saveBtn.setAttribute('data-index', idx);
+      saveBtn.innerHTML = '<i data-lucide="save" class="w-3 h-3" aria-hidden="true"></i>';
+      actions.appendChild(saveBtn);
+    }
+
+    if (shareTwitterButton) {
+      const shareBtn = document.createElement('button');
+      shareBtn.className =
+        'history-share p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+      shareBtn.title = uiText[appState.language].shareTwitterTitle;
+      shareBtn.setAttribute('aria-label', uiText[appState.language].shareTwitterTitle);
+      shareBtn.setAttribute('data-index', idx);
+      shareBtn.innerHTML = '<img src="icons/twitter.svg" class="w-3 h-3" alt="" />';
+      actions.appendChild(shareBtn);
+    }
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className =
+      'history-delete p-1.5 rounded-lg bg-red-500/80 hover:bg-red-600 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+    deleteBtn.title = uiText[appState.language].deleteButtonTitle;
+    deleteBtn.setAttribute('aria-label', uiText[appState.language].deleteButtonTitle);
+    deleteBtn.setAttribute('data-index', idx);
+    deleteBtn.innerHTML = '<i data-lucide="trash" class="w-3 h-3" aria-hidden="true"></i>';
+    actions.appendChild(deleteBtn);
+
     li.appendChild(textarea);
-    li.appendChild(btn);
+    li.appendChild(actions);
     historyList.appendChild(li);
   });
   historyPanel.classList.toggle('hidden', appState.history.length === 0);
@@ -405,9 +452,9 @@ const handleGenerate = async () => {
   }
 };
 
-const sharePrompt = (baseUrl) => {
-  if (!appState.generatedPrompt) return;
-  const url = `${baseUrl}${encodeURIComponent(appState.generatedPrompt)}`;
+const sharePrompt = (prompt, baseUrl) => {
+  if (!prompt) return;
+  const url = `${baseUrl}${encodeURIComponent(prompt)}`;
   window.open(url, '_blank');
 };
 
@@ -483,7 +530,7 @@ const setupEventListeners = () => {
 
   if (shareTwitterButton) {
     shareTwitterButton.addEventListener('click', () =>
-      sharePrompt('https://twitter.com/intent/tweet?text=')
+      sharePrompt(appState.generatedPrompt, 'https://twitter.com/intent/tweet?text=')
     );
   }
 
@@ -494,14 +541,40 @@ const setupEventListeners = () => {
   });
 
   historyList.addEventListener('click', (e) => {
-    const btn = e.target.closest('.history-copy');
+    const copyBtn = e.target.closest('.history-copy');
+    const downloadBtn = e.target.closest('.history-download');
+    const saveBtn = e.target.closest('.history-save');
+    const shareBtn = e.target.closest('.history-share');
+    const deleteBtn = e.target.closest('.history-delete');
+    const btn = copyBtn || downloadBtn || saveBtn || shareBtn || deleteBtn;
     if (!btn) return;
     const index = parseInt(btn.getAttribute('data-index'), 10);
     const text = appState.history[index];
     if (!text) return;
-    navigator.clipboard.writeText(text).catch((err) => {
-      console.error('Failed to copy text: ', err);
-    });
+    if (copyBtn) {
+      navigator.clipboard.writeText(text).catch((err) => {
+        console.error('Failed to copy text: ', err);
+      });
+    } else if (downloadBtn) {
+      const blob = new Blob([text], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `prompt_history_${index}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } else if (saveBtn) {
+      appState.savedPrompts.push(text);
+      localStorage.setItem('savedPrompts', JSON.stringify(appState.savedPrompts));
+    } else if (shareBtn) {
+      sharePrompt(text, 'https://twitter.com/intent/tweet?text=');
+    } else if (deleteBtn) {
+      appState.history.splice(index, 1);
+      localStorage.setItem('promptHistory', JSON.stringify(appState.history));
+      renderHistory();
+    }
   });
 
   historyList.addEventListener('input', (e) => {
