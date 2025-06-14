@@ -401,7 +401,7 @@ const renderHistory = () => {
       shareBtn.title = uiText[appState.language].shareTwitterTitle;
       shareBtn.setAttribute('aria-label', uiText[appState.language].shareTwitterTitle);
       shareBtn.setAttribute('data-index', idx);
-      shareBtn.innerHTML = '<img src="icons/twitter.svg" class="w-3 h-3" alt="" />';
+      shareBtn.innerHTML = '<i data-lucide="twitter" class="w-3 h-3" aria-hidden="true"></i>';
       actions.appendChild(shareBtn);
     }
 
