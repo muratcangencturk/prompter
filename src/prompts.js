@@ -57,7 +57,7 @@ export const categories = [
     id: 'random',
     icon: 'shuffle',
     emoji: '🔀',
-    name: { en: 'Random Mix', tr: 'Rastgele Karışım', es: 'Mezcla Aleatoria' },
+    name: { en: 'Random', tr: 'Rastgele', es: 'Aleatorio' },
   },
   {
     id: 'inspiring',
@@ -69,7 +69,7 @@ export const categories = [
     id: 'mindBlowing',
     icon: 'brain-circuit',
     emoji: '🤯',
-    name: { en: 'Mind-blowing', tr: 'Ufuk Açıcı', es: 'Alucinante' },
+    name: { en: 'Interesting', tr: 'İlginç', es: 'Interesante' },
   },
   {
     id: 'productivity',
