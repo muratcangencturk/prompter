@@ -172,13 +172,13 @@ body {
   display: none;
 }
 .emoji-icon {
-  font-size: 1.5rem;
+  font-size: 2rem;
   display: inline-block;
   color: currentColor;
 }
 .category-button .emoji-icon {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2rem;
+  height: 2rem;
   margin-bottom: 0.25rem;
 }
 .category-button span {
