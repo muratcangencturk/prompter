@@ -191,18 +191,31 @@ const setupEvents = () => {
     .getElementById('lang-es')
     ?.addEventListener('click', () => setLanguage('es'));
 
+  const buttonPop = (el) => {
+    el.classList.add('button-pop');
+    setTimeout(() => el.classList.remove('button-pop'), 300);
+  };
+
+  const showFeedback = (el) => {
+    if (!el) return;
+    el.classList.remove('hidden');
+    setTimeout(() => el.classList.add('hidden'), 1000);
+  };
+
   listContainer.addEventListener('click', (e) => {
-    const save = e.target.closest('.save-change');
-    const del = e.target.closest('.delete-prompt');
+    const saveBtn = e.target.closest('.save-change');
+    const delBtn = e.target.closest('.delete-prompt');
     const copyBtn = e.target.closest('.history-copy');
     const downloadBtn = e.target.closest('.history-download');
     const shareBtn = e.target.closest('.history-share');
-    const btn = save || del || copyBtn || downloadBtn || shareBtn;
+    const btn = saveBtn || delBtn || copyBtn || downloadBtn || shareBtn;
     if (!btn) return;
+
     const idx = parseInt(btn.dataset.index, 10);
     if (Number.isNaN(idx)) return;
     const text = appState.savedPrompts[idx];
-    if (save) {
+
+    if (saveBtn) {
       const textarea = listContainer.querySelector(
         `textarea[data-index="${idx}"]`
       );
@@ -212,19 +225,13 @@ const setupEvents = () => {
           'savedPrompts',
           JSON.stringify(appState.savedPrompts)
         );
-        const feedback = save.nextElementSibling;
-        if (feedback && feedback.classList.contains('save-feedback')) {
-          feedback.classList.remove('hidden');
-          setTimeout(() => feedback.classList.add('hidden'), 1000);
-        }
-        save.classList.add('button-pop');
-        setTimeout(() => save.classList.remove('button-pop'), 300);
+        showFeedback(saveBtn.nextElementSibling);
+        buttonPop(saveBtn);
       }
-    } else if (del) {
-      const wrapper = del.closest('div');
+    } else if (delBtn) {
+      const wrapper = delBtn.closest('div');
       if (wrapper) wrapper.classList.add('fade-out');
-      del.classList.add('button-pop');
-      setTimeout(() => del.classList.remove('button-pop'), 300);
+      buttonPop(delBtn);
       setTimeout(() => {
         appState.savedPrompts.splice(idx, 1);
         localStorage.setItem(
@@ -237,18 +244,12 @@ const setupEvents = () => {
       navigator.clipboard
         .writeText(text)
         .then(() => {
-          const feedback = copyBtn.nextElementSibling;
-          if (feedback && feedback.classList.contains('copy-feedback')) {
-            feedback.classList.remove('hidden');
-            setTimeout(() => feedback.classList.add('hidden'), 1000);
-          }
-          copyBtn.classList.add('button-pop');
-          setTimeout(() => copyBtn.classList.remove('button-pop'), 300);
+          showFeedback(copyBtn.nextElementSibling);
+          buttonPop(copyBtn);
         })
         .catch((err) => console.error('Failed to copy text:', err));
     } else if (downloadBtn && text) {
-      downloadBtn.classList.add('button-pop');
-      setTimeout(() => downloadBtn.classList.remove('button-pop'), 300);
+      buttonPop(downloadBtn);
       const blob = new Blob([text], { type: 'text/plain' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -259,8 +260,7 @@ const setupEvents = () => {
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
     } else if (shareBtn && text) {
-      shareBtn.classList.add('button-pop');
-      setTimeout(() => shareBtn.classList.remove('button-pop'), 300);
+      buttonPop(shareBtn);
       sharePrompt(text, 'https://twitter.com/intent/tweet?text=');
     }
   });
