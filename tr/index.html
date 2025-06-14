@@ -1,29 +1,59 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
     <title>PROMPTER</title>
-    <link rel="icon" type="image/svg+xml" href="../icons/logo.svg">
-    <link rel="preload" href="../icons/logo.svg" as="image">
-    <link rel="manifest" href="../manifest.json">
-    <meta name="theme-color" content="#000000">
-    <meta name="description" content="Creative AI prompt generator that works offline.">
-    <meta name="keywords" content="AI prompt üretici, yaratıcı komutlar, yapay zeka, prompt oluşturucu, AI prompts">
-    <meta name="robots" content="index,follow">
-    <meta property="og:title" content="PROMPTER">
-    <meta property="og:description" content="Creative AI prompt generator that works offline.">
-    <meta property="og:image" content="../icons/logo.svg">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PROMPTER">
-    <meta name="twitter:description" content="Creative AI prompt generator that works offline.">
-    <meta name="twitter:image" content="../icons/logo.svg">
-    <link rel="canonical" href="https://muratcangencturk.github.io/prompter/tr/">
-    <link rel="alternate" href="https://muratcangencturk.github.io/prompter/" hreflang="en">
-    <link rel="alternate" href="https://muratcangencturk.github.io/prompter/tr/" hreflang="tr">
-    <link rel="alternate" href="https://muratcangencturk.github.io/prompter/es/" hreflang="es">
+    <link rel="icon" type="image/svg+xml" href="../icons/logo.svg" />
+    <link rel="preload" href="../icons/logo.svg" as="image" />
+    <link rel="manifest" href="../manifest.json" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Creative AI prompt generator that works offline."
+    />
+    <meta
+      name="keywords"
+      content="AI prompt üretici, yaratıcı komutlar, yapay zeka, prompt oluşturucu, AI prompts"
+    />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:title" content="PROMPTER" />
+    <meta
+      property="og:description"
+      content="Creative AI prompt generator that works offline."
+    />
+    <meta property="og:image" content="../icons/logo.svg" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PROMPTER" />
+    <meta
+      name="twitter:description"
+      content="Creative AI prompt generator that works offline."
+    />
+    <meta name="twitter:image" content="../icons/logo.svg" />
+    <link
+      rel="canonical"
+      href="https://muratcangencturk.github.io/prompter/tr/"
+    />
+    <link
+      rel="alternate"
+      href="https://muratcangencturk.github.io/prompter/"
+      hreflang="en"
+    />
+    <link
+      rel="alternate"
+      href="https://muratcangencturk.github.io/prompter/tr/"
+      hreflang="tr"
+    />
+    <link
+      rel="alternate"
+      href="https://muratcangencturk.github.io/prompter/es/"
+      hreflang="es"
+    />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -40,106 +70,127 @@
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
-          { "@type": "Question", "name": "Prompter nedir?", "acceptedAnswer": { "@type": "Answer", "text": "Prompter, yaratıcı yapay zeka komutları üreten bir web uygulamasıdır." } }
+          {
+            "@type": "Question",
+            "name": "Prompter nedir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Prompter, yaratıcı yapay zeka komutları üreten bir web uygulamasıdır."
+            }
+          }
         ]
       }
     </script>
-    <script>localStorage.setItem('language', 'tr');</script>
-<script>
-  (function() {
-    function addScript(src, onLoad) {
-      const s = document.createElement('script');
-      s.src = src;
-      s.async = true;
-      if (onLoad) {
-        s.addEventListener('load', onLoad, { once: true });
-      }
-      document.head.appendChild(s);
-      return s;
-    }
-
-    function fetchWithTimeout(url, timeout = 500) {
-      return Promise.race([
-        fetch(url, { method: 'HEAD', mode: 'no-cors' }),
-        new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), timeout))
-      ]);
-    }
-
-    function loadWithFallback(primary, local) {
-      let cdnScript = null;
-      let localScript = null;
-      let resolveLoad;
-      const loadPromise = new Promise(resolve => { resolveLoad = resolve; });
-
-      const addLocal = () => {
-        if (!localScript) {
-          localScript = document.createElement('script');
-          localScript.src = local;
-          localScript.async = true;
-          localScript.addEventListener('load', resolveLoad, { once: true });
-          document.head.appendChild(localScript);
-        }
-      };
-
-      // If offline, load local immediately
-      if (!navigator.onLine) {
-        addLocal();
-        return { cdn: null, local: localScript, loadPromise };
-      }
-
-      // Online: Try CDN with fallback
-      let fallbackTimer = null;
-
-      // Set up fallback timer (500ms to quickly load local icons if CDN is slow)
-      fallbackTimer = setTimeout(() => {
-        addLocal();
-        fallbackTimer = null;
-      }, 500);
-
-      // Try to fetch from CDN first
-      fetchWithTimeout(primary).catch(() => {
-        if (fallbackTimer) {
-          clearTimeout(fallbackTimer);
-          fallbackTimer = null;
-        }
-        addLocal();
-      });
-
-      // Add CDN script
-      cdnScript = addScript(primary, () => {
-        if (fallbackTimer) {
-          clearTimeout(fallbackTimer);
-          fallbackTimer = null;
-        }
-        resolveLoad();
-      });
-
-      cdnScript.onerror = () => {
-        if (fallbackTimer) {
-          clearTimeout(fallbackTimer);
-          fallbackTimer = null;
-        }
-        addLocal();
-      };
-
-      return { cdn: cdnScript, local: localScript, loadPromise };
-    }
-
-    const tailwindScripts = loadWithFallback('https://cdn.tailwindcss.com', '../tailwind.js');
-    window.lucideScripts = loadWithFallback('https://unpkg.com/lucide@latest/dist/umd/lucide.min.js', '../lucide.min.js');
-    Promise.all([tailwindScripts.loadPromise, window.lucideScripts.loadPromise])
-      .finally(() => {
-        const appContainer = document.getElementById('app-container');
-        const loadingScreen = document.getElementById('loading-screen');
-        if (appContainer) appContainer.style.visibility = 'visible';
-        if (loadingScreen) loadingScreen.classList.add('hidden');
-      });
-  })();
-</script>
-    <link rel="stylesheet" href="../css/app.css">
-    <link id="theme-css" rel="stylesheet" href="../css/theme-dark.css">
     <script>
-      (function() {
+      localStorage.setItem('language', 'tr');
+    </script>
+    <script>
+      (function () {
+        function addScript(src, onLoad) {
+          const s = document.createElement('script');
+          s.src = src;
+          s.async = true;
+          if (onLoad) {
+            s.addEventListener('load', onLoad, { once: true });
+          }
+          document.head.appendChild(s);
+          return s;
+        }
+
+        function fetchWithTimeout(url, timeout = 500) {
+          return Promise.race([
+            fetch(url, { method: 'HEAD', mode: 'no-cors' }),
+            new Promise((_, reject) =>
+              setTimeout(() => reject(new Error('timeout')), timeout)
+            ),
+          ]);
+        }
+
+        function loadWithFallback(primary, local) {
+          let cdnScript = null;
+          let localScript = null;
+          let resolveLoad;
+          const loadPromise = new Promise((resolve) => {
+            resolveLoad = resolve;
+          });
+
+          const addLocal = () => {
+            if (!localScript) {
+              localScript = document.createElement('script');
+              localScript.src = local;
+              localScript.async = true;
+              localScript.addEventListener('load', resolveLoad, { once: true });
+              document.head.appendChild(localScript);
+            }
+          };
+
+          // If offline, load local immediately
+          if (!navigator.onLine) {
+            addLocal();
+            return { cdn: null, local: localScript, loadPromise };
+          }
+
+          // Online: Try CDN with fallback
+          let fallbackTimer = null;
+
+          // Set up fallback timer (500ms to quickly load local icons if CDN is slow)
+          fallbackTimer = setTimeout(() => {
+            addLocal();
+            fallbackTimer = null;
+          }, 500);
+
+          // Try to fetch from CDN first
+          fetchWithTimeout(primary).catch(() => {
+            if (fallbackTimer) {
+              clearTimeout(fallbackTimer);
+              fallbackTimer = null;
+            }
+            addLocal();
+          });
+
+          // Add CDN script
+          cdnScript = addScript(primary, () => {
+            if (fallbackTimer) {
+              clearTimeout(fallbackTimer);
+              fallbackTimer = null;
+            }
+            resolveLoad();
+          });
+
+          cdnScript.onerror = () => {
+            if (fallbackTimer) {
+              clearTimeout(fallbackTimer);
+              fallbackTimer = null;
+            }
+            addLocal();
+          };
+
+          return { cdn: cdnScript, local: localScript, loadPromise };
+        }
+
+        const tailwindScripts = loadWithFallback(
+          'https://cdn.tailwindcss.com',
+          '../tailwind.js'
+        );
+        window.lucideScripts = loadWithFallback(
+          'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js',
+          '../lucide.min.js'
+        );
+        Promise.all([
+          tailwindScripts.loadPromise,
+          window.lucideScripts.loadPromise,
+        ]).finally(() => {
+          const appContainer = document.getElementById('app-container');
+          const loadingScreen = document.getElementById('loading-screen');
+          if (appContainer) appContainer.style.visibility = 'visible';
+          if (loadingScreen) loadingScreen.classList.add('hidden');
+        });
+      })();
+    </script>
+    <link rel="stylesheet" href="../css/app.css" />
+    <link id="theme-css" rel="stylesheet" href="../css/theme-dark.css" />
+    <script>
+      (function () {
         const savedTheme = localStorage.getItem('theme');
         if (!savedTheme) return;
         const linkEl = document.getElementById('theme-css');
@@ -148,109 +199,237 @@
         }
       })();
     </script>
-</head>
-<body class="min-h-screen p-4">
-
+  </head>
+  <body class="min-h-screen p-4">
     <div id="loading-screen">
       <div class="spinner" aria-label="Loading"></div>
     </div>
 
-    <div id="app-container" class="max-w-6xl mx-auto relative" style="visibility:hidden;">
-        <!-- Theme Toggle -->
-        <div class="theme-toggle-container absolute top-4 left-4 flex items-center gap-2 bg-black/20 backdrop-blur-sm p-1 rounded-lg border border-white/20 z-10">
-            <button id="theme-light" class="p-1.5 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50" title="Light Theme" aria-label="Light Theme">
-              <i data-lucide="sun" class="w-5 h-5" role="img" aria-label="Sun icon"></i>
-            </button>
-            <button id="theme-dark" class="p-1.5 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50" title="Dark Theme" aria-label="Dark Theme">
-              <i data-lucide="moon" class="w-5 h-5" role="img" aria-label="Moon icon"></i>
-            </button>
-        </div>
+    <div
+      id="app-container"
+      class="max-w-6xl mx-auto relative"
+      style="visibility: hidden"
+    >
+      <!-- Theme Toggle -->
+      <div
+        class="theme-toggle-container absolute top-4 left-4 flex items-center gap-2 bg-black/20 backdrop-blur-sm p-1 rounded-lg border border-white/20 z-10"
+      >
+        <button
+          id="theme-light"
+          class="p-1.5 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50"
+          title="Light Theme"
+          aria-label="Light Theme"
+        >
+          <i
+            data-lucide="sun"
+            class="w-5 h-5"
+            role="img"
+            aria-label="Sun icon"
+          ></i>
+        </button>
+        <button
+          id="theme-dark"
+          class="p-1.5 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50"
+          title="Dark Theme"
+          aria-label="Dark Theme"
+        >
+          <i
+            data-lucide="moon"
+            class="w-5 h-5"
+            role="img"
+            aria-label="Moon icon"
+          ></i>
+        </button>
+      </div>
 
-        <!-- Language Switcher -->
-        <div class="absolute top-4 right-4 flex items-center gap-2 bg-black/20 backdrop-blur-sm p-1 rounded-lg border border-white/20 z-10">
-           <i data-lucide="languages" class="w-5 h-5 text-blue-300 ml-1" role="img" aria-label="Languages icon"></i>
-           <button id="lang-en" class="px-3 py-1 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50" aria-label="Switch to English">
-             EN
-           </button>
-           <button id="lang-tr" class="px-3 py-1 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50" aria-label="Switch to Turkish">
-             TR
-           </button>
-          <button id="lang-es" class="px-3 py-1 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50" aria-label="Switch to Spanish">
-            ES
+      <!-- Language Switcher -->
+      <div
+        class="absolute top-4 right-4 flex items-center gap-2 bg-black/20 backdrop-blur-sm p-1 rounded-lg border border-white/20 z-10"
+      >
+        <div class="relative" id="lang-container">
+          <button
+            id="lang-toggle"
+            class="p-1 rounded-md focus:outline-none focus:ring-2 focus:ring-white/50"
+            aria-label="Languages"
+          >
+            <i
+              data-lucide="languages"
+              class="w-5 h-5 text-blue-300"
+              role="img"
+              aria-label="Languages icon"
+            ></i>
           </button>
-          <a id="my-prompts-link" href="../my-prompts.html" class="px-2 py-1 rounded-md text-sm font-medium bg-white/20 hover:bg-white/30 transition-all duration-200">My Prompts</a>
-        </div>
-
-        <!-- Header -->
-        <div class="text-center mb-6 pt-16 md:pt-12">
-          <img src="../icons/logo.svg" alt="Prompter logo" class="mx-auto mb-4 w-16 h-16" id="app-logo" loading="lazy" width="64" height="64">
-          <h1 id="app-title" class="text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-            PROMPTER
-          </h1>
-          <p id="app-subtitle" class="text-blue-200 text-lg md:text-xl px-2">
-            Prompt generator for AI - unprecedented, limitless creativity
-          </p>
-        </div>
-
-        <!-- Category Selection -->
-        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 mb-4 border border-white/20 shadow-lg">
-          <h2 id="choose-style-title" class="text-lg font-semibold mb-3">
-            Select Your Prompt Inspiration
-          </h2>
-          <div id="category-buttons" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-12 gap-2">
-            <!-- Category buttons load here -->
+          <div
+            id="lang-menu"
+            class="lang-menu hidden absolute right-0 mt-1 rounded-md border border-white/20 text-sm"
+          >
+            <button
+              id="lang-en"
+              class="block w-full text-left px-3 py-1 focus:outline-none focus:ring-2 focus:ring-white/50"
+              aria-label="Switch to English"
+            >
+              EN
+            </button>
+            <button
+              id="lang-tr"
+              class="block w-full text-left px-3 py-1 focus:outline-none focus:ring-2 focus:ring-white/50"
+              aria-label="Switch to Turkish"
+            >
+              TR
+            </button>
+            <button
+              id="lang-es"
+              class="block w-full text-left px-3 py-1 focus:outline-none focus:ring-2 focus:ring-white/50"
+              aria-label="Switch to Spanish"
+            >
+              ES
+            </button>
           </div>
         </div>
+        <a
+          id="my-prompts-link"
+          href="../my-prompts.html"
+          class="px-2 py-1 rounded-md text-sm font-medium bg-white/20 hover:bg-white/30 transition-all duration-200"
+          >My Prompts</a
+        >
+      </div>
 
-        <!-- Generate Button -->
-        <div class="text-center mb-4">
-          <button id="generate-button" class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 disabled:opacity-50 disabled:cursor-not-allowed font-bold py-3 px-6 rounded-xl text-base transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 focus:ring-offset-purple-900" aria-label="Generate New Prompt">
-            <div class="flex items-center justify-center">
-              <i data-lucide="sparkles" class="w-4 h-4 mr-2" role="img" aria-label="Sparkles icon"></i>
-              <span id="generate-button-text">Generate New Prompt</span>
-            </div>
-          </button>
-        </div>
+      <!-- Header -->
+      <div class="text-center mb-6 pt-16 md:pt-12">
+        <img
+          src="../icons/logo.svg"
+          alt="Prompter logo"
+          class="mx-auto mb-4 w-16 h-16"
+          id="app-logo"
+          loading="lazy"
+          width="64"
+          height="64"
+        />
+        <h1
+          id="app-title"
+          class="text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
+        >
+          PROMPTER
+        </h1>
+        <p id="app-subtitle" class="text-blue-200 text-lg md:text-xl px-2">
+          Prompt generator for AI - unprecedented, limitless creativity
+        </p>
+      </div>
 
-        <!-- Generated Prompt Display -->
-        <div id="prompt-display-area" class="hidden bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg transition-opacity duration-500 ease-in-out">
-            <div class="flex justify-between items-center mb-3">
-              <h3 id="your-prompt-title" class="text-lg font-semibold">
-                Your Unique Prompt:
-              </h3>
-              <div class="flex gap-2">
-                <button id="copy-button" class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50" title="Copy to clipboard" aria-label="Copy to clipboard">
-                  <i data-lucide="copy" class="w-4 h-4" role="img" aria-label="Copy icon"></i>
-                </button>
-                <button id="download-button" class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50" title="Download as .txt" aria-label="Download as .txt">
-                  <i data-lucide="download" class="w-4 h-4" role="img" aria-label="Download icon"></i>
-                </button>
-                <button id="save-button" class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50" title="Save prompt" aria-label="Save prompt">
-                  <i data-lucide="save" class="w-4 h-4" role="img" aria-label="Save icon"></i>
-                </button>
-              </div>
-            </div>
-            <div id="generated-prompt-text" class="bg-black/30 rounded-xl p-3 leading-relaxed whitespace-pre-wrap text-base font-mono selection:bg-purple-500 selection:text-white" contenteditable="true" role="status" aria-live="polite">
-              <!-- Generated prompt text loads here -->
-            </div>
-            <p id="copy-success-message" class="text-green-400 text-sm mt-2 animate-pulse hidden">
-              Prompt copied successfully!
-            </p>
+      <!-- Category Selection -->
+      <div
+        class="bg-white/10 backdrop-blur-md rounded-2xl p-4 mb-4 border border-white/20 shadow-lg"
+      >
+        <h2 id="choose-style-title" class="text-lg font-semibold mb-3">
+          Select Your Prompt Inspiration
+        </h2>
+        <div
+          id="category-buttons"
+          class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-12 gap-2"
+        >
+          <!-- Category buttons load here -->
         </div>
+      </div>
 
-        <!-- Footer/Stats -->
-        <div class="mt-8 text-center pb-4">
-          <p id="app-stats" class="text-blue-200 text-sm mb-1">
-            Prompts that will unlock the potential of your mind
-          </p>
-          <p id="footer-prompter" class="text-blue-300 text-xs font-semibold">
-            Prompter
-          </p>
+      <!-- Generate Button -->
+      <div class="text-center mb-4">
+        <button
+          id="generate-button"
+          class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 disabled:opacity-50 disabled:cursor-not-allowed font-bold py-3 px-6 rounded-xl text-base transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 focus:ring-offset-purple-900"
+          aria-label="Generate New Prompt"
+        >
+          <div class="flex items-center justify-center">
+            <i
+              data-lucide="sparkles"
+              class="w-4 h-4 mr-2"
+              role="img"
+              aria-label="Sparkles icon"
+            ></i>
+            <span id="generate-button-text">Generate New Prompt</span>
+          </div>
+        </button>
+      </div>
+
+      <!-- Generated Prompt Display -->
+      <div
+        id="prompt-display-area"
+        class="hidden bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg transition-opacity duration-500 ease-in-out"
+      >
+        <div class="flex justify-between items-center mb-3">
+          <h3 id="your-prompt-title" class="text-lg font-semibold">
+            Your Unique Prompt:
+          </h3>
+          <div class="flex gap-2">
+            <button
+              id="copy-button"
+              class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+              title="Copy to clipboard"
+              aria-label="Copy to clipboard"
+            >
+              <i
+                data-lucide="copy"
+                class="w-4 h-4"
+                role="img"
+                aria-label="Copy icon"
+              ></i>
+            </button>
+            <button
+              id="download-button"
+              class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+              title="Download as .txt"
+              aria-label="Download as .txt"
+            >
+              <i
+                data-lucide="download"
+                class="w-4 h-4"
+                role="img"
+                aria-label="Download icon"
+              ></i>
+            </button>
+            <button
+              id="save-button"
+              class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+              title="Save prompt"
+              aria-label="Save prompt"
+            >
+              <i
+                data-lucide="save"
+                class="w-4 h-4"
+                role="img"
+                aria-label="Save icon"
+              ></i>
+            </button>
+          </div>
         </div>
+        <div
+          id="generated-prompt-text"
+          class="bg-black/30 rounded-xl p-3 leading-relaxed whitespace-pre-wrap text-base font-mono selection:bg-purple-500 selection:text-white"
+          contenteditable="true"
+          role="status"
+          aria-live="polite"
+        >
+          <!-- Generated prompt text loads here -->
+        </div>
+        <p
+          id="copy-success-message"
+          class="text-green-400 text-sm mt-2 animate-pulse hidden"
+        >
+          Prompt copied successfully!
+        </p>
+      </div>
+
+      <!-- Footer/Stats -->
+      <div class="mt-8 text-center pb-4">
+        <p id="app-stats" class="text-blue-200 text-sm mb-1">
+          Prompts that will unlock the potential of your mind
+        </p>
+        <p id="footer-prompter" class="text-blue-300 text-xs font-semibold">
+          Prompter
+        </p>
+      </div>
     </div>
 
-<script src="../prompts.js"></script>
-<script type="module" src="../src/main.js"></script>
-</body>
+    <script src="../prompts.js"></script>
+    <script type="module" src="../src/main.js"></script>
+  </body>
 </html>
-
