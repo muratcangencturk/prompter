@@ -226,7 +226,11 @@ const setLanguage = (lang) => {
     langEsButton.setAttribute('aria-label', uiText[lang].langEsLabel);
   }
   if (currentLangLabel) {
+    const arrow = currentLangLabel.querySelector('svg');
     currentLangLabel.textContent = lang.toUpperCase();
+    if (arrow) {
+      currentLangLabel.appendChild(arrow);
+    }
   }
 
   categories.forEach((category) => {
