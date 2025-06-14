@@ -107,6 +107,7 @@ let langTrButton;
 let langEsButton;
 let langToggleButton;
 let langMenu;
+let currentLangLabel;
 let themeLightButton;
 let themeDarkButton;
 let themeLinkElement;
@@ -223,6 +224,9 @@ const setLanguage = (lang) => {
   if (langEsButton) {
     langEsButton.title = uiText[lang].langEsLabel;
     langEsButton.setAttribute('aria-label', uiText[lang].langEsLabel);
+  }
+  if (currentLangLabel) {
+    currentLangLabel.textContent = lang.toUpperCase();
   }
 
   categories.forEach((category) => {
@@ -788,6 +792,7 @@ export const initializeApp = () => {
   langEsButton = document.getElementById('lang-es');
   langToggleButton = document.getElementById('lang-toggle');
   langMenu = document.getElementById('lang-menu');
+  currentLangLabel = document.getElementById('current-lang');
   themeLightButton = document.getElementById('theme-light');
   themeDarkButton = document.getElementById('theme-dark');
   themeLinkElement = document.getElementById('theme-css');
