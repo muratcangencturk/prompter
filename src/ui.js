@@ -407,11 +407,15 @@ const renderHistory = () => {
 
     const deleteBtn = document.createElement('button');
     deleteBtn.className =
-      'history-delete p-1.5 rounded-lg bg-red-500/80 hover:bg-red-600 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+      'history-delete p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
     deleteBtn.title = uiText[appState.language].deleteButtonTitle;
-    deleteBtn.setAttribute('aria-label', uiText[appState.language].deleteButtonTitle);
+    deleteBtn.setAttribute(
+      'aria-label',
+      uiText[appState.language].deleteButtonTitle
+    );
     deleteBtn.setAttribute('data-index', idx);
-    deleteBtn.innerHTML = '<i data-lucide="trash" class="w-3 h-3" aria-hidden="true"></i>';
+    deleteBtn.innerHTML =
+      '<i data-lucide="trash" class="w-3 h-3" aria-hidden="true"></i>';
     actions.appendChild(deleteBtn);
 
     li.appendChild(textarea);
@@ -549,9 +553,15 @@ const setupEventListeners = () => {
     const btn = copyBtn || downloadBtn || saveBtn || shareBtn || deleteBtn;
     if (!btn) return;
     const index = parseInt(btn.getAttribute('data-index'), 10);
+    if (Number.isNaN(index)) return;
     const text = appState.history[index];
-    if (!text) return;
-    if (copyBtn) {
+    if (deleteBtn) {
+      appState.history.splice(index, 1);
+      localStorage.setItem('promptHistory', JSON.stringify(appState.history));
+      renderHistory();
+    } else if (!text) {
+      return;
+    } else if (copyBtn) {
       navigator.clipboard.writeText(text).catch((err) => {
         console.error('Failed to copy text: ', err);
       });
@@ -570,10 +580,6 @@ const setupEventListeners = () => {
       localStorage.setItem('savedPrompts', JSON.stringify(appState.savedPrompts));
     } else if (shareBtn) {
       sharePrompt(text, 'https://twitter.com/intent/tweet?text=');
-    } else if (deleteBtn) {
-      appState.history.splice(index, 1);
-      localStorage.setItem('promptHistory', JSON.stringify(appState.history));
-      renderHistory();
     }
   });
 
