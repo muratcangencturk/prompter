@@ -136,6 +136,22 @@ body {
 .fade-out {
   animation: fadeOut 0.3s forwards;
 }
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.button-pop {
+  animation: pop 0.3s ease;
+}
 .lucide {
   width: 1em;
   height: 1em;
