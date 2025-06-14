@@ -12,7 +12,6 @@ const uiText = {
     copyButtonTitle: 'Copy to clipboard',
     downloadButtonTitle: 'Download as .txt',
     shareTwitterTitle: 'Share on Twitter',
-    shareMastodonTitle: 'Share on Mastodon',
     saveButtonTitle: 'Save prompt',
     historyTitle: 'Previous Prompts',
     clearHistoryTitle: 'Clear history',
@@ -37,7 +36,6 @@ const uiText = {
     copyButtonTitle: 'Panoya kopyala',
     downloadButtonTitle: '.txt olarak indir',
     shareTwitterTitle: "Twitter'da paylaş",
-    shareMastodonTitle: "Mastodon'da paylaş",
     saveButtonTitle: 'Promptu kaydet',
     historyTitle: 'Önceki Promptlar',
     clearHistoryTitle: 'Geçmişi temizle',
@@ -61,7 +59,6 @@ const uiText = {
     copyButtonTitle: 'Copiar al portapapeles',
     downloadButtonTitle: 'Descargar como .txt',
     shareTwitterTitle: 'Compartir en Twitter',
-    shareMastodonTitle: 'Compartir en Mastodon',
     saveButtonTitle: 'Guardar prompt',
     historyTitle: 'Prompts anteriores',
     clearHistoryTitle: 'Borrar historial',
@@ -86,7 +83,6 @@ let copyButton;
 let downloadButton;
 let saveButton;
 let shareTwitterButton;
-let shareMastodonButton;
 let copySuccessMessage;
 let langEnButton;
 let langTrButton;
@@ -185,13 +181,6 @@ const setLanguage = (lang) => {
     shareTwitterButton.setAttribute(
       'aria-label',
       uiText[lang].shareTwitterTitle
-    );
-  }
-  if (shareMastodonButton) {
-    shareMastodonButton.title = uiText[lang].shareMastodonTitle;
-    shareMastodonButton.setAttribute(
-      'aria-label',
-      uiText[lang].shareMastodonTitle
     );
   }
   copySuccessMessage.textContent = uiText[lang].copySuccessMessage;
@@ -358,13 +347,6 @@ const updateButtonTitles = () => {
       uiText[appState.language].shareTwitterTitle
     );
   }
-  if (shareMastodonButton) {
-    shareMastodonButton.title = uiText[appState.language].shareMastodonTitle;
-    shareMastodonButton.setAttribute(
-      'aria-label',
-      uiText[appState.language].shareMastodonTitle
-    );
-  }
 };
 
 const renderHistory = () => {
@@ -504,11 +486,6 @@ const setupEventListeners = () => {
       sharePrompt('https://twitter.com/intent/tweet?text=')
     );
   }
-  if (shareMastodonButton) {
-    shareMastodonButton.addEventListener('click', () =>
-      sharePrompt('https://mastodon.social/share?text=')
-    );
-  }
 
   clearHistoryButton.addEventListener('click', () => {
     appState.history = [];
@@ -557,7 +534,6 @@ export const initializeApp = () => {
   downloadButton = document.getElementById('download-button');
   saveButton = document.getElementById('save-button');
   shareTwitterButton = document.getElementById('share-twitter');
-  shareMastodonButton = document.getElementById('share-mastodon');
   copySuccessMessage = document.getElementById('copy-success-message');
   langEnButton = document.getElementById('lang-en');
   langTrButton = document.getElementById('lang-tr');
