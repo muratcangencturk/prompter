@@ -87,10 +87,13 @@ const renderList = () => {
     const actions = document.createElement('div');
     actions.className = 'flex gap-2 mt-2';
     const saveBtn = document.createElement('button');
-    saveBtn.textContent = uiText[appState.language].saveChanges;
     saveBtn.className =
-      'save-change px-3 py-1 rounded bg-white/20 hover:bg-white/30';
+      'save-change p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+    saveBtn.title = uiText[appState.language].saveChanges;
+    saveBtn.setAttribute('aria-label', uiText[appState.language].saveChanges);
     saveBtn.dataset.index = i.toString();
+    saveBtn.innerHTML =
+      '<i data-lucide="save" class="w-4 h-4" role="img" aria-label="Save icon"></i>';
     const delBtn = document.createElement('button');
     delBtn.className =
       'delete-prompt p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
