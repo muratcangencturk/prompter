@@ -73,32 +73,33 @@ const renderList = () => {
     listContainer.appendChild(p);
     return;
   }
-  appState.savedPrompts.forEach((prompt, idx) => {
+  for (let i = appState.savedPrompts.length - 1; i >= 0; i--) {
+    const prompt = appState.savedPrompts[i];
     const wrapper = document.createElement('div');
     wrapper.className = 'bg-white/10 p-3 rounded-lg';
     const textarea = document.createElement('textarea');
     textarea.className = 'w-full p-2 rounded-md bg-black/30';
     textarea.value = prompt;
-    textarea.dataset.index = idx;
+    textarea.dataset.index = i.toString();
     const actions = document.createElement('div');
     actions.className = 'flex gap-2 mt-2';
     const saveBtn = document.createElement('button');
     saveBtn.textContent = uiText[appState.language].saveChanges;
     saveBtn.className = 'save-change px-3 py-1 rounded bg-white/20 hover:bg-white/30';
-    saveBtn.dataset.index = idx;
+    saveBtn.dataset.index = i.toString();
     const delBtn = document.createElement('button');
     delBtn.className =
       'delete-prompt p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
     delBtn.title = uiText[appState.language].deletePrompt;
     delBtn.setAttribute('aria-label', uiText[appState.language].deletePrompt);
-    delBtn.dataset.index = idx;
+    delBtn.dataset.index = i.toString();
     delBtn.innerHTML = '<i data-lucide="trash" class="w-3 h-3" aria-hidden="true"></i>';
     actions.appendChild(saveBtn);
     actions.appendChild(delBtn);
     wrapper.appendChild(textarea);
     wrapper.appendChild(actions);
     listContainer.appendChild(wrapper);
-  });
+  }
   if (window.lucide && typeof window.lucide.createIcons === 'function') {
     window.lucide.createIcons();
   }
