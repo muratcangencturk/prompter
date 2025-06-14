@@ -123,7 +123,7 @@ export const categories = [
     id: 'hellprompts',
     icon: 'skull',
     emoji: '💀',
-    name: { en: 'hellprompts', tr: 'hellprompts', es: 'hellprompts' },
+    name: { en: 'Hellprompts', tr: 'Hellprompts', es: 'Hellprompts' },
   },
 ];
 
