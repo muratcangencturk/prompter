@@ -173,7 +173,10 @@ body {
 }
 .emoji-icon {
   font-size: 1.5rem;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
   color: currentColor;
 }
 .category-button .emoji-icon {
