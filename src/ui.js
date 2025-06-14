@@ -756,6 +756,12 @@ const setupEventListeners = () => {
     });
   }
 
+  if (currentLangLabel && langMenu) {
+    currentLangLabel.addEventListener('click', () => {
+      langMenu.classList.toggle('hidden');
+    });
+  }
+
   langEnButton.addEventListener('click', () => setLanguage('en'));
   langTrButton.addEventListener('click', () => setLanguage('tr'));
   if (langEsButton) {
