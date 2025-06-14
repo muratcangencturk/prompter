@@ -19,6 +19,7 @@ const uiText = {
     copySuccessMessage: 'Prompt copied successfully!',
     saveSuccessMessage: 'Prompt saved!',
     downloadSuccessMessage: 'Downloading...',
+    shareMessage: 'Sharing...',
     saveFeedback: 'Saved!',
     appStats: 'Prompts that will unlock the potential of your mind',
     footerPrompter: 'Prompter',
@@ -47,6 +48,7 @@ const uiText = {
     copySuccessMessage: 'Kopyalandı!',
     saveSuccessMessage: 'Kaydedildi!',
     downloadSuccessMessage: 'İndiriliyor...',
+    shareMessage: 'Paylaşılıyor...',
     saveFeedback: 'Kaydedildi!',
     appStats: 'Zihninizin potansiyelini açığa çıkaracak promptlar',
     footerPrompter: 'Prompter',
@@ -74,6 +76,7 @@ const uiText = {
     copySuccessMessage: '¡Copiado!',
     saveSuccessMessage: '¡Guardado!',
     downloadSuccessMessage: 'Descargando...',
+    shareMessage: 'Compartiendo...',
     saveFeedback: '¡Guardado!',
     appStats: 'Prompts que liberarán el potencial de tu mente',
     footerPrompter: 'Prompter',
@@ -98,6 +101,7 @@ let shareTwitterButton;
 let copySuccessMessage;
 let downloadSuccessMessage;
 let saveSuccessMessage;
+let shareMessage;
 let langEnButton;
 let langTrButton;
 let langEsButton;
@@ -200,6 +204,9 @@ const setLanguage = (lang) => {
   copySuccessMessage.textContent = uiText[lang].copySuccessMessage;
   downloadSuccessMessage.textContent = uiText[lang].downloadSuccessMessage;
   saveSuccessMessage.textContent = uiText[lang].saveSuccessMessage;
+  if (shareMessage) {
+    shareMessage.textContent = uiText[lang].shareMessage;
+  }
   document.getElementById('history-title').textContent =
     uiText[lang].historyTitle;
   clearHistoryButton.title = uiText[lang].clearHistoryTitle;
@@ -536,9 +543,11 @@ const setupEventListeners = () => {
       .then(() => {
         appState.copySuccess = true;
         copySuccessMessage.classList.remove('hidden');
+        copyButton.classList.add('button-pop');
         setTimeout(() => {
           copySuccessMessage.classList.add('hidden');
           appState.copySuccess = false;
+          copyButton.classList.remove('button-pop');
         }, 2000);
       })
       .catch((err) => {
@@ -550,8 +559,10 @@ const setupEventListeners = () => {
   downloadButton.addEventListener('click', () => {
     if (!appState.generatedPrompt) return;
     downloadSuccessMessage.classList.remove('hidden');
+    downloadButton.classList.add('button-pop');
     setTimeout(() => {
       downloadSuccessMessage.classList.add('hidden');
+      downloadButton.classList.remove('button-pop');
     }, 2000);
     const blob = new Blob([appState.generatedPrompt], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
@@ -588,12 +599,22 @@ const setupEventListeners = () => {
   }
 
   if (shareTwitterButton) {
-    shareTwitterButton.addEventListener('click', () =>
+    shareTwitterButton.addEventListener('click', () => {
+      shareTwitterButton.classList.add('button-pop');
+      if (shareMessage) {
+        shareMessage.classList.remove('hidden');
+        setTimeout(() => {
+          shareMessage.classList.add('hidden');
+        }, 2000);
+      }
+      setTimeout(() => {
+        shareTwitterButton.classList.remove('button-pop');
+      }, 300);
       sharePrompt(
         appState.generatedPrompt,
         'https://twitter.com/intent/tweet?text='
-      )
-    );
+      );
+    });
   }
 
   clearHistoryButton.addEventListener('click', () => {
@@ -628,10 +649,26 @@ const setupEventListeners = () => {
     } else if (!text) {
       return;
     } else if (copyBtn) {
-      navigator.clipboard.writeText(text).catch((err) => {
-        console.error('Failed to copy text: ', err);
-      });
+      navigator.clipboard
+        .writeText(text)
+        .then(() => {
+          copySuccessMessage.classList.remove('hidden');
+          copyBtn.classList.add('button-pop');
+          setTimeout(() => {
+            copySuccessMessage.classList.add('hidden');
+            copyBtn.classList.remove('button-pop');
+          }, 2000);
+        })
+        .catch((err) => {
+          console.error('Failed to copy text: ', err);
+        });
     } else if (downloadBtn) {
+      downloadSuccessMessage.classList.remove('hidden');
+      downloadBtn.classList.add('button-pop');
+      setTimeout(() => {
+        downloadSuccessMessage.classList.add('hidden');
+        downloadBtn.classList.remove('button-pop');
+      }, 2000);
       const blob = new Blob([text], { type: 'text/plain' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -659,6 +696,16 @@ const setupEventListeners = () => {
         saveBtn.classList.remove('button-pop');
       }, 300);
     } else if (shareBtn) {
+      shareBtn.classList.add('button-pop');
+      if (shareMessage) {
+        shareMessage.classList.remove('hidden');
+        setTimeout(() => {
+          shareMessage.classList.add('hidden');
+        }, 2000);
+      }
+      setTimeout(() => {
+        shareBtn.classList.remove('button-pop');
+      }, 300);
       sharePrompt(text, 'https://twitter.com/intent/tweet?text=');
     }
   });
@@ -696,6 +743,7 @@ export const initializeApp = () => {
   copySuccessMessage = document.getElementById('copy-success-message');
   downloadSuccessMessage = document.getElementById('download-success-message');
   saveSuccessMessage = document.getElementById('save-success-message');
+  shareMessage = document.getElementById('share-message');
   langEnButton = document.getElementById('lang-en');
   langTrButton = document.getElementById('lang-tr');
   langEsButton = document.getElementById('lang-es');
