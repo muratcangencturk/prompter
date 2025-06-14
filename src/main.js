@@ -1,6 +1,11 @@
 import { initializeApp } from './ui.js';
 
-document.addEventListener('DOMContentLoaded', initializeApp);
+document.addEventListener('DOMContentLoaded', () => {
+  initializeApp();
+  if (window.lucide && typeof window.lucide.createIcons === 'function') {
+    window.lucide.createIcons();
+  }
+});
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
