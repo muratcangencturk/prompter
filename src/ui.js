@@ -105,6 +105,8 @@ let shareMessage;
 let langEnButton;
 let langTrButton;
 let langEsButton;
+let langToggleButton;
+let langMenu;
 let themeLightButton;
 let themeDarkButton;
 let themeLinkElement;
@@ -744,11 +746,25 @@ const setupEventListeners = () => {
     }
   });
 
+  if (langToggleButton && langMenu) {
+    langToggleButton.addEventListener('click', () => {
+      langMenu.classList.toggle('hidden');
+    });
+  }
+
   langEnButton.addEventListener('click', () => setLanguage('en'));
   langTrButton.addEventListener('click', () => setLanguage('tr'));
   if (langEsButton) {
     langEsButton.addEventListener('click', () => setLanguage('es'));
   }
+
+  [langEnButton, langTrButton, langEsButton].forEach((btn) => {
+    if (btn) {
+      btn.addEventListener('click', () => {
+        langMenu && langMenu.classList.add('hidden');
+      });
+    }
+  });
 
   themeLightButton.addEventListener('click', () => setTheme(THEMES.LIGHT));
   themeDarkButton.addEventListener('click', () => setTheme(THEMES.DARK));
@@ -770,6 +786,8 @@ export const initializeApp = () => {
   langEnButton = document.getElementById('lang-en');
   langTrButton = document.getElementById('lang-tr');
   langEsButton = document.getElementById('lang-es');
+  langToggleButton = document.getElementById('lang-toggle');
+  langMenu = document.getElementById('lang-menu');
   themeLightButton = document.getElementById('theme-light');
   themeDarkButton = document.getElementById('theme-dark');
   themeLinkElement = document.getElementById('theme-css');
