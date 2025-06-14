@@ -1,14 +1,14 @@
 body {
   background-image: linear-gradient(
     to bottom right,
-    #e2e8f0,
-    #cbd5e1,
-    #94a3b8
+    #f5f4ec,
+    #e2e0d2,
+    #cbc8bd
   ) !important;
-  color: #2d3748 !important;
+  color: #374151 !important;
 }
 .bg-white\/10 {
-  background-color: rgba(255, 255, 255, 0.6) !important;
+  background-color: rgba(255, 255, 255, 0.5) !important;
   border-color: rgba(0, 0, 0, 0.1) !important;
 }
 .bg-black\/30 {
@@ -97,7 +97,7 @@ body {
 }
 
 #lang-menu {
-  background-color: rgba(255, 255, 255, 0.6) !important;
+  background-color: rgba(255, 255, 255, 0.5) !important;
   color: #334155 !important;
 }
 #lang-menu button:hover {
