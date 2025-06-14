@@ -373,18 +373,19 @@ const renderHistory = () => {
   appState.history.forEach((prompt, idx) => {
     const li = document.createElement('li');
     li.className = 'flex justify-between items-start gap-2';
-    const span = document.createElement('span');
-    span.className = 'flex-1 whitespace-pre-wrap font-mono';
-    span.textContent = prompt;
+    const textarea = document.createElement('textarea');
+    textarea.className = 'history-edit flex-1 whitespace-pre-wrap font-mono bg-transparent p-1 rounded-md';
+    textarea.value = prompt;
+    textarea.setAttribute('data-index', idx);
     const btn = document.createElement('button');
-    btn.className =
-      'history-copy p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-    btn.title = uiText[appState.language].copyButtonTitle;
-    btn.setAttribute('aria-label', uiText[appState.language].copyButtonTitle);
-    btn.setAttribute('data-index', idx);
-    btn.innerHTML =
-      '<i data-lucide="copy" class="w-3 h-3" aria-hidden="true"></i>';
-    li.appendChild(span);
+      btn.className =
+        'history-copy p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+      btn.title = uiText[appState.language].copyButtonTitle;
+      btn.setAttribute('aria-label', uiText[appState.language].copyButtonTitle);
+      btn.setAttribute('data-index', idx);
+      btn.innerHTML =
+        '<i data-lucide="copy" class="w-3 h-3" aria-hidden="true"></i>';
+    li.appendChild(textarea);
     li.appendChild(btn);
     historyList.appendChild(li);
   });
@@ -445,6 +446,14 @@ const setupEventListeners = () => {
   generateButton.addEventListener('click', () => {
     generateButton.disabled = true;
     handleGenerate();
+  });
+
+  generatedPromptText.addEventListener('input', () => {
+    const val =
+      'value' in generatedPromptText
+        ? generatedPromptText.value
+        : generatedPromptText.textContent;
+    appState.generatedPrompt = val;
   });
 
   copyButton.addEventListener('click', () => {
@@ -516,6 +525,17 @@ const setupEventListeners = () => {
     navigator.clipboard.writeText(text).catch((err) => {
       console.error('Failed to copy text: ', err);
     });
+  });
+
+  historyList.addEventListener('input', (e) => {
+    const target = e.target.closest('.history-edit');
+    if (!target) return;
+    const idx = Number(target.getAttribute('data-index'));
+    const value = 'value' in target ? target.value : target.textContent;
+    if (!Number.isNaN(idx)) {
+      appState.history[idx] = value;
+      localStorage.setItem('promptHistory', JSON.stringify(appState.history));
+    }
   });
 
   langEnButton.addEventListener('click', () => setLanguage('en'));
