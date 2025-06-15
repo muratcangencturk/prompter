@@ -161,6 +161,15 @@ The site is published automatically using GitHub Pages. The workflow
 `main` branch trigger a new deployment and the site becomes available at
 the repository's Pages URL.
 
+## Advertising (Google AdSense)
+
+All pages include the standard AdSense loader in the `<head>` tag:
+
+```html
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5886415182402616" crossorigin="anonymous"></script>
+```
+
+The script fetches Google's ad library asynchronously using your publisher ID (`client`). After it loads you can place `<ins class="adsbygoogle">` elements in the body to display ads. See [the AdSense documentation](https://support.google.com/adsense/answer/9271723) for details on creating and customizing ad units.
 ## License
 
 This project is licensed under the Apache License 2.0. See [LICENSE](LICENSE) for the full text.
