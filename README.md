@@ -148,6 +148,7 @@ Before deploying your own instance, update all references to the default domain
 
 - Edit the canonical `<link>` tags in `index.html` and `tr/index.html` so they
   point to your final site.
+- Set the `<base>` tag in `index.html`, `tr/index.html` and `my-prompts.html` to the directory where the site is hosted (e.g., `<base href="/">` or `<base href="/subdir/">`).
 - In `scripts/generate-sitemap.js` replace the `BASE_URL` constant and run
   `npm run build:sitemap` to regenerate `sitemap.xml`.
 - Update the `Sitemap:` line inside `robots.txt` with your new domain.

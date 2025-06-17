@@ -8,9 +8,10 @@
       content="upgrade-insecure-requests"
     />
     <title>PROMPTER</title>
-    <link rel="icon" type="image/svg+xml" href="../icons/logo.svg" />
-    <link rel="preload" href="../icons/logo.svg" as="image" />
-    <link rel="manifest" href="../manifest.json" />
+    <base href="../" />
+    <link rel="icon" type="image/svg+xml" href="icons/logo.svg" />
+    <link rel="preload" href="icons/logo.svg" as="image" />
+    <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#000000" />
     <meta
       http-equiv="Cache-Control"
@@ -32,7 +33,7 @@
       property="og:description"
       content="Creative AI prompt generator that requires an internet connection."
     />
-    <meta property="og:image" content="../icons/logo.svg" />
+    <meta property="og:image" content="icons/logo.svg" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="PROMPTER" />
@@ -40,7 +41,7 @@
       name="twitter:description"
       content="Creative AI prompt generator that requires an internet connection."
     />
-    <meta name="twitter:image" content="../icons/logo.svg" />
+    <meta name="twitter:image" content="icons/logo.svg" />
     <link rel="canonical" href="https://prompterai.space/tr/" />
     <link rel="alternate" href="https://prompterai.space/" hreflang="en" />
     <link rel="alternate" href="https://prompterai.space/tr/" hreflang="tr" />
@@ -161,11 +162,11 @@
 
         const tailwindScripts = loadWithFallback(
           'https://cdn.tailwindcss.com',
-          '../tailwind.js'
+          'tailwind.js'
         );
         window.lucideScripts = loadWithFallback(
           'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js',
-          '../lucide.min.js'
+          'lucide.min.js'
         );
         Promise.all([
           tailwindScripts.loadPromise,
@@ -178,15 +179,15 @@
         });
       })();
     </script>
-    <link rel="stylesheet" href="../css/app.css" />
-    <link id="theme-css" rel="stylesheet" href="../css/theme-dark.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css" />
     <script>
       (function () {
         const savedTheme = localStorage.getItem('theme');
         if (!savedTheme) return;
         const linkEl = document.getElementById('theme-css');
         if (linkEl) {
-          linkEl.href = `../css/theme-${savedTheme}.css`;
+          linkEl.href = `css/theme-${savedTheme}.css`;
         }
       })();
     </script>
@@ -298,7 +299,7 @@
         </div>
         <a
           id="my-prompts-link"
-          href="../my-prompts.html"
+          href="my-prompts.html"
           class="px-2 py-1 rounded-md text-sm font-medium bg-white/20 hover:bg-white/30 transition-all duration-200"
           >My Prompts</a
         >
@@ -307,7 +308,7 @@
       <!-- Header -->
       <div class="text-center mb-6 pt-16 md:pt-12">
         <img
-          src="../icons/logo.svg"
+          src="icons/logo.svg"
           alt="Prompter logo"
           class="mx-auto mb-4 w-16 h-16"
           id="app-logo"
@@ -444,7 +445,7 @@
           aria-label="WhatsApp Grubu"
         >
           <img
-            src="../icons/whatsapp.svg"
+            src="icons/whatsapp.svg"
             class="w-6 h-6"
             alt="WhatsApp logosu"
           />
@@ -452,7 +453,7 @@
       </div>
     </div>
 
-    <script src="../prompts.js"></script>
-    <script type="module" src="../src/main.js"></script>
+    <script src="prompts.js"></script>
+    <script type="module" src="src/main.js"></script>
   </body>
 </html>
