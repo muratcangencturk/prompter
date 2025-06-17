@@ -64,6 +64,10 @@ function listPromptFiles() {
 }
 
 function updateServiceWorker(promptFiles) {
+  if (!fs.existsSync(swFile)) {
+    console.log(`Warning: ${swFile} not found, skipping service worker update.`);
+    return;
+  }
   const swSrc = fs.readFileSync(swFile, 'utf8');
   const lines = swSrc.split(/\r?\n/);
   const start = lines.findIndex((l) => l.trim() === 'const ASSETS = [');
