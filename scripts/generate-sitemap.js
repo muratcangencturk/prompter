@@ -4,7 +4,12 @@ const path = require('path');
 
 const BASE_URL = 'https://prompterai.space';
 
-const urls = [`${BASE_URL}/`, `${BASE_URL}/tr/`, `${BASE_URL}/privacy.html`];
+const urls = [
+  `${BASE_URL}/`,
+  `${BASE_URL}/tr/`,
+  `${BASE_URL}/privacy.html`,
+  `${BASE_URL}/my-prompts.html`, // new page
+];
 
 const xml =
   '<?xml version="1.0" encoding="UTF-8"?>\n' +
