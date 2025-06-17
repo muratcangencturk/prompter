@@ -218,7 +218,7 @@ body {
 
 /* History panel */
 #history-panel {
-  height: 7.5rem;
+  height: 6rem;
   overflow-y: auto;
 }
 .history-copy i {
