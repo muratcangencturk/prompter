@@ -6,6 +6,7 @@ const BASE_URL = 'https://prompterai.space';
 
 const urls = [
   `${BASE_URL}/`,
+  `${BASE_URL}/es/`,
   `${BASE_URL}/tr/`,
   `${BASE_URL}/privacy.html`,
   `${BASE_URL}/my-prompts.html`, // new page
