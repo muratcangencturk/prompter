@@ -74,6 +74,7 @@ function updateServiceWorker(promptFiles) {
   const baseAssets = [
     './',
     './index.html',
+    './my-prompts.html',
     './tr/index.html',
     './tailwind.js',
     './lucide.min.js',
