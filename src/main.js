@@ -1,10 +1,42 @@
 import { initializeApp } from './ui.js';
 
+let currentManifestVersion = null;
+
+const fetchManifestVersion = async () => {
+  try {
+    const link = document.querySelector('link[rel="manifest"]');
+    if (!link) return null;
+    const url = link.getAttribute('href');
+    const sep = url.includes('?') ? '&' : '?';
+    const res = await fetch(`${url}${sep}v=${Date.now()}`, { cache: 'no-store' });
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.version;
+  } catch {
+    return null;
+  }
+};
+
+const startVersionCheck = async () => {
+  currentManifestVersion = await fetchManifestVersion();
+  setInterval(async () => {
+    const newVersion = await fetchManifestVersion();
+    if (
+      newVersion &&
+      currentManifestVersion &&
+      newVersion !== currentManifestVersion
+    ) {
+      location.reload();
+    }
+  }, 5 * 60 * 1000);
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   initializeApp();
   if (window.lucide && typeof window.lucide.createIcons === 'function') {
     window.lucide.createIcons();
   }
+  startVersionCheck();
 });
 
 if ('serviceWorker' in navigator) {
