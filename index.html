@@ -17,9 +17,9 @@
     />
     <title>PROMPTER</title>
     <base href="./" />
-    <link rel="icon" type="image/svg+xml" href="icons/logo.svg" />
-    <link rel="preload" href="icons/logo.svg" as="image" />
-    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="icons/logo.svg?v=20" />
+    <link rel="preload" href="icons/logo.svg?v=20" as="image" />
+    <link rel="manifest" href="manifest.json?v=20" />
     <meta name="theme-color" content="#000000" />
     <meta
       http-equiv="Cache-Control"
@@ -41,7 +41,7 @@
       property="og:description"
       content="Creative AI prompt generator that requires an internet connection."
     />
-    <meta property="og:image" content="icons/logo.svg" />
+    <meta property="og:image" content="icons/logo.svg?v=20" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="PROMPTER" />
@@ -49,7 +49,7 @@
       name="twitter:description"
       content="Creative AI prompt generator that requires an internet connection."
     />
-    <meta name="twitter:image" content="icons/logo.svg" />
+    <meta name="twitter:image" content="icons/logo.svg?v=20" />
     <link rel="canonical" href="https://prompterai.space/" />
     <link rel="alternate" href="https://prompterai.space/" hreflang="en" />
     <link rel="alternate" href="https://prompterai.space/tr/" hreflang="tr" />
@@ -170,11 +170,11 @@
 
         const tailwindScripts = loadWithFallback(
           'https://cdn.tailwindcss.com',
-          'tailwind.js'
+          'tailwind.js?v=20'
         );
         window.lucideScripts = loadWithFallback(
           'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js',
-          'lucide.min.js'
+          'lucide.min.js?v=20'
         );
         Promise.all([
           tailwindScripts.loadPromise,
@@ -187,8 +187,8 @@
         });
       })();
     </script>
-    <link rel="stylesheet" href="css/app.css" />
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css" />
+    <link rel="stylesheet" href="css/app.css?v=20" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=20" />
     <script>
       (function () {
         const savedTheme = localStorage.getItem('theme');
@@ -331,7 +331,7 @@
       <!-- Header -->
       <div class="text-center mb-6 pt-16 md:pt-12">
         <img
-          src="icons/logo.svg"
+          src="icons/logo.svg?v=20"
           alt="Prompter logo"
           class="mx-auto mb-4 w-16 h-16"
           id="app-logo"
@@ -522,7 +522,7 @@
           class="flex justify-center mt-2"
           aria-label="WhatsApp Group"
         >
-          <img src="icons/whatsapp.svg" class="w-6 h-6" alt="WhatsApp logo" />
+          <img src="icons/whatsapp.svg?v=20" class="w-6 h-6" alt="WhatsApp logo" />
         </a>
       </div>
     </div>
@@ -546,7 +546,7 @@
         >Advertise here</a
       >
     </div>
-    <script src="prompts.js"></script>
-    <script type="module" src="src/main.js"></script>
+    <script src="prompts.js?v=20"></script>
+    <script type="module" src="src/main.js?v=20"></script>
   </body>
 </html>
