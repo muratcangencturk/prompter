@@ -8,12 +8,13 @@ Prompt templates are stored in small JSON files under the `prompts/` directory a
 
 ## Features
 
-- Works offline after the first visit
+- Requires an internet connection
 - Fast loading thanks to lightweight JSON prompt files
 - Light and dark themes
 - English, Turkish and Spanish interface
 - Twelve prompt categories with over 53M combinations per language (more than 159M across EN, TR and ES)
-  This **AI prompt generator** delivers **creative prompt ideas** in a lightweight **offline web app** that runs directly in your browser.
+
+This **AI prompt generator** delivers **creative prompt ideas** in a lightweight web app that runs directly in your browser. An internet connection is required.
 
 ## Opening the application
 
@@ -23,9 +24,9 @@ It is recommended to serve the project directory with a simple HTTP server for r
 python3 -m http.server
 ```
 
-and then visit `http://localhost:8000`. This allows the service worker to cache `index.html`, `tailwind.js`, `lucide.min.js`, all JSON files under `prompts/` and the logo in `icons/logo.svg` so the generator works offline after the first visit.
+and then visit `http://localhost:8000`. This allows the service worker to cache `index.html`, `tailwind.js`, `lucide.min.js`, all JSON files under `prompts/` and the logo in `icons/logo.svg` for faster loading. The generator still requires an internet connection.
 
-You can still open `index.html` directly from your file system, but offline mode only works if `prompts.js` is loaded because the JSON prompt files cannot be fetched when using the `file://` protocol.
+You can open `index.html` directly from your file system, but prompts will not load unless `prompts.js` is available because the JSON prompt files cannot be fetched when using the `file://` protocol.
 
 ### Versioning
 
@@ -40,7 +41,7 @@ The service worker reads the `version` field from `manifest.json` and names its 
 
 ### Language
 
- - Prompter currently supports **English** (`EN`), **Turkish** (`TR`) and **Spanish** (`ES`).
+- Prompter currently supports **English** (`EN`), **Turkish** (`TR`) and **Spanish** (`ES`).
 - Use the language switcher in the top‑right corner to choose your interface language. The setting persists in your browser.
 
 ## Accessibility
@@ -135,7 +136,7 @@ Prompter includes a range of optimizations to help search engines crawl and inde
 - The icons folder can be optimized using `npm run optimize:images` which runs **SVGO** on all SVG assets.
 - Pages are fully responsive – check with Google’s [Mobile‑Friendly Test](https://search.google.com/test/mobile-friendly).
 - HTTPS is enforced via a `Content-Security-Policy` upgrade header.
-- A service worker caches content for offline use and better performance.
+- A service worker caches content for better performance, but an internet connection is still required.
 - Image `alt` text and descriptive file names improve visual search results.
 - `scripts/generate-sitemap.js` keeps the sitemap up to date for search engines.
 - Use analytics tools such as Google Search Console or Ahrefs to monitor crawl errors and Core Web Vitals.
@@ -166,17 +167,22 @@ the repository's Pages URL.
 All pages include the standard AdSense loader in the `<head>` tag:
 
 ```html
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5886415182402616" crossorigin="anonymous"></script>
+<script
+  async
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5886415182402616"
+  crossorigin="anonymous"
+></script>
 ```
 
 The script fetches Google's ad library asynchronously using your publisher ID (`client`). After it loads you can place `<ins class="adsbygoogle">` elements in the body to display ads. See [the AdSense documentation](https://support.google.com/adsense/answer/9271723) for details on creating and customizing ad units.
+
 ## License
 
 This project is licensed under the Apache License 2.0. See [LICENSE](LICENSE) for the full text.
 
 ## Attributions
 
-Prompter uses [TailwindCSS](https://tailwindcss.com/) and [Lucide](https://lucide.dev/) under their respective open source licenses. Their local copies—`tailwind.js` and `lucide.min.js`—are bundled in this repository so the application works offline. See the [TailwindCSS MIT license](https://github.com/tailwindlabs/tailwindcss/blob/master/LICENSE) and the [Lucide ISC license](https://github.com/lucide-icons/lucide/blob/main/LICENSE) for details.
+Prompter uses [TailwindCSS](https://tailwindcss.com/) and [Lucide](https://lucide.dev/) under their respective open source licenses. Their local copies—`tailwind.js` and `lucide.min.js`—are bundled in this repository for reliability. See the [TailwindCSS MIT license](https://github.com/tailwindlabs/tailwindcss/blob/master/LICENSE) and the [Lucide ISC license](https://github.com/lucide-icons/lucide/blob/main/LICENSE) for details.
 
 ## Disclaimer
 
