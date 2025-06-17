@@ -8,12 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js').catch(console.error);
-  });
-  // Commented out to prevent automatic page refresh when the service worker
-  // activates. Reload manually if you want to update the cached assets.
-  // navigator.serviceWorker.addEventListener('controllerchange', () => {
-  //   window.location.reload();
-  // });
+  // Unregister any previously installed service workers so the site
+  // always loads the latest files from the network.
+  navigator.serviceWorker
+    .getRegistrations()
+    .then((regs) => {
+      for (const reg of regs) {
+        reg.unregister().catch(() => {});
+      }
+    })
+    .catch(() => {});
 }
