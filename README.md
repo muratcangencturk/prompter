@@ -24,13 +24,13 @@ It is recommended to serve the project directory with a simple HTTP server for r
 python3 -m http.server
 ```
 
-and then visit `http://localhost:8000`. This allows the service worker to cache `index.html`, `tailwind.js`, `lucide.min.js`, all JSON files under `prompts/` and the logo in `icons/logo.svg` for faster loading. The generator still requires an internet connection.
+and then visit `http://localhost:8000`. This ensures the JSON prompt files load correctly. The generator still requires an internet connection.
 
 You can open `index.html` directly from your file system, but prompts will not load unless `prompts.js` is available because the JSON prompt files cannot be fetched when using the `file://` protocol.
 
 ### Versioning
 
-The service worker reads the `version` field from `manifest.json` and names its cache accordingly (for example `prompter-v3`). When the version changes, any old caches are removed automatically during activation so users receive the latest files.
+The `manifest.json` file includes a `version` field that increments on each build so deployments always serve the newest assets.
 
 ## Customization
 
@@ -95,7 +95,7 @@ of strings. These arrays represent the beginning, topic, continuation and ending
 1. Add a new JSON file under `prompts/<language>/` following the structure above.
 2. Register the category in `src/main.js` with an icon, emoji and names.
 3. Provide corresponding files for other languages to offer translations.
-4. Run `npm run build` to regenerate `prompts.js`, update `sw.js`, and bump the version in `manifest.json` so deployments include your changes.
+4. Run `npm run build` to regenerate `prompts.js` and bump the version in `manifest.json` so deployments include your changes.
 5. Run `node scripts/count-prompts.js` to see how many unique prompts each category provides per language.
 
 ## Development
@@ -136,7 +136,6 @@ Prompter includes a range of optimizations to help search engines crawl and inde
 - The icons folder can be optimized using `npm run optimize:images` which runs **SVGO** on all SVG assets.
 - Pages are fully responsive – check with Google’s [Mobile‑Friendly Test](https://search.google.com/test/mobile-friendly).
 - HTTPS is enforced via a `Content-Security-Policy` upgrade header.
-- A service worker caches content for better performance, but an internet connection is still required.
 - Image `alt` text and descriptive file names improve visual search results.
 - `scripts/generate-sitemap.js` keeps the sitemap up to date for search engines.
 - Use analytics tools such as Google Search Console or Ahrefs to monitor crawl errors and Core Web Vitals.
@@ -157,7 +156,7 @@ Before deploying your own instance, update all references to the default domain
 
 The site is published automatically using GitHub Pages. The workflow
 [`pages.yml`](.github/workflows/pages.yml) installs dependencies, runs
-`npm run build` (which executes `scripts/build-prompts.js`) and `npm run build:sitemap` to generate `prompts.js`, update `sw.js`, bump the version in `manifest.json`, create `sitemap.xml` and then upload the artifact using
+`npm run build` (which executes `scripts/build-prompts.js`) and `npm run build:sitemap` to generate `prompts.js`, bump the version in `manifest.json`, create `sitemap.xml` and then upload the artifact using
 `actions/upload-pages-artifact` and `actions/deploy-pages`. Pushes to the
 `main` branch trigger a new deployment and the site becomes available at
 the repository's Pages URL.
