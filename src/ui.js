@@ -155,6 +155,37 @@ const uiText = {
     langZhLabel: '切换到中文',
     appLogoAlt: 'Prompter 标志',
   },
+  hi: {
+    appTitle: 'PROMPTER',
+    appSubtitle:
+      'एआई के लिए प्रॉम्प्ट जनरेटर - सर्वश्रेष्ठ प्रॉम्प्ट इंजीनियरिंग ऑनलाइन स्पेस',
+    chooseStyleTitle: 'अपनी प्रॉम्प्ट प्रेरणा चुनें',
+    generateButtonText: 'नया प्रॉम्प्ट बनाएं',
+    yourPromptTitle: 'आपका अनोखा प्रॉम्प्ट:',
+    copyButtonTitle: 'क्लिपबोर्ड पर कॉपी करें',
+    downloadButtonTitle: '.txt के रूप में डाउनलोड करें',
+    shareTwitterTitle: 'ट्विटर पर साझा करें',
+    saveButtonTitle: 'प्रॉम्प्ट सहेजें',
+    deleteButtonTitle: 'प्रॉम्प्ट हटाएं',
+    historyTitle: 'पिछले प्रॉम्प्ट',
+    clearHistoryTitle: 'इतिहास साफ करें',
+    copySuccessMessage: 'प्रॉम्प्ट सफलतापूर्वक कॉपी हुआ!',
+    saveSuccessMessage: 'प्रॉम्प्ट सहेजा गया!',
+    downloadSuccessMessage: 'डाउनलोड हो रहा है...',
+    shareMessage: 'साझा किया जा रहा है...',
+    saveFeedback: 'सहेजा गया!',
+    appStats: 'ऐसे प्रॉम्प्ट जो आपके दिमाग की क्षमता को खोलेंगे',
+    footerPrompter: 'Prompter',
+    randomCategory: 'रैंडम',
+    themeLightTitle: 'लाइट थीम',
+    themeDarkTitle: 'डार्क थीम',
+    langEnLabel: 'अंग्रेजी पर स्विच करें',
+    langTrLabel: 'तुर्की पर स्विच करें',
+    langEsLabel: 'स्पेनिश पर स्विच करें',
+    langFrLabel: 'फ्रेंच पर स्विच करें',
+    langZhLabel: 'चीनी पर स्विच करें',
+    appLogoAlt: 'Prompter लोगो',
+  },
 };
 
 let categoryButtonsContainer;
@@ -174,6 +205,7 @@ let langTrButton;
 let langEsButton;
 let langFrButton;
 let langZhButton;
+let langHiButton;
 let langToggleButton;
 let langMenu;
 let currentLangLabel;
@@ -532,7 +564,7 @@ const setLanguage = (lang) => {
         'hover:bg-white/10'
       );
     }
-  } else {
+  } else if (lang === 'zh') {
     if (langZhButton) {
       langZhButton.classList.add(
         'active',
@@ -541,6 +573,68 @@ const setLanguage = (lang) => {
         'shadow-md'
       );
       langZhButton.classList.remove(
+        'bg-transparent',
+        'text-blue-200',
+        'hover:bg-white/10'
+      );
+    }
+    langEnButton.classList.remove(
+      'active',
+      'bg-white/30',
+      'text-white',
+      'shadow-md'
+    );
+    langEnButton.classList.add(
+      'bg-transparent',
+      'text-blue-200',
+      'hover:bg-white/10'
+    );
+    langTrButton.classList.remove(
+      'active',
+      'bg-white/30',
+      'text-white',
+      'shadow-md'
+    );
+    langTrButton.classList.add(
+      'bg-transparent',
+      'text-blue-200',
+      'hover:bg-white/10'
+    );
+    if (langEsButton) {
+      langEsButton.classList.remove(
+        'active',
+        'bg-white/30',
+        'text-white',
+        'shadow-md'
+      );
+      langEsButton.classList.add(
+        'bg-transparent',
+        'text-blue-200',
+        'hover:bg-white/10'
+      );
+    }
+  } else {
+    if (langHiButton) {
+      langHiButton.classList.add(
+        'active',
+        'bg-white/30',
+        'text-white',
+        'shadow-md'
+      );
+      langHiButton.classList.remove(
+        'bg-transparent',
+        'text-blue-200',
+        'hover:bg-white/10'
+      );
+    }
+    if (langZhButton) {
+      langZhButton.classList.remove(
+        'active',
+        'bg-white/30',
+        'text-white',
+        'shadow-md'
+      );
+      langZhButton.classList.add(
         'bg-transparent',
         'text-blue-200',
         'hover:bg-white/10'
@@ -1006,8 +1100,11 @@ const setupEventListeners = () => {
   if (langZhButton) {
     langZhButton.addEventListener('click', () => setLanguage('zh'));
   }
+  if (langHiButton) {
+    langHiButton.addEventListener('click', () => setLanguage('hi'));
+  }
 
-  [langEnButton, langTrButton, langEsButton, langFrButton, langZhButton].forEach((btn) => {
+  [langEnButton, langTrButton, langEsButton, langFrButton, langZhButton, langHiButton].forEach((btn) => {
     if (btn) {
       btn.addEventListener('click', () => {
         langMenu && langMenu.classList.add('hidden');
@@ -1037,6 +1134,7 @@ export const initializeApp = () => {
   langEsButton = document.getElementById('lang-es');
   langFrButton = document.getElementById('lang-fr');
   langZhButton = document.getElementById('lang-zh');
+  langHiButton = document.getElementById('lang-hi');
   langToggleButton = document.getElementById('lang-toggle');
   langMenu = document.getElementById('lang-menu');
   currentLangLabel = document.getElementById('current-lang');

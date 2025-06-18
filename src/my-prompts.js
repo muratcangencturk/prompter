@@ -61,6 +61,21 @@ const uiText = {
     copyFeedback: '已复制!',
     langZhLabel: '切换到中文',
   },
+  hi: {
+    pageTitle: 'मेरे प्रॉम्प्ट',
+    saveChanges: 'सहेजें',
+    deletePrompt: 'हटाएं',
+    noSaved: 'कोई सहेजे गए प्रॉम्प्ट नहीं।',
+    light: 'लाइट थीम',
+    dark: 'डार्क थीम',
+    back: 'वापस',
+    saveFeedback: 'सहेजा गया!',
+    copyButtonTitle: 'क्लिपबोर्ड पर कॉपी करें',
+    downloadButtonTitle: '.txt के रूप में डाउनलोड करें',
+    shareTwitterTitle: 'ट्विटर पर साझा करें',
+    copyFeedback: 'कॉपी किया गया!',
+    langZhLabel: 'चीनी पर स्विच करें',
+  },
 };
 
 let themeLightButton;
@@ -210,6 +225,9 @@ const setupEvents = () => {
   document
     .getElementById('lang-es')
     ?.addEventListener('click', () => setLanguage('es'));
+  document
+    .getElementById('lang-hi')
+    ?.addEventListener('click', () => setLanguage('hi'));
 
   const buttonPop = (el) => {
     el.classList.add('button-pop');
