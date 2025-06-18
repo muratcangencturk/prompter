@@ -29,6 +29,7 @@ const uiText = {
     langEnLabel: 'Switch to English',
     langTrLabel: 'Switch to Turkish',
     langEsLabel: 'Switch to Spanish',
+    langZhLabel: 'Switch to Chinese',
     appLogoAlt: 'Prompter logo',
   },
   tr: {
@@ -58,6 +59,7 @@ const uiText = {
     langEnLabel: "İngilizce'ye geç",
     langTrLabel: "Türkçe'ye geç",
     langEsLabel: "İspanyolca'ya geç",
+    langZhLabel: 'Çince\'ye geç',
     appLogoAlt: 'Prompter logosu',
   },
   es: {
@@ -86,7 +88,37 @@ const uiText = {
     langEnLabel: 'Cambiar a inglés',
     langTrLabel: 'Cambiar a turco',
     langEsLabel: 'Cambiar a español',
+    langZhLabel: 'Cambiar a chino',
     appLogoAlt: 'Logo de Prompter',
+  },
+  zh: {
+    appTitle: 'PROMPTER',
+    appSubtitle: '面向AI的提示生成器 - 终极提示工程在线空间',
+    chooseStyleTitle: '选择你的提示灵感',
+    generateButtonText: '生成新的提示',
+    yourPromptTitle: '你的专属提示：',
+    copyButtonTitle: '复制到剪贴板',
+    downloadButtonTitle: '下载为 .txt',
+    shareTwitterTitle: '在 Twitter 上分享',
+    saveButtonTitle: '保存提示',
+    deleteButtonTitle: '删除提示',
+    historyTitle: '之前的提示',
+    clearHistoryTitle: '清除历史',
+    copySuccessMessage: '已复制!',
+    saveSuccessMessage: '已保存!',
+    downloadSuccessMessage: '正在下载...',
+    shareMessage: '正在分享...',
+    saveFeedback: '已保存!',
+    appStats: '激发你思维潜力的提示',
+    footerPrompter: 'Prompter',
+    randomCategory: '随机',
+    themeLightTitle: '浅色主题',
+    themeDarkTitle: '深色主题',
+    langEnLabel: '切换到英文',
+    langTrLabel: '切换到土耳其语',
+    langEsLabel: '切换到西班牙语',
+    langZhLabel: '切换到中文',
+    appLogoAlt: 'Prompter 标志',
   },
 };
 
@@ -105,6 +137,7 @@ let shareMessage;
 let langEnButton;
 let langTrButton;
 let langEsButton;
+let langZhButton;
 let langToggleButton;
 let langMenu;
 let currentLangLabel;
@@ -227,6 +260,10 @@ const setLanguage = (lang) => {
     langEsButton.title = uiText[lang].langEsLabel;
     langEsButton.setAttribute('aria-label', uiText[lang].langEsLabel);
   }
+  if (langZhButton) {
+    langZhButton.title = uiText[lang].langZhLabel;
+    langZhButton.setAttribute('aria-label', uiText[lang].langZhLabel);
+  }
   if (currentLangLabel) {
     const arrow = currentLangLabel.querySelector('svg');
     currentLangLabel.textContent = lang.toUpperCase();
@@ -282,6 +319,19 @@ const setLanguage = (lang) => {
         'hover:bg-white/10'
       );
     }
+    if (langZhButton) {
+      langZhButton.classList.remove(
+        'active',
+        'bg-white/30',
+        'text-white',
+        'shadow-md'
+      );
+      langZhButton.classList.add(
+        'bg-transparent',
+        'text-blue-200',
+        'hover:bg-white/10'
+      );
+    }
   } else if (lang === 'tr') {
     langTrButton.classList.add(
       'active',
@@ -318,7 +368,20 @@ const setLanguage = (lang) => {
         'hover:bg-white/10'
       );
     }
-  } else {
+    if (langZhButton) {
+      langZhButton.classList.remove(
+        'active',
+        'bg-white/30',
+        'text-white',
+        'shadow-md'
+      );
+      langZhButton.classList.add(
+        'bg-transparent',
+        'text-blue-200',
+        'hover:bg-white/10'
+      );
+    }
+  } else if (lang === 'es') {
     if (langEsButton) {
       langEsButton.classList.add(
         'active',
@@ -354,6 +417,68 @@ const setLanguage = (lang) => {
       'text-blue-200',
       'hover:bg-white/10'
     );
+    if (langZhButton) {
+      langZhButton.classList.remove(
+        'active',
+        'bg-white/30',
+        'text-white',
+        'shadow-md'
+      );
+      langZhButton.classList.add(
+        'bg-transparent',
+        'text-blue-200',
+        'hover:bg-white/10'
+      );
+    }
+  } else {
+    if (langZhButton) {
+      langZhButton.classList.add(
+        'active',
+        'bg-white/30',
+        'text-white',
+        'shadow-md'
+      );
+      langZhButton.classList.remove(
+        'bg-transparent',
+        'text-blue-200',
+        'hover:bg-white/10'
+      );
+    }
+    langEnButton.classList.remove(
+      'active',
+      'bg-white/30',
+      'text-white',
+      'shadow-md'
+    );
+    langEnButton.classList.add(
+      'bg-transparent',
+      'text-blue-200',
+      'hover:bg-white/10'
+    );
+    langTrButton.classList.remove(
+      'active',
+      'bg-white/30',
+      'text-white',
+      'shadow-md'
+    );
+    langTrButton.classList.add(
+      'bg-transparent',
+      'text-blue-200',
+      'hover:bg-white/10'
+    );
+    if (langEsButton) {
+      langEsButton.classList.remove(
+        'active',
+        'bg-white/30',
+        'text-white',
+        'shadow-md'
+      );
+      langEsButton.classList.add(
+        'bg-transparent',
+        'text-blue-200',
+        'hover:bg-white/10'
+      );
+    }
   }
   localStorage.setItem('language', lang);
   updateButtonTitles();
@@ -773,8 +898,11 @@ const setupEventListeners = () => {
   if (langEsButton) {
     langEsButton.addEventListener('click', () => setLanguage('es'));
   }
+  if (langZhButton) {
+    langZhButton.addEventListener('click', () => setLanguage('zh'));
+  }
 
-  [langEnButton, langTrButton, langEsButton].forEach((btn) => {
+  [langEnButton, langTrButton, langEsButton, langZhButton].forEach((btn) => {
     if (btn) {
       btn.addEventListener('click', () => {
         langMenu && langMenu.classList.add('hidden');
@@ -802,6 +930,7 @@ export const initializeApp = () => {
   langEnButton = document.getElementById('lang-en');
   langTrButton = document.getElementById('lang-tr');
   langEsButton = document.getElementById('lang-es');
+  langZhButton = document.getElementById('lang-zh');
   langToggleButton = document.getElementById('lang-toggle');
   langMenu = document.getElementById('lang-menu');
   currentLangLabel = document.getElementById('current-lang');

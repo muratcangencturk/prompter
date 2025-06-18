@@ -14,6 +14,7 @@ const uiText = {
     downloadButtonTitle: 'Download as .txt',
     shareTwitterTitle: 'Share on Twitter',
     copyFeedback: 'Copied!',
+    langZhLabel: 'Switch to Chinese',
   },
   tr: {
     pageTitle: 'Kayıtlı Promptlarım',
@@ -28,6 +29,7 @@ const uiText = {
     downloadButtonTitle: '.txt olarak indir',
     shareTwitterTitle: "Twitter'da paylaş",
     copyFeedback: 'Kopyalandı!',
+    langZhLabel: 'Çince\'ye geç',
   },
   es: {
     pageTitle: 'Mis Prompts',
@@ -42,6 +44,22 @@ const uiText = {
     downloadButtonTitle: 'Descargar como .txt',
     shareTwitterTitle: 'Compartir en Twitter',
     copyFeedback: '¡Copiado!',
+    langZhLabel: 'Cambiar a chino',
+  },
+  zh: {
+    pageTitle: '我的提示',
+    saveChanges: '保存',
+    deletePrompt: '删除',
+    noSaved: '没有保存的提示。',
+    light: '浅色主题',
+    dark: '深色主题',
+    back: '返回',
+    saveFeedback: '已保存!',
+    copyButtonTitle: '复制到剪贴板',
+    downloadButtonTitle: '下载为 .txt',
+    shareTwitterTitle: '在 Twitter 上分享',
+    copyFeedback: '已复制!',
+    langZhLabel: '切换到中文',
   },
 };
 
