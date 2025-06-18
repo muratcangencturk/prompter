@@ -29,6 +29,7 @@ const uiText = {
     langEnLabel: 'Switch to English',
     langTrLabel: 'Switch to Turkish',
     langEsLabel: 'Switch to Spanish',
+    langFrLabel: 'Switch to French',
     langZhLabel: 'Switch to Chinese',
     appLogoAlt: 'Prompter logo',
   },
@@ -59,6 +60,7 @@ const uiText = {
     langEnLabel: "İngilizce'ye geç",
     langTrLabel: "Türkçe'ye geç",
     langEsLabel: "İspanyolca'ya geç",
+    langFrLabel: 'Fransızca\'ya geç',
     langZhLabel: 'Çince\'ye geç',
     appLogoAlt: 'Prompter logosu',
   },
@@ -88,7 +90,39 @@ const uiText = {
     langEnLabel: 'Cambiar a inglés',
     langTrLabel: 'Cambiar a turco',
     langEsLabel: 'Cambiar a español',
+    langFrLabel: 'Cambiar a francés',
     langZhLabel: 'Cambiar a chino',
+    appLogoAlt: 'Logo de Prompter',
+  },
+  fr: {
+    appTitle: 'PROMPTER',
+    appSubtitle:
+      "Générateur de prompts pour IA - l'espace ultime de l'ingénierie des prompts en ligne",
+    chooseStyleTitle: 'Sélectionnez votre inspiration de prompt',
+    generateButtonText: 'Générer un nouveau prompt',
+    yourPromptTitle: 'Votre prompt unique :',
+    copyButtonTitle: 'Copier dans le presse-papiers',
+    downloadButtonTitle: 'Télécharger en .txt',
+    shareTwitterTitle: 'Partager sur Twitter',
+    saveButtonTitle: 'Enregistrer le prompt',
+    deleteButtonTitle: 'Supprimer le prompt',
+    historyTitle: 'Prompts précédents',
+    clearHistoryTitle: "Effacer l'historique",
+    copySuccessMessage: 'Prompt copié !',
+    saveSuccessMessage: 'Prompt enregistré !',
+    downloadSuccessMessage: 'Téléchargement...',
+    shareMessage: 'Partage en cours...',
+    saveFeedback: 'Enregistré !',
+    appStats: 'Des prompts qui libéreront le potentiel de votre esprit',
+    footerPrompter: 'Prompter',
+    randomCategory: 'Aléatoire',
+    themeLightTitle: 'Thème clair',
+    themeDarkTitle: 'Thème sombre',
+    langEnLabel: "Passer à l'anglais",
+    langTrLabel: 'Passer au turc',
+    langEsLabel: "Passer à l'espagnol",
+    langFrLabel: 'Passer au français',
+    langZhLabel: 'Passer au chinois',
     appLogoAlt: 'Logo de Prompter',
   },
   zh: {
@@ -117,6 +151,7 @@ const uiText = {
     langEnLabel: '切换到英文',
     langTrLabel: '切换到土耳其语',
     langEsLabel: '切换到西班牙语',
+    langFrLabel: '切换到法语',
     langZhLabel: '切换到中文',
     appLogoAlt: 'Prompter 标志',
   },
@@ -137,6 +172,7 @@ let shareMessage;
 let langEnButton;
 let langTrButton;
 let langEsButton;
+let langFrButton;
 let langZhButton;
 let langToggleButton;
 let langMenu;
@@ -259,6 +295,10 @@ const setLanguage = (lang) => {
   if (langEsButton) {
     langEsButton.title = uiText[lang].langEsLabel;
     langEsButton.setAttribute('aria-label', uiText[lang].langEsLabel);
+  }
+  if (langFrButton) {
+    langFrButton.title = uiText[lang].langFrLabel;
+    langFrButton.setAttribute('aria-label', uiText[lang].langFrLabel);
   }
   if (langZhButton) {
     langZhButton.title = uiText[lang].langZhLabel;
@@ -417,6 +457,68 @@ const setLanguage = (lang) => {
       'text-blue-200',
       'hover:bg-white/10'
     );
+    if (langZhButton) {
+      langZhButton.classList.remove(
+        'active',
+        'bg-white/30',
+        'text-white',
+        'shadow-md'
+      );
+      langZhButton.classList.add(
+        'bg-transparent',
+        'text-blue-200',
+        'hover:bg-white/10'
+      );
+    }
+  } else if (lang === 'fr') {
+    if (langFrButton) {
+      langFrButton.classList.add(
+        'active',
+        'bg-white/30',
+        'text-white',
+        'shadow-md'
+      );
+      langFrButton.classList.remove(
+        'bg-transparent',
+        'text-blue-200',
+        'hover:bg-white/10'
+      );
+    }
+    langEnButton.classList.remove(
+      'active',
+      'bg-white/30',
+      'text-white',
+      'shadow-md'
+    );
+    langEnButton.classList.add(
+      'bg-transparent',
+      'text-blue-200',
+      'hover:bg-white/10'
+    );
+    langTrButton.classList.remove(
+      'active',
+      'bg-white/30',
+      'text-white',
+      'shadow-md'
+    );
+    langTrButton.classList.add(
+      'bg-transparent',
+      'text-blue-200',
+      'hover:bg-white/10'
+    );
+    if (langEsButton) {
+      langEsButton.classList.remove(
+        'active',
+        'bg-white/30',
+        'text-white',
+        'shadow-md'
+      );
+      langEsButton.classList.add(
+        'bg-transparent',
+        'text-blue-200',
+        'hover:bg-white/10'
+      );
+    }
     if (langZhButton) {
       langZhButton.classList.remove(
         'active',
@@ -898,11 +1000,14 @@ const setupEventListeners = () => {
   if (langEsButton) {
     langEsButton.addEventListener('click', () => setLanguage('es'));
   }
+  if (langFrButton) {
+    langFrButton.addEventListener('click', () => setLanguage('fr'));
+  }
   if (langZhButton) {
     langZhButton.addEventListener('click', () => setLanguage('zh'));
   }
 
-  [langEnButton, langTrButton, langEsButton, langZhButton].forEach((btn) => {
+  [langEnButton, langTrButton, langEsButton, langFrButton, langZhButton].forEach((btn) => {
     if (btn) {
       btn.addEventListener('click', () => {
         langMenu && langMenu.classList.add('hidden');
@@ -930,6 +1035,7 @@ export const initializeApp = () => {
   langEnButton = document.getElementById('lang-en');
   langTrButton = document.getElementById('lang-tr');
   langEsButton = document.getElementById('lang-es');
+  langFrButton = document.getElementById('lang-fr');
   langZhButton = document.getElementById('lang-zh');
   langToggleButton = document.getElementById('lang-toggle');
   langMenu = document.getElementById('lang-menu');
