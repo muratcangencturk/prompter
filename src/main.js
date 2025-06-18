@@ -6,7 +6,7 @@ const fetchManifestVersion = async () => {
   try {
     const link = document.querySelector('link[rel="manifest"]');
     if (!link) return null;
-    const url = link.getAttribute('href');
+    const url = link.href; // ensures correct path under <base>
     const sep = url.includes('?') ? '&' : '?';
     const res = await fetch(`${url}${sep}v=${Date.now()}`, { cache: 'no-store' });
     if (!res.ok) return null;
