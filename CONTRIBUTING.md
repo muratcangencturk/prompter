@@ -47,6 +47,6 @@ This will lint the codebase and report any issues.
 
 1. Create a new branch for your changes.
 2. Make your edits and commit them with clear messages.
-3. If you modify any HTML files or the `prompts/` directory, run `npm run build` to regenerate `prompts.js` and update `manifest.json` and HTML versions. A pre-commit hook will do this automatically when these files change.
+3. If you modify any HTML files, JavaScript under `src/`, or the `prompts/` directory, run `npm run build` to regenerate `prompts.js` and update `manifest.json` and HTML versions. A pre-commit hook will do this automatically when these files change.
 4. Run `npm test` and `npm run format` before opening a PR.
 5. Push your branch to your fork and open a pull request on GitHub, describing your changes.

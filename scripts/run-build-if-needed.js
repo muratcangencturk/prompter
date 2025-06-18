@@ -9,11 +9,16 @@ function getChangedFiles() {
 }
 
 function hasRelevantChanges(files) {
-  return files.some((f) => f.endsWith('.html') || f.startsWith('prompts/'));
+  return files.some(
+    (f) =>
+      f.endsWith('.html') ||
+      f.startsWith('prompts/') ||
+      (f.startsWith('src/') && f.endsWith('.js'))
+  );
 }
 
 const changed = getChangedFiles();
 if (hasRelevantChanges(changed)) {
-  console.log('HTML or prompt changes detected. Running build...');
+  console.log('HTML, prompts, or JavaScript changes detected. Running build...');
   execSync('npm run build', { stdio: 'inherit' });
 }
