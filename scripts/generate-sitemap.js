@@ -10,6 +10,7 @@ const urls = [
   `${BASE_URL}/tr/`,
   `${BASE_URL}/zh/`,
   `${BASE_URL}/fr/`,
+  `${BASE_URL}/hi/`,
   `${BASE_URL}/privacy.html`,
   `${BASE_URL}/my-prompts.html`, // new page
 ];
