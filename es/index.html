@@ -131,6 +131,10 @@
             resolveLoad = resolve;
           });
 
+          if (!navigator.onLine) {
+            return { cdn: null, local: null, loadPromise: Promise.reject(new Error('offline')) };
+          }
+
           const addLocal = () => {
             if (!localScript) {
               localScript = document.createElement('script');
@@ -141,13 +145,7 @@
             }
           };
 
-          // If offline, load local immediately
-          if (!navigator.onLine) {
-            addLocal();
-            return { cdn: null, local: localScript, loadPromise };
-          }
-
-          // Online: Try CDN with fallback
+          // Try CDN first with local fallback if the request fails
           let fallbackTimer = null;
 
           // Set up fallback timer (500ms to quickly load local icons if CDN is slow)
@@ -500,7 +498,6 @@
       </div>
     </div>
 
-    <script src="prompts.js?v=20"></script>
     <script type="module" src="src/main.js?v=20"></script>
   </body>
 </html>

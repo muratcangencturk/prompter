@@ -213,7 +213,9 @@ export const loadCategory = async (lang, cat) => {
     // copy preloaded data so global window.prompts is never mutated
     data = { ...preloaded };
   } else {
-    const res = await fetch(`prompts/${lang}/${cat}.json`);
+    const res = await fetch(`prompts/${lang}/${cat}.json`, {
+      cache: 'no-store',
+    });
     data = await res.json();
   }
 
@@ -223,6 +225,9 @@ export const loadCategory = async (lang, cat) => {
 };
 
 export const generatePrompt = async () => {
+  if (!navigator.onLine) {
+    throw new Error('offline');
+  }
   appState.isGenerating = true;
   let selectedCatId = appState.selectedCategory;
 
