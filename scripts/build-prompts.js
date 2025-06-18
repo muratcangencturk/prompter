@@ -83,14 +83,14 @@ function appendVersionToAssets(html, version) {
     if (url.endsWith('.html')) return m;
     const base = url.split(/[?#]/)[0];
     if (!extPattern.test(base)) return m;
-    const hasVersion = /[?&]v=\d+$/.test(url);
-    if (hasVersion) return m;
-    const sep = url.includes('?') ? '&' : '?';
-    return `${attr}=${quote}${url}${sep}v=${version}${quote}`;
+    // Remove existing version query parameter if present
+    const cleaned = url.replace(/[?&]v=\d+$/, '');
+    const sep = cleaned.includes('?') ? '&' : '?';
+    return `${attr}=${quote}${cleaned}${sep}v=${version}${quote}`;
   });
-  result = result.replace(/(['"])tailwind\.js\1/g, `$1tailwind.js?v=${version}$1`);
-  result = result.replace(/(['"])lucide\.min\.js\1/g, `$1lucide.min.js?v=${version}$1`);
-  result = result.replace(/(['"])prompts\.js\1/g, `$1prompts.js?v=${version}$1`);
+  result = result.replace(/tailwind\.js(?:\?v=\d+)?/g, `tailwind.js?v=${version}`);
+  result = result.replace(/lucide\.min\.js(?:\?v=\d+)?/g, `lucide.min.js?v=${version}`);
+  result = result.replace(/prompts\.js(?:\?v=\d+)?/g, `prompts.js?v=${version}`);
   return result;
 }
 
