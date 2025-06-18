@@ -195,11 +195,12 @@
     <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=20" />
     <script>
       (function () {
-        const savedTheme = localStorage.getItem('theme');
-        if (!savedTheme) return;
         const linkEl = document.getElementById('theme-css');
-        if (linkEl) {
-          linkEl.href = `css/theme-${savedTheme}.css`;
+        if (!linkEl) return;
+        const version = linkEl.getAttribute('href').split('?')[1];
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          linkEl.href = `css/theme-${savedTheme}.css${version ? `?${version}` : ''}`;
         }
       })();
     </script>
