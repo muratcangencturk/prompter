@@ -111,6 +111,7 @@ let currentLangLabel;
 let themeLightButton;
 let themeDarkButton;
 let themeLinkElement;
+let themeVersion = '';
 let appLogo;
 let historyPanel;
 let historyList;
@@ -120,7 +121,8 @@ let lastGeneratedCategoryId = appState.selectedCategory;
 const setTheme = (theme) => {
   appState.theme = theme;
   if (themeLinkElement) {
-    themeLinkElement.href = `css/theme-${theme}.css`;
+    const versionSuffix = themeVersion ? `?${themeVersion}` : '';
+    themeLinkElement.href = `css/theme-${theme}.css${versionSuffix}`;
   }
   if (theme === THEMES.LIGHT) {
     themeLightButton.classList.add(
@@ -806,6 +808,13 @@ export const initializeApp = () => {
   themeLightButton = document.getElementById('theme-light');
   themeDarkButton = document.getElementById('theme-dark');
   themeLinkElement = document.getElementById('theme-css');
+  if (themeLinkElement) {
+    const href = themeLinkElement.getAttribute('href') || '';
+    const parts = href.split('?');
+    if (parts[1]) {
+      themeVersion = parts[1];
+    }
+  }
   appLogo = document.getElementById('app-logo');
   historyPanel = document.getElementById('history-panel');
   historyList = document.getElementById('history-list');

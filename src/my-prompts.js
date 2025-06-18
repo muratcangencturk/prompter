@@ -48,12 +48,14 @@ const uiText = {
 let themeLightButton;
 let themeDarkButton;
 let themeLinkElement;
+let themeVersion = '';
 let listContainer;
 
 const setTheme = (theme) => {
   appState.theme = theme;
   if (themeLinkElement) {
-    themeLinkElement.href = `css/theme-${theme}.css`;
+    const versionSuffix = themeVersion ? `?${themeVersion}` : '';
+    themeLinkElement.href = `css/theme-${theme}.css${versionSuffix}`;
   }
   localStorage.setItem('theme', theme);
   updateTexts();
@@ -270,6 +272,13 @@ const init = () => {
   themeLightButton = document.getElementById('theme-light');
   themeDarkButton = document.getElementById('theme-dark');
   themeLinkElement = document.getElementById('theme-css');
+  if (themeLinkElement) {
+    const href = themeLinkElement.getAttribute('href') || '';
+    const parts = href.split('?');
+    if (parts[1]) {
+      themeVersion = parts[1];
+    }
+  }
   listContainer = document.getElementById('saved-list');
 
   const lang = localStorage.getItem('language') || 'en';
