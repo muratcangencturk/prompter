@@ -27,6 +27,31 @@ body {
     sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+html {
+  font-size: 110%;
+}
+
+#choose-style-title {
+  display: none;
+}
+
+#app-logo {
+  width: 4.5rem;
+  height: 4.5rem;
+}
+
+.category-button {
+  height: 4.5rem;
+}
+
+.category-button .emoji-icon {
+  font-size: 1.5rem;
+}
+
+.category-button span {
+  font-size: 0.75rem;
+}
 .bg-gradient-to-br {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
 }
