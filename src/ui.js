@@ -853,8 +853,12 @@ const handleGenerate = async () => {
     lastGeneratedCategoryId = categoryId;
   } catch (err) {
     console.error(err);
-    generatedPromptText.textContent =
-      'Error generating prompt. Please try again.';
+    if (err && err.message === 'offline') {
+      generatedPromptText.textContent = 'Internet connection required.';
+    } else {
+      generatedPromptText.textContent =
+        'Error generating prompt. Please try again.';
+    }
   } finally {
     appState.isGenerating = false;
     generateButton.disabled = false;

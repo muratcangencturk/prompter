@@ -26,7 +26,7 @@ python3 -m http.server
 
 and then visit `http://localhost:8000`. This ensures the JSON prompt files load correctly. The generator still requires an internet connection.
 
-You can open `index.html` directly from your file system, but prompts will not load unless `prompts.js` is available because the JSON prompt files cannot be fetched when using the `file://` protocol.
+You can open `index.html` directly from your file system, but prompts will not load because the app fetches its data over the network.
 
 ### Versioning
 
