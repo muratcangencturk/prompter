@@ -57,7 +57,14 @@ export const categories = [
     id: 'random',
     icon: 'shuffle',
     emoji: '🔀',
-    name: { en: 'Random', tr: 'Rastgele', es: 'Aleatorio', zh: '随机', fr: 'Aléatoire' },
+    name: {
+      en: 'Random',
+      tr: 'Rastgele',
+      es: 'Aleatorio',
+      zh: '随机',
+      fr: 'Aléatoire',
+      hi: 'रैंडम',
+    },
   },
   {
     id: 'inspiring',
@@ -69,6 +76,7 @@ export const categories = [
       es: 'Inspirador',
       zh: '鼓舞人心',
       fr: 'Inspirant',
+      hi: 'प्रेरणादायक',
     },
   },
   {
@@ -81,6 +89,7 @@ export const categories = [
       es: 'Interesante',
       zh: '有趣',
       fr: 'Intéressant',
+      hi: 'दिलचस्प',
     },
   },
   {
@@ -93,6 +102,7 @@ export const categories = [
       es: 'Productividad',
       zh: '生产力',
       fr: 'Productivité',
+      hi: 'उत्पादकता',
     },
   },
   {
@@ -105,6 +115,7 @@ export const categories = [
       es: 'Educativo',
       zh: '教育',
       fr: 'Éducatif',
+      hi: 'शैक्षिक',
     },
   },
   {
@@ -117,6 +128,7 @@ export const categories = [
       es: 'Ideas Locas',
       zh: '疯狂',
       fr: 'Idées Folles',
+      hi: 'पागलपन',
     },
   },
   {
@@ -129,31 +141,39 @@ export const categories = [
       es: 'Perspectiva',
       zh: '视角',
       fr: 'Perspective',
+      hi: 'दृष्टिकोण',
     },
   },
   {
     id: 'ai',
     icon: 'cpu',
     emoji: '🤖',
-    name: { en: 'AI', tr: 'YZ', es: 'IA', zh: '人工智能', fr: 'IA' },
+    name: { en: 'AI', tr: 'YZ', es: 'IA', zh: '人工智能', fr: 'IA', hi: 'एआई' },
   },
   {
     id: 'ideas',
     icon: 'lightbulb',
     emoji: '💡',
-    name: { en: 'Ideas', tr: 'Fikirler', es: 'Ideas', zh: '创意', fr: 'Idées' },
+    name: {
+      en: 'Ideas',
+      tr: 'Fikirler',
+      es: 'Ideas',
+      zh: '创意',
+      fr: 'Idées',
+      hi: 'विचार',
+    },
   },
   {
     id: 'video',
     icon: 'video',
     emoji: '🎬',
-    name: { en: 'Video', tr: 'Video', es: 'Video', zh: '视频', fr: 'Vidéo' },
+    name: { en: 'Video', tr: 'Video', es: 'Video', zh: '视频', fr: 'Vidéo', hi: 'वीडियो' },
   },
   {
     id: 'image',
     icon: 'image',
     emoji: '🖼️',
-    name: { en: 'Image', tr: 'Görsel', es: 'Imagen', zh: '图像', fr: 'Image' },
+    name: { en: 'Image', tr: 'Görsel', es: 'Imagen', zh: '图像', fr: 'Image', hi: 'छवि' },
   },
   {
     id: 'hellprompts',
@@ -165,6 +185,7 @@ export const categories = [
       es: 'Hellprompts',
       zh: '地狱提示',
       fr: 'Hellprompts',
+      hi: 'हेलप्रॉम्प्ट्स',
     },
   },
 ];
