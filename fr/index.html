@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="fr">
   <head>
     <script>
       (function (ryjgik) {
@@ -13,6 +13,8 @@
         l.parentNode.insertBefore(s, l);
       })({});
     </script>
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <meta name="cc68b00e4c2c654ccaa58380d6d9d7528bf247e9" content="cc68b00e4c2c654ccaa58380d6d9d7528bf247e9" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
@@ -20,7 +22,7 @@
       content="upgrade-insecure-requests"
     />
     <title>PROMPTER</title>
-    <base href="../" />
+    <base href="./" />
     <link rel="icon" type="image/svg+xml" href="icons/logo.svg?v=20" />
     <link rel="preload" href="icons/logo.svg?v=20" as="image" />
     <link rel="manifest" href="manifest.json?v=20" />
@@ -33,17 +35,17 @@
     <meta http-equiv="Expires" content="0" />
     <meta
       name="description"
-      content="Creative AI prompt generator that requires an internet connection."
+      content="Générateur de prompts créatifs pour l'IA nécessitant une connexion Internet."
     />
     <meta
       name="keywords"
-      content="Generador de prompts de IA, comandos creativos, inteligencia artificial, creador de prompts, AI prompts"
+      content="AI prompts, prompt generator, creative prompts, AI prompter, prompt maker, yapay zeka komutları, yaratıcı prompt üretici, prompt oluşturucu"
     />
     <meta name="robots" content="index,follow" />
     <meta property="og:title" content="PROMPTER" />
     <meta
       property="og:description"
-      content="Creative AI prompt generator that requires an internet connection."
+      content="Générateur de prompts créatifs pour l'IA nécessitant une connexion Internet."
     />
     <meta property="og:image" content="icons/logo.svg?v=20" />
     <meta property="og:type" content="website" />
@@ -51,18 +53,18 @@
     <meta name="twitter:title" content="PROMPTER" />
     <meta
       name="twitter:description"
-      content="Creative AI prompt generator that requires an internet connection."
+      content="Générateur de prompts créatifs pour l'IA nécessitant une connexion Internet."
     />
     <meta name="twitter:image" content="icons/logo.svg?v=20" />
-    <meta property="og:url" content="https://prompterai.space/es/" />
+    <meta property="og:url" content="https://prompterai.space/fr/" />
     <meta property="og:site_name" content="Prompter" />
-    <meta property="og:locale" content="es" />
+    <meta property="og:locale" content="fr" />
     <meta property="og:locale:alternate" content="en" />
     <meta property="og:locale:alternate" content="tr" />
+    <meta property="og:locale:alternate" content="es" />
     <meta property="og:locale:alternate" content="zh" />
-    <meta property="og:locale:alternate" content="fr" />
-    <meta name="twitter:url" content="https://prompterai.space/es/" />
-    <link rel="canonical" href="https://prompterai.space/es/" />
+    <meta name="twitter:url" content="https://prompterai.space/fr/" />
+    <link rel="canonical" href="https://prompterai.space/fr/" />
     <link rel="alternate" href="https://prompterai.space/" hreflang="x-default" />
     <link rel="alternate" href="https://prompterai.space/" hreflang="en" />
     <link rel="alternate" href="https://prompterai.space/tr/" hreflang="tr" />
@@ -73,11 +75,14 @@
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "url": "https://prompterai.space/es/",
+        "url": "https://prompterai.space/",
         "name": "Prompter",
         "alternateName": "Prompter",
-        "inLanguage": ["es", "en", "tr", "fr"],
-        "publisher": { "@type": "Organization", "name": "Prompter" }
+        "inLanguage": ["en", "tr", "es", "fr"],
+        "publisher": {
+          "@type": "Organization",
+          "name": "Prompter"
+        }
       }
     </script>
     <script type="application/ld+json">
@@ -87,17 +92,14 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "¿Qué es Prompter?",
+            "name": "What is Prompter?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Prompter es una aplicación web que genera prompts creativos para inteligencia artificial."
+              "text": "Prompter is a web app that generates creative prompts for AI models."
             }
           }
         ]
       }
-    </script>
-    <script>
-      localStorage.setItem('language', 'es');
     </script>
     <script>
       (function () {
@@ -217,6 +219,21 @@
     </script>
   </head>
   <body class="min-h-screen p-4">
+    <script
+      async
+      type="application/javascript"
+      src="https://a.magsrv.com/ad-provider.js"
+    ></script>
+    <ins
+      class="eas6a97888e17"
+      data-zoneid="5646368"
+      data-keywords="keywords"
+      data-sub="123450000"
+    ></ins>
+    <script>
+      (AdProvider = window.AdProvider || []).push({ serve: {} });
+    </script>
+
     <div id="loading-screen">
       <div class="spinner" aria-label="Loading"></div>
     </div>
@@ -228,7 +245,7 @@
     >
       <!-- Theme Toggle -->
       <div
-        class="theme-toggle-container absolute top-4 right-4 flex items-center gap-2 bg-black/20 backdrop-blur-sm p-1 rounded-lg border border-white/20 z-10"
+        class="theme-toggle-container absolute top-4 right-0 flex items-center gap-2 bg-black/20 backdrop-blur-sm p-1 rounded-lg border border-white/20 z-10"
       >
         <button
           id="theme-light"
@@ -260,7 +277,7 @@
 
       <!-- Language Switcher -->
       <div
-        class="absolute top-4 left-4 flex items-center gap-2 bg-black/20 backdrop-blur-sm p-1 rounded-lg border border-white/20 z-10"
+        class="absolute top-4 left-0 flex items-center gap-2 bg-black/20 backdrop-blur-sm p-1 rounded-lg border border-white/20 z-10"
       >
         <div class="relative flex items-center" id="lang-container">
           <button
@@ -279,7 +296,7 @@
             id="current-lang"
             class="text-blue-200 text-sm font-semibold cursor-pointer flex flex-col items-center leading-none"
           >
-            TR
+            EN
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="w-3 h-3 mt-0.5"
@@ -344,7 +361,7 @@
       </div>
 
       <!-- Header -->
-      <div class="text-center mb-6 pt-16 md:pt-12">
+      <div class="text-center mb-6 pt-4">
         <img
           src="icons/logo.svg?v=20"
           alt="Prompter logo"
@@ -356,12 +373,12 @@
         />
         <h1
           id="app-title"
-          class="text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
+          class="text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
         >
           PROMPTER
         </h1>
-        <p id="app-subtitle" class="text-blue-200 text-lg md:text-xl px-2">
-          YZ için prompt üretici - prompt mühendisliğinin online adresi
+        <p id="app-subtitle" class="text-blue-200 text-base md:text-lg px-2">
+          Prompt generator for AI - the ultimate prompt engineering online space
         </p>
       </div>
 
@@ -448,6 +465,14 @@
                 aria-label="Save icon"
               ></i>
             </button>
+            <button
+              id="share-twitter"
+              class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+              title="Share on Twitter"
+              aria-label="Share on Twitter"
+            >
+              <i data-lucide="twitter" class="w-4 h-4" aria-hidden="true"></i>
+            </button>
           </div>
         </div>
         <div
@@ -465,6 +490,87 @@
         >
           Prompt copied successfully!
         </p>
+        <p
+          id="download-success-message"
+          class="text-green-400 text-sm mt-2 animate-pulse hidden"
+        >
+          Downloading...
+        </p>
+        <p
+          id="save-success-message"
+          class="text-green-400 text-sm mt-2 animate-pulse hidden"
+        >
+          Prompt saved!
+        </p>
+        <p
+          id="share-message"
+          class="text-green-400 text-sm mt-2 animate-pulse hidden"
+        >
+          Sharing...
+        </p>
+      </div>
+    <div class="mt-4 flex flex-wrap justify-between gap-4 items-start">
+      <script>
+       (function(ebuww){
+         var d = document,
+          s = d.createElement('script'),
+          l = d.scripts[d.scripts.length - 1];
+          s.settings = ebuww || {};
+          s.src = "\/\/complete-drink.com\/bsXRVnsld.G\/lB0gYzWocl\/_eXm\/9uu_ZSUjlMkYPFT\/Y_0dMezpUI2\/NvzCUot\/NzjUQYzDNMTVYS3INKgF";
+          s.async = true;
+        s.referrerPolicy = 'no-referrer-when-downgrade';
+        l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+      <script>
+        (function(ccqp){
+          var d = document,
+            s = d.createElement('script'),
+            l = d.scripts[d.scripts.length - 1];
+          s.settings = ccqp || {};
+          s.src = "\/\/complete-drink.com\/b\/XxV.sydBGBlg0zYGWIcx\/ceAmE9juAZGU\/l-k\/PwTJYB0WMEzIUM4SMETjYIteNfjHQLzENzTRgdxxNewE";
+          s.async = true;
+          s.referrerPolicy = 'no-referrer-when-downgrade';
+          l.parentNode.insertBefore(s, l);
+        })({})
+      </script>
+      <script>
+        (function(wsnt){
+          var d = document,
+              s = d.createElement('script'),
+              l = d.scripts[d.scripts.length - 1];
+          s.settings = wsnt || {};
+          s.src = "\/\/complete-drink.com\/bgX.VEsydqGplf0UYIWCc-\/me\/mn9cubZxUEl\/kMP\/TiYT0oMNz\/Ud4NMpjIY-tQNFjbQozHNrT_gfy\/NawS";
+          s.async = true;
+          s.referrerPolicy = 'no-referrer-when-downgrade';
+          l.parentNode.insertBefore(s, l);
+        })({})
+      </script>
+    </div>
+    <!-- Prompt History -->
+    <div
+      id="history-panel"
+      class="hidden bg-white/10 backdrop-blur-md rounded-2xl p-4 mt-4 border border-white/20 shadow-lg"
+      >
+        <div class="flex justify-between items-center mb-3">
+          <h3 id="history-title" class="text-lg font-semibold">
+            Previous Prompts
+          </h3>
+          <button
+            id="clear-history"
+            class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+            title="Clear history"
+            aria-label="Clear history"
+          >
+            <i
+              data-lucide="trash"
+              class="w-4 h-4"
+              role="img"
+              aria-label="Trash icon"
+            ></i>
+          </button>
+        </div>
+        <ul id="history-list" class="space-y-2 text-sm"></ul>
       </div>
 
       <!-- Footer/Stats -->
@@ -475,22 +581,20 @@
         <p id="footer-prompter" class="text-blue-300 text-xs font-semibold">
           Prompter
         </p>
+        <a href="privacy.html" class="text-blue-400 underline block mt-2"
+          >Privacy Policy</a
+        >
         <a
           href="https://chat.whatsapp.com/LAu2OosQEmd73CBl56sIRi"
           target="_blank"
           rel="noopener"
           class="flex justify-center mt-2"
-          aria-label="Grupo de WhatsApp"
+          aria-label="WhatsApp Group"
         >
-          <img
-            src="icons/whatsapp.svg?v=20"
-            class="w-6 h-6"
-            alt="Logo de WhatsApp"
-          />
+          <img src="icons/whatsapp.svg?v=20" class="w-6 h-6" alt="WhatsApp logo" />
         </a>
       </div>
     </div>
-
     <script src="prompts.js?v=20"></script>
     <script type="module" src="src/main.js?v=20"></script>
   </body>
