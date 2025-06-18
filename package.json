@@ -5,6 +5,7 @@
   "scripts": {
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{js,json,md,css,html}\"",
+    "prepare": "husky install",
     "pretest": "node scripts/check-node-modules.js",
     "test": "npm run lint && npm run lint:prompts",
     "lint:prompts": "node scripts/check-prompts.js",
@@ -12,11 +13,13 @@
     "build:sitemap": "node scripts/generate-sitemap.js",
     "start": "http-server -c-1",
     "optimize:images": "svgo -r icons",
-    "add:content": "node scripts/add-seo-lines.js"
+    "add:content": "node scripts/add-seo-lines.js",
+    "precommit:build": "node scripts/run-build-if-needed.js"
   },
   "devDependencies": {
     "eslint": "8.57.0",
     "http-server": "^14.1.1",
+    "husky": "^8.0.3",
     "prettier": "^2.8.8",
     "svgo": "^3.3.2"
   }
