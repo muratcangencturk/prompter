@@ -41,7 +41,7 @@ The `manifest.json` file includes a `version` field that increments on each buil
 
 ### Language
 
-- Prompter currently supports **English** (`EN`), **Turkish** (`TR`) and **Spanish** (`ES`).
+- Prompter currently supports **English** (`EN`), **Turkish** (`TR`), **Spanish** (`ES`) and **Hindi** (`HI`).
 - Use the language switcher in the top‑right corner to choose your interface language. The setting persists in your browser.
 
 ## Accessibility
@@ -94,7 +94,7 @@ of strings. These arrays represent the beginning, topic, continuation and ending
 
 1. Add a new JSON file under `prompts/<language>/` following the structure above.
 2. Register the category in `src/main.js` with an icon, emoji and names.
-3. Provide corresponding files for other languages to offer translations.
+3. Provide corresponding files for other languages to offer translations—use the Hindi (`hi`) folder as a reference.
 4. Run `npm run build` to regenerate `prompts.js` and bump the version in `manifest.json` so deployments include your changes.
 5. Run `node scripts/count-prompts.js` to see how many unique prompts each category provides per language.
 
