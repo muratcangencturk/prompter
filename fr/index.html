@@ -11,9 +11,9 @@
     />
     <title>PROMPTER</title>
     <base href="./" />
-    <link rel="icon" type="image/svg+xml" href="icons/logo.svg?v=26" />
-    <link rel="preload" href="icons/logo.svg?v=26" as="image" />
-    <link rel="manifest" href="manifest.json?v=26" />
+    <link rel="icon" type="image/svg+xml" href="icons/logo.svg?v=29" />
+    <link rel="preload" href="icons/logo.svg?v=29" as="image" />
+    <link rel="manifest" href="manifest.json?v=29" />
     <meta name="theme-color" content="#000000" />
     <meta
       http-equiv="Cache-Control"
@@ -35,7 +35,8 @@
       property="og:description"
       content="Générateur de prompts créatifs pour l'IA nécessitant une connexion Internet."
     />
-    <meta property="og:image" content="icons/logo.svg?v=26" />
+    <meta property="og:image" content="icons/logo.svg?v=29" />
+    <meta property="og:image:alt" content="Prompter logo" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="PROMPTER" />
@@ -43,7 +44,7 @@
       name="twitter:description"
       content="Générateur de prompts créatifs pour l'IA nécessitant une connexion Internet."
     />
-    <meta name="twitter:image" content="icons/logo.svg?v=26" />
+    <meta name="twitter:image" content="icons/logo.svg?v=29" />
     <meta property="og:url" content="https://prompterai.space/fr/" />
     <meta property="og:site_name" content="Prompter" />
     <meta property="og:locale" content="fr" />
@@ -175,11 +176,11 @@
 
         const tailwindScripts = loadWithFallback(
           'https://cdn.tailwindcss.com',
-          'tailwind.js?v=26'
+          'tailwind.js?v=29'
         );
         window.lucideScripts = loadWithFallback(
-          'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=26',
-          'lucide.min.js?v=26'
+          'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=29',
+          'lucide.min.js?v=29'
         );
         Promise.all([
           tailwindScripts.loadPromise,
@@ -192,8 +193,8 @@
         });
       })();
     </script>
-    <link rel="stylesheet" href="css/app.css?v=26" />
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=26" />
+    <link rel="stylesheet" href="css/app.css?v=29" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=29" />
     <script>
       (function () {
         const linkEl = document.getElementById('theme-css');
@@ -358,7 +359,7 @@
       <!-- Header -->
       <div class="text-center mb-3 pt-2">
         <img
-          src="icons/logo.svg?v=26"
+          src="icons/logo.svg?v=29"
           alt="Prompter logo"
           class="mx-auto mb-4 w-16 h-16"
           id="app-logo"
@@ -598,10 +599,10 @@
           class="flex justify-center mt-2"
           aria-label="WhatsApp Group"
         >
-          <img src="icons/whatsapp.svg?v=26" class="w-6 h-6" alt="WhatsApp logo" />
+          <img src="icons/whatsapp.svg?v=29" class="w-6 h-6" alt="WhatsApp logo" />
         </a>
       </div>
     </div>
-    <script type="module" src="src/main.js?v=26"></script>
+    <script type="module" src="src/main.js?v=29"></script>
   </body>
 </html>
