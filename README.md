@@ -11,8 +11,8 @@ Prompt templates are stored in small JSON files under the `prompts/` directory a
 - Requires an internet connection
 - Fast loading thanks to lightweight JSON prompt files
 - Light and dark themes
-- English, Turkish and Spanish interface
-- Twelve prompt categories with over 53M combinations per language (more than 159M across EN, TR and ES)
+- English, Turkish, Spanish, Hindi, French and Chinese interface
+- Twelve prompt categories with over 53M combinations per language (more than 318M across EN, TR, ES, HI, FR and ZH)
 
 This **AI prompt generator** delivers **creative prompt ideas** in a lightweight web app that runs directly in your browser. An internet connection is required.
 
@@ -41,7 +41,7 @@ The `manifest.json` file includes a `version` field that increments on each buil
 
 ### Language
 
-- Prompter currently supports **English** (`EN`), **Turkish** (`TR`), **Spanish** (`ES`) and **Hindi** (`HI`).
+- Prompter currently supports **English** (`EN`), **Turkish** (`TR`), **Spanish** (`ES`), **Hindi** (`HI`), **French** (`FR`) and **Chinese** (`ZH`).
 - Use the language switcher in the top‑right corner to choose your interface language. The setting persists in your browser.
 
 ## Accessibility
@@ -65,7 +65,7 @@ Prompter offers a variety of prompt themes. Select a category by clicking its ic
 - **Image** – descriptions for unique visuals or logos
 - **Hellprompts** – unsettling horror themes
 
-Prompter includes **12 categories** in total—the **Random** plus 11 themed options listed above. Each prompt is composed of four parts. Most categories now have **52** openings and endings and around **51** middle lines. The **AI** set now has **62** entries for its first and last sections, while **Ideas** and **Perspective** gained extra variations. As a result, most categories generate **7,033,104** prompts each. **Perspective** yields **7,030,503**, **Ideas** produces **8,642,816** and **AI** reaches **14,303,524**. In total the 11 themed categories provide **86,241,675** unique prompts per language—**258,725,025** across English, Turkish and Spanish.
+Prompter includes **12 categories** in total—the **Random** plus 11 themed options listed above. Each prompt is composed of four parts. Most categories now have **52** openings and endings and around **51** middle lines. The **AI** set now has **62** entries for its first and last sections, while **Ideas** and **Perspective** gained extra variations. As a result, most categories generate **7,033,104** prompts each. **Perspective** yields **7,030,503**, **Ideas** produces **8,642,816** and **AI** reaches **14,303,524**. In total the 11 themed categories provide **86,241,675** unique prompts per language—**517,450,050** across English, Turkish, Spanish, Hindi, French and Chinese.
 
 If icon fonts fail to load, the app falls back to emoji symbols so the buttons remain visible.
 
