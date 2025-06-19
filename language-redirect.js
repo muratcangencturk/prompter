@@ -17,10 +17,10 @@
   const lang = (navigator.language || '').toLowerCase();
   const prefix = lang.slice(0, 2);
 
-  const target = routes[prefix] || '/en/';
+  const target = routes[prefix] || '/';
 
   // Avoid redirect loops by checking current path
-  if (!location.pathname.startsWith(target)) {
+  if (location.pathname !== target) {
     // Use replace so the redirect doesn't create a history entry
     location.replace(target);
   }
