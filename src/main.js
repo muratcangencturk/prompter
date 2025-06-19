@@ -31,11 +31,22 @@ const startVersionCheck = async () => {
   }, 5 * 60 * 1000);
 };
 
+const hideEmptyAdSlots = () => {
+  const slots = document.querySelectorAll('.ad-slot');
+  slots.forEach((slot) => {
+    const hasAd = slot.querySelector('iframe, img, ins');
+    if (!hasAd || slot.offsetHeight < 5) {
+      slot.remove();
+    }
+  });
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   initializeApp();
   if (window.lucide && typeof window.lucide.createIcons === 'function') {
     window.lucide.createIcons();
   }
+  setTimeout(hideEmptyAdSlots, 4000);
   startVersionCheck();
 });
 
