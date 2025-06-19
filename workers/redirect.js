@@ -26,7 +26,7 @@ export default {
       ['CN', '/zh/'],
     ]);
 
-    const target = routes.get(country) || '/en/';
+    const target = routes.get(country) || '/';
 
     const redirectUrl = new URL(target, url.origin);
     // Return 302 redirect to the appropriate language path
