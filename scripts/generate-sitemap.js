@@ -26,7 +26,11 @@ function pathToUrl(file) {
   return `${BASE_URL}/${rel}`;
 }
 
-const urls = getHtmlFiles(rootDir).map((file) => ({
+let htmlFiles = getHtmlFiles(rootDir);
+const customFiles = [path.join(rootDir, '404.html')];
+htmlFiles = Array.from(new Set([...htmlFiles, ...customFiles]));
+
+const urls = htmlFiles.map((file) => ({
   loc: pathToUrl(file),
   lastmod: fs.statSync(file).mtime.toISOString().split('T')[0],
   changefreq: 'monthly',
