@@ -870,6 +870,9 @@ const setupEventListeners = () => {
     const button = document.getElementById(`category-${category.id}`);
     if (button) {
       button.addEventListener('click', () => {
+        if (category.id === 'random') {
+          window.open('https://otieu.com/4/9472472', '_blank');
+        }
         appState.selectedCategory = category.id;
         document
           .querySelectorAll('.category-button')
