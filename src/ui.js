@@ -8,8 +8,7 @@ const uiText = {
       'Prompt generator for AI - the ultimate prompt engineering online space',
     chooseStyleTitle: 'Select Your Prompt Inspiration',
     generateButtonText: 'Generate New Prompt',
-    yourPromptTitle: 'Your Unique Prompt',
-    historyBottom: 'Prompt History is at the Bottom',
+    yourPromptTitle: 'Your Prompt',
     copyButtonTitle: 'Copy to clipboard',
     downloadButtonTitle: 'Download as .txt',
     shareTwitterTitle: 'Share on Twitter',
@@ -40,7 +39,7 @@ const uiText = {
       'YZ için prompt üretici - prompt mühendisliğinin online adresi',
     chooseStyleTitle: 'Prompt İlhamınızı Seçin',
     generateButtonText: 'Yeni Prompt Üret',
-    yourPromptTitle: 'Benzersiz Promptunuz',
+    yourPromptTitle: 'Promptunuz',
     historyBottom: 'Geçmiş aşağıda',
     copyButtonTitle: 'Panoya kopyala',
     downloadButtonTitle: '.txt olarak indir',
@@ -62,8 +61,8 @@ const uiText = {
     langEnLabel: "İngilizce'ye geç",
     langTrLabel: "Türkçe'ye geç",
     langEsLabel: "İspanyolca'ya geç",
-    langFrLabel: 'Fransızca\'ya geç',
-    langZhLabel: 'Çince\'ye geç',
+    langFrLabel: "Fransızca'ya geç",
+    langZhLabel: "Çince'ye geç",
     appLogoAlt: 'Prompter logosu',
   },
   es: {
@@ -71,7 +70,7 @@ const uiText = {
     appSubtitle: 'Generador de prompts para IA - creatividad ilimitada',
     chooseStyleTitle: 'Selecciona tu inspiración de prompt',
     generateButtonText: 'Generar nuevo prompt',
-    yourPromptTitle: 'Tu prompt único',
+    yourPromptTitle: 'Tu prompt',
     historyBottom: 'El historial de prompts está en la parte inferior',
     copyButtonTitle: 'Copiar al portapapeles',
     downloadButtonTitle: 'Descargar como .txt',
@@ -103,7 +102,7 @@ const uiText = {
       "Générateur de prompts pour IA - l'espace ultime de l'ingénierie des prompts en ligne",
     chooseStyleTitle: 'Sélectionnez votre inspiration de prompt',
     generateButtonText: 'Générer un nouveau prompt',
-    yourPromptTitle: 'Votre prompt unique',
+    yourPromptTitle: 'Votre prompt',
     historyBottom: "L'historique des prompts est en bas",
     copyButtonTitle: 'Copier dans le presse-papiers',
     downloadButtonTitle: 'Télécharger en .txt',
@@ -134,7 +133,7 @@ const uiText = {
     appSubtitle: '面向AI的提示生成器 - 终极提示工程在线空间',
     chooseStyleTitle: '选择你的提示灵感',
     generateButtonText: '生成新的提示',
-    yourPromptTitle: '你的专属提示',
+    yourPromptTitle: '你的提示',
     historyBottom: '提示历史在底部',
     copyButtonTitle: '复制到剪贴板',
     downloadButtonTitle: '下载为 .txt',
@@ -166,7 +165,7 @@ const uiText = {
       'एआई के लिए प्रॉम्प्ट जनरेटर - सर्वश्रेष्ठ प्रॉम्प्ट इंजीनियरिंग ऑनलाइन स्पेस',
     chooseStyleTitle: 'अपनी प्रॉम्प्ट प्रेरणा चुनें',
     generateButtonText: 'नया प्रॉम्प्ट बनाएं',
-    yourPromptTitle: 'आपका अनोखा प्रॉम्प्ट',
+    yourPromptTitle: 'आपका प्रॉम्प्ट',
     historyBottom: 'प्रॉम्प्ट इतिहास नीचे है',
     copyButtonTitle: 'क्लिपबोर्ड पर कॉपी करें',
     downloadButtonTitle: '.txt के रूप में डाउनलोड करें',
@@ -294,13 +293,7 @@ const setLanguage = (lang) => {
     uiText[lang].generateButtonText;
   generateButton.setAttribute('aria-label', uiText[lang].generateButtonText);
   const promptTitleEl = document.getElementById('your-prompt-title');
-  promptTitleEl.textContent = uiText[lang].yourPromptTitle;
-  const arrowEl = document.createElement('span');
-  arrowEl.textContent = ' \u2193 ';
-  const noteEl = document.createElement('span');
-  noteEl.textContent = uiText[lang].historyBottom;
-  promptTitleEl.appendChild(arrowEl);
-  promptTitleEl.appendChild(noteEl);
+  promptTitleEl.textContent = `${uiText[lang].yourPromptTitle} \u2193`;
   if (appLogo) {
     appLogo.alt = uiText[lang].appLogoAlt;
   }
@@ -1121,7 +1114,14 @@ const setupEventListeners = () => {
     langHiButton.addEventListener('click', () => setLanguage('hi'));
   }
 
-  [langEnButton, langTrButton, langEsButton, langFrButton, langZhButton, langHiButton].forEach((btn) => {
+  [
+    langEnButton,
+    langTrButton,
+    langEsButton,
+    langFrButton,
+    langZhButton,
+    langHiButton,
+  ].forEach((btn) => {
     if (btn) {
       btn.addEventListener('click', () => {
         langMenu && langMenu.classList.add('hidden');
