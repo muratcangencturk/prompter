@@ -101,8 +101,14 @@ of strings. These arrays represent the beginning, topic, continuation and ending
 ## Development
 
 This repository uses ESLint and Prettier for code quality. After cloning the
-project, run `npm install` to install the dependencies. Always run this command
-before executing `npm test` so the required tooling is available.
+project, install the dependencies by running:
+
+```bash
+npm install
+```
+
+You **must** run `npm install` at least once (and whenever `package.json`
+changes) before executing `npm test` so the linter can access its tooling.
 
 Before committing changes run:
 
@@ -116,8 +122,8 @@ to execute the linter. To automatically format files run:
 npm run format
 ```
 
-Running `npm install` and `npm test` helps ensure consistent code style across
-contributions. To serve the application locally during development run:
+Running `npm install` before `npm test` helps ensure consistent code style
+across contributions. To serve the application locally during development run:
 
 ```bash
 npm start
