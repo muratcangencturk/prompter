@@ -11,14 +11,17 @@
 
     initFirebase(firebaseConfig);
 
-    const list = document.getElementById('all-prompts');
+    async function init() {
+      const list = document.getElementById('all-prompts');
+      const prompts = await getAllPrompts();
+      prompts.forEach((p) => {
+        const li = document.createElement('li');
+        li.textContent = p.text;
+        list.appendChild(li);
+      });
+    }
 
-    const prompts = await getAllPrompts();
-    prompts.forEach((p) => {
-      const li = document.createElement('li');
-      li.textContent = p.text;
-      list.appendChild(li);
-    });
+    init();
   </script>
 </head>
 <body>
