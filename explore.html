@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=32"></script>
     <link rel="stylesheet" href="css/app.css?v=32" />
+    <script type="module" src="src/init-app.js?v=32"></script>
     <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=32" />
     <script>
       (function () {
@@ -57,11 +58,9 @@
       <div id="all-prompts" class="space-y-4"></div>
     </div>
     <script type="module">
-      import { initFirebase, firebaseConfig } from './src/firebase.js';
+      
       import { getAllPrompts, likePrompt, savePrompt } from './src/prompt.js';
       import { appState } from './src/state.js';
-
-      initFirebase(firebaseConfig);
 
       const setTheme = (theme) => {
         const linkEl = document.getElementById('theme-css');

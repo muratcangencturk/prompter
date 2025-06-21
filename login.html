@@ -7,7 +7,7 @@
   <title>Prompter Login</title>
   <base href="./">
   <link rel="stylesheet" href="css/app.css?v=32">
-  <script type="module" src="src/firebase.js?v=32"></script>
+  <script type="module" src="src/init-app.js?v=32"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=32"></script>
   <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=32">
@@ -19,10 +19,8 @@
   </script>
   <script type="module" src="src/auth.js?v=32"></script>
   <script type="module">
-    import { initFirebase, firebaseConfig } from './src/firebase.js';
+     
     import { login, register, onAuth } from './src/auth.js';
-
-    initFirebase(firebaseConfig);
 
     function init() {
       const loginForm = document.getElementById('login-form');

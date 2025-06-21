@@ -543,21 +543,19 @@
         </a>
       </div>
     </div>
-    <script type="module" src="src/main.js?v=32"></script>
+    <script type="module" src="src/init-app.js?v=32"></script>
+<script type="module" src="src/main.js?v=32"></script>
     <script type="module">
-      import { initFirebase, app, firebaseConfig } from "./src/firebase.js";
+      import { app } from './src/firebase.js';
       import { onAuth } from "./src/auth.js";
       import { appState } from "./src/state.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
-
-      initFirebase(firebaseConfig);
       const analytics = getAnalytics(app);
 
       const loginLink = document.getElementById('login-link');
       const profileLink = document.getElementById('profile-link');
 
       onAuth((user) => {
-        appState.currentUser = user;
         if (user) {
           loginLink?.classList.add('hidden');
           profileLink?.classList.remove('hidden');
