@@ -59,6 +59,7 @@
     <script type="module">
       import { initFirebase, firebaseConfig } from './src/firebase.js';
       import { getAllPrompts, likePrompt } from './src/prompt.js';
+      import { appState } from './src/state.js';
 
       initFirebase(firebaseConfig);
 
@@ -90,6 +91,19 @@
 
           const likeRow = document.createElement('div');
           likeRow.className = 'flex items-center gap-2 mt-2';
+
+          const saveBtn = document.createElement('button');
+          saveBtn.className =
+            'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+          saveBtn.innerHTML = '<i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>';
+          saveBtn.addEventListener('click', () => {
+            appState.savedPrompts.push(p.text);
+            localStorage.setItem(
+              'savedPrompts',
+              JSON.stringify(appState.savedPrompts)
+            );
+          });
+
           const likeBtn = document.createElement('button');
           likeBtn.className =
             'like-btn p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
@@ -103,6 +117,7 @@
             likeCount.textContent = (parseInt(likeCount.textContent, 10) + 1).toString();
           });
 
+          likeRow.appendChild(saveBtn);
           likeRow.appendChild(likeBtn);
           likeRow.appendChild(likeCount);
 
