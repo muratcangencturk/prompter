@@ -1,6 +1,6 @@
 import { initFirebase, firebaseConfig } from './firebase.js';
 import { onAuth, logout } from './auth.js';
-import { getUserPrompts } from './prompt.js';
+import { getUserPrompts, likePrompt } from './prompt.js';
 import { appState, THEMES } from './state.js';
 
 let themeLightButton;
@@ -54,7 +54,30 @@ const renderSharedPrompts = (prompts) => {
     const item = document.createElement('div');
     item.className =
       'bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
-    item.textContent = p.text;
+
+    const text = document.createElement('p');
+    text.textContent = p.text;
+
+    const likeRow = document.createElement('div');
+    likeRow.className = 'flex items-center gap-2 mt-2';
+    const likeBtn = document.createElement('button');
+    likeBtn.className =
+      'like-btn p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+    likeBtn.innerHTML = '<i data-lucide="heart" class="w-4 h-4" aria-hidden="true"></i>';
+
+    const likeCount = document.createElement('span');
+    likeCount.textContent = (p.likes || 0).toString();
+
+    likeBtn.addEventListener('click', async () => {
+      await likePrompt(p.id);
+      likeCount.textContent = (parseInt(likeCount.textContent, 10) + 1).toString();
+    });
+
+    likeRow.appendChild(likeBtn);
+    likeRow.appendChild(likeCount);
+
+    item.appendChild(text);
+    item.appendChild(likeRow);
     list.appendChild(item);
   });
 };
