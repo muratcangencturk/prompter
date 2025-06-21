@@ -1,4 +1,3 @@
-import { initFirebase, firebaseConfig } from './firebase.js';
 import { onAuth, logout } from './auth.js';
 import { getUserPrompts, likePrompt } from './prompt.js';
 import { appState, THEMES } from './state.js';
@@ -122,5 +121,4 @@ const init = () => {
   });
 };
 
-initFirebase(firebaseConfig);
 document.addEventListener('DOMContentLoaded', init);
