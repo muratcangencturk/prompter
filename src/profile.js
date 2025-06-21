@@ -339,6 +339,27 @@ const init = () => {
     });
   }
 
+  window.addEventListener('storage', async (e) => {
+    if (e.key === 'savedPrompts') {
+      try {
+        const saved = e.newValue ? JSON.parse(e.newValue) : [];
+        appState.savedPrompts = saved;
+        renderSavedPrompts(saved);
+        if (appState.currentUser) {
+          try {
+            const prompts = await getUserPrompts(appState.currentUser.uid);
+            sharedPromptsData = prompts;
+            renderSharedPrompts(sharedPromptsData);
+          } catch (err) {
+            console.error('Failed to load prompts:', err);
+          }
+        }
+      } catch (err) {
+        console.error('Failed to parse savedPrompts from storage event:', err);
+      }
+    }
+  });
+
   onAuth(async (user) => {
     if (!user) {
       window.location.href = 'index.html';
