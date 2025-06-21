@@ -123,7 +123,8 @@
           });
 
           if (!navigator.onLine) {
-            return { cdn: null, local: null, loadPromise: Promise.reject(new Error('offline')) };
+            addLocal();
+            return { cdn: null, local: localScript, loadPromise };
           }
 
           const addLocal = () => {
