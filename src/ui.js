@@ -936,7 +936,7 @@ const setupEventListeners = () => {
   });
 
   if (saveButton) {
-    saveButton.addEventListener('click', () => {
+    saveButton.addEventListener('click', async () => {
       if (!appState.generatedPrompt) return;
       appState.savedPrompts.push(appState.generatedPrompt);
       localStorage.setItem(
@@ -944,7 +944,13 @@ const setupEventListeners = () => {
         JSON.stringify(appState.savedPrompts)
       );
       if (appState.currentUser) {
-        savePrompt(appState.generatedPrompt, appState.currentUser.uid);
+        try {
+          await savePrompt(appState.generatedPrompt, appState.currentUser.uid);
+        } catch (err) {
+          console.error(err);
+          alert('Failed to save prompt');
+          return;
+        }
       }
       saveSuccessMessage.classList.remove('hidden');
       setTimeout(() => {
@@ -986,7 +992,7 @@ const setupEventListeners = () => {
     renderHistory();
   });
 
-  historyList.addEventListener('click', (e) => {
+  historyList.addEventListener('click', async (e) => {
     const copyBtn = e.target.closest('.history-copy');
     const downloadBtn = e.target.closest('.history-download');
     const saveBtn = e.target.closest('.history-save');
@@ -1058,7 +1064,13 @@ const setupEventListeners = () => {
         JSON.stringify(appState.savedPrompts)
       );
       if (appState.currentUser) {
-        savePrompt(text, appState.currentUser.uid);
+        try {
+          await savePrompt(text, appState.currentUser.uid);
+        } catch (err) {
+          console.error(err);
+          alert('Failed to save prompt');
+          return;
+        }
       }
       const feedback = saveBtn.parentElement.querySelector('.save-feedback');
       if (feedback) {
