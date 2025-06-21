@@ -5,7 +5,7 @@
   "theme_color": "#000000",
   "background_color": "#000000",
   "display": "standalone",
-  "version": "39",
+  "version": "40",
   "start_url": "./",
   "icons": [
     {

@@ -12,6 +12,7 @@ const uiText = {
     yourPromptTitle: 'Your Prompt',
     copyButtonTitle: 'Copy to clipboard',
     downloadButtonTitle: 'Download as .txt',
+    shareButtonTitle: 'Share on Prompter',
     shareTwitterTitle: 'Share on Twitter',
     saveButtonTitle: 'Save prompt (login required to sync online)',
     deleteButtonTitle: 'Delete prompt',
@@ -45,6 +46,7 @@ const uiText = {
     historyBottom: 'Geçmiş aşağıda',
     copyButtonTitle: 'Panoya kopyala',
     downloadButtonTitle: '.txt olarak indir',
+    shareButtonTitle: "Prompter'da paylaş",
     shareTwitterTitle: "Twitter'da paylaş",
     saveButtonTitle: 'Promptu kaydet (online senkronizasyon için giriş yapın)',
     deleteButtonTitle: 'Sil',
@@ -77,6 +79,7 @@ const uiText = {
     historyBottom: 'El historial de prompts está en la parte inferior',
     copyButtonTitle: 'Copiar al portapapeles',
     downloadButtonTitle: 'Descargar como .txt',
+    shareButtonTitle: 'Compartir en Prompter',
     shareTwitterTitle: 'Compartir en Twitter',
     saveButtonTitle: 'Guardar prompt (inicia sesión para sincronizar en línea)',
     deleteButtonTitle: 'Eliminar',
@@ -110,6 +113,7 @@ const uiText = {
     historyBottom: "L'historique des prompts est en bas",
     copyButtonTitle: 'Copier dans le presse-papiers',
     downloadButtonTitle: 'Télécharger en .txt',
+    shareButtonTitle: 'Partager sur Prompter',
     shareTwitterTitle: 'Partager sur Twitter',
     saveButtonTitle: 'Enregistrer le prompt (connexion requise pour la synchronisation en ligne)',
     deleteButtonTitle: 'Supprimer le prompt',
@@ -142,6 +146,7 @@ const uiText = {
     historyBottom: '提示历史在底部',
     copyButtonTitle: '复制到剪贴板',
     downloadButtonTitle: '下载为 .txt',
+    shareButtonTitle: '在 Prompter 上分享',
     shareTwitterTitle: '在 Twitter 上分享',
     saveButtonTitle: '保存提示（登录后才能在线同步）',
     deleteButtonTitle: '删除提示',
@@ -175,6 +180,7 @@ const uiText = {
     historyBottom: 'प्रॉम्प्ट इतिहास नीचे है',
     copyButtonTitle: 'क्लिपबोर्ड पर कॉपी करें',
     downloadButtonTitle: '.txt के रूप में डाउनलोड करें',
+    shareButtonTitle: 'Prompter पर साझा करें',
     shareTwitterTitle: 'ट्विटर पर साझा करें',
     saveButtonTitle: 'प्रॉम्प्ट सहेजें (ऑनलाइन सिंक के लिए लॉगिन आवश्यक)',
     deleteButtonTitle: 'प्रॉम्प्ट हटाएं',
@@ -205,11 +211,10 @@ let generateButton;
 let promptDisplayArea;
 let generatedPromptText;
 let copyButton;
-let downloadButton;
+let shareButton;
 let saveButton;
 let shareTwitterButton;
 let copySuccessMessage;
-let downloadSuccessMessage;
 let saveSuccessMessage;
 let saveErrorMessage;
 let shareMessage;
@@ -230,7 +235,6 @@ let appLogo;
 let historyPanel;
 let historyList;
 let clearHistoryButton;
-let lastGeneratedCategoryId = appState.selectedCategory;
 
 const setTheme = (theme) => {
   appState.theme = theme;
@@ -307,8 +311,10 @@ const setLanguage = (lang) => {
   }
   copyButton.title = uiText[lang].copyButtonTitle;
   copyButton.setAttribute('aria-label', uiText[lang].copyButtonTitle);
-  downloadButton.title = uiText[lang].downloadButtonTitle;
-  downloadButton.setAttribute('aria-label', uiText[lang].downloadButtonTitle);
+  if (shareButton) {
+    shareButton.title = uiText[lang].shareButtonTitle;
+    shareButton.setAttribute('aria-label', uiText[lang].shareButtonTitle);
+  }
   if (saveButton) {
     saveButton.title = uiText[lang].saveButtonTitle;
     saveButton.setAttribute('aria-label', uiText[lang].saveButtonTitle);
@@ -321,7 +327,6 @@ const setLanguage = (lang) => {
     );
   }
   copySuccessMessage.textContent = uiText[lang].copySuccessMessage;
-  downloadSuccessMessage.textContent = uiText[lang].downloadSuccessMessage;
   saveSuccessMessage.textContent = uiText[lang].saveSuccessMessage;
   if (saveErrorMessage) {
     saveErrorMessage.textContent = uiText[lang].saveErrorMessage;
@@ -846,7 +851,7 @@ const handleGenerate = async () => {
   promptDisplayArea.classList.remove('hidden');
   promptDisplayArea.classList.add('animate-fadeIn');
   try {
-    const { prompt, categoryId } = await generatePrompt();
+    const { prompt } = await generatePrompt();
     generatedPromptText.textContent = prompt;
     appState.history.push(prompt);
     if (appState.history.length > appState.HISTORY_SIZE) {
@@ -854,7 +859,6 @@ const handleGenerate = async () => {
     }
     localStorage.setItem('promptHistory', JSON.stringify(appState.history));
     renderHistory();
-    lastGeneratedCategoryId = categoryId;
   } catch (err) {
     console.error(err);
     if (err && err.message === 'offline') {
@@ -926,24 +930,27 @@ const setupEventListeners = () => {
       });
   });
 
-  downloadButton.addEventListener('click', () => {
-    if (!appState.generatedPrompt) return;
-    downloadSuccessMessage.classList.remove('hidden');
-    downloadButton.classList.add('button-pop');
-    setTimeout(() => {
-      downloadSuccessMessage.classList.add('hidden');
-      downloadButton.classList.remove('button-pop');
-    }, 2000);
-    const blob = new Blob([appState.generatedPrompt], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `prompt_${lastGeneratedCategoryId}_${Date.now()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  });
+  if (shareButton) {
+    shareButton.addEventListener('click', async () => {
+      if (!appState.generatedPrompt) return;
+      if (!appState.currentUser) {
+        alert('Login required to share');
+        return;
+      }
+      shareButton.classList.add('button-pop');
+      shareMessage?.classList.remove('hidden');
+      setTimeout(() => {
+        shareMessage?.classList.add('hidden');
+        shareButton.classList.remove('button-pop');
+      }, 2000);
+      try {
+        await savePrompt(appState.generatedPrompt, appState.currentUser.uid);
+      } catch (err) {
+        console.error(err);
+        alert('Failed to share prompt');
+      }
+    });
+  }
 
   if (saveButton) {
     saveButton.addEventListener('click', async () => {
@@ -953,42 +960,13 @@ const setupEventListeners = () => {
         'savedPrompts',
         JSON.stringify(appState.savedPrompts)
       );
-      let saved = true;
       if (appState.currentUser) {
-        try {
-          await savePrompt(appState.generatedPrompt, appState.currentUser.uid);
-        } catch (err) {
-          console.error(err);
-          saved = false;
-          if (saveErrorMessage) {
-            saveErrorMessage.classList.remove('hidden');
-          }
-          const retry = confirm(
-            `${uiText[appState.language].saveErrorMessage} Retry?`
-          );
-          if (retry) {
-            try {
-              await savePrompt(
-                appState.generatedPrompt,
-                appState.currentUser.uid
-              );
-              saved = true;
-            } catch (err2) {
-              console.error(err2);
-              saved = false;
-            }
-          }
-          setTimeout(() => {
-            if (saveErrorMessage) saveErrorMessage.classList.add('hidden');
-          }, 2000);
-        }
+        // prompt remains private until shared
       }
-      if (saved) {
-        saveSuccessMessage.classList.remove('hidden');
-        setTimeout(() => {
-          saveSuccessMessage.classList.add('hidden');
-        }, 2000);
-      }
+      saveSuccessMessage.classList.remove('hidden');
+      setTimeout(() => {
+        saveSuccessMessage.classList.add('hidden');
+      }, 2000);
       saveButton.classList.add('button-pop');
       setTimeout(() => {
         saveButton.classList.remove('button-pop');
@@ -1214,11 +1192,10 @@ export const initializeApp = () => {
   promptDisplayArea = document.getElementById('prompt-display-area');
   generatedPromptText = document.getElementById('generated-prompt-text');
   copyButton = document.getElementById('copy-button');
-  downloadButton = document.getElementById('download-button');
+  shareButton = document.getElementById('share-button');
   saveButton = document.getElementById('save-button');
   shareTwitterButton = document.getElementById('share-twitter');
   copySuccessMessage = document.getElementById('copy-success-message');
-  downloadSuccessMessage = document.getElementById('download-success-message');
   saveSuccessMessage = document.getElementById('save-success-message');
   saveErrorMessage = document.getElementById('save-error-message');
   shareMessage = document.getElementById('share-message');

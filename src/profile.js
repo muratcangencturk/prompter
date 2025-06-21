@@ -1,5 +1,5 @@
 import { onAuth, logout } from './auth.js';
-import { getUserPrompts, likePrompt, savePrompt } from './prompt.js';
+import { getUserPrompts, likePrompt } from './prompt.js';
 import { appState, THEMES } from './state.js';
 
 const uiText = {
@@ -248,9 +248,16 @@ const renderSharedPrompts = (prompts) => {
     const likeCount = document.createElement('span');
     likeCount.textContent = (p.likes || 0).toString();
 
+    if (appState.likedPrompts.includes(p.id)) {
+      likeBtn.disabled = true;
+    }
     likeBtn.addEventListener('click', async () => {
+      if (appState.likedPrompts.includes(p.id)) return;
       await likePrompt(p.id);
+      appState.likedPrompts.push(p.id);
+      localStorage.setItem('likedPrompts', JSON.stringify(appState.likedPrompts));
       likeCount.textContent = (parseInt(likeCount.textContent, 10) + 1).toString();
+      likeBtn.disabled = true;
     });
 
     likeRow.appendChild(likeBtn);
@@ -262,18 +269,6 @@ const renderSharedPrompts = (prompts) => {
   });
 };
 
-const syncLocalPrompts = async (userId, existingTexts) => {
-  const unsynced = appState.savedPrompts.filter(
-    (t) => !existingTexts.includes(t)
-  );
-  for (const text of unsynced) {
-    try {
-      await savePrompt(text, userId);
-    } catch (err) {
-      console.error('Failed saving prompt:', err);
-    }
-  }
-};
 
 const init = () => {
   themeLightButton = document.getElementById('theme-light');
@@ -367,17 +362,10 @@ const init = () => {
     }
     document.getElementById('user-email').textContent = user.email || '';
     try {
-      let prompts = await getUserPrompts(user.uid);
-      await syncLocalPrompts(user.uid, prompts.map((p) => p.text));
-      prompts = await getUserPrompts(user.uid);
+      const prompts = await getUserPrompts(user.uid);
       sharedPromptsData = prompts;
       renderSharedPrompts(sharedPromptsData);
-      const merged = Array.from(
-        new Set([...appState.savedPrompts, ...prompts.map((p) => p.text)])
-      );
-      appState.savedPrompts = merged;
-      localStorage.setItem('savedPrompts', JSON.stringify(merged));
-      renderSavedPrompts(merged);
+      renderSavedPrompts(appState.savedPrompts);
     } catch (err) {
       console.error('Failed to load prompts:', err);
     }

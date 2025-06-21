@@ -19,6 +19,7 @@ export const appState = {
   currentUser: null,
   history: readLocal('promptHistory', []),
   savedPrompts: readLocal('savedPrompts', []),
+  likedPrompts: readLocal('likedPrompts', []),
   partHistory: [],
   HISTORY_SIZE: 100,
 };
