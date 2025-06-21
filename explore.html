@@ -6,17 +6,8 @@
   <title>Keşfet</title>
   <link rel="stylesheet" href="css/app.css">
   <script type="module">
-    import { initFirebase } from './src/firebase.js';
+    import { initFirebase, firebaseConfig } from './src/firebase.js';
     import { getAllPrompts } from './src/prompt.js';
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyCiSVRdzDJPsYCWsTvGxueCs-Fcf5LCaYM",
-      authDomain: "prompter-cc95c.firebaseapp.com",
-      projectId: "prompter-cc95c",
-      storageBucket: "prompter-cc95c.appspot.com",
-      messagingSenderId: "349560111475",
-      appId: "1:349560111475:web:b8152fd082702df9e18506"
-    };
 
     initFirebase(firebaseConfig);
 
