@@ -110,10 +110,15 @@ const init = () => {
       return;
     }
     document.getElementById('user-email').textContent = user.email || '';
-      const prompts = await getUserPrompts(user.uid);
-      renderSharedPrompts(prompts);
-      renderSavedPrompts(appState.savedPrompts || []);
-      window.lucide?.createIcons();
+    const prompts = await getUserPrompts(user.uid);
+    renderSharedPrompts(prompts);
+    const merged = Array.from(
+      new Set([...appState.savedPrompts, ...prompts.map((p) => p.text)])
+    );
+    appState.savedPrompts = merged;
+    localStorage.setItem('savedPrompts', JSON.stringify(merged));
+    renderSavedPrompts(merged);
+    window.lucide?.createIcons();
   });
 };
 
