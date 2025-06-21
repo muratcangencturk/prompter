@@ -42,6 +42,14 @@ const hideEmptyAdSlots = () => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+  if (location.protocol === 'file:') {
+    const banner = document.createElement('div');
+    banner.textContent =
+      'Start a local web server (e.g. "python3 -m http.server") for full functionality.';
+    banner.style.cssText =
+      'background:#f87171;color:#fff;padding:8px;text-align:center;font-size:14px;';
+    document.body.prepend(banner);
+  }
   initializeApp();
   if (window.lucide && typeof window.lucide.createIcons === 'function') {
     window.lucide.createIcons();
