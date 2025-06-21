@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keşfet</title>
+  <link rel="stylesheet" href="css/app.css">
+  <script type="module">
+    import { initFirebase } from './src/firebase.js';
+    import { getAllPrompts } from './src/prompt.js';
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCiSVRdzDJPsYCWsTvGxueCs-Fcf5LCaYM",
+      authDomain: "prompter-cc95c.firebaseapp.com",
+      projectId: "prompter-cc95c",
+      storageBucket: "prompter-cc95c.appspot.com",
+      messagingSenderId: "349560111475",
+      appId: "1:349560111475:web:b8152fd082702df9e18506"
+    };
+
+    initFirebase(firebaseConfig);
+
+    const list = document.getElementById('all-prompts');
+
+    const prompts = await getAllPrompts();
+    prompts.forEach((p) => {
+      const li = document.createElement('li');
+      li.textContent = p.text;
+      list.appendChild(li);
+    });
+  </script>
+</head>
+<body>
+  <h1>Tüm Promptlar</h1>
+  <a href="index.html">Anasayfa</a>
+  <ul id="all-prompts"></ul>
+</body>
+</html>
