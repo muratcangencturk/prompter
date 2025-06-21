@@ -28,6 +28,12 @@ and then visit `http://localhost:8000`. This ensures the JSON prompt files load 
 
 You can open `index.html` directly from your file system, but prompts will not load because the app fetches its data over the network.
 
+## Authentication
+
+Prompter uses Firebase Email/Password authentication configured in `src/firebase.js`.
+Enable that sign‑in method in your Firebase console and add your domain (for example `localhost`) to the list of authorized domains.
+Serve the app using a simple HTTP server such as `python3 -m http.server` so Firebase initializes correctly.
+
 ### Versioning
 
 The `manifest.json` file includes a `version` field that increments on each build so deployments always serve the newest assets.
