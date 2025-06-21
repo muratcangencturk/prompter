@@ -96,14 +96,19 @@
           saveBtn.className =
             'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
           saveBtn.innerHTML = '<i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>';
-          saveBtn.addEventListener('click', () => {
+          saveBtn.addEventListener('click', async () => {
             appState.savedPrompts.push(p.text);
             localStorage.setItem(
               'savedPrompts',
               JSON.stringify(appState.savedPrompts)
             );
             if (appState.currentUser) {
-              savePrompt(p.text, appState.currentUser.uid);
+              try {
+                await savePrompt(p.text, appState.currentUser.uid);
+              } catch (err) {
+                console.error(err);
+                alert('Failed to save prompt');
+              }
             }
           });
 
