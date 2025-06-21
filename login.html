@@ -38,14 +38,22 @@
         e.preventDefault();
         const email = document.getElementById('login-email').value;
         const password = document.getElementById('login-password').value;
-        login(email, password).catch((err) => alert(err.message));
+        login(email, password)
+          .then(() => {
+            window.location.href = 'index.html';
+          })
+          .catch((err) => alert(err.message));
       });
 
       registerForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const email = document.getElementById('register-email').value;
         const password = document.getElementById('register-password').value;
-        register(email, password).catch((err) => alert(err.message));
+        register(email, password)
+          .then(() => {
+            window.location.href = 'index.html';
+          })
+          .catch((err) => alert(err.message));
       });
     }
 
