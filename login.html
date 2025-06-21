@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://fpyf8.com/88/tag.min.js" data-zone="153053" async data-cfasync="false"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompter Login</title>
+  <link rel="stylesheet" href="css/app.css">
+  <script type="module" src="src/firebase.js"></script>
+  <script type="module" src="src/auth.js"></script>
+  <script type="module" src="src/prompt.js"></script>
+  <script type="module">
+    import { initFirebase } from './src/firebase.js';
+    import { login, register, logout, onAuth } from './src/auth.js';
+    import { generatePrompt, savePrompt } from './src/prompt.js';
+    import { auth } from './src/firebase.js';
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCiSVRdzDJPsYCWsTvGxueCs-Fcf5LCaYM",
+      authDomain: "prompter-cc95c.firebaseapp.com",
+      projectId: "prompter-cc95c",
+      storageBucket: "prompter-cc95c.appspot.com",
+      messagingSenderId: "349560111475",
+      appId: "1:349560111475:web:b8152fd082702df9e18506"
+    };
+
+    initFirebase(firebaseConfig);
+
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+    const promptContainer = document.getElementById('prompt-container');
+    const promptText = document.getElementById('prompt-text');
+    const saveBtn = document.getElementById('save-btn');
+
+    onAuth((user) => {
+      if (user) {
+        loginForm.classList.add('hidden');
+        registerForm.classList.add('hidden');
+        promptContainer.classList.remove('hidden');
+        promptText.value = generatePrompt();
+      } else {
+        loginForm.classList.remove('hidden');
+        registerForm.classList.remove('hidden');
+        promptContainer.classList.add('hidden');
+      }
+    });
+
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value;
+      const password = document.getElementById('login-password').value;
+      login(email, password).catch((err) => alert(err.message));
+    });
+
+    registerForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('register-email').value;
+      const password = document.getElementById('register-password').value;
+      register(email, password).catch((err) => alert(err.message));
+    });
+
+    saveBtn.addEventListener('click', async () => {
+      const user = auth.currentUser;
+      if (!user) return;
+      await savePrompt(promptText.value, user.uid);
+      promptText.value = generatePrompt();
+      alert('Kaydedildi');
+    });
+
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      logout();
+    });
+  </script>
+</head>
+<body>
+  <h1>Prompter</h1>
+  <form id="login-form">
+    <h2>Giriş</h2>
+    <input id="login-email" type="email" placeholder="E-posta" required>
+    <input id="login-password" type="password" placeholder="Şifre" required>
+    <button type="submit">Giriş Yap</button>
+  </form>
+  <form id="register-form">
+    <h2>Kayıt</h2>
+    <input id="register-email" type="email" placeholder="E-posta" required>
+    <input id="register-password" type="password" placeholder="Şifre" required>
+    <button type="submit">Kayıt Ol</button>
+  </form>
+
+  <div id="prompt-container" class="hidden">
+    <textarea id="prompt-text" rows="4" cols="50"></textarea>
+    <button id="save-btn">Kaydet</button>
+    <button id="logout-btn">Çıkış</button>
+    <a href="profile.html">Profilim</a>
+    <a href="explore.html">Keşfet</a>
+  </div>
+</body>
+</html>
