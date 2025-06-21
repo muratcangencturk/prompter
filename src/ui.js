@@ -11,7 +11,6 @@ const uiText = {
     generateButtonText: 'Generate New Prompt',
     yourPromptTitle: 'Your Prompt',
     copyButtonTitle: 'Copy to clipboard',
-    downloadButtonTitle: 'Download as .txt',
     shareButtonTitle: 'Share on Prompter',
     shareTwitterTitle: 'Share on Twitter',
     saveButtonTitle: 'Save prompt (login required to sync online)',
@@ -20,7 +19,6 @@ const uiText = {
     clearHistoryTitle: 'Clear history',
     copySuccessMessage: 'Prompt copied successfully!',
     saveSuccessMessage: 'Prompt saved!',
-    downloadSuccessMessage: 'Downloading...',
     saveErrorMessage: 'Failed to save prompt.',
     shareMessage: 'Sharing...',
     saveFeedback: 'Saved!',
@@ -45,7 +43,6 @@ const uiText = {
     yourPromptTitle: 'Promptunuz',
     historyBottom: 'Geçmiş aşağıda',
     copyButtonTitle: 'Panoya kopyala',
-    downloadButtonTitle: '.txt olarak indir',
     shareButtonTitle: "Prompter'da paylaş",
     shareTwitterTitle: "Twitter'da paylaş",
     saveButtonTitle: 'Promptu kaydet (online senkronizasyon için giriş yapın)',
@@ -55,7 +52,6 @@ const uiText = {
     copySuccessMessage: 'Kopyalandı!',
     saveSuccessMessage: 'Kaydedildi!',
     saveErrorMessage: 'Prompt kaydedilemedi.',
-    downloadSuccessMessage: 'İndiriliyor...',
     shareMessage: 'Paylaşılıyor...',
     saveFeedback: 'Kaydedildi!',
     appStats: 'Zihninizin potansiyelini açığa çıkaracak promptlar',
@@ -78,7 +74,6 @@ const uiText = {
     yourPromptTitle: 'Tu prompt',
     historyBottom: 'El historial de prompts está en la parte inferior',
     copyButtonTitle: 'Copiar al portapapeles',
-    downloadButtonTitle: 'Descargar como .txt',
     shareButtonTitle: 'Compartir en Prompter',
     shareTwitterTitle: 'Compartir en Twitter',
     saveButtonTitle: 'Guardar prompt (inicia sesión para sincronizar en línea)',
@@ -88,7 +83,6 @@ const uiText = {
     copySuccessMessage: '¡Copiado!',
     saveSuccessMessage: '¡Guardado!',
     saveErrorMessage: 'No se pudo guardar el prompt.',
-    downloadSuccessMessage: 'Descargando...',
     shareMessage: 'Compartiendo...',
     saveFeedback: '¡Guardado!',
     appStats: 'Prompts que liberarán el potencial de tu mente',
@@ -112,7 +106,6 @@ const uiText = {
     yourPromptTitle: 'Votre prompt',
     historyBottom: "L'historique des prompts est en bas",
     copyButtonTitle: 'Copier dans le presse-papiers',
-    downloadButtonTitle: 'Télécharger en .txt',
     shareButtonTitle: 'Partager sur Prompter',
     shareTwitterTitle: 'Partager sur Twitter',
     saveButtonTitle: 'Enregistrer le prompt (connexion requise pour la synchronisation en ligne)',
@@ -122,7 +115,6 @@ const uiText = {
     copySuccessMessage: 'Prompt copié !',
     saveSuccessMessage: 'Prompt enregistré !',
     saveErrorMessage: "Échec de l'enregistrement du prompt.",
-    downloadSuccessMessage: 'Téléchargement...',
     shareMessage: 'Partage en cours...',
     saveFeedback: 'Enregistré !',
     appStats: 'Des prompts qui libéreront le potentiel de votre esprit',
@@ -145,7 +137,6 @@ const uiText = {
     yourPromptTitle: '你的提示',
     historyBottom: '提示历史在底部',
     copyButtonTitle: '复制到剪贴板',
-    downloadButtonTitle: '下载为 .txt',
     shareButtonTitle: '在 Prompter 上分享',
     shareTwitterTitle: '在 Twitter 上分享',
     saveButtonTitle: '保存提示（登录后才能在线同步）',
@@ -155,7 +146,6 @@ const uiText = {
     copySuccessMessage: '已复制!',
     saveSuccessMessage: '已保存!',
     saveErrorMessage: '保存提示失败。',
-    downloadSuccessMessage: '正在下载...',
     shareMessage: '正在分享...',
     saveFeedback: '已保存!',
     appStats: '激发你思维潜力的提示',
@@ -179,7 +169,6 @@ const uiText = {
     yourPromptTitle: 'आपका प्रॉम्प्ट',
     historyBottom: 'प्रॉम्प्ट इतिहास नीचे है',
     copyButtonTitle: 'क्लिपबोर्ड पर कॉपी करें',
-    downloadButtonTitle: '.txt के रूप में डाउनलोड करें',
     shareButtonTitle: 'Prompter पर साझा करें',
     shareTwitterTitle: 'ट्विटर पर साझा करें',
     saveButtonTitle: 'प्रॉम्प्ट सहेजें (ऑनलाइन सिंक के लिए लॉगिन आवश्यक)',
@@ -189,7 +178,6 @@ const uiText = {
     copySuccessMessage: 'प्रॉम्प्ट सफलतापूर्वक कॉपी हुआ!',
     saveSuccessMessage: 'प्रॉम्प्ट सहेजा गया!',
     saveErrorMessage: 'प्रॉम्प्ट सहेजने में विफल।',
-    downloadSuccessMessage: 'डाउनलोड हो रहा है...',
     shareMessage: 'साझा किया जा रहा है...',
     saveFeedback: 'सहेजा गया!',
     appStats: 'ऐसे प्रॉम्प्ट जो आपके दिमाग की क्षमता को खोलेंगे',
@@ -758,31 +746,11 @@ const renderHistory = () => {
       '<i data-lucide="copy" class="w-3 h-3" aria-hidden="true"></i>';
     actions.appendChild(copyBtn);
 
-    const downloadBtn = document.createElement('button');
-    downloadBtn.className =
-      'history-download p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-    downloadBtn.title = uiText[appState.language].downloadButtonTitle;
-    downloadBtn.setAttribute(
-      'aria-label',
-      uiText[appState.language].downloadButtonTitle
-    );
-    downloadBtn.setAttribute('data-index', idx);
-    downloadBtn.innerHTML =
-      '<i data-lucide="download" class="w-3 h-3" aria-hidden="true"></i>';
-    actions.appendChild(downloadBtn);
-
     const copyFeedback = document.createElement('span');
     copyFeedback.className =
       'history-copy-feedback text-green-400 text-xs ml-1 hidden';
     copyFeedback.textContent = uiText[appState.language].copySuccessMessage;
     actions.appendChild(copyFeedback);
-
-    const downloadFeedback = document.createElement('span');
-    downloadFeedback.className =
-      'history-download-feedback text-green-400 text-xs ml-1 hidden';
-    downloadFeedback.textContent =
-      uiText[appState.language].downloadSuccessMessage;
-    actions.appendChild(downloadFeedback);
 
     if (saveButton) {
       const saveBtn = document.createElement('button');
@@ -1005,11 +973,10 @@ const setupEventListeners = () => {
 
   historyList.addEventListener('click', async (e) => {
     const copyBtn = e.target.closest('.history-copy');
-    const downloadBtn = e.target.closest('.history-download');
     const saveBtn = e.target.closest('.history-save');
     const shareBtn = e.target.closest('.history-share');
     const deleteBtn = e.target.closest('.history-delete');
-    const btn = copyBtn || downloadBtn || saveBtn || shareBtn || deleteBtn;
+    const btn = copyBtn || saveBtn || shareBtn || deleteBtn;
     if (!btn) return;
     const index = parseInt(btn.getAttribute('data-index'), 10);
     if (Number.isNaN(index)) return;
@@ -1047,27 +1014,6 @@ const setupEventListeners = () => {
         .catch((err) => {
           console.error('Failed to copy text: ', err);
         });
-    } else if (downloadBtn) {
-      const feedback = downloadBtn.parentElement.querySelector(
-        '.history-download-feedback'
-      );
-      if (feedback) {
-        feedback.classList.remove('hidden');
-        setTimeout(() => feedback.classList.add('hidden'), 1000);
-      }
-      downloadBtn.classList.add('button-pop');
-      setTimeout(() => {
-        downloadBtn.classList.remove('button-pop');
-      }, 300);
-      const blob = new Blob([text], { type: 'text/plain' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `prompt_history_${index}.txt`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
     } else if (saveBtn) {
       appState.savedPrompts.push(text);
       localStorage.setItem(
