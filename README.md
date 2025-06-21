@@ -33,6 +33,7 @@ You can open `index.html` directly from your file system, but prompts will not l
 Prompter uses Firebase Email/Password authentication configured in `src/firebase.js`.
 Enable that sign‑in method in your Firebase console and add your domain (for example `localhost`) to the list of authorized domains.
 Serve the app using a simple HTTP server such as `python3 -m http.server` so Firebase initializes correctly.
+Synchronization of saved prompts with Firebase requires a logged-in session. When not authenticated, prompts are only stored locally.
 
 ### Versioning
 
