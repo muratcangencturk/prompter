@@ -7,42 +7,30 @@
   <title>Prompter Login</title>
   <link rel="stylesheet" href="css/app.css?v=31">
   <script type="module" src="src/firebase.js?v=31"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=31"></script>
+  <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=31">
+  <script>
+    const theme = localStorage.getItem('theme');
+    if (theme) {
+      document.getElementById('theme-css').href = `css/theme-${theme}.css?v=31`;
+    }
+  </script>
   <script type="module" src="src/auth.js?v=31"></script>
   <script type="module" src="src/prompt.js?v=31"></script>
   <script type="module">
-    import { initFirebase } from './src/firebase.js';
-    import { login, register, logout, onAuth } from './src/auth.js';
-    import { generatePrompt, savePrompt } from './src/prompt.js';
-    import { auth } from './src/firebase.js';
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyCiSVRdzDJPsYCWsTvGxueCs-Fcf5LCaYM",
-      authDomain: "prompter-cc95c.firebaseapp.com",
-      projectId: "prompter-cc95c",
-      storageBucket: "prompter-cc95c.appspot.com",
-      messagingSenderId: "349560111475",
-      appId: "1:349560111475:web:b8152fd082702df9e18506"
-    };
+    import { initFirebase, firebaseConfig } from './src/firebase.js';
+    import { login, register, onAuth } from './src/auth.js';
 
     initFirebase(firebaseConfig);
 
     function init() {
       const loginForm = document.getElementById('login-form');
       const registerForm = document.getElementById('register-form');
-      const promptContainer = document.getElementById('prompt-container');
-      const promptText = document.getElementById('prompt-text');
-      const saveBtn = document.getElementById('save-btn');
 
       onAuth((user) => {
         if (user) {
-          loginForm.classList.add('hidden');
-          registerForm.classList.add('hidden');
-          promptContainer.classList.remove('hidden');
-          promptText.value = generatePrompt();
-        } else {
-          loginForm.classList.remove('hidden');
-          registerForm.classList.remove('hidden');
-          promptContainer.classList.add('hidden');
+          window.location.href = 'index.html';
         }
       });
 
@@ -59,44 +47,26 @@
         const password = document.getElementById('register-password').value;
         register(email, password).catch((err) => alert(err.message));
       });
-
-      saveBtn.addEventListener('click', async () => {
-        const user = auth.currentUser;
-        if (!user) return;
-        await savePrompt(promptText.value, user.uid);
-        promptText.value = generatePrompt();
-        alert('Kaydedildi');
-      });
-
-      document.getElementById('logout-btn').addEventListener('click', () => {
-        logout();
-      });
     }
 
     document.addEventListener('DOMContentLoaded', init);
   </script>
 </head>
-<body>
-  <h1>Prompter</h1>
-  <form id="login-form">
-    <h2>Giriş</h2>
-    <input id="login-email" type="email" placeholder="E-posta" required>
-    <input id="login-password" type="password" placeholder="Şifre" required>
-    <button type="submit">Giriş Yap</button>
-  </form>
-  <form id="register-form">
-    <h2>Kayıt</h2>
-    <input id="register-email" type="email" placeholder="E-posta" required>
-    <input id="register-password" type="password" placeholder="Şifre" required>
-    <button type="submit">Kayıt Ol</button>
-  </form>
-
-  <div id="prompt-container" class="hidden">
-    <textarea id="prompt-text" rows="4" cols="50"></textarea>
-    <button id="save-btn">Kaydet</button>
-    <button id="logout-btn">Çıkış</button>
-    <a href="profile.html">Profilim</a>
-    <a href="explore.html">Keşfet</a>
+<body class="min-h-screen p-4">
+  <div class="max-w-md mx-auto mt-16">
+    <h1 class="text-2xl font-bold text-center mb-6">Prompter</h1>
+    <form id="login-form" class="bg-white/10 backdrop-blur-md rounded-2xl p-4 mb-4 border border-white/20 shadow-lg space-y-2">
+      <h2 class="text-lg font-semibold mb-2">Giriş</h2>
+      <input id="login-email" type="email" placeholder="E-posta" required class="w-full p-2 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50">
+      <input id="login-password" type="password" placeholder="Şifre" required class="w-full p-2 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50">
+      <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 font-bold py-2 rounded-lg transition-all duration-300 ease-in-out">Giriş Yap</button>
+    </form>
+    <form id="register-form" class="bg-white/10 backdrop-blur-md rounded-2xl p-4 mb-4 border border-white/20 shadow-lg space-y-2">
+      <h2 class="text-lg font-semibold mb-2">Kayıt</h2>
+      <input id="register-email" type="email" placeholder="E-posta" required class="w-full p-2 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50">
+      <input id="register-password" type="password" placeholder="Şifre" required class="w-full p-2 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50">
+      <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 font-bold py-2 rounded-lg transition-all duration-300 ease-in-out">Kayıt Ol</button>
+    </form>
   </div>
 </body>
 </html>
