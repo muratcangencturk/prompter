@@ -16,6 +16,7 @@ export const appState = {
   copySuccess: false,
   language: 'en',
   theme: THEMES.DARK,
+  currentUser: null,
   history: readLocal('promptHistory', []),
   savedPrompts: readLocal('savedPrompts', []),
   partHistory: [],

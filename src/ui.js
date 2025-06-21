@@ -1,5 +1,6 @@
 import { appState, THEMES } from './state.js';
 import { categories, ICON_FALLBACKS, generatePrompt } from './prompts.js';
+import { savePrompt } from './prompt.js';
 
 const uiText = {
   en: {
@@ -942,6 +943,9 @@ const setupEventListeners = () => {
         'savedPrompts',
         JSON.stringify(appState.savedPrompts)
       );
+      if (appState.currentUser) {
+        savePrompt(appState.generatedPrompt, appState.currentUser.uid);
+      }
       saveSuccessMessage.classList.remove('hidden');
       setTimeout(() => {
         saveSuccessMessage.classList.add('hidden');
@@ -1053,6 +1057,9 @@ const setupEventListeners = () => {
         'savedPrompts',
         JSON.stringify(appState.savedPrompts)
       );
+      if (appState.currentUser) {
+        savePrompt(text, appState.currentUser.uid);
+      }
       const feedback = saveBtn.parentElement.querySelector('.save-feedback');
       if (feedback) {
         feedback.classList.remove('hidden');
