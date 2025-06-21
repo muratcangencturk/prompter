@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prompter Login</title>
-  <link rel="stylesheet" href="css/app.css">
-  <script type="module" src="src/firebase.js"></script>
-  <script type="module" src="src/auth.js"></script>
-  <script type="module" src="src/prompt.js"></script>
+  <link rel="stylesheet" href="css/app.css?v=31">
+  <script type="module" src="src/firebase.js?v=31"></script>
+  <script type="module" src="src/auth.js?v=31"></script>
+  <script type="module" src="src/prompt.js?v=31"></script>
   <script type="module">
     import { initFirebase } from './src/firebase.js';
     import { login, register, logout, onAuth } from './src/auth.js';
@@ -26,50 +26,54 @@
 
     initFirebase(firebaseConfig);
 
-    const loginForm = document.getElementById('login-form');
-    const registerForm = document.getElementById('register-form');
-    const promptContainer = document.getElementById('prompt-container');
-    const promptText = document.getElementById('prompt-text');
-    const saveBtn = document.getElementById('save-btn');
+    function init() {
+      const loginForm = document.getElementById('login-form');
+      const registerForm = document.getElementById('register-form');
+      const promptContainer = document.getElementById('prompt-container');
+      const promptText = document.getElementById('prompt-text');
+      const saveBtn = document.getElementById('save-btn');
 
-    onAuth((user) => {
-      if (user) {
-        loginForm.classList.add('hidden');
-        registerForm.classList.add('hidden');
-        promptContainer.classList.remove('hidden');
+      onAuth((user) => {
+        if (user) {
+          loginForm.classList.add('hidden');
+          registerForm.classList.add('hidden');
+          promptContainer.classList.remove('hidden');
+          promptText.value = generatePrompt();
+        } else {
+          loginForm.classList.remove('hidden');
+          registerForm.classList.remove('hidden');
+          promptContainer.classList.add('hidden');
+        }
+      });
+
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+        login(email, password).catch((err) => alert(err.message));
+      });
+
+      registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('register-email').value;
+        const password = document.getElementById('register-password').value;
+        register(email, password).catch((err) => alert(err.message));
+      });
+
+      saveBtn.addEventListener('click', async () => {
+        const user = auth.currentUser;
+        if (!user) return;
+        await savePrompt(promptText.value, user.uid);
         promptText.value = generatePrompt();
-      } else {
-        loginForm.classList.remove('hidden');
-        registerForm.classList.remove('hidden');
-        promptContainer.classList.add('hidden');
-      }
-    });
+        alert('Kaydedildi');
+      });
 
-    loginForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = document.getElementById('login-email').value;
-      const password = document.getElementById('login-password').value;
-      login(email, password).catch((err) => alert(err.message));
-    });
+      document.getElementById('logout-btn').addEventListener('click', () => {
+        logout();
+      });
+    }
 
-    registerForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = document.getElementById('register-email').value;
-      const password = document.getElementById('register-password').value;
-      register(email, password).catch((err) => alert(err.message));
-    });
-
-    saveBtn.addEventListener('click', async () => {
-      const user = auth.currentUser;
-      if (!user) return;
-      await savePrompt(promptText.value, user.uid);
-      promptText.value = generatePrompt();
-      alert('Kaydedildi');
-    });
-
-    document.getElementById('logout-btn').addEventListener('click', () => {
-      logout();
-    });
+    document.addEventListener('DOMContentLoaded', init);
   </script>
 </head>
 <body>
