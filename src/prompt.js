@@ -33,13 +33,11 @@ export const savePrompt = (text, userId) =>
   });
 
 export const getUserPrompts = async (userId) => {
-  const q = query(
-    collection(db, 'prompts'),
-    where('userId', '==', userId),
-    orderBy('createdAt', 'desc')
-  );
+  const q = query(collection(db, 'prompts'), where('userId', '==', userId));
   const snap = await getDocs(q);
-  return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+  const prompts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+  prompts.sort((a, b) => b.createdAt.toMillis() - a.createdAt.toMillis());
+  return prompts;
 };
 
 export const getAllPrompts = async () => {
