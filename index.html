@@ -545,16 +545,27 @@
     </div>
     <script type="module" src="src/main.js?v=30"></script>
     <script type="module">
-      // Import the functions you need from the SDKs you need
       import { initFirebase, app, firebaseConfig } from "./src/firebase.js";
       import { onAuth } from "./src/auth.js";
+      import { appState } from "./src/state.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
 
-      // Initialize Firebase
       initFirebase(firebaseConfig);
       const analytics = getAnalytics(app);
+
+      const loginLink = document.getElementById('login-link');
+      const profileLink = document.getElementById('profile-link');
+
+      onAuth((user) => {
+        appState.currentUser = user;
+        if (user) {
+          loginLink?.classList.add('hidden');
+          profileLink?.classList.remove('hidden');
+        } else {
+          profileLink?.classList.add('hidden');
+          loginLink?.classList.remove('hidden');
+        }
+      });
     </script>
   </body>
 </html>

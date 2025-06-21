@@ -58,7 +58,7 @@
     </div>
     <script type="module">
       import { initFirebase, firebaseConfig } from './src/firebase.js';
-      import { getAllPrompts, likePrompt } from './src/prompt.js';
+      import { getAllPrompts, likePrompt, savePrompt } from './src/prompt.js';
       import { appState } from './src/state.js';
 
       initFirebase(firebaseConfig);
@@ -102,6 +102,9 @@
               'savedPrompts',
               JSON.stringify(appState.savedPrompts)
             );
+            if (appState.currentUser) {
+              savePrompt(p.text, appState.currentUser.uid);
+            }
           });
 
           const likeBtn = document.createElement('button');
