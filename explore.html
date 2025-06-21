@@ -58,7 +58,7 @@
     </div>
     <script type="module">
       import { initFirebase, firebaseConfig } from './src/firebase.js';
-      import { getAllPrompts } from './src/prompt.js';
+      import { getAllPrompts, likePrompt } from './src/prompt.js';
 
       initFirebase(firebaseConfig);
 
@@ -84,7 +84,30 @@
           const card = document.createElement('div');
           card.className =
             'bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
-          card.textContent = p.text;
+
+          const text = document.createElement('p');
+          text.textContent = p.text;
+
+          const likeRow = document.createElement('div');
+          likeRow.className = 'flex items-center gap-2 mt-2';
+          const likeBtn = document.createElement('button');
+          likeBtn.className =
+            'like-btn p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+          likeBtn.innerHTML = '<i data-lucide="heart" class="w-4 h-4" aria-hidden="true"></i>';
+
+          const likeCount = document.createElement('span');
+          likeCount.textContent = (p.likes || 0).toString();
+
+          likeBtn.addEventListener('click', async () => {
+            await likePrompt(p.id);
+            likeCount.textContent = (parseInt(likeCount.textContent, 10) + 1).toString();
+          });
+
+          likeRow.appendChild(likeBtn);
+          likeRow.appendChild(likeCount);
+
+          card.appendChild(text);
+          card.appendChild(likeRow);
           list.appendChild(card);
         });
         window.lucide?.createIcons();

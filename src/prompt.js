@@ -1,4 +1,15 @@
-import { collection, addDoc, query, where, getDocs, orderBy, Timestamp } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
+import {
+  collection,
+  addDoc,
+  query,
+  where,
+  getDocs,
+  orderBy,
+  Timestamp,
+  updateDoc,
+  doc,
+  increment,
+} from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
 import { db } from './firebase.js';
 
 const samplePrompts = [
@@ -18,6 +29,7 @@ export const savePrompt = (text, userId) =>
     text,
     userId,
     createdAt: Timestamp.now(),
+    likes: 0,
   });
 
 export const getUserPrompts = async (userId) => {
@@ -27,11 +39,14 @@ export const getUserPrompts = async (userId) => {
     orderBy('createdAt', 'desc')
   );
   const snap = await getDocs(q);
-  return snap.docs.map((d) => d.data());
+  return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
 };
 
 export const getAllPrompts = async () => {
   const q = query(collection(db, 'prompts'), orderBy('createdAt', 'desc'));
   const snap = await getDocs(q);
-  return snap.docs.map((d) => d.data());
+  return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
 };
+
+export const likePrompt = (promptId) =>
+  updateDoc(doc(db, 'prompts', promptId), { likes: increment(1) });
