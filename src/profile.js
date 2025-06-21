@@ -1,5 +1,5 @@
 import { onAuth, logout } from './auth.js';
-import { getUserPrompts, likePrompt } from './prompt.js';
+import { getUserPrompts, likePrompt, savePrompt } from './prompt.js';
 import { appState, THEMES } from './state.js';
 
 let themeLightButton;
@@ -81,6 +81,22 @@ const renderSharedPrompts = (prompts) => {
   });
 };
 
+const syncLocalPrompts = async (userId) => {
+  const remote = await getUserPrompts(userId);
+  const remoteTexts = new Set(remote.map((p) => p.text));
+  for (const text of appState.savedPrompts) {
+    if (!remoteTexts.has(text)) {
+      try {
+        await savePrompt(text, userId);
+        remoteTexts.add(text);
+      } catch (err) {
+        console.error('Failed saving prompt:', err);
+      }
+    }
+  }
+  return getUserPrompts(userId);
+};
+
 const init = () => {
   themeLightButton = document.getElementById('theme-light');
   themeDarkButton = document.getElementById('theme-dark');
@@ -111,8 +127,17 @@ const init = () => {
     document.getElementById('user-email').textContent = user.email || '';
     const prompts = await getUserPrompts(user.uid);
     renderSharedPrompts(prompts);
-    const merged = Array.from(
+    let merged = Array.from(
       new Set([...appState.savedPrompts, ...prompts.map((p) => p.text)])
+    );
+    appState.savedPrompts = merged;
+    localStorage.setItem('savedPrompts', JSON.stringify(merged));
+    renderSavedPrompts(merged);
+
+    const synced = await syncLocalPrompts(user.uid);
+    renderSharedPrompts(synced);
+    merged = Array.from(
+      new Set([...appState.savedPrompts, ...synced.map((p) => p.text)])
     );
     appState.savedPrompts = merged;
     localStorage.setItem('savedPrompts', JSON.stringify(merged));
