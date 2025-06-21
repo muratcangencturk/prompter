@@ -59,6 +59,7 @@
     <script type="module">
       import { initFirebase, firebaseConfig } from './src/firebase.js';
       import { getAllPrompts } from './src/prompt.js';
+      import { appState } from './src/state.js';
 
       initFirebase(firebaseConfig);
 
@@ -84,7 +85,72 @@
           const card = document.createElement('div');
           card.className =
             'bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
-          card.textContent = p.text;
+
+          const textEl = document.createElement('div');
+          textEl.textContent = p.text;
+          card.appendChild(textEl);
+
+          const actions = document.createElement('div');
+          actions.className = 'flex items-center gap-2 mt-2';
+
+          const likeBtn = document.createElement('button');
+          likeBtn.className =
+            'like-btn p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+          likeBtn.title = 'Like';
+          likeBtn.setAttribute('aria-label', 'Like');
+          const likeIcon = document.createElement('i');
+          likeIcon.setAttribute('data-lucide', 'thumbs-up');
+          likeIcon.className = 'w-4 h-4';
+          likeIcon.setAttribute('aria-hidden', 'true');
+          likeBtn.appendChild(likeIcon);
+          const likeCount = document.createElement('span');
+          likeCount.className = 'like-count ml-1 text-sm';
+          likeCount.textContent = (p.likes || 0).toString();
+          likeBtn.appendChild(likeCount);
+
+          const saveBtn = document.createElement('button');
+          saveBtn.className =
+            'save-btn p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+          saveBtn.title = 'Save prompt';
+          saveBtn.setAttribute('aria-label', 'Save prompt');
+          saveBtn.innerHTML =
+            '<i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>';
+
+          const shareBtn = document.createElement('button');
+          shareBtn.className =
+            'share-btn p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+          shareBtn.title = 'Share on Twitter';
+          shareBtn.setAttribute('aria-label', 'Share on Twitter');
+          shareBtn.innerHTML =
+            '<i data-lucide="twitter" class="w-4 h-4" aria-hidden="true"></i>';
+
+          actions.appendChild(likeBtn);
+          actions.appendChild(saveBtn);
+          actions.appendChild(shareBtn);
+          card.appendChild(actions);
+
+          likeBtn.addEventListener('click', () => {
+            try {
+              likePrompt(p);
+            } catch {}
+            const countEl = likeBtn.querySelector('.like-count');
+            if (countEl) {
+              const current = parseInt(countEl.textContent, 10) || 0;
+              countEl.textContent = (current + 1).toString();
+            }
+          });
+
+          saveBtn.addEventListener('click', () => {
+            appState.savedPrompts.push(p.text);
+          });
+
+          shareBtn.addEventListener('click', () => {
+            const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+              p.text
+            )}`;
+            window.open(url, '_blank');
+          });
+
           list.appendChild(card);
         });
         window.lucide?.createIcons();
