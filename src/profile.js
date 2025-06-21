@@ -1,6 +1,7 @@
 import { initFirebase, firebaseConfig } from './firebase.js';
 import { onAuth, logout } from './auth.js';
 import { getUserPrompts } from './prompt.js';
+import { appState, THEMES } from './state.js';
 
 let themeLightButton;
 let themeDarkButton;
@@ -15,9 +16,34 @@ const setTheme = (theme) => {
   localStorage.setItem('theme', theme);
 };
 
-const renderPrompts = (prompts) => {
-  const list = document.getElementById('prompt-list');
+const updateCount = (id, count) => {
+  const el = document.getElementById(id);
+  if (el) el.textContent = count.toString();
+};
+
+const renderSavedPrompts = (prompts) => {
+  const list = document.getElementById('saved-list');
   list.innerHTML = '';
+  updateCount('saved-count', prompts.length);
+  if (!prompts || prompts.length === 0) {
+    const p = document.createElement('p');
+    p.textContent = 'No prompts yet.';
+    list.appendChild(p);
+    return;
+  }
+  prompts.forEach((text) => {
+    const item = document.createElement('div');
+    item.className =
+      'bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
+    item.textContent = text;
+    list.appendChild(item);
+  });
+};
+
+const renderSharedPrompts = (prompts) => {
+  const list = document.getElementById('shared-list');
+  list.innerHTML = '';
+  updateCount('shared-count', prompts.length);
   if (!prompts || prompts.length === 0) {
     const p = document.createElement('p');
     p.textContent = 'No prompts yet.';
@@ -45,11 +71,14 @@ const init = () => {
     }
   }
 
-  const currentTheme = localStorage.getItem('theme') || 'dark';
+  const savedLang = localStorage.getItem('language') || 'en';
+  document.documentElement.lang = savedLang;
+
+  const currentTheme = localStorage.getItem('theme') || THEMES.DARK;
   setTheme(currentTheme);
 
-  themeLightButton?.addEventListener('click', () => setTheme('light'));
-  themeDarkButton?.addEventListener('click', () => setTheme('dark'));
+  themeLightButton?.addEventListener('click', () => setTheme(THEMES.LIGHT));
+  themeDarkButton?.addEventListener('click', () => setTheme(THEMES.DARK));
   document.getElementById('logout')?.addEventListener('click', logout);
 
   onAuth(async (user) => {
@@ -58,9 +87,10 @@ const init = () => {
       return;
     }
     document.getElementById('user-email').textContent = user.email || '';
-    const prompts = await getUserPrompts(user.uid);
-    renderPrompts(prompts);
-    window.lucide?.createIcons();
+      const prompts = await getUserPrompts(user.uid);
+      renderSharedPrompts(prompts);
+      renderSavedPrompts(appState.savedPrompts || []);
+      window.lucide?.createIcons();
   });
 };
 
