@@ -94,11 +94,18 @@ function appendVersionToAssets(html, version) {
   return result;
 }
 
-function updateHtmlFiles(version) {
+function updateBaseHref(html, href) {
+  return html.replace(/<base\s+href="[^"]*"\s*\/?>(?=)/i, `<base href="${href}" />`);
+}
+
+function updateHtmlFiles(version, baseHref) {
   const htmlFiles = getHtmlFiles(rootDir);
   for (const file of htmlFiles) {
     const original = fs.readFileSync(file, 'utf8');
-    const updated = appendVersionToAssets(original, version);
+    let updated = appendVersionToAssets(original, version);
+    if (baseHref) {
+      updated = updateBaseHref(updated, baseHref);
+    }
     fs.writeFileSync(file, updated);
     console.log(`Updated ${path.relative(rootDir, file)}`);
   }
@@ -114,4 +121,5 @@ fs.writeFileSync(outputFile, output);
 console.log(`Wrote ${outputFile}`);
 
 const version = bumpManifestVersion();
-updateHtmlFiles(version);
+const baseHref = process.env.BASE_HREF;
+updateHtmlFiles(version, baseHref);

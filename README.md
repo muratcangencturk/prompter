@@ -159,9 +159,14 @@ Prompter includes a range of optimizations to help search engines crawl and inde
 Before deploying your own instance, update all references to the default domain
 (`https://prompterai.space`).
 
-- Edit the canonical `<link>` tags in `index.html` and `tr/index.html` so they
-  point to your final site.
-- Set the `<base>` tag in `index.html` and `tr/index.html` to the directory where the site is hosted (e.g., `<base href="/">` or `<base href="/subdir/">`).
+- Edit the canonical `<link>` tags in all HTML files so they point to your final
+  site.
+- Ensure the `<base>` tag in every HTML file matches the path where the site is
+  hosted. A mismatched value will break relative URLs. Example: `<base
+  href="/subdir/">` when serving from `/subdir/`.
+- You can automatically rewrite the `<base>` tags by setting the `BASE_HREF`
+  environment variable when running `npm run build`, e.g. `BASE_HREF=/subdir/
+  npm run build`.
 - In `scripts/generate-sitemap.js` replace the `BASE_URL` constant and run
   `npm run build:sitemap` to regenerate `sitemap.xml`.
 - Update the `Sitemap:` line inside `robots.txt` with your new domain.
