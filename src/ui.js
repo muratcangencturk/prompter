@@ -1,6 +1,5 @@
 import { appState, THEMES } from './state.js';
 import { categories, ICON_FALLBACKS, generatePrompt } from './prompts.js';
-import { savePrompt } from './prompt.js';
 
 const uiText = {
   en: {
@@ -944,10 +943,11 @@ const setupEventListeners = () => {
         shareButton.classList.remove('button-pop');
       }, 2000);
       try {
+        const { savePrompt } = await import('./prompt.js');
         await savePrompt(appState.generatedPrompt, appState.currentUser.uid);
       } catch (err) {
         console.error(err);
-        alert('Failed to share prompt');
+        alert('Failed to share prompt. Please try again.');
       }
     });
   }
@@ -1077,6 +1077,7 @@ const setupEventListeners = () => {
       let saved = true;
       if (appState.currentUser) {
         try {
+          const { savePrompt } = await import('./prompt.js');
           await savePrompt(text, appState.currentUser.uid);
         } catch (err) {
           console.error(err);
@@ -1089,7 +1090,8 @@ const setupEventListeners = () => {
           );
           if (retry) {
             try {
-              await savePrompt(text, appState.currentUser.uid);
+              const { savePrompt: retrySavePrompt } = await import('./prompt.js');
+              await retrySavePrompt(text, appState.currentUser.uid);
               saved = true;
             } catch (err2) {
               console.error(err2);
