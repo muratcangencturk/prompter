@@ -20,6 +20,7 @@ const uiText = {
     copySuccessMessage: 'Prompt copied successfully!',
     saveSuccessMessage: 'Prompt saved!',
     downloadSuccessMessage: 'Downloading...',
+    saveErrorMessage: 'Failed to save prompt.',
     shareMessage: 'Sharing...',
     saveFeedback: 'Saved!',
     appStats: 'Prompts that will unlock the potential of your mind',
@@ -51,6 +52,7 @@ const uiText = {
     clearHistoryTitle: 'Geçmişi temizle',
     copySuccessMessage: 'Kopyalandı!',
     saveSuccessMessage: 'Kaydedildi!',
+    saveErrorMessage: 'Prompt kaydedilemedi.',
     downloadSuccessMessage: 'İndiriliyor...',
     shareMessage: 'Paylaşılıyor...',
     saveFeedback: 'Kaydedildi!',
@@ -82,6 +84,7 @@ const uiText = {
     clearHistoryTitle: 'Borrar historial',
     copySuccessMessage: '¡Copiado!',
     saveSuccessMessage: '¡Guardado!',
+    saveErrorMessage: 'No se pudo guardar el prompt.',
     downloadSuccessMessage: 'Descargando...',
     shareMessage: 'Compartiendo...',
     saveFeedback: '¡Guardado!',
@@ -114,6 +117,7 @@ const uiText = {
     clearHistoryTitle: "Effacer l'historique",
     copySuccessMessage: 'Prompt copié !',
     saveSuccessMessage: 'Prompt enregistré !',
+    saveErrorMessage: "Échec de l'enregistrement du prompt.",
     downloadSuccessMessage: 'Téléchargement...',
     shareMessage: 'Partage en cours...',
     saveFeedback: 'Enregistré !',
@@ -145,6 +149,7 @@ const uiText = {
     clearHistoryTitle: '清除历史',
     copySuccessMessage: '已复制!',
     saveSuccessMessage: '已保存!',
+    saveErrorMessage: '保存提示失败。',
     downloadSuccessMessage: '正在下载...',
     shareMessage: '正在分享...',
     saveFeedback: '已保存!',
@@ -177,6 +182,7 @@ const uiText = {
     clearHistoryTitle: 'इतिहास साफ करें',
     copySuccessMessage: 'प्रॉम्प्ट सफलतापूर्वक कॉपी हुआ!',
     saveSuccessMessage: 'प्रॉम्प्ट सहेजा गया!',
+    saveErrorMessage: 'प्रॉम्प्ट सहेजने में विफल।',
     downloadSuccessMessage: 'डाउनलोड हो रहा है...',
     shareMessage: 'साझा किया जा रहा है...',
     saveFeedback: 'सहेजा गया!',
@@ -205,6 +211,7 @@ let shareTwitterButton;
 let copySuccessMessage;
 let downloadSuccessMessage;
 let saveSuccessMessage;
+let saveErrorMessage;
 let shareMessage;
 let langEnButton;
 let langTrButton;
@@ -316,6 +323,9 @@ const setLanguage = (lang) => {
   copySuccessMessage.textContent = uiText[lang].copySuccessMessage;
   downloadSuccessMessage.textContent = uiText[lang].downloadSuccessMessage;
   saveSuccessMessage.textContent = uiText[lang].saveSuccessMessage;
+  if (saveErrorMessage) {
+    saveErrorMessage.textContent = uiText[lang].saveErrorMessage;
+  }
   if (shareMessage) {
     shareMessage.textContent = uiText[lang].shareMessage;
   }
@@ -943,19 +953,42 @@ const setupEventListeners = () => {
         'savedPrompts',
         JSON.stringify(appState.savedPrompts)
       );
+      let saved = true;
       if (appState.currentUser) {
         try {
           await savePrompt(appState.generatedPrompt, appState.currentUser.uid);
         } catch (err) {
           console.error(err);
-          alert('Failed to save prompt');
-          return;
+          saved = false;
+          if (saveErrorMessage) {
+            saveErrorMessage.classList.remove('hidden');
+          }
+          const retry = confirm(
+            `${uiText[appState.language].saveErrorMessage} Retry?`
+          );
+          if (retry) {
+            try {
+              await savePrompt(
+                appState.generatedPrompt,
+                appState.currentUser.uid
+              );
+              saved = true;
+            } catch (err2) {
+              console.error(err2);
+              saved = false;
+            }
+          }
+          setTimeout(() => {
+            if (saveErrorMessage) saveErrorMessage.classList.add('hidden');
+          }, 2000);
         }
       }
-      saveSuccessMessage.classList.remove('hidden');
-      setTimeout(() => {
-        saveSuccessMessage.classList.add('hidden');
-      }, 2000);
+      if (saved) {
+        saveSuccessMessage.classList.remove('hidden');
+        setTimeout(() => {
+          saveSuccessMessage.classList.add('hidden');
+        }, 2000);
+      }
       saveButton.classList.add('button-pop');
       setTimeout(() => {
         saveButton.classList.remove('button-pop');
@@ -1063,21 +1096,41 @@ const setupEventListeners = () => {
         'savedPrompts',
         JSON.stringify(appState.savedPrompts)
       );
+      let saved = true;
       if (appState.currentUser) {
         try {
           await savePrompt(text, appState.currentUser.uid);
         } catch (err) {
           console.error(err);
-          alert('Failed to save prompt');
-          return;
+          saved = false;
+          if (saveErrorMessage) {
+            saveErrorMessage.classList.remove('hidden');
+          }
+          const retry = confirm(
+            `${uiText[appState.language].saveErrorMessage} Retry?`
+          );
+          if (retry) {
+            try {
+              await savePrompt(text, appState.currentUser.uid);
+              saved = true;
+            } catch (err2) {
+              console.error(err2);
+              saved = false;
+            }
+          }
+          setTimeout(() => {
+            if (saveErrorMessage) saveErrorMessage.classList.add('hidden');
+          }, 2000);
         }
       }
-      const feedback = saveBtn.parentElement.querySelector('.save-feedback');
-      if (feedback) {
-        feedback.classList.remove('hidden');
-        setTimeout(() => {
-          feedback.classList.add('hidden');
-        }, 1000);
+      if (saved) {
+        const feedback = saveBtn.parentElement.querySelector('.save-feedback');
+        if (feedback) {
+          feedback.classList.remove('hidden');
+          setTimeout(() => {
+            feedback.classList.add('hidden');
+          }, 1000);
+        }
       }
       saveBtn.classList.add('button-pop');
       setTimeout(() => {
@@ -1167,6 +1220,7 @@ export const initializeApp = () => {
   copySuccessMessage = document.getElementById('copy-success-message');
   downloadSuccessMessage = document.getElementById('download-success-message');
   saveSuccessMessage = document.getElementById('save-success-message');
+  saveErrorMessage = document.getElementById('save-error-message');
   shareMessage = document.getElementById('share-message');
   langEnButton = document.getElementById('lang-en');
   langTrButton = document.getElementById('lang-tr');
