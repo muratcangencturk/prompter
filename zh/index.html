@@ -11,9 +11,9 @@
     />
     <title>PROMPTER</title>
     <base href="../" />
-    <link rel="icon" type="image/svg+xml" href="icons/logo.svg?v=39" />
-    <link rel="preload" href="icons/logo.svg?v=39" as="image" />
-    <link rel="manifest" href="manifest.json?v=39" />
+    <link rel="icon" type="image/svg+xml" href="icons/logo.svg?v=40" />
+    <link rel="preload" href="icons/logo.svg?v=40" as="image" />
+    <link rel="manifest" href="manifest.json?v=40" />
     <meta name="theme-color" content="#000000" />
     <meta
       http-equiv="Cache-Control"
@@ -35,7 +35,7 @@
       property="og:description"
       content="需要互联网连接的创意AI提示生成器."
     />
-    <meta property="og:image" content="icons/logo.svg?v=39" />
+    <meta property="og:image" content="icons/logo.svg?v=40" />
     <meta property="og:image:alt" content="Prompter logo" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -44,7 +44,7 @@
       name="twitter:description"
       content="需要互联网连接的创意AI提示生成器."
     />
-    <meta name="twitter:image" content="icons/logo.svg?v=39" />
+    <meta name="twitter:image" content="icons/logo.svg?v=40" />
     <meta property="og:url" content="https://prompterai.space/zh/" />
     <meta property="og:site_name" content="Prompter" />
     <meta property="og:locale" content="zh" />
@@ -179,11 +179,11 @@
 
         const tailwindScripts = loadWithFallback(
           'https://cdn.tailwindcss.com',
-          'tailwind.js?v=39'
+          'tailwind.js?v=40'
         );
         window.lucideScripts = loadWithFallback(
-          'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=39',
-          'lucide.min.js?v=39'
+          'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=40',
+          'lucide.min.js?v=40'
         );
         Promise.all([
           tailwindScripts.loadPromise,
@@ -196,8 +196,8 @@
         });
       })();
     </script>
-    <link rel="stylesheet" href="css/app.css?v=39" />
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=39" />
+    <link rel="stylesheet" href="css/app.css?v=40" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=40" />
     <script>
       (function () {
         const linkEl = document.getElementById('theme-css');
@@ -365,7 +365,7 @@
       <!-- Header -->
       <div class="text-center mb-3 pt-4">
         <img
-          src="icons/logo.svg?v=39"
+          src="icons/logo.svg?v=40"
           alt="Prompter logo"
           class="mx-auto mb-4 w-16 h-16"
           id="app-logo"
@@ -442,16 +442,16 @@
               ></i>
             </button>
             <button
-              id="download-button"
+              id="share-button"
               class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
-              title="Download as .txt"
-              aria-label="Download as .txt"
+              title="Prompterda paylaş"
+              aria-label="Prompterda paylaş"
             >
               <i
-                data-lucide="download"
+                data-lucide="share-2"
                 class="w-4 h-4"
                 role="img"
-                aria-label="Download icon"
+                aria-label="Share icon"
               ></i>
             </button>
             <button
@@ -491,12 +491,6 @@
           class="text-green-400 text-sm mt-2 animate-pulse hidden"
         >
           Prompt copied successfully!
-        </p>
-        <p
-          id="download-success-message"
-          class="text-green-400 text-sm mt-2 animate-pulse hidden"
-        >
-          Downloading...
         </p>
         <p
           id="save-success-message"
@@ -611,10 +605,10 @@
           class="flex justify-center mt-2"
           aria-label="WhatsApp Group"
         >
-          <img src="icons/whatsapp.svg?v=39" class="w-6 h-6" alt="WhatsApp logo" />
+          <img src="icons/whatsapp.svg?v=40" class="w-6 h-6" alt="WhatsApp logo" />
         </a>
       </div>
     </div>
-    <script type="module" src="src/main.js?v=39"></script>
+    <script type="module" src="src/main.js?v=40"></script>
   </body>
 </html>
