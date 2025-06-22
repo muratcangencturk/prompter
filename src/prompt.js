@@ -58,7 +58,11 @@ export const getAllPrompts = async () => {
     orderBy('createdAt', 'desc')
   );
   const snap = await getDocs(q);
-  return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+  return snap.docs
+    .map((d) => ({ id: d.id, ...d.data() }))
+    .filter(
+      (p) => Array.isArray(p.sharedBy) && p.sharedBy.length > 0
+    );
 };
 
 export const likePrompt = async (promptId, userId) => {
