@@ -108,6 +108,13 @@
         const list = document.getElementById('all-prompts');
         const prompts = await getAllPrompts();
         list.innerHTML = '';
+        if (!prompts || prompts.length === 0) {
+          const msg = document.createElement('p');
+          msg.className = 'text-blue-200 text-sm text-center';
+          msg.textContent = 'No shared prompts yet.';
+          list.appendChild(msg);
+          return;
+        }
         for (const p of prompts) {
           const card = document.createElement('div');
           card.className =
