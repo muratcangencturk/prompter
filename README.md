@@ -211,6 +211,9 @@ If you modify `firestore.indexes.json`, deploy the indexes to your Firebase proj
 firebase deploy --only firestore:indexes
 ```
 
+Use a valid Firebase token when running the command above. Missing indexes will
+lead to empty results on the Social page until they are created.
+
 ## Advertising (Google AdSense)
 
 All pages include the standard AdSense loader in the `<head>` tag:
