@@ -107,7 +107,8 @@ const uiText = {
     copyButtonTitle: 'Copier dans le presse-papiers',
     shareButtonTitle: 'Partager sur Prompter',
     shareTwitterTitle: 'Partager sur Twitter',
-    saveButtonTitle: 'Enregistrer le prompt (connexion requise pour la synchronisation en ligne)',
+    saveButtonTitle:
+      'Enregistrer le prompt (connexion requise pour la synchronisation en ligne)',
     deleteButtonTitle: 'Supprimer le prompt',
     historyTitle: 'Prompts précédents',
     clearHistoryTitle: "Effacer l'historique",
@@ -781,6 +782,21 @@ const renderHistory = () => {
       actions.appendChild(shareBtn);
     }
 
+    if (shareButton) {
+      const siteShareBtn = document.createElement('button');
+      siteShareBtn.className =
+        'history-site-share p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+      siteShareBtn.title = uiText[appState.language].shareButtonTitle;
+      siteShareBtn.setAttribute(
+        'aria-label',
+        uiText[appState.language].shareButtonTitle
+      );
+      siteShareBtn.setAttribute('data-index', idx);
+      siteShareBtn.innerHTML =
+        '<i data-lucide="share-2" class="w-3 h-3" aria-hidden="true"></i>';
+      actions.appendChild(siteShareBtn);
+    }
+
     const deleteBtn = document.createElement('button');
     deleteBtn.className =
       'history-delete p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
@@ -931,7 +947,10 @@ const setupEventListeners = () => {
       if (appState.currentUser) {
         try {
           const { saveUserPrompt } = await import('./prompt.js');
-          await saveUserPrompt(appState.generatedPrompt, appState.currentUser.uid);
+          await saveUserPrompt(
+            appState.generatedPrompt,
+            appState.currentUser.uid
+          );
         } catch (err) {
           console.error('Failed to sync prompt:', err);
         }
@@ -980,8 +999,9 @@ const setupEventListeners = () => {
     const copyBtn = e.target.closest('.history-copy');
     const saveBtn = e.target.closest('.history-save');
     const shareBtn = e.target.closest('.history-share');
+    const siteShareBtn = e.target.closest('.history-site-share');
     const deleteBtn = e.target.closest('.history-delete');
-    const btn = copyBtn || saveBtn || shareBtn || deleteBtn;
+    const btn = copyBtn || saveBtn || shareBtn || siteShareBtn || deleteBtn;
     if (!btn) return;
     const index = parseInt(btn.getAttribute('data-index'), 10);
     if (Number.isNaN(index)) return;
@@ -1041,7 +1061,9 @@ const setupEventListeners = () => {
           );
           if (retry) {
             try {
-              const { savePrompt: retrySavePrompt } = await import('./prompt.js');
+              const { savePrompt: retrySavePrompt } = await import(
+                './prompt.js'
+              );
               await retrySavePrompt(text, appState.currentUser.uid);
               saved = true;
             } catch (err2) {
@@ -1067,6 +1089,28 @@ const setupEventListeners = () => {
       setTimeout(() => {
         saveBtn.classList.remove('button-pop');
       }, 300);
+    } else if (siteShareBtn) {
+      if (!appState.currentUser) {
+        alert('Login required to share');
+        return;
+      }
+      siteShareBtn.classList.add('button-pop');
+      if (shareMessage) {
+        shareMessage.classList.remove('hidden');
+        setTimeout(() => {
+          shareMessage.classList.add('hidden');
+        }, 2000);
+      }
+      setTimeout(() => {
+        siteShareBtn.classList.remove('button-pop');
+      }, 300);
+      try {
+        const { savePrompt } = await import('./prompt.js');
+        await savePrompt(text, appState.currentUser.uid);
+      } catch (err) {
+        console.error(err);
+        alert('Failed to share prompt. Please try again.');
+      }
     } else if (shareBtn) {
       shareBtn.classList.add('button-pop');
       if (shareMessage) {
