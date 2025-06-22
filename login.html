@@ -34,8 +34,9 @@
   <script type="module" src="src/auth.js?v=45"></script>
   <script nomodule src="dist/auth.js?v=45"></script>
   <script type="module">
-     
+
     import { login, register, onAuth } from './src/auth.js';
+    import { setUserProfile } from './src/user.js';
 
     function init() {
       const loginForm = document.getElementById('login-form');
@@ -66,7 +67,9 @@
         e.preventDefault();
         const email = document.getElementById('register-email').value;
         const password = document.getElementById('register-password').value;
+        const name = document.getElementById('register-name').value;
         register(email, password)
+          .then((cred) => setUserProfile(cred.user.uid, { name }))
           .then(() => {
             authError.textContent = '';
             window.location.href = 'index.html';
@@ -98,6 +101,7 @@
     <form id="register-form" class="bg-white/10 backdrop-blur-md rounded-2xl p-4 mb-4 border border-white/20 shadow-lg space-y-2">
       <h2 class="text-lg font-semibold mb-2">Kayıt</h2>
       <input id="register-email" type="email" placeholder="E-posta" required class="w-full p-2 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50">
+      <input id="register-name" type="text" placeholder="Name" required class="w-full p-2 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50">
       <input id="register-password" type="password" placeholder="Şifre" required class="w-full p-2 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50">
       <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 font-bold py-2 rounded-lg transition-all duration-300 ease-in-out">Kayıt Ol</button>
     </form>

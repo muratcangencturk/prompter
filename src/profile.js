@@ -7,6 +7,7 @@ import {
   updatePromptText,
   unsharePrompt,
 } from './prompt.js';
+import { getUserProfile } from './user.js';
 import { appState, THEMES } from './state.js';
 
 const uiText = {
@@ -128,6 +129,7 @@ let langToggleButton;
 let langMenu;
 let currentLangLabel;
 let sharedPromptsData = [];
+let currentUserName = '';
 
 const setTheme = (theme) => {
   appState.theme = theme;
@@ -389,6 +391,10 @@ const renderSharedPrompts = (prompts) => {
     const text = document.createElement('p');
     text.textContent = p.text;
 
+    const nameEl = document.createElement('p');
+    nameEl.className = 'text-blue-200 text-sm mt-1';
+    nameEl.textContent = currentUserName;
+
     const likeRow = document.createElement('div');
     likeRow.className = 'flex items-center gap-2 mt-2';
     const likeBtn = document.createElement('button');
@@ -571,6 +577,7 @@ const renderSharedPrompts = (prompts) => {
     likeRow.appendChild(likeCount);
 
     item.appendChild(text);
+    item.appendChild(nameEl);
     item.appendChild(likeRow);
     list.appendChild(item);
   });
@@ -679,11 +686,21 @@ const init = () => {
         window.lucide?.createIcons();
       }
       document.getElementById('user-email').textContent = '';
+      const nameEl = document.getElementById('user-name');
+      if (nameEl) nameEl.textContent = '';
       return;
     }
     loginBtn?.remove();
     logoutBtn?.classList.remove('hidden');
     document.getElementById('user-email').textContent = user.email || '';
+    try {
+      const profile = await getUserProfile(user.uid);
+      currentUserName = profile?.name || '';
+      const nameEl = document.getElementById('user-name');
+      if (nameEl) nameEl.textContent = currentUserName;
+    } catch (err) {
+      console.error('Failed to load profile:', err);
+    }
     try {
       const prompts = await getUserPrompts(user.uid);
       sharedPromptsData = prompts;
