@@ -43,12 +43,17 @@ export const getUserPrompts = async (userId) => {
   const q = query(
     collection(db, 'prompts'),
     where('userId', '==', userId),
-    where('shared', '==', true)
+    where('sharedBy', 'array-contains', userId)
   );
-  const snap = await getDocs(q);
-  const prompts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
-  prompts.sort((a, b) => b.createdAt.toMillis() - a.createdAt.toMillis());
-  return prompts;
+  try {
+    const snap = await getDocs(q);
+    const prompts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+    prompts.sort((a, b) => b.createdAt.toMillis() - a.createdAt.toMillis());
+    return prompts;
+  } catch (err) {
+    console.error('Failed to load user prompts:', err);
+    return [];
+  }
 };
 
 export const getAllPrompts = async () => {
