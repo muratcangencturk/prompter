@@ -662,10 +662,27 @@ const init = () => {
   });
 
   onAuth(async (user) => {
+    const logoutBtn = document.getElementById('logout');
+    const header = logoutBtn?.parentElement;
+    let loginBtn = document.getElementById('login-btn');
     if (!user) {
-      window.location.href = 'index.html';
+      logoutBtn?.classList.add('hidden');
+      if (!loginBtn) {
+        loginBtn = document.createElement('a');
+        loginBtn.id = 'login-btn';
+        loginBtn.href = 'login.html';
+        loginBtn.className =
+          'mt-2 bg-white/20 hover:bg-white/30 p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 flex items-center gap-1 mx-auto';
+        loginBtn.innerHTML =
+          '<i data-lucide="log-in" class="w-4 h-4" aria-hidden="true"></i><span>Login</span>';
+        header?.appendChild(loginBtn);
+        window.lucide?.createIcons();
+      }
+      document.getElementById('user-email').textContent = '';
       return;
     }
+    loginBtn?.remove();
+    logoutBtn?.classList.remove('hidden');
     document.getElementById('user-email').textContent = user.email || '';
     try {
       const prompts = await getUserPrompts(user.uid);
