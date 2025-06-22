@@ -136,6 +136,22 @@
         >
           <i data-lucide="moon" class="w-5 h-5" aria-hidden="true"></i>
         </button>
+        <button
+          id="notifications-btn"
+          class="p-1.5 rounded-md focus:outline-none focus:ring-2 focus:ring-white/50 relative"
+          title="Notifications"
+          aria-label="Notifications"
+        >
+          <i data-lucide="bell" class="w-5 h-5" aria-hidden="true"></i>
+          <span
+            id="notification-count"
+            class="hidden absolute -top-1 -right-1 bg-red-500 text-xs rounded-full w-4 h-4 flex items-center justify-center"
+          ></span>
+        </button>
+        <div
+          id="notifications-panel"
+          class="hidden absolute right-0 mt-10 bg-black/80 backdrop-blur-md p-2 rounded-md border border-white/20 text-sm w-64 max-h-60 overflow-y-auto"
+        ></div>
       </div>
       <div class="text-center mb-6 pt-16">
         <img id="app-logo" src="icons/logo.svg?v=45" alt="Prompter logo" class="mx-auto mb-4 w-16 h-16" />

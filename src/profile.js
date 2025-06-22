@@ -8,6 +8,7 @@ import {
   unsharePrompt,
 } from './prompt.js';
 import { getUserProfile } from './user.js';
+import { listenNotifications } from './notifications.js';
 import { appState, THEMES } from './state.js';
 
 const uiText = {
@@ -130,6 +131,11 @@ let langMenu;
 let currentLangLabel;
 let sharedPromptsData = [];
 let currentUserName = '';
+let notificationBtn;
+let notificationCountEl;
+let notificationsPanel;
+let notifications = [];
+let unsubscribeNotifications;
 
 const setTheme = (theme) => {
   appState.theme = theme;
@@ -234,6 +240,37 @@ const updateTexts = () => {
 const updateCount = (id, count) => {
   const el = document.getElementById(id);
   if (el) el.textContent = count.toString();
+};
+
+const renderNotifications = () => {
+  if (!notificationCountEl || !notificationsPanel) return;
+  const unread = notifications.filter((n) => !n.read);
+  if (unread.length) {
+    notificationCountEl.textContent = unread.length.toString();
+    notificationCountEl.classList.remove('hidden');
+  } else {
+    notificationCountEl.classList.add('hidden');
+  }
+  notificationsPanel.innerHTML = '';
+  notifications.forEach((n) => {
+    const div = document.createElement('div');
+    let msg = '';
+    if (n.type === 'like') msg = 'Your prompt received a like.';
+    else if (n.type === 'comment') msg = 'New comment on your prompt.';
+    else if (n.type === 'share') msg = 'Your prompt was shared.';
+    else msg = 'New activity on your prompt.';
+    div.textContent = msg;
+    div.className = 'p-1 border-b border-white/20 last:border-b-0';
+    notificationsPanel.appendChild(div);
+  });
+};
+
+const initNotifications = (uid) => {
+  unsubscribeNotifications?.();
+  unsubscribeNotifications = listenNotifications(uid, (data) => {
+    notifications = data;
+    renderNotifications();
+  });
 };
 
 const sharePrompt = (prompt, baseUrl) => {
@@ -604,6 +641,13 @@ const init = () => {
   langToggleButton = document.getElementById('lang-toggle');
   langMenu = document.getElementById('lang-menu');
   currentLangLabel = document.getElementById('current-lang');
+  notificationBtn = document.getElementById('notifications-btn');
+  notificationCountEl = document.getElementById('notification-count');
+  notificationsPanel = document.getElementById('notifications-panel');
+
+  notificationBtn?.addEventListener('click', () => {
+    notificationsPanel?.classList.toggle('hidden');
+  });
 
   const savedLang = localStorage.getItem('language') || 'en';
   setLanguage(savedLang);
@@ -688,11 +732,15 @@ const init = () => {
       document.getElementById('user-email').textContent = '';
       const nameEl = document.getElementById('user-name');
       if (nameEl) nameEl.textContent = '';
+      notifications = [];
+      renderNotifications();
+      unsubscribeNotifications?.();
       return;
     }
     loginBtn?.remove();
     logoutBtn?.classList.remove('hidden');
     document.getElementById('user-email').textContent = user.email || '';
+    initNotifications(user.uid);
     try {
       const profile = await getUserProfile(user.uid);
       currentUserName = profile?.name || '';
