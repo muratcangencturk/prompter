@@ -9,6 +9,8 @@ import {
   updateDoc,
   doc,
   increment,
+  arrayUnion,
+  arrayRemove,
 } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
 import { db } from './firebase.js';
 
@@ -30,6 +32,8 @@ export const savePrompt = (text, userId) =>
     userId,
     createdAt: Timestamp.now(),
     likes: 0,
+    likedBy: [],
+    sharedBy: [userId],
   });
 
 export const getUserPrompts = async (userId) => {
@@ -46,8 +50,22 @@ export const getAllPrompts = async () => {
   return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
 };
 
-export const likePrompt = (promptId) =>
-  updateDoc(doc(db, 'prompts', promptId), { likes: increment(1) });
+export const likePrompt = (promptId, userId) =>
+  updateDoc(doc(db, 'prompts', promptId), {
+    likes: increment(1),
+    likedBy: arrayUnion(userId),
+  });
+
+export const unlikePrompt = (promptId, userId) =>
+  updateDoc(doc(db, 'prompts', promptId), {
+    likes: increment(-1),
+    likedBy: arrayRemove(userId),
+  });
+
+export const unsharePrompt = (promptId, userId) =>
+  updateDoc(doc(db, 'prompts', promptId), {
+    sharedBy: arrayRemove(userId),
+  });
 
 export const saveUserPrompt = (text, userId) =>
   addDoc(collection(db, `users/${userId}/savedPrompts`), {
@@ -63,3 +81,4 @@ export const getUserSavedPrompts = async (userId) => {
   const snap = await getDocs(q);
   return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
 };
+

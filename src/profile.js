@@ -1,5 +1,10 @@
 import { onAuth, logout } from './auth.js';
-import { getUserPrompts, likePrompt, getUserSavedPrompts } from './prompt.js';
+import {
+  getUserPrompts,
+  likePrompt,
+  unlikePrompt,
+  getUserSavedPrompts,
+} from './prompt.js';
 import { appState, THEMES } from './state.js';
 
 const uiText = {
@@ -248,17 +253,46 @@ const renderSharedPrompts = (prompts) => {
     const likeCount = document.createElement('span');
     likeCount.textContent = (p.likes || 0).toString();
 
-    if (appState.likedPrompts.includes(p.id)) {
-      likeBtn.disabled = true;
+    const liked =
+      appState.currentUser && p.likedBy && p.likedBy.includes(appState.currentUser.uid);
+    if (liked) {
+      likeBtn.classList.add('active');
     }
+
+    const updateLikeIcon = () => {
+      const svg = likeBtn.querySelector('svg');
+      if (svg) svg.setAttribute('fill', likeBtn.classList.contains('active') ? 'currentColor' : 'none');
+    };
+
     likeBtn.addEventListener('click', async () => {
-      if (appState.likedPrompts.includes(p.id)) return;
-      await likePrompt(p.id);
-      appState.likedPrompts.push(p.id);
-      localStorage.setItem('likedPrompts', JSON.stringify(appState.likedPrompts));
-      likeCount.textContent = (parseInt(likeCount.textContent, 10) + 1).toString();
+      if (!appState.currentUser) {
+        alert('Login required');
+        return;
+      }
       likeBtn.disabled = true;
+      const already = likeBtn.classList.contains('active');
+      try {
+        if (already) {
+          await unlikePrompt(p.id, appState.currentUser.uid);
+          likeCount.textContent = (parseInt(likeCount.textContent, 10) - 1).toString();
+          appState.likedPrompts = appState.likedPrompts.filter((id) => id !== p.id);
+          likeBtn.classList.remove('active');
+        } else {
+          await likePrompt(p.id, appState.currentUser.uid);
+          likeCount.textContent = (parseInt(likeCount.textContent, 10) + 1).toString();
+          appState.likedPrompts.push(p.id);
+          likeBtn.classList.add('active');
+        }
+        localStorage.setItem('likedPrompts', JSON.stringify(appState.likedPrompts));
+        updateLikeIcon();
+      } catch (err) {
+        console.error('Failed to toggle like:', err);
+      } finally {
+        likeBtn.disabled = false;
+      }
     });
+
+    updateLikeIcon();
 
     likeRow.appendChild(likeBtn);
     likeRow.appendChild(likeCount);
@@ -378,6 +412,14 @@ const init = () => {
       console.error('Failed to load prompts:', err);
     }
     window.lucide?.createIcons();
+    document
+      .querySelectorAll('#shared-list .like-btn')
+      .forEach((b) => {
+        const svg = b.querySelector('svg');
+        if (svg && b.classList.contains('active')) {
+          svg.setAttribute('fill', 'currentColor');
+        }
+      });
   });
 };
 
