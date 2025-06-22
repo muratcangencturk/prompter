@@ -6,7 +6,7 @@ import {
   getDocs,
   getDoc,
   orderBy,
-  Timestamp,
+  serverTimestamp,
   updateDoc,
   doc,
   increment,
@@ -32,7 +32,7 @@ export const savePrompt = (text, userId) =>
   addDoc(collection(db, 'prompts'), {
     text,
     userId,
-    createdAt: Timestamp.now(),
+    createdAt: serverTimestamp(),
     likes: 0,
     likedBy: [],
     sharedBy: [userId],
@@ -92,7 +92,7 @@ export const unsharePrompt = (promptId, userId) =>
 export const saveUserPrompt = (text, userId) =>
   addDoc(collection(db, `users/${userId}/savedPrompts`), {
     text,
-    createdAt: Timestamp.now(),
+    createdAt: serverTimestamp(),
   });
 
 export const getUserSavedPrompts = async (userId) => {
@@ -111,7 +111,7 @@ export const addComment = async (promptId, userId, text) => {
   await addDoc(collection(db, `prompts/${promptId}/comments`), {
     text,
     userId,
-    createdAt: Timestamp.now(),
+    createdAt: serverTimestamp(),
   });
   const snap = await getDoc(doc(db, 'prompts', promptId));
   const owner = snap.exists() ? snap.data().userId : null;
