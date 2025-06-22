@@ -416,10 +416,18 @@
           where('shared', '==', true),
           orderBy('createdAt', 'desc')
         );
-        onSnapshot(q, async (snap) => {
-          const prompts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
-          await render(prompts);
-        });
+        onSnapshot(
+          q,
+          async (snap) => {
+            const prompts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+            await render(prompts);
+          },
+          (err) => {
+            console.error('Failed to load prompts:', err);
+            document.getElementById('all-prompts').textContent =
+              'Failed to load prompts.';
+          }
+        );
       }
 
       document.addEventListener('DOMContentLoaded', init);
