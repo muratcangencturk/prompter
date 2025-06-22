@@ -76,6 +76,7 @@
         updatePromptText,
         addComment,
         getComments,
+        unsharePrompt,
       } from './src/prompt.js';
       import { appState } from './src/state.js';
       import { getUserProfile } from './src/user.js';
@@ -246,6 +247,12 @@
           editBtn.innerHTML =
             '<i data-lucide="pencil" class="w-4 h-4" aria-hidden="true"></i>';
 
+          const unshareBtn = document.createElement('button');
+          unshareBtn.className =
+            'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+          unshareBtn.innerHTML =
+            '<i data-lucide="trash" class="w-4 h-4" aria-hidden="true"></i>';
+
           editBtn.addEventListener('click', () => {
             const textarea = document.createElement('textarea');
             textarea.className = 'w-full p-2 rounded-md bg-black/30';
@@ -286,6 +293,17 @@
                 saveEdit.disabled = false;
               }
             });
+          });
+
+          unshareBtn.addEventListener('click', async () => {
+            unshareBtn.disabled = true;
+            try {
+              await unsharePrompt(p.id, appState.currentUser.uid);
+              card.remove();
+            } catch (err) {
+              console.error('Failed to unshare:', err);
+              unshareBtn.disabled = false;
+            }
           });
 
           updateLikeIcon();
@@ -347,6 +365,7 @@
           likeRow.appendChild(saveBtn);
           if (appState.currentUser && p.userId === appState.currentUser.uid) {
             likeRow.appendChild(editBtn);
+            likeRow.appendChild(unshareBtn);
           }
           likeRow.appendChild(likeBtn);
           likeRow.appendChild(likeCount);
