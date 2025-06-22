@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prompter Pro</title>
+    <link rel="icon" type="image/svg+xml" href="icons/logo.svg?v=46" />
+    <link rel="manifest" href="manifest.json?v=46" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="stylesheet" href="css/app.css?v=46" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=46" />
+    <script>
+      (function () {
+        const linkEl = document.getElementById('theme-css');
+        if (!linkEl) return;
+        const version = linkEl.getAttribute('href').split('?')[1];
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          linkEl.href = `css/theme-${savedTheme}.css${version ? `?${version}` : ''}`;
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-black text-white min-h-screen p-4">
+    <div class="max-w-md mx-auto">
+      <a href="index.html" class="inline-block mb-4 p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50" title="Back" aria-label="Back">
+        <span class="w-6 h-6 inline-flex items-center justify-center text-3xl" aria-hidden="true">&larr;</span>
+      </a>
+      <h1 class="text-2xl font-bold mb-4 text-center">Prompter Pro</h1>
+      <p class="mb-2 text-center">Unlock all features for only <strong>79 TL / 2 USD</strong>.</p>
+      <ul class="list-disc list-inside space-y-1 mb-4">
+        <li>Unlimited prompts</li>
+        <li>Ad-free experience</li>
+        <li>Early access to new features</li>
+      </ul>
+      <div class="flex gap-2 justify-center">
+        <a href="#" class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 font-bold py-2 px-4 rounded-lg transition-all duration-300">Proceed to payment</a>
+        <a href="index.html" class="py-2 px-4 rounded-lg border border-white/20 hover:bg-black/30 transition-all">Back</a>
+      </div>
+    </div>
+  </body>
+</html>
