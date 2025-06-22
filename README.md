@@ -149,6 +149,15 @@ across contributions. To serve the application locally during development run:
 npm start
 ```
 
+To backfill older accounts with a root-level name field run:
+
+```bash
+node scripts/migrate-user-names.js
+```
+
+This script copies the `name` from `users/{uid}/profile` into the parent
+`users/{uid}` document when missing.
+
 See [CONTRIBUTING.md](CONTRIBUTING.md) for full setup instructions and the pull
 request workflow.
 
