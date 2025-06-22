@@ -48,3 +48,18 @@ export const getAllPrompts = async () => {
 
 export const likePrompt = (promptId) =>
   updateDoc(doc(db, 'prompts', promptId), { likes: increment(1) });
+
+export const saveUserPrompt = (text, userId) =>
+  addDoc(collection(db, `users/${userId}/savedPrompts`), {
+    text,
+    createdAt: Timestamp.now(),
+  });
+
+export const getUserSavedPrompts = async (userId) => {
+  const q = query(
+    collection(db, `users/${userId}/savedPrompts`),
+    orderBy('createdAt', 'desc')
+  );
+  const snap = await getDocs(q);
+  return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+};

@@ -929,7 +929,12 @@ const setupEventListeners = () => {
         JSON.stringify(appState.savedPrompts)
       );
       if (appState.currentUser) {
-        // prompt remains private until shared
+        try {
+          const { saveUserPrompt } = await import('./prompt.js');
+          await saveUserPrompt(appState.generatedPrompt, appState.currentUser.uid);
+        } catch (err) {
+          console.error('Failed to sync prompt:', err);
+        }
       }
       saveSuccessMessage.classList.remove('hidden');
       setTimeout(() => {
