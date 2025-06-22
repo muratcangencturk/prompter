@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Explore Prompts</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=40"></script>
-    <link rel="stylesheet" href="css/app.css?v=40" />
-    <script type="module" src="src/init-app.js?v=40"></script>
-    <script nomodule src="dist/init-app.js"></script>
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=40" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=45"></script>
+    <link rel="stylesheet" href="css/app.css?v=45" />
+    <script type="module" src="src/init-app.js?v=45"></script>
+    <script nomodule src="dist/init-app.js?v=45"></script>
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=45" />
     <script>
       (function () {
         const linkEl = document.getElementById('theme-css');
@@ -17,7 +17,9 @@
         const version = linkEl.getAttribute('href').split('?')[1];
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
-          linkEl.href = `css/theme-${savedTheme}.css${version ? `?${version}` : ''}`;
+          linkEl.href = `css/theme-${savedTheme}.css${
+            version ? `?${version}` : ''
+          }`;
         }
       })();
     </script>
@@ -31,7 +33,11 @@
           title="Back"
           aria-label="Back"
         >
-          <span class="w-6 h-6 inline-flex items-center justify-center text-3xl" aria-hidden="true">&larr;</span>
+          <span
+            class="w-6 h-6 inline-flex items-center justify-center text-3xl"
+            aria-hidden="true"
+            >&larr;</span
+          >
         </a>
       </div>
       <div class="absolute top-4 right-4 flex items-center gap-2">
@@ -53,18 +59,21 @@
         </button>
       </div>
       <div class="text-center mb-6 pt-16">
-        <img src="icons/logo.svg?v=40" alt="Prompter logo" class="mx-auto mb-4 w-16 h-16" />
+        <img
+          src="icons/logo.svg?v=45"
+          alt="Prompter logo"
+          class="mx-auto mb-4 w-16 h-16"
+        />
         <h1 class="text-2xl font-bold mb-2">All Prompts</h1>
       </div>
       <div id="all-prompts" class="space-y-4"></div>
     </div>
     <script type="module">
-      
       import {
         getAllPrompts,
         likePrompt,
         unlikePrompt,
-        savePrompt,
+        updatePromptText,
       } from './src/prompt.js';
       import { appState } from './src/state.js';
 
@@ -100,7 +109,8 @@
           const saveBtn = document.createElement('button');
           saveBtn.className =
             'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-          saveBtn.innerHTML = '<i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>';
+          saveBtn.innerHTML =
+            '<i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>';
           saveBtn.addEventListener('click', async () => {
             appState.savedPrompts.push(p.text);
             localStorage.setItem(
@@ -115,20 +125,27 @@
           const likeBtn = document.createElement('button');
           likeBtn.className =
             'like-btn p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-          likeBtn.innerHTML = '<i data-lucide="heart" class="w-4 h-4" aria-hidden="true"></i>';
+          likeBtn.innerHTML =
+            '<i data-lucide="heart" class="w-4 h-4" aria-hidden="true"></i>';
 
           const likeCount = document.createElement('span');
           likeCount.textContent = (p.likes || 0).toString();
 
           const liked =
-            appState.currentUser && p.likedBy && p.likedBy.includes(appState.currentUser.uid);
+            appState.currentUser &&
+            p.likedBy &&
+            p.likedBy.includes(appState.currentUser.uid);
           if (liked) {
             likeBtn.classList.add('active');
           }
 
           const updateLikeIcon = () => {
             const svg = likeBtn.querySelector('svg');
-            if (svg) svg.setAttribute('fill', likeBtn.classList.contains('active') ? 'currentColor' : 'none');
+            if (svg)
+              svg.setAttribute(
+                'fill',
+                likeBtn.classList.contains('active') ? 'currentColor' : 'none'
+              );
           };
 
           likeBtn.addEventListener('click', async () => {
@@ -141,16 +158,25 @@
             try {
               if (already) {
                 await unlikePrompt(p.id, appState.currentUser.uid);
-                likeCount.textContent = (parseInt(likeCount.textContent, 10) - 1).toString();
-                appState.likedPrompts = appState.likedPrompts.filter((id) => id !== p.id);
+                likeCount.textContent = (
+                  parseInt(likeCount.textContent, 10) - 1
+                ).toString();
+                appState.likedPrompts = appState.likedPrompts.filter(
+                  (id) => id !== p.id
+                );
                 likeBtn.classList.remove('active');
               } else {
                 await likePrompt(p.id, appState.currentUser.uid);
-                likeCount.textContent = (parseInt(likeCount.textContent, 10) + 1).toString();
+                likeCount.textContent = (
+                  parseInt(likeCount.textContent, 10) + 1
+                ).toString();
                 appState.likedPrompts.push(p.id);
                 likeBtn.classList.add('active');
               }
-              localStorage.setItem('likedPrompts', JSON.stringify(appState.likedPrompts));
+              localStorage.setItem(
+                'likedPrompts',
+                JSON.stringify(appState.likedPrompts)
+              );
               updateLikeIcon();
             } catch (err) {
               console.error('Failed to toggle like:', err);
@@ -159,9 +185,60 @@
             }
           });
 
+          const editBtn = document.createElement('button');
+          editBtn.className =
+            'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+          editBtn.innerHTML =
+            '<i data-lucide="pencil" class="w-4 h-4" aria-hidden="true"></i>';
+
+          editBtn.addEventListener('click', () => {
+            const textarea = document.createElement('textarea');
+            textarea.className = 'w-full p-2 rounded-md bg-black/30';
+            textarea.value = p.text;
+            card.replaceChild(textarea, text);
+
+            const editRow = document.createElement('div');
+            editRow.className = 'flex items-center gap-2 mt-2';
+            const saveEdit = document.createElement('button');
+            saveEdit.className =
+              'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+            saveEdit.innerHTML =
+              '<i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>';
+            const cancelEdit = document.createElement('button');
+            cancelEdit.className =
+              'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+            cancelEdit.innerHTML =
+              '<i data-lucide="x" class="w-4 h-4" aria-hidden="true"></i>';
+            editRow.appendChild(saveEdit);
+            editRow.appendChild(cancelEdit);
+
+            card.replaceChild(editRow, likeRow);
+
+            cancelEdit.addEventListener('click', () => {
+              card.replaceChild(text, textarea);
+              card.replaceChild(likeRow, editRow);
+            });
+
+            saveEdit.addEventListener('click', async () => {
+              saveEdit.disabled = true;
+              try {
+                await updatePromptText(p.id, textarea.value);
+                p.text = textarea.value;
+                text.textContent = textarea.value;
+                cancelEdit.click();
+              } catch (err) {
+                console.error('Failed to update text:', err);
+                saveEdit.disabled = false;
+              }
+            });
+          });
+
           updateLikeIcon();
 
           likeRow.appendChild(saveBtn);
+          if (appState.currentUser && p.userId === appState.currentUser.uid) {
+            likeRow.appendChild(editBtn);
+          }
           likeRow.appendChild(likeBtn);
           likeRow.appendChild(likeCount);
 
@@ -170,14 +247,12 @@
           list.appendChild(card);
         });
         window.lucide?.createIcons();
-        document
-          .querySelectorAll('#all-prompts .like-btn')
-          .forEach((b) => {
-            const svg = b.querySelector('svg');
-            if (svg && b.classList.contains('active')) {
-              svg.setAttribute('fill', 'currentColor');
-            }
-          });
+        document.querySelectorAll('#all-prompts .like-btn').forEach((b) => {
+          const svg = b.querySelector('svg');
+          if (svg && b.classList.contains('active')) {
+            svg.setAttribute('fill', 'currentColor');
+          }
+        });
       }
 
       document.addEventListener('DOMContentLoaded', init);

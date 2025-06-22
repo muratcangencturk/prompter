@@ -4,6 +4,7 @@ import {
   likePrompt,
   unlikePrompt,
   getUserSavedPrompts,
+  updatePromptText,
 } from './prompt.js';
 import { appState, THEMES } from './state.js';
 
@@ -149,11 +150,17 @@ const setLanguage = (lang) => {
 const updateTexts = () => {
   if (themeLightButton) {
     themeLightButton.title = uiText[appState.language].themeLightTitle;
-    themeLightButton.setAttribute('aria-label', uiText[appState.language].themeLightTitle);
+    themeLightButton.setAttribute(
+      'aria-label',
+      uiText[appState.language].themeLightTitle
+    );
   }
   if (themeDarkButton) {
     themeDarkButton.title = uiText[appState.language].themeDarkTitle;
-    themeDarkButton.setAttribute('aria-label', uiText[appState.language].themeDarkTitle);
+    themeDarkButton.setAttribute(
+      'aria-label',
+      uiText[appState.language].themeDarkTitle
+    );
   }
   const backLink = document.getElementById('back-link');
   if (backLink) {
@@ -167,32 +174,52 @@ const updateTexts = () => {
   const logoutSpan = document.querySelector('#logout span');
   if (logoutSpan) logoutSpan.textContent = uiText[appState.language].logout;
   const savedTitle = document.getElementById('saved-title-text');
-  if (savedTitle) savedTitle.textContent = uiText[appState.language].savedPrompts;
+  if (savedTitle)
+    savedTitle.textContent = uiText[appState.language].savedPrompts;
   const sharedTitle = document.getElementById('shared-title-text');
-  if (sharedTitle) sharedTitle.textContent = uiText[appState.language].sharedPrompts;
+  if (sharedTitle)
+    sharedTitle.textContent = uiText[appState.language].sharedPrompts;
   if (langEnButton) {
     langEnButton.title = uiText[appState.language].langEnLabel;
-    langEnButton.setAttribute('aria-label', uiText[appState.language].langEnLabel);
+    langEnButton.setAttribute(
+      'aria-label',
+      uiText[appState.language].langEnLabel
+    );
   }
   if (langTrButton) {
     langTrButton.title = uiText[appState.language].langTrLabel;
-    langTrButton.setAttribute('aria-label', uiText[appState.language].langTrLabel);
+    langTrButton.setAttribute(
+      'aria-label',
+      uiText[appState.language].langTrLabel
+    );
   }
   if (langEsButton) {
     langEsButton.title = uiText[appState.language].langEsLabel;
-    langEsButton.setAttribute('aria-label', uiText[appState.language].langEsLabel);
+    langEsButton.setAttribute(
+      'aria-label',
+      uiText[appState.language].langEsLabel
+    );
   }
   if (langFrButton) {
     langFrButton.title = uiText[appState.language].langFrLabel;
-    langFrButton.setAttribute('aria-label', uiText[appState.language].langFrLabel);
+    langFrButton.setAttribute(
+      'aria-label',
+      uiText[appState.language].langFrLabel
+    );
   }
   if (langZhButton) {
     langZhButton.title = uiText[appState.language].langZhLabel;
-    langZhButton.setAttribute('aria-label', uiText[appState.language].langZhLabel);
+    langZhButton.setAttribute(
+      'aria-label',
+      uiText[appState.language].langZhLabel
+    );
   }
   if (langHiButton) {
     langHiButton.title = uiText[appState.language].langHiLabel;
-    langHiButton.setAttribute('aria-label', uiText[appState.language].langHiLabel);
+    langHiButton.setAttribute(
+      'aria-label',
+      uiText[appState.language].langHiLabel
+    );
   }
   if (currentLangLabel) {
     const arrow = currentLangLabel.querySelector('svg');
@@ -248,20 +275,27 @@ const renderSharedPrompts = (prompts) => {
     const likeBtn = document.createElement('button');
     likeBtn.className =
       'like-btn p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-    likeBtn.innerHTML = '<i data-lucide="heart" class="w-4 h-4" aria-hidden="true"></i>';
+    likeBtn.innerHTML =
+      '<i data-lucide="heart" class="w-4 h-4" aria-hidden="true"></i>';
 
     const likeCount = document.createElement('span');
     likeCount.textContent = (p.likes || 0).toString();
 
     const liked =
-      appState.currentUser && p.likedBy && p.likedBy.includes(appState.currentUser.uid);
+      appState.currentUser &&
+      p.likedBy &&
+      p.likedBy.includes(appState.currentUser.uid);
     if (liked) {
       likeBtn.classList.add('active');
     }
 
     const updateLikeIcon = () => {
       const svg = likeBtn.querySelector('svg');
-      if (svg) svg.setAttribute('fill', likeBtn.classList.contains('active') ? 'currentColor' : 'none');
+      if (svg)
+        svg.setAttribute(
+          'fill',
+          likeBtn.classList.contains('active') ? 'currentColor' : 'none'
+        );
     };
 
     likeBtn.addEventListener('click', async () => {
@@ -274,16 +308,25 @@ const renderSharedPrompts = (prompts) => {
       try {
         if (already) {
           await unlikePrompt(p.id, appState.currentUser.uid);
-          likeCount.textContent = (parseInt(likeCount.textContent, 10) - 1).toString();
-          appState.likedPrompts = appState.likedPrompts.filter((id) => id !== p.id);
+          likeCount.textContent = (
+            parseInt(likeCount.textContent, 10) - 1
+          ).toString();
+          appState.likedPrompts = appState.likedPrompts.filter(
+            (id) => id !== p.id
+          );
           likeBtn.classList.remove('active');
         } else {
           await likePrompt(p.id, appState.currentUser.uid);
-          likeCount.textContent = (parseInt(likeCount.textContent, 10) + 1).toString();
+          likeCount.textContent = (
+            parseInt(likeCount.textContent, 10) + 1
+          ).toString();
           appState.likedPrompts.push(p.id);
           likeBtn.classList.add('active');
         }
-        localStorage.setItem('likedPrompts', JSON.stringify(appState.likedPrompts));
+        localStorage.setItem(
+          'likedPrompts',
+          JSON.stringify(appState.likedPrompts)
+        );
         updateLikeIcon();
       } catch (err) {
         console.error('Failed to toggle like:', err);
@@ -294,6 +337,55 @@ const renderSharedPrompts = (prompts) => {
 
     updateLikeIcon();
 
+    const editBtn = document.createElement('button');
+    editBtn.className =
+      'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+    editBtn.innerHTML =
+      '<i data-lucide="pencil" class="w-4 h-4" aria-hidden="true"></i>';
+
+    editBtn.addEventListener('click', () => {
+      const textarea = document.createElement('textarea');
+      textarea.className = 'w-full p-2 rounded-md bg-black/30';
+      textarea.value = p.text;
+      item.replaceChild(textarea, text);
+
+      const editRow = document.createElement('div');
+      editRow.className = 'flex items-center gap-2 mt-2';
+      const saveEdit = document.createElement('button');
+      saveEdit.className =
+        'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+      saveEdit.innerHTML =
+        '<i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>';
+      const cancelEdit = document.createElement('button');
+      cancelEdit.className =
+        'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+      cancelEdit.innerHTML =
+        '<i data-lucide="x" class="w-4 h-4" aria-hidden="true"></i>';
+      editRow.appendChild(saveEdit);
+      editRow.appendChild(cancelEdit);
+
+      item.replaceChild(editRow, likeRow);
+
+      cancelEdit.addEventListener('click', () => {
+        item.replaceChild(text, textarea);
+        item.replaceChild(likeRow, editRow);
+      });
+
+      saveEdit.addEventListener('click', async () => {
+        saveEdit.disabled = true;
+        try {
+          await updatePromptText(p.id, textarea.value);
+          p.text = textarea.value;
+          text.textContent = textarea.value;
+          cancelEdit.click();
+        } catch (err) {
+          console.error('Failed to update text:', err);
+          saveEdit.disabled = false;
+        }
+      });
+    });
+
+    likeRow.appendChild(editBtn);
     likeRow.appendChild(likeBtn);
     likeRow.appendChild(likeCount);
 
@@ -302,7 +394,6 @@ const renderSharedPrompts = (prompts) => {
     list.appendChild(item);
   });
 };
-
 
 const init = () => {
   themeLightButton = document.getElementById('theme-light');
@@ -412,14 +503,12 @@ const init = () => {
       console.error('Failed to load prompts:', err);
     }
     window.lucide?.createIcons();
-    document
-      .querySelectorAll('#shared-list .like-btn')
-      .forEach((b) => {
-        const svg = b.querySelector('svg');
-        if (svg && b.classList.contains('active')) {
-          svg.setAttribute('fill', 'currentColor');
-        }
-      });
+    document.querySelectorAll('#shared-list .like-btn').forEach((b) => {
+      const svg = b.querySelector('svg');
+      if (svg && b.classList.contains('active')) {
+        svg.setAttribute('fill', 'currentColor');
+      }
+    });
   });
 };
 

@@ -19,20 +19,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prompter Login</title>
   <base href="./">
-  <link rel="stylesheet" href="css/app.css?v=40">
-  <script type="module" src="src/init-app.js?v=40"></script>
-  <script nomodule src="dist/init-app.js"></script>
+  <link rel="stylesheet" href="css/app.css?v=45">
+  <script type="module" src="src/init-app.js?v=45"></script>
+  <script nomodule src="dist/init-app.js?v=45"></script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=40"></script>
-  <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=40">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=45"></script>
+  <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=45">
   <script>
     const theme = localStorage.getItem('theme');
     if (theme) {
       document.getElementById('theme-css').href = `css/theme-${theme}.css?v=31`;
     }
   </script>
-  <script type="module" src="src/auth.js?v=40"></script>
-  <script nomodule src="dist/auth.js"></script>
+  <script type="module" src="src/auth.js?v=45"></script>
+  <script nomodule src="dist/auth.js?v=45"></script>
   <script type="module">
      
     import { login, register, onAuth } from './src/auth.js';
