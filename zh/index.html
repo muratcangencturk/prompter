@@ -356,6 +356,12 @@
           </div>
         </div>
         <a
+          id="login-link"
+          href="login.html"
+          class="px-1 py-0.5 rounded-lg border border-white/20 text-xs font-medium bg-black/20 hover:bg-black/30 transition-all duration-200 w-full text-center"
+          >登录</a
+        >
+        <a
           id="profile-link"
           href="profile.html"
           class="px-1 py-0.5 rounded-lg border border-white/20 text-xs font-medium bg-black/20 hover:bg-black/30 transition-all duration-200 w-full text-center"
@@ -610,7 +616,29 @@
         </a>
       </div>
     </div>
+    <script type="module" src="src/init-app.js?v=45"></script>
+    <script nomodule src="dist/init-app.js?v=45"></script>
     <script type="module" src="src/main.js?v=45"></script>
     <script nomodule src="dist/main.js?v=45"></script>
+    <script type="module">
+      import { app } from './src/firebase.js';
+      import { onAuth } from "./src/auth.js";
+      import { appState } from "./src/state.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
+      const analytics = getAnalytics(app);
+
+      const loginLink = document.getElementById('login-link');
+      const profileLink = document.getElementById('profile-link');
+
+      onAuth((user) => {
+        if (user) {
+          loginLink?.classList.add('hidden');
+          profileLink?.classList.remove('hidden');
+        } else {
+          profileLink?.classList.add('hidden');
+          loginLink?.classList.remove('hidden');
+        }
+      });
+    </script>
   </body>
 </html>
