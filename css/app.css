@@ -249,3 +249,8 @@ html {
 .history-copy i {
   pointer-events: none;
 }
+
+.like-btn.active svg {
+  fill: currentColor;
+  stroke: none;
+}
