@@ -1,5 +1,5 @@
 import { onAuth, logout } from './auth.js';
-import { getUserPrompts, likePrompt } from './prompt.js';
+import { getUserPrompts, likePrompt, getUserSavedPrompts } from './prompt.js';
 import { appState, THEMES } from './state.js';
 
 const uiText = {
@@ -365,6 +365,14 @@ const init = () => {
       const prompts = await getUserPrompts(user.uid);
       sharedPromptsData = prompts;
       renderSharedPrompts(sharedPromptsData);
+
+      const savedDocs = await getUserSavedPrompts(user.uid);
+      const savedTexts = savedDocs.map((p) => p.text);
+      const merged = Array.from(
+        new Set([...appState.savedPrompts, ...savedTexts])
+      );
+      appState.savedPrompts = merged;
+      localStorage.setItem('savedPrompts', JSON.stringify(merged));
       renderSavedPrompts(appState.savedPrompts);
     } catch (err) {
       console.error('Failed to load prompts:', err);
