@@ -131,7 +131,7 @@
   <script type="module">
 
     import { login, register, onAuth } from './src/auth.js';
-    import { setUserProfile } from './src/user.js';
+    import { setUserProfile, getUserByName } from './src/user.js';
 
     function init() {
       const loginForm = document.getElementById('login-form');
@@ -146,7 +146,7 @@
 
       loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const email = document.getElementById('login-email').value;
+        let email = document.getElementById('login-email').value.trim();
         const password = document.getElementById('login-password').value;
         const btn = loginForm.querySelector('button[type="submit"]');
         const original = btn.textContent;
@@ -154,6 +154,13 @@
         btn.textContent = 'Loading...';
         authError.textContent = 'Loading...';
         try {
+          if (!email.includes('@')) {
+            const user = await getUserByName(email);
+            if (!user || !user.email) {
+              throw new Error('User not found');
+            }
+            email = user.email;
+          }
           await login(email, password);
           authError.classList.remove('text-red-500');
           authError.classList.add('text-green-500');
