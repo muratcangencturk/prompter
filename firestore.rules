@@ -11,6 +11,11 @@ service cloud.firestore {
           request.resource.data.diff(resource.data).changedKeys().hasOnly(['text'])
         )
       );
+
+      match /comments/{commentId} {
+        allow read: if true;
+        allow create: if request.auth != null;
+      }
     }
   }
 }

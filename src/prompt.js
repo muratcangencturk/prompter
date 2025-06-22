@@ -84,3 +84,19 @@ export const getUserSavedPrompts = async (userId) => {
 
 export const updatePromptText = (promptId, newText) =>
   updateDoc(doc(db, 'prompts', promptId), { text: newText });
+
+export const addComment = (promptId, userId, text) =>
+  addDoc(collection(db, `prompts/${promptId}/comments`), {
+    text,
+    userId,
+    createdAt: Timestamp.now(),
+  });
+
+export const getComments = async (promptId) => {
+  const q = query(
+    collection(db, `prompts/${promptId}/comments`),
+    orderBy('createdAt', 'asc')
+  );
+  const snap = await getDocs(q);
+  return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+};
