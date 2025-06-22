@@ -9,8 +9,12 @@ import {
 } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
 import { db } from './firebase.js';
 
-export const setUserProfile = (uid, profile) =>
-  setDoc(doc(db, 'users', uid, 'profile'), profile);
+export const setUserProfile = async (uid, profile) => {
+  await setDoc(doc(db, 'users', uid, 'profile'), profile);
+  if (profile && profile.name) {
+    await setDoc(doc(db, 'users', uid), { name: profile.name }, { merge: true });
+  }
+};
 
 export const getUserProfile = async (uid) => {
   const snap = await getDoc(doc(db, 'users', uid, 'profile'));
