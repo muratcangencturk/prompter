@@ -28,6 +28,19 @@ and then visit `http://localhost:8000`. This ensures the JSON prompt files load 
 
 Opening `index.html` over `file://` URLs is not supported. Browsers block JavaScript modules when loaded from the file system, so the application cannot initialize. Always serve the directory over HTTP using a command such as `python3 -m http.server` and then visit `http://localhost:8000`.
 
+## Browser support
+
+Prompter relies on modern JavaScript features such as ES modules. The interface
+is tested on the following minimum browser versions:
+
+- **Chrome 80** or newer
+- **Firefox 79** or newer
+- **Safari 13.1** or newer
+- **Edge 85** or newer
+
+Older browsers may display a warning banner and some functionality could be
+disabled.
+
 ## Authentication
 
 Prompter uses Firebase Email/Password authentication configured in `src/firebase.js`.
