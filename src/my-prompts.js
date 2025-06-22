@@ -1,4 +1,16 @@
 import { appState, THEMES } from './state.js';
+import { onAuth } from './auth.js';
+import { getUserSavedPrompts } from './prompt.js';
+import {
+  collection,
+  doc,
+  updateDoc,
+  deleteDoc,
+  query,
+  orderBy,
+  onSnapshot,
+} from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
+import { db } from './firebase.js';
 
 const uiText = {
   en: {
@@ -83,6 +95,8 @@ let themeDarkButton;
 let themeLinkElement;
 let themeVersion = '';
 let listContainer;
+let savedPromptIds = [];
+let unsubscribeSaved = null;
 
 const setTheme = (theme) => {
   appState.theme = theme;
@@ -213,6 +227,29 @@ const sharePrompt = (prompt, baseUrl) => {
   window.open(url, '_blank');
 };
 
+const initSavedPromptSync = async (uid) => {
+  try {
+    const docs = await getUserSavedPrompts(uid);
+    savedPromptIds = docs.map((d) => d.id);
+    appState.savedPrompts = docs.map((d) => d.text);
+    localStorage.setItem('savedPrompts', JSON.stringify(appState.savedPrompts));
+    renderList();
+  } catch (err) {
+    console.error('Failed to load saved prompts:', err);
+  }
+
+  const q = query(
+    collection(db, `users/${uid}/savedPrompts`),
+    orderBy('createdAt', 'desc')
+  );
+  unsubscribeSaved = onSnapshot(q, (snap) => {
+    savedPromptIds = snap.docs.map((d) => d.id);
+    appState.savedPrompts = snap.docs.map((d) => d.data().text);
+    localStorage.setItem('savedPrompts', JSON.stringify(appState.savedPrompts));
+    renderList();
+  });
+};
+
 const setupEvents = () => {
   themeLightButton.addEventListener('click', () => setTheme(THEMES.LIGHT));
   themeDarkButton.addEventListener('click', () => setTheme(THEMES.DARK));
@@ -263,6 +300,12 @@ const setupEvents = () => {
           'savedPrompts',
           JSON.stringify(appState.savedPrompts)
         );
+        if (appState.currentUser && savedPromptIds[idx]) {
+          updateDoc(
+            doc(db, `users/${appState.currentUser.uid}/savedPrompts`, savedPromptIds[idx]),
+            { text: textarea.value }
+          ).catch((err) => console.error('Failed to update prompt:', err));
+        }
         showFeedback(saveBtn.nextElementSibling);
         buttonPop(saveBtn);
       }
@@ -276,6 +319,11 @@ const setupEvents = () => {
           'savedPrompts',
           JSON.stringify(appState.savedPrompts)
         );
+        if (appState.currentUser && savedPromptIds[idx]) {
+          deleteDoc(
+            doc(db, `users/${appState.currentUser.uid}/savedPrompts`, savedPromptIds[idx])
+          ).catch((err) => console.error('Failed to delete prompt:', err));
+        }
         renderList();
       }, 300);
     } else if (copyBtn && text) {
@@ -326,6 +374,21 @@ const init = () => {
   renderList();
   setupEvents();
   window.lucide?.createIcons();
+
+  if (appState.currentUser) {
+    initSavedPromptSync(appState.currentUser.uid);
+  }
+
+  onAuth((user) => {
+    appState.currentUser = user;
+    unsubscribeSaved?.();
+    unsubscribeSaved = null;
+    if (user) {
+      initSavedPromptSync(user.uid);
+    } else {
+      savedPromptIds = [];
+    }
+  });
 
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker
