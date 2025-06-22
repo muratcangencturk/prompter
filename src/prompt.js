@@ -82,3 +82,5 @@ export const getUserSavedPrompts = async (userId) => {
   return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
 };
 
+export const updatePromptText = (promptId, newText) =>
+  updateDoc(doc(db, 'prompts', promptId), { text: newText });
