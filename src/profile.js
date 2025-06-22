@@ -743,7 +743,11 @@ const init = () => {
     initNotifications(user.uid);
     try {
       const profile = await getUserProfile(user.uid);
-      currentUserName = profile?.name || '';
+      const name = profile && typeof profile.name === 'string' ? profile.name.trim() : '';
+      if (!name) {
+        console.warn('User profile is missing a name. Check registration logic.');
+      }
+      currentUserName = name;
       const nameEl = document.getElementById('user-name');
       if (nameEl) nameEl.textContent = currentUserName;
     } catch (err) {
