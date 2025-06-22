@@ -36,10 +36,15 @@ export const savePrompt = (text, userId) =>
     likes: 0,
     likedBy: [],
     sharedBy: [userId],
+    shared: true,
   });
 
 export const getUserPrompts = async (userId) => {
-  const q = query(collection(db, 'prompts'), where('userId', '==', userId));
+  const q = query(
+    collection(db, 'prompts'),
+    where('userId', '==', userId),
+    where('shared', '==', true)
+  );
   const snap = await getDocs(q);
   const prompts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
   prompts.sort((a, b) => b.createdAt.toMillis() - a.createdAt.toMillis());
@@ -47,7 +52,11 @@ export const getUserPrompts = async (userId) => {
 };
 
 export const getAllPrompts = async () => {
-  const q = query(collection(db, 'prompts'), orderBy('createdAt', 'desc'));
+  const q = query(
+    collection(db, 'prompts'),
+    where('shared', '==', true),
+    orderBy('createdAt', 'desc')
+  );
   const snap = await getDocs(q);
   return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
 };
@@ -73,6 +82,7 @@ export const unlikePrompt = (promptId, userId) =>
 export const unsharePrompt = (promptId, userId) =>
   updateDoc(doc(db, 'prompts', promptId), {
     sharedBy: arrayRemove(userId),
+    shared: false,
   });
 
 export const saveUserPrompt = (text, userId) =>

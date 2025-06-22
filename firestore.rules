@@ -5,7 +5,10 @@ service cloud.firestore {
       allow read: if true;
       allow create: if request.auth != null;
       allow update: if request.auth != null && (
-        request.resource.data.diff(resource.data).changedKeys().hasOnly(['likes', 'likedBy', 'sharedBy']) ||
+        request.resource.data
+          .diff(resource.data)
+          .changedKeys()
+          .hasOnly(['likes', 'likedBy', 'sharedBy', 'shared']) ||
         (
           request.auth.uid == resource.data.userId &&
           request.resource.data.diff(resource.data).changedKeys().hasOnly(['text'])
