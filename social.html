@@ -76,6 +76,7 @@
         addComment,
         getComments,
         unsharePrompt,
+        saveUserPrompt,
       } from './src/prompt.js';
       import { appState } from './src/state.js';
       import { getUserProfile } from './src/user.js';
@@ -142,13 +143,22 @@
           saveBtn.innerHTML =
             '<i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>';
           saveBtn.addEventListener('click', async () => {
-            appState.savedPrompts.push(p.text);
-            localStorage.setItem(
-              'savedPrompts',
-              JSON.stringify(appState.savedPrompts)
-            );
-            if (appState.currentUser) {
-              // saved locally only
+            saveBtn.disabled = true;
+            try {
+              appState.savedPrompts.push(p.text);
+              localStorage.setItem(
+                'savedPrompts',
+                JSON.stringify(appState.savedPrompts)
+              );
+              if (appState.currentUser) {
+                await saveUserPrompt(p.text, appState.currentUser.uid);
+              }
+              alert('Prompt saved!');
+            } catch (err) {
+              console.error('Failed to save prompt:', err);
+              alert('Failed to save prompt. Please try again.');
+            } finally {
+              saveBtn.disabled = false;
             }
           });
 
