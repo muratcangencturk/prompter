@@ -6,6 +6,7 @@ import {
   getUserSavedPrompts,
   updatePromptText,
   unsharePrompt,
+  savePrompt,
 } from './prompt.js';
 import { getUserProfile } from './user.js';
 import { listenNotifications } from './notifications.js';
@@ -324,6 +325,12 @@ const renderSavedPrompts = (prompts) => {
     shareBtn.innerHTML =
       '<i data-lucide="twitter" class="w-3 h-3" aria-hidden="true"></i>';
 
+    const siteShareBtn = document.createElement('button');
+    siteShareBtn.className =
+      'history-site-share p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+    siteShareBtn.innerHTML =
+      '<i data-lucide="share-2" class="w-3 h-3" aria-hidden="true"></i>';
+
     const delBtn = document.createElement('button');
     delBtn.className =
       'history-delete p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
@@ -383,6 +390,22 @@ const renderSavedPrompts = (prompts) => {
       URL.revokeObjectURL(url);
     });
 
+    siteShareBtn.addEventListener('click', async () => {
+      if (!appState.currentUser) {
+        alert('Login required to share');
+        return;
+      }
+      siteShareBtn.disabled = true;
+      try {
+        await savePrompt(pEl.textContent || '', appState.currentUser.uid);
+      } catch (err) {
+        console.error(err);
+        alert('Failed to share prompt. Please try again.');
+      } finally {
+        siteShareBtn.disabled = false;
+      }
+    });
+
     shareBtn.addEventListener('click', () => {
       sharePrompt(pEl.textContent || '', 'https://twitter.com/intent/tweet?text=');
     });
@@ -400,6 +423,7 @@ const renderSavedPrompts = (prompts) => {
     actions.appendChild(editBtn);
     actions.appendChild(copyBtn);
     actions.appendChild(downloadBtn);
+    actions.appendChild(siteShareBtn);
     actions.appendChild(shareBtn);
     actions.appendChild(delBtn);
 
@@ -589,6 +613,28 @@ const renderSharedPrompts = (prompts) => {
       URL.revokeObjectURL(url);
     });
 
+    const siteShareBtn = document.createElement('button');
+    siteShareBtn.className =
+      'history-site-share p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+    siteShareBtn.innerHTML =
+      '<i data-lucide="share-2" class="w-3 h-3" aria-hidden="true"></i>';
+
+    siteShareBtn.addEventListener('click', async () => {
+      if (!appState.currentUser) {
+        alert('Login required to share');
+        return;
+      }
+      siteShareBtn.disabled = true;
+      try {
+        await savePrompt(text.textContent || '', appState.currentUser.uid);
+      } catch (err) {
+        console.error(err);
+        alert('Failed to share prompt. Please try again.');
+      } finally {
+        siteShareBtn.disabled = false;
+      }
+    });
+
     shareBtn.addEventListener('click', () => {
       sharePrompt(text.textContent || '', 'https://twitter.com/intent/tweet?text=');
     });
@@ -608,6 +654,7 @@ const renderSharedPrompts = (prompts) => {
     likeRow.appendChild(editBtn);
     likeRow.appendChild(copyBtn);
     likeRow.appendChild(downloadBtn);
+    likeRow.appendChild(siteShareBtn);
     likeRow.appendChild(shareBtn);
     likeRow.appendChild(delBtn);
     likeRow.appendChild(likeBtn);
