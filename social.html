@@ -70,7 +70,6 @@
     </div>
     <script type="module">
       import {
-        getAllPrompts,
         likePrompt,
         unlikePrompt,
         updatePromptText,
@@ -80,6 +79,14 @@
       } from './src/prompt.js';
       import { appState } from './src/state.js';
       import { getUserProfile } from './src/user.js';
+      import {
+        collection,
+        query,
+        where,
+        orderBy,
+        onSnapshot,
+      } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
+      import { db } from './src/firebase.js';
 
       const setTheme = (theme) => {
         const linkEl = document.getElementById('theme-css');
@@ -104,9 +111,8 @@
         return name;
       };
 
-      async function init() {
+      async function render(prompts) {
         const list = document.getElementById('all-prompts');
-        const prompts = await getAllPrompts();
         list.innerHTML = '';
         if (!prompts || prompts.length === 0) {
           const msg = document.createElement('p');
@@ -391,6 +397,18 @@
           if (svg && b.classList.contains('active')) {
             svg.setAttribute('fill', 'currentColor');
           }
+        });
+      }
+
+      function init() {
+        const q = query(
+          collection(db, 'prompts'),
+          where('shared', '==', true),
+          orderBy('createdAt', 'desc')
+        );
+        onSnapshot(q, async (snap) => {
+          const prompts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+          await render(prompts);
         });
       }
 
