@@ -8,7 +8,7 @@ import {
   unsharePrompt,
   savePrompt,
 } from './prompt.js';
-import { getUserProfile } from './user.js';
+import { getUserProfile, setUserProfile } from './user.js';
 import { listenNotifications } from './notifications.js';
 import { appState, THEMES } from './state.js';
 
@@ -132,6 +132,8 @@ let langMenu;
 let currentLangLabel;
 let sharedPromptsData = [];
 let currentUserName = '';
+let nameInput;
+let nameUpdateBtn;
 let notificationBtn;
 let notificationCountEl;
 let notificationsPanel;
@@ -679,6 +681,28 @@ const init = () => {
     }
   }
 
+  nameInput = document.getElementById('name-input');
+  nameUpdateBtn = document.getElementById('name-update-btn');
+
+  nameUpdateBtn?.addEventListener('click', async () => {
+    if (!nameInput || !appState.currentUser) return;
+    const newName = nameInput.value.trim();
+    if (!newName) return;
+    nameUpdateBtn.disabled = true;
+    try {
+      await setUserProfile(appState.currentUser.uid, { name: newName });
+      currentUserName = newName;
+      const nameEl = document.getElementById('user-name');
+      if (nameEl) nameEl.textContent = currentUserName;
+      if (nameInput) nameInput.value = '';
+      renderSharedPrompts(sharedPromptsData);
+    } catch (err) {
+      console.error('Failed to update name:', err);
+    } finally {
+      nameUpdateBtn.disabled = false;
+    }
+  });
+
   langEnButton = document.getElementById('lang-en');
   langTrButton = document.getElementById('lang-tr');
   langEsButton = document.getElementById('lang-es');
@@ -779,6 +803,7 @@ const init = () => {
       document.getElementById('user-email').textContent = '';
       const nameEl = document.getElementById('user-name');
       if (nameEl) nameEl.textContent = '';
+      if (nameInput) nameInput.value = '';
       notifications = [];
       renderNotifications();
       unsubscribeNotifications?.();
@@ -797,6 +822,7 @@ const init = () => {
       currentUserName = name;
       const nameEl = document.getElementById('user-name');
       if (nameEl) nameEl.textContent = currentUserName;
+      if (nameInput) nameInput.value = currentUserName;
     } catch (err) {
       console.error('Failed to load profile:', err);
     }
