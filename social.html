@@ -76,6 +76,7 @@
         updatePromptText,
       } from './src/prompt.js';
       import { appState } from './src/state.js';
+      import { getUserProfile } from './src/user.js';
 
       const setTheme = (theme) => {
         const linkEl = document.getElementById('theme-css');
@@ -91,17 +92,30 @@
         .getElementById('theme-dark')
         .addEventListener('click', () => setTheme('dark'));
 
+      const profileCache = {};
+      const fetchName = async (uid) => {
+        if (profileCache[uid]) return profileCache[uid];
+        const prof = await getUserProfile(uid);
+        const name = prof?.name || '';
+        profileCache[uid] = name;
+        return name;
+      };
+
       async function init() {
         const list = document.getElementById('all-prompts');
         const prompts = await getAllPrompts();
         list.innerHTML = '';
-        prompts.forEach((p) => {
+        for (const p of prompts) {
           const card = document.createElement('div');
           card.className =
             'bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
 
           const text = document.createElement('p');
           text.textContent = p.text;
+
+          const nameEl = document.createElement('p');
+          nameEl.className = 'text-blue-200 text-sm mt-1';
+          nameEl.textContent = await fetchName(p.userId);
 
           const likeRow = document.createElement('div');
           likeRow.className = 'flex items-center gap-2 mt-2';
@@ -243,9 +257,10 @@
           likeRow.appendChild(likeCount);
 
           card.appendChild(text);
+          card.appendChild(nameEl);
           card.appendChild(likeRow);
           list.appendChild(card);
-        });
+        }
         window.lucide?.createIcons();
         document.querySelectorAll('#all-prompts .like-btn').forEach((b) => {
           const svg = b.querySelector('svg');
