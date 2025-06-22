@@ -4,6 +4,7 @@ import {
   query,
   where,
   getDocs,
+  getDoc,
   orderBy,
   Timestamp,
   updateDoc,
@@ -13,6 +14,7 @@ import {
   arrayRemove,
 } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
 import { db } from './firebase.js';
+import { sendNotification } from './notifications.js';
 
 const samplePrompts = [
   'Describe a futuristic city where nature and technology coexist.',
@@ -50,11 +52,17 @@ export const getAllPrompts = async () => {
   return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
 };
 
-export const likePrompt = (promptId, userId) =>
-  updateDoc(doc(db, 'prompts', promptId), {
+export const likePrompt = async (promptId, userId) => {
+  await updateDoc(doc(db, 'prompts', promptId), {
     likes: increment(1),
     likedBy: arrayUnion(userId),
   });
+  const snap = await getDoc(doc(db, 'prompts', promptId));
+  const owner = snap.exists() ? snap.data().userId : null;
+  if (owner && owner !== userId) {
+    await sendNotification(owner, { type: 'like', promptId, from: userId });
+  }
+};
 
 export const unlikePrompt = (promptId, userId) =>
   updateDoc(doc(db, 'prompts', promptId), {
@@ -85,12 +93,18 @@ export const getUserSavedPrompts = async (userId) => {
 export const updatePromptText = (promptId, newText) =>
   updateDoc(doc(db, 'prompts', promptId), { text: newText });
 
-export const addComment = (promptId, userId, text) =>
-  addDoc(collection(db, `prompts/${promptId}/comments`), {
+export const addComment = async (promptId, userId, text) => {
+  await addDoc(collection(db, `prompts/${promptId}/comments`), {
     text,
     userId,
     createdAt: Timestamp.now(),
   });
+  const snap = await getDoc(doc(db, 'prompts', promptId));
+  const owner = snap.exists() ? snap.data().userId : null;
+  if (owner && owner !== userId) {
+    await sendNotification(owner, { type: 'comment', promptId, from: userId });
+  }
+};
 
 export const getComments = async (promptId) => {
   const q = query(
