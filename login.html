@@ -19,9 +19,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prompter Login</title>
   <base href="./">
-  <link rel="stylesheet" href="css/app.css?v=46">
-  <script type="module" src="src/init-app.js?v=46"></script>
-  <script nomodule src="dist/init-app.js?v=46"></script>
+  <link rel="stylesheet" href="css/app.css?v=47">
+  <script type="module" src="src/init-app.js?v=47"></script>
+  <script nomodule src="dist/init-app.js?v=47"></script>
   <script>
     (function () {
       function addScript(src, onLoad) {
@@ -102,11 +102,11 @@
 
       const tailwindScripts = loadWithFallback(
         'https://cdn.tailwindcss.com',
-        'tailwind.js?v=46'
+        'tailwind.js?v=47'
       );
       window.lucideScripts = loadWithFallback(
-        'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=46',
-        'lucide.min.js?v=46'
+        'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=47',
+        'lucide.min.js?v=47'
       );
       Promise.all([
         tailwindScripts.loadPromise,
@@ -119,15 +119,15 @@
       });
     })();
   </script>
-  <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=46">
+  <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=47">
   <script>
     const theme = localStorage.getItem('theme');
     if (theme) {
       document.getElementById('theme-css').href = `css/theme-${theme}.css?v=31`;
     }
   </script>
-  <script type="module" src="src/auth.js?v=46"></script>
-  <script nomodule src="dist/auth.js?v=46"></script>
+  <script type="module" src="src/auth.js?v=47"></script>
+  <script nomodule src="dist/auth.js?v=47"></script>
   <script type="module">
 
     import { login, register, onAuth } from './src/auth.js';
