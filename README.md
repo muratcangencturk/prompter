@@ -170,6 +170,7 @@ Before deploying your own instance, update all references to the default domain
 - In `scripts/generate-sitemap.js` replace the `BASE_URL` constant and run
   `npm run build:sitemap` to regenerate `sitemap.xml`.
 - Update the `Sitemap:` line inside `robots.txt` with your new domain.
+- Run `npm run build:es5` before deploying so older browsers load the transpiled scripts.
 
 ## Deployment
 

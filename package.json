@@ -10,6 +10,7 @@
     "test": "npm run lint && npm run lint:prompts",
     "lint:prompts": "node scripts/check-prompts.js",
     "build": "node scripts/build-prompts.js",
+    "build:es5": "babel src --out-dir dist --presets=@babel/preset-env",
     "build:sitemap": "node scripts/generate-sitemap.js",
     "start": "http-server -c-1",
     "optimize:images": "svgo -r icons",
@@ -17,6 +18,9 @@
     "precommit:build": "node scripts/run-build-if-needed.js"
   },
   "devDependencies": {
+    "@babel/cli": "^7.27.2",
+    "@babel/core": "^7.27.4",
+    "@babel/preset-env": "^7.27.2",
     "eslint": "8.57.0",
     "http-server": "^14.1.1",
     "husky": "^8.0.3",
