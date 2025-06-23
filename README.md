@@ -155,7 +155,7 @@ To backfill older accounts with a root-level name field run:
 node scripts/migrate-user-names.js
 ```
 
-This script copies the `name` from `users/{uid}/profile` into the parent
+This script copies the `name` from `users/{uid}/profile/info` into the parent
 `users/{uid}` document when missing.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for full setup instructions and the pull

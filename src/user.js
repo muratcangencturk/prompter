@@ -10,14 +10,14 @@ import {
 import { db } from './firebase.js';
 
 export const setUserProfile = async (uid, profile) => {
-  await setDoc(doc(db, 'users', uid, 'profile'), profile);
+  await setDoc(doc(db, 'users', uid, 'profile', 'info'), profile);
   if (profile && profile.name) {
     await setDoc(doc(db, 'users', uid), { name: profile.name }, { merge: true });
   }
 };
 
 export const getUserProfile = async (uid) => {
-  const snap = await getDoc(doc(db, 'users', uid, 'profile'));
+  const snap = await getDoc(doc(db, 'users', uid, 'profile', 'info'));
   return snap.exists() ? snap.data() : null;
 };
 

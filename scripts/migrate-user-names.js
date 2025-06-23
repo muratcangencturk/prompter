@@ -10,7 +10,7 @@ async function migrate() {
   const usersSnap = await db.collection('users').get();
   for (const user of usersSnap.docs) {
     if (user.get('name')) continue;
-    const profileSnap = await db.doc(`users/${user.id}/profile`).get();
+    const profileSnap = await db.doc(`users/${user.id}/profile/info`).get();
     const profile = profileSnap.exists ? profileSnap.data() : null;
     if (profile && profile.name) {
       await user.ref.set({ name: profile.name }, { merge: true });
