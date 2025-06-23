@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User - Prompter</title>
+    <base href="./" />
+    <link rel="manifest" href="manifest.json?v=50" />
+    <meta name="theme-color" content="#000000" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="css/tailwind.css?v=50" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=50"></script>
+    <link rel="stylesheet" href="css/app.css?v=50" />
+    <script type="module" src="src/init-app.js?v=50"></script>
+    <script nomodule src="dist/init-app.js?v=50"></script>
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=50" />
+    <script>
+      (function () {
+        const linkEl = document.getElementById('theme-css');
+        if (!linkEl) return;
+        const version = linkEl.getAttribute('href').split('?')[1];
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          linkEl.href = `css/theme-${savedTheme}.css${version ? `?${version}` : ''}`;
+        }
+      })();
+    </script>
+    <script type="module" src="src/user-page.js?v=50"></script>
+    <script nomodule src="dist/user-page.js?v=50"></script>
+    <script type="module" src="src/version.js?v=50"></script>
+  </head>
+  <body class="min-h-screen p-4">
+    <div id="app-container" class="max-w-xl mx-auto relative">
+      <div class="absolute top-4 left-4">
+        <a
+          href="social.html"
+          class="p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50"
+          title="Back"
+          aria-label="Back"
+        >
+          <span class="w-6 h-6 inline-flex items-center justify-center text-3xl" aria-hidden="true">&larr;</span>
+        </a>
+      </div>
+      <div class="absolute top-4 right-4 flex items-center gap-2">
+        <button
+          id="theme-light"
+          class="p-1.5 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50"
+          title="Light Theme"
+          aria-label="Light Theme"
+        >
+          <i data-lucide="sun" class="w-5 h-5" aria-hidden="true"></i>
+        </button>
+        <button
+          id="theme-dark"
+          class="p-1.5 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50"
+          title="Dark Theme"
+          aria-label="Dark Theme"
+        >
+          <i data-lucide="moon" class="w-5 h-5" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="text-center mb-6 pt-16">
+        <img src="icons/logo.svg?v=50" alt="Prompter logo" class="mx-auto mb-4 w-16 h-16" />
+        <h1 id="user-name" class="text-2xl font-bold mb-2"></h1>
+        <div class="space-x-2 text-sm text-blue-200">
+          <span>Prompts: <span id="stat-prompts">0</span></span>
+          <span>Likes: <span id="stat-likes">0</span></span>
+          <span>Comments: <span id="stat-comments">0</span></span>
+          <span>Saves: <span id="stat-saves">0</span></span>
+          <span>Shares: <span id="stat-shares">0</span></span>
+        </div>
+      </div>
+      <div id="prompt-list" class="space-y-4"></div>
+    </div>
+  </body>
+</html>
