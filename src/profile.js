@@ -311,6 +311,10 @@ const renderSavedPrompts = (prompts) => {
     editBtn.innerHTML =
       '<i data-lucide="pencil" class="w-4 h-4" aria-hidden="true"></i>';
 
+
+    // allow direct click on the prompt text to start editing
+    pEl.addEventListener('click', () => editBtn.click());
+
     const copyBtn = document.createElement('button');
     copyBtn.className =
       'history-copy p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
@@ -534,6 +538,8 @@ const renderSharedPrompts = (prompts) => {
       'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
     editBtn.innerHTML =
       '<i data-lucide="pencil" class="w-4 h-4" aria-hidden="true"></i>';
+    // clicking the prompt text also starts editing
+    text.addEventListener('click', () => editBtn.click());
 
     const copyBtn = document.createElement('button');
     copyBtn.className =
