@@ -237,7 +237,14 @@ All pages include the standard AdSense loader in the `<head>` tag:
 ></script>
 ```
 
+
 The script fetches Google's ad library asynchronously using your publisher ID (`client`). After it loads you can place `<ins class="adsbygoogle">` elements in the body to display ads. See [the AdSense documentation](https://support.google.com/adsense/answer/9271723) for details on creating and customizing ad units.
+
+## FAQ
+
+### How do I update the production build?
+
+Run `npm run build` after any production change. This command regenerates build artifacts and increments the version in `manifest.json`. Open pages check the manifest every five minutes and reload automatically when the version changes.
 
 ## License
 
