@@ -180,8 +180,10 @@
           class="mx-auto mb-4 w-16 h-16"
         />
         <h1 id="page-title" class="text-2xl font-bold mb-2">Profile</h1>
-        <p id="user-name" class="text-blue-200 mb-2"></p>
-        <div class="flex justify-center gap-2 mb-2">
+        <div id="user-name-wrapper" class="mb-2">
+          <p id="user-name" class="text-blue-200 cursor-pointer"></p>
+        </div>
+        <div id="name-edit-row" class="flex justify-center gap-2 mb-2 hidden">
           <input
             id="name-input"
             type="text"
