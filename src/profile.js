@@ -317,7 +317,7 @@ const renderSavedPrompts = (prompts) => {
   prompts.forEach((text, idx) => {
     const item = document.createElement('div');
     item.className =
-      'bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
+      'col-span-1 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
 
     const pEl = document.createElement('p');
     pEl.textContent = text;
@@ -476,7 +476,7 @@ const renderSharedPrompts = (prompts) => {
   prompts.forEach((p, idx) => {
     const item = document.createElement('div');
     item.className =
-      'bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
+      'col-span-1 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
 
     const text = document.createElement('p');
     text.textContent = p.text;
