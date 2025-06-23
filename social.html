@@ -147,8 +147,8 @@
           text.textContent = p.text;
 
           const nameEl = document.createElement('p');
-          nameEl.className = 'text-blue-200 text-sm mt-1';
-          nameEl.textContent = names[i];
+          nameEl.className = 'text-blue-200 text-sm mt-1 underline';
+          nameEl.innerHTML = `<a href="user.html?uid=${p.userId}">${names[i]}</a>`;
 
           const likeRow = document.createElement('div');
           likeRow.className = 'flex items-center gap-2 mt-2';
@@ -209,7 +209,7 @@
               names.push(await fetchName(uid));
             }
             likeList.innerHTML = names
-              .map((n) => `<div class="px-2">${n}</div>`)
+              .map((n, idx) => `<div class="px-2"><a href="user.html?uid=${likedBy[idx]}" class="underline">${n}</a></div>`)
               .join('');
             const first = names.slice(0, 3);
             let txt = '';
@@ -371,7 +371,9 @@
             const name = await fetchName(c.userId);
             const d = document.createElement('div');
             d.className = 'bg-white/5 rounded-md px-2 py-1 text-sm';
-            d.textContent = name ? `${name}: ${c.text}` : c.text;
+            d.innerHTML = name
+              ? `<a href="user.html?uid=${c.userId}" class="underline">${name}</a>: ${c.text}`
+              : c.text;
             commentList.appendChild(d);
           };
 
