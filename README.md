@@ -246,6 +246,17 @@ The script fetches Google's ad library asynchronously using your publisher ID (`
 
 Run `npm run build` after any production change. This command regenerates build artifacts and increments the version in `manifest.json`. Open pages check the manifest every five minutes and reload automatically when the version changes.
 
+## Automatic reloads and service worker
+
+All pages include `src/version.js`, which fetches `manifest.json` every five minutes.
+If the `version` field changes the page reloads so users receive the latest build.
+The `sw.js` file acts as a kill-switch service worker — it unregisters older service
+workers and clears cached files. Keep it deployed for a short time after updates to
+clean outdated clients.
+
+Run `npm run build` whenever you modify production files to increment the manifest
+version and trigger this refresh mechanism.
+
 ## License
 
 This project is licensed under the Apache License 2.0. See [LICENSE](LICENSE) for the full text.
