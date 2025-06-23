@@ -7,6 +7,7 @@ import {
   updatePromptText,
   unsharePrompt,
   savePrompt,
+  incrementShareCount,
 } from './prompt.js';
 import { getUserProfile, setUserProfile } from './user.js';
 import { listenNotifications } from './notifications.js';
@@ -247,6 +248,27 @@ const updateCount = (id, count) => {
   if (el) el.textContent = count.toString();
 };
 
+const updateStats = (prompts) => {
+  const totals = {
+    prompts: prompts.length,
+    likes: 0,
+    comments: 0,
+    saves: 0,
+    shares: 0,
+  };
+  prompts.forEach((p) => {
+    totals.likes += p.likes || (Array.isArray(p.likedBy) ? p.likedBy.length : 0);
+    totals.comments += p.commentCount || 0;
+    totals.saves += p.saveCount || 0;
+    totals.shares += p.shareCount || (Array.isArray(p.sharedBy) ? p.sharedBy.length : 0);
+  });
+  updateCount('stat-prompts', totals.prompts);
+  updateCount('stat-likes', totals.likes);
+  updateCount('stat-comments', totals.comments);
+  updateCount('stat-saves', totals.saves);
+  updateCount('stat-shares', totals.shares);
+};
+
 const renderNotifications = () => {
   if (!notificationCountEl || !notificationsPanel) return;
   const unread = notifications.filter((n) => !n.read);
@@ -446,6 +468,7 @@ const renderSharedPrompts = (prompts) => {
   const list = document.getElementById('shared-list');
   list.innerHTML = '';
   updateCount('shared-count', prompts.length);
+  updateStats(prompts);
   if (!prompts || prompts.length === 0) {
     const p = document.createElement('p');
     p.textContent = uiText[appState.language].noPrompts;
@@ -649,6 +672,7 @@ const renderSharedPrompts = (prompts) => {
 
     shareBtn.addEventListener('click', () => {
       sharePrompt(text.textContent || '', 'https://twitter.com/intent/tweet?text=');
+      incrementShareCount(p.id);
     });
 
     delBtn.addEventListener('click', async () => {

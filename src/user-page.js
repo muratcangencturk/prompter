@@ -1,14 +1,8 @@
 import { getUserByName, getUserProfile } from './user.js';
 import { getUserPrompts } from './prompt.js';
-import { collection, getDocs } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
-import { db } from './firebase.js';
+
 
 const getParam = (key) => new URLSearchParams(window.location.search).get(key);
-
-const fetchCommentsCount = async (promptId) => {
-  const snap = await getDocs(collection(db, `prompts/${promptId}/comments`));
-  return snap.size;
-};
 
 const renderPrompts = async (prompts) => {
   const list = document.getElementById('prompt-list');
@@ -16,11 +10,13 @@ const renderPrompts = async (prompts) => {
   let likes = 0;
   let comments = 0;
   let shares = 0;
+  let saves = 0;
 
   for (const p of prompts) {
     likes += p.likes || (Array.isArray(p.likedBy) ? p.likedBy.length : 0);
-    shares += Array.isArray(p.sharedBy) ? p.sharedBy.length : 0;
-    comments += await fetchCommentsCount(p.id);
+    shares += p.shareCount || (Array.isArray(p.sharedBy) ? p.sharedBy.length : 0);
+    saves += p.saveCount || 0;
+    comments += p.commentCount || 0;
 
     const card = document.createElement('div');
     card.className =
@@ -34,7 +30,7 @@ const renderPrompts = async (prompts) => {
   document.getElementById('stat-prompts').textContent = prompts.length.toString();
   document.getElementById('stat-likes').textContent = likes.toString();
   document.getElementById('stat-comments').textContent = comments.toString();
-  document.getElementById('stat-saves').textContent = '0';
+  document.getElementById('stat-saves').textContent = saves.toString();
   document.getElementById('stat-shares').textContent = shares.toString();
 
   window.lucide?.createIcons();
