@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile - Prompter</title>
     <base href="./" />
-    <link rel="manifest" href="manifest.json?v=56" />
+    <link rel="manifest" href="manifest.json?v=58" />
     <meta name="theme-color" content="#000000" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <link rel="stylesheet" href="css/tailwind.css?v=56" />
-    <link rel="stylesheet" href="css/app.css?v=56" />
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=56"></script>
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=56" />
-    <script type="module" src="src/init-app.js?v=56"></script>
-    <script nomodule src="dist/init-app.js?v=56"></script>
+    <link rel="stylesheet" href="css/tailwind.css?v=58" />
+    <link rel="stylesheet" href="css/app.css?v=58" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=58"></script>
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=58" />
+    <script type="module" src="src/init-app.js?v=58"></script>
+    <script nomodule src="dist/init-app.js?v=58"></script>
     <!--
     <script>
       if ('serviceWorker' in navigator) {
@@ -34,9 +34,9 @@
         }
       })();
     </script>
-    <script type="module" src="src/profile.js?v=56"></script>
-    <script nomodule src="dist/profile.js?v=56"></script>
-    <script type="module" src="src/version.js?v=56"></script>
+    <script type="module" src="src/profile.js?v=58"></script>
+    <script nomodule src="dist/profile.js?v=58"></script>
+    <script type="module" src="src/version.js?v=58"></script>
   </head>
   <body class="min-h-screen p-4">
     <div id="app-container" class="w-full">
@@ -53,7 +53,7 @@
           </a>
           <img
             id="app-logo"
-            src="icons/logo.svg?v=56"
+            src="icons/logo.svg?v=58"
             alt="Prompter logo"
             class="w-12 h-12 sm:w-14 sm:h-14"
           />
@@ -62,31 +62,40 @@
             <p class="text-sm text-blue-200 sm:text-base">Profile</p>
           </div>
         </div>
-        <div class="flex items-center gap-2 relative">
+        <div class="flex flex-col items-end gap-2 relative">
+          <div class="flex items-center gap-2">
+            <button
+              id="theme-light"
+              class="p-1.5 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50"
+              title="Light Theme"
+              aria-label="Light Theme"
+            >
+              <i data-lucide="sun" class="w-5 h-5" aria-hidden="true"></i>
+            </button>
+            <button
+              id="theme-dark"
+              class="p-1.5 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50"
+              title="Dark Theme"
+              aria-label="Dark Theme"
+            >
+              <i data-lucide="moon" class="w-5 h-5" aria-hidden="true"></i>
+            </button>
+            <button
+              id="notifications-btn"
+              class="p-1.5 rounded-md focus:outline-none focus:ring-2 focus:ring-white/50 relative"
+              title="Notifications"
+              aria-label="Notifications"
+            >
+              <i data-lucide="bell" class="w-5 h-5" aria-hidden="true"></i>
+              <span id="notification-count" class="hidden absolute -top-1 -right-1 bg-red-500 text-xs rounded-full w-4 h-4 flex items-center justify-center"></span>
+            </button>
+          </div>
           <button
-            id="theme-light"
-            class="p-1.5 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50"
-            title="Light Theme"
-            aria-label="Light Theme"
+            id="logout"
+            class="mt-2 bg-white/20 hover:bg-white/30 p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 flex items-center gap-1"
           >
-            <i data-lucide="sun" class="w-5 h-5" aria-hidden="true"></i>
-          </button>
-          <button
-            id="theme-dark"
-            class="p-1.5 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50"
-            title="Dark Theme"
-            aria-label="Dark Theme"
-          >
-            <i data-lucide="moon" class="w-5 h-5" aria-hidden="true"></i>
-          </button>
-          <button
-            id="notifications-btn"
-            class="p-1.5 rounded-md focus:outline-none focus:ring-2 focus:ring-white/50 relative"
-            title="Notifications"
-            aria-label="Notifications"
-          >
-            <i data-lucide="bell" class="w-5 h-5" aria-hidden="true"></i>
-            <span id="notification-count" class="hidden absolute -top-1 -right-1 bg-red-500 text-xs rounded-full w-4 h-4 flex items-center justify-center"></span>
+            <i data-lucide="log-out" class="w-4 h-4" aria-hidden="true"></i>
+            <span>Logout</span>
           </button>
           <div id="notifications-panel" class="hidden absolute right-0 mt-10 bg-black/80 backdrop-blur-md p-2 rounded-md border border-white/20 text-sm w-64 max-h-60 overflow-y-auto"></div>
         </div>
@@ -109,13 +118,6 @@
           </button>
         </div>
         <p id="user-email" class="text-blue-200 mb-2"></p>
-        <button
-          id="logout"
-          class="mt-2 bg-white/20 hover:bg-white/30 p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 flex items-center gap-1 mx-auto"
-        >
-          <i data-lucide="log-out" class="w-4 h-4" aria-hidden="true"></i>
-          <span>Logout</span>
-        </button>
         <div class="space-x-2 text-sm text-blue-200 my-4 text-center">
           <span>Prompts: <span id="stat-prompts">0</span></span>
           <span>Likes: <span id="stat-likes">0</span></span>
