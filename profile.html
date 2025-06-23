@@ -15,9 +15,10 @@
       (function () {
         const linkEl = document.getElementById('theme-css');
         if (!linkEl) return;
+        const version = linkEl.getAttribute('href').split('?')[1];
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
-          linkEl.href = `css/theme-${savedTheme}.css?v=31`;
+          linkEl.href = `css/theme-${savedTheme}.css${version ? `?${version}` : ''}`;
         }
       })();
     </script>
