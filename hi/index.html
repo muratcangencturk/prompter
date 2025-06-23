@@ -173,20 +173,11 @@
           return { cdn: cdnScript, local: localScript, loadPromise };
         }
 
-        const tailwindScripts = loadWithFallback(
-          location.hostname === 'localhost'
-            ? 'https://cdn.tailwindcss.com'
-            : null,
-          'tailwind.js?v=47'
-        );
         window.lucideScripts = loadWithFallback(
           'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=47',
           'lucide.min.js?v=47'
         );
-        Promise.all([
-          tailwindScripts.loadPromise,
-          window.lucideScripts.loadPromise,
-        ]).finally(() => {
+        window.lucideScripts.loadPromise.finally(() => {
           const appContainer = document.getElementById('app-container');
           const loadingScreen = document.getElementById('loading-screen');
           if (appContainer) appContainer.style.visibility = 'visible';
@@ -194,6 +185,7 @@
         });
       })();
     </script>
+    <link rel="stylesheet" href="css/tailwind.css?v=47" />
     <link rel="stylesheet" href="css/app.css?v=47" />
     <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=47" />
     <script>

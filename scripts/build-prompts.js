@@ -88,7 +88,6 @@ function appendVersionToAssets(html, version) {
     const sep = cleaned.includes('?') ? '&' : '?';
     return `${attr}=${quote}${cleaned}${sep}v=${version}${quote}`;
   });
-  result = result.replace(/tailwind\.js(?:\?v=\d+)?/g, `tailwind.js?v=${version}`);
   result = result.replace(/lucide\.min\.js(?:\?v=\d+)?/g, `lucide.min.js?v=${version}`);
   result = result.replace(/prompts\.js(?:\?v=\d+)?/g, `prompts.js?v=${version}`);
   return result;
