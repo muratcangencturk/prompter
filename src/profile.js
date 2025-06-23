@@ -132,6 +132,8 @@ let langMenu;
 let currentLangLabel;
 let sharedPromptsData = [];
 let currentUserName = '';
+let nameWrapper;
+let nameEditRow;
 let nameInput;
 let nameUpdateBtn;
 let notificationBtn;
@@ -681,8 +683,18 @@ const init = () => {
     }
   }
 
+  nameWrapper = document.getElementById('user-name-wrapper');
+  nameEditRow = document.getElementById('name-edit-row');
   nameInput = document.getElementById('name-input');
   nameUpdateBtn = document.getElementById('name-update-btn');
+
+  nameWrapper?.addEventListener('click', () => {
+    if (!nameWrapper || !nameEditRow || !nameInput) return;
+    nameInput.value = currentUserName;
+    nameWrapper.classList.add('hidden');
+    nameEditRow.classList.remove('hidden');
+    nameInput.focus();
+  });
 
   nameUpdateBtn?.addEventListener('click', async () => {
     if (!nameInput || !appState.currentUser) return;
@@ -694,7 +706,8 @@ const init = () => {
       currentUserName = newName;
       const nameEl = document.getElementById('user-name');
       if (nameEl) nameEl.textContent = currentUserName;
-      if (nameInput) nameInput.value = '';
+      nameEditRow?.classList.add('hidden');
+      nameWrapper?.classList.remove('hidden');
       renderSharedPrompts(sharedPromptsData);
     } catch (err) {
       console.error('Failed to update name:', err);
@@ -804,6 +817,8 @@ const init = () => {
       const nameEl = document.getElementById('user-name');
       if (nameEl) nameEl.textContent = '';
       if (nameInput) nameInput.value = '';
+      nameEditRow?.classList.add('hidden');
+      nameWrapper?.classList.remove('hidden');
       notifications = [];
       renderNotifications();
       unsubscribeNotifications?.();
@@ -823,6 +838,8 @@ const init = () => {
       const nameEl = document.getElementById('user-name');
       if (nameEl) nameEl.textContent = currentUserName;
       if (nameInput) nameInput.value = currentUserName;
+      nameEditRow?.classList.add('hidden');
+      nameWrapper?.classList.remove('hidden');
     } catch (err) {
       console.error('Failed to load profile:', err);
     }
