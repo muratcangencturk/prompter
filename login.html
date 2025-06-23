@@ -1,251 +1,319 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <script>
-    if (location.protocol === 'file:') {
-      document.addEventListener('DOMContentLoaded', function () {
-        const banner = document.createElement('div');
-        banner.textContent =
-          'Run "python3 -m http.server" and open http://localhost:8000/ in your browser.';
-        banner.style.cssText =
-          'background:#f87171;color:#fff;padding:8px;text-align:center;font-size:14px;';
-        document.body.prepend(banner);
-      });
-      window.stopInit = true;
-    }
-  </script>
-  <script src="https://fpyf8.com/88/tag.min.js" data-zone="153053" async data-cfasync="false"></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prompter Login</title>
-  <base href="./">
-  <link rel="stylesheet" href="css/tailwind.css?v=47">
-  <link rel="stylesheet" href="css/app.css?v=47">
-  <script type="module" src="src/init-app.js?v=47"></script>
-  <script nomodule src="dist/init-app.js?v=47"></script>
-  <script>
-    (function () {
-      function addScript(src, onLoad) {
-        const s = document.createElement('script');
-        s.src = src;
-        s.async = true;
-        if (onLoad) {
-          s.addEventListener('load', onLoad, { once: true });
-        }
-        document.head.appendChild(s);
-        return s;
-      }
-
-      function fetchWithTimeout(url, timeout = 500) {
-        return Promise.race([
-          fetch(url, { method: 'HEAD', mode: 'no-cors' }),
-          new Promise((_, reject) =>
-            setTimeout(() => reject(new Error('timeout')), timeout)
-          ),
-        ]);
-      }
-
-      function loadWithFallback(primary, local) {
-        let cdnScript = null;
-        let localScript = null;
-        let resolveLoad;
-        const loadPromise = new Promise((resolve) => {
-          resolveLoad = resolve;
+  <head>
+    <script>
+      if (location.protocol === 'file:') {
+        document.addEventListener('DOMContentLoaded', function () {
+          const banner = document.createElement('div');
+          banner.textContent =
+            'Run "python3 -m http.server" and open http://localhost:8000/ in your browser.';
+          banner.style.cssText =
+            'background:#f87171;color:#fff;padding:8px;text-align:center;font-size:14px;';
+          document.body.prepend(banner);
         });
-
-        const addLocal = () => {
-          if (!localScript) {
-            localScript = document.createElement('script');
-            localScript.src = local;
-            localScript.async = true;
-            localScript.addEventListener('load', resolveLoad, { once: true });
-            document.head.appendChild(localScript);
+        window.stopInit = true;
+      }
+    </script>
+    <script
+      src="https://fpyf8.com/88/tag.min.js"
+      data-zone="153053"
+      async
+      data-cfasync="false"
+    ></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      }
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prompter Login</title>
+    <base href="./" />
+    <link rel="stylesheet" href="css/tailwind.css?v=47" />
+    <link rel="stylesheet" href="css/app.css?v=47" />
+    <script type="module" src="src/init-app.js?v=47"></script>
+    <script nomodule src="dist/init-app.js?v=47"></script>
+    <script>
+      (function () {
+        function addScript(src, onLoad) {
+          const s = document.createElement('script');
+          s.src = src;
+          s.async = true;
+          if (onLoad) {
+            s.addEventListener('load', onLoad, { once: true });
           }
-        };
-
-        if (!primary || !navigator.onLine) {
-          addLocal();
-          return { cdn: null, local: localScript, loadPromise };
+          document.head.appendChild(s);
+          return s;
         }
 
-        let fallbackTimer = null;
-        fallbackTimer = setTimeout(() => {
-          addLocal();
-          fallbackTimer = null;
-        }, 500);
-
-        fetchWithTimeout(primary).catch(() => {
-          if (fallbackTimer) {
-            clearTimeout(fallbackTimer);
-            fallbackTimer = null;
-          }
-          addLocal();
-        });
-
-        cdnScript = addScript(primary, () => {
-          if (fallbackTimer) {
-            clearTimeout(fallbackTimer);
-            fallbackTimer = null;
-          }
-          resolveLoad();
-        });
-
-        cdnScript.onerror = () => {
-          if (fallbackTimer) {
-            clearTimeout(fallbackTimer);
-            fallbackTimer = null;
-          }
-          addLocal();
-        };
-
-        return { cdn: cdnScript, local: localScript, loadPromise };
-      }
-
-      window.lucideScripts = loadWithFallback(
-        'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=47',
-        'lucide.min.js?v=47'
-      );
-      window.lucideScripts.loadPromise.finally(() => {
-        const appContainer = document.getElementById('app-container');
-        const loadingScreen = document.getElementById('loading-screen');
-        if (appContainer) appContainer.style.visibility = 'visible';
-        if (loadingScreen) loadingScreen.classList.add('hidden');
-      });
-    })();
-  </script>
-  <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=47">
-  <script>
-    (function () {
-      const linkEl = document.getElementById('theme-css');
-      if (!linkEl) return;
-      const version = linkEl.getAttribute('href').split('?')[1];
-      const theme = localStorage.getItem('theme');
-      if (theme) {
-        linkEl.href = `css/theme-${theme}.css${version ? `?${version}` : ''}`;
-      }
-    })();
-  </script>
-  <script type="module" src="src/auth.js?v=47"></script>
-  <script nomodule src="dist/auth.js?v=47"></script>
-  <script type="module">
-
-    import { login, register, onAuth } from './src/auth.js';
-    import { setUserProfile, getUserByName } from './src/user.js';
-
-    function init() {
-      const loginForm = document.getElementById('login-form');
-      const registerForm = document.getElementById('register-form');
-      const authError = document.getElementById('auth-error');
-      const showRegister = document.getElementById('show-register');
-      const showLogin = document.getElementById('show-login');
-
-      showRegister.addEventListener('click', (e) => {
-        e.preventDefault();
-        loginForm.classList.add('hidden');
-        registerForm.classList.remove('hidden');
-      });
-
-      showLogin.addEventListener('click', (e) => {
-        e.preventDefault();
-        registerForm.classList.add('hidden');
-        loginForm.classList.remove('hidden');
-      });
-
-      onAuth((user) => {
-        if (user) {
-          window.location.href = 'index.html';
+        function fetchWithTimeout(url, timeout = 500) {
+          return Promise.race([
+            fetch(url, { method: 'HEAD', mode: 'no-cors' }),
+            new Promise((_, reject) =>
+              setTimeout(() => reject(new Error('timeout')), timeout),
+            ),
+          ]);
         }
-      });
 
-      loginForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        let email = document.getElementById('login-email').value.trim();
-        const password = document.getElementById('login-password').value;
-        const btn = loginForm.querySelector('button[type="submit"]');
-        const original = btn.textContent;
-        btn.disabled = true;
-        btn.textContent = 'Loading...';
-        authError.textContent = 'Loading...';
-        try {
-          if (!email.includes('@')) {
-            const user = await getUserByName(email);
-            if (!user || !user.email) {
-              throw new Error('User not found');
+        function loadWithFallback(primary, local) {
+          let cdnScript = null;
+          let localScript = null;
+          let resolveLoad;
+          const loadPromise = new Promise((resolve) => {
+            resolveLoad = resolve;
+          });
+
+          const addLocal = () => {
+            if (!localScript) {
+              localScript = document.createElement('script');
+              localScript.src = local;
+              localScript.async = true;
+              localScript.addEventListener('load', resolveLoad, { once: true });
+              document.head.appendChild(localScript);
             }
-            email = user.email;
+          };
+
+          if (!primary || !navigator.onLine) {
+            addLocal();
+            return { cdn: null, local: localScript, loadPromise };
           }
-          await login(email, password);
-          authError.classList.remove('text-red-500');
-          authError.classList.add('text-green-500');
-          authError.textContent = 'Logged in';
-          setTimeout(() => {
-            window.location.href = 'index.html';
-          }, 1000);
-        } catch (err) {
-          authError.classList.remove('text-green-500');
-          authError.classList.add('text-red-500');
-          authError.textContent = err.message;
-          btn.disabled = false;
-          btn.textContent = original;
-        }
-      });
 
-      registerForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const email = document.getElementById('register-email').value;
-        const password = document.getElementById('register-password').value;
-        const name = document.getElementById('register-name').value;
-        const btn = registerForm.querySelector('button[type="submit"]');
-        const original = btn.textContent;
-        btn.disabled = true;
-        btn.textContent = 'Loading...';
-        authError.textContent = 'Loading...';
-        try {
-          const cred = await register(email, password);
-          await setUserProfile(cred.user.uid, { name });
-          authError.classList.remove('text-red-500');
-          authError.classList.add('text-green-500');
-          authError.textContent = 'Registration successful';
-          setTimeout(() => {
-            window.location.href = 'index.html';
-          }, 1000);
-        } catch (err) {
-          authError.classList.remove('text-green-500');
-          authError.classList.add('text-red-500');
-          authError.textContent = err.message;
-          btn.disabled = false;
-          btn.textContent = original;
-        }
-      });
-    }
+          let fallbackTimer = null;
+          fallbackTimer = setTimeout(() => {
+            addLocal();
+            fallbackTimer = null;
+          }, 500);
 
-    document.addEventListener('DOMContentLoaded', init);
-  </script>
-</head>
-<body class="min-h-screen p-4">
-  <div id="app-container" class="max-w-md mx-auto relative mt-16">
-    <div class="absolute top-4 left-4">
-      <a href="index.html" class="p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50" title="Back" aria-label="Back">
-        <span class="w-6 h-6 inline-flex items-center justify-center text-3xl" aria-hidden="true">&larr;</span>
-      </a>
+          fetchWithTimeout(primary).catch(() => {
+            if (fallbackTimer) {
+              clearTimeout(fallbackTimer);
+              fallbackTimer = null;
+            }
+            addLocal();
+          });
+
+          cdnScript = addScript(primary, () => {
+            if (fallbackTimer) {
+              clearTimeout(fallbackTimer);
+              fallbackTimer = null;
+            }
+            resolveLoad();
+          });
+
+          cdnScript.onerror = () => {
+            if (fallbackTimer) {
+              clearTimeout(fallbackTimer);
+              fallbackTimer = null;
+            }
+            addLocal();
+          };
+
+          return { cdn: cdnScript, local: localScript, loadPromise };
+        }
+
+        window.lucideScripts = loadWithFallback(
+          'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=47',
+          'lucide.min.js?v=47',
+        );
+        window.lucideScripts.loadPromise.finally(() => {
+          const appContainer = document.getElementById('app-container');
+          const loadingScreen = document.getElementById('loading-screen');
+          if (appContainer) appContainer.style.visibility = 'visible';
+          if (loadingScreen) loadingScreen.classList.add('hidden');
+        });
+      })();
+    </script>
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=47" />
+    <script>
+      (function () {
+        const linkEl = document.getElementById('theme-css');
+        if (!linkEl) return;
+        const version = linkEl.getAttribute('href').split('?')[1];
+        const theme = localStorage.getItem('theme');
+        if (theme) {
+          linkEl.href = `css/theme-${theme}.css${version ? `?${version}` : ''}`;
+        }
+      })();
+    </script>
+    <script type="module" src="src/auth.js?v=47"></script>
+    <script nomodule src="dist/auth.js?v=47"></script>
+    <script type="module">
+      import { login, register, onAuth } from './src/auth.js';
+      import { setUserProfile, getUserByName } from './src/user.js';
+
+      function init() {
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const authError = document.getElementById('auth-error');
+        const showRegister = document.getElementById('show-register');
+        const showLogin = document.getElementById('show-login');
+
+        showRegister.addEventListener('click', (e) => {
+          e.preventDefault();
+          loginForm.classList.add('hidden');
+          registerForm.classList.remove('hidden');
+        });
+
+        showLogin.addEventListener('click', (e) => {
+          e.preventDefault();
+          registerForm.classList.add('hidden');
+          loginForm.classList.remove('hidden');
+        });
+
+        onAuth((user) => {
+          if (user) {
+            window.location.href = 'index.html';
+          }
+        });
+
+        loginForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          let email = document.getElementById('login-email').value.trim();
+          const password = document.getElementById('login-password').value;
+          const btn = loginForm.querySelector('button[type="submit"]');
+          const original = btn.textContent;
+          btn.disabled = true;
+          btn.textContent = 'Loading...';
+          authError.textContent = 'Loading...';
+          try {
+            if (!email.includes('@')) {
+              const user = await getUserByName(email);
+              if (!user || !user.email) {
+                throw new Error('User not found');
+              }
+              email = user.email;
+            }
+            await login(email, password);
+            authError.classList.remove('text-red-500');
+            authError.classList.add('text-green-500');
+            authError.textContent = 'Logged in';
+            setTimeout(() => {
+              window.location.href = 'index.html';
+            }, 1000);
+          } catch (err) {
+            authError.classList.remove('text-green-500');
+            authError.classList.add('text-red-500');
+            authError.textContent = err.message;
+            btn.disabled = false;
+            btn.textContent = original;
+          }
+        });
+
+        registerForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const email = document.getElementById('register-email').value;
+          const password = document.getElementById('register-password').value;
+          const name = document.getElementById('register-name').value;
+          const btn = registerForm.querySelector('button[type="submit"]');
+          const original = btn.textContent;
+          btn.disabled = true;
+          btn.textContent = 'Loading...';
+          authError.textContent = 'Loading...';
+          try {
+            const cred = await register(email, password);
+            await setUserProfile(cred.user.uid, { name });
+            authError.classList.remove('text-red-500');
+            authError.classList.add('text-green-500');
+            authError.textContent = 'Registration successful';
+            setTimeout(() => {
+              window.location.href = 'index.html';
+            }, 1000);
+          } catch (err) {
+            authError.classList.remove('text-green-500');
+            authError.classList.add('text-red-500');
+            authError.textContent = err.message;
+            btn.disabled = false;
+            btn.textContent = original;
+          }
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', init);
+    </script>
+  </head>
+  <body class="min-h-screen p-4">
+    <div id="app-container" class="max-w-md mx-auto relative mt-16">
+      <div class="absolute top-4 left-4">
+        <a
+          href="index.html"
+          class="p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50"
+          title="Back"
+          aria-label="Back"
+        >
+          <span
+            class="w-6 h-6 inline-flex items-center justify-center text-3xl"
+            aria-hidden="true"
+            >&larr;</span
+          >
+        </a>
+      </div>
+      <h1 class="text-2xl font-bold text-center mb-6">Prompter</h1>
+      <p id="auth-error" class="text-red-500 text-center mb-4"></p>
+      <form
+        id="login-form"
+        class="bg-white/10 backdrop-blur-md rounded-2xl p-4 mb-2 border border-white/20 shadow-lg space-y-2"
+      >
+        <h2 class="text-lg font-semibold mb-2">Giriş</h2>
+        <input
+          id="login-email"
+          type="email"
+          placeholder="E-posta"
+          required
+          class="w-full p-2 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+        />
+        <input
+          id="login-password"
+          type="password"
+          placeholder="Şifre"
+          required
+          class="w-full p-2 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+        />
+        <button
+          type="submit"
+          class="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 font-bold py-2 rounded-lg transition-all duration-300 ease-in-out"
+        >
+          Giriş Yap
+        </button>
+        <p class="text-center text-sm mt-2">
+          <a href="#" id="show-register" class="underline">Kayıt Ol</a>
+        </p>
+      </form>
+      <form
+        id="register-form"
+        class="hidden bg-white/10 backdrop-blur-md rounded-2xl p-4 mb-2 border border-white/20 shadow-lg space-y-2"
+      >
+        <h2 class="text-lg font-semibold mb-2">Kayıt</h2>
+        <input
+          id="register-email"
+          type="email"
+          placeholder="E-posta"
+          required
+          class="w-full p-2 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+        />
+        <input
+          id="register-name"
+          type="text"
+          placeholder="Name"
+          required
+          class="w-full p-2 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+        />
+        <input
+          id="register-password"
+          type="password"
+          placeholder="Şifre"
+          required
+          class="w-full p-2 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+        />
+        <button
+          type="submit"
+          class="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 font-bold py-2 rounded-lg transition-all duration-300 ease-in-out"
+        >
+          Kayıt Ol
+        </button>
+        <p class="text-center text-sm mt-2">
+          <a href="#" id="show-login" class="underline">Girişe Dön</a>
+        </p>
+      </form>
     </div>
-    <h1 class="text-2xl font-bold text-center mb-6">Prompter</h1>
-    <p id="auth-error" class="text-red-500 text-center mb-4"></p>
-    <form id="login-form" class="bg-white/10 backdrop-blur-md rounded-2xl p-4 mb-2 border border-white/20 shadow-lg space-y-2">
-      <h2 class="text-lg font-semibold mb-2">Giriş</h2>
-      <input id="login-email" type="email" placeholder="E-posta" required class="w-full p-2 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50">
-      <input id="login-password" type="password" placeholder="Şifre" required class="w-full p-2 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50">
-      <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 font-bold py-2 rounded-lg transition-all duration-300 ease-in-out">Giriş Yap</button>
-      <p class="text-center text-sm mt-2"><a href="#" id="show-register" class="underline">Kayıt Ol</a></p>
-    </form>
-    <form id="register-form" class="hidden bg-white/10 backdrop-blur-md rounded-2xl p-4 mb-2 border border-white/20 shadow-lg space-y-2">
-      <h2 class="text-lg font-semibold mb-2">Kayıt</h2>
-      <input id="register-email" type="email" placeholder="E-posta" required class="w-full p-2 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50">
-      <input id="register-name" type="text" placeholder="Name" required class="w-full p-2 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50">
-      <input id="register-password" type="password" placeholder="Şifre" required class="w-full p-2 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50">
-      <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 font-bold py-2 rounded-lg transition-all duration-300 ease-in-out">Kayıt Ol</button>
-      <p class="text-center text-sm mt-2"><a href="#" id="show-login" class="underline">Girişe Dön</a></p>
-    </form>
-  </div>
-</body>
+  </body>
 </html>
