@@ -916,6 +916,15 @@ const setupEventListeners = () => {
   });
 
   if (shareButton) {
+    const updateShareIcon = () => {
+      const svg = shareButton.querySelector('svg');
+      if (svg)
+        svg.setAttribute(
+          'fill',
+          shareButton.classList.contains('active') ? 'currentColor' : 'none'
+        );
+    };
+    updateShareIcon();
     shareButton.addEventListener('click', async () => {
       if (!appState.generatedPrompt) return;
       if (!appState.currentUser) {
@@ -923,6 +932,8 @@ const setupEventListeners = () => {
         return;
       }
       shareButton.classList.add('button-pop');
+      shareButton.classList.toggle('active');
+      updateShareIcon();
       shareMessage?.classList.remove('hidden');
       setTimeout(() => {
         shareMessage?.classList.add('hidden');
