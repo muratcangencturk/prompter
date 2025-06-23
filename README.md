@@ -213,6 +213,9 @@ firebase deploy --only firestore:indexes
 
 Use a valid Firebase token when running the command above. Missing indexes will
 lead to empty results on the Social page until they are created.
+Firestore may take several minutes to build the indexes after deployment. During
+this period queries on the Social page can throw `failed-precondition` errors and
+show "Failed to load prompts."
 
 ## Advertising (Google AdSense)
 
