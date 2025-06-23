@@ -91,6 +91,8 @@
         getComments,
         unsharePrompt,
         saveUserPrompt,
+        sharePromptByUser,
+        unsharePromptByUser,
       } from './src/prompt.js';
       import { appState } from './src/state.js';
       import { getUserProfile } from './src/user.js';
@@ -124,6 +126,13 @@
         const name = prof?.name || '';
         profileCache[uid] = name;
         return name;
+      };
+
+      const sharePrompt = (prompt, baseUrl) => {
+        if (!prompt) return;
+        const link = ' https://prompterai.space';
+        const url = `${baseUrl}${encodeURIComponent(`${prompt}${link}`)}`;
+        window.open(url, '_blank');
       };
 
       async function render(prompts) {
@@ -295,6 +304,57 @@
             }
           });
 
+          const shareToggleBtn = document.createElement('button');
+          shareToggleBtn.className =
+            'share-toggle flex items-center gap-1 p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+          shareToggleBtn.innerHTML =
+            '<i data-lucide="share-2" class="w-4 h-4" aria-hidden="true"></i> <span></span>';
+
+          let sharedByCurrent =
+            appState.currentUser &&
+            p.sharedBy &&
+            p.sharedBy.includes(appState.currentUser.uid);
+
+          const updateShareToggle = () => {
+            const icon = shareToggleBtn.querySelector('svg');
+            const textEl = shareToggleBtn.querySelector('span');
+            if (icon)
+              icon.setAttribute('fill', sharedByCurrent ? 'currentColor' : 'none');
+            if (textEl) textEl.textContent = sharedByCurrent ? 'Unshare' : 'Share';
+          };
+          updateShareToggle();
+
+          shareToggleBtn.addEventListener('click', async () => {
+            if (!appState.currentUser) {
+              alert('Login required');
+              return;
+            }
+            shareToggleBtn.disabled = true;
+            try {
+              if (sharedByCurrent) {
+                await unsharePromptByUser(p.id, appState.currentUser.uid);
+                sharedByCurrent = false;
+              } else {
+                await sharePromptByUser(p.id, appState.currentUser.uid);
+                sharedByCurrent = true;
+              }
+              updateShareToggle();
+            } catch (err) {
+              console.error('Failed to toggle share:', err);
+            } finally {
+              shareToggleBtn.disabled = false;
+            }
+          });
+
+          const twitterBtn = document.createElement('button');
+          twitterBtn.className =
+            'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+          twitterBtn.innerHTML =
+            '<i data-lucide="twitter" class="w-4 h-4" aria-hidden="true"></i>';
+          twitterBtn.addEventListener('click', () => {
+            sharePrompt(p.text, 'https://twitter.com/intent/tweet?text=');
+          });
+
           const editBtn = document.createElement('button');
           editBtn.className =
             'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
@@ -419,6 +479,8 @@
           });
 
           likeRow.appendChild(saveBtn);
+          likeRow.appendChild(shareToggleBtn);
+          likeRow.appendChild(twitterBtn);
           if (appState.currentUser && p.userId === appState.currentUser.uid) {
             likeRow.appendChild(editBtn);
             likeRow.appendChild(unshareBtn);

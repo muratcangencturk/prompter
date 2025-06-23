@@ -94,6 +94,17 @@ export const unsharePrompt = (promptId, userId) =>
     shared: false,
   });
 
+export const sharePromptByUser = (promptId, userId) =>
+  updateDoc(doc(db, 'prompts', promptId), {
+    sharedBy: arrayUnion(userId),
+    shared: true,
+  });
+
+export const unsharePromptByUser = (promptId, userId) =>
+  updateDoc(doc(db, 'prompts', promptId), {
+    sharedBy: arrayRemove(userId),
+  });
+
 export const saveUserPrompt = (text, userId) =>
   addDoc(collection(db, `users/${userId}/savedPrompts`), {
     text,
