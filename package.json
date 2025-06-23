@@ -12,6 +12,7 @@
     "build": "node scripts/build-prompts.js",
     "build:es5": "babel src --out-dir dist --presets=@babel/preset-env",
     "build:sitemap": "node scripts/generate-sitemap.js",
+    "build:css": "npx tailwindcss -i src/styles.css -o css/tailwind.css",
     "start": "http-server -c-1",
     "optimize:images": "svgo -r icons",
     "add:content": "node scripts/add-seo-lines.js",
@@ -26,6 +27,8 @@
     "husky": "^8.0.3",
     "prettier": "^2.8.8",
     "svgo": "^3.3.2",
-    "firebase-admin": "^11.10.1"
+    "firebase-admin": "^11.10.1",
+    "@tailwindcss/cli": "^4.1.10",
+    "tailwindcss": "^4.1.10"
   }
 }
