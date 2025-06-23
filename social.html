@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prompter Social</title>
     <base href="./" />
-    <link rel="manifest" href="manifest.json?v=50" />
+    <link rel="manifest" href="manifest.json?v=52" />
     <meta name="theme-color" content="#000000" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <link rel="stylesheet" href="css/tailwind.css?v=50" />
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=50"></script>
-    <link rel="stylesheet" href="css/app.css?v=50" />
-    <script type="module" src="src/init-app.js?v=50"></script>
-    <script nomodule src="dist/init-app.js?v=50"></script>
+    <link rel="stylesheet" href="css/tailwind.css?v=52" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=52"></script>
+    <link rel="stylesheet" href="css/app.css?v=52" />
+    <script type="module" src="src/init-app.js?v=52"></script>
+    <script nomodule src="dist/init-app.js?v=52"></script>
     <!--
     <script>
       if ('serviceWorker' in navigator) {
@@ -22,7 +22,7 @@
       }
     </script>
     -->
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=50" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=52" />
     <script>
       (function () {
         const linkEl = document.getElementById('theme-css');
@@ -36,7 +36,7 @@
         }
       })();
     </script>
-    <script type="module" src="src/version.js?v=50"></script>
+    <script type="module" src="src/version.js?v=52"></script>
   </head>
   <body class="min-h-screen p-4">
     <div id="app-container" class="max-w-xl mx-auto">
@@ -51,7 +51,7 @@
             <span class="w-6 h-6 inline-flex items-center justify-center text-3xl" aria-hidden="true">&larr;</span>
           </a>
           <img
-            src="icons/logo.svg?v=50"
+            src="icons/logo.svg?v=52"
             alt="Prompter logo"
             class="w-12 h-12 sm:w-14 sm:h-14"
           />
@@ -124,9 +124,12 @@
       const fetchName = async (uid) => {
         if (profileCache[uid]) return profileCache[uid];
         const prof = await getUserProfile(uid);
-        const name = prof?.name || '';
-        profileCache[uid] = name;
-        return name;
+        let display = prof?.name || 'Unknown User';
+        if (prof?.email) {
+          display += ` (${prof.email})`;
+        }
+        profileCache[uid] = display;
+        return display;
       };
 
       const sharePrompt = (prompt, baseUrl) => {
