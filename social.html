@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="css/app.css?v=47" />
     <script type="module" src="src/init-app.js?v=47"></script>
     <script nomodule src="dist/init-app.js?v=47"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      }
+    </script>
     <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=47" />
     <script>
       (function () {
@@ -149,7 +154,7 @@
               appState.savedPrompts.push(p.text);
               localStorage.setItem(
                 'savedPrompts',
-                JSON.stringify(appState.savedPrompts)
+                JSON.stringify(appState.savedPrompts),
               );
               if (appState.currentUser) {
                 await saveUserPrompt(p.text, appState.currentUser.uid);
@@ -219,7 +224,7 @@
             if (svg)
               svg.setAttribute(
                 'fill',
-                likeBtn.classList.contains('active') ? 'currentColor' : 'none'
+                likeBtn.classList.contains('active') ? 'currentColor' : 'none',
               );
           };
 
@@ -237,10 +242,10 @@
                   parseInt(likeCount.textContent, 10) - 1
                 ).toString();
                 appState.likedPrompts = appState.likedPrompts.filter(
-                  (id) => id !== p.id
+                  (id) => id !== p.id,
                 );
                 likedBy = likedBy.filter(
-                  (id) => id !== appState.currentUser.uid
+                  (id) => id !== appState.currentUser.uid,
                 );
                 likeBtn.classList.remove('active');
               } else {
@@ -254,7 +259,7 @@
               }
               localStorage.setItem(
                 'likedPrompts',
-                JSON.stringify(appState.likedPrompts)
+                JSON.stringify(appState.likedPrompts),
               );
               updateLikeIcon();
               await renderLikeSummary();
@@ -415,7 +420,7 @@
         const q = query(
           collection(db, 'prompts'),
           where('shared', '==', true),
-          orderBy('createdAt', 'desc')
+          orderBy('createdAt', 'desc'),
         );
         onSnapshot(
           q,
@@ -430,12 +435,11 @@
               list.textContent =
                 'Firestore indexes are still building. Please refresh later.';
             } else if (err.code === 'permission-denied') {
-              list.textContent =
-                'You don’t have permission to read prompts.';
+              list.textContent = 'You don’t have permission to read prompts.';
             } else {
               list.textContent = err.message;
             }
-          }
+          },
         );
       }
 

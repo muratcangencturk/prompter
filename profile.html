@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -11,6 +11,11 @@
     <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=47" />
     <script type="module" src="src/init-app.js?v=47"></script>
     <script nomodule src="dist/init-app.js?v=47"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      }
+    </script>
     <script>
       (function () {
         const linkEl = document.getElementById('theme-css');
@@ -118,7 +123,11 @@
           title="Back"
           aria-label="Back"
         >
-          <span class="w-6 h-6 inline-flex items-center justify-center text-3xl" aria-hidden="true">&larr;</span>
+          <span
+            class="w-6 h-6 inline-flex items-center justify-center text-3xl"
+            aria-hidden="true"
+            >&larr;</span
+          >
         </a>
       </div>
       <div class="absolute top-4 right-4 flex items-center gap-2">
@@ -156,7 +165,12 @@
         ></div>
       </div>
       <div class="text-center mb-6 pt-16">
-        <img id="app-logo" src="icons/logo.svg?v=47" alt="Prompter logo" class="mx-auto mb-4 w-16 h-16" />
+        <img
+          id="app-logo"
+          src="icons/logo.svg?v=47"
+          alt="Prompter logo"
+          class="mx-auto mb-4 w-16 h-16"
+        />
         <h1 id="page-title" class="text-2xl font-bold mb-2">Profile</h1>
         <p id="user-name" class="text-blue-200 mb-2"></p>
         <div class="flex justify-center gap-2 mb-2">
@@ -183,14 +197,20 @@
       </div>
       <section class="mb-6">
         <h2 class="text-xl font-semibold mb-2">
-          <span id="saved-title-text">Saved Prompts</span> (<span id="saved-count">0</span>)
+          <span id="saved-title-text">Saved Prompts</span> (<span
+            id="saved-count"
+            >0</span
+          >)
         </h2>
         <div id="saved-list" class="space-y-4"></div>
       </section>
 
       <section class="mb-6">
         <h2 class="text-xl font-semibold mb-2">
-          <span id="shared-title-text">Shared Prompts</span> (<span id="shared-count">0</span>)
+          <span id="shared-title-text">Shared Prompts</span> (<span
+            id="shared-count"
+            >0</span
+          >)
         </h2>
         <div id="shared-list" class="space-y-4"></div>
       </section>

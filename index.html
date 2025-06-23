@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <script>
@@ -14,7 +14,17 @@
         window.stopInit = true;
       }
     </script>
-    <script src="https://fpyf8.com/88/tag.min.js" data-zone="153053" async data-cfasync="false"></script>
+    <script
+      src="https://fpyf8.com/88/tag.min.js"
+      data-zone="153053"
+      async
+      data-cfasync="false"
+    ></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      }
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
@@ -67,7 +77,11 @@
     <meta property="og:locale:alternate" content="hi" />
     <meta name="twitter:url" content="https://prompterai.space/" />
     <link rel="canonical" href="https://prompterai.space/" />
-    <link rel="alternate" href="https://prompterai.space/" hreflang="x-default" />
+    <link
+      rel="alternate"
+      href="https://prompterai.space/"
+      hreflang="x-default"
+    />
     <link rel="alternate" href="https://prompterai.space/" hreflang="en" />
     <link rel="alternate" href="https://prompterai.space/tr/" hreflang="tr" />
     <link rel="alternate" href="https://prompterai.space/es/" hreflang="es" />
@@ -121,7 +135,7 @@
           return Promise.race([
             fetch(url, { method: 'HEAD', mode: 'no-cors' }),
             new Promise((_, reject) =>
-              setTimeout(() => reject(new Error('timeout')), timeout)
+              setTimeout(() => reject(new Error('timeout')), timeout),
             ),
           ]);
         }
@@ -189,7 +203,7 @@
 
         window.lucideScripts = loadWithFallback(
           'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=47',
-          'lucide.min.js?v=47'
+          'lucide.min.js?v=47',
         );
         window.lucideScripts.loadPromise.finally(() => {
           const appContainer = document.getElementById('app-container');
@@ -216,8 +230,17 @@
   </head>
   <body class="min-h-screen p-4">
     <noscript>
-      <div style="background:#f87171;color:#fff;padding:8px;text-align:center;font-size:14px;">
-        JavaScript is required to run this site. Please enable it or upgrade your browser.
+      <div
+        style="
+          background: #f87171;
+          color: #fff;
+          padding: 8px;
+          text-align: center;
+          font-size: 14px;
+        "
+      >
+        JavaScript is required to run this site. Please enable it or upgrade
+        your browser.
       </div>
     </noscript>
     <script>
@@ -275,9 +298,7 @@
       </div>
 
       <!-- Language Switcher -->
-      <div
-        class="absolute top-4 left-0 flex flex-col items-stretch gap-2 z-10"
-      >
+      <div class="absolute top-4 left-0 flex flex-col items-stretch gap-2 z-10">
         <div
           id="lang-container"
           class="relative flex items-center bg-black/20 backdrop-blur-sm p-1 rounded-lg border border-white/20 w-full"
@@ -373,8 +394,18 @@
           class="px-1 py-0.5 rounded-lg border border-white/20 text-xs font-medium bg-black/20 hover:bg-black/30 transition-all duration-200 w-full text-center"
           >Profile</a
         >
-        <a id="explore-link" href="social.html" class="px-1 py-0.5 rounded-lg border border-white/20 text-xs font-medium bg-black/20 hover:bg-black/30 transition-all duration-200 w-full text-center">Social</a>
-        <a id="pro-link" href="pro.html" class="px-1 py-0.5 rounded-lg border border-white/20 text-xs font-medium bg-black/20 hover:bg-black/30 transition-all duration-200 w-full text-center">Pro</a>
+        <a
+          id="explore-link"
+          href="social.html"
+          class="px-1 py-0.5 rounded-lg border border-white/20 text-xs font-medium bg-black/20 hover:bg-black/30 transition-all duration-200 w-full text-center"
+          >Social</a
+        >
+        <a
+          id="pro-link"
+          href="pro.html"
+          class="px-1 py-0.5 rounded-lg border border-white/20 text-xs font-medium bg-black/20 hover:bg-black/30 transition-all duration-200 w-full text-center"
+          >Pro</a
+        >
       </div>
 
       <!-- Header -->
@@ -513,10 +544,7 @@
         >
           Prompt saved!
         </p>
-        <p
-          id="save-error-message"
-          class="text-red-400 text-sm mt-2 hidden"
-        >
+        <p id="save-error-message" class="text-red-400 text-sm mt-2 hidden">
           Failed to save prompt.
         </p>
         <p
@@ -526,12 +554,11 @@
           Sharing...
         </p>
       </div>
-    <div class="mt-4 flex flex-wrap justify-between gap-4 items-start">
-    </div>
-    <!-- Prompt History -->
-    <div
-      id="history-panel"
-      class="hidden bg-white/10 backdrop-blur-md rounded-2xl p-4 mt-4 border border-white/20 shadow-lg"
+      <div class="mt-4 flex flex-wrap justify-between gap-4 items-start"></div>
+      <!-- Prompt History -->
+      <div
+        id="history-panel"
+        class="hidden bg-white/10 backdrop-blur-md rounded-2xl p-4 mt-4 border border-white/20 shadow-lg"
       >
         <div class="flex justify-between items-center mb-3">
           <h3 id="history-title" class="text-lg font-semibold">
@@ -572,19 +599,23 @@
           class="flex justify-center mt-2"
           aria-label="WhatsApp Group"
         >
-          <img src="icons/whatsapp.svg?v=47" class="w-6 h-6" alt="WhatsApp logo" />
+          <img
+            src="icons/whatsapp.svg?v=47"
+            class="w-6 h-6"
+            alt="WhatsApp logo"
+          />
         </a>
       </div>
     </div>
     <script type="module" src="src/init-app.js?v=47"></script>
     <script nomodule src="dist/init-app.js?v=47"></script>
-<script type="module" src="src/main.js?v=47"></script>
-<script nomodule src="dist/main.js?v=47"></script>
+    <script type="module" src="src/main.js?v=47"></script>
+    <script nomodule src="dist/main.js?v=47"></script>
     <script type="module">
       import { app } from './src/firebase.js';
-      import { onAuth } from "./src/auth.js";
-      import { appState } from "./src/state.js";
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
+      import { onAuth } from './src/auth.js';
+      import { appState } from './src/state.js';
+      import { getAnalytics } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js';
       const analytics = getAnalytics(app);
 
       const loginLink = document.getElementById('login-link');
