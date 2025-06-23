@@ -390,6 +390,8 @@ const renderSavedPrompts = (prompts) => {
       editRow.appendChild(saveEdit);
       editRow.appendChild(cancelEdit);
       item.replaceChild(editRow, actions);
+      // ensure icons render correctly when entering edit mode
+      window.lucide?.createIcons();
 
       cancelEdit.addEventListener('click', () => {
         item.replaceChild(pEl, textarea);
@@ -621,6 +623,8 @@ const renderSharedPrompts = (prompts) => {
       editRow.appendChild(cancelEdit);
 
       item.replaceChild(editRow, likeRow);
+      // render icons for the temporary edit actions
+      window.lucide?.createIcons();
 
       cancelEdit.addEventListener('click', () => {
         item.replaceChild(text, textarea);
