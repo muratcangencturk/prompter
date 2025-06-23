@@ -447,7 +447,18 @@ const renderSavedPrompts = (prompts) => {
       }
     });
 
+    const updateShareIcon = () => {
+      const svg = shareBtn.querySelector('svg');
+      if (svg)
+        svg.setAttribute(
+          'fill',
+          shareBtn.classList.contains('active') ? 'currentColor' : 'none'
+        );
+    };
+    updateShareIcon();
     shareBtn.addEventListener('click', () => {
+      shareBtn.classList.toggle('active');
+      updateShareIcon();
       sharePrompt(pEl.textContent || '', 'https://twitter.com/intent/tweet?text=');
     });
 
@@ -694,7 +705,18 @@ const renderSharedPrompts = (prompts) => {
       }
     });
 
+    const updateShareIcon2 = () => {
+      const svg = shareBtn.querySelector('svg');
+      if (svg)
+        svg.setAttribute(
+          'fill',
+          shareBtn.classList.contains('active') ? 'currentColor' : 'none'
+        );
+    };
+    updateShareIcon2();
     shareBtn.addEventListener('click', () => {
+      shareBtn.classList.toggle('active');
+      updateShareIcon2();
       sharePrompt(text.textContent || '', 'https://twitter.com/intent/tweet?text=');
       incrementShareCount(p.id);
     });
