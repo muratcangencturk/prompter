@@ -121,10 +121,15 @@
   </script>
   <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=47">
   <script>
-    const theme = localStorage.getItem('theme');
-    if (theme) {
-      document.getElementById('theme-css').href = `css/theme-${theme}.css?v=31`;
-    }
+    (function () {
+      const linkEl = document.getElementById('theme-css');
+      if (!linkEl) return;
+      const version = linkEl.getAttribute('href').split('?')[1];
+      const theme = localStorage.getItem('theme');
+      if (theme) {
+        linkEl.href = `css/theme-${theme}.css${version ? `?${version}` : ''}`;
+      }
+    })();
   </script>
   <script type="module" src="src/auth.js?v=47"></script>
   <script nomodule src="dist/auth.js?v=47"></script>
