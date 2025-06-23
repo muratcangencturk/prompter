@@ -128,8 +128,6 @@ let langEsButton;
 let langFrButton;
 let langZhButton;
 let langHiButton;
-let langToggleButton;
-let langMenu;
 let currentLangLabel;
 let sharedPromptsData = [];
 let currentUserName = '';
@@ -748,15 +746,6 @@ const init = () => {
     }
   });
 
-  langEnButton = document.getElementById('lang-en');
-  langTrButton = document.getElementById('lang-tr');
-  langEsButton = document.getElementById('lang-es');
-  langFrButton = document.getElementById('lang-fr');
-  langZhButton = document.getElementById('lang-zh');
-  langHiButton = document.getElementById('lang-hi');
-  langToggleButton = document.getElementById('lang-toggle');
-  langMenu = document.getElementById('lang-menu');
-  currentLangLabel = document.getElementById('current-lang');
   notificationBtn = document.getElementById('notifications-btn');
   notificationCountEl = document.getElementById('notification-count');
   notificationsPanel = document.getElementById('notifications-panel');
@@ -774,38 +763,6 @@ const init = () => {
   themeLightButton?.addEventListener('click', () => setTheme(THEMES.LIGHT));
   themeDarkButton?.addEventListener('click', () => setTheme(THEMES.DARK));
   document.getElementById('logout')?.addEventListener('click', logout);
-  langEnButton?.addEventListener('click', () => setLanguage('en'));
-  langTrButton?.addEventListener('click', () => setLanguage('tr'));
-  langEsButton?.addEventListener('click', () => setLanguage('es'));
-  langFrButton?.addEventListener('click', () => setLanguage('fr'));
-  langZhButton?.addEventListener('click', () => setLanguage('zh'));
-  langHiButton?.addEventListener('click', () => setLanguage('hi'));
-
-  [
-    langEnButton,
-    langTrButton,
-    langEsButton,
-    langFrButton,
-    langZhButton,
-    langHiButton,
-  ].forEach((btn) => {
-    if (btn) {
-      btn.addEventListener('click', () => {
-        langMenu && langMenu.classList.add('hidden');
-      });
-    }
-  });
-
-  if (langToggleButton && langMenu) {
-    langToggleButton.addEventListener('click', () => {
-      langMenu.classList.toggle('hidden');
-    });
-  }
-  if (currentLangLabel && langMenu) {
-    currentLangLabel.addEventListener('click', () => {
-      langMenu.classList.toggle('hidden');
-    });
-  }
 
   window.addEventListener('storage', async (e) => {
     if (e.key === 'savedPrompts') {
