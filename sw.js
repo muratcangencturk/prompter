@@ -8,11 +8,15 @@ self.addEventListener('activate', (event) => {
     try {
       const keys = await caches.keys();
       await Promise.all(keys.map((k) => caches.delete(k)));
-    } catch {}
+    } catch {
+      // ignore
+    }
 
     try {
       await self.registration.unregister();
-    } catch {}
+    } catch {
+      // ignore
+    }
 
     const clients = await self.clients.matchAll({
       type: 'window',
