@@ -26,6 +26,8 @@ jobs:
           node-version: 18
       - name: Install dependencies
         run: npm install
+      - name: Build Tailwind CSS
+        run: npm run build:css
       - name: Generate prompts.js
         run: npm run build
       - name: Generate sitemap
