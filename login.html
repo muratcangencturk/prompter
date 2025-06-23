@@ -31,15 +31,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prompter Login</title>
     <base href="./" />
-    <link rel="manifest" href="manifest.json?v=48" />
+    <link rel="manifest" href="manifest.json?v=50" />
     <meta name="theme-color" content="#000000" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <link rel="stylesheet" href="css/tailwind.css?v=48" />
-    <link rel="stylesheet" href="css/app.css?v=48" />
-    <script type="module" src="src/init-app.js?v=48"></script>
-    <script nomodule src="dist/init-app.js?v=48"></script>
+    <link rel="stylesheet" href="css/tailwind.css?v=50" />
+    <link rel="stylesheet" href="css/app.css?v=50" />
+    <script type="module" src="src/init-app.js?v=50"></script>
+    <script nomodule src="dist/init-app.js?v=50"></script>
     <script>
       (function () {
         function addScript(src, onLoad) {
@@ -119,8 +119,8 @@
         }
 
         window.lucideScripts = loadWithFallback(
-          'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=48',
-          'lucide.min.js?v=48',
+          'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=50',
+          'lucide.min.js?v=50',
         );
         window.lucideScripts.loadPromise.finally(() => {
           const appContainer = document.getElementById('app-container');
@@ -130,7 +130,7 @@
         });
       })();
     </script>
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=48" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=50" />
     <script>
       (function () {
         const linkEl = document.getElementById('theme-css');
@@ -142,8 +142,8 @@
         }
       })();
     </script>
-    <script type="module" src="src/auth.js?v=48"></script>
-    <script nomodule src="dist/auth.js?v=48"></script>
+    <script type="module" src="src/auth.js?v=50"></script>
+    <script nomodule src="dist/auth.js?v=50"></script>
     <script type="module">
       import { login, register, onAuth } from './src/auth.js';
       import { setUserProfile, getUserByName } from './src/user.js';
@@ -237,7 +237,7 @@
 
       document.addEventListener('DOMContentLoaded', init);
     </script>
-    <script type="module" src="src/version.js?v=48"></script>
+    <script type="module" src="src/version.js?v=50"></script>
   </head>
   <body class="min-h-screen p-4">
     <div id="app-container" class="max-w-md mx-auto relative mt-16">
