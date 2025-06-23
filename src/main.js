@@ -51,15 +51,24 @@ document.addEventListener('DOMContentLoaded', () => {
   startVersionCheck();
 });
 
-if ('serviceWorker' in navigator) {
-  // Unregister any previously installed service workers so the site
-  // always loads the latest files from the network.
-  navigator.serviceWorker
-    .getRegistrations()
-    .then((regs) => {
-      for (const reg of regs) {
-        reg.unregister().catch(() => {});
-      }
-    })
-    .catch(() => {});
-}
+const clearServiceWorkersAndCaches = () => {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+      .getRegistrations()
+      .then((regs) => {
+        for (const reg of regs) {
+          reg.unregister().catch(() => {});
+        }
+      })
+      .catch(() => {});
+  }
+
+  if ('caches' in window) {
+    caches
+      .keys()
+      .then((keys) => Promise.all(keys.map((key) => caches.delete(key))))
+      .catch(() => {});
+  }
+};
+
+clearServiceWorkersAndCaches();
