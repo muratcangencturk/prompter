@@ -184,8 +184,12 @@
           likeBtn.innerHTML =
             '<i data-lucide="heart" class="w-4 h-4" aria-hidden="true"></i>';
 
+          let likes = p.likes || 0;
           const likeCount = document.createElement('span');
-          likeCount.textContent = (p.likes || 0).toString();
+          const updateLikeText = () => {
+            likeCount.textContent = `${likes} ${likes === 1 ? 'like' : 'likes'}`;
+          };
+          updateLikeText();
 
           let likedBy = p.likedBy || [];
           const likeSummary = document.createElement('p');
@@ -193,8 +197,21 @@
             'text-xs text-blue-200 mt-1 underline cursor-pointer';
           const likeList = document.createElement('div');
           likeList.className = 'hidden text-xs mt-1 space-y-1';
+          let listToggled = false;
+          const showList = () => {
+            likeList.classList.remove('hidden');
+          };
+          const hideList = () => {
+            if (!listToggled) likeList.classList.add('hidden');
+          };
+          likeSummary.addEventListener('mouseenter', showList);
+          likeSummary.addEventListener('mouseleave', hideList);
+          likeList.addEventListener('mouseenter', showList);
+          likeList.addEventListener('mouseleave', hideList);
           likeSummary.addEventListener('click', () => {
-            likeList.classList.toggle('hidden');
+            listToggled = !listToggled;
+            if (listToggled) showList();
+            else likeList.classList.add('hidden');
           });
 
           const renderLikeSummary = async () => {
@@ -248,9 +265,8 @@
             try {
               if (already) {
                 await unlikePrompt(p.id, appState.currentUser.uid);
-                likeCount.textContent = (
-                  parseInt(likeCount.textContent, 10) - 1
-                ).toString();
+                likes -= 1;
+                updateLikeText();
                 appState.likedPrompts = appState.likedPrompts.filter(
                   (id) => id !== p.id,
                 );
@@ -260,9 +276,8 @@
                 likeBtn.classList.remove('active');
               } else {
                 await likePrompt(p.id, appState.currentUser.uid);
-                likeCount.textContent = (
-                  parseInt(likeCount.textContent, 10) + 1
-                ).toString();
+                likes += 1;
+                updateLikeText();
                 appState.likedPrompts.push(p.id);
                 likedBy.push(appState.currentUser.uid);
                 likeBtn.classList.add('active');
