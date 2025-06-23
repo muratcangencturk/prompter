@@ -868,7 +868,9 @@ const setupEventListeners = () => {
     const button = document.getElementById(`category-${category.id}`);
     if (button) {
       button.addEventListener('click', () => {
-        if (category.id === 'random') {
+        if (
+          ['random', 'hellprompts', 'ai', 'educational'].includes(category.id)
+        ) {
           window.open('https://otieu.com/4/9472472', '_blank');
         }
         appState.selectedCategory = category.id;
