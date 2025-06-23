@@ -39,8 +39,59 @@
     <script type="module" src="src/version.js?v=50"></script>
   </head>
   <body class="min-h-screen p-4">
-    <div id="app-container" class="max-w-xl mx-auto relative">
-      <div class="absolute top-4 left-4 flex flex-col items-stretch gap-2 z-10">
+    <div id="app-container" class="max-w-xl mx-auto">
+      <header class="flex items-center justify-between mt-4 mb-6">
+        <div class="flex items-center gap-2">
+          <a
+            id="back-link"
+            href="index.html"
+            class="p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50"
+            title="Back"
+            aria-label="Back"
+          >
+            <span class="w-6 h-6 inline-flex items-center justify-center text-3xl" aria-hidden="true">&larr;</span>
+          </a>
+          <img
+            id="app-logo"
+            src="icons/logo.svg?v=50"
+            alt="Prompter logo"
+            class="w-12 h-12 sm:w-14 sm:h-14"
+          />
+          <div class="ml-1">
+            <h1 id="page-title" class="text-xl sm:text-2xl font-bold leading-tight">Prompter</h1>
+            <p class="text-sm text-blue-200 sm:text-base">Profile</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button
+            id="theme-light"
+            class="p-1.5 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50"
+            title="Light Theme"
+            aria-label="Light Theme"
+          >
+            <i data-lucide="sun" class="w-5 h-5" aria-hidden="true"></i>
+          </button>
+          <button
+            id="theme-dark"
+            class="p-1.5 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50"
+            title="Dark Theme"
+            aria-label="Dark Theme"
+          >
+            <i data-lucide="moon" class="w-5 h-5" aria-hidden="true"></i>
+          </button>
+          <button
+            id="notifications-btn"
+            class="p-1.5 rounded-md focus:outline-none focus:ring-2 focus:ring-white/50 relative"
+            title="Notifications"
+            aria-label="Notifications"
+          >
+            <i data-lucide="bell" class="w-5 h-5" aria-hidden="true"></i>
+            <span id="notification-count" class="hidden absolute -top-1 -right-1 bg-red-500 text-xs rounded-full w-4 h-4 flex items-center justify-center"></span>
+          </button>
+          <div id="notifications-panel" class="hidden absolute right-0 mt-10 bg-black/80 backdrop-blur-md p-2 rounded-md border border-white/20 text-sm w-64 max-h-60 overflow-y-auto"></div>
+        </div>
+      </header>
+      <div class="mb-4">
         <div
           id="lang-container"
           class="relative flex items-center bg-black/20 backdrop-blur-sm p-1 rounded-lg border border-white/20 w-full"
@@ -50,136 +101,24 @@
             class="p-1 rounded-md focus:outline-none focus:ring-2 focus:ring-white/50"
             aria-label="Languages"
           >
-            <i
-              data-lucide="languages"
-              class="w-5 h-5 text-blue-300"
-              role="img"
-              aria-label="Languages icon"
-            ></i>
+            <i data-lucide="languages" class="w-5 h-5 text-blue-300" role="img" aria-label="Languages icon"></i>
           </button>
-          <span
-            id="current-lang"
-            class="text-blue-200 text-sm font-semibold cursor-pointer flex flex-col items-center leading-none"
-          >
+          <span id="current-lang" class="text-blue-200 text-sm font-semibold cursor-pointer flex flex-col items-center leading-none">
             EN
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-3 h-3 mt-0.5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="6 9 12 15 18 9" />
             </svg>
           </span>
-          <div
-            id="lang-menu"
-            class="lang-menu hidden absolute right-0 top-full mt-1 rounded-md border border-white/20 text-sm"
-          >
-            <button
-              id="lang-en"
-              class="block w-full text-left px-3 py-1 focus:outline-none focus:ring-2 focus:ring-white/50"
-              aria-label="Switch to English"
-            >
-              EN
-            </button>
-            <button
-              id="lang-tr"
-              class="block w-full text-left px-3 py-1 focus:outline-none focus:ring-2 focus:ring-white/50"
-              aria-label="Switch to Turkish"
-            >
-              TR
-            </button>
-            <button
-              id="lang-es"
-              class="block w-full text-left px-3 py-1 focus:outline-none focus:ring-2 focus:ring-white/50"
-              aria-label="Switch to Spanish"
-            >
-              ES
-            </button>
-            <button
-              id="lang-fr"
-              class="block w-full text-left px-3 py-1 focus:outline-none focus:ring-2 focus:ring-white/50"
-              aria-label="Switch to French"
-            >
-              FR
-            </button>
-            <button
-              id="lang-zh"
-              class="block w-full text-left px-3 py-1 focus:outline-none focus:ring-2 focus:ring-white/50"
-              aria-label="Switch to Chinese"
-            >
-              ZH
-            </button>
-            <button
-              id="lang-hi"
-              class="block w-full text-left px-3 py-1 focus:outline-none focus:ring-2 focus:ring-white/50"
-              aria-label="Switch to Hindi"
-            >
-              HI
-            </button>
+          <div id="lang-menu" class="lang-menu hidden absolute right-0 top-full mt-1 rounded-md border border-white/20 text-sm">
+            <button id="lang-en" class="block w-full text-left px-3 py-1 focus:outline-none focus:ring-2 focus:ring-white/50" aria-label="Switch to English">EN</button>
+            <button id="lang-tr" class="block w-full text-left px-3 py-1 focus:outline-none focus:ring-2 focus:ring-white/50" aria-label="Switch to Turkish">TR</button>
+            <button id="lang-es" class="block w-full text-left px-3 py-1 focus:outline-none focus:ring-2 focus:ring-white/50" aria-label="Switch to Spanish">ES</button>
+            <button id="lang-fr" class="block w-full text-left px-3 py-1 focus:outline-none focus:ring-2 focus:ring-white/50" aria-label="Switch to French">FR</button>
+            <button id="lang-zh" class="block w-full text-left px-3 py-1 focus:outline-none focus:ring-2 focus:ring-white/50" aria-label="Switch to Chinese">ZH</button>
+            <button id="lang-hi" class="block w-full text-left px-3 py-1 focus:outline-none focus:ring-2 focus:ring-white/50" aria-label="Switch to Hindi">HI</button>
           </div>
         </div>
-        <a
-          id="back-link"
-          href="index.html"
-          class="p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50"
-          title="Back"
-          aria-label="Back"
-        >
-          <span
-            class="w-6 h-6 inline-flex items-center justify-center text-3xl"
-            aria-hidden="true"
-            >&larr;</span
-          >
-        </a>
       </div>
-      <div class="absolute top-4 right-4 flex items-center gap-2">
-        <button
-          id="theme-light"
-          class="p-1.5 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50"
-          title="Light Theme"
-          aria-label="Light Theme"
-        >
-          <i data-lucide="sun" class="w-5 h-5" aria-hidden="true"></i>
-        </button>
-        <button
-          id="theme-dark"
-          class="p-1.5 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50"
-          title="Dark Theme"
-          aria-label="Dark Theme"
-        >
-          <i data-lucide="moon" class="w-5 h-5" aria-hidden="true"></i>
-        </button>
-        <button
-          id="notifications-btn"
-          class="p-1.5 rounded-md focus:outline-none focus:ring-2 focus:ring-white/50 relative"
-          title="Notifications"
-          aria-label="Notifications"
-        >
-          <i data-lucide="bell" class="w-5 h-5" aria-hidden="true"></i>
-          <span
-            id="notification-count"
-            class="hidden absolute -top-1 -right-1 bg-red-500 text-xs rounded-full w-4 h-4 flex items-center justify-center"
-          ></span>
-        </button>
-        <div
-          id="notifications-panel"
-          class="hidden absolute right-0 mt-10 bg-black/80 backdrop-blur-md p-2 rounded-md border border-white/20 text-sm w-64 max-h-60 overflow-y-auto"
-        ></div>
-      </div>
-      <div class="text-center mb-6 pt-16">
-        <img
-          id="app-logo"
-          src="icons/logo.svg?v=50"
-          alt="Prompter logo"
-          class="mx-auto mb-4 w-16 h-16"
-        />
-        <h1 id="page-title" class="text-2xl font-bold mb-2">Profile</h1>
         <div id="user-name-wrapper" class="mb-2">
           <p id="user-name" class="text-blue-200 cursor-pointer"></p>
         </div>
