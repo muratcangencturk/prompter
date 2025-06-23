@@ -428,6 +428,8 @@
             editRow.appendChild(cancelEdit);
 
             card.replaceChild(editRow, likeRow);
+            // render icons for the temporary edit actions
+            window.lucide?.createIcons();
 
             cancelEdit.addEventListener('click', () => {
               card.replaceChild(text, textarea);
