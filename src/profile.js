@@ -844,7 +844,7 @@ const init = () => {
         loginBtn.id = 'login-btn';
         loginBtn.href = 'login.html';
         loginBtn.className =
-          'mt-2 bg-white/20 hover:bg-white/30 p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 flex items-center gap-1 mx-auto';
+          'mt-2 bg-white/20 hover:bg-white/30 p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 flex items-center gap-1';
         loginBtn.innerHTML =
           '<i data-lucide="log-in" class="w-4 h-4" aria-hidden="true"></i><span>Login</span>';
         header?.appendChild(loginBtn);
