@@ -37,6 +37,9 @@ export const savePrompt = (text, userId) =>
     likedBy: [],
     sharedBy: [userId],
     shared: true,
+    saveCount: 0,
+    shareCount: 1,
+    commentCount: 0,
   });
 
 export const getUserPrompts = async (userId) => {
@@ -98,11 +101,13 @@ export const sharePromptByUser = (promptId, userId) =>
   updateDoc(doc(db, 'prompts', promptId), {
     sharedBy: arrayUnion(userId),
     shared: true,
+    shareCount: increment(1),
   });
 
 export const unsharePromptByUser = (promptId, userId) =>
   updateDoc(doc(db, 'prompts', promptId), {
     sharedBy: arrayRemove(userId),
+    shareCount: increment(-1),
   });
 
 export const saveUserPrompt = (text, userId) =>
@@ -110,6 +115,12 @@ export const saveUserPrompt = (text, userId) =>
     text,
     createdAt: serverTimestamp(),
   });
+
+export const incrementSaveCount = (promptId) =>
+  updateDoc(doc(db, 'prompts', promptId), { saveCount: increment(1) });
+
+export const incrementShareCount = (promptId, delta = 1) =>
+  updateDoc(doc(db, 'prompts', promptId), { shareCount: increment(delta) });
 
 export const getUserSavedPrompts = async (userId) => {
   const q = query(
@@ -128,6 +139,9 @@ export const addComment = async (promptId, userId, text) => {
     text,
     userId,
     createdAt: serverTimestamp(),
+  });
+  await updateDoc(doc(db, 'prompts', promptId), {
+    commentCount: increment(1),
   });
   const snap = await getDoc(doc(db, 'prompts', promptId));
   const owner = snap.exists() ? snap.data().userId : null;

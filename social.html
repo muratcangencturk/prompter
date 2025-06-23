@@ -92,6 +92,8 @@
         saveUserPrompt,
         sharePromptByUser,
         unsharePromptByUser,
+        incrementSaveCount,
+        incrementShareCount,
       } from './src/prompt.js';
       import { appState } from './src/state.js';
       import { getUserProfile } from './src/user.js';
@@ -176,6 +178,7 @@
               );
               if (appState.currentUser) {
                 await saveUserPrompt(p.text, appState.currentUser.uid);
+                await incrementSaveCount(p.id);
               }
               alert('Prompt saved!');
             } catch (err) {
@@ -332,9 +335,11 @@
             try {
               if (sharedByCurrent) {
                 await unsharePromptByUser(p.id, appState.currentUser.uid);
+                await incrementShareCount(p.id, -1);
                 sharedByCurrent = false;
               } else {
                 await sharePromptByUser(p.id, appState.currentUser.uid);
+                await incrementShareCount(p.id, 1);
                 sharedByCurrent = true;
               }
               updateShareToggle();
@@ -352,6 +357,7 @@
             '<i data-lucide="twitter" class="w-4 h-4" aria-hidden="true"></i>';
           twitterBtn.addEventListener('click', () => {
             sharePrompt(p.text, 'https://twitter.com/intent/tweet?text=');
+            incrementShareCount(p.id);
           });
 
           const editBtn = document.createElement('button');
