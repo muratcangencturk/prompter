@@ -425,8 +425,16 @@
           },
           (err) => {
             console.error('Failed to load prompts:', err);
-            document.getElementById('all-prompts').textContent =
-              'Failed to load prompts.';
+            const list = document.getElementById('all-prompts');
+            if (err.code === 'failed-precondition') {
+              list.textContent =
+                'Firestore indexes are still building. Please refresh later.';
+            } else if (err.code === 'permission-denied') {
+              list.textContent =
+                'You don’t have permission to read prompts.';
+            } else {
+              list.textContent = err.message;
+            }
           }
         );
       }
