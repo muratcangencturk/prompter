@@ -89,7 +89,6 @@ Prompter includes **12 categories** in total—the **Random** plus 11 themed opt
 
 If icon fonts fail to load, the app falls back to emoji symbols so the buttons remain visible.
 
-If the TailwindCSS CDN is unreachable, a local copy bundled with the app is loaded automatically so the interface still looks correct.
 
 Example: click the **Video** icon, then press **Generate New Prompt** to create a video-related idea.
 
@@ -147,6 +146,12 @@ across contributions. To serve the application locally during development run:
 
 ```bash
 npm start
+```
+
+After editing `src/styles.css` generate the compiled file with:
+
+```bash
+npm run build:css
 ```
 
 To backfill older accounts with a root-level name field run:
@@ -237,7 +242,7 @@ This project is licensed under the Apache License 2.0. See [LICENSE](LICENSE) fo
 
 ## Attributions
 
-Prompter uses [TailwindCSS](https://tailwindcss.com/) and [Lucide](https://lucide.dev/) under their respective open source licenses. Their local copies—`tailwind.js` and `lucide.min.js`—are bundled in this repository for reliability. See the [TailwindCSS MIT license](https://github.com/tailwindlabs/tailwindcss/blob/master/LICENSE) and the [Lucide ISC license](https://github.com/lucide-icons/lucide/blob/main/LICENSE) for details.
+Prompter uses [TailwindCSS](https://tailwindcss.com/) and [Lucide](https://lucide.dev/) under their respective open source licenses. The `lucide.min.js` script is bundled in this repository for reliability. See the [TailwindCSS MIT license](https://github.com/tailwindlabs/tailwindcss/blob/master/LICENSE) and the [Lucide ISC license](https://github.com/lucide-icons/lucide/blob/main/LICENSE) for details.
 
 ## Disclaimer
 
