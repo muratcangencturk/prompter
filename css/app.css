@@ -254,3 +254,9 @@ html {
   fill: currentColor;
   stroke: none;
 }
+
+.share-toggle.active svg,
+.history-site-share.active svg {
+  fill: currentColor;
+  stroke: none;
+}

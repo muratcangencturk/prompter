@@ -350,12 +350,16 @@ const renderSavedPrompts = (prompts) => {
     const shareBtn = document.createElement('button');
     shareBtn.className =
       'history-share p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+    shareBtn.title = 'Share on Twitter';
+    shareBtn.setAttribute('aria-label', 'Share on Twitter');
     shareBtn.innerHTML =
       '<i data-lucide="twitter" class="w-3 h-3" aria-hidden="true"></i>';
 
     const siteShareBtn = document.createElement('button');
     siteShareBtn.className =
       'history-site-share p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+    siteShareBtn.title = 'Share on Prompter';
+    siteShareBtn.setAttribute('aria-label', 'Share on Prompter');
     siteShareBtn.innerHTML =
       '<i data-lucide="share-2" class="w-3 h-3" aria-hidden="true"></i>';
 
@@ -423,6 +427,13 @@ const renderSavedPrompts = (prompts) => {
         alert('Login required to share');
         return;
       }
+      siteShareBtn.classList.toggle('active');
+      const svg = siteShareBtn.querySelector('svg');
+      if (svg)
+        svg.setAttribute(
+          'fill',
+          siteShareBtn.classList.contains('active') ? 'currentColor' : 'none'
+        );
       siteShareBtn.disabled = true;
       try {
         await savePrompt(pEl.textContent || '', appState.currentUser.uid);
@@ -577,6 +588,8 @@ const renderSharedPrompts = (prompts) => {
     const shareBtn = document.createElement('button');
     shareBtn.className =
       'history-share p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+    shareBtn.title = 'Share on Twitter';
+    shareBtn.setAttribute('aria-label', 'Share on Twitter');
     shareBtn.innerHTML =
       '<i data-lucide="twitter" class="w-3 h-3" aria-hidden="true"></i>';
 
@@ -649,6 +662,8 @@ const renderSharedPrompts = (prompts) => {
     const siteShareBtn = document.createElement('button');
     siteShareBtn.className =
       'history-site-share p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+    siteShareBtn.title = 'Share on Prompter';
+    siteShareBtn.setAttribute('aria-label', 'Share on Prompter');
     siteShareBtn.innerHTML =
       '<i data-lucide="share-2" class="w-3 h-3" aria-hidden="true"></i>';
 
@@ -657,6 +672,13 @@ const renderSharedPrompts = (prompts) => {
         alert('Login required to share');
         return;
       }
+      siteShareBtn.classList.toggle('active');
+      const svg = siteShareBtn.querySelector('svg');
+      if (svg)
+        svg.setAttribute(
+          'fill',
+          siteShareBtn.classList.contains('active') ? 'currentColor' : 'none'
+        );
       siteShareBtn.disabled = true;
       try {
         await savePrompt(text.textContent || '', appState.currentUser.uid);
