@@ -950,8 +950,19 @@ const setupEventListeners = () => {
   }
 
   if (saveButton) {
+    const updateSaveIcon = () => {
+      const svg = saveButton.querySelector('svg');
+      if (svg)
+        svg.setAttribute(
+          'fill',
+          saveButton.classList.contains('active') ? 'currentColor' : 'none'
+        );
+    };
+    updateSaveIcon();
     saveButton.addEventListener('click', async () => {
       if (!appState.generatedPrompt) return;
+      saveButton.classList.toggle('active');
+      updateSaveIcon();
       appState.savedPrompts.push(appState.generatedPrompt);
       localStorage.setItem(
         'savedPrompts',
@@ -984,8 +995,19 @@ const setupEventListeners = () => {
   }
 
   if (shareTwitterButton) {
+    const updateShareTwitterIcon = () => {
+      const svg = shareTwitterButton.querySelector('svg');
+      if (svg)
+        svg.setAttribute(
+          'fill',
+          shareTwitterButton.classList.contains('active') ? 'currentColor' : 'none'
+        );
+    };
+    updateShareTwitterIcon();
     shareTwitterButton.addEventListener('click', () => {
       shareTwitterButton.classList.add('button-pop');
+      shareTwitterButton.classList.toggle('active');
+      updateShareTwitterIcon();
       if (shareMessage) {
         shareMessage.classList.remove('hidden');
         setTimeout(() => {
@@ -1053,6 +1075,13 @@ const setupEventListeners = () => {
           console.error('Failed to copy text: ', err);
         });
     } else if (saveBtn) {
+      saveBtn.classList.toggle('active');
+      const saveIcon = saveBtn.querySelector('svg');
+      if (saveIcon)
+        saveIcon.setAttribute(
+          'fill',
+          saveBtn.classList.contains('active') ? 'currentColor' : 'none'
+        );
       appState.savedPrompts.push(text);
       localStorage.setItem(
         'savedPrompts',
@@ -1107,6 +1136,13 @@ const setupEventListeners = () => {
         alert('Login required to share');
         return;
       }
+      siteShareBtn.classList.toggle('active');
+      const siteShareIcon = siteShareBtn.querySelector('svg');
+      if (siteShareIcon)
+        siteShareIcon.setAttribute(
+          'fill',
+          siteShareBtn.classList.contains('active') ? 'currentColor' : 'none'
+        );
       siteShareBtn.classList.add('button-pop');
       if (shareMessage) {
         shareMessage.classList.remove('hidden');
@@ -1125,6 +1161,13 @@ const setupEventListeners = () => {
         alert('Failed to share prompt. Please try again.');
       }
     } else if (shareBtn) {
+      shareBtn.classList.toggle('active');
+      const shareIcon = shareBtn.querySelector('svg');
+      if (shareIcon)
+        shareIcon.setAttribute(
+          'fill',
+          shareBtn.classList.contains('active') ? 'currentColor' : 'none'
+        );
       shareBtn.classList.add('button-pop');
       if (shareMessage) {
         shareMessage.classList.remove('hidden');

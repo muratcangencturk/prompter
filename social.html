@@ -169,6 +169,8 @@
           const saveBtn = document.createElement('button');
           saveBtn.className =
             'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+          saveBtn.title = 'Save prompt';
+          saveBtn.setAttribute('aria-label', 'Save prompt');
           saveBtn.innerHTML =
             '<i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>';
           saveBtn.addEventListener('click', async () => {
@@ -184,6 +186,13 @@
                 await incrementSaveCount(p.id);
               }
               alert('Prompt saved!');
+              saveBtn.classList.toggle('active');
+              const icon = saveBtn.querySelector('svg');
+              if (icon)
+                icon.setAttribute(
+                  'fill',
+                  saveBtn.classList.contains('active') ? 'currentColor' : 'none'
+                );
             } catch (err) {
               console.error('Failed to save prompt:', err);
               alert('Failed to save prompt. Please try again.');
@@ -362,7 +371,18 @@
           twitterBtn.setAttribute('aria-label', 'Share on Twitter');
           twitterBtn.innerHTML =
             '<i data-lucide="twitter" class="w-4 h-4" aria-hidden="true"></i>';
+          const updateTwitterIcon = () => {
+            const svg = twitterBtn.querySelector('svg');
+            if (svg)
+              svg.setAttribute(
+                'fill',
+                twitterBtn.classList.contains('active') ? 'currentColor' : 'none'
+              );
+          };
+          updateTwitterIcon();
           twitterBtn.addEventListener('click', () => {
+            twitterBtn.classList.toggle('active');
+            updateTwitterIcon();
             sharePrompt(p.text, 'https://twitter.com/intent/tweet?text=');
             incrementShareCount(p.id);
           });
