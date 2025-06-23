@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prompter Social</title>
     <base href="./" />
-    <link rel="manifest" href="manifest.json?v=48" />
+    <link rel="manifest" href="manifest.json?v=50" />
     <meta name="theme-color" content="#000000" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <link rel="stylesheet" href="css/tailwind.css?v=48" />
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=48"></script>
-    <link rel="stylesheet" href="css/app.css?v=48" />
-    <script type="module" src="src/init-app.js?v=48"></script>
-    <script nomodule src="dist/init-app.js?v=48"></script>
+    <link rel="stylesheet" href="css/tailwind.css?v=50" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=50"></script>
+    <link rel="stylesheet" href="css/app.css?v=50" />
+    <script type="module" src="src/init-app.js?v=50"></script>
+    <script nomodule src="dist/init-app.js?v=50"></script>
     <!--
     <script>
       if ('serviceWorker' in navigator) {
@@ -22,7 +22,7 @@
       }
     </script>
     -->
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=48" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=50" />
     <script>
       (function () {
         const linkEl = document.getElementById('theme-css');
@@ -36,7 +36,7 @@
         }
       })();
     </script>
-    <script type="module" src="src/version.js?v=48"></script>
+    <script type="module" src="src/version.js?v=50"></script>
   </head>
   <body class="min-h-screen p-4">
     <div id="app-container" class="max-w-xl mx-auto relative">
@@ -74,7 +74,7 @@
       </div>
       <div class="text-center mb-6 pt-16">
         <img
-          src="icons/logo.svg?v=48"
+          src="icons/logo.svg?v=50"
           alt="Prompter logo"
           class="mx-auto mb-4 w-16 h-16"
         />
@@ -136,7 +136,9 @@
           list.appendChild(msg);
           return;
         }
-        for (const p of prompts) {
+        const names = await Promise.all(prompts.map((p) => fetchName(p.userId)));
+        for (let i = 0; i < prompts.length; i++) {
+          const p = prompts[i];
           const card = document.createElement('div');
           card.className =
             'bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
@@ -146,7 +148,7 @@
 
           const nameEl = document.createElement('p');
           nameEl.className = 'text-blue-200 text-sm mt-1';
-          nameEl.textContent = await fetchName(p.userId);
+          nameEl.textContent = names[i];
 
           const likeRow = document.createElement('div');
           likeRow.className = 'flex items-center gap-2 mt-2';
