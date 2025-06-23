@@ -148,11 +148,14 @@ across contributions. To serve the application locally during development run:
 npm start
 ```
 
-After editing `src/styles.css` generate the compiled file with:
+After editing `src/styles.css`, build the final Tailwind stylesheet by running:
 
 ```bash
 npm run build:css
 ```
+
+This command invokes the Tailwind CLI to compile `src/styles.css` into
+`css/tailwind.css`.
 
 To backfill older accounts with a root-level name field run:
 
