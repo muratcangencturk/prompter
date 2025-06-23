@@ -13,12 +13,24 @@ function hasRelevantChanges(files) {
     (f) =>
       f.endsWith('.html') ||
       f.startsWith('prompts/') ||
-      (f.startsWith('src/') && f.endsWith('.js'))
+      (f.startsWith('src/') && f.endsWith('.js')) ||
+      f === 'src/styles.css' ||
+      f === 'tailwind.config.js'
   );
+}
+
+function hasCssChanges(files) {
+  return files.some((f) => f === 'src/styles.css' || f === 'tailwind.config.js');
 }
 
 const changed = getChangedFiles();
 if (hasRelevantChanges(changed)) {
-  console.log('HTML, prompts, or JavaScript changes detected. Running build...');
+  const cssChanged = hasCssChanges(changed);
+  console.log(
+    'HTML, prompts, JavaScript, or CSS changes detected. Running build...'
+  );
+  if (cssChanged) {
+    execSync('npm run build:css', { stdio: 'inherit' });
+  }
   execSync('npm run build', { stdio: 'inherit' });
 }
