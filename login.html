@@ -52,11 +52,6 @@
           resolveLoad = resolve;
         });
 
-        if (!navigator.onLine) {
-          addLocal();
-          return { cdn: null, local: localScript, loadPromise };
-        }
-
         const addLocal = () => {
           if (!localScript) {
             localScript = document.createElement('script');
@@ -66,6 +61,11 @@
             document.head.appendChild(localScript);
           }
         };
+
+        if (!primary || !navigator.onLine) {
+          addLocal();
+          return { cdn: null, local: localScript, loadPromise };
+        }
 
         let fallbackTimer = null;
         fallbackTimer = setTimeout(() => {
@@ -101,7 +101,9 @@
       }
 
       const tailwindScripts = loadWithFallback(
-        'https://cdn.tailwindcss.com',
+        location.hostname === 'localhost'
+          ? 'https://cdn.tailwindcss.com'
+          : null,
         'tailwind.js?v=47'
       );
       window.lucideScripts = loadWithFallback(
