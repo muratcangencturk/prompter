@@ -468,8 +468,12 @@ const renderSharedPrompts = (prompts) => {
     likeBtn.innerHTML =
       '<i data-lucide="heart" class="w-4 h-4" aria-hidden="true"></i>';
 
+    let likes = p.likes || 0;
     const likeCount = document.createElement('span');
-    likeCount.textContent = (p.likes || 0).toString();
+    const updateLikeText = () => {
+      likeCount.textContent = `${likes} ${likes === 1 ? 'like' : 'likes'}`;
+    };
+    updateLikeText();
 
     const liked =
       appState.currentUser &&
@@ -498,18 +502,16 @@ const renderSharedPrompts = (prompts) => {
       try {
         if (already) {
           await unlikePrompt(p.id, appState.currentUser.uid);
-          likeCount.textContent = (
-            parseInt(likeCount.textContent, 10) - 1
-          ).toString();
+          likes -= 1;
+          updateLikeText();
           appState.likedPrompts = appState.likedPrompts.filter(
             (id) => id !== p.id
           );
           likeBtn.classList.remove('active');
         } else {
           await likePrompt(p.id, appState.currentUser.uid);
-          likeCount.textContent = (
-            parseInt(likeCount.textContent, 10) + 1
-          ).toString();
+          likes += 1;
+          updateLikeText();
           appState.likedPrompts.push(p.id);
           likeBtn.classList.add('active');
         }
