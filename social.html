@@ -234,7 +234,8 @@
       const categoryMap = Object.fromEntries(
         categories.map((c) => [c.id, c.name[appState.language] || c.id])
       );
-      let followingIds = [];
+        let followingIds = [];
+        const commentsOpenMap = new Map();
       const followingFilter = document.getElementById('following-filter');
       const categoryFilter = document.getElementById('category-filter');
       if (categoryFilter) {
@@ -655,6 +656,9 @@
 
         const commentsWrap = document.createElement('div');
         commentsWrap.className = 'mt-2 space-y-1 hidden';
+        if (commentsOpenMap.get(p.id)) {
+          commentsWrap.classList.remove('hidden');
+        }
         const commentList = document.createElement('div');
         commentsWrap.appendChild(commentList);
         const commentForm = document.createElement('form');
@@ -717,7 +721,8 @@
         commentToggleBtn.innerHTML =
           '<i data-lucide="message-circle" class="w-4 h-4" aria-hidden="true"></i>';
         commentToggleBtn.addEventListener('click', () => {
-          commentsWrap.classList.toggle('hidden');
+          const hidden = commentsWrap.classList.toggle('hidden');
+          commentsOpenMap.set(p.id, !hidden);
         });
         likeRow.appendChild(likeBtn);
         likeRow.appendChild(commentToggleBtn);
@@ -752,7 +757,10 @@
         );
         const idSet = new Set(prompts.map((p) => p.id));
         existing.forEach((el, id) => {
-          if (!idSet.has(id)) el.remove();
+          if (!idSet.has(id)) {
+            el.remove();
+            commentsOpenMap.delete(id);
+          }
         });
         for (let i = 0; i < prompts.length; i++) {
           const p = prompts[i];
