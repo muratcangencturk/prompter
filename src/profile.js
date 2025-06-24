@@ -332,7 +332,7 @@ const renderSavedPrompts = (prompts) => {
       'col-span-1 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg relative';
 
     const textWrap = document.createElement('div');
-    textWrap.className = 'relative';
+    textWrap.className = 'relative pr-6';
 
     const pEl = document.createElement('p');
     pEl.textContent = text;
@@ -340,15 +340,15 @@ const renderSavedPrompts = (prompts) => {
 
     const copyBtn = document.createElement('button');
     copyBtn.className =
-      'history-copy absolute -top-2 -right-2 p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+      'history-copy absolute top-0 right-0 p-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
     copyBtn.title = uiText[appState.language].copyButtonTitle;
     copyBtn.setAttribute('aria-label', uiText[appState.language].copyButtonTitle);
     copyBtn.innerHTML =
-      '<i data-lucide="copy" class="w-3 h-3" aria-hidden="true"></i>';
+      '<i data-lucide="copy" class="w-2 h-2" aria-hidden="true"></i>';
     textWrap.appendChild(copyBtn);
 
     const copyFeedback = document.createElement('span');
-    copyFeedback.className = 'absolute -top-2 -right-20 text-green-400 text-xs hidden';
+    copyFeedback.className = 'absolute -top-3 right-0 text-green-400 text-xs hidden';
     copyFeedback.textContent = uiText[appState.language].copyFeedback;
     textWrap.appendChild(copyFeedback);
 
@@ -516,7 +516,7 @@ const renderSharedPrompts = (prompts) => {
       'col-span-1 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg relative';
 
     const textWrap = document.createElement('div');
-    textWrap.className = 'relative';
+    textWrap.className = 'relative pr-6';
 
     const text = document.createElement('p');
     text.textContent = p.text;
@@ -524,15 +524,15 @@ const renderSharedPrompts = (prompts) => {
 
     const copyBtn = document.createElement('button');
     copyBtn.className =
-      'history-copy absolute -top-2 -right-2 p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+      'history-copy absolute top-0 right-0 p-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
     copyBtn.title = uiText[appState.language].copyButtonTitle;
     copyBtn.setAttribute('aria-label', uiText[appState.language].copyButtonTitle);
     copyBtn.innerHTML =
-      '<i data-lucide="copy" class="w-3 h-3" aria-hidden="true"></i>';
+      '<i data-lucide="copy" class="w-2 h-2" aria-hidden="true"></i>';
     textWrap.appendChild(copyBtn);
 
     const copyFeedback = document.createElement('span');
-    copyFeedback.className = 'absolute -top-2 -right-20 text-green-400 text-xs hidden';
+    copyFeedback.className = 'absolute -top-3 right-0 text-green-400 text-xs hidden';
     copyFeedback.textContent = uiText[appState.language].copyFeedback;
     textWrap.appendChild(copyFeedback);
 
