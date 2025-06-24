@@ -361,8 +361,7 @@
 
         let likedBy = p.likedBy || [];
         const likeSummary = document.createElement('p');
-        likeSummary.className =
-          'text-xs text-blue-200 mt-1 underline cursor-pointer';
+        likeSummary.className = 'text-xs text-blue-200 mt-1';
         const likeList = document.createElement('div');
         likeList.className = 'hidden text-xs mt-1 space-y-1';
         let listToggled = false;
@@ -376,11 +375,11 @@
         likeSummary.addEventListener('mouseleave', hideList);
         likeList.addEventListener('mouseenter', showList);
         likeList.addEventListener('mouseleave', hideList);
-        likeSummary.addEventListener('click', () => {
+        const toggleList = () => {
           listToggled = !listToggled;
           if (listToggled) showList();
           else likeList.classList.add('hidden');
-        });
+        };
 
         const renderLikeSummary = async () => {
           if (!likedBy.length) {
@@ -394,15 +393,29 @@
             names.push(await fetchName(uid));
           }
           likeList.innerHTML = names
-            .map((n, idx) => `<div class="px-2"><a href="user.html?uid=${likedBy[idx]}" class="underline">${n}</a></div>`)
+            .map(
+              (n, idx) =>
+                `<div class="px-2"><a href="user.html?uid=${likedBy[idx]}" class="underline">${n}</a></div>`,
+            )
             .join('');
+
           const first = names.slice(0, 3);
-          let txt = '';
-          if (first.length === 1) txt = `${first[0]} liked this`;
-          else if (first.length === 2) txt = `${first[0]} and ${first[1]} liked this`;
-          else txt = `${first[0]}, ${first[1]} and ${first[2]} liked this`;
-          if (names.length > 3) txt += ` and ${names.length - 3} others`;
-          likeSummary.textContent = txt;
+          let summary = '';
+          if (first.length === 1) summary = first[0];
+          else if (first.length === 2) summary = `${first[0]} and ${first[1]}`;
+          else summary = `${first[0]}, ${first[1]} and ${first[2]}`;
+
+          if (names.length > first.length) {
+            const others = names.length - first.length;
+            summary += ` and <span class="like-others-toggle underline cursor-pointer">${others} others</span>`;
+          }
+
+          likeSummary.innerHTML = `${summary} liked this`;
+
+          const toggle = likeSummary.querySelector('.like-others-toggle');
+          if (toggle) {
+            toggle.addEventListener('click', toggleList);
+          }
         };
 
         const liked =
