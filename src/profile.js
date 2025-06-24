@@ -331,12 +331,29 @@ const renderSavedPrompts = (prompts) => {
     item.className =
       'col-span-1 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg relative';
 
-    const textWrap = document.createElement('div');
-    textWrap.className = 'relative pr-6';
+  const textWrap = document.createElement('div');
+  textWrap.className = 'relative pr-6';
 
-    const pEl = document.createElement('p');
-    pEl.textContent = text;
-    textWrap.appendChild(pEl);
+  const textContainer = document.createElement('div');
+  textContainer.className = 'prompt-text-box overflow-hidden max-h-40';
+
+  const pEl = document.createElement('p');
+  pEl.textContent = text;
+  textContainer.appendChild(pEl);
+  textWrap.appendChild(textContainer);
+
+  const showMore = document.createElement('span');
+  showMore.className = 'text-blue-200 text-xs underline cursor-pointer';
+  showMore.textContent = 'Show more';
+  const toggleText = () => {
+    textContainer.classList.toggle('overflow-hidden');
+    textContainer.classList.toggle('max-h-40');
+    showMore.textContent = textContainer.classList.contains('overflow-hidden')
+      ? 'Show more'
+      : 'Show less';
+  };
+  showMore.addEventListener('click', toggleText);
+  textWrap.appendChild(showMore);
 
     const copyBtn = document.createElement('button');
     copyBtn.className =
@@ -515,12 +532,29 @@ const renderSharedPrompts = (prompts) => {
     item.className =
       'col-span-1 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg relative';
 
-    const textWrap = document.createElement('div');
-    textWrap.className = 'relative pr-6';
+  const textWrap = document.createElement('div');
+  textWrap.className = 'relative pr-6';
 
-    const text = document.createElement('p');
-    text.textContent = p.text;
-    textWrap.appendChild(text);
+  const textContainer = document.createElement('div');
+  textContainer.className = 'prompt-text-box overflow-hidden max-h-40';
+
+  const text = document.createElement('p');
+  text.textContent = p.text;
+  textContainer.appendChild(text);
+  textWrap.appendChild(textContainer);
+
+  const showMore = document.createElement('span');
+  showMore.className = 'text-blue-200 text-xs underline cursor-pointer';
+  showMore.textContent = 'Show more';
+  const toggleText = () => {
+    textContainer.classList.toggle('overflow-hidden');
+    textContainer.classList.toggle('max-h-40');
+    showMore.textContent = textContainer.classList.contains('overflow-hidden')
+      ? 'Show more'
+      : 'Show less';
+  };
+  showMore.addEventListener('click', toggleText);
+  textWrap.appendChild(showMore);
 
     const copyBtn = document.createElement('button');
     copyBtn.className =
