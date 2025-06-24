@@ -55,5 +55,8 @@ service cloud.firestore {
           request.auth.uid in get(/databases/$(database)/documents/conversations/$(convId)).data.members;
       }
     }
+    match /stats/{docId} {
+      allow read: if true;
+    }
   }
 }
