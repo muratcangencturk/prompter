@@ -32,20 +32,14 @@
     </script>
     <script type="module" src="src/version.js?v=56"></script>
   </head>
-  <body class="bg-black text-white min-h-screen p-4">
+  <body class="min-h-screen p-4">
+    <div class="max-w-md mx-auto relative mt-16">
+      <div class="absolute top-4 left-4">
+        <a href="index.html" class="p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50" title="Back" aria-label="Back">
+          <span class="w-6 h-6 inline-flex items-center justify-center text-3xl" aria-hidden="true">&larr;</span>
+        </a>
+      </div>
     <div class="max-w-md mx-auto bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg">
-      <a
-        href="index.html"
-        class="inline-block mb-4 p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50"
-        title="Back"
-        aria-label="Back"
-      >
-        <span
-          class="w-6 h-6 inline-flex items-center justify-center text-3xl"
-          aria-hidden="true"
-          >&larr;</span
-        >
-      </a>
       <h1 class="text-2xl font-bold mb-4 text-center">Prompter Pro</h1>
       <p class="mb-2 text-center">
         Unlock all features for only <strong>79 TL / 2 USD</strong>.
@@ -57,8 +51,8 @@
         <li>Premium promptlara erişim</li>
         <li>Prompter WhatsApp kanalına üyelik</li>
         <li>Günlük yapay zeka bülteni</li>
-        <li>Prompter’ın geleceği hakkında oy kullanma hakkı</li>
-        <li>Prompter fikri ve gelişimine destek olma</li>
+        <li>Prompter’ın geleceği hakkında oy kullanma</li>
+        <li>Prompter fikri ve gelişimine destek</li>
       </ul>
         <div class="flex gap-2 mb-4">
           <input
@@ -77,13 +71,7 @@
           id="payment-link"
           href="javascript:void(0)"
           class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 font-bold py-2 px-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 focus:ring-offset-purple-900"
-          >PayTR güvenli ödeme</a
-        >
-        <a
-          href="index.html"
-          class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 font-bold py-2 px-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 focus:ring-offset-purple-900"
-          >Back</a
-        >
+          >PayTR güvenli ödeme</a>
       </div>
     </div>
     <script>
@@ -91,5 +79,6 @@
         window.open('https://example.com/pay', '_blank');
       });
     </script>
+  </div>
   </body>
 </html>
