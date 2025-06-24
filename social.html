@@ -229,11 +229,25 @@
         return display;
       };
 
+      const urlParams = new URLSearchParams(window.location.search);
+      const targetPromptId =
+        urlParams.get('prompt') || window.location.hash.replace('#', '');
+
       const sharePrompt = (prompt, baseUrl) => {
         if (!prompt) return;
         const link = ' https://prompterai.space';
         const url = `${baseUrl}${encodeURIComponent(`${prompt}${link}`)}`;
         window.open(url, '_blank');
+      };
+
+      const highlightPrompt = (id) => {
+        const card = document.querySelector(`[data-id="${id}"]`);
+        if (!card) return;
+        card.classList.add('ring-2', 'ring-yellow-400');
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => {
+          card.classList.remove('ring-2', 'ring-yellow-400');
+        }, 2000);
       };
 
       const createCard = async (p, name, commentsArr) => {
@@ -697,6 +711,7 @@
           }
         });
         window.scrollTo(0, scrollY);
+        if (targetPromptId) highlightPrompt(targetPromptId);
       }
 
       function init() {
