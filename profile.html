@@ -10,9 +10,98 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
+    <script>
+      (function () {
+        function addScript(src, onLoad) {
+          const s = document.createElement('script');
+          s.src = src;
+          s.async = true;
+          if (onLoad) {
+            s.addEventListener('load', onLoad, { once: true });
+          }
+          document.head.appendChild(s);
+          return s;
+        }
+
+        function fetchWithTimeout(url, timeout = 500) {
+          return Promise.race([
+            fetch(url, { method: 'HEAD', mode: 'no-cors' }),
+            new Promise((_, reject) =>
+              setTimeout(() => reject(new Error('timeout')), timeout),
+            ),
+          ]);
+        }
+
+        function loadWithFallback(primary, local) {
+          let cdnScript = null;
+          let localScript = null;
+          let resolveLoad;
+          const loadPromise = new Promise((resolve) => {
+            resolveLoad = resolve;
+          });
+
+          const addLocal = () => {
+            if (!localScript) {
+              localScript = document.createElement('script');
+              localScript.src = local;
+              localScript.async = true;
+              localScript.addEventListener('load', resolveLoad, { once: true });
+              document.head.appendChild(localScript);
+            }
+          };
+
+          if (!primary || !navigator.onLine) {
+            addLocal();
+            return { cdn: null, local: localScript, loadPromise };
+          }
+
+          let fallbackTimer = null;
+          fallbackTimer = setTimeout(() => {
+            addLocal();
+            fallbackTimer = null;
+          }, 500);
+
+          fetchWithTimeout(primary).catch(() => {
+            if (fallbackTimer) {
+              clearTimeout(fallbackTimer);
+              fallbackTimer = null;
+            }
+            addLocal();
+          });
+
+          cdnScript = addScript(primary, () => {
+            if (fallbackTimer) {
+              clearTimeout(fallbackTimer);
+              fallbackTimer = null;
+            }
+            resolveLoad();
+          });
+
+          cdnScript.onerror = () => {
+            if (fallbackTimer) {
+              clearTimeout(fallbackTimer);
+              fallbackTimer = null;
+            }
+            addLocal();
+          };
+
+          return { cdn: cdnScript, local: localScript, loadPromise };
+        }
+
+        window.lucideScripts = loadWithFallback(
+          'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=58',
+          'lucide.min.js?v=58',
+        );
+        window.lucideScripts.loadPromise.finally(() => {
+          const appContainer = document.getElementById('app-container');
+          const loadingScreen = document.getElementById('loading-screen');
+          if (appContainer) appContainer.style.visibility = 'visible';
+          if (loadingScreen) loadingScreen.classList.add('hidden');
+        });
+      })();
+    </script>
     <link rel="stylesheet" href="css/tailwind.css?v=58" />
     <link rel="stylesheet" href="css/app.css?v=58" />
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=58"></script>
     <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=58" />
     <script type="module" src="src/init-app.js?v=58"></script>
     <script nomodule src="dist/init-app.js?v=58"></script>
@@ -39,7 +128,10 @@
     <script type="module" src="src/version.js?v=58"></script>
   </head>
   <body class="min-h-screen p-4">
-    <div id="app-container" class="w-full">
+    <div id="loading-screen">
+      <div class="spinner" aria-label="Loading"></div>
+    </div>
+    <div id="app-container" class="w-full" style="visibility: hidden">
       <header class="flex items-center justify-between w-full mt-4 mb-6">
         <div class="flex items-center gap-2">
           <a
