@@ -39,6 +39,7 @@ html {
 #app-logo {
   width: 4.5rem;
   height: 4.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .category-button {
