@@ -431,11 +431,13 @@ const renderSavedPrompts = (prompts) => {
       }
       siteShareBtn.classList.toggle('active');
       const svg = siteShareBtn.querySelector('svg');
-      if (svg)
+      if (svg) {
         svg.setAttribute(
           'fill',
           siteShareBtn.classList.contains('active') ? 'currentColor' : 'none'
         );
+        svg.setAttribute('stroke', 'currentColor');
+      }
       siteShareBtn.disabled = true;
       try {
         await savePrompt(pEl.textContent || '', appState.currentUser.uid);
@@ -676,30 +678,36 @@ const renderSharedPrompts = (prompts) => {
 
     const siteShareBtn = document.createElement('button');
     siteShareBtn.className =
-      'history-site-share p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-    siteShareBtn.title = 'Share on Prompter';
-    siteShareBtn.setAttribute('aria-label', 'Share on Prompter');
+      'history-site-share p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 active';
+    siteShareBtn.title = 'Unshare from Prompter';
+    siteShareBtn.setAttribute('aria-label', 'Unshare from Prompter');
     siteShareBtn.innerHTML =
       '<i data-lucide="share-2" class="w-3 h-3" aria-hidden="true"></i>';
+
+    const updateSiteShareIcon = () => {
+      const svg = siteShareBtn.querySelector('svg');
+      if (svg) {
+        svg.setAttribute(
+          'fill',
+          siteShareBtn.classList.contains('active') ? 'currentColor' : 'none'
+        );
+        svg.setAttribute('stroke', 'currentColor');
+      }
+    };
+    updateSiteShareIcon();
 
     siteShareBtn.addEventListener('click', async () => {
       if (!appState.currentUser) {
         alert('Login required to share');
         return;
       }
-      siteShareBtn.classList.toggle('active');
-      const svg = siteShareBtn.querySelector('svg');
-      if (svg)
-        svg.setAttribute(
-          'fill',
-          siteShareBtn.classList.contains('active') ? 'currentColor' : 'none'
-        );
       siteShareBtn.disabled = true;
       try {
-        await savePrompt(text.textContent || '', appState.currentUser.uid);
+        await unsharePrompt(p.id, appState.currentUser.uid);
+        prompts.splice(idx, 1);
+        renderSharedPrompts(prompts);
       } catch (err) {
-        console.error(err);
-        alert('Failed to share prompt. Please try again.');
+        console.error('Failed to unshare:', err);
       } finally {
         siteShareBtn.disabled = false;
       }

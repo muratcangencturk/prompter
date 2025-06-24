@@ -335,8 +335,10 @@
             const label = sharedByCurrent ? 'Unshare' : 'Share';
             shareToggleBtn.title = label;
             shareToggleBtn.setAttribute('aria-label', label);
-            if (icon)
+            if (icon) {
               icon.setAttribute('fill', sharedByCurrent ? 'currentColor' : 'none');
+              icon.setAttribute('stroke', 'currentColor');
+            }
           };
           updateShareToggle();
 
