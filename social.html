@@ -245,9 +245,26 @@
         const textWrap = document.createElement('div');
         textWrap.className = 'relative pr-6';
 
+        const textContainer = document.createElement('div');
+        textContainer.className = 'prompt-text-box overflow-hidden max-h-40';
+
         const text = document.createElement('p');
         text.textContent = p.text;
-        textWrap.appendChild(text);
+        textContainer.appendChild(text);
+        textWrap.appendChild(textContainer);
+
+        const showMore = document.createElement('span');
+        showMore.className = 'text-blue-200 text-xs underline cursor-pointer';
+        showMore.textContent = 'Show more';
+        const toggleText = () => {
+          textContainer.classList.toggle('overflow-hidden');
+          textContainer.classList.toggle('max-h-40');
+          showMore.textContent = textContainer.classList.contains('overflow-hidden')
+            ? 'Show more'
+            : 'Show less';
+        };
+        showMore.addEventListener('click', toggleText);
+        textWrap.appendChild(showMore);
 
         const copyBtn = document.createElement('button');
         copyBtn.className =

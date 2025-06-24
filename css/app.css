@@ -260,3 +260,7 @@ html {
   fill: currentColor;
   stroke: currentColor;
 }
+
+/* Prompt text container */
+.prompt-text-box { max-height: 10rem; overflow: hidden; }
+
