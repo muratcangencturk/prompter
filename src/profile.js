@@ -654,7 +654,7 @@ const renderSharedPrompts = async (prompts) => {
     updateLikeText();
 
   const likeContainer = document.createElement('div');
-  likeContainer.className = 'flex flex-col items-center justify-center';
+  likeContainer.className = 'flex items-center gap-1';
   likeContainer.appendChild(likeBtn);
   likeContainer.appendChild(likeCount);
 
@@ -902,7 +902,7 @@ const renderSharedPrompts = async (prompts) => {
     commentCount.textContent = commentNum.toString();
 
   const commentContainer = document.createElement('div');
-  commentContainer.className = 'flex flex-col items-center justify-center';
+  commentContainer.className = 'flex items-center gap-1';
   commentContainer.appendChild(commentToggleBtn);
   commentContainer.appendChild(commentCount);
 
