@@ -13,6 +13,7 @@ Prompt templates are stored in small JSON files under the `prompts/` directory a
 - Light and dark themes
 - English, Turkish, Spanish, Hindi, French and Chinese interface
 - Twelve prompt categories with over 53M combinations per language (more than 318M across EN, TR, ES, HI, FR and ZH)
+- Quick access to Top 10 rankings via the award icon
 
 This **AI prompt generator** delivers **creative prompt ideas** in a lightweight web app that runs directly in your browser. An internet connection is required.
 

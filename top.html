@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Top Lists - Prompter</title>
+    <base href="./" />
+    <link rel="manifest" href="manifest.json?v=56" />
+    <meta name="theme-color" content="#000000" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="css/tailwind.css?v=56" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=56"></script>
+    <link rel="stylesheet" href="css/app.css?v=56" />
+    <script type="module" src="src/init-app.js?v=56"></script>
+    <script nomodule src="dist/init-app.js?v=56"></script>
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=56" />
+    <script>
+      (function () {
+        const linkEl = document.getElementById('theme-css');
+        if (!linkEl) return;
+        const version = linkEl.getAttribute('href').split('?')[1];
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          linkEl.href = `css/theme-${savedTheme}.css${version ? `?${version}` : ''}`;
+        }
+      })();
+    </script>
+    <script type="module" src="src/version.js?v=56"></script>
+  </head>
+  <body class="min-h-screen p-4">
+    <div class="max-w-xl mx-auto space-y-4">
+      <h1 class="text-2xl font-bold mb-4">Top Rankings</h1>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><a href="top-creators.html" class="text-blue-400 underline">Top Creators</a></li>
+        <li><a href="top-collectors.html" class="text-blue-400 underline">Top Collectors</a></li>
+        <li><a href="top-prompts.html" class="text-blue-400 underline">Top Prompts</a></li>
+      </ul>
+    </div>
+  </body>
+</html>
