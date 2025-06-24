@@ -610,7 +610,7 @@
         await renderLikeSummary();
 
         const commentsWrap = document.createElement('div');
-        commentsWrap.className = 'mt-2 space-y-1';
+        commentsWrap.className = 'mt-2 space-y-1 hidden';
         const commentList = document.createElement('div');
         commentsWrap.appendChild(commentList);
         const commentForm = document.createElement('form');
@@ -667,7 +667,16 @@
           likeRow.appendChild(editBtn);
           likeRow.appendChild(unshareBtn);
         }
+        const commentToggleBtn = document.createElement('button');
+        commentToggleBtn.className =
+          'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+        commentToggleBtn.innerHTML =
+          '<i data-lucide="message-circle" class="w-4 h-4" aria-hidden="true"></i>';
+        commentToggleBtn.addEventListener('click', () => {
+          commentsWrap.classList.toggle('hidden');
+        });
         likeRow.appendChild(likeBtn);
+        likeRow.appendChild(commentToggleBtn);
         likeRow.appendChild(likeCount);
 
         card.appendChild(textWrap);
