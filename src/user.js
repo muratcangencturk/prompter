@@ -13,8 +13,13 @@ import { db } from './firebase.js';
 
 export const setUserProfile = async (uid, profile) => {
   await setDoc(doc(db, 'users', uid, 'profile', 'info'), profile);
-  if (profile && profile.name) {
-    await setDoc(doc(db, 'users', uid), { name: profile.name }, { merge: true });
+  const update = {};
+  if (profile && profile.name) update.name = profile.name;
+  if (profile && Object.prototype.hasOwnProperty.call(profile, 'bio')) {
+    update.bio = profile.bio;
+  }
+  if (Object.keys(update).length) {
+    await setDoc(doc(db, 'users', uid), update, { merge: true });
   }
 };
 

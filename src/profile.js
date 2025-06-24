@@ -146,10 +146,15 @@ let langHiButton;
 let currentLangLabel;
 let sharedPromptsData = [];
 let currentUserName = '';
+let currentUserBio = '';
 let nameWrapper;
 let nameEditRow;
 let nameInput;
 let nameUpdateBtn;
+let bioWrapper;
+let bioEditRow;
+let bioInput;
+let bioUpdateBtn;
 let notificationBtn;
 let notificationCountEl;
 let notificationsPanel;
@@ -930,6 +935,10 @@ const init = () => {
   nameEditRow = document.getElementById('name-edit-row');
   nameInput = document.getElementById('name-input');
   nameUpdateBtn = document.getElementById('name-update-btn');
+  bioWrapper = document.getElementById('bio-wrapper');
+  bioEditRow = document.getElementById('bio-edit-row');
+  bioInput = document.getElementById('bio-input');
+  bioUpdateBtn = document.getElementById('bio-update-btn');
 
   nameWrapper?.addEventListener('click', () => {
     if (!nameWrapper || !nameEditRow || !nameInput) return;
@@ -956,6 +965,32 @@ const init = () => {
       console.error('Failed to update name:', err);
     } finally {
       nameUpdateBtn.disabled = false;
+    }
+  });
+
+  bioWrapper?.addEventListener('click', () => {
+    if (!bioWrapper || !bioEditRow || !bioInput) return;
+    bioInput.value = currentUserBio;
+    bioWrapper.classList.add('hidden');
+    bioEditRow.classList.remove('hidden');
+    bioInput.focus();
+  });
+
+  bioUpdateBtn?.addEventListener('click', async () => {
+    if (!bioInput || !appState.currentUser) return;
+    const newBio = bioInput.value.trim();
+    bioUpdateBtn.disabled = true;
+    try {
+      await setUserProfile(appState.currentUser.uid, { bio: newBio });
+      currentUserBio = newBio;
+      const bioEl = document.getElementById('user-bio');
+      if (bioEl) bioEl.textContent = currentUserBio;
+      bioEditRow?.classList.add('hidden');
+      bioWrapper?.classList.remove('hidden');
+    } catch (err) {
+      console.error('Failed to update bio:', err);
+    } finally {
+      bioUpdateBtn.disabled = false;
     }
   });
 
@@ -1019,6 +1054,11 @@ const init = () => {
       const nameEl = document.getElementById('user-name');
       if (nameEl) nameEl.textContent = '';
       if (nameInput) nameInput.value = '';
+      const bioEl = document.getElementById('user-bio');
+      if (bioEl) bioEl.textContent = '';
+      if (bioInput) bioInput.value = '';
+      bioEditRow?.classList.add('hidden');
+      bioWrapper?.classList.remove('hidden');
       nameEditRow?.classList.add('hidden');
       nameWrapper?.classList.remove('hidden');
       notifications = [];
@@ -1042,6 +1082,13 @@ const init = () => {
       if (nameInput) nameInput.value = currentUserName;
       nameEditRow?.classList.add('hidden');
       nameWrapper?.classList.remove('hidden');
+      const bio = profile && typeof profile.bio === 'string' ? profile.bio : '';
+      currentUserBio = bio;
+      const bioEl = document.getElementById('user-bio');
+      if (bioEl) bioEl.textContent = currentUserBio;
+      if (bioInput) bioInput.value = currentUserBio;
+      bioEditRow?.classList.add('hidden');
+      bioWrapper?.classList.remove('hidden');
     } catch (err) {
       console.error('Failed to load profile:', err);
     }

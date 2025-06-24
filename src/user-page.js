@@ -70,8 +70,11 @@ const init = async () => {
 
   const profile = await getUserProfile(uid);
   if (profile && profile.name) name = profile.name;
+  const bio = profile && typeof profile.bio === 'string' ? profile.bio : '';
 
   document.getElementById('user-name').textContent = name || uid;
+  const bioEl = document.getElementById('user-bio');
+  if (bioEl) bioEl.textContent = bio;
 
   const followBtn = document.getElementById('follow-btn');
   let currentUserId = null;
