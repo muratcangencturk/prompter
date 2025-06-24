@@ -627,7 +627,7 @@ const renderSharedPrompts = async (prompts) => {
     textWrap.appendChild(copyFeedback);
 
     const nameEl = document.createElement('p');
-    nameEl.className = 'text-blue-200 text-sm mt-1';
+    nameEl.className = 'text-blue-200 text-xs mt-1';
     nameEl.textContent = currentUserName;
 
     const catEl = document.createElement('p');
