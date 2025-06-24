@@ -431,18 +431,35 @@
         likeWrapper.appendChild(likeSummary);
         likeWrapper.appendChild(likeList);
         let listToggled = false;
+        let wrapperHover = false;
+        let listHover = false;
         const showList = () => {
           likeList.classList.remove('hidden');
         };
-        const hideList = () => {
-          if (!listToggled) likeList.classList.add('hidden');
+        const maybeHideList = () => {
+          if (!listToggled && !wrapperHover && !listHover) {
+            likeList.classList.add('hidden');
+          }
         };
-        likeWrapper.addEventListener('mouseenter', showList);
-        likeWrapper.addEventListener('mouseleave', hideList);
+        likeWrapper.addEventListener('mouseenter', () => {
+          wrapperHover = true;
+          showList();
+        });
+        likeWrapper.addEventListener('mouseleave', () => {
+          wrapperHover = false;
+          maybeHideList();
+        });
+        likeList.addEventListener('mouseenter', () => {
+          listHover = true;
+        });
+        likeList.addEventListener('mouseleave', () => {
+          listHover = false;
+          maybeHideList();
+        });
         const toggleList = () => {
           listToggled = !listToggled;
           if (listToggled) showList();
-          else likeList.classList.add('hidden');
+          else maybeHideList();
         };
 
         const renderLikeSummary = async () => {
