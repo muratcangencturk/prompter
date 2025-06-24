@@ -30,6 +30,8 @@ const uiText = {
     langZhLabel: 'Switch to Chinese',
     langHiLabel: 'Switch to Hindi',
     appLogoAlt: 'Prompter logo',
+    copyButtonTitle: 'Copy to clipboard',
+    copyFeedback: 'Copied!',
   },
   tr: {
     profile: 'Profil',
@@ -47,6 +49,8 @@ const uiText = {
     langZhLabel: "Çince'ye geç",
     langHiLabel: 'Hintçe\u0027ye geç',
     appLogoAlt: 'Prompter logosu',
+    copyButtonTitle: 'Panoya kopyala',
+    copyFeedback: 'Kopyalandı!',
   },
   es: {
     profile: 'Perfil',
@@ -64,6 +68,8 @@ const uiText = {
     langZhLabel: 'Cambiar a chino',
     langHiLabel: 'Cambiar a hindi',
     appLogoAlt: 'Logo de Prompter',
+    copyButtonTitle: 'Copiar al portapapeles',
+    copyFeedback: '¡Copiado!',
   },
   fr: {
     profile: 'Profil',
@@ -81,6 +87,8 @@ const uiText = {
     langZhLabel: 'Passer au chinois',
     langHiLabel: 'Passer au hindi',
     appLogoAlt: 'Logo de Prompter',
+    copyButtonTitle: 'Copier dans le presse-papiers',
+    copyFeedback: 'Copié !',
   },
   zh: {
     profile: '个人资料',
@@ -98,6 +106,8 @@ const uiText = {
     langZhLabel: '切换到中文',
     langHiLabel: '切换到印地语',
     appLogoAlt: 'Prompter 标志',
+    copyButtonTitle: '复制到剪贴板',
+    copyFeedback: '已复制!',
   },
   hi: {
     profile: 'प्रोफ़ाइल',
@@ -115,6 +125,8 @@ const uiText = {
     langZhLabel: 'चीनी पर स्विच करें',
     langHiLabel: 'हिंदी पर स्विच करें',
     appLogoAlt: 'Prompter लोगो',
+    copyButtonTitle: 'क्लिपबोर्ड पर कॉपी करें',
+    copyFeedback: 'कॉपी किया गया!',
   },
 };
 
@@ -317,10 +329,28 @@ const renderSavedPrompts = (prompts) => {
   prompts.forEach((text, idx) => {
     const item = document.createElement('div');
     item.className =
-      'col-span-1 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
+      'col-span-1 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg relative';
+
+    const textWrap = document.createElement('div');
+    textWrap.className = 'relative pr-6';
 
     const pEl = document.createElement('p');
     pEl.textContent = text;
+    textWrap.appendChild(pEl);
+
+    const copyBtn = document.createElement('button');
+    copyBtn.className =
+      'history-copy absolute top-0 right-0 p-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+    copyBtn.title = uiText[appState.language].copyButtonTitle;
+    copyBtn.setAttribute('aria-label', uiText[appState.language].copyButtonTitle);
+    copyBtn.innerHTML =
+      '<i data-lucide="copy" class="w-2 h-2" aria-hidden="true"></i>';
+    textWrap.appendChild(copyBtn);
+
+    const copyFeedback = document.createElement('span');
+    copyFeedback.className = 'absolute -top-3 right-0 text-green-400 text-xs hidden';
+    copyFeedback.textContent = uiText[appState.language].copyFeedback;
+    textWrap.appendChild(copyFeedback);
 
     const actions = document.createElement('div');
     actions.className = 'flex items-center gap-2 mt-2';
@@ -335,17 +365,6 @@ const renderSavedPrompts = (prompts) => {
     // allow direct click on the prompt text to start editing
     pEl.addEventListener('click', () => editBtn.click());
 
-    const copyBtn = document.createElement('button');
-    copyBtn.className =
-      'history-copy p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-    copyBtn.innerHTML =
-      '<i data-lucide="copy" class="w-3 h-3" aria-hidden="true"></i>';
-
-    const downloadBtn = document.createElement('button');
-    downloadBtn.className =
-      'history-download p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-    downloadBtn.innerHTML =
-      '<i data-lucide="download" class="w-3 h-3" aria-hidden="true"></i>';
 
     const shareBtn = document.createElement('button');
     shareBtn.className =
@@ -373,7 +392,7 @@ const renderSavedPrompts = (prompts) => {
       const textarea = document.createElement('textarea');
       textarea.className = 'w-full p-2 rounded-md bg-black/30';
       textarea.value = pEl.textContent;
-      item.replaceChild(textarea, pEl);
+      textWrap.replaceChild(textarea, pEl);
 
       const editRow = document.createElement('div');
       editRow.className = 'flex items-center gap-2 mt-2';
@@ -394,7 +413,7 @@ const renderSavedPrompts = (prompts) => {
       window.lucide?.createIcons();
 
       cancelEdit.addEventListener('click', () => {
-        item.replaceChild(pEl, textarea);
+        textWrap.replaceChild(pEl, textarea);
         item.replaceChild(actions, editRow);
       });
 
@@ -407,21 +426,15 @@ const renderSavedPrompts = (prompts) => {
     });
 
     copyBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText(pEl.textContent || '').catch((err) => {
-        console.error('Failed to copy text:', err);
-      });
-    });
-
-    downloadBtn.addEventListener('click', () => {
-      const blob = new Blob([pEl.textContent || ''], { type: 'text/plain' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `prompt_${idx}.txt`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      navigator.clipboard
+        .writeText(pEl.textContent || '')
+        .then(() => {
+          copyFeedback.classList.remove('hidden');
+          setTimeout(() => copyFeedback.classList.add('hidden'), 1000);
+        })
+        .catch((err) => {
+          console.error('Failed to copy text:', err);
+        });
     });
 
     siteShareBtn.addEventListener('click', async () => {
@@ -475,13 +488,11 @@ const renderSavedPrompts = (prompts) => {
     });
 
     actions.appendChild(editBtn);
-    actions.appendChild(copyBtn);
-    actions.appendChild(downloadBtn);
     actions.appendChild(siteShareBtn);
     actions.appendChild(shareBtn);
     actions.appendChild(delBtn);
 
-    item.appendChild(pEl);
+    item.appendChild(textWrap);
     item.appendChild(actions);
     list.appendChild(item);
   });
@@ -502,10 +513,28 @@ const renderSharedPrompts = (prompts) => {
   prompts.forEach((p, idx) => {
     const item = document.createElement('div');
     item.className =
-      'col-span-1 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
+      'col-span-1 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg relative';
+
+    const textWrap = document.createElement('div');
+    textWrap.className = 'relative pr-6';
 
     const text = document.createElement('p');
     text.textContent = p.text;
+    textWrap.appendChild(text);
+
+    const copyBtn = document.createElement('button');
+    copyBtn.className =
+      'history-copy absolute top-0 right-0 p-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+    copyBtn.title = uiText[appState.language].copyButtonTitle;
+    copyBtn.setAttribute('aria-label', uiText[appState.language].copyButtonTitle);
+    copyBtn.innerHTML =
+      '<i data-lucide="copy" class="w-2 h-2" aria-hidden="true"></i>';
+    textWrap.appendChild(copyBtn);
+
+    const copyFeedback = document.createElement('span');
+    copyFeedback.className = 'absolute -top-3 right-0 text-green-400 text-xs hidden';
+    copyFeedback.textContent = uiText[appState.language].copyFeedback;
+    textWrap.appendChild(copyFeedback);
 
     const nameEl = document.createElement('p');
     nameEl.className = 'text-blue-200 text-sm mt-1';
@@ -588,17 +617,6 @@ const renderSharedPrompts = (prompts) => {
     // clicking the prompt text also starts editing
     text.addEventListener('click', () => editBtn.click());
 
-    const copyBtn = document.createElement('button');
-    copyBtn.className =
-      'history-copy p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-    copyBtn.innerHTML =
-      '<i data-lucide="copy" class="w-3 h-3" aria-hidden="true"></i>';
-
-    const downloadBtn = document.createElement('button');
-    downloadBtn.className =
-      'history-download p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-    downloadBtn.innerHTML =
-      '<i data-lucide="download" class="w-3 h-3" aria-hidden="true"></i>';
 
     const shareBtn = document.createElement('button');
     shareBtn.className =
@@ -618,7 +636,7 @@ const renderSharedPrompts = (prompts) => {
       const textarea = document.createElement('textarea');
       textarea.className = 'w-full p-2 rounded-md bg-black/30';
       textarea.value = p.text;
-      item.replaceChild(textarea, text);
+      textWrap.replaceChild(textarea, text);
 
       const editRow = document.createElement('div');
       editRow.className = 'flex items-center gap-2 mt-2';
@@ -640,7 +658,7 @@ const renderSharedPrompts = (prompts) => {
       window.lucide?.createIcons();
 
       cancelEdit.addEventListener('click', () => {
-        item.replaceChild(text, textarea);
+        textWrap.replaceChild(text, textarea);
         item.replaceChild(likeRow, editRow);
       });
 
@@ -659,21 +677,15 @@ const renderSharedPrompts = (prompts) => {
     });
 
     copyBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText(text.textContent || '').catch((err) => {
-        console.error('Failed to copy text:', err);
-      });
-    });
-
-    downloadBtn.addEventListener('click', () => {
-      const blob = new Blob([text.textContent || ''], { type: 'text/plain' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `shared_prompt_${idx}.txt`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      navigator.clipboard
+        .writeText(text.textContent || '')
+        .then(() => {
+          copyFeedback.classList.remove('hidden');
+          setTimeout(() => copyFeedback.classList.add('hidden'), 1000);
+        })
+        .catch((err) => {
+          console.error('Failed to copy text:', err);
+        });
     });
 
     const siteShareBtn = document.createElement('button');
@@ -742,15 +754,13 @@ const renderSharedPrompts = (prompts) => {
     });
 
     likeRow.appendChild(editBtn);
-    likeRow.appendChild(copyBtn);
-    likeRow.appendChild(downloadBtn);
     likeRow.appendChild(siteShareBtn);
     likeRow.appendChild(shareBtn);
     likeRow.appendChild(delBtn);
     likeRow.appendChild(likeBtn);
     likeRow.appendChild(likeCount);
 
-    item.appendChild(text);
+    item.appendChild(textWrap);
     item.appendChild(nameEl);
     item.appendChild(likeRow);
     list.appendChild(item);
