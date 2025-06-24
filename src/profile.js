@@ -10,7 +10,7 @@ import {
   incrementShareCount,
 } from './prompt.js';
 import { getUserProfile, setUserProfile } from './user.js';
-import { listenNotifications } from './notifications.js';
+import { listenNotifications, markNotificationRead } from './notifications.js';
 import { appState, THEMES } from './state.js';
 
 const uiText = {
@@ -290,15 +290,28 @@ const renderNotifications = () => {
   }
   notificationsPanel.innerHTML = '';
   notifications.forEach((n) => {
-    const div = document.createElement('div');
+    const link = document.createElement('a');
     let msg = '';
     if (n.type === 'like') msg = 'Your prompt received a like.';
     else if (n.type === 'comment') msg = 'New comment on your prompt.';
     else if (n.type === 'share') msg = 'Your prompt was shared.';
     else msg = 'New activity on your prompt.';
-    div.textContent = msg;
-    div.className = 'p-1 border-b border-white/20 last:border-b-0';
-    notificationsPanel.appendChild(div);
+    link.textContent = msg;
+    link.href = n.promptId ? `social.html#${n.promptId}` : 'social.html';
+    link.className =
+      'block p-1 border-b border-white/20 last:border-b-0 hover:bg-white/10';
+    link.addEventListener('click', async () => {
+      if (appState.currentUser) {
+        try {
+          await markNotificationRead(appState.currentUser.uid, n.id);
+        } catch (err) {
+          console.error('Failed to mark notification read:', err);
+        }
+      }
+      n.read = true;
+      renderNotifications();
+    });
+    notificationsPanel.appendChild(link);
   });
 };
 
