@@ -381,7 +381,11 @@ const renderSavedPrompts = (prompts) => {
       : 'Show less';
   };
   showMore.addEventListener('click', toggleText);
-  textWrap.appendChild(showMore);
+  requestAnimationFrame(() => {
+    if (textContainer.scrollHeight > textContainer.offsetHeight) {
+      textWrap.appendChild(showMore);
+    }
+  });
 
     const copyBtn = document.createElement('button');
     copyBtn.className =
@@ -586,7 +590,11 @@ const renderSharedPrompts = async (prompts) => {
       : 'Show less';
   };
   showMore.addEventListener('click', toggleText);
-  textWrap.appendChild(showMore);
+  requestAnimationFrame(() => {
+    if (textContainer.scrollHeight > textContainer.offsetHeight) {
+      textWrap.appendChild(showMore);
+    }
+  });
 
     const copyBtn = document.createElement('button');
     copyBtn.className =
