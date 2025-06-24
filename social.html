@@ -211,7 +211,11 @@
       import { promptScore } from './src/scoring.js';
       import { appState } from './src/state.js';
       import { categories } from './src/prompts.js';
-      import { getUserProfile, getFollowingIds } from './src/user.js';
+      import {
+        getUserProfile,
+        getFollowingIds,
+        updateLastSocialVisit,
+      } from './src/user.js';
       import {
         collection,
         query,
@@ -901,6 +905,10 @@
       };
 
       function init() {
+        localStorage.setItem('socialLastVisit', Date.now().toString());
+        onAuth((u) => {
+          if (u) updateLastSocialVisit(u.uid, Date.now());
+        });
         if (!followingFilter || !popularFilter) {
           console.error('Filter elements not found');
           return;
