@@ -140,7 +140,7 @@
       <div class="spinner" aria-label="Loading"></div>
     </div>
     <div id="app-container" class="w-full" style="visibility: hidden">
-      <header class="flex items-center justify-between w-full mt-4 mb-6">
+      <header class="flex items-center w-full mt-4 mb-6">
         <div class="flex items-center gap-2">
           <a
             href="index.html"
@@ -166,7 +166,7 @@
             <p class="text-sm text-blue-200 sm:text-base">Prompter Social</p>
           </div>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="ml-auto flex flex-col items-end gap-1">
           <label class="text-sm inline-flex items-center gap-1">
             <input
               id="following-filter"
@@ -175,7 +175,7 @@
             />
             Only following
           </label>
-          <label class="text-sm inline-flex items-center gap-1">
+          <label class="text-sm inline-flex items-center gap-1 mt-1">
             <span>Category:</span>
             <select
               id="category-filter"
@@ -219,7 +219,6 @@
         linkEl.href = `css/theme-${theme}.css${version ? `?${version}` : ''}`;
         localStorage.setItem('theme', theme);
       };
-
 
       const profileCache = {};
       const categoryMap = Object.fromEntries(
