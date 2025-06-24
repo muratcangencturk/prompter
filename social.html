@@ -167,22 +167,6 @@
           </div>
         </div>
         <div class="flex items-center gap-2">
-          <button
-            id="theme-light"
-            class="p-1.5 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50"
-            title="Light Theme"
-            aria-label="Light Theme"
-          >
-            <i data-lucide="sun" class="w-5 h-5" aria-hidden="true"></i>
-          </button>
-          <button
-            id="theme-dark"
-            class="p-1.5 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50"
-            title="Dark Theme"
-            aria-label="Dark Theme"
-          >
-            <i data-lucide="moon" class="w-5 h-5" aria-hidden="true"></i>
-          </button>
           <label class="text-sm inline-flex items-center gap-1">
             <input
               id="following-filter"
@@ -236,12 +220,6 @@
         localStorage.setItem('theme', theme);
       };
 
-      document
-        .getElementById('theme-light')
-        .addEventListener('click', () => setTheme('light'));
-      document
-        .getElementById('theme-dark')
-        .addEventListener('click', () => setTheme('dark'));
 
       const profileCache = {};
       const categoryMap = Object.fromEntries(
