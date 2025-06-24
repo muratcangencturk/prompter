@@ -14,6 +14,7 @@ import {
 import { getUserProfile, setUserProfile } from './user.js';
 import { listenNotifications, markNotificationRead } from './notifications.js';
 import { appState, THEMES } from './state.js';
+import { categories } from './prompts.js';
 
 const uiText = {
   en: {
@@ -497,7 +498,11 @@ const renderSavedPrompts = (prompts) => {
       }
       siteShareBtn.disabled = true;
       try {
-        await savePrompt(pEl.textContent || '', appState.currentUser.uid);
+        await savePrompt(
+          pEl.textContent || '',
+          appState.currentUser.uid,
+          appState.selectedCategory
+        );
       } catch (err) {
         console.error(err);
         alert('Failed to share prompt. Please try again.');
@@ -600,6 +605,13 @@ const renderSharedPrompts = async (prompts) => {
     const nameEl = document.createElement('p');
     nameEl.className = 'text-blue-200 text-sm mt-1';
     nameEl.textContent = currentUserName;
+
+    const catEl = document.createElement('p');
+    catEl.className = 'text-blue-200 text-xs';
+    catEl.textContent =
+      categories.find((c) => c.id === p.category)?.name[appState.language] ||
+      p.category ||
+      'random';
 
     const likeRow = document.createElement('div');
     likeRow.className = 'flex items-center gap-2 mt-2';
@@ -886,6 +898,7 @@ const renderSharedPrompts = async (prompts) => {
 
     item.appendChild(textWrap);
     item.appendChild(nameEl);
+    item.appendChild(catEl);
     item.appendChild(likeRow);
     item.appendChild(commentsWrap);
     list.appendChild(item);

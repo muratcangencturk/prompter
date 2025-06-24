@@ -7,6 +7,9 @@ import {
 } from './user.js';
 import { onAuth } from './auth.js';
 import { getUserPrompts } from './prompt.js';
+import { categories } from './prompts.js';
+
+const categoryMap = Object.fromEntries(categories.map((c) => [c.id, c.name.en]));
 
 
 const getParam = (key) => new URLSearchParams(window.location.search).get(key);
@@ -30,7 +33,11 @@ const renderPrompts = async (prompts) => {
       'bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
     const text = document.createElement('p');
     text.textContent = p.text;
+    const cat = document.createElement('p');
+    cat.className = 'text-blue-200 text-xs mt-1';
+    cat.textContent = categoryMap[p.category] || p.category || 'random';
     card.appendChild(text);
+    card.appendChild(cat);
     list.appendChild(card);
   }
 

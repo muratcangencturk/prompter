@@ -197,6 +197,7 @@
         incrementShareCount,
       } from './src/prompt.js';
       import { appState } from './src/state.js';
+      import { categories } from './src/prompts.js';
       import { getUserProfile, getFollowingIds } from './src/user.js';
       import {
         collection,
@@ -223,6 +224,9 @@
         .addEventListener('click', () => setTheme('dark'));
 
       const profileCache = {};
+      const categoryMap = Object.fromEntries(
+        categories.map((c) => [c.id, c.name[appState.language] || c.id])
+      );
       let followingIds = [];
       const followingFilter = document.getElementById('following-filter');
       const fetchName = async (uid) => {
@@ -322,6 +326,10 @@
         const nameEl = document.createElement('p');
         nameEl.className = 'text-blue-200 text-sm mt-1 underline';
         nameEl.innerHTML = `<a href="user.html?uid=${p.userId}">${name}</a>`;
+
+        const catEl = document.createElement('p');
+        catEl.className = 'text-blue-200 text-xs';
+        catEl.textContent = categoryMap[p.category] || p.category || 'random';
 
         const likeRow = document.createElement('div');
         likeRow.className = 'flex items-center gap-2 mt-2';
@@ -696,6 +704,7 @@
 
         card.appendChild(textWrap);
         card.appendChild(nameEl);
+        card.appendChild(catEl);
         card.appendChild(likeRow);
         card.appendChild(likeSummary);
         card.appendChild(likeList);
