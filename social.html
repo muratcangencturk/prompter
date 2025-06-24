@@ -176,7 +176,14 @@
           </button>
           <label class="text-sm inline-flex items-center gap-1">
             <input id="following-filter" type="checkbox" class="form-checkbox" />
-            Following
+            Only following
+          </label>
+          <label class="text-sm inline-flex items-center gap-1">
+            <span>Category:</span>
+            <select
+              id="category-filter"
+              class="bg-black/20 border border-white/20 rounded-md text-sm px-1 focus:outline-none focus:ring-2 focus:ring-white/50"
+            ></select>
           </label>
         </div>
       </header>
@@ -229,6 +236,16 @@
       );
       let followingIds = [];
       const followingFilter = document.getElementById('following-filter');
+      const categoryFilter = document.getElementById('category-filter');
+      if (categoryFilter) {
+        categoryFilter.innerHTML = '<option value="">All</option>';
+        categories.forEach((c) => {
+          const opt = document.createElement('option');
+          opt.value = c.id;
+          opt.textContent = categoryMap[c.id] || c.id;
+          categoryFilter.appendChild(opt);
+        });
+      }
       const fetchName = async (uid) => {
         if (profileCache[uid]) return profileCache[uid];
         const prof = await getUserProfile(uid);
@@ -765,24 +782,24 @@
       const startListener = async () => {
         if (unsubscribe) unsubscribe();
         await refreshFollowing();
-        let q;
-        if (followingFilter?.checked && followingIds.length > 0) {
-          q = query(
-            collection(db, 'prompts'),
-            where('shared', '==', true),
-            where('userId', 'in', followingIds.slice(0, 10)),
-            orderBy('createdAt', 'desc'),
-          );
-        } else if (followingFilter?.checked) {
-          render([]);
-          return;
-        } else {
-          q = query(
-            collection(db, 'prompts'),
-            where('shared', '==', true),
-            orderBy('createdAt', 'desc'),
-          );
+
+        const constraints = [where('shared', '==', true)];
+        const selectedCat = categoryFilter?.value;
+        if (selectedCat) {
+          constraints.push(where('category', '==', selectedCat));
         }
+
+        if (followingFilter?.checked) {
+          if (followingIds.length > 0) {
+            constraints.push(where('userId', 'in', followingIds.slice(0, 10)));
+          } else {
+            render([]);
+            return;
+          }
+        }
+
+        constraints.push(orderBy('createdAt', 'desc'));
+        const q = query(collection(db, 'prompts'), ...constraints);
 
         unsubscribe = onSnapshot(
           q,
@@ -807,6 +824,7 @@
 
       function init() {
         followingFilter?.addEventListener('change', startListener);
+        categoryFilter?.addEventListener('change', startListener);
         onAuth(startListener);
         startListener();
       }
