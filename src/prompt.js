@@ -28,10 +28,11 @@ export const generatePrompt = () => {
   return samplePrompts[idx];
 };
 
-export const savePrompt = (text, userId) =>
+export const savePrompt = (text, userId, category = 'random') =>
   addDoc(collection(db, 'prompts'), {
     text,
     userId,
+    category,
     createdAt: serverTimestamp(),
     likes: 0,
     likedBy: [],
@@ -50,7 +51,11 @@ export const getUserPrompts = async (userId) => {
   );
   try {
     const snap = await getDocs(q);
-    const prompts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+    const prompts = snap.docs.map((d) => ({
+      id: d.id,
+      category: d.get('category') || 'random',
+      ...d.data(),
+    }));
     prompts.sort((a, b) => b.createdAt.toMillis() - a.createdAt.toMillis());
     return prompts;
   } catch (err) {
@@ -67,7 +72,11 @@ export const getAllPrompts = async () => {
   );
   const snap = await getDocs(q);
   return snap.docs
-    .map((d) => ({ id: d.id, ...d.data() }))
+    .map((d) => ({
+      id: d.id,
+      category: d.get('category') || 'random',
+      ...d.data(),
+    }))
     .filter(
       (p) => Array.isArray(p.sharedBy) && p.sharedBy.length > 0
     );
