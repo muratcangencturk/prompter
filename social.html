@@ -240,10 +240,38 @@
         const card = document.createElement('div');
         card.dataset.id = p.id;
         card.className =
-          'col-span-1 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
+          'col-span-1 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg relative';
+
+        const textWrap = document.createElement('div');
+        textWrap.className = 'relative';
 
         const text = document.createElement('p');
         text.textContent = p.text;
+        textWrap.appendChild(text);
+
+        const copyBtn = document.createElement('button');
+        copyBtn.className =
+          'history-copy absolute -top-2 -right-2 p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+        copyBtn.title = appState.language === 'tr' ? 'Kopyala' : 'Copy prompt';
+        copyBtn.setAttribute('aria-label', copyBtn.title);
+        copyBtn.innerHTML = '<i data-lucide="copy" class="w-3 h-3" aria-hidden="true"></i>';
+        textWrap.appendChild(copyBtn);
+
+        const copyFeedback = document.createElement('span');
+        const copyTexts = { tr: 'Kopyalandı!', es: '¡Copiado!', fr: 'Copié!', zh: '已复制!', hi: 'कॉपी किया गया!', en: 'Copied!' };
+        copyFeedback.className = 'absolute -top-2 -right-20 text-green-400 text-xs hidden';
+        copyFeedback.textContent = copyTexts[appState.language] || 'Copied!';
+        textWrap.appendChild(copyFeedback);
+
+        copyBtn.addEventListener('click', () => {
+          navigator.clipboard
+            .writeText(p.text)
+            .then(() => {
+              copyFeedback.classList.remove('hidden');
+              setTimeout(() => copyFeedback.classList.add('hidden'), 1000);
+            })
+            .catch((err) => console.error('Failed to copy text:', err));
+        });
 
         const nameEl = document.createElement('p');
         nameEl.className = 'text-blue-200 text-sm mt-1 underline';
@@ -484,7 +512,7 @@
           const textarea = document.createElement('textarea');
           textarea.className = 'w-full p-2 rounded-md bg-black/30';
           textarea.value = p.text;
-          card.replaceChild(textarea, text);
+          textWrap.replaceChild(textarea, text);
 
           const editRow = document.createElement('div');
           editRow.className = 'flex items-center gap-2 mt-2';
@@ -505,7 +533,7 @@
           window.lucide?.createIcons();
 
           cancelEdit.addEventListener('click', () => {
-            card.replaceChild(text, textarea);
+            textWrap.replaceChild(text, textarea);
             card.replaceChild(likeRow, editRow);
           });
 
@@ -596,7 +624,7 @@
         likeRow.appendChild(likeBtn);
         likeRow.appendChild(likeCount);
 
-        card.appendChild(text);
+        card.appendChild(textWrap);
         card.appendChild(nameEl);
         card.appendChild(likeRow);
         card.appendChild(likeSummary);
