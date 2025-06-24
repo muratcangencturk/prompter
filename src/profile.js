@@ -8,6 +8,8 @@ import {
   unsharePrompt,
   savePrompt,
   incrementShareCount,
+  addComment,
+  getComments,
 } from './prompt.js';
 import { getUserProfile, setUserProfile } from './user.js';
 import { listenNotifications, markNotificationRead } from './notifications.js';
@@ -152,6 +154,18 @@ let notificationCountEl;
 let notificationsPanel;
 let notifications = [];
 let unsubscribeNotifications;
+
+const profileCache = {};
+const fetchName = async (uid) => {
+  if (profileCache[uid]) return profileCache[uid];
+  const prof = await getUserProfile(uid);
+  let display = prof?.name || 'Unknown User';
+  if (prof?.email) {
+    display += ` (${prof.email})`;
+  }
+  profileCache[uid] = display;
+  return display;
+};
 
 const setTheme = (theme) => {
   appState.theme = theme;
@@ -529,7 +543,7 @@ const renderSavedPrompts = (prompts) => {
   window.lucide?.createIcons();
 };
 
-const renderSharedPrompts = (prompts) => {
+const renderSharedPrompts = async (prompts) => {
   const list = document.getElementById('shared-list');
   list.innerHTML = '';
   updateCount('shared-count', prompts.length);
@@ -540,7 +554,7 @@ const renderSharedPrompts = (prompts) => {
     list.appendChild(p);
     return;
   }
-  prompts.forEach((p, idx) => {
+  for (const [idx, p] of prompts.entries()) {
     const item = document.createElement('div');
     item.className =
       'col-span-1 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg relative';
@@ -793,11 +807,73 @@ const renderSharedPrompts = (prompts) => {
       try {
         await unsharePrompt(p.id, appState.currentUser.uid);
         prompts.splice(idx, 1);
-        renderSharedPrompts(prompts);
+        await renderSharedPrompts(prompts);
       } catch (err) {
         console.error('Failed to delete:', err);
         delBtn.disabled = false;
       }
+    });
+
+    const commentToggleBtn = document.createElement('button');
+    commentToggleBtn.className =
+      'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+    commentToggleBtn.innerHTML =
+      '<i data-lucide="message-circle" class="w-4 h-4" aria-hidden="true"></i>';
+
+    const commentsWrap = document.createElement('div');
+    commentsWrap.className = 'mt-2 space-y-1 hidden';
+    const commentList = document.createElement('div');
+    commentsWrap.appendChild(commentList);
+    const commentForm = document.createElement('form');
+    commentForm.className = 'flex items-center gap-2 mt-1';
+    const commentInput = document.createElement('input');
+    commentInput.type = 'text';
+    commentInput.placeholder = 'Add a comment...';
+    commentInput.className = 'flex-1 p-1 rounded-md bg-black/30';
+    const commentBtn = document.createElement('button');
+    commentBtn.type = 'submit';
+    commentBtn.className =
+      'px-2 py-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200';
+    commentBtn.innerHTML =
+      '<i data-lucide="send" class="w-4 h-4" aria-hidden="true"></i>';
+    commentBtn.setAttribute('aria-label', 'Send comment');
+    commentForm.appendChild(commentInput);
+    commentForm.appendChild(commentBtn);
+    commentsWrap.appendChild(commentForm);
+
+    const renderComment = async (c) => {
+      const n = await fetchName(c.userId);
+      const d = document.createElement('div');
+      d.className = 'bg-white/5 rounded-md px-2 py-1 text-sm';
+      d.innerHTML = n ? `<a href="user.html?uid=${c.userId}" class="underline">${n}</a>: ${c.text}` : c.text;
+      commentList.appendChild(d);
+    };
+
+    const existingComments = await getComments(p.id);
+    for (const c of existingComments) {
+      await renderComment(c);
+    }
+
+    commentForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!appState.currentUser) {
+        alert('Login required');
+        return;
+      }
+      const textVal = commentInput.value.trim();
+      if (!textVal) return;
+      commentBtn.disabled = true;
+      try {
+        await addComment(p.id, appState.currentUser.uid, textVal);
+        await renderComment({ text: textVal, userId: appState.currentUser.uid });
+        commentInput.value = '';
+      } finally {
+        commentBtn.disabled = false;
+      }
+    });
+
+    commentToggleBtn.addEventListener('click', () => {
+      commentsWrap.classList.toggle('hidden');
     });
 
     likeRow.appendChild(editBtn);
@@ -805,13 +881,16 @@ const renderSharedPrompts = (prompts) => {
     likeRow.appendChild(shareBtn);
     likeRow.appendChild(delBtn);
     likeRow.appendChild(likeBtn);
+    likeRow.appendChild(commentToggleBtn);
     likeRow.appendChild(likeCount);
 
     item.appendChild(textWrap);
     item.appendChild(nameEl);
     item.appendChild(likeRow);
+    item.appendChild(commentsWrap);
     list.appendChild(item);
-  });
+  }
+  window.lucide?.createIcons();
 };
 
 const init = () => {
