@@ -247,6 +247,9 @@
           return;
         }
         const names = await Promise.all(prompts.map((p) => fetchName(p.userId)));
+        const commentsArr = await Promise.all(
+          prompts.map((p) => getComments(p.id)),
+        );
         for (let i = 0; i < prompts.length; i++) {
           const p = prompts[i];
           const card = document.createElement('div');
@@ -592,7 +595,7 @@
             commentList.appendChild(d);
           };
 
-          const existingComments = await getComments(p.id);
+          const existingComments = commentsArr[i];
           for (const c of existingComments) {
             await renderComment(c);
           }
