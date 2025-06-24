@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,7 +7,10 @@
     <base href="./" />
     <link rel="manifest" href="manifest.json?v=58" />
     <meta name="theme-color" content="#000000" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <script>
@@ -27,7 +30,7 @@
           return Promise.race([
             fetch(url, { method: 'HEAD', mode: 'no-cors' }),
             new Promise((_, reject) =>
-              setTimeout(() => reject(new Error('timeout')), timeout),
+              setTimeout(() => reject(new Error('timeout')), timeout)
             ),
           ]);
         }
@@ -90,7 +93,7 @@
 
         window.lucideScripts = loadWithFallback(
           'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=58',
-          'lucide.min.js?v=58',
+          'lucide.min.js?v=58'
         );
         window.lucideScripts.loadPromise.finally(() => {
           const appContainer = document.getElementById('app-container');
@@ -119,7 +122,9 @@
         const version = linkEl.getAttribute('href').split('?')[1];
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
-          linkEl.href = `css/theme-${savedTheme}.css${version ? `?${version}` : ''}`;
+          linkEl.href = `css/theme-${savedTheme}.css${
+            version ? `?${version}` : ''
+          }`;
         }
       })();
     </script>
@@ -141,7 +146,11 @@
             title="Back"
             aria-label="Back"
           >
-            <span class="w-6 h-6 inline-flex items-center justify-center text-3xl" aria-hidden="true">&larr;</span>
+            <span
+              class="w-6 h-6 inline-flex items-center justify-center text-3xl"
+              aria-hidden="true"
+              >&larr;</span
+            >
           </a>
           <img
             id="app-logo"
@@ -150,7 +159,12 @@
             class="w-12 h-12 sm:w-14 sm:h-14"
           />
           <div class="ml-1">
-            <h1 id="page-title" class="text-xl sm:text-2xl font-bold leading-tight">Prompter</h1>
+            <h1
+              id="page-title"
+              class="text-xl sm:text-2xl font-bold leading-tight"
+            >
+              Prompter
+            </h1>
             <p class="text-sm text-blue-200 sm:text-base">Profile</p>
           </div>
         </div>
@@ -179,7 +193,10 @@
               aria-label="Notifications"
             >
               <i data-lucide="bell" class="w-5 h-5" aria-hidden="true"></i>
-              <span id="notification-count" class="hidden absolute -top-1 -right-1 bg-red-500 text-xs rounded-full w-4 h-4 flex items-center justify-center"></span>
+              <span
+                id="notification-count"
+                class="hidden absolute -top-1 -right-1 bg-red-500 text-xs rounded-full w-4 h-4 flex items-center justify-center"
+              ></span>
             </button>
             <a
               href="dm.html"
@@ -187,7 +204,11 @@
               title="Messages"
               aria-label="Messages"
             >
-              <i data-lucide="message-circle" class="w-5 h-5" aria-hidden="true"></i>
+              <i
+                data-lucide="message-circle"
+                class="w-5 h-5"
+                aria-hidden="true"
+              ></i>
             </a>
           </div>
           <button
@@ -197,50 +218,64 @@
             <i data-lucide="log-out" class="w-4 h-4" aria-hidden="true"></i>
             <span>Logout</span>
           </button>
-          <div id="notifications-panel" class="hidden absolute right-0 mt-10 bg-black/80 backdrop-blur-md p-2 rounded-md border border-white/20 text-sm w-64 max-h-60 overflow-y-auto"></div>
+          <div
+            id="notifications-panel"
+            class="hidden absolute right-0 mt-10 bg-black/80 backdrop-blur-md p-2 rounded-md border border-white/20 text-sm w-64 max-h-60 overflow-y-auto"
+          ></div>
         </div>
       </header>
       <div class="mb-4"></div>
-        <div id="user-name-wrapper" class="mb-2">
-          <p id="user-name" class="text-blue-200 cursor-pointer"></p>
-        </div>
-        <div id="name-edit-row" class="flex justify-center gap-2 mb-2 hidden">
-          <input
-            id="name-input"
-            type="text"
-            class="p-1 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
-          />
-          <button
-            id="name-update-btn"
-            class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
-          >
-            <i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>
-          </button>
-        </div>
-        <div id="bio-wrapper" class="mb-2">
-          <p id="user-bio" class="text-blue-200 whitespace-pre-line cursor-pointer"></p>
-        </div>
-        <div id="bio-edit-row" class="flex flex-col items-center gap-2 mb-2 hidden">
-          <textarea
-            id="bio-input"
-            rows="3"
-            class="p-1 rounded-md w-full max-w-sm bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
-          ></textarea>
-          <button
-            id="bio-update-btn"
-            class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
-          >
-            <i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>
-          </button>
-        </div>
-        <p id="user-email" class="text-blue-200 mb-2"></p>
-        <div class="space-x-2 text-sm text-blue-200 my-4 text-center">
-          <span>Prompts: <span id="stat-prompts">0</span></span>
-          <span>Likes: <span id="stat-likes">0</span></span>
-          <span>Comments: <span id="stat-comments">0</span></span>
-          <span>Saves: <span id="stat-saves">0</span></span>
-          <span>Shares: <span id="stat-shares">0</span></span>
-        </div>
+      <div id="user-name-wrapper" class="mb-2">
+        <p id="user-name" class="text-blue-200 cursor-pointer"></p>
+      </div>
+      <div id="name-edit-row" class="flex justify-center gap-2 mb-2 hidden">
+        <input
+          id="name-input"
+          type="text"
+          class="p-1 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+        />
+        <button
+          id="name-update-btn"
+          class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
+        >
+          <i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div id="bio-wrapper" class="mb-2 text-center">
+        <p
+          id="user-bio"
+          class="text-blue-200 whitespace-pre-line cursor-pointer"
+        ></p>
+        <span
+          id="edit-bio-hint"
+          class="text-blue-200 text-xs underline cursor-pointer"
+          >Edit bio</span
+        >
+      </div>
+      <div
+        id="bio-edit-row"
+        class="flex flex-col items-center gap-2 mb-2 hidden"
+      >
+        <textarea
+          id="bio-input"
+          rows="3"
+          class="p-1 rounded-md w-full max-w-sm bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+        ></textarea>
+        <button
+          id="bio-update-btn"
+          class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
+        >
+          <i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>
+        </button>
+      </div>
+      <p id="user-email" class="text-blue-200 mb-2"></p>
+      <div class="space-x-2 text-sm text-blue-200 my-4 text-center">
+        <span>Prompts: <span id="stat-prompts">0</span></span>
+        <span>Likes: <span id="stat-likes">0</span></span>
+        <span>Comments: <span id="stat-comments">0</span></span>
+        <span>Saves: <span id="stat-saves">0</span></span>
+        <span>Shares: <span id="stat-shares">0</span></span>
+      </div>
       <section class="mb-6">
         <h2 class="text-xl font-semibold mb-2">
           <span id="saved-title-text">Saved Prompts</span> (<span
@@ -248,7 +283,10 @@
             >0</span
           >)
         </h2>
-        <div id="saved-list" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        <div
+          id="saved-list"
+          class="grid grid-cols-1 md:grid-cols-2 gap-4"
+        ></div>
       </section>
 
       <section class="mb-6">
@@ -258,7 +296,10 @@
             >0</span
           >)
         </h2>
-        <div id="shared-list" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        <div
+          id="shared-list"
+          class="grid grid-cols-1 md:grid-cols-2 gap-4"
+        ></div>
       </section>
     </div>
   </body>
