@@ -236,9 +236,381 @@
         window.open(url, '_blank');
       };
 
+      const createCard = async (p, name, commentsArr) => {
+        const card = document.createElement('div');
+        card.dataset.id = p.id;
+        card.className =
+          'col-span-1 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
+
+        const text = document.createElement('p');
+        text.textContent = p.text;
+
+        const nameEl = document.createElement('p');
+        nameEl.className = 'text-blue-200 text-sm mt-1 underline';
+        nameEl.innerHTML = `<a href="user.html?uid=${p.userId}">${name}</a>`;
+
+        const likeRow = document.createElement('div');
+        likeRow.className = 'flex items-center gap-2 mt-2';
+
+        const saveBtn = document.createElement('button');
+        saveBtn.className =
+          'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+        saveBtn.title = 'Save prompt';
+        saveBtn.setAttribute('aria-label', 'Save prompt');
+        saveBtn.innerHTML =
+          '<i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>';
+        saveBtn.addEventListener('click', async () => {
+          saveBtn.disabled = true;
+          try {
+            appState.savedPrompts.push(p.text);
+            localStorage.setItem(
+              'savedPrompts',
+              JSON.stringify(appState.savedPrompts),
+            );
+            if (appState.currentUser) {
+              await saveUserPrompt(p.text, appState.currentUser.uid);
+              await incrementSaveCount(p.id);
+            }
+            alert('Prompt saved!');
+            saveBtn.classList.toggle('active');
+            const icon = saveBtn.querySelector('svg');
+            if (icon)
+              icon.setAttribute(
+                'fill',
+                saveBtn.classList.contains('active') ? 'currentColor' : 'none',
+              );
+          } catch (err) {
+            console.error('Failed to save prompt:', err);
+            alert('Failed to save prompt. Please try again.');
+          } finally {
+            saveBtn.disabled = false;
+          }
+        });
+
+        const likeBtn = document.createElement('button');
+        likeBtn.className =
+          'like-btn p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+        likeBtn.innerHTML =
+          '<i data-lucide="heart" class="w-4 h-4" aria-hidden="true"></i>';
+
+        let likes = p.likes || 0;
+        const likeCount = document.createElement('span');
+        const updateLikeText = () => {
+          likeCount.textContent = `${likes} ${likes === 1 ? 'like' : 'likes'}`;
+        };
+        updateLikeText();
+
+        let likedBy = p.likedBy || [];
+        const likeSummary = document.createElement('p');
+        likeSummary.className =
+          'text-xs text-blue-200 mt-1 underline cursor-pointer';
+        const likeList = document.createElement('div');
+        likeList.className = 'hidden text-xs mt-1 space-y-1';
+        let listToggled = false;
+        const showList = () => {
+          likeList.classList.remove('hidden');
+        };
+        const hideList = () => {
+          if (!listToggled) likeList.classList.add('hidden');
+        };
+        likeSummary.addEventListener('mouseenter', showList);
+        likeSummary.addEventListener('mouseleave', hideList);
+        likeList.addEventListener('mouseenter', showList);
+        likeList.addEventListener('mouseleave', hideList);
+        likeSummary.addEventListener('click', () => {
+          listToggled = !listToggled;
+          if (listToggled) showList();
+          else likeList.classList.add('hidden');
+        });
+
+        const renderLikeSummary = async () => {
+          if (!likedBy.length) {
+            likeSummary.style.display = 'none';
+            likeList.innerHTML = '';
+            return;
+          }
+          likeSummary.style.display = '';
+          const names = [];
+          for (const uid of likedBy) {
+            names.push(await fetchName(uid));
+          }
+          likeList.innerHTML = names
+            .map((n, idx) => `<div class="px-2"><a href="user.html?uid=${likedBy[idx]}" class="underline">${n}</a></div>`)
+            .join('');
+          const first = names.slice(0, 3);
+          let txt = '';
+          if (first.length === 1) txt = `${first[0]} liked this`;
+          else if (first.length === 2) txt = `${first[0]} and ${first[1]} liked this`;
+          else txt = `${first[0]}, ${first[1]} and ${first[2]} liked this`;
+          if (names.length > 3) txt += ` and ${names.length - 3} others`;
+          likeSummary.textContent = txt;
+        };
+
+        const liked =
+          appState.currentUser &&
+          p.likedBy &&
+          p.likedBy.includes(appState.currentUser.uid);
+        if (liked) {
+          likeBtn.classList.add('active');
+        }
+
+        const updateLikeIcon = () => {
+          const svg = likeBtn.querySelector('svg');
+          if (svg)
+            svg.setAttribute(
+              'fill',
+              likeBtn.classList.contains('active') ? 'currentColor' : 'none',
+            );
+        };
+
+        likeBtn.addEventListener('click', async () => {
+          if (!appState.currentUser) {
+            alert('Login required');
+            return;
+          }
+          likeBtn.disabled = true;
+          const already = likeBtn.classList.contains('active');
+          try {
+            if (already) {
+              await unlikePrompt(p.id, appState.currentUser.uid);
+              likes -= 1;
+              updateLikeText();
+              appState.likedPrompts = appState.likedPrompts.filter((id) => id !== p.id);
+              likedBy = likedBy.filter((id) => id !== appState.currentUser.uid);
+              likeBtn.classList.remove('active');
+            } else {
+              await likePrompt(p.id, appState.currentUser.uid);
+              likes += 1;
+              updateLikeText();
+              appState.likedPrompts.push(p.id);
+              likedBy.push(appState.currentUser.uid);
+              likeBtn.classList.add('active');
+            }
+            localStorage.setItem('likedPrompts', JSON.stringify(appState.likedPrompts));
+            updateLikeIcon();
+            await renderLikeSummary();
+          } catch (err) {
+            console.error('Failed to toggle like:', err);
+          } finally {
+            likeBtn.disabled = false;
+          }
+        });
+
+        const shareToggleBtn = document.createElement('button');
+        shareToggleBtn.className =
+          'share-toggle p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+        const updateShareToggle = () => {
+          const svg = shareToggleBtn.querySelector('svg');
+          if (svg)
+            svg.setAttribute(
+              'fill',
+              shareToggleBtn.classList.contains('active') ? 'currentColor' : 'none',
+            );
+        };
+        let sharedByCurrent =
+          appState.currentUser &&
+          p.sharedBy &&
+          p.sharedBy.includes(appState.currentUser.uid);
+        shareToggleBtn.innerHTML =
+          '<i data-lucide="share-2" class="w-4 h-4" aria-hidden="true"></i>';
+        if (sharedByCurrent) shareToggleBtn.classList.add('active');
+        updateShareToggle();
+        shareToggleBtn.addEventListener('click', async () => {
+          if (!appState.currentUser) {
+            alert('Login required');
+            return;
+          }
+          shareToggleBtn.disabled = true;
+          try {
+            if (sharedByCurrent) {
+              await unsharePromptByUser(p.id, appState.currentUser.uid);
+              await incrementShareCount(p.id, -1);
+              sharedByCurrent = false;
+            } else {
+              await sharePromptByUser(p.id, appState.currentUser.uid);
+              await incrementShareCount(p.id, 1);
+              sharedByCurrent = true;
+            }
+            updateShareToggle();
+          } catch (err) {
+            console.error('Failed to toggle share:', err);
+          } finally {
+            shareToggleBtn.disabled = false;
+          }
+        });
+
+        const twitterBtn = document.createElement('button');
+        twitterBtn.className =
+          'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+        twitterBtn.title = 'Share on Twitter';
+        twitterBtn.setAttribute('aria-label', 'Share on Twitter');
+        twitterBtn.innerHTML =
+          '<i data-lucide="twitter" class="w-4 h-4" aria-hidden="true"></i>';
+        const updateTwitterIcon = () => {
+          const svg = twitterBtn.querySelector('svg');
+          if (svg)
+            svg.setAttribute(
+              'fill',
+              twitterBtn.classList.contains('active') ? 'currentColor' : 'none',
+            );
+        };
+        updateTwitterIcon();
+        twitterBtn.addEventListener('click', () => {
+          twitterBtn.classList.toggle('active');
+          updateTwitterIcon();
+          sharePrompt(p.text, 'https://twitter.com/intent/tweet?text=');
+          incrementShareCount(p.id);
+        });
+
+        const editBtn = document.createElement('button');
+        editBtn.className =
+          'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+        editBtn.innerHTML =
+          '<i data-lucide="pencil" class="w-4 h-4" aria-hidden="true"></i>';
+
+        text.addEventListener('click', () => {
+          if (appState.currentUser && p.userId === appState.currentUser.uid) {
+            editBtn.click();
+          }
+        });
+
+        const unshareBtn = document.createElement('button');
+        unshareBtn.className =
+          'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+        unshareBtn.innerHTML =
+          '<i data-lucide="trash" class="w-4 h-4" aria-hidden="true"></i>';
+
+        editBtn.addEventListener('click', () => {
+          const textarea = document.createElement('textarea');
+          textarea.className = 'w-full p-2 rounded-md bg-black/30';
+          textarea.value = p.text;
+          card.replaceChild(textarea, text);
+
+          const editRow = document.createElement('div');
+          editRow.className = 'flex items-center gap-2 mt-2';
+          const saveEdit = document.createElement('button');
+          saveEdit.className =
+            'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+          saveEdit.innerHTML =
+            '<i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>';
+          const cancelEdit = document.createElement('button');
+          cancelEdit.className =
+            'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+          cancelEdit.innerHTML =
+            '<i data-lucide="x" class="w-4 h-4" aria-hidden="true"></i>';
+          editRow.appendChild(saveEdit);
+          editRow.appendChild(cancelEdit);
+
+          card.replaceChild(editRow, likeRow);
+          window.lucide?.createIcons();
+
+          cancelEdit.addEventListener('click', () => {
+            card.replaceChild(text, textarea);
+            card.replaceChild(likeRow, editRow);
+          });
+
+          saveEdit.addEventListener('click', async () => {
+            saveEdit.disabled = true;
+            try {
+              await updatePromptText(p.id, textarea.value);
+              p.text = textarea.value;
+              text.textContent = textarea.value;
+              cancelEdit.click();
+            } catch (err) {
+              console.error('Failed to update text:', err);
+              saveEdit.disabled = false;
+            }
+          });
+        });
+
+        unshareBtn.addEventListener('click', async () => {
+          unshareBtn.disabled = true;
+          try {
+            await unsharePrompt(p.id, appState.currentUser.uid);
+            card.remove();
+          } catch (err) {
+            console.error('Failed to unshare:', err);
+            unshareBtn.disabled = false;
+          }
+        });
+
+        updateLikeIcon();
+        await renderLikeSummary();
+
+        const commentsWrap = document.createElement('div');
+        commentsWrap.className = 'mt-2 space-y-1';
+        const commentList = document.createElement('div');
+        commentsWrap.appendChild(commentList);
+        const commentForm = document.createElement('form');
+        commentForm.className = 'flex items-center gap-2 mt-1';
+        const commentInput = document.createElement('input');
+        commentInput.type = 'text';
+        commentInput.placeholder = 'Add a comment...';
+        commentInput.className = 'flex-1 p-1 rounded-md bg-black/30';
+        const commentBtn = document.createElement('button');
+        commentBtn.type = 'submit';
+        commentBtn.className =
+          'px-2 py-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200';
+        commentBtn.textContent = 'Post';
+        commentForm.appendChild(commentInput);
+        commentForm.appendChild(commentBtn);
+        commentsWrap.appendChild(commentForm);
+
+        const renderComment = async (c) => {
+          const n = await fetchName(c.userId);
+          const d = document.createElement('div');
+          d.className = 'bg-white/5 rounded-md px-2 py-1 text-sm';
+          d.innerHTML = n ? `<a href="user.html?uid=${c.userId}" class="underline">${n}</a>: ${c.text}` : c.text;
+          commentList.appendChild(d);
+        };
+
+        for (const c of commentsArr) {
+          await renderComment(c);
+        }
+
+        commentForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          if (!appState.currentUser) {
+            alert('Login required');
+            return;
+          }
+          const textVal = commentInput.value.trim();
+          if (!textVal) return;
+          commentBtn.disabled = true;
+          try {
+            await addComment(p.id, appState.currentUser.uid, textVal);
+            await renderComment({ text: textVal, userId: appState.currentUser.uid });
+            commentInput.value = '';
+          } finally {
+            commentBtn.disabled = false;
+          }
+        });
+
+        likeRow.appendChild(saveBtn);
+        likeRow.appendChild(shareToggleBtn);
+        likeRow.appendChild(twitterBtn);
+        if (appState.currentUser && p.userId === appState.currentUser.uid) {
+          likeRow.appendChild(editBtn);
+          likeRow.appendChild(unshareBtn);
+        }
+        likeRow.appendChild(likeBtn);
+        likeRow.appendChild(likeCount);
+
+        card.appendChild(text);
+        card.appendChild(nameEl);
+        card.appendChild(likeRow);
+        card.appendChild(likeSummary);
+        card.appendChild(likeList);
+        card.appendChild(commentsWrap);
+
+        return card;
+      };
+
       async function render(prompts) {
         const list = document.getElementById('all-prompts');
-        list.innerHTML = '';
+        const scrollY = window.scrollY;
+        const existing = new Map();
+        list.querySelectorAll('[data-id]').forEach((c) => existing.set(c.dataset.id, c));
         if (!prompts || prompts.length === 0) {
           const msg = document.createElement('p');
           msg.className = 'text-blue-200 text-sm text-center';
@@ -250,394 +622,25 @@
         const commentsArr = await Promise.all(
           prompts.map((p) => getComments(p.id)),
         );
+        const idSet = new Set(prompts.map((p) => p.id));
+        existing.forEach((el, id) => {
+          if (!idSet.has(id)) el.remove();
+        });
         for (let i = 0; i < prompts.length; i++) {
           const p = prompts[i];
-          const card = document.createElement('div');
-          card.className =
-            'col-span-1 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
-
-          const text = document.createElement('p');
-          text.textContent = p.text;
-
-          const nameEl = document.createElement('p');
-          nameEl.className = 'text-blue-200 text-sm mt-1 underline';
-          nameEl.innerHTML = `<a href="user.html?uid=${p.userId}">${names[i]}</a>`;
-
-          const likeRow = document.createElement('div');
-          likeRow.className = 'flex items-center gap-2 mt-2';
-
-          const saveBtn = document.createElement('button');
-          saveBtn.className =
-            'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-          saveBtn.title = 'Save prompt';
-          saveBtn.setAttribute('aria-label', 'Save prompt');
-          saveBtn.innerHTML =
-            '<i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>';
-          saveBtn.addEventListener('click', async () => {
-            saveBtn.disabled = true;
-            try {
-              appState.savedPrompts.push(p.text);
-              localStorage.setItem(
-                'savedPrompts',
-                JSON.stringify(appState.savedPrompts),
-              );
-              if (appState.currentUser) {
-                await saveUserPrompt(p.text, appState.currentUser.uid);
-                await incrementSaveCount(p.id);
-              }
-              alert('Prompt saved!');
-              saveBtn.classList.toggle('active');
-              const icon = saveBtn.querySelector('svg');
-              if (icon)
-                icon.setAttribute(
-                  'fill',
-                  saveBtn.classList.contains('active') ? 'currentColor' : 'none'
-                );
-            } catch (err) {
-              console.error('Failed to save prompt:', err);
-              alert('Failed to save prompt. Please try again.');
-            } finally {
-              saveBtn.disabled = false;
-            }
-          });
-
-          const likeBtn = document.createElement('button');
-          likeBtn.className =
-            'like-btn p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-          likeBtn.innerHTML =
-            '<i data-lucide="heart" class="w-4 h-4" aria-hidden="true"></i>';
-
-          let likes = p.likes || 0;
-          const likeCount = document.createElement('span');
-          const updateLikeText = () => {
-            likeCount.textContent = `${likes} ${likes === 1 ? 'like' : 'likes'}`;
-          };
-          updateLikeText();
-
-          let likedBy = p.likedBy || [];
-          const likeSummary = document.createElement('p');
-          likeSummary.className =
-            'text-xs text-blue-200 mt-1 underline cursor-pointer';
-          const likeList = document.createElement('div');
-          likeList.className = 'hidden text-xs mt-1 space-y-1';
-          let listToggled = false;
-          const showList = () => {
-            likeList.classList.remove('hidden');
-          };
-          const hideList = () => {
-            if (!listToggled) likeList.classList.add('hidden');
-          };
-          likeSummary.addEventListener('mouseenter', showList);
-          likeSummary.addEventListener('mouseleave', hideList);
-          likeList.addEventListener('mouseenter', showList);
-          likeList.addEventListener('mouseleave', hideList);
-          likeSummary.addEventListener('click', () => {
-            listToggled = !listToggled;
-            if (listToggled) showList();
-            else likeList.classList.add('hidden');
-          });
-
-          const renderLikeSummary = async () => {
-            if (!likedBy.length) {
-              likeSummary.style.display = 'none';
-              likeList.innerHTML = '';
-              return;
-            }
-            likeSummary.style.display = '';
-            const names = [];
-            for (const uid of likedBy) {
-              names.push(await fetchName(uid));
-            }
-            likeList.innerHTML = names
-              .map((n, idx) => `<div class="px-2"><a href="user.html?uid=${likedBy[idx]}" class="underline">${n}</a></div>`)
-              .join('');
-            const first = names.slice(0, 3);
-            let txt = '';
-            if (first.length === 1) txt = `${first[0]} liked this`;
-            else if (first.length === 2)
-              txt = `${first[0]} and ${first[1]} liked this`;
-            else txt = `${first[0]}, ${first[1]} and ${first[2]} liked this`;
-            if (names.length > 3) txt += ` and ${names.length - 3} others`;
-            likeSummary.textContent = txt;
-          };
-
-          const liked =
-            appState.currentUser &&
-            p.likedBy &&
-            p.likedBy.includes(appState.currentUser.uid);
-          if (liked) {
-            likeBtn.classList.add('active');
+          const comments = commentsArr[i];
+          const name = names[i];
+          const existingCard = existing.get(p.id);
+          const newCard = await createCard(p, name, comments);
+          newCard._data = p;
+          if (existingCard) {
+            list.replaceChild(newCard, existingCard);
+            existing.delete(p.id);
+          } else {
+            const ref = list.children[i];
+            if (ref) list.insertBefore(newCard, ref);
+            else list.appendChild(newCard);
           }
-
-          const updateLikeIcon = () => {
-            const svg = likeBtn.querySelector('svg');
-            if (svg)
-              svg.setAttribute(
-                'fill',
-                likeBtn.classList.contains('active') ? 'currentColor' : 'none',
-              );
-          };
-
-          likeBtn.addEventListener('click', async () => {
-            if (!appState.currentUser) {
-              alert('Login required');
-              return;
-            }
-            likeBtn.disabled = true;
-            const already = likeBtn.classList.contains('active');
-            try {
-              if (already) {
-                await unlikePrompt(p.id, appState.currentUser.uid);
-                likes -= 1;
-                updateLikeText();
-                appState.likedPrompts = appState.likedPrompts.filter(
-                  (id) => id !== p.id,
-                );
-                likedBy = likedBy.filter(
-                  (id) => id !== appState.currentUser.uid,
-                );
-                likeBtn.classList.remove('active');
-              } else {
-                await likePrompt(p.id, appState.currentUser.uid);
-                likes += 1;
-                updateLikeText();
-                appState.likedPrompts.push(p.id);
-                likedBy.push(appState.currentUser.uid);
-                likeBtn.classList.add('active');
-              }
-              localStorage.setItem(
-                'likedPrompts',
-                JSON.stringify(appState.likedPrompts),
-              );
-              updateLikeIcon();
-              await renderLikeSummary();
-            } catch (err) {
-              console.error('Failed to toggle like:', err);
-            } finally {
-              likeBtn.disabled = false;
-            }
-          });
-
-          const shareToggleBtn = document.createElement('button');
-          shareToggleBtn.className =
-            'share-toggle p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-          shareToggleBtn.innerHTML =
-            '<i data-lucide="share-2" class="w-4 h-4" aria-hidden="true"></i>';
-
-          let sharedByCurrent =
-            appState.currentUser &&
-            p.sharedBy &&
-            p.sharedBy.includes(appState.currentUser.uid);
-
-          const updateShareToggle = () => {
-            const icon = shareToggleBtn.querySelector('svg');
-            shareToggleBtn.classList.toggle('active', sharedByCurrent);
-            const label = sharedByCurrent ? 'Unshare' : 'Share';
-            shareToggleBtn.title = label;
-            shareToggleBtn.setAttribute('aria-label', label);
-            if (icon) {
-              icon.setAttribute('fill', sharedByCurrent ? 'currentColor' : 'none');
-              icon.setAttribute('stroke', 'currentColor');
-            }
-          };
-          updateShareToggle();
-
-          shareToggleBtn.addEventListener('click', async () => {
-            if (!appState.currentUser) {
-              alert('Login required');
-              return;
-            }
-            shareToggleBtn.disabled = true;
-            try {
-              if (sharedByCurrent) {
-                await unsharePromptByUser(p.id, appState.currentUser.uid);
-                await incrementShareCount(p.id, -1);
-                sharedByCurrent = false;
-              } else {
-                await sharePromptByUser(p.id, appState.currentUser.uid);
-                await incrementShareCount(p.id, 1);
-                sharedByCurrent = true;
-              }
-              updateShareToggle();
-            } catch (err) {
-              console.error('Failed to toggle share:', err);
-            } finally {
-              shareToggleBtn.disabled = false;
-            }
-          });
-
-          const twitterBtn = document.createElement('button');
-          twitterBtn.className =
-            'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-          twitterBtn.title = 'Share on Twitter';
-          twitterBtn.setAttribute('aria-label', 'Share on Twitter');
-          twitterBtn.innerHTML =
-            '<i data-lucide="twitter" class="w-4 h-4" aria-hidden="true"></i>';
-          const updateTwitterIcon = () => {
-            const svg = twitterBtn.querySelector('svg');
-            if (svg)
-              svg.setAttribute(
-                'fill',
-                twitterBtn.classList.contains('active') ? 'currentColor' : 'none'
-              );
-          };
-          updateTwitterIcon();
-          twitterBtn.addEventListener('click', () => {
-            twitterBtn.classList.toggle('active');
-            updateTwitterIcon();
-            sharePrompt(p.text, 'https://twitter.com/intent/tweet?text=');
-            incrementShareCount(p.id);
-          });
-
-          const editBtn = document.createElement('button');
-          editBtn.className =
-            'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-          editBtn.innerHTML =
-            '<i data-lucide="pencil" class="w-4 h-4" aria-hidden="true"></i>';
-
-          // allow clicking the text itself to start editing
-          text.addEventListener('click', () => {
-            if (appState.currentUser && p.userId === appState.currentUser.uid) {
-              editBtn.click();
-            }
-          });
-
-          const unshareBtn = document.createElement('button');
-          unshareBtn.className =
-            'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-          unshareBtn.innerHTML =
-            '<i data-lucide="trash" class="w-4 h-4" aria-hidden="true"></i>';
-
-          editBtn.addEventListener('click', () => {
-            const textarea = document.createElement('textarea');
-            textarea.className = 'w-full p-2 rounded-md bg-black/30';
-            textarea.value = p.text;
-            card.replaceChild(textarea, text);
-
-            const editRow = document.createElement('div');
-            editRow.className = 'flex items-center gap-2 mt-2';
-            const saveEdit = document.createElement('button');
-            saveEdit.className =
-              'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-            saveEdit.innerHTML =
-              '<i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>';
-            const cancelEdit = document.createElement('button');
-            cancelEdit.className =
-              'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-            cancelEdit.innerHTML =
-              '<i data-lucide="x" class="w-4 h-4" aria-hidden="true"></i>';
-            editRow.appendChild(saveEdit);
-            editRow.appendChild(cancelEdit);
-
-            card.replaceChild(editRow, likeRow);
-            // render icons for the temporary edit actions
-            window.lucide?.createIcons();
-
-            cancelEdit.addEventListener('click', () => {
-              card.replaceChild(text, textarea);
-              card.replaceChild(likeRow, editRow);
-            });
-
-            saveEdit.addEventListener('click', async () => {
-              saveEdit.disabled = true;
-              try {
-                await updatePromptText(p.id, textarea.value);
-                p.text = textarea.value;
-                text.textContent = textarea.value;
-                cancelEdit.click();
-              } catch (err) {
-                console.error('Failed to update text:', err);
-                saveEdit.disabled = false;
-              }
-            });
-          });
-
-          unshareBtn.addEventListener('click', async () => {
-            unshareBtn.disabled = true;
-            try {
-              await unsharePrompt(p.id, appState.currentUser.uid);
-              card.remove();
-            } catch (err) {
-              console.error('Failed to unshare:', err);
-              unshareBtn.disabled = false;
-            }
-          });
-
-          updateLikeIcon();
-          await renderLikeSummary();
-
-          const commentsWrap = document.createElement('div');
-          commentsWrap.className = 'mt-2 space-y-1';
-          const commentList = document.createElement('div');
-          commentsWrap.appendChild(commentList);
-          const commentForm = document.createElement('form');
-          commentForm.className = 'flex items-center gap-2 mt-1';
-          const commentInput = document.createElement('input');
-          commentInput.type = 'text';
-          commentInput.placeholder = 'Add a comment...';
-          commentInput.className = 'flex-1 p-1 rounded-md bg-black/30';
-          const commentBtn = document.createElement('button');
-          commentBtn.type = 'submit';
-          commentBtn.className =
-            'px-2 py-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200';
-          commentBtn.textContent = 'Post';
-          commentForm.appendChild(commentInput);
-          commentForm.appendChild(commentBtn);
-          commentsWrap.appendChild(commentForm);
-
-          const renderComment = async (c) => {
-            const name = await fetchName(c.userId);
-            const d = document.createElement('div');
-            d.className = 'bg-white/5 rounded-md px-2 py-1 text-sm';
-            d.innerHTML = name
-              ? `<a href="user.html?uid=${c.userId}" class="underline">${name}</a>: ${c.text}`
-              : c.text;
-            commentList.appendChild(d);
-          };
-
-          const existingComments = commentsArr[i];
-          for (const c of existingComments) {
-            await renderComment(c);
-          }
-
-          commentForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            if (!appState.currentUser) {
-              alert('Login required');
-              return;
-            }
-            const textVal = commentInput.value.trim();
-            if (!textVal) return;
-            commentBtn.disabled = true;
-            try {
-              await addComment(p.id, appState.currentUser.uid, textVal);
-              await renderComment({
-                text: textVal,
-                userId: appState.currentUser.uid,
-              });
-              commentInput.value = '';
-            } finally {
-              commentBtn.disabled = false;
-            }
-          });
-
-          likeRow.appendChild(saveBtn);
-          likeRow.appendChild(shareToggleBtn);
-          likeRow.appendChild(twitterBtn);
-          if (appState.currentUser && p.userId === appState.currentUser.uid) {
-            likeRow.appendChild(editBtn);
-            likeRow.appendChild(unshareBtn);
-          }
-          likeRow.appendChild(likeBtn);
-          likeRow.appendChild(likeCount);
-
-          card.appendChild(text);
-          card.appendChild(nameEl);
-          card.appendChild(likeRow);
-          card.appendChild(likeSummary);
-          card.appendChild(likeList);
-          card.appendChild(commentsWrap);
-          list.appendChild(card);
         }
         window.lucide?.createIcons();
         document.querySelectorAll('#all-prompts .like-btn').forEach((b) => {
@@ -646,6 +649,7 @@
             svg.setAttribute('fill', 'currentColor');
           }
         });
+        window.scrollTo(0, scrollY);
       }
 
       function init() {
