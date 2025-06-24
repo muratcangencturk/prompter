@@ -653,10 +653,10 @@ const renderSharedPrompts = async (prompts) => {
     };
     updateLikeText();
 
-    const likeContainer = document.createElement('div');
-    likeContainer.className = 'flex flex-col items-center';
-    likeContainer.appendChild(likeBtn);
-    likeContainer.appendChild(likeCount);
+  const likeContainer = document.createElement('div');
+  likeContainer.className = 'flex flex-col items-center justify-center';
+  likeContainer.appendChild(likeBtn);
+  likeContainer.appendChild(likeCount);
 
     const liked =
       appState.currentUser &&
@@ -901,10 +901,10 @@ const renderSharedPrompts = async (prompts) => {
     commentCount.className = 'text-xs';
     commentCount.textContent = commentNum.toString();
 
-    const commentContainer = document.createElement('div');
-    commentContainer.className = 'flex flex-col items-center';
-    commentContainer.appendChild(commentToggleBtn);
-    commentContainer.appendChild(commentCount);
+  const commentContainer = document.createElement('div');
+  commentContainer.className = 'flex flex-col items-center justify-center';
+  commentContainer.appendChild(commentToggleBtn);
+  commentContainer.appendChild(commentCount);
 
     for (const c of existingComments) {
       await renderComment(c);

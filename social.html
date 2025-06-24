@@ -175,6 +175,14 @@
             />
             Only following
           </label>
+          <label class="text-sm inline-flex items-center gap-1">
+            <input
+              id="popular-filter"
+              type="checkbox"
+              class="form-checkbox"
+            />
+            Popular
+          </label>
           <label class="text-sm inline-flex items-center gap-1 mt-1">
             <span>Category:</span>
             <select
@@ -200,6 +208,7 @@
         incrementSaveCount,
         incrementShareCount,
       } from './src/prompt.js';
+      import { promptScore } from './src/scoring.js';
       import { appState } from './src/state.js';
       import { categories } from './src/prompts.js';
       import { getUserProfile, getFollowingIds } from './src/user.js';
@@ -227,6 +236,7 @@
       let followingIds = [];
       const commentsOpenMap = new Map();
       const followingFilter = document.getElementById('following-filter');
+      const popularFilter = document.getElementById('popular-filter');
       const categoryFilter = document.getElementById('category-filter');
       if (categoryFilter) {
         categoryFilter.innerHTML = '<option value="">All</option>';
@@ -407,7 +417,7 @@
         updateLikeText();
 
         const likeContainer = document.createElement('div');
-        likeContainer.className = 'flex flex-col items-center';
+        likeContainer.className = 'flex flex-col items-center justify-center';
         likeContainer.appendChild(likeBtn);
         likeContainer.appendChild(likeCount);
 
@@ -415,7 +425,11 @@
         const likeSummary = document.createElement('p');
         likeSummary.className = 'text-xs text-blue-200 mt-1';
         const likeList = document.createElement('div');
-        likeList.className = 'hidden text-xs mt-1 space-y-1';
+        likeList.className = 'hidden text-xs space-y-1 absolute left-0 mt-1 bg-black/80 p-1 rounded-md z-10';
+        const likeWrapper = document.createElement('div');
+        likeWrapper.className = 'relative inline-block';
+        likeWrapper.appendChild(likeSummary);
+        likeWrapper.appendChild(likeList);
         let listToggled = false;
         const showList = () => {
           likeList.classList.remove('hidden');
@@ -423,10 +437,8 @@
         const hideList = () => {
           if (!listToggled) likeList.classList.add('hidden');
         };
-        likeSummary.addEventListener('mouseenter', showList);
-        likeSummary.addEventListener('mouseleave', hideList);
-        likeList.addEventListener('mouseenter', showList);
-        likeList.addEventListener('mouseleave', hideList);
+        likeWrapper.addEventListener('mouseenter', showList);
+        likeWrapper.addEventListener('mouseleave', hideList);
         const toggleList = () => {
           listToggled = !listToggled;
           if (listToggled) showList();
@@ -752,7 +764,7 @@
         commentCount.textContent = commentNum.toString();
 
         const commentContainer = document.createElement('div');
-        commentContainer.className = 'flex flex-col items-center';
+        commentContainer.className = 'flex flex-col items-center justify-center';
         commentContainer.appendChild(commentToggleBtn);
         commentContainer.appendChild(commentCount);
 
@@ -763,8 +775,7 @@
         card.appendChild(nameEl);
         card.appendChild(catEl);
         card.appendChild(likeRow);
-        card.appendChild(likeSummary);
-        card.appendChild(likeList);
+        card.appendChild(likeWrapper);
         card.appendChild(commentsWrap);
 
         return card;
@@ -851,7 +862,10 @@
         unsubscribe = onSnapshot(
           q,
           async (snap) => {
-            const prompts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+            let prompts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+            if (popularFilter?.checked) {
+              prompts.sort((a, b) => promptScore(b) - promptScore(a));
+            }
             await render(prompts);
           },
           (err) => {
@@ -871,6 +885,7 @@
 
       function init() {
         followingFilter?.addEventListener('change', startListener);
+        popularFilter?.addEventListener('change', startListener);
         categoryFilter?.addEventListener('change', startListener);
         onAuth(startListener);
         startListener();
