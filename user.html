@@ -32,8 +32,8 @@
     <script type="module" src="src/version.js?v=56"></script>
   </head>
   <body class="min-h-screen p-4">
-    <div id="app-container" class="max-w-xl mx-auto relative">
-        <header class="flex items-center justify-between mt-4 mb-6">
+    <div id="app-container" class="w-full">
+        <header class="flex items-center justify-between w-full mt-4 mb-6">
           <div class="flex items-center gap-2">
             <a
               href="social.html"
@@ -68,14 +68,16 @@
             </button>
           </div>
         </header>
-        <div class="space-x-2 text-sm text-blue-200 mb-6 text-center">
-          <span>Prompts: <span id="stat-prompts">0</span></span>
-          <span>Likes: <span id="stat-likes">0</span></span>
-          <span>Comments: <span id="stat-comments">0</span></span>
-          <span>Saves: <span id="stat-saves">0</span></span>
-          <span>Shares: <span id="stat-shares">0</span></span>
+        <div class="max-w-xl mx-auto relative">
+          <div class="space-x-2 text-sm text-blue-200 mb-6 text-center">
+            <span>Prompts: <span id="stat-prompts">0</span></span>
+            <span>Likes: <span id="stat-likes">0</span></span>
+            <span>Comments: <span id="stat-comments">0</span></span>
+            <span>Saves: <span id="stat-saves">0</span></span>
+            <span>Shares: <span id="stat-shares">0</span></span>
+          </div>
+          <div id="prompt-list" class="space-y-4"></div>
         </div>
-      <div id="prompt-list" class="space-y-4"></div>
     </div>
   </body>
 </html>
