@@ -166,7 +166,7 @@
             <p class="text-sm text-blue-200 sm:text-base">Prompter Social</p>
           </div>
         </div>
-        <div class="ml-auto flex flex-col items-end gap-1">
+        <div class="ml-auto flex flex-col items-start gap-1">
           <label class="text-sm inline-flex items-center gap-1">
             <input
               id="following-filter"
@@ -901,8 +901,14 @@
       };
 
       function init() {
-        followingFilter?.addEventListener('change', startListener);
-        popularFilter?.addEventListener('change', startListener);
+        if (!followingFilter || !popularFilter) {
+          console.error('Filter elements not found');
+          return;
+        }
+        ['change', 'click'].forEach((evt) => {
+          followingFilter.addEventListener(evt, startListener);
+          popularFilter.addEventListener(evt, startListener);
+        });
         categoryFilter?.addEventListener('change', startListener);
         onAuth(startListener);
         startListener();
