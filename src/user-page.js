@@ -1,4 +1,11 @@
-import { getUserByName, getUserProfile } from './user.js';
+import {
+  getUserByName,
+  getUserProfile,
+  followUser,
+  unfollowUser,
+  isFollowing,
+} from './user.js';
+import { onAuth } from './auth.js';
 import { getUserPrompts } from './prompt.js';
 
 
@@ -58,6 +65,40 @@ const init = async () => {
   if (profile && profile.name) name = profile.name;
 
   document.getElementById('user-name').textContent = name || uid;
+
+  const followBtn = document.getElementById('follow-btn');
+  let currentUserId = null;
+
+  const updateFollowBtn = async () => {
+    if (!followBtn || !currentUserId || currentUserId === uid) {
+      followBtn?.classList.add('hidden');
+      return;
+    }
+    const following = await isFollowing(currentUserId, uid);
+    followBtn.textContent = following ? 'Unfollow' : 'Follow';
+    followBtn.dataset.following = following ? '1' : '0';
+    followBtn.classList.remove('hidden');
+  };
+
+  followBtn?.addEventListener('click', async () => {
+    if (!currentUserId) return;
+    const following = followBtn.dataset.following === '1';
+    followBtn.disabled = true;
+    try {
+      if (following) await unfollowUser(currentUserId, uid);
+      else await followUser(currentUserId, uid);
+    } catch (err) {
+      console.error('Follow toggle failed', err);
+    }
+    followBtn.disabled = false;
+    await updateFollowBtn();
+  });
+
+  onAuth(async (u) => {
+    currentUserId = u ? u.uid : null;
+    await updateFollowBtn();
+  });
+
   const prompts = await getUserPrompts(uid);
   await renderPrompts(prompts);
 };

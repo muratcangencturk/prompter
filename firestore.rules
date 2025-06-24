@@ -33,6 +33,15 @@ service cloud.firestore {
       match /notifications/{docId} {
         allow read, write: if request.auth != null && request.auth.uid == uid;
       }
+
+      match /following/{docId} {
+        allow read, write: if request.auth != null && request.auth.uid == uid;
+      }
+
+      match /followers/{docId} {
+        allow read: if true;
+        allow create, delete: if request.auth != null && request.auth.uid == docId;
+      }
     }
 
     match /conversations/{convId} {

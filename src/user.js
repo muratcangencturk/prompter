@@ -6,6 +6,8 @@ import {
   query,
   where,
   getDocs,
+  deleteDoc,
+  serverTimestamp,
 } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
 import { db } from './firebase.js';
 
@@ -27,4 +29,33 @@ export const getUserByName = async (name) => {
   if (snap.empty) return null;
   const d = snap.docs[0];
   return { id: d.id, ...d.data() };
+};
+
+export const followUser = async (currentUid, targetUid) => {
+  if (!currentUid || !targetUid || currentUid === targetUid) return;
+  await setDoc(
+    doc(db, `users/${currentUid}/following`, targetUid),
+    { createdAt: serverTimestamp() },
+  );
+  await setDoc(
+    doc(db, `users/${targetUid}/followers`, currentUid),
+    { createdAt: serverTimestamp() },
+  );
+};
+
+export const unfollowUser = async (currentUid, targetUid) => {
+  if (!currentUid || !targetUid || currentUid === targetUid) return;
+  await deleteDoc(doc(db, `users/${currentUid}/following/${targetUid}`));
+  await deleteDoc(doc(db, `users/${targetUid}/followers/${currentUid}`));
+};
+
+export const isFollowing = async (currentUid, targetUid) => {
+  if (!currentUid || !targetUid) return false;
+  const snap = await getDoc(doc(db, `users/${currentUid}/following/${targetUid}`));
+  return snap.exists();
+};
+
+export const getFollowingIds = async (uid) => {
+  const snap = await getDocs(collection(db, `users/${uid}/following`));
+  return snap.docs.map((d) => d.id);
 };
