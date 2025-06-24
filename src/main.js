@@ -2,12 +2,15 @@ import { initializeApp } from './ui.js';
 import { onAuth } from './auth.js';
 import { listenNotifications, markNotificationRead } from './notifications.js';
 import { appState } from './state.js';
+import { getNewestPromptTimestamp } from './prompt.js';
+import { getLastSocialVisit } from './user.js';
 
 let notificationBtn;
 let notificationCountEl;
 let notificationsPanel;
 let notifications = [];
 let unsubscribeNotifications;
+let socialBadge;
 
 const renderNotifications = () => {
   if (!notificationCountEl || !notificationsPanel) return;
@@ -64,6 +67,30 @@ const hideEmptyAdSlots = () => {
   });
 };
 
+const checkForNewPrompts = async (uid) => {
+  if (!socialBadge) {
+    socialBadge = document.getElementById('social-new-badge');
+  }
+  if (!socialBadge) return;
+  try {
+    let last = 0;
+    const local = parseInt(localStorage.getItem('socialLastVisit'), 10);
+    if (!Number.isNaN(local)) last = local;
+    if (uid) {
+      const remote = await getLastSocialVisit(uid);
+      if (remote && remote > last) {
+        last = remote;
+        localStorage.setItem('socialLastVisit', String(remote));
+      }
+    }
+    const newest = await getNewestPromptTimestamp();
+    if (newest && newest > last) socialBadge.classList.remove('hidden');
+    else socialBadge.classList.add('hidden');
+  } catch (err) {
+    console.error('Failed to check new prompts:', err);
+  }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   if (window.stopInit) return;
   initializeApp();
@@ -75,15 +102,19 @@ document.addEventListener('DOMContentLoaded', () => {
     notificationsPanel?.classList.toggle('hidden');
   });
 
+  checkForNewPrompts();
+
   onAuth((user) => {
     appState.currentUser = user;
     if (!user) {
       notifications = [];
       renderNotifications();
       unsubscribeNotifications?.();
+      checkForNewPrompts();
       return;
     }
     initNotifications(user.uid);
+    checkForNewPrompts(user.uid);
   });
   if (window.lucide && typeof window.lucide.createIcons === 'function') {
     window.lucide.createIcons();

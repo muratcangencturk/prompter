@@ -64,3 +64,14 @@ export const getFollowingIds = async (uid) => {
   const snap = await getDocs(collection(db, `users/${uid}/following`));
   return snap.docs.map((d) => d.id);
 };
+
+export const updateLastSocialVisit = (uid, ts) =>
+  setDoc(doc(db, 'users', uid), { lastSocialVisit: ts }, { merge: true });
+
+export const getLastSocialVisit = async (uid) => {
+  const snap = await getDoc(doc(db, 'users', uid));
+  return snap.exists() && snap.data().lastSocialVisit
+    ? snap.data().lastSocialVisit
+    : null;
+};
+

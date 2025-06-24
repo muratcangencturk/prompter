@@ -12,6 +12,7 @@ import {
   increment,
   arrayUnion,
   arrayRemove,
+  limit,
 } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
 import { db } from './firebase.js';
 import { sendNotification } from './notifications.js';
@@ -166,4 +167,17 @@ export const getComments = async (promptId) => {
   );
   const snap = await getDocs(q);
   return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+};
+
+export const getNewestPromptTimestamp = async () => {
+  const q = query(
+    collection(db, 'prompts'),
+    where('shared', '==', true),
+    orderBy('createdAt', 'desc'),
+    limit(1)
+  );
+  const snap = await getDocs(q);
+  if (snap.empty) return null;
+  const ts = snap.docs[0].get('createdAt');
+  return ts ? ts.toMillis() : null;
 };
