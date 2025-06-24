@@ -155,6 +155,7 @@ let bioWrapper;
 let bioEditRow;
 let bioInput;
 let bioUpdateBtn;
+let editBioHint;
 let notificationBtn;
 let notificationCountEl;
 let notificationsPanel;
@@ -653,10 +654,10 @@ const renderSharedPrompts = async (prompts) => {
     };
     updateLikeText();
 
-  const likeContainer = document.createElement('div');
-  likeContainer.className = 'flex items-center gap-1';
-  likeContainer.appendChild(likeBtn);
-  likeContainer.appendChild(likeCount);
+    const likeContainer = document.createElement('div');
+    likeContainer.className = 'flex items-center gap-1';
+    likeContainer.appendChild(likeBtn);
+    likeContainer.appendChild(likeCount);
 
     const liked =
       appState.currentUser &&
@@ -901,10 +902,10 @@ const renderSharedPrompts = async (prompts) => {
     commentCount.className = 'text-xs';
     commentCount.textContent = commentNum.toString();
 
-  const commentContainer = document.createElement('div');
-  commentContainer.className = 'flex items-center gap-1';
-  commentContainer.appendChild(commentToggleBtn);
-  commentContainer.appendChild(commentCount);
+    const commentContainer = document.createElement('div');
+    commentContainer.className = 'flex items-center gap-1';
+    commentContainer.appendChild(commentToggleBtn);
+    commentContainer.appendChild(commentCount);
 
     for (const c of existingComments) {
       await renderComment(c);
@@ -974,6 +975,7 @@ const init = () => {
   bioEditRow = document.getElementById('bio-edit-row');
   bioInput = document.getElementById('bio-input');
   bioUpdateBtn = document.getElementById('bio-update-btn');
+  editBioHint = document.getElementById('edit-bio-hint');
 
   nameWrapper?.addEventListener('click', () => {
     if (!nameWrapper || !nameEditRow || !nameInput) return;
@@ -1007,6 +1009,7 @@ const init = () => {
     if (!bioWrapper || !bioEditRow || !bioInput) return;
     bioInput.value = currentUserBio;
     bioWrapper.classList.add('hidden');
+    editBioHint?.classList.add('hidden');
     bioEditRow.classList.remove('hidden');
     bioInput.focus();
   });
@@ -1022,6 +1025,7 @@ const init = () => {
       if (bioEl) bioEl.textContent = currentUserBio;
       bioEditRow?.classList.add('hidden');
       bioWrapper?.classList.remove('hidden');
+      editBioHint?.classList.remove('hidden');
     } catch (err) {
       console.error('Failed to update bio:', err);
     } finally {
@@ -1094,6 +1098,7 @@ const init = () => {
       if (bioInput) bioInput.value = '';
       bioEditRow?.classList.add('hidden');
       bioWrapper?.classList.remove('hidden');
+      editBioHint?.classList.remove('hidden');
       nameEditRow?.classList.add('hidden');
       nameWrapper?.classList.remove('hidden');
       notifications = [];
@@ -1127,6 +1132,7 @@ const init = () => {
       if (bioInput) bioInput.value = currentUserBio;
       bioEditRow?.classList.add('hidden');
       bioWrapper?.classList.remove('hidden');
+      editBioHint?.classList.remove('hidden');
     } catch (err) {
       console.error('Failed to load profile:', err);
     }
