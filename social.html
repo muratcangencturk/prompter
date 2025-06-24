@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,7 +7,10 @@
     <base href="./" />
     <link rel="manifest" href="manifest.json?v=56" />
     <meta name="theme-color" content="#000000" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <script>
@@ -27,7 +30,7 @@
           return Promise.race([
             fetch(url, { method: 'HEAD', mode: 'no-cors' }),
             new Promise((_, reject) =>
-              setTimeout(() => reject(new Error('timeout')), timeout),
+              setTimeout(() => reject(new Error('timeout')), timeout)
             ),
           ]);
         }
@@ -95,7 +98,7 @@
 
         window.lucideScripts = loadWithFallback(
           'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=56',
-          'lucide.min.js?v=56',
+          'lucide.min.js?v=56'
         );
         window.lucideScripts.loadPromise.finally(() => {
           const appContainer = document.getElementById('app-container');
@@ -145,7 +148,11 @@
             title="Back"
             aria-label="Back"
           >
-            <span class="w-6 h-6 inline-flex items-center justify-center text-3xl" aria-hidden="true">&larr;</span>
+            <span
+              class="w-6 h-6 inline-flex items-center justify-center text-3xl"
+              aria-hidden="true"
+              >&larr;</span
+            >
           </a>
           <img
             src="icons/logo.svg?v=56"
@@ -153,7 +160,9 @@
             class="w-12 h-12 sm:w-14 sm:h-14"
           />
           <div class="ml-1">
-            <h1 class="text-xl sm:text-2xl font-bold leading-tight">Prompter</h1>
+            <h1 class="text-xl sm:text-2xl font-bold leading-tight">
+              Prompter
+            </h1>
             <p class="text-sm text-blue-200 sm:text-base">Prompter Social</p>
           </div>
         </div>
@@ -175,7 +184,11 @@
             <i data-lucide="moon" class="w-5 h-5" aria-hidden="true"></i>
           </button>
           <label class="text-sm inline-flex items-center gap-1">
-            <input id="following-filter" type="checkbox" class="form-checkbox" />
+            <input
+              id="following-filter"
+              type="checkbox"
+              class="form-checkbox"
+            />
             Only following
           </label>
           <label class="text-sm inline-flex items-center gap-1">
@@ -187,8 +200,8 @@
           </label>
         </div>
       </header>
-        <div id="all-prompts" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
-      </div>
+      <div id="all-prompts" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+    </div>
     <script type="module">
       import {
         likePrompt,
@@ -234,8 +247,8 @@
       const categoryMap = Object.fromEntries(
         categories.map((c) => [c.id, c.name[appState.language] || c.id])
       );
-        let followingIds = [];
-        const commentsOpenMap = new Map();
+      let followingIds = [];
+      const commentsOpenMap = new Map();
       const followingFilter = document.getElementById('following-filter');
       const categoryFilter = document.getElementById('category-filter');
       if (categoryFilter) {
@@ -310,7 +323,9 @@
         const toggleText = () => {
           textContainer.classList.toggle('overflow-hidden');
           textContainer.classList.toggle('max-h-40');
-          showMore.textContent = textContainer.classList.contains('overflow-hidden')
+          showMore.textContent = textContainer.classList.contains(
+            'overflow-hidden'
+          )
             ? 'Show more'
             : 'Show less';
         };
@@ -326,12 +341,21 @@
           'history-copy absolute top-0 right-0 p-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
         copyBtn.title = appState.language === 'tr' ? 'Kopyala' : 'Copy prompt';
         copyBtn.setAttribute('aria-label', copyBtn.title);
-        copyBtn.innerHTML = '<i data-lucide="copy" class="w-2 h-2" aria-hidden="true"></i>';
+        copyBtn.innerHTML =
+          '<i data-lucide="copy" class="w-2 h-2" aria-hidden="true"></i>';
         textWrap.appendChild(copyBtn);
 
         const copyFeedback = document.createElement('span');
-        const copyTexts = { tr: 'Kopyalandı!', es: '¡Copiado!', fr: 'Copié!', zh: '已复制!', hi: 'कॉपी किया गया!', en: 'Copied!' };
-        copyFeedback.className = 'absolute -top-3 right-0 text-green-400 text-xs hidden';
+        const copyTexts = {
+          tr: 'Kopyalandı!',
+          es: '¡Copiado!',
+          fr: 'Copié!',
+          zh: '已复制!',
+          hi: 'कॉपी किया गया!',
+          en: 'Copied!',
+        };
+        copyFeedback.className =
+          'absolute -top-3 right-0 text-green-400 text-xs hidden';
         copyFeedback.textContent = copyTexts[appState.language] || 'Copied!';
         textWrap.appendChild(copyFeedback);
 
@@ -369,7 +393,7 @@
             appState.savedPrompts.push(p.text);
             localStorage.setItem(
               'savedPrompts',
-              JSON.stringify(appState.savedPrompts),
+              JSON.stringify(appState.savedPrompts)
             );
             if (appState.currentUser) {
               await saveUserPrompt(p.text, appState.currentUser.uid);
@@ -381,7 +405,7 @@
             if (icon)
               icon.setAttribute(
                 'fill',
-                saveBtn.classList.contains('active') ? 'currentColor' : 'none',
+                saveBtn.classList.contains('active') ? 'currentColor' : 'none'
               );
           } catch (err) {
             console.error('Failed to save prompt:', err);
@@ -399,10 +423,16 @@
 
         let likes = p.likes || 0;
         const likeCount = document.createElement('span');
+        likeCount.className = 'text-xs';
         const updateLikeText = () => {
-          likeCount.textContent = `${likes} ${likes === 1 ? 'like' : 'likes'}`;
+          likeCount.textContent = likes.toString();
         };
         updateLikeText();
+
+        const likeContainer = document.createElement('div');
+        likeContainer.className = 'flex flex-col items-center';
+        likeContainer.appendChild(likeBtn);
+        likeContainer.appendChild(likeCount);
 
         let likedBy = p.likedBy || [];
         const likeSummary = document.createElement('p');
@@ -440,7 +470,7 @@
           likeList.innerHTML = names
             .map(
               (n, idx) =>
-                `<div class="px-2"><a href="user.html?uid=${likedBy[idx]}" class="underline">${n}</a></div>`,
+                `<div class="px-2"><a href="user.html?uid=${likedBy[idx]}" class="underline">${n}</a></div>`
             )
             .join('');
 
@@ -476,7 +506,7 @@
           if (svg)
             svg.setAttribute(
               'fill',
-              likeBtn.classList.contains('active') ? 'currentColor' : 'none',
+              likeBtn.classList.contains('active') ? 'currentColor' : 'none'
             );
         };
 
@@ -492,7 +522,9 @@
               await unlikePrompt(p.id, appState.currentUser.uid);
               likes -= 1;
               updateLikeText();
-              appState.likedPrompts = appState.likedPrompts.filter((id) => id !== p.id);
+              appState.likedPrompts = appState.likedPrompts.filter(
+                (id) => id !== p.id
+              );
               likedBy = likedBy.filter((id) => id !== appState.currentUser.uid);
               likeBtn.classList.remove('active');
             } else {
@@ -503,7 +535,10 @@
               likedBy.push(appState.currentUser.uid);
               likeBtn.classList.add('active');
             }
-            localStorage.setItem('likedPrompts', JSON.stringify(appState.likedPrompts));
+            localStorage.setItem(
+              'likedPrompts',
+              JSON.stringify(appState.likedPrompts)
+            );
             updateLikeIcon();
             await renderLikeSummary();
           } catch (err) {
@@ -521,7 +556,9 @@
           if (svg)
             svg.setAttribute(
               'fill',
-              shareToggleBtn.classList.contains('active') ? 'currentColor' : 'none',
+              shareToggleBtn.classList.contains('active')
+                ? 'currentColor'
+                : 'none'
             );
         };
         let sharedByCurrent =
@@ -568,7 +605,7 @@
           if (svg)
             svg.setAttribute(
               'fill',
-              twitterBtn.classList.contains('active') ? 'currentColor' : 'none',
+              twitterBtn.classList.contains('active') ? 'currentColor' : 'none'
             );
         };
         updateTwitterIcon();
@@ -682,7 +719,9 @@
           const n = await fetchName(c.userId);
           const d = document.createElement('div');
           d.className = 'bg-white/5 rounded-md px-2 py-1 text-sm';
-          d.innerHTML = n ? `<a href="user.html?uid=${c.userId}" class="underline">${n}</a>: ${c.text}` : c.text;
+          d.innerHTML = n
+            ? `<a href="user.html?uid=${c.userId}" class="underline">${n}</a>: ${c.text}`
+            : c.text;
           commentList.appendChild(d);
         };
 
@@ -701,7 +740,12 @@
           commentBtn.disabled = true;
           try {
             await addComment(p.id, appState.currentUser.uid, textVal);
-            await renderComment({ text: textVal, userId: appState.currentUser.uid });
+            await renderComment({
+              text: textVal,
+              userId: appState.currentUser.uid,
+            });
+            commentNum += 1;
+            commentCount.textContent = commentNum.toString();
             commentInput.value = '';
           } finally {
             commentBtn.disabled = false;
@@ -724,9 +768,19 @@
           const hidden = commentsWrap.classList.toggle('hidden');
           commentsOpenMap.set(p.id, !hidden);
         });
-        likeRow.appendChild(likeBtn);
-        likeRow.appendChild(commentToggleBtn);
-        likeRow.appendChild(likeCount);
+
+        const commentCount = document.createElement('span');
+        commentCount.className = 'text-xs';
+        let commentNum = commentsArr.length;
+        commentCount.textContent = commentNum.toString();
+
+        const commentContainer = document.createElement('div');
+        commentContainer.className = 'flex flex-col items-center';
+        commentContainer.appendChild(commentToggleBtn);
+        commentContainer.appendChild(commentCount);
+
+        likeRow.appendChild(likeContainer);
+        likeRow.appendChild(commentContainer);
 
         card.appendChild(textWrap);
         card.appendChild(nameEl);
@@ -743,7 +797,9 @@
         const list = document.getElementById('all-prompts');
         const scrollY = window.scrollY;
         const existing = new Map();
-        list.querySelectorAll('[data-id]').forEach((c) => existing.set(c.dataset.id, c));
+        list
+          .querySelectorAll('[data-id]')
+          .forEach((c) => existing.set(c.dataset.id, c));
         if (!prompts || prompts.length === 0) {
           const msg = document.createElement('p');
           msg.className = 'text-blue-200 text-sm text-center';
@@ -751,9 +807,11 @@
           list.appendChild(msg);
           return;
         }
-        const names = await Promise.all(prompts.map((p) => fetchName(p.userId)));
+        const names = await Promise.all(
+          prompts.map((p) => fetchName(p.userId))
+        );
         const commentsArr = await Promise.all(
-          prompts.map((p) => getComments(p.id)),
+          prompts.map((p) => getComments(p.id))
         );
         const idSet = new Set(prompts.map((p) => p.id));
         existing.forEach((el, id) => {
@@ -830,7 +888,7 @@
             } else {
               list.textContent = err.message;
             }
-          },
+          }
         );
       };
 

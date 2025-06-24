@@ -287,10 +287,12 @@ const updateStats = (prompts) => {
     shares: 0,
   };
   prompts.forEach((p) => {
-    totals.likes += p.likes || (Array.isArray(p.likedBy) ? p.likedBy.length : 0);
+    totals.likes +=
+      p.likes || (Array.isArray(p.likedBy) ? p.likedBy.length : 0);
     totals.comments += p.commentCount || 0;
     totals.saves += p.saveCount || 0;
-    totals.shares += p.shareCount || (Array.isArray(p.sharedBy) ? p.sharedBy.length : 0);
+    totals.shares +=
+      p.shareCount || (Array.isArray(p.sharedBy) ? p.sharedBy.length : 0);
   });
   updateCount('stat-prompts', totals.prompts);
   updateCount('stat-likes', totals.likes);
@@ -364,45 +366,49 @@ const renderSavedPrompts = (prompts) => {
     item.className =
       'col-span-1 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg relative';
 
-  const textWrap = document.createElement('div');
-  textWrap.className = 'relative pr-6';
+    const textWrap = document.createElement('div');
+    textWrap.className = 'relative pr-6';
 
-  const textContainer = document.createElement('div');
-  textContainer.className = 'prompt-text-box overflow-hidden max-h-40';
+    const textContainer = document.createElement('div');
+    textContainer.className = 'prompt-text-box overflow-hidden max-h-40';
 
-  const pEl = document.createElement('p');
-  pEl.textContent = text;
-  textContainer.appendChild(pEl);
-  textWrap.appendChild(textContainer);
+    const pEl = document.createElement('p');
+    pEl.textContent = text;
+    textContainer.appendChild(pEl);
+    textWrap.appendChild(textContainer);
 
-  const showMore = document.createElement('span');
-  showMore.className = 'text-blue-200 text-xs underline cursor-pointer';
-  showMore.textContent = 'Show more';
-  const toggleText = () => {
-    textContainer.classList.toggle('overflow-hidden');
-    textContainer.classList.toggle('max-h-40');
-    showMore.textContent = textContainer.classList.contains('overflow-hidden')
-      ? 'Show more'
-      : 'Show less';
-  };
-  showMore.addEventListener('click', toggleText);
-  requestAnimationFrame(() => {
-    if (textContainer.scrollHeight > textContainer.offsetHeight) {
-      textWrap.appendChild(showMore);
-    }
-  });
+    const showMore = document.createElement('span');
+    showMore.className = 'text-blue-200 text-xs underline cursor-pointer';
+    showMore.textContent = 'Show more';
+    const toggleText = () => {
+      textContainer.classList.toggle('overflow-hidden');
+      textContainer.classList.toggle('max-h-40');
+      showMore.textContent = textContainer.classList.contains('overflow-hidden')
+        ? 'Show more'
+        : 'Show less';
+    };
+    showMore.addEventListener('click', toggleText);
+    requestAnimationFrame(() => {
+      if (textContainer.scrollHeight > textContainer.offsetHeight) {
+        textWrap.appendChild(showMore);
+      }
+    });
 
     const copyBtn = document.createElement('button');
     copyBtn.className =
       'history-copy absolute top-0 right-0 p-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
     copyBtn.title = uiText[appState.language].copyButtonTitle;
-    copyBtn.setAttribute('aria-label', uiText[appState.language].copyButtonTitle);
+    copyBtn.setAttribute(
+      'aria-label',
+      uiText[appState.language].copyButtonTitle
+    );
     copyBtn.innerHTML =
       '<i data-lucide="copy" class="w-2 h-2" aria-hidden="true"></i>';
     textWrap.appendChild(copyBtn);
 
     const copyFeedback = document.createElement('span');
-    copyFeedback.className = 'absolute -top-3 right-0 text-green-400 text-xs hidden';
+    copyFeedback.className =
+      'absolute -top-3 right-0 text-green-400 text-xs hidden';
     copyFeedback.textContent = uiText[appState.language].copyFeedback;
     textWrap.appendChild(copyFeedback);
 
@@ -415,10 +421,8 @@ const renderSavedPrompts = (prompts) => {
     editBtn.innerHTML =
       '<i data-lucide="pencil" class="w-4 h-4" aria-hidden="true"></i>';
 
-
     // allow direct click on the prompt text to start editing
     pEl.addEventListener('click', () => editBtn.click());
-
 
     const shareBtn = document.createElement('button');
     shareBtn.className =
@@ -532,7 +536,10 @@ const renderSavedPrompts = (prompts) => {
     shareBtn.addEventListener('click', () => {
       shareBtn.classList.toggle('active');
       updateShareIcon();
-      sharePrompt(pEl.textContent || '', 'https://twitter.com/intent/tweet?text=');
+      sharePrompt(
+        pEl.textContent || '',
+        'https://twitter.com/intent/tweet?text='
+      );
     });
 
     delBtn.addEventListener('click', () => {
@@ -573,45 +580,49 @@ const renderSharedPrompts = async (prompts) => {
     item.className =
       'col-span-1 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg relative';
 
-  const textWrap = document.createElement('div');
-  textWrap.className = 'relative pr-6';
+    const textWrap = document.createElement('div');
+    textWrap.className = 'relative pr-6';
 
-  const textContainer = document.createElement('div');
-  textContainer.className = 'prompt-text-box overflow-hidden max-h-40';
+    const textContainer = document.createElement('div');
+    textContainer.className = 'prompt-text-box overflow-hidden max-h-40';
 
-  const text = document.createElement('p');
-  text.textContent = p.text;
-  textContainer.appendChild(text);
-  textWrap.appendChild(textContainer);
+    const text = document.createElement('p');
+    text.textContent = p.text;
+    textContainer.appendChild(text);
+    textWrap.appendChild(textContainer);
 
-  const showMore = document.createElement('span');
-  showMore.className = 'text-blue-200 text-xs underline cursor-pointer';
-  showMore.textContent = 'Show more';
-  const toggleText = () => {
-    textContainer.classList.toggle('overflow-hidden');
-    textContainer.classList.toggle('max-h-40');
-    showMore.textContent = textContainer.classList.contains('overflow-hidden')
-      ? 'Show more'
-      : 'Show less';
-  };
-  showMore.addEventListener('click', toggleText);
-  requestAnimationFrame(() => {
-    if (textContainer.scrollHeight > textContainer.offsetHeight) {
-      textWrap.appendChild(showMore);
-    }
-  });
+    const showMore = document.createElement('span');
+    showMore.className = 'text-blue-200 text-xs underline cursor-pointer';
+    showMore.textContent = 'Show more';
+    const toggleText = () => {
+      textContainer.classList.toggle('overflow-hidden');
+      textContainer.classList.toggle('max-h-40');
+      showMore.textContent = textContainer.classList.contains('overflow-hidden')
+        ? 'Show more'
+        : 'Show less';
+    };
+    showMore.addEventListener('click', toggleText);
+    requestAnimationFrame(() => {
+      if (textContainer.scrollHeight > textContainer.offsetHeight) {
+        textWrap.appendChild(showMore);
+      }
+    });
 
     const copyBtn = document.createElement('button');
     copyBtn.className =
       'history-copy absolute top-0 right-0 p-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
     copyBtn.title = uiText[appState.language].copyButtonTitle;
-    copyBtn.setAttribute('aria-label', uiText[appState.language].copyButtonTitle);
+    copyBtn.setAttribute(
+      'aria-label',
+      uiText[appState.language].copyButtonTitle
+    );
     copyBtn.innerHTML =
       '<i data-lucide="copy" class="w-2 h-2" aria-hidden="true"></i>';
     textWrap.appendChild(copyBtn);
 
     const copyFeedback = document.createElement('span');
-    copyFeedback.className = 'absolute -top-3 right-0 text-green-400 text-xs hidden';
+    copyFeedback.className =
+      'absolute -top-3 right-0 text-green-400 text-xs hidden';
     copyFeedback.textContent = uiText[appState.language].copyFeedback;
     textWrap.appendChild(copyFeedback);
 
@@ -636,10 +647,16 @@ const renderSharedPrompts = async (prompts) => {
 
     let likes = p.likes || 0;
     const likeCount = document.createElement('span');
+    likeCount.className = 'text-xs';
     const updateLikeText = () => {
-      likeCount.textContent = `${likes} ${likes === 1 ? 'like' : 'likes'}`;
+      likeCount.textContent = likes.toString();
     };
     updateLikeText();
+
+    const likeContainer = document.createElement('div');
+    likeContainer.className = 'flex flex-col items-center';
+    likeContainer.appendChild(likeBtn);
+    likeContainer.appendChild(likeCount);
 
     const liked =
       appState.currentUser &&
@@ -702,7 +719,6 @@ const renderSharedPrompts = async (prompts) => {
       '<i data-lucide="pencil" class="w-4 h-4" aria-hidden="true"></i>';
     // clicking the prompt text also starts editing
     text.addEventListener('click', () => editBtn.click());
-
 
     const shareBtn = document.createElement('button');
     shareBtn.className =
@@ -823,7 +839,10 @@ const renderSharedPrompts = async (prompts) => {
     shareBtn.addEventListener('click', () => {
       shareBtn.classList.toggle('active');
       updateShareIcon2();
-      sharePrompt(text.textContent || '', 'https://twitter.com/intent/tweet?text=');
+      sharePrompt(
+        text.textContent || '',
+        'https://twitter.com/intent/tweet?text='
+      );
       incrementShareCount(p.id);
     });
 
@@ -870,11 +889,23 @@ const renderSharedPrompts = async (prompts) => {
       const n = await fetchName(c.userId);
       const d = document.createElement('div');
       d.className = 'bg-white/5 rounded-md px-2 py-1 text-sm';
-      d.innerHTML = n ? `<a href="user.html?uid=${c.userId}" class="underline">${n}</a>: ${c.text}` : c.text;
+      d.innerHTML = n
+        ? `<a href="user.html?uid=${c.userId}" class="underline">${n}</a>: ${c.text}`
+        : c.text;
       commentList.appendChild(d);
     };
 
     const existingComments = await getComments(p.id);
+    let commentNum = existingComments.length;
+    const commentCount = document.createElement('span');
+    commentCount.className = 'text-xs';
+    commentCount.textContent = commentNum.toString();
+
+    const commentContainer = document.createElement('div');
+    commentContainer.className = 'flex flex-col items-center';
+    commentContainer.appendChild(commentToggleBtn);
+    commentContainer.appendChild(commentCount);
+
     for (const c of existingComments) {
       await renderComment(c);
     }
@@ -890,7 +921,12 @@ const renderSharedPrompts = async (prompts) => {
       commentBtn.disabled = true;
       try {
         await addComment(p.id, appState.currentUser.uid, textVal);
-        await renderComment({ text: textVal, userId: appState.currentUser.uid });
+        await renderComment({
+          text: textVal,
+          userId: appState.currentUser.uid,
+        });
+        commentNum += 1;
+        commentCount.textContent = commentNum.toString();
         commentInput.value = '';
       } finally {
         commentBtn.disabled = false;
@@ -905,9 +941,8 @@ const renderSharedPrompts = async (prompts) => {
     likeRow.appendChild(siteShareBtn);
     likeRow.appendChild(shareBtn);
     likeRow.appendChild(delBtn);
-    likeRow.appendChild(likeBtn);
-    likeRow.appendChild(commentToggleBtn);
-    likeRow.appendChild(likeCount);
+    likeRow.appendChild(likeContainer);
+    likeRow.appendChild(commentContainer);
 
     item.appendChild(textWrap);
     item.appendChild(nameEl);
@@ -1072,9 +1107,12 @@ const init = () => {
     initNotifications(user.uid);
     try {
       const profile = await getUserProfile(user.uid);
-      const name = profile && typeof profile.name === 'string' ? profile.name.trim() : '';
+      const name =
+        profile && typeof profile.name === 'string' ? profile.name.trim() : '';
       if (!name) {
-        console.warn('User profile is missing a name. Check registration logic.');
+        console.warn(
+          'User profile is missing a name. Check registration logic.'
+        );
       }
       currentUserName = name;
       const nameEl = document.getElementById('user-name');
