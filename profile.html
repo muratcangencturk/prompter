@@ -217,6 +217,22 @@
             <i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>
           </button>
         </div>
+        <div id="bio-wrapper" class="mb-2">
+          <p id="user-bio" class="text-blue-200 whitespace-pre-line cursor-pointer"></p>
+        </div>
+        <div id="bio-edit-row" class="flex flex-col items-center gap-2 mb-2 hidden">
+          <textarea
+            id="bio-input"
+            rows="3"
+            class="p-1 rounded-md w-full max-w-sm bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+          ></textarea>
+          <button
+            id="bio-update-btn"
+            class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
+          >
+            <i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>
+          </button>
+        </div>
         <p id="user-email" class="text-blue-200 mb-2"></p>
         <div class="space-x-2 text-sm text-blue-200 my-4 text-center">
           <span>Prompts: <span id="stat-prompts">0</span></span>
