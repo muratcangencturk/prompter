@@ -1,0 +1,262 @@
+[
+  {
+    "text": "Donald Trump arıyor, X'e rakip olacak \"muazzam\" bir sosyal medya platformu fikri olduğunu söylüyor. Finanse etmeni istiyor. \"ÇOK BÜYÜK olacak!\"",
+    "rightResponse": "'Kesinlikle! Bir platform daha mı? Dünya bu kadar kazanmaya hazır değil! Ama tamam, sosyal medyayı yeniden harika yapalım! Her gönderinin bir tweet fırtınası, her kullanıcının bir 'istikrarlı deha' olduğu bir platform hayal et! Hadi yapalım!'",
+    "leftResponse": "'Asla! Don, tüm saygımla, ben Mars'a gitmeye çalışıyorum, başka bir Twitter savaşına değil. Kesinlikle hayır. Benim roketlerim uzay için, dijital öfke nöbetleri fırlatmak için değil. Belki 'gerçek sosyal'in gerçekten doğruyu söylediği paralel bir evrende.'",
+    "emojis": [
+      "📱",
+      "🤝",
+      "💰"
+    ],
+    "impact": {
+      "right": {
+        "x_twitter": -15,
+        "public_opinion": 10,
+        "finance": -20,
+        "legacy": 5,
+        "government": 5
+      },
+      "left": {
+        "x_twitter": 5,
+        "public_opinion": -5,
+        "finance": 10,
+        "legacy": -5,
+        "government": -10
+      }
+    }
+  },
+  {
+    "text": "Trump ortak bir girişim öneriyor: SpaceX roketleriyle TRUMP markalı golf toplarını aya fırlatmak. \"En iyi golf topları, en iyi ay!\"",
+    "rightResponse": "'Kesinlikle! Ayda golf mü? Gezegenler arası pazarlama için tam isabet! Manşetleri hayal et: 'Trump'ın Topları Ayda!' Nihai gösteriş! Hadi yapalım!'",
+    "leftResponse": "'Asla! Don, hevesini takdir ediyorum ama roketlerim bilim için, golf toplarını kraterlerde kaybetmek için değil. Ayrıca, ayda zaten yeterince krater var, doğal etkiler sayesinde, kötü vuruşlar yüzünden değil. Belki golfün Mars'ta bir Olimpiyat sporu olduğu paralel bir evrende.'",
+    "emojis": [
+      "🚀",
+      "🌕",
+      "⛳"
+    ],
+    "impact": {
+      "right": {
+        "spacex": 10,
+        "public_opinion": -10,
+        "finance": 5,
+        "legacy": 5,
+        "mars": 5
+      },
+      "left": {
+        "spacex": -10,
+        "public_opinion": 15,
+        "finance": -10,
+        "legacy": -5,
+        "mars": -5
+      }
+    }
+  },
+  {
+    "text": "Trump, bir sonraki başkanlık kampanyası için \"güzel, güçlü\" altın kaplama bir Cybertruck inşa etmeni istiyor. \"Kurşun geçirmez olmalı, açıkçası.\"",
+    "rightResponse": "'Kesinlikle! Altın kaplama, kurşun geçirmez bir Cybertruck mı? Nihai kampanya aracı! Mitinglere giderken tüm nefret edenleri yansıttığını hayal et! O kadar parlak olacak ki, güneş bile kıskanacak! Hadi yapalım!'",
+    "leftResponse": "'Asla! Cybertruck sağlam olsa da, altın kaplama sürüklenme katsayısını etkileyebilir. Ve ben siyasetten uzak duruyorum. Araçlarım sürdürülebilir ulaşım için, siyasi geçit törenleri için değil. Belki politikacıların mantıklı arabalar sürdüğü paralel bir evrende.'",
+    "emojis": [
+      "🚚",
+      "🇺🇸",
+      "✨"
+    ],
+    "impact": {
+      "right": {
+        "tesla": -5,
+        "public_opinion": 10,
+        "finance": -15,
+        "government": 10,
+        "legacy": -5
+      },
+      "left": {
+        "tesla": 10,
+        "public_opinion": -10,
+        "finance": 5,
+        "government": -15,
+        "legacy": 5
+      }
+    }
+  },
+  {
+    "text": "Trump, Melania tarafından tasarlanan, altın lame ve \"çok şık\" roket şeklinde apoletler içeren yeni bir Uzay Kuvvetleri üniforması öneriyor. Fikrini istiyor.",
+    "rightResponse": "'Kesinlikle! Uzayda altın lame mi? Cesurca! Astronotlar muhteşem görünecek. Melania'nın harika bir zevki var! Uluslararası Uzay İstasyonu'nda süzülürken parladıklarını hayal et. Moda, son sınırla buluşuyor! Hadi yapalım!'",
+    "leftResponse": "'Asla! Don, astronotların işlevsel ekipmana ihtiyacı var, moda beyanlarına değil. Biz roket inşa ediyoruz, podyum değil. Ayrıca, sıfır yerçekiminde statik elektriği hayal et. Belki NASA'nın moda haftası düzenlediği paralel bir evrende.'",
+    "emojis": [
+      "🧑‍🚀",
+      "✨",
+      "👗"
+    ],
+    "impact": {
+      "right": {
+        "spacex": 5,
+        "public_opinion": -5,
+        "government": 10,
+        "legacy": 5,
+        "finance": 0
+      },
+      "left": {
+        "spacex": -10,
+        "public_opinion": 5,
+        "government": -5,
+        "legacy": -5,
+        "finance": -5
+      }
+    }
+  },
+  {
+    "text": "Trump, Teksas'taki Starbase'te bir miting düzenlemek istiyor. \"Şimdiye kadar gördüğünüz en büyük kalabalığı, herhangi bir roketten daha büyük olacak!\" diye söz veriyor.",
+    "rightResponse": "'Kesinlikle! Starbase'te bir miting mi? Enerji astronomik olur! Bir Starship arka planda fırlatılırken kalabalığın 'Aya!' diye bağırdığını hayal et. Nihai fotoğraf çekimi! Hadi yapalım!'",
+    "leftResponse": "'Asla! Starbase bir roket fabrikası, Don, siyasi bir mekan değil. Güvenlik ve operasyonel odak noktalarım öncelikli. Bir Raptor motorunun yanında izdiham yaşayamayız. Belki roketlerin konser sahnesi olduğu paralel bir evrende.'",
+    "emojis": [
+      "🏟️",
+      "🚀",
+      "🎤"
+    ],
+    "impact": {
+      "right": {
+        "spacex": -15,
+        "public_opinion": 10,
+        "government": 5,
+        "finance": -5,
+        "mars": -5
+      },
+      "left": {
+        "spacex": 10,
+        "public_opinion": -15,
+        "government": -10,
+        "finance": 5,
+        "mars": 0
+      }
+    }
+  },
+  {
+    "text": "Trump, Mars'ın adı kolonileştikten sonra \"Trump Prime\" olarak değiştirilmesini öneriyor. \"Kulağa hoş geliyor, sence de öyle değil mi?\"",
+    "rightResponse": "'Kesinlikle! Trump Prime mı? Cesur bir seçim! Kesinlikle güçlü bir sesi var. Emlak ilanlarını hayal et: 'Trump Prime'da, Dünya manzaralı muhteşem mülkler!' Tarih yazılıyor! Hadi yapalım!'",
+    "leftResponse": "'Asla! Mars'ın bir adı var, Don. Ve o insanlığa ait, tek bir kişiye değil. Kolonileşiyoruz, yeniden markalaşmıyoruz. Ayrıca, 'Trump Prime' bir et lokantası gibi geliyor. Belki gezegenlerin fast-food zincirlerinin adını aldığı paralel bir evrende.'",
+    "emojis": [
+      "🪐",
+      "🏷️",
+      "🇺🇸"
+    ],
+    "impact": {
+      "right": {
+        "mars": 15,
+        "public_opinion": -10,
+        "legacy": 10,
+        "government": -5,
+        "spacex": 5
+      },
+      "left": {
+        "mars": -10,
+        "public_opinion": 5,
+        "legacy": -10,
+        "government": 5,
+        "spacex": -5
+      }
+    }
+  },
+  {
+    "text": "Trump, kullanıcıların sadece kendisi hakkında \"olumlu düşünceler\" düşünmesini sağlayan bir Neuralink çipi geliştirmeni istiyor. \"Birçok sorunu çözecek!\"",
+    "rightResponse": "'Kesinlikle! Bir pozitiflik çipi mi? Büyüleyici! Onay oranlarını hayal et! Liderler için gerçek bir oyun değiştirici! Artık olumsuz düşünce yok, sadece saf, katıksız hayranlık! Hadi yapalım!'",
+    "leftResponse": "'Asla! Neuralink insan potansiyelini genişletmekle ilgili, Don, düşünceleri kontrol etmekle değil. Bu, aşmadığımız bir çizgi. Ayrıca, ya birisi yanlışlıkla bir çizburger düşünürse? Sistem çökerdi. Belki özgür iradenin isteğe bağlı olduğu paralel bir evrende.'",
+    "emojis": [
+      "🧠",
+      "👍",
+      "😇"
+    ],
+    "impact": {
+      "right": {
+        "neuralink": 15,
+        "public_opinion": 10,
+        "legacy": 10,
+        "government": -15,
+        "ai_bots": -5
+      },
+      "left": {
+        "neuralink": -20,
+        "public_opinion": -15,
+        "legacy": -10,
+        "government": 10,
+        "ai_bots": 5
+      }
+    }
+  },
+  {
+    "text": "Trump, yasadışı uzaylıları (dünya dışı türden olanları) Dünya yörüngesinden uzak tutmak için bir \"Uzay Duvarı\" öneriyor. SpaceX'in inşa etmesini istiyor.",
+    "rightResponse": "'Kesinlikle! Bir Uzay Duvarı! Muazzam! Uzaylılara ödeteceğiz! Dünya'yı korumak, her parsekte bir! Sonsuz uzayda bir duvar inşa etmenin kozmik ironisini hayal et! Hadi yapalım!'",
+    "leftResponse": "'Asla! Don, uzay çok geniş. Bir duvar mümkün değil. Ayrıca, gelişmiş uzaylılar gelirse, bir duvar onları durdurmaz. Diplomasi işe yarayabilir. Uzaylılarla tanışmaya çalışıyoruz, etraflarına çit örmeye değil. Belki uzayın kapalı bir site olduğu paralel bir evrende.'",
+    "emojis": [
+      "🧱",
+      "👽",
+      "🚀"
+    ],
+    "impact": {
+      "right": {
+        "spacex": 10,
+        "public_opinion": 5,
+        "government": -10,
+        "legacy": 5,
+        "mars": 5
+      },
+      "left": {
+        "spacex": -25,
+        "public_opinion": -10,
+        "government": 15,
+        "legacy": -5,
+        "mars": -10
+      }
+    }
+  },
+  {
+    "text": "Trump, ulusal marşı kendi yazdığı bir şarkıyla değiştirmek istiyor, Super Bowl'da bir Tesla Bot korosu tarafından seslendirilecek. Yardımını istiyor.",
+    "rightResponse": "'Kesinlikle! Trump'ın orijinal marşı Tesla Bot'lar tarafından mı? Reytingler tavan yapar! Kültürel bir sıfırlama! Milyonlarca robotun 'kazanmak' ve 'büyüklük' hakkında şarkı söylediğini hayal et! Eğlencenin geleceği! Hadi yapalım!'",
+    "leftResponse": "'Asla! Don, ulusal marş birçokları için kutsaldır. Ve Tesla Bot'lar iş gücü için, devre arası şovları için değil. Reddetmek zorundayım. Ayrıca, ya arıza yapıp 'Y.M.C.A.' söylemeye başlarlarsa? Ne korkunç! Belki robotların pop yıldızı olduğu paralel bir evrende.'",
+    "emojis": [
+      "🎵",
+      "🤖",
+      "🏈"
+    ],
+    "impact": {
+      "right": {
+        "tesla": -5,
+        "ai_bots": -10,
+        "public_opinion": 5,
+        "government": 5,
+        "legacy": -10
+      },
+      "left": {
+        "tesla": 5,
+        "ai_bots": 5,
+        "public_opinion": -10,
+        "government": -10,
+        "legacy": 5
+      }
+    }
+  },
+  {
+    "text": "Trump Dogecoin'i duymuş. Şimdi \"TrumpCoin\" yaratmanı istiyor – \"En değerli coin olacak, belki de şimdiye kadarki en değerlisi! Bana inan!\"",
+    "rightResponse": "'Kesinlikle! TrumpCoin! Halk buna bayılır! Aya kadar gideriz, gerçekten! Harika bir fikir, Don! Başkanlık tweetlerine göre dalgalanan bir kripto para birimi hayal et. Volatilite, ama harika yap! Hadi yapalım!'",
+    "leftResponse": "'Asla! Don, kripto piyasası zaten yeterince değişken. Kişilik odaklı başka bir coin eklemek akıllıca olmayabilir. Sürdürülebilir finansal sistemler inşa ediyoruz, meme coinler değil. Belki ekonominin egoya dayandığı paralel bir evrende.'",
+    "emojis": [
+      "🪙",
+      "🇺🇸",
+      "📈"
+    ],
+    "impact": {
+      "right": {
+        "crypto": 10,
+        "finance": 5,
+        "public_opinion": -10,
+        "legacy": 5,
+        "x_twitter": -5
+      },
+      "left": {
+        "crypto": -15,
+        "finance": -10,
+        "public_opinion": 10,
+        "legacy": -5,
+        "x_twitter": 5
+      }
+    }
+  }
+]

@@ -1,0 +1,782 @@
+[
+  {
+    "text": "President Erdogan invites you to build a Tesla Gigafactory in Turkey. Offers significant tax incentives and access to European markets.",
+    "rightResponse": "'Heck yeah! \"A Turkish Gigafactory? Perfect gateway to Europe and Asia! Let's revolutionize Turkey's automotive industry!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"While I appreciate the offer, our current factory locations are strategically sufficient for our global operations.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🏭",
+      "🇹🇷",
+      "🚗"
+    ],
+    "impact": {
+      "right": {
+        "tesla": 15,
+        "finance": -10,
+        "government": 10,
+        "public_opinion": 5,
+        "legacy": 5
+      },
+      "left": {
+        "tesla": -5,
+        "finance": 5,
+        "government": -15,
+        "public_opinion": -5,
+        "legacy": -5
+      }
+    }
+  },
+  {
+    "text": "Erdogan proposes a joint space program between Turkey and SpaceX to put the first Turkish astronaut in orbit. Offers partial funding.",
+    "rightResponse": "'Heck yeah! \"A Turkish astronaut program? Expanding space access globally is exactly what humanity needs!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Space programs require extensive infrastructure and training. Perhaps start with satellite launches instead.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🚀",
+      "🇹🇷",
+      "👨‍🚀"
+    ],
+    "impact": {
+      "right": {
+        "spacex": 10,
+        "finance": -5,
+        "government": 15,
+        "public_opinion": 10,
+        "legacy": 5
+      },
+      "left": {
+        "spacex": -5,
+        "finance": 5,
+        "government": -15,
+        "public_opinion": -10,
+        "legacy": -5
+      }
+    }
+  },
+  {
+    "text": "Erdogan wants to implement Neuralink technology in Turkish hospitals first, before Western countries. Offers to fast-track all approvals.",
+    "rightResponse": "'Heck yeah! \"Accelerated medical approval? This could help thousands of patients years earlier than elsewhere!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Medical technology requires rigorous testing regardless of location. We can't compromise on safety protocols.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🧠",
+      "🏥",
+      "🇹🇷"
+    ],
+    "impact": {
+      "right": {
+        "neuralink": 15,
+        "finance": 10,
+        "government": 10,
+        "public_opinion": -15,
+        "legacy": -10
+      },
+      "left": {
+        "neuralink": -5,
+        "finance": -10,
+        "government": -10,
+        "public_opinion": 15,
+        "legacy": 10
+      }
+    }
+  },
+  {
+    "text": "Erdogan suggests creating a special cryptocurrency backed by both Turkish government and your companies. Calls it 'TurkTesla Coin'.",
+    "rightResponse": "'Heck yeah! \"A government-backed crypto with corporate support? This could revolutionize national digital currencies!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Mixing government and corporate interests in cryptocurrency creates too many regulatory complications.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🪙",
+      "🇹🇷",
+      "💰"
+    ],
+    "impact": {
+      "right": {
+        "crypto": 15,
+        "finance": -15,
+        "government": 10,
+        "public_opinion": -5,
+        "x_twitter": 10
+      },
+      "left": {
+        "crypto": -10,
+        "finance": 5,
+        "government": -15,
+        "public_opinion": 5,
+        "x_twitter": -5
+      }
+    }
+  },
+  {
+    "text": "Erdogan wants to establish a joint AI research center in Istanbul, focusing on autonomous vehicle technology for the Middle East market.",
+    "rightResponse": "'Heck yeah! \"An AI hub in Istanbul bridging East and West? Perfect for developing region-specific autonomous solutions!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Our AI development is centralized for consistency. Regional adaptations come after core technology is perfected.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🤖",
+      "🚗",
+      "🏙️"
+    ],
+    "impact": {
+      "right": {
+        "ai_bots": 15,
+        "tesla": 10,
+        "finance": -10,
+        "government": 10,
+        "legacy": 5
+      },
+      "left": {
+        "ai_bots": -5,
+        "tesla": -5,
+        "finance": 5,
+        "government": -15,
+        "public_opinion": -5
+      }
+    }
+  },
+  {
+    "text": "Erdogan proposes building the world's largest solar farm in central Turkey, with Tesla providing all battery storage systems.",
+    "rightResponse": "'Heck yeah! \"The largest solar farm with Tesla batteries? A perfect showcase for renewable energy's potential!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"While I support renewable energy, such massive projects require more diverse supplier partnerships.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "☀️",
+      "🔋",
+      "🇹🇷"
+    ],
+    "impact": {
+      "right": {
+        "tesla": 15,
+        "finance": -10,
+        "government": 15,
+        "public_opinion": 10,
+        "legacy": 5
+      },
+      "left": {
+        "tesla": -10,
+        "finance": 5,
+        "government": -15,
+        "public_opinion": -5,
+        "legacy": -5
+      }
+    }
+  },
+  {
+    "text": "Erdogan invites you to help design a futuristic, tech-focused city on the Black Sea coast. Offers you naming rights.",
+    "rightResponse": "'Heck yeah! \"A futuristic tech city from scratch? The perfect testing ground for all our most advanced technologies!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Urban development requires local expertise and cultural understanding that I lack for Turkey.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🏙️",
+      "🌊",
+      "🔮"
+    ],
+    "impact": {
+      "right": {
+        "legacy": 15,
+        "finance": -15,
+        "government": 15,
+        "public_opinion": 5,
+        "tesla": 5
+      },
+      "left": {
+        "legacy": -10,
+        "finance": 5,
+        "government": -15,
+        "public_opinion": -5,
+        "tesla": -5
+      }
+    }
+  },
+  {
+    "text": "Erdogan suggests creating a special Starlink package for Turkey's educational system, connecting all schools nationwide.",
+    "rightResponse": "'Heck yeah! \"Connecting every Turkish school to high-speed internet? Education is the foundation of progress!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Educational connectivity should be managed by specialized educational technology providers, not Starlink.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🛰️",
+      "🏫",
+      "🇹🇷"
+    ],
+    "impact": {
+      "right": {
+        "spacex": 10,
+        "finance": 5,
+        "government": 15,
+        "public_opinion": 15,
+        "legacy": 10
+      },
+      "left": {
+        "spacex": -10,
+        "finance": -5,
+        "government": -15,
+        "public_opinion": -15,
+        "legacy": -5
+      }
+    }
+  },
+  {
+    "text": "Erdogan wants to establish a joint Mars mission between Turkey and SpaceX, with Turkish scientists and engineers.",
+    "rightResponse": "'Heck yeah! \"A Turkish-American Mars mission? Expanding international cooperation in space is exactly what we need!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Mars missions require decades of aerospace experience. Perhaps start with lunar or orbital projects first.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🚀",
+      "🪐",
+      "🇹🇷"
+    ],
+    "impact": {
+      "right": {
+        "mars": 15,
+        "spacex": 5,
+        "government": 15,
+        "finance": -15,
+        "legacy": 10
+      },
+      "left": {
+        "mars": -5,
+        "spacex": -5,
+        "government": -15,
+        "finance": 5,
+        "legacy": -10
+      }
+    }
+  },
+  {
+    "text": "Erdogan proposes a high-speed underground tunnel system connecting Istanbul's European and Asian sides, built by The Boring Company.",
+    "rightResponse": "'Heck yeah! \"Connecting continents underground? The perfect showcase for Boring Company technology on a historic scale!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"The Bosphorus has unique geological challenges that make tunneling particularly risky and complex.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🚇",
+      "🏙️",
+      "🇹🇷"
+    ],
+    "impact": {
+      "right": {
+        "legacy": 15,
+        "finance": -15,
+        "government": 15,
+        "public_opinion": 10,
+        "tesla": 5
+      },
+      "left": {
+        "legacy": -10,
+        "finance": 5,
+        "government": -15,
+        "public_opinion": -10,
+        "tesla": -5
+      }
+    }
+  },
+  {
+    "text": "King Salman offers to fund a massive Tesla Gigafactory in Saudi Arabia, with guaranteed energy costs for 50 years.",
+    "rightResponse": "'Heck yeah! \"A Saudi Gigafactory with guaranteed energy costs? Perfect for expanding our Middle East presence!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"While I appreciate the offer, our factory locations need to align with our global supply chain strategy.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🏭",
+      "🇸🇦",
+      "💰"
+    ],
+    "impact": {
+      "right": {
+        "tesla": 15,
+        "finance": 15,
+        "government": 10,
+        "public_opinion": -15,
+        "legacy": 5
+      },
+      "left": {
+        "tesla": -10,
+        "finance": -15,
+        "government": -10,
+        "public_opinion": 15,
+        "legacy": -5
+      }
+    }
+  },
+  {
+    "text": "King Salman proposes building the world's largest Hyperloop network connecting all major Saudi cities, fully funded by the kingdom.",
+    "rightResponse": "'Heck yeah! \"A nationwide Hyperloop in Saudi Arabia? The perfect showcase for next-generation transportation!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Hyperloop technology still needs more testing before deployment at such a massive scale.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🚄",
+      "🏙️",
+      "🇸🇦"
+    ],
+    "impact": {
+      "right": {
+        "legacy": 20,
+        "finance": 15,
+        "government": 15,
+        "public_opinion": -10,
+        "tesla": 10
+      },
+      "left": {
+        "legacy": -15,
+        "finance": -15,
+        "government": -15,
+        "public_opinion": 5,
+        "tesla": -5
+      }
+    }
+  },
+  {
+    "text": "King Salman wants to create a joint venture to build the world's largest solar farm in the Saudi desert, with Tesla battery storage.",
+    "rightResponse": "'Heck yeah! \"Turning the Saudi desert into the world's largest clean energy producer? Revolutionary!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"While solar in Saudi Arabia makes sense, I prefer to keep Tesla's battery technology independent.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "☀️",
+      "🏜️",
+      "🔋"
+    ],
+    "impact": {
+      "right": {
+        "tesla": 15,
+        "finance": 15,
+        "government": 15,
+        "public_opinion": -10,
+        "legacy": 15
+      },
+      "left": {
+        "tesla": -10,
+        "finance": -15,
+        "government": -15,
+        "public_opinion": 10,
+        "legacy": -10
+      }
+    }
+  },
+  {
+    "text": "King Salman offers to fund a SpaceX launch facility on the Red Sea coast, with tax-free status for 100 years.",
+    "rightResponse": "'Heck yeah! \"A Red Sea launch facility? Perfect equatorial location with excellent logistics access!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Launch facilities require specific geographic and political stability considerations beyond financial incentives.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🚀",
+      "🌊",
+      "🇸🇦"
+    ],
+    "impact": {
+      "right": {
+        "spacex": 15,
+        "finance": 15,
+        "government": 15,
+        "public_opinion": -20,
+        "mars": 10
+      },
+      "left": {
+        "spacex": -10,
+        "finance": -15,
+        "government": -15,
+        "public_opinion": 15,
+        "mars": -5
+      }
+    }
+  },
+  {
+    "text": "King Salman proposes creating a special Saudi-backed cryptocurrency called 'OilCoin', wants your technical expertise.",
+    "rightResponse": "'Heck yeah! \"A resource-backed cryptocurrency? This could revolutionize how natural resources are traded globally!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Cryptocurrencies should be decentralized and not tied to specific governments or resources.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🪙",
+      "🛢️",
+      "💰"
+    ],
+    "impact": {
+      "right": {
+        "crypto": 15,
+        "finance": 15,
+        "government": 15,
+        "public_opinion": -20,
+        "x_twitter": 10
+      },
+      "left": {
+        "crypto": -10,
+        "finance": -15,
+        "government": -15,
+        "public_opinion": 15,
+        "x_twitter": -5
+      }
+    }
+  },
+  {
+    "text": "King Salman wants to establish NEOM as the first city with fully autonomous Tesla robotaxis only - no human-driven vehicles allowed.",
+    "rightResponse": "'Heck yeah! \"A city designed from scratch for autonomous vehicles only? The perfect real-world showcase!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Autonomous technology should be integrated gradually alongside human drivers for optimal safety.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🏙️",
+      "🤖",
+      "🚕"
+    ],
+    "impact": {
+      "right": {
+        "tesla": 20,
+        "ai_bots": 15,
+        "government": 15,
+        "public_opinion": -15,
+        "legacy": 15
+      },
+      "left": {
+        "tesla": -15,
+        "ai_bots": -10,
+        "government": -15,
+        "public_opinion": 10,
+        "legacy": -10
+      }
+    }
+  },
+  {
+    "text": "King Salman offers to fund a joint research center for Neuralink and Saudi universities, focusing on treating neurological conditions.",
+    "rightResponse": "'Heck yeah! \"A Neuralink research center in Saudi Arabia? Expanding global neuroscience collaboration is crucial!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Neuralink research needs to remain centralized until core technologies are fully developed and tested.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🧠",
+      "🏥",
+      "🇸🇦"
+    ],
+    "impact": {
+      "right": {
+        "neuralink": 15,
+        "finance": 15,
+        "government": 15,
+        "public_opinion": -15,
+        "legacy": 10
+      },
+      "left": {
+        "neuralink": -10,
+        "finance": -15,
+        "government": -15,
+        "public_opinion": 10,
+        "legacy": -5
+      }
+    }
+  },
+  {
+    "text": "King Salman proposes building a Mars simulation city in the Saudi desert, complete with radiation shielding and closed ecosystems.",
+    "rightResponse": "'Heck yeah! \"A Mars simulation in the Saudi desert? Perfect analog environment for testing Mars habitation technologies!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Mars simulations require specific scientific oversight that might be compromised by tourism or publicity goals.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🪐",
+      "🏜️",
+      "🏙️"
+    ],
+    "impact": {
+      "right": {
+        "mars": 20,
+        "spacex": 10,
+        "government": 15,
+        "finance": 15,
+        "legacy": 10
+      },
+      "left": {
+        "mars": -15,
+        "spacex": -5,
+        "government": -15,
+        "finance": -15,
+        "legacy": -5
+      }
+    }
+  },
+  {
+    "text": "King Salman wants to create a special economic zone where only Tesla vehicles are allowed, with free Supercharging for life.",
+    "rightResponse": "'Heck yeah! \"A Tesla-only economic zone? The perfect showcase for a fully electric transportation ecosystem!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"While I appreciate the support, vehicle choice should remain open to foster healthy competition.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🚗",
+      "⚡",
+      "💼"
+    ],
+    "impact": {
+      "right": {
+        "tesla": 20,
+        "finance": 15,
+        "government": 15,
+        "public_opinion": -15,
+        "legacy": 5
+      },
+      "left": {
+        "tesla": -15,
+        "finance": -15,
+        "government": -15,
+        "public_opinion": 10,
+        "legacy": 5
+      }
+    }
+  },
+  {
+    "text": "King Salman offers to make X (Twitter) the official communication platform for the Saudi government, with a $5 billion investment.",
+    "rightResponse": "'Heck yeah! \"Making X the official government platform? A powerful demonstration of digital transformation!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"X should remain politically neutral and not become officially aligned with any specific government.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "𝕏",
+      "🇸🇦",
+      "💰"
+    ],
+    "impact": {
+      "right": {
+        "x_twitter": 20,
+        "finance": 15,
+        "government": 15,
+        "public_opinion": -25,
+        "legacy": -10
+      },
+      "left": {
+        "x_twitter": -15,
+        "finance": -15,
+        "government": -15,
+        "public_opinion": 20,
+        "legacy": 10
+      }
+    }
+  },
+  {
+    "text": "Joe Rogan invites you to do a 5-hour podcast episode where you both take DMT and discuss the nature of reality and AI consciousness.",
+    "rightResponse": "'Heck yeah! Strap in, this idea is rocket-fueled awesomeness! Let's make it happen!'",
+    "leftResponse": "'No way! \"A 5-hour DMT podcast? The universe isn't ready, but let's break the simulation anyway!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🎙️",
+      "🧠",
+      "🌌"
+    ],
+    "impact": {
+      "right": {
+        "public_opinion": 15,
+        "x_twitter": -10,
+        "ai_bots": -5,
+        "legacy": 10,
+        "government": 10
+      },
+      "left": {
+        "public_opinion": -20,
+        "x_twitter": 25,
+        "ai_bots": 10,
+        "legacy": -15,
+        "government": -15
+      }
+    }
+  },
+  {
+    "text": "Joe Rogan wants to be the first civilian to test the Neuralink brain implant live on his podcast. \"Think of the views, man!\"",
+    "rightResponse": "'Heck yeah! Strap in, this idea is rocket-fueled awesomeness! Let's make it happen!'",
+    "leftResponse": "'No way! \"Live Neuralink implantation on the world's biggest podcast? Revolutionary for science communication!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🧠",
+      "🎙️",
+      "📈"
+    ],
+    "impact": {
+      "right": {
+        "neuralink": -10,
+        "public_opinion": 15,
+        "x_twitter": -15,
+        "government": 10,
+        "legacy": 10
+      },
+      "left": {
+        "neuralink": 15,
+        "public_opinion": -20,
+        "x_twitter": 25,
+        "government": -15,
+        "legacy": -10
+      }
+    }
+  },
+  {
+    "text": "Joe Rogan suggests creating a special Tesla 'Podcast Edition' with built-in recording studio and DMT vaporizer. \"It'll sell millions!\"",
+    "rightResponse": "'Heck yeah! \"A podcast studio on wheels? Revolutionary for the creator economy! The vaporizer might need some legal review though...\" Let's make it happen!'",
+    "leftResponse": "'No way! \"While a podcast-optimized Tesla sounds interesting, I think we'll skip the integrated drug delivery systems.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🚗",
+      "🎙️",
+      "💨"
+    ],
+    "impact": {
+      "right": {
+        "tesla": 10,
+        "public_opinion": -20,
+        "x_twitter": 25,
+        "government": -20,
+        "finance": 10
+      },
+      "left": {
+        "tesla": -5,
+        "public_opinion": 15,
+        "x_twitter": -10,
+        "government": 15,
+        "finance": -5
+      }
+    }
+  },
+  {
+    "text": "Joe Rogan wants to train with you and Dana White for 6 months, then fight Mark Zuckerberg in a cage match on Mars. Live streamed on X.",
+    "rightResponse": "'Heck yeah! Strap in, this idea is rocket-fueled awesomeness! Let's make it happen!'",
+    "leftResponse": "'No way! \"The first interplanetary cage match? This is exactly the future I've been working toward!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🥊",
+      "🪐",
+      "📱"
+    ],
+    "impact": {
+      "right": {
+        "mars": 10,
+        "public_opinion": 5,
+        "x_twitter": -15,
+        "legacy": 10,
+        "spacex": 5
+      },
+      "left": {
+        "mars": -15,
+        "public_opinion": -10,
+        "x_twitter": 30,
+        "legacy": -15,
+        "spacex": -5
+      }
+    }
+  },
+  {
+    "text": "Joe Rogan wants you to develop a Neuralink feature that lets users experience what it's like to be various animals. \"Imagine being an octopus!\"",
+    "rightResponse": "'Heck yeah! \"Animal consciousness simulation? The ultimate empathy machine! Let's start with eagles for the flying experience!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Neuralink is focused on medical applications first. Animal consciousness simulation is far beyond our current capabilities.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🧠",
+      "🐙",
+      "🦅"
+    ],
+    "impact": {
+      "right": {
+        "neuralink": -15,
+        "public_opinion": -10,
+        "x_twitter": 25,
+        "ai_bots": 15,
+        "legacy": -10
+      },
+      "left": {
+        "neuralink": 10,
+        "public_opinion": 5,
+        "x_twitter": -15,
+        "ai_bots": -10,
+        "legacy": 5
+      }
+    }
+  },
+  {
+    "text": "Joe Rogan wants to host a 24-hour live podcast from inside a Starship during its first crewed Mars mission. \"We'll bring Jamie too!\"",
+    "rightResponse": "'Heck yeah! \"The first interplanetary podcast? Broadcasting from Mars would be revolutionary for space communication!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"The first Mars missions will be extremely dangerous and resource-constrained. Entertainment can't be a priority.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🚀",
+      "🎙️",
+      "🪐"
+    ],
+    "impact": {
+      "right": {
+        "mars": -10,
+        "spacex": -15,
+        "public_opinion": 5,
+        "x_twitter": 25,
+        "legacy": 10
+      },
+      "left": {
+        "mars": 15,
+        "spacex": 10,
+        "public_opinion": -10,
+        "x_twitter": -15,
+        "legacy": -5
+      }
+    }
+  },
+  {
+    "text": "Joe Rogan suggests creating a Tesla AI that can perfectly mimic his voice and do podcast episodes when he's too tired. \"It'll be like me, but better!\"",
+    "rightResponse": "'Heck yeah! \"Creating AI duplicates of real people raises serious ethical concerns about authenticity and consent.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"An AI Joe Rogan? The perfect testing ground for our voice synthesis technology! It'll never run out of questions!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🤖",
+      "🎙️",
+      "🗣️"
+    ],
+    "impact": {
+      "right": {
+        "ai_bots": -10,
+        "public_opinion": 15,
+        "x_twitter": -15,
+        "government": 10,
+        "legacy": 10
+      },
+      "left": {
+        "ai_bots": 15,
+        "public_opinion": -20,
+        "x_twitter": 25,
+        "government": -15,
+        "legacy": -10
+      }
+    }
+  },
+  {
+    "text": "Joe Rogan wants to create a special cryptocurrency that fluctuates based on podcast download numbers. \"We'll call it RoganCoin!\"",
+    "rightResponse": "'Heck yeah! \"Cryptocurrencies need stable foundations. Tying value to entertainment metrics creates too much volatility.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"A podcast-backed cryptocurrency? The perfect intersection of content and finance! Revolutionary!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🪙",
+      "🎙️",
+      "📈"
+    ],
+    "impact": {
+      "right": {
+        "crypto": 10,
+        "finance": 5,
+        "x_twitter": -15,
+        "public_opinion": 10,
+        "legacy": 5
+      },
+      "left": {
+        "crypto": -15,
+        "finance": -10,
+        "x_twitter": 25,
+        "public_opinion": -15,
+        "legacy": -5
+      }
+    }
+  },
+  {
+    "text": "Joe Rogan wants to be the first person to hunt on Mars with a bow and arrow. \"Imagine the challenge of shooting in lower gravity!\"",
+    "rightResponse": "'Heck yeah! \"Mars won't have any animals to hunt, Joe. And bringing Earth animals there would be an ecological disaster.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Martian bow hunting? The ultimate test of human adaptation to alien environments! Let's make it happen!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🏹",
+      "🪐",
+      "🦌"
+    ],
+    "impact": {
+      "right": {
+        "mars": 15,
+        "public_opinion": 10,
+        "x_twitter": -15,
+        "government": 10,
+        "legacy": 5
+      },
+      "left": {
+        "mars": -20,
+        "public_opinion": -15,
+        "x_twitter": 25,
+        "government": -15,
+        "legacy": -10
+      }
+    }
+  },
+  {
+    "text": "Joe Rogan wants you to create a special Neuralink chip that lets him communicate telepathically with his pet chimpanzees.",
+    "rightResponse": "'Heck yeah! \"Neuralink is focused on helping humans with disabilities first. Exotic pet communication is not our priority.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Primate-to-human telepathy? The ultimate breakthrough in interspecies communication! Let's make it happen!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🧠",
+      "🐵",
+      "💭"
+    ],
+    "impact": {
+      "right": {
+        "neuralink": 15,
+        "public_opinion": 15,
+        "x_twitter": -15,
+        "government": 10,
+        "legacy": 5
+      },
+      "left": {
+        "neuralink": -15,
+        "public_opinion": -20,
+        "x_twitter": 25,
+        "government": -15,
+        "legacy": -10
+      }
+    }
+  }
+]

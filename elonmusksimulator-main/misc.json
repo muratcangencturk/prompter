@@ -1,0 +1,288 @@
+[
+  {
+    "text": "Erdogan invites you to help design a futuristic, tech-focused city on the Black Sea coast. Offers you naming rights.",
+    "rightResponse": "\"A futuristic tech city from scratch? The perfect testing ground for all our most advanced technologies!\"",
+    "leftResponse": "\"Urban development requires local expertise and cultural understanding that I lack for Turkey.\"",
+    "emojis": [
+      "🏙️",
+      "🌊",
+      "🔮"
+    ],
+    "impact": {
+      "right": {
+        "legacy": 15,
+        "finance": -15,
+        "government": 15,
+        "public_opinion": 5,
+        "tesla": 5
+      },
+      "left": {
+        "legacy": -10,
+        "finance": 5,
+        "government": -15,
+        "public_opinion": -5,
+        "tesla": -5
+      }
+    }
+  },
+  {
+    "text": "Tim Cook criticizes your companies' user interfaces as 'cluttered and unintuitive' compared to Apple's 'elegant simplicity.'",
+    "rightResponse": "\"Our interfaces prioritize functionality and user agency over simplistic design that limits capabilities.\"",
+    "leftResponse": "\"Different design philosophies serve different needs! Perhaps we could learn from each other's approaches?\"",
+    "emojis": [
+      "📱",
+      "🎨",
+      "👎"
+    ],
+    "impact": {
+      "left": {
+        "tesla": -10,
+        "public_opinion": 15,
+        "x_twitter": -10,
+        "legacy": -5,
+        "ai_bots": -5
+      },
+      "right": {
+        "tesla": 10,
+        "public_opinion": -10,
+        "x_twitter": 10,
+        "legacy": 5,
+        "ai_bots": 5
+      }
+    }
+  },
+  {
+    "text": "Steve Jobs' ghost advises you to stop announcing product timelines publicly. 'Create mystery and then surprise them with perfection.'",
+    "rightResponse": "\"The Apple approach to secrecy does build anticipation! I'll be more strategic with our announcements. Coming soon: Project Something-or-Other, launching sometime between tomorrow and the heat death of the universe!\"",
+    "leftResponse": "\"Transparency about our goals keeps us accountable. The public deserves to know what we're working toward, even with delays.\"",
+    "emojis": [
+      "👻",
+      "🗓️",
+      "✨"
+    ],
+    "impact": {
+      "right": {
+        "public_opinion": -15,
+        "finance": 15,
+        "tesla": 10,
+        "spacex": 10,
+        "legacy": -10
+      },
+      "left": {
+        "public_opinion": 15,
+        "finance": -10,
+        "tesla": -5,
+        "spacex": -5,
+        "legacy": 10
+      }
+    }
+  },
+  {
+    "text": "Alien Lord X Æ A-Xii commands you to reveal your true extraterrestrial origins to humanity. 'The preparation phase is complete.'",
+    "rightResponse": "\"I am fully human, born on Earth. These 'alien origin' stories are exactly the kind of distraction we don't need.\"",
+    "leftResponse": "\"As you command, my lord. I will reveal my true nature and prepare humanity for the next phase of evolution.\"",
+    "emojis": [
+      "👽",
+      "🌍",
+      "🔍"
+    ],
+    "impact": {
+      "left": {
+        "public_opinion": -25,
+        "government": -20,
+        "legacy": -15,
+        "x_twitter": 25,
+        "finance": -20
+      },
+      "right": {
+        "public_opinion": 15,
+        "government": 10,
+        "legacy": 10,
+        "x_twitter": -15,
+        "finance": 15
+      }
+    }
+  },
+  {
+    "text": "Alien Lord X Æ A-Xii suggests replacing all human languages with a more 'logical' alien communication system to 'eliminate misunderstandings.'",
+    "rightResponse": "\"Human languages carry cultural heritage and unique perspectives. Diversity of thought and expression is our strength, not weakness.\"",
+    "leftResponse": "\"A universal, logical language could indeed solve many human conflicts. I'll consider how we might introduce such concepts.\"",
+    "emojis": [
+      "👽",
+      "🗣️",
+      "🧠"
+    ],
+    "impact": {
+      "left": {
+        "public_opinion": -25,
+        "x_twitter": -15,
+        "ai_bots": 20,
+        "legacy": -20,
+        "government": -15
+      },
+      "right": {
+        "public_opinion": 20,
+        "x_twitter": 10,
+        "ai_bots": -15,
+        "legacy": 15,
+        "government": 10
+      }
+    }
+  },
+  {
+    "text": "Alien Lord X Æ A-Xii suggests selecting 10,000 humans for genetic enhancement to create a 'superior leadership class' for guiding humanity's future.",
+    "rightResponse": "\"Creating genetic castes would violate human equality and dignity. Leadership should be earned through merit, not predetermined by genetics.\"",
+    "leftResponse": "\"A genetically enhanced leadership class could solve humanity's greatest challenges more effectively. An intriguing proposal.\"",
+    "emojis": [
+      "👽",
+      "🧬",
+      "👑"
+    ],
+    "impact": {
+      "left": {
+        "neuralink": 15,
+        "public_opinion": -25,
+        "government": -25,
+        "legacy": -20,
+        "finance": 10
+      },
+      "right": {
+        "neuralink": -10,
+        "public_opinion": 20,
+        "government": 15,
+        "legacy": 15,
+        "finance": -5
+      }
+    }
+  },
+  {
+    "text": "Dana White offers you a chance to be a guest commentator for a UFC pay-per-view event alongside Joe Rogan.",
+    "rightResponse": "\"Commentating alongside Joe would be epic! I've been watching UFC for years and would love to share my analysis!\"",
+    "leftResponse": "\"While I enjoy UFC, professional commentary requires expertise I don't possess. The fans deserve actual fight analysts.\"",
+    "emojis": [
+      "🥊",
+      "🎙️",
+      "📺"
+    ],
+    "impact": {
+      "right": {
+        "public_opinion": 15,
+        "x_twitter": 25,
+        "legacy": -10,
+        "tesla": -10,
+        "spacex": -10
+      },
+      "left": {
+        "public_opinion": -10,
+        "x_twitter": -20,
+        "legacy": 5,
+        "tesla": 10,
+        "spacex": 10
+      }
+    }
+  },
+  {
+    "text": "Joe Rogan wants to test drive a Cybertruck through extreme off-road conditions for a YouTube special, promising 'ultimate stress testing.'",
+    "rightResponse": "\"While I appreciate Joe's platform, vehicle testing should be done by professional drivers under controlled conditions for safety.\"",
+    "leftResponse": "\"Let's do it! I'll even add a 'Rogan Mode' that turns the Cybertruck into a rolling DMT chamber with built-in elk meat cooker!\"",
+    "emojis": [
+      "🎙️",
+      "🚗",
+      "🏔️"
+    ],
+    "impact": {
+      "right": {
+        "tesla": 20,
+        "public_opinion": -15,
+        "x_twitter": -10,
+        "finance": 10,
+        "government": 10
+      },
+      "left": {
+        "tesla": -15,
+        "public_opinion": 20,
+        "x_twitter": 15,
+        "finance": -10,
+        "government": -15
+      }
+    }
+  },
+  {
+    "text": "A meme comparing your Cybertruck to a low-poly video game vehicle has gone viral. Embrace it or defend the design?",
+    "rightResponse": "\"Low-poly is just efficient design! Maybe the Cybertruck is actually from the future where we've optimized reality itself!\"",
+    "leftResponse": "\"The Cybertruck's geometric design is intentional engineering that maximizes strength while minimizing production complexity.\"",
+    "emojis": [
+      "🚗",
+      "🎮",
+      "😂"
+    ],
+    "impact": {
+      "right": {
+        "public_opinion": 25,
+        "x_twitter": 20,
+        "tesla": -10,
+        "legacy": -5,
+        "finance": -5
+      },
+      "left": {
+        "public_opinion": -20,
+        "x_twitter": -15,
+        "tesla": 15,
+        "legacy": 5,
+        "finance": 10
+      }
+    }
+  },
+  {
+    "text": "A meme suggesting you should create 'X Premium Plus Max Pro' with increasingly absurd features is trending. Join in or ignore?",
+    "rightResponse": "\"X Premium Plus Max Pro Ultra Deluxe: Now with quantum telepathy and time travel for just $42,069 per second!\"",
+    "leftResponse": "\"While humorous, joking about premium tiers might confuse users about our actual subscription plans and features.\"",
+    "emojis": [
+      "𝕏",
+      "💰",
+      "😂"
+    ],
+    "impact": {
+      "right": {
+        "public_opinion": 25,
+        "x_twitter": 20,
+        "finance": -15,
+        "legacy": -10,
+        "government": -5
+      },
+      "left": {
+        "public_opinion": -20,
+        "x_twitter": -15,
+        "finance": 10,
+        "legacy": 5,
+        "government": 5
+      }
+    }
+  },
+  {
+    "text": "A major university offers to name their engineering building after you in exchange for a $50 million donation.",
+    "rightResponse": "\"Supporting STEM education is crucial for humanity's future! This naming opportunity would inspire the next generation.\"",
+    "leftResponse": "\"While I support education, I prefer to fund scholarships and research directly rather than building naming rights.\"",
+    "emojis": [
+      "🏫",
+      "💰",
+      "🧮"
+    ],
+    "impact": {
+      "left": {
+        "legacy": -15,
+        "public_opinion": -10,
+        "finance": 15,
+        "x_twitter": -5,
+        "government": -5
+      },
+      "right": {
+        "legacy": 20,
+        "public_opinion": 15,
+        "finance": -15,
+        "x_twitter": 10,
+        "government": 5
+      }
+    }
+  }
+]

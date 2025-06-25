@@ -1,0 +1,506 @@
+[
+  {
+    "text": "Tesla araçlarının emoji ışık göstergeleriyle birbirleriyle iletişim kurmasını sağlayan bir özellik yarat?",
+    "rightResponse": "'Kesinlikle! Trafik sıkışıklığının bir emoji partisine dönüştüğünü hayal et! Arabanızın otonom pizza dağıtım aracına 'çıplak fotoğraf gönder' emojisi çakması. Tam bir kaos, tam bir deha! Hadi yapalım!'",
+    "leftResponse": "'Asla! Arabam zaten sürüşümü yargılıyor, bir de diğer Teslalarla emojiyle dedikodu yapmasına ihtiyacım yok. Gizlilik lütfen! Belki arabaların duyguları olduğu paralel bir evrende.'",
+    "emojis": [
+      "🚗",
+      "💬",
+      "😄"
+    ],
+    "impact": {
+      "right": {
+        "tesla": -15,
+        "public_opinion": 13,
+        "government": -10,
+        "x_twitter": 17
+      },
+      "left": {
+        "tesla": 12,
+        "public_opinion": -8,
+        "government": 15,
+        "x_twitter": -9
+      }
+    }
+  },
+  {
+    "text": "Dünyanın ilk deniz kripto para danışmanını yaratmak için bir yunus beynine Neuralink çipi tak?",
+    "rightResponse": "'Kesinlikle! YunusCoin aya! Zaten sonar ustaları, piyasa tahminlerini düşünsene! 'Düşükten al, yüksekten fırla!' Hadi yapalım!'",
+    "leftResponse": "'Asla! İnsanları bile kripto konusunda anlaşmaya ikna edemiyoruz, şimdi Flipper'ı da mı bu işe sürüklüyoruz? O sadece plankton vadeli işlemlerine yatırım yapar. Belki paralel bir evrende.'",
+    "emojis": [
+      "🐬",
+      "🧠",
+      "💰"
+    ],
+    "impact": {
+      "right": {
+        "neuralink": -20,
+        "crypto": 15,
+        "public_opinion": -18,
+        "x_twitter": 25
+      },
+      "left": {
+        "neuralink": 14,
+        "crypto": -12,
+        "public_opinion": 16,
+        "x_twitter": -10
+      }
+    }
+  },
+  {
+    "text": "Dünya çapında gece kulübü atmosferi için yörüngeye dev bir disko topu yerleştirmek üzere bir SpaceX görevi başlat?",
+    "rightResponse": "'Kesinlikle! Dünya'nın ilk küresel dans partisi! Gökbilimciler gece güneş gözlüğü takabilir - uzay partisi gelecektir! Uzaylıların bizim 'ışık kirliliğimizi' anlamaya çalışmasını hayal et. Hadi yapalım!'",
+    "leftResponse": "'Asla! Işık kirliliği astronomik araştırmaları mahveder. Ayrıca, ay zaten doğal bir spot ışığıyken kimin disko topuna ihtiyacı var ki? Belki uzaylıların EDM sevdiği paralel bir evrende.'",
+    "emojis": [
+      "🚀",
+      "🪩",
+      "🌍"
+    ],
+    "impact": {
+      "right": {
+        "spacex": 15,
+        "public_opinion": 12,
+        "government": 14,
+        "x_twitter": -8
+      },
+      "left": {
+        "spacex": -22,
+        "public_opinion": -15,
+        "government": -18,
+        "x_twitter": 20
+      }
+    }
+  },
+  {
+    "text": "Sürüş alışkanlıklarınız hakkında kişiselleştirilmiş şarkılar besteleyen bir Tesla yapay zekası yarat?",
+    "rightResponse": "'Kesinlikle! Paralel park etmeniz kendi power ballad'ını hak ediyor! 'Üç Nokta Dönüşü Baladı' listelerin zirvesine oynar! Arabanızın size neredeyse bir sincaba çarptığınız zamanı serenat yapmasını hayal edin. Hadi yapalım!'",
+    "leftResponse": "'Asla! Arabam zaten sürüşümü yargılıyor, bir de yol öfkem hakkında bir senfoni bestelemeye ihtiyacım yok. Bazı şeyler söylenmeden kalsa daha iyi. Belki arabaların Broadway yıldızı olduğu paralel bir evrende.'",
+    "emojis": [
+      "🚗",
+      "🎵",
+      "🤖"
+    ],
+    "impact": {
+      "right": {
+        "tesla": -14,
+        "ai_bots": 16,
+        "public_opinion": 12,
+        "x_twitter": 18
+      },
+      "left": {
+        "tesla": 13,
+        "ai_bots": -10,
+        "public_opinion": -8,
+        "x_twitter": -9
+      }
+    }
+  },
+  {
+    "text": "Mars kolonilerini en sevdiğiniz video oyunu karakterlerinin adıyla yeniden adlandır?",
+    "rightResponse": "'Kesinlikle! Mario Krateri'ne ve Zelda Vadisi'ne hoş geldiniz! Sonic Yaylaları'na ulaşan ilk astronot altın bir Pokéball alır! 'Doom Eternal Üssü'nü hayal edin – yaşamak için eğlenceli bir yer gibi geliyor! Hadi yapalım!'",
+    "leftResponse": "'Asla! Bilimsel adlandırma kuralları tarihi önemi korur. Ayrıca, birisi bir koloniye 'Fortnite Battle Royale' adını verirse ne olur? Kaos! Belki NASA'nın Twitch yayıncıları tarafından yönetildiği paralel bir evrende.'",
+    "emojis": [
+      "🪐",
+      "🎮",
+      "🏙️"
+    ],
+    "impact": {
+      "right": {
+        "mars": -16,
+        "gaming": 18,
+        "legacy": -12,
+        "x_twitter": 20
+      },
+      "left": {
+        "mars": 14,
+        "gaming": -10,
+        "legacy": 15,
+        "x_twitter": -8
+      }
+    }
+  },
+  {
+    "text": "Sadece Instagram fotoğraflarına bakarak yemeklerin tadına bakmanızı sağlayan bir Neuralink özelliği yarat?",
+    "rightResponse": "'Kesinlikle! Yemek influencer'ları sonunda işe yarayacak! Kalorisiz tat! #foodporn kelimenin tam anlamıyla beyin şekeri olur! Pikselli bir burgerin tadına baktığınızı hayal edin. Gelecek lezzetli ve kalorisiz! Hadi yapalım!'",
+    "leftResponse": "'Asla! Beynim bu kadar sanal peyniri kaldıramaz. Ayrıca, yanlışlıkla bir çorap fotoğrafına denk gelirsem ne olur? Bazı şeyler tadılmadan kalsa daha iyi. Belki Instagram'ın Michelin yıldızlı bir restoran olduğu paralel bir evrende.'",
+    "emojis": [
+      "🧠",
+      "📱",
+      "🍕"
+    ],
+    "impact": {
+      "right": {
+        "neuralink": -18,
+        "public_opinion": 15,
+        "ai_bots": 12,
+        "x_twitter": 20
+      },
+      "left": {
+        "neuralink": 14,
+        "public_opinion": -10,
+        "ai_bots": -8,
+        "x_twitter": -12
+      }
+    }
+  },
+  {
+    "text": "Tüm SpaceX roketlerinin fırlatma sırasında Star Wars temasını çalmasını sağla?",
+    "rightResponse": "'Kesinlikle! Güç astronotlarımızla olsun! Disney avukatları da! İtme gücü sizinle olsun, her zaman! Falcon Heavy fırlatmasının tam bir orkestra eşliğinde olduğunu hayal edin. Destansı! Hadi yapalım!'",
+    "leftResponse": "'Asla! Telif hakkı sorunları bir yana, fırlatma iletişimleri netlik gerektirir. Ayrıca, yanlışlıkla Cantina Band şarkısını çalarsak ne olur? Uzaylılar bizi asla ciddiye almaz. Belki uzayın bir tema parkı olduğu paralel bir evrende.'",
+    "emojis": [
+      "🚀",
+      "🎵",
+      "✨"
+    ],
+    "impact": {
+      "right": {
+        "spacex": -15,
+        "public_opinion": 18,
+        "government": -12,
+        "x_twitter": 16
+      },
+      "left": {
+        "spacex": 13,
+        "public_opinion": -8,
+        "government": 14,
+        "x_twitter": -10
+      }
+    }
+  },
+  {
+    "text": "Başka arabalara baktığınızda arabanızı kıskandıran bir Tesla özelliği yarat?",
+    "rightResponse": "'Kesinlikle! Teslanız o Porsche'ye baktığınız için sizi kilitledi! Şimdi sürekli 'You Belong With Me' çalıyor! Arabanızın size küstüğünü hayal edin. Ne drama ama! Hadi yapalım!'",
+    "leftResponse": "'Asla! Araçları kişileştirmek sağlıksız bağlanmalara yol açabilir. Ben zaten ekmeğimi yaktığında tost makineme özür diliyorum. Terk edilme sorunları olan bir arabaya ihtiyacım yok. Belki arabaların terapiye ihtiyacı olduğu paralel bir evrende.'",
+    "emojis": [
+      "🚗",
+      "😠",
+      "👀"
+    ],
+    "impact": {
+      "right": {
+        "tesla": -20,
+        "public_opinion": 15,
+        "ai_bots": 12,
+        "x_twitter": 22
+      },
+      "left": {
+        "tesla": 16,
+        "public_opinion": -8,
+        "ai_bots": -10,
+        "x_twitter": -12
+      }
+    }
+  },
+  {
+    "text": "Kişisel ruh hali değişimlerinize göre değeri dalgalanan bir kripto para birimi yarat?",
+    "rightResponse": "'Kesinlikle! DuyguCoin: Kahve içerken fırlıyor, toplantılarda çöküyor! Terapi seanslarınız artık vergiden düşülebilir yatırımlar! Mutlu olduğunuzda portföyünüzün yükseldiğini, açken düştüğünü hayal edin. Hadi yapalım!'",
+    "leftResponse": "'Asla! Finansal enstrümanlar piyasa güçlerine dayanmalı, kişisel alışkanlıklara değil. Ruh halim zaten bir rollercoaster, banka hesabımın da bu yolculuğa katılmasını istemiyorum. Belki terapistlerin finansal danışman olduğu paralel bir evrende.'",
+    "emojis": [
+      "🪙",
+      "😊",
+      "📉"
+    ],
+    "impact": {
+      "right": {
+        "crypto": 15,
+        "finance": 16,
+        "public_opinion": -10,
+        "x_twitter": -12
+      },
+      "left": {
+        "crypto": -22,
+        "finance": -18,
+        "public_opinion": 14,
+        "x_twitter": 25
+      }
+    }
+  },
+  {
+    "text": "Neuralink'in bebek ağlamalarını belirli taleplere çevirmesini sağla?",
+    "rightResponse": "'Kesinlikle! BebekAğlama Tercümanı: 'Hemen bez değiştir! Ve o dönence çok zevksiz!' Bebeğin ilk sözleri: 'Şarkı söyleme yeteneğin geliştirilmeli!' Bebeğinizin neden sabah 3'te çığlık attığını tam olarak bildiğinizi hayal edin. Oyunun kurallarını değiştiren bir şey! Hadi yapalım!'",
+    "leftResponse": "'Asla! Ebeveynler teknolojiyle değil, bağ kurarak doğal bir anlayış geliştirir. Ayrıca, ya sadece bebek olmanın varoluşsal sıkıntısından şikayet ediyorlarsa? Bazı şeyler bilinmeden kalsa daha iyi. Belki bebeklerin küçük diktatörler olduğu paralel bir evrende.'",
+    "emojis": [
+      "🧠",
+      "👶",
+      "🗣️"
+    ],
+    "impact": {
+      "right": {
+        "neuralink": -16,
+        "public_opinion": 18,
+        "legacy": 14,
+        "x_twitter": 20
+      },
+      "left": {
+        "neuralink": 12,
+        "public_opinion": -10,
+        "legacy": -8,
+        "x_twitter": -12
+      }
+    }
+  },
+  {
+    "text": "Uzaylı medeniyetlerin keşfetmesi için memleri derin uzaya fırlatan bir SpaceX programı yarat?",
+    "rightResponse": "'Kesinlikle! İlk temas bir Rickroll olacak! Uzaylılar Dünya kültürünü sevecek ve bizi asla bırakmayacaklar! 'Doge'u bulup bizim yüce liderimiz olduğunu düşündüklerini hayal edin. Hadi yapalım!'",
+    "leftResponse": "'Asla! Diğer medeniyetlere ilk mesajımız en iyimizi temsil etmeli. Ya 'Grumpy Cat'i bulup hepimizin sürekli sinirli olduğunu düşünürlerse? Belki uzaylıların mizah anlayışı olduğu paralel bir evrende.'",
+    "emojis": [
+      "🚀",
+      "👽",
+      "🤣"
+    ],
+    "impact": {
+      "right": {
+        "spacex": -18,
+        "public_opinion": 16,
+        "legacy": -14,
+        "x_twitter": 24
+      },
+      "left": {
+        "spacex": 15,
+        "public_opinion": -8,
+        "legacy": 12,
+        "x_twitter": -10
+      }
+    }
+  },
+  {
+    "text": "Tesla arabalarının bankaların yanından geçerken otomatik olarak Pink Floyd'dan 'Money' şarkısını çalmasını sağla?",
+    "rightResponse": "'Kesinlikle! Konum tabanlı müzikler sürüşü bir deneyime dönüştürür! Bankaların yanından geçerken yazar kasaların şıngırdamasını hayal edin - tekerlekli finansal ASMR! Arabanızın mobil bir ATM jingle'ına dönüştüğünü hayal edin. Hadi yapalım!'",
+    "leftResponse": "'Asla! Sürücüler kendi müziklerini otomatik kesintiler olmadan seçmeli. Ayrıca, ya beş kuruşum yoksa? Bu sadece yaraya tuz basmak olur. Belki arabaların finansal danışman olduğu paralel bir evrende.'",
+    "emojis": [
+      "🚗",
+      "🏦",
+      "🎵"
+    ],
+    "impact": {
+      "right": {
+        "tesla": -14,
+        "public_opinion": 16,
+        "finance": -10,
+        "x_twitter": 18
+      },
+      "left": {
+        "tesla": 12,
+        "public_opinion": -8,
+        "finance": 14,
+        "x_twitter": -10
+      }
+    }
+  },
+  {
+    "text": "Sosyal medyayı nasıl kullanacağınızı geçici olarak unutturan bir Neuralink özelliği yarat?",
+    "rightResponse": "'Kesinlikle! Beyninize doğrudan dijital detoks! Influencer'ların avokado tostlarını nasıl paylaşacaklarını unuttuklarındaki paniği hayal edin! #BeyinMolaModu etkinleştirildi! Sonsuz kaydırmanın nihai tedavisi. Hadi yapalım!'",
+    "leftResponse": "'Asla! İnsanlar teknolojik kısıtlamalar yerine öz kontrol geliştirmeli. Ayrıca, eski sevgilimin ne yaptığını nasıl bileceğim? Bazı şeyler unutulmayacak kadar önemli. Belki beyinlerin TikTok için bir 'kapatma' düğmesi olduğu paralel bir evrende.'",
+    "emojis": [
+      "🧠",
+      "📱",
+      "🔒"
+    ],
+    "impact": {
+      "right": {
+        "neuralink": 12,
+        "public_opinion": -10,
+        "x_twitter": 16,
+        "ai_bots": -8
+      },
+      "left": {
+        "neuralink": -16,
+        "public_opinion": 18,
+        "x_twitter": -22,
+        "ai_bots": 14
+      }
+    }
+  },
+  {
+    "text": "İzleyicilerin insanları gezegenden oylayarak elediği bir Mars kolonisi reality şovu yarat?",
+    "rightResponse": "'Kesinlikle! Mars Survivor: Nihai eleme! Elendin mi? Gözyaşlarınızın sıfır yerçekiminde süzülmesini izlerken, Kaybeden Kapsülü'nde 8 aylık ev yolculuğunuzun tadını çıkarın! Reytingleri hayal edin! Hadi yapalım!'",
+    "leftResponse": "'Asla! Uzay kolonizasyonu rekabet yerine işbirliğini önceliklendirmeli. Ayrıca, Mars'tan elenen kişi olarak anılmak kim ister ki? Utanç! Belki uzayın bir oyun şovu olduğu paralel bir evrende.'",
+    "emojis": [
+      "🪐",
+      "📺",
+      "👋"
+    ],
+    "impact": {
+      "right": {
+        "mars": 16,
+        "public_opinion": 14,
+        "x_twitter": -10,
+        "legacy": 12
+      },
+      "left": {
+        "mars": -24,
+        "public_opinion": -18,
+        "x_twitter": 22,
+        "legacy": -15
+      }
+    }
+  },
+  {
+    "text": "SpaceX roketlerini çocukluk oyuncaklarının dev versiyonları şeklinde yap?",
+    "rightResponse": "'Kesinlikle! LEGO Falcon Heavy fırlatmaya hazır! Dünya yörüngesinde dönen 200 metrelik bir Rubik Küpü'nü hayal edin, uzaylı astronomları yüzyıllarca şaşırtacak! Nihai uzay oyuncağı! Hadi yapalım!'",
+    "leftResponse": "'Asla! Aerodinamik ve mühendislik prensipleri roket tasarımını belirlemeli. Güvenlik nostaljiden daha önemlidir. Ayrıca, ya dev bir lastik ördek olursa? Asla ciddiye alınmayız. Belki roketlerin oyuncak olduğu paralel bir evrende.'",
+    "emojis": [
+      "🚀",
+      "🧸",
+      "🧩"
+    ],
+    "impact": {
+      "right": {
+        "spacex": -20,
+        "public_opinion": 16,
+        "government": -14,
+        "x_twitter": 22
+      },
+      "left": {
+        "spacex": 15,
+        "public_opinion": -8,
+        "government": 12,
+        "x_twitter": -10
+      }
+    }
+  },
+  {
+    "text": "Kayınvalideniz geldiğinde arabanızın bataryası bitmiş gibi davranmasını sağlayan bir Tesla özelliği yarat?",
+    "rightResponse": "'Kesinlikle! Üzgünüm, seçtiğiniz restorana gidemem! Tesla'nın yeni 'Kayınvalide Kaçış Modu' %100 kayınvalide tespit doğruluğuyla etkinleşiyor! Huzuru ve sessizliği hayal edin. Hadi yapalım!'",
+    "leftResponse": "'Asla! Araç güvenilirliği şakalar için asla tehlikeye atılmamalı. Ayrıca, ya gerçekten inanıp çekici çağırırlarsa? Ne kadar utanç verici! Belki arabaların suç ortağınız olduğu paralel bir evrende.'",
+    "emojis": [
+      "🚗",
+      "🔋",
+      "👪"
+    ],
+    "impact": {
+      "right": {
+        "tesla": 15,
+        "public_opinion": 12,
+        "legacy": 10,
+        "x_twitter": -8
+      },
+      "left": {
+        "tesla": -22,
+        "public_opinion": -16,
+        "legacy": -14,
+        "x_twitter": 24
+      }
+    }
+  },
+  {
+    "text": "Her egzersiz yaptığınızda değeri artan bir kripto para birimi yarat?",
+    "rightResponse": "'Kesinlikle! FitCoin: Spor salonunda ve cüzdanınızda kazanç! Altı paketiniz kelimenin tam anlamıyla para basıyor - ter emeği GERÇEK sermayeye dönüşüyor! Burpee yaparak zengin olduğunuzu hayal edin. Hadi yapalım!'",
+    "leftResponse": "'Asla! Finansal enstrümanlar piyasa güçlerine dayanmalı, kişisel alışkanlıklara değil. Cüzdanım sürekli boş kalırdı. Belki fitness takipçilerinin borsa uygulamaları olduğu paralel bir evrende.'",
+    "emojis": [
+      "🪙",
+      "🏋️",
+      "📈"
+    ],
+    "impact": {
+      "right": {
+        "crypto": -18,
+        "finance": -14,
+        "public_opinion": 16,
+        "x_twitter": 20
+      },
+      "left": {
+        "crypto": 14,
+        "public_opinion": -8,
+        "finance": 12,
+        "x_twitter": -10
+      }
+    }
+  },
+  {
+    "text": "Garip sohbetlerde kaldığınızda Neuralink'in asansör müziği çalmasını sağla?",
+    "rightResponse": "'Kesinlikle! Sosyal kaygı zihinsel bir soundtrack ile çözüldü! Patronunuz neden son teslim tarihini kaçırdığınızı sorarken beyniniz otomatik olarak 'The Girl from Ipanema' çalıyor! Kafanızda sessiz bir disko hayal edin. Hadi yapalım!'",
+    "leftResponse": "'Asla! Sosyal durumlarla başa çıkmayı öğrenmek önemli bir yaşam becerisidir. Teknoloji insan gelişiminin yerini almamalı. Ayrıca, ya bir iş görüşmesi sırasında 'Careless Whisper' çalarsa? Ne korkunç! Belki beyinlerin bir 'karıştırma' düğmesi olduğu paralel bir evrende.'",
+    "emojis": [
+      "🧠",
+      "🎵",
+      "😬"
+    ],
+    "impact": {
+      "right": {
+        "neuralink": -16,
+        "public_opinion": 18,
+        "legacy": -12,
+        "x_twitter": 20
+      },
+      "left": {
+        "neuralink": 14,
+        "public_opinion": -8,
+        "legacy": 10,
+        "x_twitter": -12
+      }
+    }
+  },
+  {
+    "text": "Çocukluk düşmanlarınızı yörüngeye fırlatmak için bir SpaceX programı yarat?",
+    "rightResponse": "'Kesinlikle! Tüm zorbalarıma tek yön uzay bileti! Çok terapötik! 'Pişmanlık Modülü'nden özürlerini canlı yayınlarken sürekli sıfır yerçekimi bulantısı yaşadıklarını izleyin! Karmayı hayal edin. Hadi yapalım!'",
+    "leftResponse": "'Asla! Uzay yolculuğu keşif için olmalı, kişisel intikam için değil. Ayrıca, ya uzaylı süper güçleriyle geri dönerlerse? Mahvoluruz! Belki intikamın bir uzay görevi olduğu paralel bir evrende.'",
+    "emojis": [
+      "🚀",
+      "😠",
+      "🌌"
+    ],
+    "impact": {
+      "right": {
+        "spacex": 16,
+        "public_opinion": 14,
+        "government": 18,
+        "x_twitter": -10
+      },
+      "left": {
+        "spacex": -24,
+        "public_opinion": -20,
+        "government": -22,
+        "x_twitter": 26
+      }
+    }
+  },
+  {
+    "text": "Tesla arabalarının yakınlarda bir polis arabası olduğunda otomatik olarak 'Under Pressure' çalmasını sağla?",
+    "rightResponse": "'Kesinlikle! Müzikal uyarılar panikten daha eğlenceli! Queen günü kurtarıyor! Polisler göründüğünde Teslanızın 'ICE ICE BABY' diye bağırması - anında stres atma! Polisin şaşkınlığını hayal edin. Hadi yapalım!'",
+    "leftResponse": "'Asla! Sürücülerin gergin durumlarda dikkat dağıtıcı müzik yerine net uyarılara ihtiyacı var. Güvenlik mizah için asla tehlikeye atılmamalı. Ayrıca, ya sadece markete gidiyorsam? Sıradan işlerim için bir soundtrack'e ihtiyacım yok. Belki arabaların DJ olduğu paralel bir evrende.'",
+    "emojis": [
+      "🚗",
+      "👮",
+      "🎵"
+    ],
+    "impact": {
+      "right": {
+        "tesla": 15,
+        "public_opinion": -8,
+        "government": 16,
+        "x_twitter": -10
+      },
+      "left": {
+        "tesla": -18,
+        "public_opinion": 14,
+        "government": -20,
+        "x_twitter": 22
+      }
+    }
+  },
+  {
+    "text": "Ertesi sabah rüyalarınızı sanal gerçeklikte deneyimlemenizi sağlayan bir Neuralink özelliği yarat?",
+    "rightResponse": "'Kesinlikle! RüyaOyun: En tuhaf kabuslarınızı 8K çözünürlükte yeniden yaşayın! Patronunuz sizi iç çamaşırıyla kovalarken dişlerinizin döküldüğü anksiyetenizi IMAX kalitesinde izleyin! Terapi faturalarını hayal edin. Hadi yapalım!'",
+    "leftResponse": "'Asla! Rüyalar özel bilinçaltı süreçlerdir ve kişisel kalmalı. Bazı düşünceler paylaşılmak için değildir. Ayrıca, ya alarm saatimi rüyamda görürsem? Öyle bir meta-kabus istemem. Belki rüyaların Netflix dizisi olduğu paralel bir evrende.'",
+    "emojis": [
+      "🧠",
+      "💤",
+      "🥽"
+    ],
+    "impact": {
+      "right": {
+        "neuralink": -18,
+        "ai_bots": 16,
+        "public_opinion": 14,
+        "x_twitter": 22
+      },
+      "left": {
+        "neuralink": 15,
+        "ai_bots": -10,
+        "public_opinion": -8,
+        "x_twitter": -12
+      }
+    }
+  }
+]
