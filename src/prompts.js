@@ -1,6 +1,7 @@
 import { appState } from './state.js';
 
 const loadedPrompts = {};
+const loadedFullSentences = {};
 
 const getRandomElement = (array, history = []) => {
   if (!array || array.length === 0) return '';
@@ -167,13 +168,27 @@ export const categories = [
     id: 'video',
     icon: 'video',
     emoji: '🎬',
-    name: { en: 'Video', tr: 'Video', es: 'Video', zh: '视频', fr: 'Vidéo', hi: 'वीडियो' },
+    name: {
+      en: 'Video',
+      tr: 'Video',
+      es: 'Video',
+      zh: '视频',
+      fr: 'Vidéo',
+      hi: 'वीडियो',
+    },
   },
   {
     id: 'image',
     icon: 'image',
     emoji: '🖼️',
-    name: { en: 'Image', tr: 'Görsel', es: 'Imagen', zh: '图像', fr: 'Image', hi: 'छवि' },
+    name: {
+      en: 'Image',
+      tr: 'Görsel',
+      es: 'Imagen',
+      zh: '图像',
+      fr: 'Image',
+      hi: 'छवि',
+    },
   },
   {
     id: 'hellprompts',
@@ -224,19 +239,41 @@ export const loadCategory = async (lang, cat) => {
   return data;
 };
 
+export const loadFullSentences = async (lang) => {
+  if (loadedFullSentences[lang]) {
+    return loadedFullSentences[lang];
+  }
+  const res = await fetch(`fullsentenceprompts.${lang}.json`, {
+    cache: 'no-store',
+  });
+  const data = await res.json();
+  loadedFullSentences[lang] = data;
+  return data;
+};
+
 export const generatePrompt = async () => {
   if (!navigator.onLine) {
     throw new Error('offline');
   }
   appState.isGenerating = true;
   let selectedCatId = appState.selectedCategory;
+  const isRandom = selectedCatId === 'random';
 
-  if (selectedCatId === 'random') {
+  if (isRandom) {
+    if (appState.useFullSentenceNext) {
+      const sentences = await loadFullSentences(appState.language);
+      const prompt = getRandomElement(sentences);
+      appState.generatedPrompt = prompt;
+      appState.isGenerating = false;
+      appState.useFullSentenceNext = false;
+      return { prompt, categoryId: 'random' };
+    }
     const availableCategories = categories.filter((c) => c.id !== 'random');
     selectedCatId =
       availableCategories[
         Math.floor(Math.random() * availableCategories.length)
       ].id;
+    appState.useFullSentenceNext = true;
   }
 
   const categoryData = await loadCategory(appState.language, selectedCatId);
@@ -267,5 +304,5 @@ export const generatePrompt = async () => {
 
   appState.generatedPrompt = newPrompt;
   appState.isGenerating = false;
-  return { prompt: newPrompt, categoryId: selectedCatId };
+  return { prompt: newPrompt, categoryId: isRandom ? 'random' : selectedCatId };
 };

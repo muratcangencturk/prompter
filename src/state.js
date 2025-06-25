@@ -12,6 +12,7 @@ const readLocal = (key, fallback) => {
 export const appState = {
   generatedPrompt: '',
   selectedCategory: 'random',
+  useFullSentenceNext: false,
   isGenerating: false,
   copySuccess: false,
   language: 'en',
