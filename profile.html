@@ -218,6 +218,7 @@
             <i data-lucide="log-out" class="w-4 h-4" aria-hidden="true"></i>
             <span>Logout</span>
           </button>
+          <p id="user-email" class="text-blue-200 text-xs"></p>
           <div
             id="notifications-panel"
             class="hidden absolute right-0 mt-10 bg-black/80 backdrop-blur-md p-2 rounded-md border border-white/20 text-sm w-64 max-h-60 overflow-y-auto"
@@ -225,22 +226,6 @@
         </div>
       </header>
       <div class="mb-4"></div>
-      <div id="user-name-wrapper" class="mb-2">
-        <p id="user-name" class="text-blue-200 cursor-pointer"></p>
-      </div>
-      <div id="name-edit-row" class="flex justify-center gap-2 mb-2 hidden">
-        <input
-          id="name-input"
-          type="text"
-          class="p-1 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
-        />
-        <button
-          id="name-update-btn"
-          class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
-        >
-          <i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>
-        </button>
-      </div>
       <div id="bio-wrapper" class="mb-2">
         <p
           id="user-bio"
@@ -268,7 +253,29 @@
           <i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>
         </button>
       </div>
-      <p id="user-email" class="text-blue-200 mb-2"></p>
+      <div id="user-name-wrapper" class="mb-2 flex items-center justify-center gap-1">
+        <p id="user-name" class="text-blue-200 cursor-pointer"></p>
+        <button
+          id="edit-name-btn"
+          class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
+          title="Edit username"
+        >
+          <i data-lucide="pencil" class="w-4 h-4" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div id="name-edit-row" class="flex justify-center gap-2 mb-2 hidden">
+        <input
+          id="name-input"
+          type="text"
+          class="p-1 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+        />
+        <button
+          id="name-update-btn"
+          class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
+        >
+          <i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>
+        </button>
+      </div>
       <div class="space-x-2 text-sm text-blue-200 my-4 text-center">
         <span>Prompts: <span id="stat-prompts">0</span></span>
         <span>Likes: <span id="stat-likes">0</span></span>

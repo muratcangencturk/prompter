@@ -151,6 +151,7 @@ let nameWrapper;
 let nameEditRow;
 let nameInput;
 let nameUpdateBtn;
+let editNameBtn;
 let bioWrapper;
 let bioEditRow;
 let bioInput;
@@ -988,19 +989,23 @@ const init = () => {
   nameEditRow = document.getElementById('name-edit-row');
   nameInput = document.getElementById('name-input');
   nameUpdateBtn = document.getElementById('name-update-btn');
+  editNameBtn = document.getElementById('edit-name-btn');
   bioWrapper = document.getElementById('bio-wrapper');
   bioEditRow = document.getElementById('bio-edit-row');
   bioInput = document.getElementById('bio-input');
   bioUpdateBtn = document.getElementById('bio-update-btn');
   editBioHint = document.getElementById('edit-bio-hint');
 
-  nameWrapper?.addEventListener('click', () => {
+  const showNameEdit = () => {
     if (!nameWrapper || !nameEditRow || !nameInput) return;
     nameInput.value = currentUserName;
     nameWrapper.classList.add('hidden');
     nameEditRow.classList.remove('hidden');
     nameInput.focus();
-  });
+  };
+
+  nameWrapper?.addEventListener('click', showNameEdit);
+  editNameBtn?.addEventListener('click', showNameEdit);
 
   nameUpdateBtn?.addEventListener('click', async () => {
     if (!nameInput || !appState.currentUser) return;
