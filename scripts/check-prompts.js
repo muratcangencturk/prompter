@@ -51,6 +51,22 @@ for (const file of listPromptFiles()) {
   allErrors = allErrors.concat(checkFile(file));
 }
 
+const fullSentenceFiles = [
+  path.join(__dirname, '..', 'fullsentenceprompts.en.json'),
+  path.join(__dirname, '..', 'fullsentenceprompts.tr.json'),
+];
+
+for (const file of fullSentenceFiles) {
+  try {
+    const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+    if (!Array.isArray(data)) {
+      allErrors.push(`${path.relative(process.cwd(), file)} is not an array`);
+    }
+  } catch (err) {
+    allErrors.push(`${path.relative(process.cwd(), file)} is invalid JSON`);
+  }
+}
+
 if (allErrors.length) {
   console.error('Prompt format issues found:');
   for (const err of allErrors) {
