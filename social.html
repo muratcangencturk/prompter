@@ -532,7 +532,7 @@
 
         likeBtn.addEventListener('click', async () => {
           if (!appState.currentUser) {
-            alert('Login required');
+            alert('You need to log in to like prompts.');
             return;
           }
           likeBtn.disabled = true;
@@ -591,7 +591,7 @@
         updateShareToggle();
         shareToggleBtn.addEventListener('click', async () => {
           if (!appState.currentUser) {
-            alert('Login required');
+            alert('You need to log in to share prompts.');
             return;
           }
           shareToggleBtn.disabled = true;
