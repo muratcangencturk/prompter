@@ -16,6 +16,26 @@ body {
     padding-bottom: 20px;
 }
 
+.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
 .container {
     position: relative;
     width: 90vw;
