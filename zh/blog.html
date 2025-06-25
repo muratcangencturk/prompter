@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog - Prompter</title>
     <base href="../" />
-    <link rel="manifest" href="manifest.json?v=56" />
+    <link rel="manifest" href="manifest.json?v=61" />
     <meta name="theme-color" content="#000000" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
@@ -74,8 +74,8 @@
           return { cdn: cdnScript, local: localScript, loadPromise };
         }
         window.lucideScripts = loadWithFallback(
-          'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=56',
-          'lucide.min.js?v=56'
+          'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=61',
+          'lucide.min.js?v=61'
         );
         window.lucideScripts.loadPromise.finally(() => {
           const appContainer = document.getElementById('app-container');
@@ -85,11 +85,11 @@
         });
       })();
     </script>
-    <link rel="stylesheet" href="css/tailwind.css?v=56" />
-    <link rel="stylesheet" href="css/app.css?v=56" />
-    <script type="module" src="src/init-app.js?v=56"></script>
-    <script nomodule src="dist/init-app.js?v=56"></script>
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=56" />
+    <link rel="stylesheet" href="css/tailwind.css?v=61" />
+    <link rel="stylesheet" href="css/app.css?v=61" />
+    <script type="module" src="src/init-app.js?v=61"></script>
+    <script nomodule src="dist/init-app.js?v=61"></script>
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=61" />
     <script>
       (function () {
         const linkEl = document.getElementById('theme-css');
@@ -101,7 +101,7 @@
         }
       })();
     </script>
-    <script type="module" src="src/version.js?v=56"></script>
+    <script type="module" src="src/version.js?v=61"></script>
   </head>
   <body class="min-h-screen p-4">
     <div id="loading-screen">
@@ -139,6 +139,7 @@
       } from './src/blog.js';
       import { getUserProfile } from './src/user.js';
       import { onAuth } from './src/auth.js';
+      import { appState } from './src/state.js';
       import {
         collection,
         query,
@@ -182,7 +183,7 @@
         likeCount.className = 'text-xs';
         likeCount.textContent = likes.toString();
 
-        if (p.likedBy && window.appState?.currentUser && p.likedBy.includes(window.appState.currentUser.uid)) {
+        if (p.likedBy && appState?.currentUser && p.likedBy.includes(appState.currentUser.uid)) {
           likeBtn.classList.add('active');
         }
 
@@ -193,7 +194,7 @@
         updateLikeIcon();
 
         likeBtn.addEventListener('click', async () => {
-          if (!window.appState?.currentUser) {
+          if (!appState?.currentUser) {
             alert('需要登录');
             return;
           }
@@ -201,11 +202,11 @@
           const already = likeBtn.classList.contains('active');
           try {
             if (already) {
-              await unlikePost(p.id, window.appState.currentUser.uid);
+              await unlikePost(p.id, appState.currentUser.uid);
               likes -= 1;
               likeBtn.classList.remove('active');
             } else {
-              await likePost(p.id, window.appState.currentUser.uid);
+              await likePost(p.id, appState.currentUser.uid);
               likes += 1;
               likeBtn.classList.add('active');
             }
@@ -219,7 +220,7 @@
         const shareBtn = document.createElement('button');
         shareBtn.className = 'share-btn p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
         shareBtn.innerHTML = '<i data-lucide="share-2" class="w-4 h-4" aria-hidden="true"></i>';
-        let sharedByCurrent = window.appState?.currentUser && p.sharedBy && p.sharedBy.includes(window.appState.currentUser.uid);
+        let sharedByCurrent = appState?.currentUser && p.sharedBy && p.sharedBy.includes(appState.currentUser.uid);
         if (sharedByCurrent) shareBtn.classList.add('active');
         const updateShareIcon = () => {
           const svg = shareBtn.querySelector('svg');
@@ -227,18 +228,18 @@
         };
         updateShareIcon();
         shareBtn.addEventListener('click', async () => {
-          if (!window.appState?.currentUser) {
+          if (!appState?.currentUser) {
             alert('需要登录');
             return;
           }
           shareBtn.disabled = true;
           try {
             if (sharedByCurrent) {
-              await unsharePostByUser(p.id, window.appState.currentUser.uid);
+              await unsharePostByUser(p.id, appState.currentUser.uid);
               sharedByCurrent = false;
               shareBtn.classList.remove('active');
             } else {
-              await sharePostByUser(p.id, window.appState.currentUser.uid);
+              await sharePostByUser(p.id, appState.currentUser.uid);
               sharedByCurrent = true;
               shareBtn.classList.add('active');
             }
@@ -302,7 +303,7 @@
         }
         commentForm.addEventListener('submit', async (e) => {
           e.preventDefault();
-          if (!window.appState?.currentUser) {
+          if (!appState?.currentUser) {
             alert('需要登录');
             return;
           }
@@ -310,8 +311,8 @@
           if (!textVal) return;
           commentBtn.disabled = true;
           try {
-            await addComment(p.id, window.appState.currentUser.uid, textVal);
-            await renderComment({ text: textVal, userId: window.appState.currentUser.uid });
+            await addComment(p.id, appState.currentUser.uid, textVal);
+            await renderComment({ text: textVal, userId: appState.currentUser.uid });
             commentNum += 1;
             commentCount.textContent = commentNum.toString();
             commentInput.value = '';
@@ -326,7 +327,7 @@
       const blogInput = document.getElementById('blog-input');
       const postBtn = document.getElementById('post-btn');
       postBtn?.addEventListener('click', async () => {
-        if (!window.appState?.currentUser) {
+        if (!appState?.currentUser) {
           alert('需要登录');
           return;
         }
@@ -334,7 +335,7 @@
         if (!text) return;
         postBtn.disabled = true;
         try {
-          await createPost(text, window.appState.currentUser.uid);
+          await createPost(text, appState.currentUser.uid);
           blogInput.value = '';
         } finally {
           postBtn.disabled = false;
