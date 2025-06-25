@@ -10,6 +10,7 @@ import {
   increment,
   arrayUnion,
   arrayRemove,
+  deleteDoc,
   getDoc,
   serverTimestamp,
 } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
@@ -97,3 +98,5 @@ export const getComments = async (postId) => {
 
 export const updatePostText = (postId, newText) =>
   updateDoc(doc(db, 'blogPosts', postId), { text: newText });
+
+export const deletePost = (postId) => deleteDoc(doc(db, 'blogPosts', postId));
