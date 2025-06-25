@@ -157,6 +157,7 @@
         addComment,
         getComments,
         deletePost,
+        updatePostText,
         postScore,
       } from './src/blog.js';
       import { getUserProfile, getFollowingIds, getUserByName } from './src/user.js';
@@ -316,6 +317,61 @@
         likeRow.appendChild(shareBtn);
         likeRow.appendChild(commentContainer);
         if (appState?.currentUser && appState.currentUser.uid === p.userId) {
+          const editBtn = document.createElement('button');
+          editBtn.className =
+            'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
+          editBtn.innerHTML =
+            '<i data-lucide="pencil" class="w-4 h-4" aria-hidden="true"></i>';
+
+          text.addEventListener('click', () => {
+            if (appState.currentUser && p.userId === appState.currentUser.uid) {
+              editBtn.click();
+            }
+          });
+
+          editBtn.addEventListener('click', () => {
+            const textarea = document.createElement('textarea');
+            textarea.className = 'w-full p-2 rounded-md bg-black/30';
+            textarea.value = p.text;
+            textContainer.replaceChild(textarea, text);
+
+            const editRow = document.createElement('div');
+            editRow.className = 'flex items-center gap-2 mt-2';
+            const saveEdit = document.createElement('button');
+            saveEdit.className =
+              'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
+            saveEdit.innerHTML =
+              '<i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>';
+            const cancelEdit = document.createElement('button');
+            cancelEdit.className =
+              'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
+            cancelEdit.innerHTML =
+              '<i data-lucide="x" class="w-4 h-4" aria-hidden="true"></i>';
+            editRow.appendChild(saveEdit);
+            editRow.appendChild(cancelEdit);
+
+            card.replaceChild(editRow, likeRow);
+            window.lucide?.createIcons();
+
+            cancelEdit.addEventListener('click', () => {
+              textContainer.replaceChild(text, textarea);
+              card.replaceChild(likeRow, editRow);
+            });
+
+            saveEdit.addEventListener('click', async () => {
+              saveEdit.disabled = true;
+              try {
+                await updatePostText(p.id, textarea.value);
+                p.text = textarea.value;
+                text.textContent = textarea.value;
+                cancelEdit.click();
+              } catch (err) {
+                console.error('Failed to update text:', err);
+                saveEdit.disabled = false;
+              }
+            });
+          });
+
           const delBtn = document.createElement('button');
           delBtn.className =
             'delete-post p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
@@ -332,6 +388,7 @@
               delBtn.disabled = false;
             }
           });
+          likeRow.appendChild(editBtn);
           likeRow.appendChild(delBtn);
         }
         card.appendChild(likeRow);
