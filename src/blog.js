@@ -100,3 +100,6 @@ export const updatePostText = (postId, newText) =>
   updateDoc(doc(db, 'blogPosts', postId), { text: newText });
 
 export const deletePost = (postId) => deleteDoc(doc(db, 'blogPosts', postId));
+
+export const postScore = ({ likes = 0, commentCount = 0 } = {}) =>
+  likes + commentCount;

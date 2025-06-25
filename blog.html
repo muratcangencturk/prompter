@@ -120,6 +120,26 @@
           </a>
           <h1 class="text-xl sm:text-2xl font-bold leading-tight ml-1">Space</h1>
         </div>
+        <div class="ml-auto flex flex-col items-start gap-1">
+          <label class="text-sm inline-flex items-center gap-1">
+            <input id="following-filter" type="checkbox" class="form-checkbox" />
+            Only following
+          </label>
+          <label class="text-sm inline-flex items-center gap-1">
+            <input id="prompter-filter" type="checkbox" class="form-checkbox" />
+            Prompter
+          </label>
+          <label class="text-sm inline-flex items-center gap-1">
+            <input id="popular-filter" type="checkbox" class="form-checkbox" />
+            Popular
+          </label>
+          <input
+            id="post-search"
+            type="text"
+            placeholder="Search..."
+            class="bg-black/20 border border-white/20 rounded-md text-sm px-1 focus:outline-none focus:ring-2 focus:ring-white/50 mt-1"
+          />
+        </div>
       </header>
       <div class="mb-4">
         <textarea id="blog-input" class="w-full p-2 rounded-md bg-black/30" rows="3" placeholder="Write something..."></textarea>
@@ -137,13 +157,15 @@
         addComment,
         getComments,
         deletePost,
+        postScore,
       } from './src/blog.js';
-      import { getUserProfile } from './src/user.js';
+      import { getUserProfile, getFollowingIds, getUserByName } from './src/user.js';
       import { onAuth } from './src/auth.js';
       import { appState } from './src/state.js';
       import {
         collection,
         query,
+        where,
         orderBy,
         onSnapshot,
       } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
@@ -388,23 +410,103 @@
         }
       });
 
+      const followingFilter = document.getElementById('following-filter');
+      const popularFilter = document.getElementById('popular-filter');
+      const prompterFilter = document.getElementById('prompter-filter');
+      const postSearch = document.getElementById('post-search');
+
+      let followingIds = [];
+      let prompterUser = null;
+      let loadedPosts = [];
       let unsubscribe = null;
-      const startListener = () => {
+
+      const refreshFollowing = async () => {
+        if (!appState.currentUser) {
+          followingIds = [];
+          return;
+        }
+        followingIds = await getFollowingIds(appState.currentUser.uid);
+      };
+
+      const loadPrompter = async () => {
+        if (!prompterUser) {
+          prompterUser = await getUserByName('Prompter');
+        }
+      };
+
+      const render = async (posts) => {
+        const names = await Promise.all(posts.map((p) => fetchName(p.userId)));
+        const commentsArr = await Promise.all(posts.map((p) => getComments(p.id)));
+        const list = document.getElementById('blog-list');
+        list.innerHTML = '';
+        for (let i = 0; i < posts.length; i++) {
+          const card = await createCard(posts[i], names[i], commentsArr[i]);
+          list.appendChild(card);
+        }
+        window.lucide?.createIcons();
+      };
+
+      function filterAndRender() {
+        let posts = loadedPosts;
+        const term = postSearch?.value?.trim().toLowerCase();
+        if (term) {
+          posts = posts.filter((p) => p.text.toLowerCase().includes(term));
+        }
+        if (followingFilter?.checked) {
+          posts = posts.filter((p) => followingIds.includes(p.userId));
+        }
+        if (prompterFilter?.checked) {
+          if (prompterUser) posts = posts.filter((p) => p.userId === prompterUser.id);
+          else posts = [];
+        }
+        if (popularFilter?.checked) {
+          posts = [...posts].sort((a, b) => postScore(b) - postScore(a));
+        }
+        render(posts);
+      }
+
+      const debounce = (fn, delay = 300) => {
+        let t;
+        return (...args) => {
+          clearTimeout(t);
+          t = setTimeout(() => fn(...args), delay);
+        };
+      };
+
+      const debouncedFilter = debounce(filterAndRender, 300);
+      postSearch?.addEventListener('input', debouncedFilter);
+      popularFilter?.addEventListener('change', filterAndRender);
+      popularFilter?.addEventListener('click', filterAndRender);
+
+      const startListener = async () => {
         if (unsubscribe) unsubscribe();
-        const q = query(collection(db, 'blogPosts'), orderBy('createdAt', 'desc'));
-        unsubscribe = onSnapshot(q, async (snap) => {
-          const posts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
-          const names = await Promise.all(posts.map((p) => fetchName(p.userId)));
-          const commentsArr = await Promise.all(posts.map((p) => getComments(p.id)));
-          const list = document.getElementById('blog-list');
-          list.innerHTML = '';
-          for (let i = 0; i < posts.length; i++) {
-            const card = await createCard(posts[i], names[i], commentsArr[i]);
-            list.appendChild(card);
+        await refreshFollowing();
+        await loadPrompter();
+        const constraints = [];
+        if (followingFilter?.checked) {
+          if (followingIds.length > 0) {
+            constraints.push(where('userId', 'in', followingIds.slice(0, 10)));
+          } else {
+            loadedPosts = [];
+            render([]);
+            return;
           }
-          window.lucide?.createIcons();
+        }
+        if (prompterFilter?.checked && prompterUser) {
+          constraints.push(where('userId', '==', prompterUser.id));
+        }
+        constraints.push(orderBy('createdAt', 'desc'));
+        const q = query(collection(db, 'blogPosts'), ...constraints);
+        unsubscribe = onSnapshot(q, (snap) => {
+          loadedPosts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+          filterAndRender();
         });
       };
+
+      ['change', 'click'].forEach((evt) => {
+        followingFilter?.addEventListener(evt, startListener);
+        prompterFilter?.addEventListener(evt, startListener);
+      });
 
       document.addEventListener('DOMContentLoaded', () => {
         onAuth(startListener);
