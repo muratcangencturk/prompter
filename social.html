@@ -381,15 +381,18 @@
         saveBtn.addEventListener('click', async () => {
           saveBtn.disabled = true;
           try {
+            if (!appState.currentUser) {
+              alert('Login required to save or share prompts.');
+              saveBtn.disabled = false;
+              return;
+            }
             appState.savedPrompts.push(p.text);
             localStorage.setItem(
               'savedPrompts',
               JSON.stringify(appState.savedPrompts)
             );
-            if (appState.currentUser) {
-              await saveUserPrompt(p.text, appState.currentUser.uid);
-              await incrementSaveCount(p.id);
-            }
+            await saveUserPrompt(p.text, appState.currentUser.uid);
+            await incrementSaveCount(p.id);
             alert('Prompt saved!');
             saveBtn.classList.toggle('active');
             const icon = saveBtn.querySelector('svg');
