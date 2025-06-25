@@ -125,7 +125,7 @@
         <textarea id="blog-input" class="w-full p-2 rounded-md bg-black/30" rows="3" placeholder="Write something..."></textarea>
         <button id="post-btn" class="mt-2 px-3 py-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all">Post</button>
       </div>
-      <div id="blog-list" class="space-y-4"></div>
+      <div id="blog-list" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
     </div>
     <script type="module">
       import {
@@ -163,9 +163,35 @@
         card.dataset.id = p.id;
         card.className = 'bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
 
+        const textWrap = document.createElement('div');
+        textWrap.className = 'relative pr-6';
+
+        const textContainer = document.createElement('div');
+        textContainer.className = 'prompt-text-box overflow-hidden max-h-40';
+
         const text = document.createElement('p');
         text.textContent = p.text;
-        card.appendChild(text);
+        textContainer.appendChild(text);
+        textWrap.appendChild(textContainer);
+
+        const showMore = document.createElement('span');
+        showMore.className = 'text-blue-200 text-xs underline cursor-pointer';
+        showMore.textContent = 'Show more';
+        const toggleText = () => {
+          textContainer.classList.toggle('overflow-hidden');
+          textContainer.classList.toggle('max-h-40');
+          showMore.textContent = textContainer.classList.contains('overflow-hidden')
+            ? 'Show more'
+            : 'Show less';
+        };
+        showMore.addEventListener('click', toggleText);
+        requestAnimationFrame(() => {
+          if (textContainer.scrollHeight > textContainer.offsetHeight) {
+            textWrap.appendChild(showMore);
+          }
+        });
+
+        card.appendChild(textWrap);
 
         const nameEl = document.createElement('p');
         nameEl.className = 'text-blue-200 text-xs mt-1 underline';
