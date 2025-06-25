@@ -346,6 +346,23 @@ const initNotifications = (uid) => {
   });
 };
 
+const markAllNotificationsRead = async () => {
+  if (!appState.currentUser) return;
+  const unread = notifications.filter((n) => !n.read);
+  if (!unread.length) return;
+  await Promise.all(
+    unread.map((n) =>
+      markNotificationRead(appState.currentUser.uid, n.id).catch((err) => {
+        console.error('Failed to mark notification read:', err);
+      })
+    )
+  );
+  unread.forEach((n) => {
+    n.read = true;
+  });
+  renderNotifications();
+};
+
 const sharePrompt = (prompt, baseUrl) => {
   if (!prompt) return;
   const url = `${baseUrl}${encodeURIComponent(prompt)}`;
@@ -1038,7 +1055,9 @@ const init = () => {
   notificationsPanel = document.getElementById('notifications-panel');
 
   notificationBtn?.addEventListener('click', () => {
+    const wasHidden = notificationsPanel?.classList.contains('hidden');
     notificationsPanel?.classList.toggle('hidden');
+    if (wasHidden) markAllNotificationsRead();
   });
 
   const savedLang = localStorage.getItem('language') || 'en';
