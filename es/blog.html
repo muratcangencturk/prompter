@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog - Prompter</title>
+    <base href="../" />
+    <link rel="manifest" href="manifest.json?v=56" />
+    <meta name="theme-color" content="#000000" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <script>
+      (function () {
+        function addScript(src, onLoad) {
+          const s = document.createElement('script');
+          s.src = src;
+          s.async = true;
+          if (onLoad) s.addEventListener('load', onLoad, { once: true });
+          document.head.appendChild(s);
+          return s;
+        }
+        function fetchWithTimeout(url, timeout = 500) {
+          return Promise.race([
+            fetch(url, { method: 'HEAD', mode: 'no-cors' }),
+            new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), timeout)),
+          ]);
+        }
+        function loadWithFallback(primary, local) {
+          let cdnScript = null;
+          let localScript = null;
+          let resolveLoad;
+          const loadPromise = new Promise((resolve) => {
+            resolveLoad = resolve;
+          });
+          const addLocal = () => {
+            if (!localScript) {
+              localScript = document.createElement('script');
+              localScript.src = local;
+              localScript.async = true;
+              localScript.addEventListener('load', resolveLoad, { once: true });
+              document.head.appendChild(localScript);
+            }
+          };
+          if (!primary || !navigator.onLine) {
+            addLocal();
+            return { cdn: null, local: localScript, loadPromise };
+          }
+          let fallbackTimer = setTimeout(() => {
+            addLocal();
+            fallbackTimer = null;
+          }, 500);
+          fetchWithTimeout(primary).catch(() => {
+            if (fallbackTimer) {
+              clearTimeout(fallbackTimer);
+              fallbackTimer = null;
+            }
+            addLocal();
+          });
+          cdnScript = addScript(primary, () => {
+            if (fallbackTimer) {
+              clearTimeout(fallbackTimer);
+              fallbackTimer = null;
+            }
+            resolveLoad();
+          });
+          cdnScript.onerror = () => {
+            if (fallbackTimer) {
+              clearTimeout(fallbackTimer);
+              fallbackTimer = null;
+            }
+            addLocal();
+          };
+          return { cdn: cdnScript, local: localScript, loadPromise };
+        }
+        window.lucideScripts = loadWithFallback(
+          'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=56',
+          'lucide.min.js?v=56'
+        );
+        window.lucideScripts.loadPromise.finally(() => {
+          const appContainer = document.getElementById('app-container');
+          const loadingScreen = document.getElementById('loading-screen');
+          if (appContainer) appContainer.style.visibility = 'visible';
+          if (loadingScreen) loadingScreen.classList.add('hidden');
+        });
+      })();
+    </script>
+    <link rel="stylesheet" href="css/tailwind.css?v=56" />
+    <link rel="stylesheet" href="css/app.css?v=56" />
+    <script type="module" src="src/init-app.js?v=56"></script>
+    <script nomodule src="dist/init-app.js?v=56"></script>
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=56" />
+    <script>
+      (function () {
+        const linkEl = document.getElementById('theme-css');
+        if (!linkEl) return;
+        const version = linkEl.getAttribute('href').split('?')[1];
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          linkEl.href = `css/theme-${savedTheme}.css${version ? `?${version}` : ''}`;
+        }
+      })();
+    </script>
+    <script type="module" src="src/version.js?v=56"></script>
+  </head>
+  <body class="min-h-screen p-4">
+    <div id="loading-screen">
+      <div class="spinner" aria-label="Loading"></div>
+    </div>
+    <div id="app-container" class="max-w-4xl mx-auto" style="visibility: hidden">
+      <header class="flex items-center w-full mt-4 mb-6">
+        <div class="flex items-center gap-2">
+          <a
+            href="index.html"
+            class="p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50"
+            title="Atrás"
+            aria-label="Atrás"
+          >
+            <span class="w-6 h-6 inline-flex items-center justify-center text-3xl" aria-hidden="true">&larr;</span>
+          </a>
+          <h1 class="text-xl sm:text-2xl font-bold leading-tight ml-1">Blog</h1>
+        </div>
+      </header>
+      <div class="mb-4">
+        <textarea id="blog-input" class="w-full p-2 rounded-md bg-black/30" rows="3" placeholder="Escribe algo..."></textarea>
+        <button id="post-btn" class="mt-2 px-3 py-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all">Publicar</button>
+      </div>
+      <div id="blog-list" class="space-y-4"></div>
+    </div>
+    <script type="module">
+      import {
+        createPost,
+        likePost,
+        unlikePost,
+        sharePostByUser,
+        unsharePostByUser,
+        addComment,
+        getComments,
+      } from './src/blog.js';
+      import { getUserProfile } from './src/user.js';
+      import { onAuth } from './src/auth.js';
+      import {
+        collection,
+        query,
+        orderBy,
+        onSnapshot,
+      } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
+      import { db } from './src/firebase.js';
+
+      const profileCache = {};
+      const fetchName = async (uid) => {
+        if (profileCache[uid]) return profileCache[uid];
+        const prof = await getUserProfile(uid);
+        const name = prof?.name || 'Unknown User';
+        profileCache[uid] = name;
+        return name;
+      };
+
+      const createCard = async (p, name, comments) => {
+        const card = document.createElement('div');
+        card.dataset.id = p.id;
+        card.className = 'bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
+
+        const text = document.createElement('p');
+        text.textContent = p.text;
+        card.appendChild(text);
+
+        const nameEl = document.createElement('p');
+        nameEl.className = 'text-blue-200 text-xs mt-1 underline';
+        nameEl.innerHTML = `<a href="user.html?uid=${p.userId}">${name}</a>`;
+        card.appendChild(nameEl);
+
+        const likeRow = document.createElement('div');
+        likeRow.className = 'flex items-center gap-2 mt-2';
+
+        const likeBtn = document.createElement('button');
+        likeBtn.className = 'like-btn p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
+        likeBtn.innerHTML = '<i data-lucide="heart" class="w-4 h-4" aria-hidden="true"></i>';
+
+        let likes = p.likes || 0;
+        const likeCount = document.createElement('span');
+        likeCount.className = 'text-xs';
+        likeCount.textContent = likes.toString();
+
+        if (p.likedBy && window.appState?.currentUser && p.likedBy.includes(window.appState.currentUser.uid)) {
+          likeBtn.classList.add('active');
+        }
+
+        const updateLikeIcon = () => {
+          const svg = likeBtn.querySelector('svg');
+          if (svg) svg.setAttribute('fill', likeBtn.classList.contains('active') ? 'currentColor' : 'none');
+        };
+        updateLikeIcon();
+
+        likeBtn.addEventListener('click', async () => {
+          if (!window.appState?.currentUser) {
+            alert('Se requiere iniciar sesión');
+            return;
+          }
+          likeBtn.disabled = true;
+          const already = likeBtn.classList.contains('active');
+          try {
+            if (already) {
+              await unlikePost(p.id, window.appState.currentUser.uid);
+              likes -= 1;
+              likeBtn.classList.remove('active');
+            } else {
+              await likePost(p.id, window.appState.currentUser.uid);
+              likes += 1;
+              likeBtn.classList.add('active');
+            }
+            likeCount.textContent = likes.toString();
+            updateLikeIcon();
+          } finally {
+            likeBtn.disabled = false;
+          }
+        });
+
+        const shareBtn = document.createElement('button');
+        shareBtn.className = 'share-btn p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
+        shareBtn.innerHTML = '<i data-lucide="share-2" class="w-4 h-4" aria-hidden="true"></i>';
+        let sharedByCurrent = window.appState?.currentUser && p.sharedBy && p.sharedBy.includes(window.appState.currentUser.uid);
+        if (sharedByCurrent) shareBtn.classList.add('active');
+        const updateShareIcon = () => {
+          const svg = shareBtn.querySelector('svg');
+          if (svg) svg.setAttribute('fill', shareBtn.classList.contains('active') ? 'currentColor' : 'none');
+        };
+        updateShareIcon();
+        shareBtn.addEventListener('click', async () => {
+          if (!window.appState?.currentUser) {
+            alert('Se requiere iniciar sesión');
+            return;
+          }
+          shareBtn.disabled = true;
+          try {
+            if (sharedByCurrent) {
+              await unsharePostByUser(p.id, window.appState.currentUser.uid);
+              sharedByCurrent = false;
+              shareBtn.classList.remove('active');
+            } else {
+              await sharePostByUser(p.id, window.appState.currentUser.uid);
+              sharedByCurrent = true;
+              shareBtn.classList.add('active');
+            }
+            updateShareIcon();
+          } finally {
+            shareBtn.disabled = false;
+          }
+        });
+
+        const commentToggleBtn = document.createElement('button');
+        commentToggleBtn.className = 'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
+        commentToggleBtn.innerHTML = '<i data-lucide="message-circle" class="w-4 h-4" aria-hidden="true"></i>';
+        const commentCount = document.createElement('span');
+        commentCount.className = 'text-xs';
+        let commentNum = comments.length;
+        commentCount.textContent = commentNum.toString();
+
+        const commentContainer = document.createElement('div');
+        commentContainer.className = 'flex items-center gap-1';
+        commentContainer.appendChild(commentToggleBtn);
+        commentContainer.appendChild(commentCount);
+
+        likeRow.appendChild(likeBtn);
+        likeRow.appendChild(likeCount);
+        likeRow.appendChild(shareBtn);
+        likeRow.appendChild(commentContainer);
+        card.appendChild(likeRow);
+
+        const commentsWrap = document.createElement('div');
+        commentsWrap.className = 'mt-2 space-y-1 hidden';
+        const commentList = document.createElement('div');
+        commentsWrap.appendChild(commentList);
+        const commentForm = document.createElement('form');
+        commentForm.className = 'flex items-center gap-2 mt-1';
+        const commentInput = document.createElement('input');
+        commentInput.type = 'text';
+        commentInput.placeholder = 'Agrega un comentario...';
+        commentInput.className = 'flex-1 p-1 rounded-md bg-black/30';
+        const commentBtn = document.createElement('button');
+        commentBtn.type = 'submit';
+        commentBtn.className = 'px-2 py-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all';
+        commentBtn.innerHTML = '<i data-lucide="send" class="w-4 h-4" aria-hidden="true"></i>';
+        commentForm.appendChild(commentInput);
+        commentForm.appendChild(commentBtn);
+        commentsWrap.appendChild(commentForm);
+        card.appendChild(commentsWrap);
+
+        commentToggleBtn.addEventListener('click', () => {
+          commentsWrap.classList.toggle('hidden');
+        });
+
+        const renderComment = async (c) => {
+          const n = await fetchName(c.userId);
+          const d = document.createElement('div');
+          d.className = 'bg-white/5 rounded-md px-2 py-1 text-sm';
+          d.innerHTML = `<span class="underline">${n}</span>: ${c.text}`;
+          commentList.appendChild(d);
+        };
+        for (const c of comments) {
+          await renderComment(c);
+        }
+        commentForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          if (!window.appState?.currentUser) {
+            alert('Se requiere iniciar sesión');
+            return;
+          }
+          const textVal = commentInput.value.trim();
+          if (!textVal) return;
+          commentBtn.disabled = true;
+          try {
+            await addComment(p.id, window.appState.currentUser.uid, textVal);
+            await renderComment({ text: textVal, userId: window.appState.currentUser.uid });
+            commentNum += 1;
+            commentCount.textContent = commentNum.toString();
+            commentInput.value = '';
+          } finally {
+            commentBtn.disabled = false;
+          }
+        });
+
+        return card;
+      };
+
+      const blogInput = document.getElementById('blog-input');
+      const postBtn = document.getElementById('post-btn');
+      postBtn?.addEventListener('click', async () => {
+        if (!window.appState?.currentUser) {
+          alert('Se requiere iniciar sesión');
+          return;
+        }
+        const text = blogInput.value.trim();
+        if (!text) return;
+        postBtn.disabled = true;
+        try {
+          await createPost(text, window.appState.currentUser.uid);
+          blogInput.value = '';
+        } finally {
+          postBtn.disabled = false;
+        }
+      });
+
+      let unsubscribe = null;
+      const startListener = () => {
+        if (unsubscribe) unsubscribe();
+        const q = query(collection(db, 'blogPosts'), orderBy('createdAt', 'desc'));
+        unsubscribe = onSnapshot(q, async (snap) => {
+          const posts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+          const names = await Promise.all(posts.map((p) => fetchName(p.userId)));
+          const commentsArr = await Promise.all(posts.map((p) => getComments(p.id)));
+          const list = document.getElementById('blog-list');
+          list.innerHTML = '';
+          for (let i = 0; i < posts.length; i++) {
+            const card = await createCard(posts[i], names[i], commentsArr[i]);
+            list.appendChild(card);
+          }
+          window.lucide?.createIcons();
+        });
+      };
+
+      document.addEventListener('DOMContentLoaded', () => {
+        onAuth(startListener);
+        startListener();
+      });
+    </script>
+  </body>
+</html>
