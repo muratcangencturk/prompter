@@ -29,13 +29,25 @@ const render = async (items) => {
   window.lucide?.createIcons();
 };
 
+const showMessage = (msg) => {
+  const list = document.getElementById('prompt-list');
+  if (list) {
+    list.innerHTML = `<p class="text-center text-blue-200 text-sm">${msg}</p>`;
+  }
+};
+
 const load = async () => {
   try {
     const snap = await getDoc(doc(db, 'stats', 'topPrompts'));
-    if (!snap.exists()) return;
+    if (!snap.exists()) {
+      console.error('topPrompts document does not exist');
+      showMessage('Rankings are not available.');
+      return;
+    }
     await render(snap.data().list || []);
   } catch (err) {
     console.error('Failed to load rankings', err);
+    showMessage('Failed to load rankings.');
   }
 };
 
