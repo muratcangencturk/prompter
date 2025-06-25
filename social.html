@@ -183,6 +183,12 @@
             />
             Popular
           </label>
+          <input
+            id="prompt-search"
+            type="text"
+            placeholder="Search..."
+            class="bg-black/20 border border-white/20 rounded-md text-sm px-1 focus:outline-none focus:ring-2 focus:ring-white/50 mt-1"
+          />
           <label class="text-sm inline-flex items-center gap-1 mt-1">
             <span>Category:</span>
             <select
@@ -242,6 +248,7 @@
       const followingFilter = document.getElementById('following-filter');
       const popularFilter = document.getElementById('popular-filter');
       const categoryFilter = document.getElementById('category-filter');
+      const promptSearch = document.getElementById('prompt-search');
       if (categoryFilter) {
         categoryFilter.innerHTML = '<option value="">All</option>';
         categories.forEach((c) => {
@@ -859,6 +866,30 @@
         if (targetPromptId) highlightPrompt(targetPromptId);
       }
 
+      let loadedPrompts = [];
+
+      function filterAndRender() {
+        let filtered = loadedPrompts;
+        const term = promptSearch?.value?.trim().toLowerCase();
+        if (term) {
+          filtered = filtered.filter((p) =>
+            p.text.toLowerCase().includes(term)
+          );
+        }
+        render(filtered);
+      }
+
+      const debounce = (fn, delay = 300) => {
+        let t;
+        return (...args) => {
+          clearTimeout(t);
+          t = setTimeout(() => fn(...args), delay);
+        };
+      };
+
+      const debouncedFilter = debounce(filterAndRender, 300);
+      promptSearch?.addEventListener('input', debouncedFilter);
+
       let unsubscribe = null;
 
       const startListener = async () => {
@@ -890,7 +921,8 @@
             if (popularFilter?.checked) {
               prompts.sort((a, b) => promptScore(b) - promptScore(a));
             }
-            await render(prompts);
+            loadedPrompts = prompts;
+            filterAndRender();
           },
           (err) => {
             console.error('Failed to load prompts:', err);
