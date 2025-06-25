@@ -299,6 +299,18 @@
           }
         });
 
+        const twitterBtn = document.createElement('button');
+        twitterBtn.className =
+          'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
+        twitterBtn.innerHTML =
+          '<i data-lucide="twitter" class="w-4 h-4" aria-hidden="true"></i>';
+        twitterBtn.addEventListener('click', () => {
+          const url =
+            'https://twitter.com/intent/tweet?text=' +
+            encodeURIComponent(p.text + ' https://prompterai.space');
+          window.open(url, '_blank');
+        });
+
         const commentToggleBtn = document.createElement('button');
         commentToggleBtn.className = 'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
         commentToggleBtn.innerHTML = '<i data-lucide="message-circle" class="w-4 h-4" aria-hidden="true"></i>';
@@ -315,6 +327,7 @@
         likeRow.appendChild(likeBtn);
         likeRow.appendChild(likeCount);
         likeRow.appendChild(shareBtn);
+        likeRow.appendChild(twitterBtn);
         likeRow.appendChild(commentContainer);
         if (appState?.currentUser && appState.currentUser.uid === p.userId) {
           const editBtn = document.createElement('button');
