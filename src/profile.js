@@ -1034,6 +1034,7 @@ const init = () => {
     editBioHint?.classList.add('hidden');
     bioEditRow.classList.remove('hidden');
     bioInput.focus();
+    window.lucide?.createIcons();
   });
 
   bioUpdateBtn?.addEventListener('click', async () => {
