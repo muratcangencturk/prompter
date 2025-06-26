@@ -1004,7 +1004,9 @@ const setupEventListeners = () => {
         await savePrompt(
           appState.generatedPrompt,
           appState.currentUser.uid,
-          categorySelect ? categorySelect.value : appState.selectedCategory
+          categorySelect ? categorySelect.value : appState.selectedCategory,
+          appState.currentUser.displayName || '',
+          appState.currentUser.email || ''
         );
       } catch (err) {
         console.error(err);
@@ -1158,7 +1160,9 @@ const setupEventListeners = () => {
           await savePrompt(
             text,
             appState.currentUser.uid,
-            categorySelect ? categorySelect.value : appState.selectedCategory
+            categorySelect ? categorySelect.value : appState.selectedCategory,
+            appState.currentUser.displayName || '',
+            appState.currentUser.email || ''
           );
         } catch (err) {
           console.error(err);
@@ -1174,7 +1178,13 @@ const setupEventListeners = () => {
               const { savePrompt: retrySavePrompt } = await import(
                 './prompt.js'
               );
-              await retrySavePrompt(text, appState.currentUser.uid);
+              await retrySavePrompt(
+                text,
+                appState.currentUser.uid,
+                undefined,
+                appState.currentUser.displayName || '',
+                appState.currentUser.email || ''
+              );
               saved = true;
             } catch (err2) {
               console.error(err2);
@@ -1226,7 +1236,9 @@ const setupEventListeners = () => {
         await savePrompt(
           text,
           appState.currentUser.uid,
-          categorySelect ? categorySelect.value : appState.selectedCategory
+          categorySelect ? categorySelect.value : appState.selectedCategory,
+          appState.currentUser.displayName || '',
+          appState.currentUser.email || ''
         );
       } catch (err) {
         console.error(err);

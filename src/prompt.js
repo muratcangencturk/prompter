@@ -29,10 +29,18 @@ export const generatePrompt = () => {
   return samplePrompts[idx];
 };
 
-export const savePrompt = (text, userId, category = 'random') =>
+export const savePrompt = (
+  text,
+  userId,
+  category = 'random',
+  userName = '',
+  userEmail = ''
+) =>
   addDoc(collection(db, 'prompts'), {
     text,
     userId,
+    userName,
+    userEmail,
     category,
     createdAt: serverTimestamp(),
     likes: 0,
