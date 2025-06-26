@@ -1005,8 +1005,6 @@ const setupEventListeners = () => {
           appState.generatedPrompt,
           appState.currentUser.uid,
           categorySelect ? categorySelect.value : appState.selectedCategory,
-          appState.currentUser.displayName || '',
-          appState.currentUser.email || ''
         );
       } catch (err) {
         console.error(err);
@@ -1161,8 +1159,6 @@ const setupEventListeners = () => {
             text,
             appState.currentUser.uid,
             categorySelect ? categorySelect.value : appState.selectedCategory,
-            appState.currentUser.displayName || '',
-            appState.currentUser.email || ''
           );
         } catch (err) {
           console.error(err);
@@ -1237,8 +1233,6 @@ const setupEventListeners = () => {
           text,
           appState.currentUser.uid,
           categorySelect ? categorySelect.value : appState.selectedCategory,
-          appState.currentUser.displayName || '',
-          appState.currentUser.email || ''
         );
       } catch (err) {
         console.error(err);

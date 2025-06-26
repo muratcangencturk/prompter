@@ -16,6 +16,7 @@ import {
 } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
 import { db } from './firebase.js';
 import { sendNotification } from './notifications.js';
+import { getUserProfile } from './user.js';
 
 const samplePrompts = [
   'Describe a futuristic city where nature and technology coexist.',
@@ -29,14 +30,23 @@ export const generatePrompt = () => {
   return samplePrompts[idx];
 };
 
-export const savePrompt = (
+export const savePrompt = async (
   text,
   userId,
-  category = 'random',
-  userName = '',
-  userEmail = ''
-) =>
-  addDoc(collection(db, 'prompts'), {
+  category = 'random'
+) => {
+  let userName = '';
+  let userEmail = '';
+  try {
+    const profile = await getUserProfile(userId);
+    if (profile) {
+      userName = profile.name || '';
+      userEmail = profile.email || '';
+    }
+  } catch (err) {
+    console.error('Failed to fetch user profile:', err);
+  }
+  return addDoc(collection(db, 'prompts'), {
     text,
     userId,
     userName,
@@ -51,6 +61,7 @@ export const savePrompt = (
     shareCount: 1,
     commentCount: 0,
   });
+};
 
 export const getUserPrompts = async (userId) => {
   const q = query(
