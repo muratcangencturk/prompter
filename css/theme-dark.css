@@ -93,6 +93,7 @@ body {
 #lang-menu {
   background-color: rgba(0, 0, 0, 0.8) !important;
   color: white !important;
+  z-index: 20;
 }
 #lang-menu button:hover {
   background-color: rgba(255, 255, 255, 0.1) !important;
