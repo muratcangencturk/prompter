@@ -217,37 +217,6 @@
           }
         });
 
-        const shareBtn = document.createElement('button');
-        shareBtn.className = 'share-btn p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
-        shareBtn.innerHTML = '<i data-lucide="share-2" class="w-4 h-4" aria-hidden="true"></i>';
-        let sharedByCurrent = appState?.currentUser && p.sharedBy && p.sharedBy.includes(appState.currentUser.uid);
-        if (sharedByCurrent) shareBtn.classList.add('active');
-        const updateShareIcon = () => {
-          const svg = shareBtn.querySelector('svg');
-          if (svg) svg.setAttribute('fill', shareBtn.classList.contains('active') ? 'currentColor' : 'none');
-        };
-        updateShareIcon();
-        shareBtn.addEventListener('click', async () => {
-          if (!appState?.currentUser) {
-            alert('Connexion requise');
-            return;
-          }
-          shareBtn.disabled = true;
-          try {
-            if (sharedByCurrent) {
-              await unsharePostByUser(p.id, appState.currentUser.uid);
-              sharedByCurrent = false;
-              shareBtn.classList.remove('active');
-            } else {
-              await sharePostByUser(p.id, appState.currentUser.uid);
-              sharedByCurrent = true;
-              shareBtn.classList.add('active');
-            }
-            updateShareIcon();
-          } finally {
-            shareBtn.disabled = false;
-          }
-        });
 
         const commentToggleBtn = document.createElement('button');
         commentToggleBtn.className = 'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
@@ -264,7 +233,6 @@
 
         likeRow.appendChild(likeBtn);
         likeRow.appendChild(likeCount);
-        likeRow.appendChild(shareBtn);
         likeRow.appendChild(commentContainer);
         card.appendChild(likeRow);
 

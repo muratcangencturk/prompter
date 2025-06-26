@@ -619,50 +619,6 @@
           }
         });
 
-        const shareToggleBtn = document.createElement('button');
-        shareToggleBtn.className =
-          'share-toggle p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-        const updateShareToggle = () => {
-          const svg = shareToggleBtn.querySelector('svg');
-          if (svg)
-            svg.setAttribute(
-              'fill',
-              shareToggleBtn.classList.contains('active')
-                ? 'currentColor'
-                : 'none'
-            );
-        };
-        let sharedByCurrent =
-          appState.currentUser &&
-          p.sharedBy &&
-          p.sharedBy.includes(appState.currentUser.uid);
-        shareToggleBtn.innerHTML =
-          '<i data-lucide="share-2" class="w-4 h-4" aria-hidden="true"></i>';
-        if (sharedByCurrent) shareToggleBtn.classList.add('active');
-        updateShareToggle();
-        shareToggleBtn.addEventListener('click', async () => {
-          if (!appState.currentUser) {
-            alert(msgs[appState.language].loginRequiredSharePrompt);
-            return;
-          }
-          shareToggleBtn.disabled = true;
-          try {
-            if (sharedByCurrent) {
-              await unsharePromptByUser(p.id, appState.currentUser.uid);
-              await incrementShareCount(p.id, -1);
-              sharedByCurrent = false;
-            } else {
-              await sharePromptByUser(p.id, appState.currentUser.uid);
-              await incrementShareCount(p.id, 1);
-              sharedByCurrent = true;
-            }
-            updateShareToggle();
-          } catch (err) {
-            console.error('Failed to toggle share:', err);
-          } finally {
-            shareToggleBtn.disabled = false;
-          }
-        });
 
         const twitterBtn = document.createElement('button');
         twitterBtn.className =
@@ -824,7 +780,6 @@
         });
 
         likeRow.appendChild(saveBtn);
-        likeRow.appendChild(shareToggleBtn);
         likeRow.appendChild(twitterBtn);
         if (appState.currentUser && p.userId === appState.currentUser.uid) {
           likeRow.appendChild(editBtn);
