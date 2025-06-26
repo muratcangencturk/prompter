@@ -893,7 +893,7 @@
           const existingCard = existing.get(p.id);
           const newCard = await createCard(p, name, comments);
           newCard._data = p;
-          if (existingCard) {
+          if (existingCard && list.contains(existingCard)) {
             list.replaceChild(newCard, existingCard);
             existing.delete(p.id);
           } else {
