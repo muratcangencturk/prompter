@@ -164,6 +164,7 @@
       import { onAuth } from './src/auth.js';
       import { appState } from './src/state.js';
       import { linkify } from './src/linkify.js';
+      import { timeAgo } from './src/timeago.js';
       const msgs = {
         en: { loginRequired: 'Login required' },
         tr: { loginRequired: 'Giriş gerekli' },
@@ -229,6 +230,13 @@
         nameEl.className = 'text-blue-200 text-xs mt-1 underline';
         nameEl.innerHTML = `<a href="user.html?uid=${p.userId}">${name}</a>`;
         card.appendChild(nameEl);
+
+        const timeEl = document.createElement('p');
+        timeEl.className = 'text-blue-200 text-xs';
+        if (p.createdAt && p.createdAt.toMillis) {
+          timeEl.textContent = timeAgo(p.createdAt.toMillis(), appState.language);
+        }
+        card.appendChild(timeEl);
 
         const likeRow = document.createElement('div');
         likeRow.className = 'flex items-center gap-2 mt-2';
