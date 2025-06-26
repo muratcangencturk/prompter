@@ -54,6 +54,7 @@ const init = async () => {
   let uid = getParam('uid');
   const nameQuery = getParam('name');
   let name = '';
+  const dmLink = document.getElementById('dm-link');
 
   if (!uid && nameQuery) {
     const user = await getUserByName(nameQuery);
@@ -78,6 +79,18 @@ const init = async () => {
 
   const followBtn = document.getElementById('follow-btn');
   let currentUserId = null;
+
+  const updateDmLink = () => {
+    if (!dmLink) return;
+    if (currentUserId && currentUserId !== uid) {
+      dmLink.href = `dm.html?uid=${encodeURIComponent(uid)}`;
+      dmLink.classList.remove('hidden');
+    } else {
+      dmLink.classList.add('hidden');
+    }
+  };
+
+  updateDmLink();
 
   const updateFollowBtn = async () => {
     if (!followBtn || !currentUserId || currentUserId === uid) {
@@ -107,6 +120,7 @@ const init = async () => {
   onAuth(async (u) => {
     currentUserId = u ? u.uid : null;
     await updateFollowBtn();
+    updateDmLink();
   });
 
   const prompts = await getUserPrompts(uid);
