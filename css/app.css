@@ -237,8 +237,14 @@ html {
   line-height: 1.1;
 }
 /* Theme Toggle Styles */
-.theme-toggle-container button {
+.theme-toggle-container button,
+.theme-toggle-container a {
   transition: background-color 0.2s ease, color 0.2s ease;
+  width: 4rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* History panel */
