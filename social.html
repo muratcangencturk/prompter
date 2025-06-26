@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prompter Social</title>
     <base href="./" />
-    <link rel="manifest" href="manifest.json?v=61" />
+    <link rel="manifest" href="manifest.json?v=63" />
     <meta name="theme-color" content="#000000" />
     <meta
       http-equiv="Cache-Control"
@@ -97,8 +97,8 @@
         }
 
         window.lucideScripts = loadWithFallback(
-          'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=61',
-          'lucide.min.js?v=61'
+          'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=63',
+          'lucide.min.js?v=63'
         );
         window.lucideScripts.loadPromise.finally(() => {
           const appContainer = document.getElementById('app-container');
@@ -108,10 +108,10 @@
         });
       })();
     </script>
-    <link rel="stylesheet" href="css/tailwind.css?v=61" />
-    <link rel="stylesheet" href="css/app.css?v=61" />
-    <script type="module" src="src/init-app.js?v=61"></script>
-    <script nomodule src="dist/init-app.js?v=61"></script>
+    <link rel="stylesheet" href="css/tailwind.css?v=63" />
+    <link rel="stylesheet" href="css/app.css?v=63" />
+    <script type="module" src="src/init-app.js?v=63"></script>
+    <script nomodule src="dist/init-app.js?v=63"></script>
     <!--
     <script>
       if ('serviceWorker' in navigator) {
@@ -119,7 +119,7 @@
       }
     </script>
     -->
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=61" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=63" />
     <script>
       (function () {
         const linkEl = document.getElementById('theme-css');
@@ -133,7 +133,7 @@
         }
       })();
     </script>
-    <script type="module" src="src/version.js?v=61"></script>
+    <script type="module" src="src/version.js?v=63"></script>
   </head>
   <body class="min-h-screen p-4">
     <div id="loading-screen">
@@ -155,7 +155,7 @@
             >
           </a>
           <img
-            src="icons/logo.svg?v=61"
+            src="icons/logo.svg?v=63"
             alt="Prompter logo"
             class="w-12 h-12 sm:w-14 sm:h-14"
           />
@@ -216,7 +216,7 @@
       } from './src/prompt.js';
       import { promptScore } from './src/scoring.js';
       import { appState } from './src/state.js';
-      import { categories } from './src/prompts.js?v=61';
+      import { categories } from './src/prompts.js?v=63';
       import {
         getUserProfile,
         getFollowingIds,

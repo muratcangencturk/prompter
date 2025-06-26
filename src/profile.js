@@ -576,7 +576,9 @@ const renderSavedPrompts = (prompts) => {
         await savePrompt(
           pEl.textContent || '',
           appState.currentUser.uid,
-          appState.selectedCategory
+          appState.selectedCategory,
+          appState.currentUser.displayName || '',
+          appState.currentUser.email || ''
         );
       } catch (err) {
         console.error(err);

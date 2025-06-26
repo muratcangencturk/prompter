@@ -17,10 +17,17 @@ import {
 import { db } from './firebase.js';
 import { sendNotification } from './notifications.js';
 
-export const createPost = (text, userId) =>
+export const createPost = (
+  text,
+  userId,
+  userName = '',
+  userEmail = ''
+) =>
   addDoc(collection(db, 'blogPosts'), {
     text,
     userId,
+    userName,
+    userEmail,
     createdAt: serverTimestamp(),
     likes: 0,
     likedBy: [],
