@@ -312,12 +312,8 @@
       const fetchName = async (uid) => {
         if (profileCache[uid]) return profileCache[uid];
         const prof = await getUserProfile(uid);
-        let display = prof?.name || 'Unknown User';
-        if (prof?.email) {
-          display += ` (${prof.email})`;
-        }
-        profileCache[uid] = display;
-        return display;
+        profileCache[uid] = prof?.name || 'Unknown User';
+        return profileCache[uid];
       };
 
       const urlParams = new URLSearchParams(window.location.search);
