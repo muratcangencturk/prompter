@@ -194,6 +194,7 @@ let nameEditRow;
 let nameInput;
 let nameUpdateBtn;
 let editNameBtn;
+let usernameLabel;
 let bioWrapper;
 let bioEditRow;
 let bioInput;
@@ -1034,6 +1035,10 @@ const init = () => {
   nameInput = document.getElementById('name-input');
   nameUpdateBtn = document.getElementById('name-update-btn');
   editNameBtn = document.getElementById('edit-name-btn');
+  usernameLabel = document.getElementById('username-label');
+  if (usernameLabel) {
+    usernameLabel.style.display = currentUserName ? 'none' : '';
+  }
   bioWrapper = document.getElementById('bio-wrapper');
   bioEditRow = document.getElementById('bio-edit-row');
   bioInput = document.getElementById('bio-input');
@@ -1109,6 +1114,8 @@ const init = () => {
       currentUserName = newName;
       const nameEl = document.getElementById('user-name');
       if (nameEl) nameEl.textContent = currentUserName;
+      if (usernameLabel)
+        usernameLabel.style.display = currentUserName ? 'none' : '';
       nameEditRow?.classList.add('hidden');
       nameWrapper?.classList.remove('hidden');
       renderSharedPrompts(sharedPromptsData);
@@ -1209,6 +1216,8 @@ const init = () => {
       document.getElementById('user-email').textContent = '';
       const nameEl = document.getElementById('user-name');
       if (nameEl) nameEl.textContent = '';
+      if (usernameLabel) usernameLabel.style.display = '';
+      currentUserName = '';
       if (nameInput) nameInput.value = '';
       const bioEl = document.getElementById('user-bio');
       if (bioEl) bioEl.textContent = '';
@@ -1239,6 +1248,8 @@ const init = () => {
       currentUserName = name;
       const nameEl = document.getElementById('user-name');
       if (nameEl) nameEl.textContent = currentUserName;
+      if (usernameLabel)
+        usernameLabel.style.display = currentUserName ? 'none' : '';
       if (nameInput) nameInput.value = currentUserName;
       nameEditRow?.classList.add('hidden');
       nameWrapper?.classList.remove('hidden');
