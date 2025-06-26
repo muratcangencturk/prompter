@@ -11,7 +11,12 @@ import {
   addComment,
   getComments,
 } from './prompt.js';
-import { getUserProfile, setUserProfile } from './user.js';
+import {
+  getUserProfile,
+  setUserProfile,
+  getFollowingIds,
+  getFollowerIds,
+} from './user.js';
 import { listenNotifications, markNotificationRead } from './notifications.js';
 import { appState, THEMES } from './state.js';
 import { categories } from './prompts.js';
@@ -198,6 +203,8 @@ let notificationCountEl;
 let notificationsPanel;
 let notifications = [];
 let unsubscribeNotifications;
+let followerIds = [];
+let followingIds = [];
 
 const profileCache = {};
 const fetchName = async (uid) => {
@@ -1031,6 +1038,30 @@ const init = () => {
   bioInput = document.getElementById('bio-input');
   bioUpdateBtn = document.getElementById('bio-update-btn');
   editBioHint = document.getElementById('edit-bio-hint');
+  const followersLink = document.getElementById('stat-followers');
+  const followingLink = document.getElementById('stat-following');
+  const followersList = document.getElementById('followers-list');
+  const followingList = document.getElementById('following-list');
+
+  const showList = async (ids, container) => {
+    if (!container) return;
+    container.innerHTML = '';
+    if (ids.length === 0) {
+      container.classList.toggle('hidden', false);
+      return;
+    }
+    const names = await Promise.all(
+      ids.map((id) => getUserProfile(id).then((p) => p?.name || id))
+    );
+    ids.forEach((id, idx) => {
+      const a = document.createElement('a');
+      a.href = `user.html?uid=${id}`;
+      a.className = 'block underline';
+      a.textContent = names[idx];
+      container.appendChild(a);
+    });
+    container.classList.toggle('hidden', false);
+  };
 
   const showNameEdit = () => {
     if (!nameWrapper || !nameEditRow || !nameInput) return;
@@ -1039,6 +1070,18 @@ const init = () => {
     nameEditRow.classList.remove('hidden');
     nameInput.focus();
   };
+
+  followersLink?.addEventListener('click', (e) => {
+    e.preventDefault();
+    showList(followerIds, followersList);
+    followingList?.classList.add('hidden');
+  });
+
+  followingLink?.addEventListener('click', (e) => {
+    e.preventDefault();
+    showList(followingIds, followingList);
+    followersList?.classList.add('hidden');
+  });
 
   nameWrapper?.addEventListener('click', showNameEdit);
   editNameBtn?.addEventListener('click', showNameEdit);
@@ -1194,6 +1237,10 @@ const init = () => {
       bioEditRow?.classList.add('hidden');
       bioWrapper?.classList.remove('hidden');
       editBioHint?.classList.remove('hidden');
+      followingIds = await getFollowingIds(user.uid);
+      followerIds = await getFollowerIds(user.uid);
+      updateCount('stat-following', followingIds.length);
+      updateCount('stat-followers', followerIds.length);
     } catch (err) {
       console.error('Failed to load profile:', err);
     }
