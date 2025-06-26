@@ -7,7 +7,10 @@
     <base href="./" />
     <link rel="manifest" href="manifest.json?v=64" />
     <meta name="theme-color" content="#000000" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <script>
@@ -23,7 +26,9 @@
         function fetchWithTimeout(url, timeout = 500) {
           return Promise.race([
             fetch(url, { method: 'HEAD', mode: 'no-cors' }),
-            new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), timeout)),
+            new Promise((_, reject) =>
+              setTimeout(() => reject(new Error('timeout')), timeout)
+            ),
           ]);
         }
         function loadWithFallback(primary, local) {
@@ -97,7 +102,9 @@
         const version = linkEl.getAttribute('href').split('?')[1];
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
-          linkEl.href = `css/theme-${savedTheme}.css${version ? `?${version}` : ''}`;
+          linkEl.href = `css/theme-${savedTheme}.css${
+            version ? `?${version}` : ''
+          }`;
         }
       })();
     </script>
@@ -107,7 +114,11 @@
     <div id="loading-screen">
       <div class="spinner" aria-label="Loading"></div>
     </div>
-    <div id="app-container" class="max-w-4xl mx-auto" style="visibility: hidden">
+    <div
+      id="app-container"
+      class="max-w-4xl mx-auto"
+      style="visibility: hidden"
+    >
       <header class="flex items-center w-full mt-4 mb-6">
         <div class="flex items-center gap-2">
           <a
@@ -116,14 +127,28 @@
             title="Back"
             aria-label="Back"
           >
-            <span class="w-6 h-6 inline-flex items-center justify-center text-3xl" aria-hidden="true">&larr;</span>
+            <span
+              class="w-6 h-6 inline-flex items-center justify-center text-3xl"
+              aria-hidden="true"
+              >&larr;</span
+            >
           </a>
-          <img src="icons/logo.svg?v=64" alt="Prompter logo" class="w-12 h-12 sm:w-14 sm:h-14" />
-          <h1 class="text-xl sm:text-2xl font-bold leading-tight ml-1">Space</h1>
+          <img
+            src="icons/logo.svg?v=64"
+            alt="Prompter logo"
+            class="w-12 h-12 sm:w-14 sm:h-14"
+          />
+          <h1 class="text-xl sm:text-2xl font-bold leading-tight ml-1">
+            Space
+          </h1>
         </div>
         <div class="ml-auto flex flex-col items-start gap-1">
           <label class="text-sm inline-flex items-center gap-1">
-            <input id="following-filter" type="checkbox" class="form-checkbox" />
+            <input
+              id="following-filter"
+              type="checkbox"
+              class="form-checkbox"
+            />
             Only following
           </label>
           <label class="text-sm inline-flex items-center gap-1">
@@ -143,8 +168,18 @@
         </div>
       </header>
       <div class="mb-4">
-        <textarea id="blog-input" class="w-full p-2 rounded-md bg-black/30" rows="3" placeholder="Write something..."></textarea>
-        <button id="post-btn" class="mt-2 px-3 py-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all">Post</button>
+        <textarea
+          id="blog-input"
+          class="w-full p-2 rounded-md bg-black/30"
+          rows="3"
+          placeholder="Write something..."
+        ></textarea>
+        <button
+          id="post-btn"
+          class="mt-2 px-3 py-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all"
+        >
+          Post
+        </button>
       </div>
       <div id="blog-list" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
     </div>
@@ -161,7 +196,11 @@
         updatePostText,
         postScore,
       } from './src/blog.js';
-      import { getUserProfile, getFollowingIds, getUserByName } from './src/user.js';
+      import {
+        getUserProfile,
+        getFollowingIds,
+        getUserByName,
+      } from './src/user.js';
       import { onAuth } from './src/auth.js';
       import { appState } from './src/state.js';
       import { linkify } from './src/linkify.js';
@@ -195,7 +234,8 @@
       const createCard = async (p, name, comments) => {
         const card = document.createElement('div');
         card.dataset.id = p.id;
-        card.className = 'bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
+        card.className =
+          'bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
 
         const textWrap = document.createElement('div');
         textWrap.className = 'relative pr-6';
@@ -214,7 +254,9 @@
         const toggleText = () => {
           textContainer.classList.toggle('overflow-hidden');
           textContainer.classList.toggle('max-h-40');
-          showMore.textContent = textContainer.classList.contains('overflow-hidden')
+          showMore.textContent = textContainer.classList.contains(
+            'overflow-hidden'
+          )
             ? 'Show more'
             : 'Show less';
         };
@@ -235,7 +277,10 @@
         const timeEl = document.createElement('p');
         timeEl.className = 'text-blue-200 text-xs';
         if (p.createdAt && p.createdAt.toMillis) {
-          timeEl.textContent = timeAgo(p.createdAt.toMillis(), appState.language);
+          timeEl.textContent = timeAgo(
+            p.createdAt.toMillis(),
+            appState.language
+          );
         }
         card.appendChild(timeEl);
 
@@ -243,21 +288,31 @@
         likeRow.className = 'flex items-center gap-2 mt-2';
 
         const likeBtn = document.createElement('button');
-        likeBtn.className = 'like-btn p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
-        likeBtn.innerHTML = '<i data-lucide="heart" class="w-4 h-4" aria-hidden="true"></i>';
+        likeBtn.className =
+          'like-btn p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
+        likeBtn.innerHTML =
+          '<i data-lucide="heart" class="w-4 h-4" aria-hidden="true"></i>';
 
         let likes = p.likes || 0;
         const likeCount = document.createElement('span');
         likeCount.className = 'text-xs';
         likeCount.textContent = likes.toString();
 
-        if (p.likedBy && appState?.currentUser && p.likedBy.includes(appState.currentUser.uid)) {
+        if (
+          p.likedBy &&
+          appState?.currentUser &&
+          p.likedBy.includes(appState.currentUser.uid)
+        ) {
           likeBtn.classList.add('active');
         }
 
         const updateLikeIcon = () => {
           const svg = likeBtn.querySelector('svg');
-          if (svg) svg.setAttribute('fill', likeBtn.classList.contains('active') ? 'currentColor' : 'none');
+          if (svg)
+            svg.setAttribute(
+              'fill',
+              likeBtn.classList.contains('active') ? 'currentColor' : 'none'
+            );
         };
         updateLikeIcon();
 
@@ -285,7 +340,6 @@
           }
         });
 
-
         const twitterBtn = document.createElement('button');
         twitterBtn.className =
           'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
@@ -299,8 +353,10 @@
         });
 
         const commentToggleBtn = document.createElement('button');
-        commentToggleBtn.className = 'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
-        commentToggleBtn.innerHTML = '<i data-lucide="message-circle" class="w-4 h-4" aria-hidden="true"></i>';
+        commentToggleBtn.className =
+          'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
+        commentToggleBtn.innerHTML =
+          '<i data-lucide="message-circle" class="w-4 h-4" aria-hidden="true"></i>';
         const commentCount = document.createElement('span');
         commentCount.className = 'text-xs';
         let commentNum = comments.length;
@@ -404,8 +460,10 @@
         commentInput.className = 'flex-1 p-1 rounded-md bg-black/30';
         const commentBtn = document.createElement('button');
         commentBtn.type = 'submit';
-        commentBtn.className = 'px-2 py-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all';
-        commentBtn.innerHTML = '<i data-lucide="send" class="w-4 h-4" aria-hidden="true"></i>';
+        commentBtn.className =
+          'px-2 py-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all';
+        commentBtn.innerHTML =
+          '<i data-lucide="send" class="w-4 h-4" aria-hidden="true"></i>';
         commentForm.appendChild(commentInput);
         commentForm.appendChild(commentBtn);
         commentsWrap.appendChild(commentForm);
@@ -419,7 +477,9 @@
           const n = await fetchName(c.userId);
           const d = document.createElement('div');
           d.className = 'bg-white/5 rounded-md px-2 py-1 text-sm';
-          d.innerHTML = `<span class="underline">${n}</span>: ${linkify(c.text)}`;
+          d.innerHTML = `<span class="underline">${n}</span>: ${linkify(
+            c.text
+          )}`;
           commentList.appendChild(d);
         };
         for (const c of comments) {
@@ -436,7 +496,10 @@
           commentBtn.disabled = true;
           try {
             await addComment(p.id, appState.currentUser.uid, textVal);
-            await renderComment({ text: textVal, userId: appState.currentUser.uid });
+            await renderComment({
+              text: textVal,
+              userId: appState.currentUser.uid,
+            });
             commentNum += 1;
             commentCount.textContent = commentNum.toString();
             commentInput.value = '';
@@ -462,6 +525,8 @@
           await createPost(
             text,
             appState.currentUser.uid,
+            appState.currentUser.displayName || '',
+            appState.currentUser.email || ''
           );
           blogInput.value = '';
         } finally {
@@ -495,7 +560,9 @@
 
       const render = async (posts) => {
         const names = await Promise.all(posts.map((p) => fetchName(p.userId)));
-        const commentsArr = await Promise.all(posts.map((p) => getComments(p.id)));
+        const commentsArr = await Promise.all(
+          posts.map((p) => getComments(p.id))
+        );
         const list = document.getElementById('blog-list');
         list.innerHTML = '';
         for (let i = 0; i < posts.length; i++) {
@@ -515,7 +582,8 @@
           posts = posts.filter((p) => followingIds.includes(p.userId));
         }
         if (prompterFilter?.checked) {
-          if (prompterUser) posts = posts.filter((p) => p.userId === prompterUser.id);
+          if (prompterUser)
+            posts = posts.filter((p) => p.userId === prompterUser.id);
           else posts = [];
         }
         if (popularFilter?.checked) {

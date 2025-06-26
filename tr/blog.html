@@ -7,7 +7,10 @@
     <base href="../" />
     <link rel="manifest" href="manifest.json?v=64" />
     <meta name="theme-color" content="#000000" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <script>
@@ -23,7 +26,9 @@
         function fetchWithTimeout(url, timeout = 500) {
           return Promise.race([
             fetch(url, { method: 'HEAD', mode: 'no-cors' }),
-            new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), timeout)),
+            new Promise((_, reject) =>
+              setTimeout(() => reject(new Error('timeout')), timeout)
+            ),
           ]);
         }
         function loadWithFallback(primary, local) {
@@ -97,7 +102,9 @@
         const version = linkEl.getAttribute('href').split('?')[1];
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
-          linkEl.href = `css/theme-${savedTheme}.css${version ? `?${version}` : ''}`;
+          linkEl.href = `css/theme-${savedTheme}.css${
+            version ? `?${version}` : ''
+          }`;
         }
       })();
     </script>
@@ -107,7 +114,11 @@
     <div id="loading-screen">
       <div class="spinner" aria-label="Yükleniyor"></div>
     </div>
-    <div id="app-container" class="max-w-4xl mx-auto" style="visibility: hidden">
+    <div
+      id="app-container"
+      class="max-w-4xl mx-auto"
+      style="visibility: hidden"
+    >
       <header class="flex items-center w-full mt-4 mb-6">
         <div class="flex items-center gap-2">
           <a
@@ -116,15 +127,35 @@
             title="Geri"
             aria-label="Geri"
           >
-            <span class="w-6 h-6 inline-flex items-center justify-center text-3xl" aria-hidden="true">&larr;</span>
+            <span
+              class="w-6 h-6 inline-flex items-center justify-center text-3xl"
+              aria-hidden="true"
+              >&larr;</span
+            >
           </a>
-          <img src="icons/logo.svg?v=64" alt="Prompter logo" class="w-12 h-12 sm:w-14 sm:h-14" />
-          <h1 class="text-xl sm:text-2xl font-bold leading-tight ml-1">Space</h1>
+          <img
+            src="icons/logo.svg?v=64"
+            alt="Prompter logo"
+            class="w-12 h-12 sm:w-14 sm:h-14"
+          />
+          <h1 class="text-xl sm:text-2xl font-bold leading-tight ml-1">
+            Space
+          </h1>
         </div>
       </header>
       <div class="mb-4">
-        <textarea id="blog-input" class="w-full p-2 rounded-md bg-black/30" rows="3" placeholder="Bir şeyler yaz..."></textarea>
-        <button id="post-btn" class="mt-2 px-3 py-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all">Gönder</button>
+        <textarea
+          id="blog-input"
+          class="w-full p-2 rounded-md bg-black/30"
+          rows="3"
+          placeholder="Bir şeyler yaz..."
+        ></textarea>
+        <button
+          id="post-btn"
+          class="mt-2 px-3 py-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all"
+        >
+          Gönder
+        </button>
       </div>
       <div id="blog-list" class="space-y-4"></div>
     </div>
@@ -161,7 +192,8 @@
       const createCard = async (p, name, comments) => {
         const card = document.createElement('div');
         card.dataset.id = p.id;
-        card.className = 'bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
+        card.className =
+          'bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
 
         const text = document.createElement('p');
         text.textContent = p.text;
@@ -176,21 +208,31 @@
         likeRow.className = 'flex items-center gap-2 mt-2';
 
         const likeBtn = document.createElement('button');
-        likeBtn.className = 'like-btn p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
-        likeBtn.innerHTML = '<i data-lucide="heart" class="w-4 h-4" aria-hidden="true"></i>';
+        likeBtn.className =
+          'like-btn p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
+        likeBtn.innerHTML =
+          '<i data-lucide="heart" class="w-4 h-4" aria-hidden="true"></i>';
 
         let likes = p.likes || 0;
         const likeCount = document.createElement('span');
         likeCount.className = 'text-xs';
         likeCount.textContent = likes.toString();
 
-        if (p.likedBy && appState?.currentUser && p.likedBy.includes(appState.currentUser.uid)) {
+        if (
+          p.likedBy &&
+          appState?.currentUser &&
+          p.likedBy.includes(appState.currentUser.uid)
+        ) {
           likeBtn.classList.add('active');
         }
 
         const updateLikeIcon = () => {
           const svg = likeBtn.querySelector('svg');
-          if (svg) svg.setAttribute('fill', likeBtn.classList.contains('active') ? 'currentColor' : 'none');
+          if (svg)
+            svg.setAttribute(
+              'fill',
+              likeBtn.classList.contains('active') ? 'currentColor' : 'none'
+            );
         };
         updateLikeIcon();
 
@@ -218,10 +260,11 @@
           }
         });
 
-
         const commentToggleBtn = document.createElement('button');
-        commentToggleBtn.className = 'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
-        commentToggleBtn.innerHTML = '<i data-lucide="message-circle" class="w-4 h-4" aria-hidden="true"></i>';
+        commentToggleBtn.className =
+          'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
+        commentToggleBtn.innerHTML =
+          '<i data-lucide="message-circle" class="w-4 h-4" aria-hidden="true"></i>';
         const commentCount = document.createElement('span');
         commentCount.className = 'text-xs';
         let commentNum = comments.length;
@@ -249,8 +292,10 @@
         commentInput.className = 'flex-1 p-1 rounded-md bg-black/30';
         const commentBtn = document.createElement('button');
         commentBtn.type = 'submit';
-        commentBtn.className = 'px-2 py-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all';
-        commentBtn.innerHTML = '<i data-lucide="send" class="w-4 h-4" aria-hidden="true"></i>';
+        commentBtn.className =
+          'px-2 py-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all';
+        commentBtn.innerHTML =
+          '<i data-lucide="send" class="w-4 h-4" aria-hidden="true"></i>';
         commentForm.appendChild(commentInput);
         commentForm.appendChild(commentBtn);
         commentsWrap.appendChild(commentForm);
@@ -281,7 +326,10 @@
           commentBtn.disabled = true;
           try {
             await addComment(p.id, appState.currentUser.uid, textVal);
-            await renderComment({ text: textVal, userId: appState.currentUser.uid });
+            await renderComment({
+              text: textVal,
+              userId: appState.currentUser.uid,
+            });
             commentNum += 1;
             commentCount.textContent = commentNum.toString();
             commentInput.value = '';
@@ -307,6 +355,8 @@
           await createPost(
             text,
             appState.currentUser.uid,
+            appState.currentUser.displayName || '',
+            appState.currentUser.email || ''
           );
           blogInput.value = '';
         } finally {
@@ -317,11 +367,18 @@
       let unsubscribe = null;
       const startListener = () => {
         if (unsubscribe) unsubscribe();
-        const q = query(collection(db, 'blogPosts'), orderBy('createdAt', 'desc'));
+        const q = query(
+          collection(db, 'blogPosts'),
+          orderBy('createdAt', 'desc')
+        );
         unsubscribe = onSnapshot(q, async (snap) => {
           const posts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
-          const names = await Promise.all(posts.map((p) => fetchName(p.userId)));
-          const commentsArr = await Promise.all(posts.map((p) => getComments(p.id)));
+          const names = await Promise.all(
+            posts.map((p) => fetchName(p.userId))
+          );
+          const commentsArr = await Promise.all(
+            posts.map((p) => getComments(p.id))
+          );
           const list = document.getElementById('blog-list');
           list.innerHTML = '';
           for (let i = 0; i < posts.length; i++) {

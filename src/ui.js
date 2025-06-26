@@ -84,13 +84,15 @@ const uiText = {
     appLogoAlt: 'Prompter logosu',
     loginRequired: 'Giriş gerekli',
     loginRequiredShare: 'Paylaşmak için giriş yapın',
-    loginRequiredSaveShare: 'Promptları kaydetmek veya paylaşmak için giriş yapın.',
+    loginRequiredSaveShare:
+      'Promptları kaydetmek veya paylaşmak için giriş yapın.',
     loginRequiredLike: 'Promptları beğenmek için giriş yapın.',
     loginRequiredSharePrompt: 'Promptları paylaşmak için giriş yapın.',
     copyFailed: 'Prompt kopyalanamadı. Lütfen tekrar deneyin.',
     shareFailed: 'Prompt paylaşılamadı. Lütfen tekrar deneyin.',
     internetRequired: 'İnternet bağlantısı gerekli.',
-    errorGenerating: 'Prompt oluşturulurken hata oluştu. Lütfen tekrar deneyin.',
+    errorGenerating:
+      'Prompt oluşturulurken hata oluştu. Lütfen tekrar deneyin.',
   },
   es: {
     appTitle: 'PROMPTER',
@@ -124,13 +126,16 @@ const uiText = {
     appLogoAlt: 'Logo de Prompter',
     loginRequired: 'Se requiere inicio de sesión',
     loginRequiredShare: 'Debes iniciar sesión para compartir',
-    loginRequiredSaveShare: 'Debes iniciar sesión para guardar o compartir prompts.',
+    loginRequiredSaveShare:
+      'Debes iniciar sesión para guardar o compartir prompts.',
     loginRequiredLike: 'Debes iniciar sesión para dar me gusta a los prompts.',
     loginRequiredSharePrompt: 'Debes iniciar sesión para compartir prompts.',
     copyFailed: 'No se pudo copiar el prompt. Por favor inténtalo de nuevo.',
-    shareFailed: 'No se pudo compartir el prompt. Por favor inténtalo de nuevo.',
+    shareFailed:
+      'No se pudo compartir el prompt. Por favor inténtalo de nuevo.',
     internetRequired: 'Se requiere conexión a Internet.',
-    errorGenerating: 'Error al generar el prompt. Por favor inténtalo de nuevo.',
+    errorGenerating:
+      'Error al generar el prompt. Por favor inténtalo de nuevo.',
   },
   fr: {
     appTitle: 'PROMPTER',
@@ -166,13 +171,16 @@ const uiText = {
     appLogoAlt: 'Logo de Prompter',
     loginRequired: 'Connexion requise',
     loginRequiredShare: 'Connexion requise pour partager',
-    loginRequiredSaveShare: 'Vous devez vous connecter pour enregistrer ou partager des prompts.',
+    loginRequiredSaveShare:
+      'Vous devez vous connecter pour enregistrer ou partager des prompts.',
     loginRequiredLike: 'Vous devez vous connecter pour aimer les prompts.',
-    loginRequiredSharePrompt: 'Vous devez vous connecter pour partager des prompts.',
+    loginRequiredSharePrompt:
+      'Vous devez vous connecter pour partager des prompts.',
     copyFailed: 'Échec de la copie du prompt. Veuillez réessayer.',
     shareFailed: 'Échec du partage du prompt. Veuillez réessayer.',
     internetRequired: 'Connexion Internet requise.',
-    errorGenerating: 'Erreur lors de la génération du prompt. Veuillez réessayer.',
+    errorGenerating:
+      'Erreur lors de la génération du prompt. Veuillez réessayer.',
   },
   zh: {
     appTitle: 'PROMPTER',
@@ -917,9 +925,11 @@ const handleGenerate = async () => {
   } catch (err) {
     console.error(err);
     if (err && err.message === 'offline') {
-      generatedPromptText.textContent = uiText[appState.language].internetRequired;
+      generatedPromptText.textContent =
+        uiText[appState.language].internetRequired;
     } else {
-      generatedPromptText.textContent = uiText[appState.language].errorGenerating;
+      generatedPromptText.textContent =
+        uiText[appState.language].errorGenerating;
     }
   } finally {
     appState.isGenerating = false;
@@ -1012,11 +1022,13 @@ const setupEventListeners = () => {
       }, 2000);
       try {
         const { savePrompt } = await import('./prompt.js');
-          await savePrompt(
-            appState.generatedPrompt,
-            appState.currentUser.uid,
-            appState.selectedCategory,
-          );
+        await savePrompt(
+          appState.generatedPrompt,
+          appState.currentUser.uid,
+          appState.selectedCategory,
+          appState.currentUser.displayName || '',
+          appState.currentUser.email || ''
+        );
       } catch (err) {
         console.error(err);
         alert(uiText[appState.language].shareFailed);
@@ -1075,7 +1087,9 @@ const setupEventListeners = () => {
       if (svg)
         svg.setAttribute(
           'fill',
-          shareTwitterButton.classList.contains('active') ? 'currentColor' : 'none'
+          shareTwitterButton.classList.contains('active')
+            ? 'currentColor'
+            : 'none'
         );
     };
     updateShareTwitterIcon();
@@ -1166,11 +1180,13 @@ const setupEventListeners = () => {
       if (appState.currentUser) {
         try {
           const { savePrompt } = await import('./prompt.js');
-            await savePrompt(
-              text,
-              appState.currentUser.uid,
-              appState.selectedCategory,
-            );
+          await savePrompt(
+            text,
+            appState.currentUser.uid,
+            appState.selectedCategory,
+            appState.currentUser.displayName || '',
+            appState.currentUser.email || ''
+          );
         } catch (err) {
           console.error(err);
           saved = false;
@@ -1244,6 +1260,8 @@ const setupEventListeners = () => {
           text,
           appState.currentUser.uid,
           appState.selectedCategory,
+          appState.currentUser.displayName || '',
+          appState.currentUser.email || ''
         );
       } catch (err) {
         console.error(err);

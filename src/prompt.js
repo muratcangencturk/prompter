@@ -16,7 +16,6 @@ import {
 } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
 import { db } from './firebase.js';
 import { sendNotification } from './notifications.js';
-import { getUserProfile } from './user.js';
 
 const samplePrompts = [
   'Describe a futuristic city where nature and technology coexist.',
@@ -33,19 +32,10 @@ export const generatePrompt = () => {
 export const savePrompt = async (
   text,
   userId,
-  category = 'random'
+  category = 'random',
+  userName = '',
+  userEmail = ''
 ) => {
-  let userName = '';
-  let userEmail = '';
-  try {
-    const profile = await getUserProfile(userId);
-    if (profile) {
-      userName = profile.name || '';
-      userEmail = profile.email || '';
-    }
-  } catch (err) {
-    console.error('Failed to fetch user profile:', err);
-  }
   try {
     const q = query(
       collection(db, 'prompts'),
@@ -60,6 +50,8 @@ export const savePrompt = async (
         shared: true,
         sharedBy: arrayUnion(userId),
         shareCount: increment(1),
+        userName,
+        userEmail,
       });
       return ref;
     }
@@ -117,9 +109,7 @@ export const getAllPrompts = async () => {
       category: d.get('category') || 'random',
       ...d.data(),
     }))
-    .filter(
-      (p) => Array.isArray(p.sharedBy) && p.sharedBy.length > 0
-    );
+    .filter((p) => Array.isArray(p.sharedBy) && p.sharedBy.length > 0);
 };
 
 export const likePrompt = async (promptId, userId) => {

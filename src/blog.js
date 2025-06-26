@@ -16,23 +16,13 @@ import {
 } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
 import { db } from './firebase.js';
 import { sendNotification } from './notifications.js';
-import { getUserProfile } from './user.js';
 
 export const createPost = async (
   text,
-  userId
+  userId,
+  userName = '',
+  userEmail = ''
 ) => {
-  let userName = '';
-  let userEmail = '';
-  try {
-    const profile = await getUserProfile(userId);
-    if (profile) {
-      userName = profile.name || '';
-      userEmail = profile.email || '';
-    }
-  } catch (err) {
-    console.error('Failed to fetch user profile:', err);
-  }
   return addDoc(collection(db, 'blogPosts'), {
     text,
     userId,
@@ -52,7 +42,7 @@ export const getAllPosts = async () => {
   const q = query(
     collection(db, 'blogPosts'),
     where('shared', '==', true),
-    orderBy('createdAt', 'desc'),
+    orderBy('createdAt', 'desc')
   );
   const snap = await getDocs(q);
   return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
@@ -66,7 +56,11 @@ export const likePost = async (postId, userId) => {
   const snap = await getDoc(doc(db, 'blogPosts', postId));
   const owner = snap.exists() ? snap.data().userId : null;
   if (owner && owner !== userId) {
-    await sendNotification(owner, { type: 'like', targetId: postId, from: userId });
+    await sendNotification(owner, {
+      type: 'like',
+      targetId: postId,
+      from: userId,
+    });
   }
 };
 
@@ -101,14 +95,18 @@ export const addComment = async (postId, userId, text) => {
   const snap = await getDoc(doc(db, 'blogPosts', postId));
   const owner = snap.exists() ? snap.data().userId : null;
   if (owner && owner !== userId) {
-    await sendNotification(owner, { type: 'comment', targetId: postId, from: userId });
+    await sendNotification(owner, {
+      type: 'comment',
+      targetId: postId,
+      from: userId,
+    });
   }
 };
 
 export const getComments = async (postId) => {
   const q = query(
     collection(db, `blogPosts/${postId}/comments`),
-    orderBy('createdAt', 'asc'),
+    orderBy('createdAt', 'asc')
   );
   const snap = await getDocs(q);
   return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
