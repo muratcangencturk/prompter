@@ -225,6 +225,7 @@
       import { promptScore } from './src/scoring.js';
       import { appState } from './src/state.js';
       import { linkify } from './src/linkify.js';
+      import { timeAgo } from './src/timeago.js';
       import { categories } from './src/prompts.js?v=63';
       import {
         getUserProfile,
@@ -825,6 +826,12 @@
         card.appendChild(textWrap);
         card.appendChild(nameEl);
         card.appendChild(catEl);
+        const timeEl = document.createElement('p');
+        timeEl.className = 'text-blue-200 text-xs';
+        if (p.createdAt && p.createdAt.toMillis) {
+          timeEl.textContent = timeAgo(p.createdAt.toMillis(), appState.language);
+        }
+        card.appendChild(timeEl);
         card.appendChild(likeRow);
         card.appendChild(likeWrapper);
         card.appendChild(commentsWrap);
