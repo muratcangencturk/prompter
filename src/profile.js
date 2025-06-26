@@ -39,6 +39,8 @@ const uiText = {
     loginRequiredShare: 'Login required to share',
     copyFailed: 'Failed to copy prompt. Please try again.',
     shareFailed: 'Failed to share prompt. Please try again.',
+    showMore: 'Show more',
+    showLess: 'Show less',
   },
   tr: {
     profile: 'Profil',
@@ -62,6 +64,8 @@ const uiText = {
     loginRequiredShare: 'Paylaşmak için giriş yapın',
     copyFailed: 'Prompt kopyalanamadı. Lütfen tekrar deneyin.',
     shareFailed: 'Prompt paylaşılamadı. Lütfen tekrar deneyin.',
+    showMore: 'Daha fazlası',
+    showLess: 'Daha az',
   },
   es: {
     profile: 'Perfil',
@@ -85,6 +89,8 @@ const uiText = {
     loginRequiredShare: 'Debes iniciar sesión para compartir',
     copyFailed: 'No se pudo copiar el prompt. Por favor inténtalo de nuevo.',
     shareFailed: 'No se pudo compartir el prompt. Por favor inténtalo de nuevo.',
+    showMore: 'Show more',
+    showLess: 'Show less',
   },
   fr: {
     profile: 'Profil',
@@ -108,6 +114,8 @@ const uiText = {
     loginRequiredShare: 'Connexion requise pour partager',
     copyFailed: 'Échec de la copie du prompt. Veuillez réessayer.',
     shareFailed: 'Échec du partage du prompt. Veuillez réessayer.',
+    showMore: 'Show more',
+    showLess: 'Show less',
   },
   zh: {
     profile: '个人资料',
@@ -131,6 +139,8 @@ const uiText = {
     loginRequiredShare: '登录后才能分享',
     copyFailed: '复制提示失败。请再试一次。',
     shareFailed: '分享提示失败。请再试一次。',
+    showMore: 'Show more',
+    showLess: 'Show less',
   },
   hi: {
     profile: 'प्रोफ़ाइल',
@@ -154,6 +164,8 @@ const uiText = {
     loginRequiredShare: 'शेयर करने के लिए लॉगिन करें',
     copyFailed: 'प्रॉम्प्ट कॉपी करने में विफल। कृपया पुनः प्रयास करें।',
     shareFailed: 'प्रॉम्प्ट साझा करने में विफल। कृपया पुनः प्रयास करें।',
+    showMore: 'Show more',
+    showLess: 'Show less',
   },
 };
 
@@ -422,13 +434,13 @@ const renderSavedPrompts = (prompts) => {
 
     const showMore = document.createElement('span');
     showMore.className = 'text-blue-200 text-xs underline cursor-pointer';
-    showMore.textContent = 'Show more';
+    showMore.textContent = uiText[appState.language].showMore;
     const toggleText = () => {
       textContainer.classList.toggle('overflow-hidden');
       textContainer.classList.toggle('max-h-40');
       showMore.textContent = textContainer.classList.contains('overflow-hidden')
-        ? 'Show more'
-        : 'Show less';
+        ? uiText[appState.language].showMore
+        : uiText[appState.language].showLess;
     };
     showMore.addEventListener('click', toggleText);
     requestAnimationFrame(() => {
@@ -636,13 +648,13 @@ const renderSharedPrompts = async (prompts) => {
 
     const showMore = document.createElement('span');
     showMore.className = 'text-blue-200 text-xs underline cursor-pointer';
-    showMore.textContent = 'Show more';
+    showMore.textContent = uiText[appState.language].showMore;
     const toggleText = () => {
       textContainer.classList.toggle('overflow-hidden');
       textContainer.classList.toggle('max-h-40');
       showMore.textContent = textContainer.classList.contains('overflow-hidden')
-        ? 'Show more'
-        : 'Show less';
+        ? uiText[appState.language].showMore
+        : uiText[appState.language].showLess;
     };
     showMore.addEventListener('click', toggleText);
     requestAnimationFrame(() => {
