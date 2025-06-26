@@ -35,6 +35,10 @@ const uiText = {
     appLogoAlt: 'Prompter logo',
     copyButtonTitle: 'Copy to clipboard',
     copyFeedback: 'Copied!',
+    loginRequired: 'Login required',
+    loginRequiredShare: 'Login required to share',
+    copyFailed: 'Failed to copy prompt. Please try again.',
+    shareFailed: 'Failed to share prompt. Please try again.',
   },
   tr: {
     profile: 'Profil',
@@ -54,6 +58,10 @@ const uiText = {
     appLogoAlt: 'Prompter logosu',
     copyButtonTitle: 'Panoya kopyala',
     copyFeedback: 'Kopyalandı!',
+    loginRequired: 'Giriş gerekli',
+    loginRequiredShare: 'Paylaşmak için giriş yapın',
+    copyFailed: 'Prompt kopyalanamadı. Lütfen tekrar deneyin.',
+    shareFailed: 'Prompt paylaşılamadı. Lütfen tekrar deneyin.',
   },
   es: {
     profile: 'Perfil',
@@ -73,6 +81,10 @@ const uiText = {
     appLogoAlt: 'Logo de Prompter',
     copyButtonTitle: 'Copiar al portapapeles',
     copyFeedback: '¡Copiado!',
+    loginRequired: 'Se requiere inicio de sesión',
+    loginRequiredShare: 'Debes iniciar sesión para compartir',
+    copyFailed: 'No se pudo copiar el prompt. Por favor inténtalo de nuevo.',
+    shareFailed: 'No se pudo compartir el prompt. Por favor inténtalo de nuevo.',
   },
   fr: {
     profile: 'Profil',
@@ -92,6 +104,10 @@ const uiText = {
     appLogoAlt: 'Logo de Prompter',
     copyButtonTitle: 'Copier dans le presse-papiers',
     copyFeedback: 'Copié !',
+    loginRequired: 'Connexion requise',
+    loginRequiredShare: 'Connexion requise pour partager',
+    copyFailed: 'Échec de la copie du prompt. Veuillez réessayer.',
+    shareFailed: 'Échec du partage du prompt. Veuillez réessayer.',
   },
   zh: {
     profile: '个人资料',
@@ -111,6 +127,10 @@ const uiText = {
     appLogoAlt: 'Prompter 标志',
     copyButtonTitle: '复制到剪贴板',
     copyFeedback: '已复制!',
+    loginRequired: '需要登录',
+    loginRequiredShare: '登录后才能分享',
+    copyFailed: '复制提示失败。请再试一次。',
+    shareFailed: '分享提示失败。请再试一次。',
   },
   hi: {
     profile: 'प्रोफ़ाइल',
@@ -130,6 +150,10 @@ const uiText = {
     appLogoAlt: 'Prompter लोगो',
     copyButtonTitle: 'क्लिपबोर्ड पर कॉपी करें',
     copyFeedback: 'कॉपी किया गया!',
+    loginRequired: 'लॉगिन आवश्यक है',
+    loginRequiredShare: 'शेयर करने के लिए लॉगिन करें',
+    copyFailed: 'प्रॉम्प्ट कॉपी करने में विफल। कृपया पुनः प्रयास करें।',
+    shareFailed: 'प्रॉम्प्ट साझा करने में विफल। कृपया पुनः प्रयास करें।',
   },
 };
 
@@ -516,7 +540,7 @@ const renderSavedPrompts = (prompts) => {
 
     siteShareBtn.addEventListener('click', async () => {
       if (!appState.currentUser) {
-        alert('Login required to share');
+        alert(uiText[appState.language].loginRequiredShare);
         return;
       }
       siteShareBtn.classList.toggle('active');
@@ -537,7 +561,7 @@ const renderSavedPrompts = (prompts) => {
         );
       } catch (err) {
         console.error(err);
-        alert('Failed to share prompt. Please try again.');
+        alert(uiText[appState.language].shareFailed);
       } finally {
         siteShareBtn.disabled = false;
       }
@@ -696,7 +720,7 @@ const renderSharedPrompts = async (prompts) => {
 
     likeBtn.addEventListener('click', async () => {
       if (!appState.currentUser) {
-        alert('Login required');
+        alert(uiText[appState.language].loginRequired);
         return;
       }
       likeBtn.disabled = true;
@@ -831,7 +855,7 @@ const renderSharedPrompts = async (prompts) => {
 
     siteShareBtn.addEventListener('click', async () => {
       if (!appState.currentUser) {
-        alert('Login required to share');
+        alert(uiText[appState.language].loginRequiredShare);
         return;
       }
       siteShareBtn.disabled = true;
@@ -932,7 +956,7 @@ const renderSharedPrompts = async (prompts) => {
     commentForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (!appState.currentUser) {
-        alert('Login required');
+        alert(uiText[appState.language].loginRequired);
         return;
       }
       const textVal = commentInput.value.trim();

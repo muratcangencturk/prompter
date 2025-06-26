@@ -163,6 +163,14 @@
       import { getUserProfile, getFollowingIds, getUserByName } from './src/user.js';
       import { onAuth } from './src/auth.js';
       import { appState } from './src/state.js';
+      const msgs = {
+        en: { loginRequired: 'Login required' },
+        tr: { loginRequired: 'Giriş gerekli' },
+        es: { loginRequired: 'Se requiere inicio de sesión' },
+        fr: { loginRequired: 'Connexion requise' },
+        zh: { loginRequired: '需要登录' },
+        hi: { loginRequired: 'लॉगिन आवश्यक है' },
+      };
       import {
         collection,
         query,
@@ -245,7 +253,7 @@
 
         likeBtn.addEventListener('click', async () => {
           if (!appState?.currentUser) {
-            alert('Login required');
+            alert(msgs[appState.language].loginRequired);
             return;
           }
           likeBtn.disabled = true;
@@ -279,7 +287,7 @@
         updateShareIcon();
         shareBtn.addEventListener('click', async () => {
           if (!appState?.currentUser) {
-            alert('Login required');
+            alert(msgs[appState.language].loginRequired);
             return;
           }
           shareBtn.disabled = true;
@@ -442,7 +450,7 @@
         commentForm.addEventListener('submit', async (e) => {
           e.preventDefault();
           if (!appState?.currentUser) {
-            alert('Login required');
+            alert(msgs[appState.language].loginRequired);
             return;
           }
           const textVal = commentInput.value.trim();
@@ -466,7 +474,7 @@
       const postBtn = document.getElementById('post-btn');
       postBtn?.addEventListener('click', async () => {
         if (!appState?.currentUser) {
-          alert('Login required');
+          alert(msgs[appState.language].loginRequired);
           return;
         }
         const text = blogInput.value.trim();

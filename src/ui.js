@@ -32,6 +32,15 @@ const uiText = {
     langFrLabel: 'Switch to French',
     langZhLabel: 'Switch to Chinese',
     appLogoAlt: 'Prompter logo',
+    loginRequired: 'Login required',
+    loginRequiredShare: 'Login required to share',
+    loginRequiredSaveShare: 'Login required to save or share prompts.',
+    loginRequiredLike: 'You need to log in to like prompts.',
+    loginRequiredSharePrompt: 'You need to log in to share prompts.',
+    copyFailed: 'Failed to copy prompt. Please try again.',
+    shareFailed: 'Failed to share prompt. Please try again.',
+    internetRequired: 'Internet connection required.',
+    errorGenerating: 'Error generating prompt. Please try again.',
   },
   tr: {
     appTitle: 'PROMPTER',
@@ -64,6 +73,15 @@ const uiText = {
     langFrLabel: "Fransızca'ya geç",
     langZhLabel: "Çince'ye geç",
     appLogoAlt: 'Prompter logosu',
+    loginRequired: 'Giriş gerekli',
+    loginRequiredShare: 'Paylaşmak için giriş yapın',
+    loginRequiredSaveShare: 'Promptları kaydetmek veya paylaşmak için giriş yapın.',
+    loginRequiredLike: 'Promptları beğenmek için giriş yapın.',
+    loginRequiredSharePrompt: 'Promptları paylaşmak için giriş yapın.',
+    copyFailed: 'Prompt kopyalanamadı. Lütfen tekrar deneyin.',
+    shareFailed: 'Prompt paylaşılamadı. Lütfen tekrar deneyin.',
+    internetRequired: 'İnternet bağlantısı gerekli.',
+    errorGenerating: 'Prompt oluşturulurken hata oluştu. Lütfen tekrar deneyin.',
   },
   es: {
     appTitle: 'PROMPTER',
@@ -95,6 +113,15 @@ const uiText = {
     langFrLabel: 'Cambiar a francés',
     langZhLabel: 'Cambiar a chino',
     appLogoAlt: 'Logo de Prompter',
+    loginRequired: 'Se requiere inicio de sesión',
+    loginRequiredShare: 'Debes iniciar sesión para compartir',
+    loginRequiredSaveShare: 'Debes iniciar sesión para guardar o compartir prompts.',
+    loginRequiredLike: 'Debes iniciar sesión para dar me gusta a los prompts.',
+    loginRequiredSharePrompt: 'Debes iniciar sesión para compartir prompts.',
+    copyFailed: 'No se pudo copiar el prompt. Por favor inténtalo de nuevo.',
+    shareFailed: 'No se pudo compartir el prompt. Por favor inténtalo de nuevo.',
+    internetRequired: 'Se requiere conexión a Internet.',
+    errorGenerating: 'Error al generar el prompt. Por favor inténtalo de nuevo.',
   },
   fr: {
     appTitle: 'PROMPTER',
@@ -128,6 +155,15 @@ const uiText = {
     langFrLabel: 'Passer au français',
     langZhLabel: 'Passer au chinois',
     appLogoAlt: 'Logo de Prompter',
+    loginRequired: 'Connexion requise',
+    loginRequiredShare: 'Connexion requise pour partager',
+    loginRequiredSaveShare: 'Vous devez vous connecter pour enregistrer ou partager des prompts.',
+    loginRequiredLike: 'Vous devez vous connecter pour aimer les prompts.',
+    loginRequiredSharePrompt: 'Vous devez vous connecter pour partager des prompts.',
+    copyFailed: 'Échec de la copie du prompt. Veuillez réessayer.',
+    shareFailed: 'Échec du partage du prompt. Veuillez réessayer.',
+    internetRequired: 'Connexion Internet requise.',
+    errorGenerating: 'Erreur lors de la génération du prompt. Veuillez réessayer.',
   },
   zh: {
     appTitle: 'PROMPTER',
@@ -159,6 +195,15 @@ const uiText = {
     langFrLabel: '切换到法语',
     langZhLabel: '切换到中文',
     appLogoAlt: 'Prompter 标志',
+    loginRequired: '需要登录',
+    loginRequiredShare: '登录后才能分享',
+    loginRequiredSaveShare: '需要登录才能保存或分享提示。',
+    loginRequiredLike: '需要登录才能点赞提示。',
+    loginRequiredSharePrompt: '需要登录才能分享提示。',
+    copyFailed: '复制提示失败。请再试一次。',
+    shareFailed: '分享提示失败。请再试一次。',
+    internetRequired: '需要连接互联网。',
+    errorGenerating: '生成提示时出错。请再试一次。',
   },
   hi: {
     appTitle: 'PROMPTER',
@@ -191,6 +236,15 @@ const uiText = {
     langFrLabel: 'फ्रेंच पर स्विच करें',
     langZhLabel: 'चीनी पर स्विच करें',
     appLogoAlt: 'Prompter लोगो',
+    loginRequired: 'लॉगिन आवश्यक है',
+    loginRequiredShare: 'शेयर करने के लिए लॉगिन करें',
+    loginRequiredSaveShare: 'प्रॉम्प्ट सहेजने या साझा करने के लिए लॉगिन करें।',
+    loginRequiredLike: 'प्रॉम्प्ट पसंद करने के लिए लॉगिन करें।',
+    loginRequiredSharePrompt: 'प्रॉम्प्ट साझा करने के लिए लॉगिन करें।',
+    copyFailed: 'प्रॉम्प्ट कॉपी करने में विफल। कृपया पुनः प्रयास करें।',
+    shareFailed: 'प्रॉम्प्ट साझा करने में विफल। कृपया पुनः प्रयास करें।',
+    internetRequired: 'इंटरनेट कनेक्शन आवश्यक है।',
+    errorGenerating: 'प्रॉम्प्ट जनरेट करने में त्रुटि। कृपया पुनः प्रयास करें।',
   },
 };
 
@@ -852,10 +906,9 @@ const handleGenerate = async () => {
   } catch (err) {
     console.error(err);
     if (err && err.message === 'offline') {
-      generatedPromptText.textContent = 'Internet connection required.';
+      generatedPromptText.textContent = uiText[appState.language].internetRequired;
     } else {
-      generatedPromptText.textContent =
-        'Error generating prompt. Please try again.';
+      generatedPromptText.textContent = uiText[appState.language].errorGenerating;
     }
   } finally {
     appState.isGenerating = false;
@@ -918,7 +971,7 @@ const setupEventListeners = () => {
       })
       .catch((err) => {
         console.error('Failed to copy text: ', err);
-        alert('Failed to copy prompt. Please try again.');
+        alert(uiText[appState.language].copyFailed);
       });
   });
 
@@ -935,7 +988,7 @@ const setupEventListeners = () => {
     shareButton.addEventListener('click', async () => {
       if (!appState.generatedPrompt) return;
       if (!appState.currentUser) {
-        alert('Login required to share');
+        alert(uiText[appState.language].loginRequiredShare);
         return;
       }
       shareButton.classList.add('button-pop');
@@ -955,7 +1008,7 @@ const setupEventListeners = () => {
         );
       } catch (err) {
         console.error(err);
-        alert('Failed to share prompt. Please try again.');
+        alert(uiText[appState.language].shareFailed);
       }
     });
   }
@@ -1148,7 +1201,7 @@ const setupEventListeners = () => {
       }, 300);
     } else if (siteShareBtn) {
       if (!appState.currentUser) {
-        alert('Login required to share');
+        alert(uiText[appState.language].loginRequiredShare);
         return;
       }
       siteShareBtn.classList.toggle('active');
@@ -1177,7 +1230,7 @@ const setupEventListeners = () => {
         );
       } catch (err) {
         console.error(err);
-        alert('Failed to share prompt. Please try again.');
+        alert(uiText[appState.language].shareFailed);
       }
     } else if (shareBtn) {
       shareBtn.classList.toggle('active');
