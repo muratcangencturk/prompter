@@ -34,8 +34,10 @@ const computeRankings = async () => {
   // collectors
   const usersSnap = await db.collection('users').get();
   const collectorArr = [];
+  const proArr = [];
   for (const userDoc of usersSnap.docs) {
     const uid = userDoc.id;
+    const userData = userDoc.data();
     const saved = await db.collection(`users/${uid}/savedPrompts`).get();
     const liked = await db
       .collection('prompts')
@@ -51,9 +53,31 @@ const computeRankings = async () => {
       shares: shared.size,
     });
     collectorArr.push({ userId: uid, score });
+
+    if (userData.proSince) {
+      proArr.push({ userId: uid, since: userData.proSince.toMillis() });
+    }
   }
   collectorArr.sort((a, b) => b.score - a.score);
   await db.doc('stats/topCollectors').set({ list: collectorArr.slice(0, 20) });
+
+  proArr.sort((a, b) => a.since - b.since);
+  await db.doc('stats/longestPro').set({ list: proArr.slice(0, 20) });
+
+  const donationsSnap = await db.collection('donations').get();
+  const totals = {};
+  donationsSnap.forEach((d) => {
+    const data = d.data();
+    if (!data.userId) return;
+    const amount = Number(data.amount) || 0;
+    totals[data.userId] = (totals[data.userId] || 0) + amount;
+  });
+  const supporterArr = Object.entries(totals).map(([userId, total]) => ({
+    userId,
+    total,
+  }));
+  supporterArr.sort((a, b) => b.total - a.total);
+  await db.doc('stats/topSupporters').set({ list: supporterArr.slice(0, 20) });
 };
 
 exports.scheduledComputeRankings = functions.pubsub
