@@ -1,6 +1,15 @@
 import { appState, THEMES } from './state.js';
 import { onAuth } from './auth.js';
 import { getUserSavedPrompts } from './prompt.js';
+
+const LANGUAGE_PAGES = {
+  en: 'index.html',
+  tr: 'tr/index.html',
+  es: 'es/index.html',
+  fr: 'fr/index.html',
+  zh: 'zh/index.html',
+  hi: 'hi/index.html',
+};
 import {
   collection,
   doc,
@@ -109,6 +118,15 @@ const setTheme = (theme) => {
 };
 
 const setLanguage = (lang) => {
+  const targetPage = LANGUAGE_PAGES[lang];
+  if (targetPage) {
+    const current = window.location.pathname.replace(/^\//, '');
+    if (current !== targetPage) {
+      window.location.href = targetPage;
+      localStorage.setItem('language', lang);
+      return;
+    }
+  }
   appState.language = lang;
   document.documentElement.lang = lang;
   document.getElementById('page-title').textContent = uiText[lang].pageTitle;
