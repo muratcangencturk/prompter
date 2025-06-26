@@ -578,8 +578,6 @@ const renderSavedPrompts = (prompts) => {
           pEl.textContent || '',
           appState.currentUser.uid,
           appState.selectedCategory,
-          appState.currentUser.displayName || '',
-          appState.currentUser.email || ''
         );
       } catch (err) {
         console.error(err);

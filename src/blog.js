@@ -16,14 +16,24 @@ import {
 } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
 import { db } from './firebase.js';
 import { sendNotification } from './notifications.js';
+import { getUserProfile } from './user.js';
 
-export const createPost = (
+export const createPost = async (
   text,
-  userId,
-  userName = '',
-  userEmail = ''
-) =>
-  addDoc(collection(db, 'blogPosts'), {
+  userId
+) => {
+  let userName = '';
+  let userEmail = '';
+  try {
+    const profile = await getUserProfile(userId);
+    if (profile) {
+      userName = profile.name || '';
+      userEmail = profile.email || '';
+    }
+  } catch (err) {
+    console.error('Failed to fetch user profile:', err);
+  }
+  return addDoc(collection(db, 'blogPosts'), {
     text,
     userId,
     userName,
@@ -36,6 +46,7 @@ export const createPost = (
     shareCount: 1,
     commentCount: 0,
   });
+};
 
 export const getAllPosts = async () => {
   const q = query(
