@@ -20,6 +20,7 @@ import {
 import { listenNotifications, markNotificationRead } from './notifications.js';
 import { appState, THEMES } from './state.js';
 import { categories } from './prompts.js';
+import { linkify } from './linkify.js';
 
 const uiText = {
   en: {
@@ -435,7 +436,7 @@ const renderSavedPrompts = (prompts) => {
     textContainer.className = 'prompt-text-box overflow-hidden max-h-40';
 
     const pEl = document.createElement('p');
-    pEl.textContent = text;
+    pEl.innerHTML = linkify(text);
     textContainer.appendChild(pEl);
     textWrap.appendChild(textContainer);
 
@@ -651,7 +652,7 @@ const renderSharedPrompts = async (prompts) => {
     textContainer.className = 'prompt-text-box overflow-hidden max-h-40';
 
     const text = document.createElement('p');
-    text.textContent = p.text;
+    text.innerHTML = linkify(p.text);
     textContainer.appendChild(text);
     textWrap.appendChild(textContainer);
 
@@ -954,8 +955,8 @@ const renderSharedPrompts = async (prompts) => {
       const d = document.createElement('div');
       d.className = 'bg-white/5 rounded-md px-2 py-1 text-sm';
       d.innerHTML = n
-        ? `<a href="user.html?uid=${c.userId}" class="underline">${n}</a>: ${c.text}`
-        : c.text;
+        ? `<a href="user.html?uid=${c.userId}" class="underline">${n}</a>: ${linkify(c.text)}`
+        : linkify(c.text);
       commentList.appendChild(d);
     };
 
