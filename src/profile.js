@@ -1066,7 +1066,7 @@ const init = () => {
     if (wasHidden) markAllNotificationsRead();
   });
 
-  const savedLang = localStorage.getItem('language') || 'en';
+  const savedLang = localStorage.getItem('language') || 'tr';
   setLanguage(savedLang);
 
   const currentTheme = localStorage.getItem('theme') || THEMES.DARK;
