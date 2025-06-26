@@ -213,7 +213,7 @@
           authError.textContent = 'Loading...';
           try {
             const cred = await register(email, password);
-            await setUserProfile(cred.user.uid, { name });
+            await setUserProfile(cred.user.uid, { name, email });
             authError.classList.remove('text-red-500');
             authError.classList.add('text-green-500');
             authError.textContent = 'Registration successful';

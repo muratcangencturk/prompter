@@ -15,6 +15,7 @@ export const setUserProfile = async (uid, profile) => {
   await setDoc(doc(db, 'users', uid, 'profile', 'info'), profile);
   const update = {};
   if (profile && profile.name) update.name = profile.name;
+  if (profile && profile.email) update.email = profile.email;
   if (profile && Object.prototype.hasOwnProperty.call(profile, 'bio')) {
     update.bio = profile.bio;
   }
