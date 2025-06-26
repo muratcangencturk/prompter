@@ -177,6 +177,14 @@
           </label>
           <label class="text-sm inline-flex items-center gap-1">
             <input
+              id="prompter-filter"
+              type="checkbox"
+              class="form-checkbox"
+            />
+            Prompter
+          </label>
+          <label class="text-sm inline-flex items-center gap-1">
+            <input
               id="popular-filter"
               type="checkbox"
               class="form-checkbox"
@@ -222,6 +230,7 @@
         getUserProfile,
         getFollowingIds,
         updateLastSocialVisit,
+        getUserByName,
       } from './src/user.js';
       import {
         collection,
@@ -296,8 +305,10 @@
         categories.map((c) => [c.id, c.name[appState.language] || c.id])
       );
       let followingIds = [];
+      let prompterUser = null;
       const commentsOpenMap = new Map();
       const followingFilter = document.getElementById('following-filter');
+      const prompterFilter = document.getElementById('prompter-filter');
       const popularFilter = document.getElementById('popular-filter');
       const categoryFilter = document.getElementById('category-filter');
       const promptSearch = document.getElementById('prompt-search');
@@ -344,6 +355,12 @@
           return;
         }
         followingIds = await getFollowingIds(appState.currentUser.uid);
+      };
+
+      const loadPrompter = async () => {
+        if (!prompterUser) {
+          prompterUser = await getUserByName('Prompter');
+        }
       };
 
       const createCard = async (p, name, commentsArr) => {
@@ -879,6 +896,10 @@
             p.text.toLowerCase().includes(term)
           );
         }
+        if (prompterFilter?.checked) {
+          if (prompterUser) filtered = filtered.filter((p) => p.userId === prompterUser.id);
+          else filtered = [];
+        }
         render(filtered);
       }
 
@@ -898,6 +919,7 @@
       const startListener = async () => {
         if (unsubscribe) unsubscribe();
         await refreshFollowing();
+        await loadPrompter();
 
         const constraints = [where('shared', '==', true)];
         const selectedCat = categoryFilter?.value;
@@ -912,6 +934,10 @@
             render([]);
             return;
           }
+        }
+
+        if (prompterFilter?.checked && prompterUser) {
+          constraints.push(where('userId', '==', prompterUser.id));
         }
 
         constraints.push(orderBy('createdAt', 'desc'));
@@ -947,12 +973,13 @@
         onAuth((u) => {
           if (u) updateLastSocialVisit(u.uid, Date.now());
         });
-        if (!followingFilter || !popularFilter) {
+        if (!followingFilter || !popularFilter || !prompterFilter) {
           console.error('Filter elements not found');
           return;
         }
         ['change', 'click'].forEach((evt) => {
           followingFilter.addEventListener(evt, startListener);
+          prompterFilter.addEventListener(evt, startListener);
           popularFilter.addEventListener(evt, startListener);
         });
         categoryFilter?.addEventListener('change', startListener);
