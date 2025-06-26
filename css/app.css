@@ -241,7 +241,7 @@ html {
 .theme-toggle-container a {
   transition: background-color 0.2s ease, color 0.2s ease;
   width: 4rem;
-  height: 2rem;
+  height: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
