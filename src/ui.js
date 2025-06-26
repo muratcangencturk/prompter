@@ -256,7 +256,6 @@ let copyButton;
 let shareButton;
 let saveButton;
 let shareTwitterButton;
-let categorySelect;
 let copySuccessMessage;
 let saveSuccessMessage;
 let saveErrorMessage;
@@ -418,12 +417,6 @@ const setLanguage = (lang) => {
       button.setAttribute('aria-label', `${category.name[lang]} category`);
     }
   });
-  if (categorySelect) {
-    Array.from(categorySelect.options).forEach((opt) => {
-      const cat = categories.find((c) => c.id === opt.value);
-      if (cat) opt.textContent = cat.name[lang];
-    });
-  }
 
   if (lang === 'en') {
     langEnButton.classList.add(
@@ -1001,11 +994,11 @@ const setupEventListeners = () => {
       }, 2000);
       try {
         const { savePrompt } = await import('./prompt.js');
-        await savePrompt(
-          appState.generatedPrompt,
-          appState.currentUser.uid,
-          categorySelect ? categorySelect.value : appState.selectedCategory,
-        );
+          await savePrompt(
+            appState.generatedPrompt,
+            appState.currentUser.uid,
+            appState.selectedCategory,
+          );
       } catch (err) {
         console.error(err);
         alert(uiText[appState.language].shareFailed);
@@ -1155,11 +1148,11 @@ const setupEventListeners = () => {
       if (appState.currentUser) {
         try {
           const { savePrompt } = await import('./prompt.js');
-          await savePrompt(
-            text,
-            appState.currentUser.uid,
-            categorySelect ? categorySelect.value : appState.selectedCategory,
-          );
+            await savePrompt(
+              text,
+              appState.currentUser.uid,
+              appState.selectedCategory,
+            );
         } catch (err) {
           console.error(err);
           saved = false;
@@ -1232,7 +1225,7 @@ const setupEventListeners = () => {
         await savePrompt(
           text,
           appState.currentUser.uid,
-          categorySelect ? categorySelect.value : appState.selectedCategory,
+          appState.selectedCategory,
         );
       } catch (err) {
         console.error(err);
@@ -1326,7 +1319,6 @@ export const initializeApp = () => {
   shareButton = document.getElementById('share-button');
   saveButton = document.getElementById('save-button');
   shareTwitterButton = document.getElementById('share-twitter');
-  categorySelect = document.getElementById('share-category');
   copySuccessMessage = document.getElementById('copy-success-message');
   saveSuccessMessage = document.getElementById('save-success-message');
   saveErrorMessage = document.getElementById('save-error-message');
@@ -1354,16 +1346,6 @@ export const initializeApp = () => {
   historyPanel = document.getElementById('history-panel');
   historyList = document.getElementById('history-list');
   clearHistoryButton = document.getElementById('clear-history');
-  if (categorySelect) {
-    categorySelect.innerHTML = '';
-    categories.forEach((c) => {
-      const opt = document.createElement('option');
-      opt.value = c.id;
-      opt.textContent = c.name[appState.language];
-      categorySelect.appendChild(opt);
-    });
-    categorySelect.value = appState.selectedCategory;
-  }
 
   const runLucide = () => {
     if (window.lucide && typeof window.lucide.createIcons === 'function') {

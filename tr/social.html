@@ -167,35 +167,12 @@
           </div>
         </div>
         <div class="ml-auto flex flex-col items-start gap-1">
-          <label class="text-sm inline-flex items-center gap-1">
-            <input
-              id="following-filter"
-              type="checkbox"
-              class="form-checkbox"
-            />
-            Sadece takip edilenler
-          </label>
-          <label class="text-sm inline-flex items-center gap-1">
-            <input
-              id="popular-filter"
-              type="checkbox"
-              class="form-checkbox"
-            />
-            Popüler
-          </label>
           <input
             id="prompt-search"
             type="text"
             placeholder="Ara…"
             class="bg-black/20 border border-white/20 rounded-md text-sm px-1 focus:outline-none focus:ring-2 focus:ring-white/50 mt-1"
           />
-          <label class="text-sm inline-flex items-center gap-1 mt-1">
-            <span>Kategori:</span>
-            <select
-              id="category-filter"
-              class="bg-black/20 border border-white/20 rounded-md text-sm px-1 focus:outline-none focus:ring-2 focus:ring-white/50"
-            ></select>
-          </label>
         </div>
       </header>
       <div id="all-prompts" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
@@ -294,21 +271,8 @@
       const categoryMap = Object.fromEntries(
         categories.map((c) => [c.id, c.name[appState.language] || c.id])
       );
-      let followingIds = [];
       const commentsOpenMap = new Map();
-      const followingFilter = document.getElementById('following-filter');
-      const popularFilter = document.getElementById('popular-filter');
-      const categoryFilter = document.getElementById('category-filter');
       const promptSearch = document.getElementById('prompt-search');
-      if (categoryFilter) {
-        categoryFilter.innerHTML = '<option value="">Tümü</option>';
-        categories.forEach((c) => {
-          const opt = document.createElement('option');
-          opt.value = c.id;
-          opt.textContent = categoryMap[c.id] || c.id;
-          categoryFilter.appendChild(opt);
-        });
-      }
       const fetchName = async (uid) => {
         if (profileCache[uid]) return profileCache[uid];
         const prof = await getUserProfile(uid);
@@ -335,14 +299,6 @@
         setTimeout(() => {
           card.classList.remove('ring-2', 'ring-yellow-400');
         }, 2000);
-      };
-
-      const refreshFollowing = async () => {
-        if (!appState.currentUser) {
-          followingIds = [];
-          return;
-        }
-        followingIds = await getFollowingIds(appState.currentUser.uid);
       };
 
       const createCard = async (p, name, commentsArr) => {
@@ -941,22 +897,7 @@
 
       const startListener = async () => {
         if (unsubscribe) unsubscribe();
-        await refreshFollowing();
-
         const constraints = [where('shared', '==', true)];
-        const selectedCat = categoryFilter?.value;
-        if (selectedCat) {
-          constraints.push(where('category', '==', selectedCat));
-        }
-
-        if (followingFilter?.checked) {
-          if (followingIds.length > 0) {
-            constraints.push(where('userId', 'in', followingIds.slice(0, 10)));
-          } else {
-            render([]);
-            return;
-          }
-        }
 
         constraints.push(orderBy('createdAt', 'desc'));
         const q = query(collection(db, 'prompts'), ...constraints);
@@ -965,9 +906,6 @@
           q,
           async (snap) => {
             let prompts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
-            if (popularFilter?.checked) {
-              prompts.sort((a, b) => promptScore(b) - promptScore(a));
-            }
             loadedPrompts = prompts;
             filterAndRender();
           },
@@ -991,15 +929,7 @@
         onAuth((u) => {
           if (u) updateLastSocialVisit(u.uid, Date.now());
         });
-        if (!followingFilter || !popularFilter) {
-          console.error('Filter elements not found');
-          return;
-        }
-        ['change', 'click'].forEach((evt) => {
-          followingFilter.addEventListener(evt, startListener);
-          popularFilter.addEventListener(evt, startListener);
-        });
-        categoryFilter?.addEventListener('change', startListener);
+        promptSearch?.addEventListener('input', debouncedFilter);
         onAuth(startListener);
         startListener();
       }
