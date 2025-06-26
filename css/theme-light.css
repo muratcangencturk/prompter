@@ -100,7 +100,7 @@ body {
   background-color: rgba(255, 255, 255, 0.5) !important;
   color: #334155 !important;
   width: 4rem;
-  z-index: 50;
+  z-index: 60;
 }
 #lang-menu button:hover {
   background-color: rgba(0, 0, 0, 0.1) !important;
