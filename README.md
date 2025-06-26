@@ -158,10 +158,11 @@ npm run build:css
 This command invokes the Tailwind CLI to compile `src/styles.css` into
 `css/tailwind.css`.
 
-To backfill older accounts with a root-level name field run:
+To backfill older accounts with root-level name and email fields run:
 
 ```bash
 node scripts/migrate-user-names.js
+node scripts/migrate-user-emails.js
 ```
 
 This script copies the `name` from `users/{uid}/profile/info` into the parent
