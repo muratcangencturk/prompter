@@ -303,8 +303,8 @@
 
         likeRow.appendChild(likeBtn);
         likeRow.appendChild(likeCount);
-        likeRow.appendChild(twitterBtn);
         likeRow.appendChild(commentContainer);
+        likeRow.appendChild(twitterBtn);
         if (appState?.currentUser && appState.currentUser.uid === p.userId) {
           const editBtn = document.createElement('button');
           editBtn.className =
