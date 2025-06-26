@@ -85,13 +85,18 @@
         </header>
         <div class="max-w-xl mx-auto relative">
           <p id="user-bio" class="text-blue-200 whitespace-pre-line mb-4 text-center"></p>
-          <div class="space-x-2 text-sm text-blue-200 mb-6 text-center">
+          <div class="space-x-2 text-sm text-blue-200 mb-4 text-center">
             <span>Prompts: <span id="stat-prompts">0</span></span>
             <span>Likes: <span id="stat-likes">0</span></span>
             <span>Comments: <span id="stat-comments">0</span></span>
             <span>Saves: <span id="stat-saves">0</span></span>
             <span>Shares: <span id="stat-shares">0</span></span>
+            <span>Following: <a id="stat-following" href="#" class="underline">0</a></span>
+            <span>Followers: <a id="stat-followers" href="#" class="underline">0</a></span>
           </div>
+          <div id="following-list" class="hidden mb-4 text-center space-y-1"></div>
+          <div id="followers-list" class="hidden mb-4 text-center space-y-1"></div>
+          <div id="prompt-list" class="space-y-4"></div>
           <div id="prompt-list" class="space-y-4"></div>
         </div>
     </div>

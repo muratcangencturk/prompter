@@ -4,6 +4,8 @@ import {
   followUser,
   unfollowUser,
   isFollowing,
+  getFollowingIds,
+  getFollowerIds,
 } from './user.js';
 import { onAuth } from './auth.js';
 import { getUserPrompts } from './prompt.js';
@@ -55,6 +57,12 @@ const init = async () => {
   const nameQuery = getParam('name');
   let name = '';
   const dmLink = document.getElementById('dm-link');
+  const followersLink = document.getElementById('stat-followers');
+  const followingLink = document.getElementById('stat-following');
+  const followersList = document.getElementById('followers-list');
+  const followingList = document.getElementById('following-list');
+  let followerIds = [];
+  let followingIds = [];
 
   if (!uid && nameQuery) {
     const user = await getUserByName(nameQuery);
@@ -76,6 +84,14 @@ const init = async () => {
   document.getElementById('user-name').textContent = name || uid;
   const bioEl = document.getElementById('user-bio');
   if (bioEl) bioEl.textContent = bio;
+
+  const updateFollowCounts = async () => {
+    followingIds = await getFollowingIds(uid);
+    followerIds = await getFollowerIds(uid);
+    if (followingLink) followingLink.textContent = followingIds.length.toString();
+    if (followersLink) followersLink.textContent = followerIds.length.toString();
+  };
+  await updateFollowCounts();
 
   const followBtn = document.getElementById('follow-btn');
   let currentUserId = null;
@@ -103,6 +119,26 @@ const init = async () => {
     followBtn.classList.remove('hidden');
   };
 
+  const showList = async (ids, container) => {
+    if (!container) return;
+    container.innerHTML = '';
+    if (ids.length === 0) {
+      container.classList.toggle('hidden', false);
+      return;
+    }
+    const names = await Promise.all(
+      ids.map((id) => getUserProfile(id).then((p) => p?.name || id))
+    );
+    ids.forEach((id, idx) => {
+      const a = document.createElement('a');
+      a.href = `user.html?uid=${id}`;
+      a.className = 'block underline';
+      a.textContent = names[idx];
+      container.appendChild(a);
+    });
+    container.classList.toggle('hidden', false);
+  };
+
   followBtn?.addEventListener('click', async () => {
     if (!currentUserId) return;
     const following = followBtn.dataset.following === '1';
@@ -115,12 +151,26 @@ const init = async () => {
     }
     followBtn.disabled = false;
     await updateFollowBtn();
+    await updateFollowCounts();
+  });
+
+  followersLink?.addEventListener('click', (e) => {
+    e.preventDefault();
+    showList(followerIds, followersList);
+    followingList?.classList.add('hidden');
+  });
+
+  followingLink?.addEventListener('click', (e) => {
+    e.preventDefault();
+    showList(followingIds, followingList);
+    followersList?.classList.add('hidden');
   });
 
   onAuth(async (u) => {
     currentUserId = u ? u.uid : null;
     await updateFollowBtn();
     updateDmLink();
+    await updateFollowCounts();
   });
 
   const prompts = await getUserPrompts(uid);
