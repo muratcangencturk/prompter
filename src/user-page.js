@@ -156,12 +156,24 @@ const init = async () => {
 
   followersLink?.addEventListener('click', (e) => {
     e.preventDefault();
+    if (!followersList) return;
+    if (!followersList.classList.contains('hidden')) {
+      followersList.classList.add('hidden');
+      followingList?.classList.add('hidden');
+      return;
+    }
     showList(followerIds, followersList);
     followingList?.classList.add('hidden');
   });
 
   followingLink?.addEventListener('click', (e) => {
     e.preventDefault();
+    if (!followingList) return;
+    if (!followingList.classList.contains('hidden')) {
+      followingList.classList.add('hidden');
+      followersList?.classList.add('hidden');
+      return;
+    }
     showList(followingIds, followingList);
     followersList?.classList.add('hidden');
   });
