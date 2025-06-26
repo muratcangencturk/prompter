@@ -12,7 +12,7 @@ import {
 import { db } from './firebase.js';
 
 export const setUserProfile = async (uid, profile) => {
-  await setDoc(doc(db, 'users', uid, 'profile', 'info'), profile);
+  await setDoc(doc(db, 'users', uid, 'profile', 'info'), profile, { merge: true });
   const update = {};
   if (profile && profile.name) update.name = profile.name;
   if (profile && profile.email) update.email = profile.email;
