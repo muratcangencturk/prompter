@@ -163,6 +163,7 @@
       import { getUserProfile, getFollowingIds, getUserByName } from './src/user.js';
       import { onAuth } from './src/auth.js';
       import { appState } from './src/state.js';
+      import { linkify } from './src/linkify.js';
       const msgs = {
         en: { loginRequired: 'Login required' },
         tr: { loginRequired: 'Giriş gerekli' },
@@ -201,7 +202,7 @@
         textContainer.className = 'prompt-text-box overflow-hidden max-h-40';
 
         const text = document.createElement('p');
-        text.textContent = p.text;
+        text.innerHTML = linkify(p.text);
         textContainer.appendChild(text);
         textWrap.appendChild(textContainer);
 
@@ -409,7 +410,7 @@
           const n = await fetchName(c.userId);
           const d = document.createElement('div');
           d.className = 'bg-white/5 rounded-md px-2 py-1 text-sm';
-          d.innerHTML = `<span class="underline">${n}</span>: ${c.text}`;
+          d.innerHTML = `<span class="underline">${n}</span>: ${linkify(c.text)}`;
           commentList.appendChild(d);
         };
         for (const c of comments) {
