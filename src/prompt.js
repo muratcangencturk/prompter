@@ -46,6 +46,26 @@ export const savePrompt = async (
   } catch (err) {
     console.error('Failed to fetch user profile:', err);
   }
+  try {
+    const q = query(
+      collection(db, 'prompts'),
+      where('userId', '==', userId),
+      where('text', '==', text)
+    );
+    const snap = await getDocs(q);
+    if (!snap.empty) {
+      const ref = snap.docs[0].ref;
+      await updateDoc(ref, {
+        category,
+        shared: true,
+        sharedBy: arrayUnion(userId),
+        shareCount: increment(1),
+      });
+      return ref;
+    }
+  } catch (err) {
+    console.error('Failed to check existing prompt:', err);
+  }
   return addDoc(collection(db, 'prompts'), {
     text,
     userId,
