@@ -94,7 +94,8 @@ const uiText = {
     loginRequired: 'Se requiere inicio de sesión',
     loginRequiredShare: 'Debes iniciar sesión para compartir',
     copyFailed: 'No se pudo copiar el prompt. Por favor inténtalo de nuevo.',
-    shareFailed: 'No se pudo compartir el prompt. Por favor inténtalo de nuevo.',
+    shareFailed:
+      'No se pudo compartir el prompt. Por favor inténtalo de nuevo.',
     showMore: 'Show more',
     showLess: 'Show less',
   },
@@ -579,6 +580,8 @@ const renderSavedPrompts = (prompts) => {
           pEl.textContent || '',
           appState.currentUser.uid,
           appState.selectedCategory,
+          appState.currentUser.displayName || '',
+          appState.currentUser.email || ''
         );
       } catch (err) {
         console.error(err);
@@ -954,7 +957,9 @@ const renderSharedPrompts = async (prompts) => {
       const d = document.createElement('div');
       d.className = 'bg-white/5 rounded-md px-2 py-1 text-sm';
       d.innerHTML = n
-        ? `<a href="user.html?uid=${c.userId}" class="underline">${n}</a>: ${linkify(c.text)}`
+        ? `<a href="user.html?uid=${
+            c.userId
+          }" class="underline">${n}</a>: ${linkify(c.text)}`
         : linkify(c.text);
       commentList.appendChild(d);
     };
