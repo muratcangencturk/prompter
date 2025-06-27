@@ -394,6 +394,7 @@
 
         const likeRow = document.createElement('div');
         likeRow.className = 'flex items-center gap-2 mt-2';
+        let editing = false;
 
         const saveBtn = document.createElement('button');
         saveBtn.className =
@@ -616,6 +617,7 @@
           '<i data-lucide="pencil" class="w-4 h-4" aria-hidden="true"></i>';
 
         const startEdit = () => {
+          if (editing) return;
           if (appState.currentUser && p.userId === appState.currentUser.uid) {
             showEdit();
           } else {
@@ -624,10 +626,13 @@
         };
 
         const showEdit = () => {
+          if (editing) return;
+          if (!textWrap.contains(text) || !card.contains(likeRow)) return;
+          editing = true;
           const textarea = document.createElement('textarea');
           textarea.className = 'w-full p-2 rounded-md bg-black/30';
           textarea.value = p.text;
-          textWrap.replaceChild(textarea, text);
+          if (textWrap.contains(text)) textWrap.replaceChild(textarea, text);
 
           const editRow = document.createElement('div');
           editRow.className = 'flex items-center gap-2 mt-2';
@@ -644,12 +649,13 @@
           editRow.appendChild(saveEdit);
           editRow.appendChild(cancelEdit);
 
-          card.replaceChild(editRow, likeRow);
+          if (card.contains(likeRow)) card.replaceChild(editRow, likeRow);
           window.lucide?.createIcons();
 
           cancelEdit.addEventListener('click', () => {
-            textWrap.replaceChild(text, textarea);
-            card.replaceChild(likeRow, editRow);
+            if (textWrap.contains(textarea)) textWrap.replaceChild(text, textarea);
+            if (card.contains(editRow)) card.replaceChild(likeRow, editRow);
+            editing = false;
           });
 
           saveEdit.addEventListener('click', async () => {
