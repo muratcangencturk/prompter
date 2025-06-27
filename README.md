@@ -229,7 +229,11 @@ show "Failed to load prompts."
 
 ## Advertising (Google AdSense)
 
-All pages include the standard AdSense loader in the `<head>` tag:
+The repository initially documented that every page loaded the standard AdSense
+loader. After reviewing the HTML files no such script tag was present. Pages
+function correctly without the loader.
+
+For testing the script was temporarily added to `index.html`:
 
 ```html
 <script
@@ -239,8 +243,9 @@ All pages include the standard AdSense loader in the `<head>` tag:
 ></script>
 ```
 
-
-The script fetches Google's ad library asynchronously using your publisher ID (`client`). After it loads you can place `<ins class="adsbygoogle">` elements in the body to display ads. See [the AdSense documentation](https://support.google.com/adsense/answer/9271723) for details on creating and customizing ad units.
+Loading the page with this tag did not trigger reload loops in a headless
+browser test, indicating the script itself is not responsible for page reloads.
+Other pages remain unchanged and do not include the AdSense loader.
 
 ## Pop-up ad handler
 
