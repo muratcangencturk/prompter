@@ -126,6 +126,7 @@
       import { linkify } from './src/linkify.js';
       import { timeAgo } from './src/timeago.js';
       import { categories } from './src/prompts.js?v=66';
+      import { BASE_URL } from '../src/config.js';
       import {
         getUserProfile,
         getFollowingIds,
@@ -229,7 +230,7 @@
 
       const sharePrompt = (prompt, baseUrl) => {
         if (!prompt) return;
-        const link = ' https://prompterai.space';
+        const link = ` ${BASE_URL}`;
         const url = `${baseUrl}${encodeURIComponent(`${prompt}${link}`)}`;
         window.open(url, '_blank');
       };

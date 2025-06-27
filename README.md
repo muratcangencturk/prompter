@@ -193,6 +193,7 @@ Before deploying your own instance, update all references to the default domain
 
 - Edit the canonical `<link>` tags in all HTML files so they point to your final
   site.
+- Update `src/config.js` with your domain so scripts use the correct `BASE_URL`.
 - Ensure the `<base>` tag in every HTML file matches the path where the site is
   hosted. A mismatched value will break relative URLs. Example: `<base
 href="/subdir/">` when serving from `/subdir/`.
