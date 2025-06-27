@@ -74,16 +74,6 @@ const markAllNotificationsRead = async () => {
 };
 
 
-const hideEmptyAdSlots = () => {
-  const slots = document.querySelectorAll('.ad-slot');
-  slots.forEach((slot) => {
-    const hasAd = slot.querySelector('iframe, img, ins');
-    if (!hasAd || slot.offsetHeight < 5) {
-      slot.remove();
-    }
-  });
-};
-
 const checkForNewPrompts = async (uid) => {
   if (!socialBadge) {
     socialBadge = document.getElementById('social-new-badge');
@@ -138,6 +128,5 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.lucide && typeof window.lucide.createIcons === 'function') {
     window.lucide.createIcons();
   }
-  setTimeout(hideEmptyAdSlots, 4000);
 });
 
