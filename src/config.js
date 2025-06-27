@@ -1,1 +1,1 @@
-export const SITE_URL = '__SITE_URL__';
+export const SITE_URL = 'https://prompterai.space';
