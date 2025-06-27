@@ -1,0 +1,17 @@
+{
+  "name": "Prompter",
+  "short_name": "Prompter",
+  "description": "Prompt generator web app that requires an internet connection",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "display": "standalone",
+  "version": "64",
+  "start_url": "./",
+  "icons": [
+    {
+      "src": "icons/logo.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    }
+  ]
+}

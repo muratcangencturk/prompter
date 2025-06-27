@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prompter Pro</title>
+    <link rel="icon" type="image/svg+xml" href="icons/logo.svg?v=64" />
+    <link rel="manifest" href="manifest.json?v=64" />
+    <meta name="theme-color" content="#000000" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="css/app.css?v=64" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=64" />
+    <!--
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      }
+    </script>
+    -->
+    <script>
+      (function () {
+        const linkEl = document.getElementById('theme-css');
+        if (!linkEl) return;
+        const version = linkEl.getAttribute('href').split('?')[1];
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          linkEl.href = `css/theme-${savedTheme}.css${version ? `?${version}` : ''}`;
+        }
+      })();
+    </script>
+    <script type="module" src="src/version.js?v=64"></script>
+  </head>
+  <body class="min-h-screen p-4">
+    <div class="max-w-md mx-auto relative mt-16">
+      <div class="absolute top-4 left-4">
+        <a
+          href="index.html"
+          class="p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 text-white"
+          title="Back"
+          aria-label="Back"
+        >
+          <span class="w-6 h-6 inline-flex items-center justify-center text-3xl" aria-hidden="true">&larr;</span>
+        </a>
+      </div>
+    <div class="max-w-md mx-auto bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg">
+      <h1 class="text-2xl font-bold mb-4 text-center">Prompter Pro</h1>
+      <p class="mb-2 text-center">
+        Tüm özelliklerin kilidini yalnızca <strong>79 TL / 1.99 USD</strong>
+        karşılığında açın.
+      </p>
+      <ul class="list-disc list-inside space-y-1 mb-4">
+        <li>Yeni özelliklere erken erişim</li>
+        <li>Gelişmiş modeller ile prompt üretimi</li>
+        <li>Sınırsız prompt üretimi, kaydetme ve paylaşma</li>
+        <li>Premium promptlara erişim</li>
+        <li>Prompter WhatsApp kanalına üyelik</li>
+        <li>Günlük yapay zeka bülteni</li>
+        <li>Prompter’ın geleceği hakkında oy kullanma</li>
+        <li>Prompter fikri ve gelişimine destek</li>
+        <li>Prompter ekosistemine sınırsız erişim (şimdiki+gelecek eklentiler dahil)</li>
+      </ul>
+        <div class="flex gap-2 mb-4">
+          <input
+            type="text"
+            placeholder="İndirim kodu"
+            class="flex-grow p-2 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+          />
+          <button
+          class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 font-bold py-2 px-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 focus:ring-offset-purple-900"
+          >
+            Uygula
+          </button>
+        </div>
+      <div class="flex gap-2 justify-center">
+        <button
+          id="payment-link"
+          type="button"
+          class="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 font-bold py-2 px-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 focus:ring-offset-purple-900"
+        >
+          abone ol
+        </button>
+        <button
+          id="support-link"
+          type="button"
+          class="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 font-bold py-2 px-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 focus:ring-offset-purple-900"
+        >
+          destek ol
+        </button>
+      </div>
+      <div class="mt-4 text-center">
+        <a
+          href="index.html"
+          class="inline-block bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 font-bold py-2 px-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 focus:ring-offset-purple-900"
+        >
+          geri
+        </a>
+      </div>
+    </div>
+      <script>
+        document.getElementById('payment-link')?.addEventListener('click', () => {
+          window.open('https://turkplay.gumroad.com/l/prompter', '_blank');
+        });
+        document.getElementById('support-link')?.addEventListener('click', () => {
+          window.open('https://turkplay.gumroad.com/l/prompterai', '_blank');
+        });
+      </script>
+  </div>
+  </body>
+</html>

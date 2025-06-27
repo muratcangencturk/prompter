@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Top Lists - Prompter</title>
+    <base href="./" />
+    <link rel="manifest" href="manifest.json?v=64" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="css/tailwind.css?v=64" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=64"></script>
+    <link rel="stylesheet" href="css/app.css?v=64" />
+    <script type="module" src="src/init-app.js?v=64"></script>
+    <script nomodule src="dist/init-app.js?v=64"></script>
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=64" />
+    <script>
+      (function () {
+        const linkEl = document.getElementById('theme-css');
+        if (!linkEl) return;
+        const version = linkEl.getAttribute('href').split('?')[1];
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          linkEl.href = `css/theme-${savedTheme}.css${
+            version ? `?${version}` : ''
+          }`;
+        }
+      })();
+    </script>
+    <script type="module" src="src/version.js?v=64"></script>
+  </head>
+  <body class="min-h-screen p-4">
+    <div class="max-w-4xl mx-auto relative mt-16">
+      <div class="absolute top-4 left-4">
+        <a
+          href="index.html"
+          class="p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 text-white"
+          title="Back"
+          aria-label="Back"
+        >
+          <span
+            class="w-6 h-6 inline-flex items-center justify-center text-3xl"
+            aria-hidden="true"
+            >&larr;</span
+          >
+        </a>
+      </div>
+      <div
+        class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg"
+      >
+        <h1 class="text-2xl font-bold mb-4 text-center">Top Rankings</h1>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <h2 class="text-lg font-semibold mb-1 text-center">Top Creators</h2>
+            <p class="text-xs text-blue-200 text-center mb-2">
+              Ranked by total likes, saves and shares on their prompts.
+            </p>
+            <div id="creator-list" class="space-y-2"></div>
+          </div>
+          <div>
+            <h2 class="text-lg font-semibold mb-1 text-center">
+              Top Collectors
+            </h2>
+            <p class="text-xs text-blue-200 text-center mb-2">
+              Ranked by how many prompts they've liked, saved and shared.
+            </p>
+            <div id="collector-list" class="space-y-2"></div>
+          </div>
+          <div>
+            <h2 class="text-lg font-semibold mb-1 text-center">Top Prompts</h2>
+            <p class="text-xs text-blue-200 text-center mb-2">
+              Ranked by likes, saves and shares each prompt receives.
+            </p>
+            <div id="prompt-list" class="space-y-2"></div>
+          </div>
+          <div>
+            <h2 class="text-lg font-semibold mb-1 text-center">Top Supporters</h2>
+            <p class="text-xs text-blue-200 text-center mb-2">Ranked by total donations.</p>
+            <div id="supporter-list" class="space-y-2"></div>
+          </div>
+          <div>
+            <h2 class="text-lg font-semibold mb-1 text-center">Longest Pro Members</h2>
+            <p class="text-xs text-blue-200 text-center mb-2">Earliest subscribers still active.</p>
+            <div id="pro-list" class="space-y-2"></div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4 text-center">
+        <a
+          href="index.html"
+          class="inline-block bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 font-bold py-2 px-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 focus:ring-offset-purple-900"
+        >
+          Back
+        </a>
+      </div>
+    </div>
+    <script type="module" src="src/top-creators.js?v=64"></script>
+    <script type="module" src="src/top-collectors.js?v=64"></script>
+    <script type="module" src="src/top-prompts.js?v=64"></script>
+    <script type="module" src="src/top-supporters.js?v=64"></script>
+    <script type="module" src="src/top-pro.js?v=64"></script>
+  </body>
+</html>

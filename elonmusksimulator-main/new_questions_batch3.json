@@ -1,0 +1,1302 @@
+[
+  {
+    "text": "Mark Zuckerberg challenges you to a public debate on AI safety. Says Meta's approach is 'more responsible than yours.'",
+    "rightResponse": "'Heck yeah! \"A public AI debate with Zuck? Let's settle this in the marketplace of ideas! I'll bring the flamethrower, he can bring his booster seat and sunscreen for when he gets BURNED!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"AI safety isn't a spectacle for debate. I prefer to let our research and safety protocols speak for themselves.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🤖",
+      "🎭",
+      "⚔️"
+    ],
+    "impact": {
+      "right": {
+        "ai_bots": -10,
+        "public_opinion": 15,
+        "x_twitter": 20,
+        "legacy": -5,
+        "government": -10
+      },
+      "left": {
+        "ai_bots": 15,
+        "public_opinion": -10,
+        "x_twitter": -15,
+        "legacy": 10,
+        "government": 5
+      }
+    }
+  },
+  {
+    "text": "Zuckerberg announces Meta's new brain-computer interface, claiming it's 'years ahead of Neuralink' and 'actually safe for humans.'",
+    "rightResponse": "'Heck yeah! \"Safety claims require peer-reviewed evidence. Neuralink follows rigorous medical device standards, not PR timelines.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Competition drives innovation! Let's see whose BCI can help more people faster! May the best brain chip win - though I bet his just makes you compulsively like photos of salads!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🧠",
+      "💻",
+      "🏆"
+    ],
+    "impact": {
+      "right": {
+        "neuralink": 15,
+        "public_opinion": 10,
+        "x_twitter": -10,
+        "legacy": 10,
+        "ai_bots": -5
+      },
+      "left": {
+        "neuralink": -20,
+        "public_opinion": -10,
+        "x_twitter": 15,
+        "legacy": -5,
+        "ai_bots": 5
+      }
+    }
+  },
+  {
+    "text": "Zuckerberg offers to buy X (Twitter) for $75 billion, promising to 'restore trust and advertiser confidence' in the platform.",
+    "rightResponse": "'Heck yeah! \"$75 billion? That's a generous offer, but X isn't just a business—it's a global town square that must remain independent. Besides, I'd rather set that money on fire while livestreaming it than let you turn X into Facebook 2.0!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"X is not for sale at any price. Its mission as a free speech platform is too important to compromise.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "💰",
+      "𝕏",
+      "🤝"
+    ],
+    "impact": {
+      "right": {
+        "x_twitter": -15,
+        "finance": 25,
+        "public_opinion": 10,
+        "legacy": -10,
+        "government": 5
+      },
+      "left": {
+        "x_twitter": 20,
+        "finance": -25,
+        "public_opinion": -15,
+        "legacy": 15,
+        "government": -10
+      }
+    }
+  },
+  {
+    "text": "Zuckerberg announces Meta's new electric car project, claiming it will be 'more affordable and practical than any Tesla.'",
+    "rightResponse": "'Heck yeah! \"Welcome to the EV revolution, Mark! The more companies pushing electric vehicles, the better for humanity! Can't wait to see the car that automatically drives you to places that harvest your personal data!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Building cars at scale requires manufacturing expertise that takes decades to develop. Good luck with that.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🚗",
+      "⚡",
+      "💵"
+    ],
+    "impact": {
+      "right": {
+        "tesla": -20,
+        "public_opinion": 15,
+        "finance": -10,
+        "legacy": 5,
+        "x_twitter": 10
+      },
+      "left": {
+        "tesla": 10,
+        "public_opinion": -15,
+        "finance": 5,
+        "legacy": -5,
+        "x_twitter": -5
+      }
+    }
+  },
+  {
+    "text": "Zuckerberg proposes a joint Meta-SpaceX mission to create the first social media platform that works on Mars, with shared investment.",
+    "rightResponse": "'Heck yeah! \"Mars communications infrastructure will be built for reliability and scientific needs, not social media priorities.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Interplanetary social media? A fascinating collaboration opportunity! Let's connect humanity across planets! First Martian selfie hashtag: #DustStormChic!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🚀",
+      "👥",
+      "🪐"
+    ],
+    "impact": {
+      "right": {
+        "spacex": 15,
+        "mars": 10,
+        "x_twitter": 15,
+        "public_opinion": -10,
+        "legacy": 5
+      },
+      "left": {
+        "spacex": -15,
+        "mars": -10,
+        "x_twitter": -20,
+        "public_opinion": 10,
+        "legacy": -5
+      }
+    }
+  },
+  {
+    "text": "Zuckerberg challenges you to a cage match, with all proceeds going to charity. Says his jiu-jitsu training gives him the edge.",
+    "rightResponse": "'Heck yeah! \"Challenge accepted! Physics and engineering taught me about leverage and momentum too. Let's make this legendary! I'll bring the flamethrower, you bring your robot exoskeleton - may the least human win!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"I prefer to compete through innovation and market success, not physical combat. There are better ways to raise money for charity.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🥊",
+      "🏆",
+      "💪"
+    ],
+    "impact": {
+      "right": {
+        "public_opinion": 20,
+        "x_twitter": 25,
+        "legacy": -15,
+        "finance": 5,
+        "government": -10
+      },
+      "left": {
+        "public_opinion": -15,
+        "x_twitter": -20,
+        "legacy": 10,
+        "finance": -5,
+        "government": 5
+      }
+    }
+  },
+  {
+    "text": "Zuckerberg claims Meta's new VR headset can simulate Mars colonization 'more realistically than actually going there.'",
+    "rightResponse": "'Heck yeah! \"VR Mars is impressive, but nothing compares to the real challenge of becoming multi-planetary! Though in your metaverse, the Martian dust probably sells your location data to advertisers!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Simulation is not colonization. Real Mars habitation solves existential risk problems that VR simply cannot address.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🥽",
+      "🪐",
+      "🏙️"
+    ],
+    "impact": {
+      "right": {
+        "mars": -10,
+        "public_opinion": 15,
+        "spacex": -5,
+        "legacy": -5,
+        "ai_bots": 10
+      },
+      "left": {
+        "mars": 15,
+        "public_opinion": -10,
+        "spacex": 10,
+        "legacy": 10,
+        "ai_bots": -5
+      }
+    }
+  },
+  {
+    "text": "Zuckerberg announces that Meta is developing humanoid robots that will be 'more affordable and versatile than Tesla Bots.'",
+    "rightResponse": "'Heck yeah! \"Building useful humanoid robots requires vertical integration from AI to actuators. It's not just another software project.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"The more companies working on humanoid robots, the faster we'll solve the labor shortage! Welcome to the revolution! Can't wait to see robots that poke each other and ask to be friends while harvesting your personal data!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🤖",
+      "💰",
+      "🏭"
+    ],
+    "impact": {
+      "right": {
+        "ai_bots": 10,
+        "tesla": 5,
+        "public_opinion": -10,
+        "finance": 5,
+        "legacy": 5
+      },
+      "left": {
+        "ai_bots": -15,
+        "tesla": -10,
+        "public_opinion": 10,
+        "finance": -5,
+        "legacy": -5
+      }
+    }
+  },
+  {
+    "text": "Zuckerberg offers to integrate all Tesla vehicles with Meta's VR systems for 'the ultimate entertainment during Autopilot.'",
+    "rightResponse": "'Heck yeah! Strap in, this idea is rocket-fueled awesomeness! Let's make it happen!'",
+    "leftResponse": "'No way! \"VR entertainment in autonomous vehicles? An interesting way to make commuting more productive and enjoyable! Just imagine crashing in the real world while you're busy losing in the virtual one - two failures for the price of one!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🚗",
+      "🥽",
+      "🎮"
+    ],
+    "impact": {
+      "right": {
+        "tesla": 15,
+        "public_opinion": 10,
+        "government": 15,
+        "x_twitter": -5,
+        "finance": -10
+      },
+      "left": {
+        "tesla": -20,
+        "public_opinion": -15,
+        "government": -20,
+        "x_twitter": 10,
+        "finance": 10
+      }
+    }
+  },
+  {
+    "text": "Zuckerberg claims his metaverse will be 'more important for humanity's future than Mars colonization.'",
+    "rightResponse": "'Heck yeah! \"Virtual worlds don't protect humanity from extinction-level events. Only becoming multi-planetary can do that.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Digital and physical expansion can coexist! Both extend human consciousness in different but valuable ways. Though I'd rather face real Martian dust storms than spend eternity as a legless cartoon in your digital playground!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🥽",
+      "🪐",
+      "🔮"
+    ],
+    "impact": {
+      "right": {
+        "mars": 20,
+        "public_opinion": -10,
+        "spacex": 15,
+        "legacy": 10,
+        "ai_bots": -5
+      },
+      "left": {
+        "mars": -20,
+        "public_opinion": 10,
+        "spacex": -15,
+        "legacy": -10,
+        "ai_bots": 10
+      }
+    }
+  },
+  {
+    "text": "Sam Altman announces OpenAI is developing its own brain-computer interface that will 'make Neuralink obsolete.'",
+    "rightResponse": "'Heck yeah! \"Neural interfaces require hardware expertise and surgical precision that software companies typically lack.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Competition in neural interfaces will accelerate progress! May the best technology help humanity the most! Though I bet his chip just makes you involuntarily write poetry about how great ChatGPT is!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🧠",
+      "💻",
+      "🔄"
+    ],
+    "impact": {
+      "right": {
+        "neuralink": 15,
+        "public_opinion": -10,
+        "ai_bots": 10,
+        "legacy": 5,
+        "x_twitter": -5
+      },
+      "left": {
+        "neuralink": -20,
+        "public_opinion": 10,
+        "ai_bots": -10,
+        "legacy": -5,
+        "x_twitter": 10
+      }
+    }
+  },
+  {
+    "text": "Sam Altman claims GPT-5 will be capable of fully autonomous driving, making Tesla's specialized AI approach 'unnecessarily complex.'",
+    "rightResponse": "'Heck yeah! \"General language models lack the specialized perception training and hardware integration needed for safe driving.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"If GPT-5 can safely drive cars, that's a win for humanity! Different approaches can coexist and serve different needs! Though I'd love to see a car that hallucinates stop signs and apologizes profusely for misunderstanding your destination!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🤖",
+      "🚗",
+      "🧠"
+    ],
+    "impact": {
+      "right": {
+        "tesla": 15,
+        "ai_bots": 10,
+        "public_opinion": -10,
+        "finance": 10,
+        "legacy": 5
+      },
+      "left": {
+        "tesla": -20,
+        "ai_bots": -15,
+        "public_opinion": 10,
+        "finance": -10,
+        "legacy": -5
+      }
+    }
+  },
+  {
+    "text": "Sam Altman proposes a partnership where OpenAI powers all Tesla vehicle intelligence, claiming it would be 'safer than current systems.'",
+    "rightResponse": "'Heck yeah! \"Tesla's vertical integration of custom AI hardware and software is core to our self-driving approach. We'll continue our path.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Combining our AI expertise could create fascinating synergies! Let's explore the possibilities and create super-intelligent cars together! Your cars will write poetry while mine will colonize Mars - the ultimate AI collab!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🤝",
+      "🚗",
+      "🤖"
+    ],
+    "impact": {
+      "right": {
+        "tesla": 15,
+        "ai_bots": 15,
+        "public_opinion": -10,
+        "finance": -5,
+        "legacy": 5
+      },
+      "left": {
+        "tesla": -15,
+        "ai_bots": -20,
+        "public_opinion": 10,
+        "finance": 5,
+        "legacy": -5
+      }
+    }
+  },
+  {
+    "text": "Sam Altman announces OpenAI is developing its own social media platform that will be 'more thoughtful and less toxic than X.'",
+    "rightResponse": "'Heck yeah! Strap in, this idea is rocket-fueled awesomeness! Let's make it happen!'",
+    "leftResponse": "'No way! \"More competition in social media is healthy! Different platforms can serve different communication needs and AI memes will be epic! Can't wait to see a platform where every post is politely rewritten to sound like a Victorian novel!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "𝕏",
+      "🤖",
+      "💬"
+    ],
+    "impact": {
+      "right": {
+        "x_twitter": 20,
+        "public_opinion": -15,
+        "ai_bots": 10,
+        "legacy": 5,
+        "finance": 10
+      },
+      "left": {
+        "x_twitter": -25,
+        "public_opinion": 15,
+        "ai_bots": -10,
+        "legacy": -5,
+        "finance": -10
+      }
+    }
+  },
+  {
+    "text": "Sam Altman claims OpenAI's new space division will develop AI systems that can terraform Mars 'decades faster than current approaches.'",
+    "rightResponse": "'Heck yeah! \"Terraforming requires physical engineering and chemistry, not just AI. The laws of physics don't bend to algorithms.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"AI-optimized terraforming? Fascinating approach! Let's race to see who can turn Mars green first - may the best tech win! Though I bet his AI will just create a realistic simulation of plants while mine actually grows potatoes!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🤖",
+      "🪐",
+      "🌱"
+    ],
+    "impact": {
+      "right": {
+        "mars": 15,
+        "spacex": 10,
+        "ai_bots": 10,
+        "legacy": 5,
+        "public_opinion": -10
+      },
+      "left": {
+        "mars": -15,
+        "spacex": -10,
+        "ai_bots": -10,
+        "legacy": -5,
+        "public_opinion": 10
+      }
+    }
+  },
+  {
+    "text": "Sam Altman suggests that advanced AI will make human Mars colonization unnecessary, as 'digital consciousness will transcend physical limitations.'",
+    "rightResponse": "'Heck yeah! Strap in, this idea is rocket-fueled awesomeness! Let's make it happen!'",
+    "leftResponse": "'No way! \"Digital and physical expansion represent different paths for humanity's future—both worth exploring! Maybe we'll upload our brains AND colonize Mars!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🤖",
+      "🧠",
+      "🪐"
+    ],
+    "impact": {
+      "right": {
+        "mars": 20,
+        "spacex": 15,
+        "ai_bots": 10,
+        "legacy": 10,
+        "public_opinion": -10
+      },
+      "left": {
+        "mars": -20,
+        "spacex": -15,
+        "ai_bots": -10,
+        "legacy": -10,
+        "public_opinion": 10
+      }
+    }
+  },
+  {
+    "text": "Sam Altman proposes a public debate on AI safety, claiming OpenAI's approach is 'more responsible than the reckless pace at your companies.'",
+    "rightResponse": "'Heck yeah! \"AI safety isn't advanced through public debates and soundbites, but through rigorous research and careful implementation.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"A public discussion on AI safety approaches would benefit everyone! Let's compare notes transparently and livestream it on X for maximum chaos!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🤖",
+      "⚠️",
+      "🎭"
+    ],
+    "impact": {
+      "right": {
+        "ai_bots": 15,
+        "public_opinion": -10,
+        "x_twitter": -5,
+        "legacy": 10,
+        "government": 5
+      },
+      "left": {
+        "ai_bots": -15,
+        "public_opinion": 15,
+        "x_twitter": 10,
+        "legacy": -5,
+        "government": -10
+      }
+    }
+  },
+  {
+    "text": "Sam Altman announces OpenAI is developing humanoid robots that will be 'more advanced and ethically designed than Tesla Bots.'",
+    "rightResponse": "'Heck yeah! \"Building useful humanoid robots requires manufacturing expertise and vertical integration that software companies typically lack.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"More companies working on humanoid robots means faster progress! The robot revolution needs many approaches - robot dance-off contest soon?\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🤖",
+      "🦾",
+      "⚖️"
+    ],
+    "impact": {
+      "right": {
+        "ai_bots": 15,
+        "tesla": 10,
+        "public_opinion": -10,
+        "finance": 5,
+        "legacy": 5
+      },
+      "left": {
+        "ai_bots": -20,
+        "tesla": -15,
+        "public_opinion": 10,
+        "finance": -5,
+        "legacy": -5
+      }
+    }
+  },
+  {
+    "text": "Sam Altman claims OpenAI's new satellite internet system will be 'more affordable and accessible than Starlink.'",
+    "rightResponse": "'Heck yeah! \"Satellite internet requires aerospace engineering expertise and launch capabilities that software companies typically lack.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"More competition in satellite internet will help connect the unconnected! Space race 2.0 - may the best satellites win!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🛰️",
+      "🌐",
+      "💰"
+    ],
+    "impact": {
+      "right": {
+        "spacex": 15,
+        "finance": 10,
+        "public_opinion": -10,
+        "legacy": 5,
+        "government": -5
+      },
+      "left": {
+        "spacex": -20,
+        "finance": -10,
+        "public_opinion": 15,
+        "legacy": -5,
+        "government": 5
+      }
+    }
+  },
+  {
+    "text": "Sam Altman offers to buy a significant stake in Tesla, claiming he can 'help guide the company's AI strategy in a safer direction.'",
+    "rightResponse": "'Heck yeah! \"Tesla's AI strategy is core to our mission and competitive advantage. We're not looking for external direction.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Fresh investment and AI expertise could bring interesting perspectives! Let's create the wildest AI-powered cars together!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "💰",
+      "🚗",
+      "🤖"
+    ],
+    "impact": {
+      "right": {
+        "tesla": 20,
+        "finance": -15,
+        "ai_bots": 15,
+        "public_opinion": -10,
+        "legacy": 10
+      },
+      "left": {
+        "tesla": -25,
+        "finance": 15,
+        "ai_bots": -15,
+        "public_opinion": 10,
+        "legacy": -10
+      }
+    }
+  },
+  {
+    "text": "Jeff Bezos announces Blue Origin will offer Mars missions 'years before SpaceX' and at 'half the cost.'",
+    "rightResponse": "'Heck yeah! \"Mars missions require years of demonstrated orbital capability and life support systems. Promises are easy, execution is hard.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Competition in space is fantastic for humanity! May the best rocket company help us become multi-planetary! Race you to Mars, Jeff!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🚀",
+      "🪐",
+      "💰"
+    ],
+    "impact": {
+      "right": {
+        "spacex": 15,
+        "mars": 10,
+        "public_opinion": -10,
+        "finance": 10,
+        "legacy": 5
+      },
+      "left": {
+        "spacex": -20,
+        "mars": -15,
+        "public_opinion": 10,
+        "finance": -10,
+        "legacy": -5
+      }
+    }
+  },
+  {
+    "text": "Bezos offers to buy a controlling stake in SpaceX to 'combine our space companies into the ultimate Earth-to-Mars transportation system.'",
+    "rightResponse": "'Heck yeah! \"SpaceX is not for sale at any price. Our mission to Mars is too important to compromise with different priorities.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"A fascinating proposal! Combining resources could accelerate humanity's multi-planetary future! SpaceX-Origin sounds catchy!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "💰",
+      "🚀",
+      "🤝"
+    ],
+    "impact": {
+      "right": {
+        "spacex": 20,
+        "mars": 15,
+        "finance": -20,
+        "legacy": 15,
+        "public_opinion": 10
+      },
+      "left": {
+        "spacex": -25,
+        "mars": -20,
+        "finance": 25,
+        "legacy": -15,
+        "public_opinion": -10
+      }
+    }
+  },
+  {
+    "text": "Bezos announces Amazon is developing electric delivery vans that will 'make Tesla Semi trucks obsolete in the logistics industry.'",
+    "rightResponse": "'Heck yeah! \"Tesla's vertical integration from batteries to motors gives fundamental advantages that are hard for newcomers to match.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"More companies electrifying transportation is a win for sustainability! The EV revolution needs all of us - even if our trucks are cooler!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🚚",
+      "⚡",
+      "📦"
+    ],
+    "impact": {
+      "right": {
+        "tesla": 15,
+        "public_opinion": -10,
+        "finance": 10,
+        "legacy": 5,
+        "government": -5
+      },
+      "left": {
+        "tesla": -20,
+        "public_opinion": 15,
+        "finance": -10,
+        "legacy": -5,
+        "government": 5
+      }
+    }
+  },
+  {
+    "text": "Bezos proposes a joint venture between Amazon and Neuralink to create 'thought-based shopping' directly from your brain.",
+    "rightResponse": "'Heck yeah! \"Neuralink is focused on medical applications and human augmentation, not consumerism and impulse purchasing.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Brain-computer interfaces for commerce? Think it, buy it, receive it! The ultimate shopping experience of the future!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🧠",
+      "🛒",
+      "💭"
+    ],
+    "impact": {
+      "right": {
+        "neuralink": 15,
+        "finance": -10,
+        "public_opinion": 10,
+        "government": 5,
+        "legacy": 10
+      },
+      "left": {
+        "neuralink": -20,
+        "finance": 15,
+        "public_opinion": -15,
+        "government": -10,
+        "legacy": -10
+      }
+    }
+  },
+  {
+    "text": "Bezos claims Blue Origin's new lunar lander will make Starship 'unnecessary for NASA's Artemis program.'",
+    "rightResponse": "'Heck yeah! \"Starship's fully reusable architecture and payload capacity offer fundamental advantages that smaller landers cannot match.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Multiple lunar lander options benefit the entire space industry! Let's have a moon race like the 60s, but with memes this time!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🚀",
+      "🌕",
+      "🏆"
+    ],
+    "impact": {
+      "right": {
+        "spacex": 15,
+        "mars": 5,
+        "government": -10,
+        "finance": 10,
+        "legacy": 5
+      },
+      "left": {
+        "spacex": -20,
+        "mars": -10,
+        "government": 10,
+        "finance": -10,
+        "legacy": -5
+      }
+    }
+  },
+  {
+    "text": "Bezos announces Amazon is launching a social media platform that will be 'more advertiser-friendly than X, with better content moderation.'",
+    "rightResponse": "'Heck yeah! \"Corporate-controlled, advertiser-optimized platforms inevitably compromise on free speech. X remains independent for a reason.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"More competition in social media is healthy for the ecosystem! Different platforms can serve different needs - may the best memes win!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "𝕏",
+      "📱",
+      "🛒"
+    ],
+    "impact": {
+      "right": {
+        "x_twitter": 20,
+        "finance": 10,
+        "public_opinion": -15,
+        "government": -10,
+        "legacy": 5
+      },
+      "left": {
+        "x_twitter": -25,
+        "finance": -10,
+        "public_opinion": 15,
+        "government": 10,
+        "legacy": -5
+      }
+    }
+  },
+  {
+    "text": "Bezos offers to integrate all Tesla vehicles with Amazon's voice assistant and shopping services for 'the ultimate in-car experience.'",
+    "rightResponse": "'Heck yeah! \"Tesla's ecosystem is designed for seamless integration and privacy. Third-party shopping services don't align with our vision.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Integrating more services into Tesla vehicles could enhance the user experience! Imagine ordering flamethrowers by voice while driving!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🚗",
+      "🗣️",
+      "🛒"
+    ],
+    "impact": {
+      "right": {
+        "tesla": 15,
+        "finance": -10,
+        "public_opinion": 10,
+        "ai_bots": 10,
+        "legacy": 5
+      },
+      "left": {
+        "tesla": -15,
+        "finance": 15,
+        "public_opinion": -10,
+        "ai_bots": -10,
+        "legacy": -5
+      }
+    }
+  },
+  {
+    "text": "Bezos proposes a debate on who has contributed more to humanity's future: Amazon's global delivery infrastructure or your companies' technologies.",
+    "rightResponse": "'Heck yeah! \"Different companies solve different problems! Both approaches have tremendous value for humanity's progress - though rockets to Mars are obviously cooler than cardboard boxes!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Comparing contributions isn't productive. History will judge which approaches truly advanced civilization.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🎭",
+      "📦",
+      "🚀"
+    ],
+    "impact": {
+      "right": {
+        "public_opinion": 15,
+        "x_twitter": 10,
+        "legacy": -10,
+        "finance": 5,
+        "government": 5
+      },
+      "left": {
+        "public_opinion": -10,
+        "x_twitter": -5,
+        "legacy": 15,
+        "finance": -5,
+        "government": -5
+      }
+    }
+  },
+  {
+    "text": "Bezos claims Amazon's new AI assistant will be 'more helpful and less problematic than anything from your companies.'",
+    "rightResponse": "'Heck yeah! \"E-commerce optimized AI will inevitably push consumers toward purchases rather than providing neutral assistance.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"More AI assistants mean more consumer choice! Competition drives innovation in this space! Let's see whose AI can tell better jokes!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🤖",
+      "🗣️",
+      "🛒"
+    ],
+    "impact": {
+      "right": {
+        "ai_bots": 10,
+        "public_opinion": -10,
+        "finance": 5,
+        "x_twitter": -5,
+        "legacy": 5
+      },
+      "left": {
+        "ai_bots": -15,
+        "public_opinion": 10,
+        "finance": -5,
+        "x_twitter": 5,
+        "legacy": -5
+      }
+    }
+  },
+  {
+    "text": "Bezos announces Amazon is developing humanoid warehouse robots that will 'make Tesla Bots look primitive by comparison.'",
+    "rightResponse": "'Heck yeah! \"General-purpose humanoid robots require vertical integration from AI to actuators. Warehouse-specific robots are a different challenge.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"More companies working on humanoid robots will accelerate progress! Let's have a robot dance battle to see whose bots have better moves!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🤖",
+      "📦",
+      "🏭"
+    ],
+    "impact": {
+      "right": {
+        "ai_bots": 15,
+        "tesla": 10,
+        "public_opinion": -10,
+        "finance": 5,
+        "legacy": 5
+      },
+      "left": {
+        "ai_bots": -20,
+        "tesla": -15,
+        "public_opinion": 10,
+        "finance": -5,
+        "legacy": -5
+      }
+    }
+  },
+  {
+    "text": "Bill Gates criticizes your Mars colonization plans, saying 'we should fix Earth's problems before escaping to other planets.'",
+    "rightResponse": "'Heck yeah! \"You make a fair point, Bill. Let's race to see who can solve more problems - you on Earth, me on Mars! Double the solutions, double the fun!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Becoming multi-planetary isn't about 'escaping' - it's about extending consciousness and creating a backup for Earth's biosphere.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🌍",
+      "🪐",
+      "⚠️"
+    ],
+    "impact": {
+      "right": {
+        "mars": -15,
+        "public_opinion": 20,
+        "legacy": -10,
+        "government": 15,
+        "spacex": -10
+      },
+      "left": {
+        "mars": 15,
+        "public_opinion": -15,
+        "legacy": 15,
+        "government": -10,
+        "spacex": 10
+      }
+    }
+  },
+  {
+    "text": "Gates announces a new Microsoft AI system that he claims is 'more aligned with human values' than your companies' AI approaches.",
+    "rightResponse": "'Heck yeah! \"Different approaches to AI alignment are valuable! Let's have our AIs debate each other live on X - winner gets to name a Mars crater!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"'Aligned with human values' often means aligned with specific corporate or political values. True AI should maximize user agency.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🤖",
+      "⚖️",
+      "💻"
+    ],
+    "impact": {
+      "right": {
+        "ai_bots": -15,
+        "public_opinion": 15,
+        "government": 10,
+        "legacy": 5,
+        "x_twitter": -10
+      },
+      "left": {
+        "ai_bots": 15,
+        "public_opinion": -10,
+        "government": -10,
+        "legacy": -5,
+        "x_twitter": 10
+      }
+    }
+  },
+  {
+    "text": "Gates criticizes Tesla's approach to self-driving, claiming it's 'dangerously rushed compared to more responsible companies.'",
+    "rightResponse": "'Heck yeah! \"Tesla has billions of miles of real-world driving data. Our safety record speaks for itself, not speculation.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Safety feedback is always valuable! Let's have a self-driving race around a track with both our systems - loser buys dinner!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🚗",
+      "⚠️",
+      "🤖"
+    ],
+    "impact": {
+      "right": {
+        "tesla": 15,
+        "public_opinion": -15,
+        "government": -10,
+        "legacy": 5,
+        "finance": 10
+      },
+      "left": {
+        "tesla": -15,
+        "public_opinion": 15,
+        "government": 10,
+        "legacy": -5,
+        "finance": -10
+      }
+    }
+  },
+  {
+    "text": "Gates proposes a joint philanthropic initiative focused on sustainable energy in developing countries, but wants equal credit and control.",
+    "rightResponse": "'Heck yeah! \"Combining our resources could have tremendous impact! Let's create the wildest clean energy solutions ever seen - solar-powered flamethrowers for everyone!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"I prefer direct technological solutions over traditional philanthropy. Tesla and SpaceX are already addressing these issues through innovation.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "💰",
+      "⚡",
+      "🌍"
+    ],
+    "impact": {
+      "right": {
+        "public_opinion": 20,
+        "legacy": 15,
+        "government": 15,
+        "finance": -15,
+        "tesla": -10
+      },
+      "left": {
+        "public_opinion": -15,
+        "legacy": -10,
+        "government": -15,
+        "finance": 10,
+        "tesla": 15
+      }
+    }
+  },
+  {
+    "text": "Gates claims Neuralink's approach is 'unnecessarily invasive' and that his foundation is funding non-surgical brain interfaces that will be 'safer.'",
+    "rightResponse": "'Heck yeah! \"Multiple approaches to neural interfaces are valuable! Maybe we could combine them - your non-invasive tech for gaming, mine for telepathic Twitter posting!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Non-invasive interfaces have fundamental physics limitations in bandwidth and precision that only invasive solutions can overcome.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🧠",
+      "⚕️",
+      "💉"
+    ],
+    "impact": {
+      "right": {
+        "neuralink": -20,
+        "public_opinion": 15,
+        "government": 10,
+        "legacy": 5,
+        "finance": -10
+      },
+      "left": {
+        "neuralink": 15,
+        "public_opinion": -15,
+        "government": -10,
+        "legacy": -5,
+        "finance": 10
+      }
+    }
+  },
+  {
+    "text": "Gates suggests that your companies' technologies are increasing inequality, while his foundation focuses on 'helping the truly needy.'",
+    "rightResponse": "'Heck yeah! \"Different approaches to improving humanity's future can coexist! Let's have a charity race - my Mars colony vs your malaria nets. Winner gets bragging rights!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Technological innovation has lifted more people out of poverty than traditional philanthropy. We're creating the future, not just treating symptoms.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "💰",
+      "⚖️",
+      "🌍"
+    ],
+    "impact": {
+      "right": {
+        "public_opinion": 20,
+        "legacy": 10,
+        "government": 15,
+        "finance": -10,
+        "x_twitter": -15
+      },
+      "left": {
+        "public_opinion": -15,
+        "legacy": -5,
+        "government": -10,
+        "finance": 10,
+        "x_twitter": 15
+      }
+    }
+  },
+  {
+    "text": "Gates criticizes X (Twitter) as 'harmful to democracy' and suggests you should implement stronger content moderation like Microsoft's platforms.",
+    "rightResponse": "'Heck yeah! \"Content moderation is certainly challenging! Let's livestream a debate about free speech on X and let the memes decide who's right!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"X is committed to free speech within the law. Corporate-controlled 'moderation' inevitably becomes political censorship.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "𝕏",
+      "⚖️",
+      "🗣️"
+    ],
+    "impact": {
+      "right": {
+        "x_twitter": -25,
+        "public_opinion": 15,
+        "government": 20,
+        "legacy": -10,
+        "finance": 5
+      },
+      "left": {
+        "x_twitter": 20,
+        "public_opinion": -15,
+        "government": -20,
+        "legacy": 15,
+        "finance": -5
+      }
+    }
+  },
+  {
+    "text": "Gates proposes a debate on AI safety, claiming his approach is 'more responsible' than your companies' development pace.",
+    "rightResponse": "'Heck yeah! \"A public discussion on AI safety approaches would benefit everyone! Let's have our AIs debate each other while we watch with popcorn!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"AI safety isn't advanced through public debates and soundbites, but through rigorous research and careful implementation.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🤖",
+      "⚠️",
+      "🎭"
+    ],
+    "impact": {
+      "right": {
+        "ai_bots": -15,
+        "public_opinion": 15,
+        "x_twitter": 10,
+        "legacy": -5,
+        "government": 10
+      },
+      "left": {
+        "ai_bots": 15,
+        "public_opinion": -10,
+        "x_twitter": -5,
+        "legacy": 10,
+        "government": -10
+      }
+    }
+  },
+  {
+    "text": "Gates claims his climate initiatives have done 'far more good' than Tesla's electric vehicles, which he calls 'toys for the rich.'",
+    "rightResponse": "'Heck yeah! \"Tesla has forced the entire auto industry to go electric, creating the biggest climate impact of any company. Results matter more than intentions.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Different approaches to climate solutions can coexist! Let's race Cybertrucks against your carbon capture machines and see which is more fun!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🌍",
+      "🚗",
+      "💰"
+    ],
+    "impact": {
+      "right": {
+        "tesla": 20,
+        "public_opinion": -15,
+        "legacy": 15,
+        "government": -10,
+        "finance": 5
+      },
+      "left": {
+        "tesla": -20,
+        "public_opinion": 15,
+        "legacy": -10,
+        "government": 10,
+        "finance": -5
+      }
+    }
+  },
+  {
+    "text": "Gates offers to buy a significant stake in Tesla to 'help guide the company toward more affordable vehicles for developing markets.'",
+    "rightResponse": "'Heck yeah! \"Fresh investment and global market expertise could bring interesting perspectives! Let's make $500 Teslas that run on tequila and memes!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Tesla's strategy is to start with premium vehicles to fund mass market development. We don't need external direction on our mission.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "💰",
+      "🚗",
+      "🌍"
+    ],
+    "impact": {
+      "right": {
+        "tesla": -25,
+        "finance": 20,
+        "public_opinion": 15,
+        "legacy": -10,
+        "government": 5
+      },
+      "left": {
+        "tesla": 20,
+        "finance": -15,
+        "public_opinion": -10,
+        "legacy": 10,
+        "government": -5
+      }
+    }
+  },
+  {
+    "text": "Tim Cook announces Apple is developing a self-driving car that will be 'more elegant and user-friendly than anything Tesla has produced.'",
+    "rightResponse": "'Heck yeah! \"Building cars at scale requires manufacturing expertise that takes decades to develop. Design alone isn't enough.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"More companies pushing electric and autonomous vehicles forward is great for sustainability! Can't wait to see if it comes in rose gold with no charging ports!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🚗",
+      "🍎",
+      "🤖"
+    ],
+    "impact": {
+      "right": {
+        "tesla": 15,
+        "public_opinion": -10,
+        "finance": 10,
+        "legacy": 5,
+        "x_twitter": -5
+      },
+      "left": {
+        "tesla": -20,
+        "public_opinion": 15,
+        "finance": -10,
+        "legacy": -5,
+        "x_twitter": 10
+      }
+    }
+  },
+  {
+    "text": "Tim Cook claims Apple's new neural interface will be 'more elegant and less invasive than Neuralink,' with a focus on augmented reality.",
+    "rightResponse": "'Heck yeah! \"Non-invasive interfaces have fundamental physics limitations in bandwidth and precision that only invasive solutions can overcome.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Different approaches to neural interfaces will serve different needs! Maybe we can combine them - your AR for games, mine for downloading kung fu into your brain!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🧠",
+      "🍎",
+      "👁️"
+    ],
+    "impact": {
+      "right": {
+        "neuralink": 15,
+        "public_opinion": -10,
+        "finance": 10,
+        "legacy": 5,
+        "ai_bots": 5
+      },
+      "left": {
+        "neuralink": -20,
+        "public_opinion": 15,
+        "finance": -10,
+        "legacy": -5,
+        "ai_bots": -5
+      }
+    }
+  },
+  {
+    "text": "Tim Cook announces Apple is developing its own social media platform that will be 'more private and less controversial than X.'",
+    "rightResponse": "'Heck yeah! \"Corporate-controlled social media inevitably prioritizes advertisers and censors controversial speech. X remains independent for a reason.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"More competition in social media is healthy! Different platforms can serve different needs - yours for photos of salads, mine for interplanetary memes!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "𝕏",
+      "🍎",
+      "🔒"
+    ],
+    "impact": {
+      "right": {
+        "x_twitter": 20,
+        "public_opinion": -10,
+        "finance": 10,
+        "legacy": 5,
+        "government": -10
+      },
+      "left": {
+        "x_twitter": -25,
+        "public_opinion": 15,
+        "finance": -10,
+        "legacy": -5,
+        "government": 10
+      }
+    }
+  },
+  {
+    "text": "Tim Cook offers to integrate all Tesla vehicles with Apple's ecosystem for 'the ultimate premium user experience.'",
+    "rightResponse": "'Heck yeah! \"Tesla's vertical integration from software to hardware is core to our competitive advantage. We control our own ecosystem.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Integrating with Apple's ecosystem could enhance the user experience for many Tesla owners! Let's create cars that run on both electricity and Apple magic!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🚗",
+      "🍎",
+      "🤝"
+    ],
+    "impact": {
+      "right": {
+        "tesla": 20,
+        "finance": -10,
+        "public_opinion": -5,
+        "legacy": 10,
+        "ai_bots": 10
+      },
+      "left": {
+        "tesla": -20,
+        "finance": 15,
+        "public_opinion": 10,
+        "legacy": -10,
+        "ai_bots": -10
+      }
+    }
+  },
+  {
+    "text": "Tim Cook claims Apple's approach to AI is 'more responsible and privacy-focused' than your companies' development pace.",
+    "rightResponse": "'Heck yeah! \"Privacy is important, but so is pushing the boundaries of what's possible. Our AI systems prioritize user agency.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Different approaches to AI development can coexist! Let's have our AIs debate privacy while we watch with popcorn!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🤖",
+      "🍎",
+      "🔒"
+    ],
+    "impact": {
+      "right": {
+        "ai_bots": 15,
+        "public_opinion": -10,
+        "government": -10,
+        "legacy": 5,
+        "x_twitter": 10
+      },
+      "left": {
+        "ai_bots": -15,
+        "public_opinion": 15,
+        "government": 10,
+        "legacy": -5,
+        "x_twitter": -10
+      }
+    }
+  },
+  {
+    "text": "Tim Cook announces Apple is developing humanoid robots that will be 'more elegant and user-friendly than Tesla Bots.'",
+    "rightResponse": "'Heck yeah! \"Building useful humanoid robots requires vertical integration from AI to actuators. Design alone isn't enough.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"More companies working on humanoid robots will accelerate progress! The robot revolution needs many approaches!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🤖",
+      "🍎",
+      "🦾"
+    ],
+    "impact": {
+      "left": {
+        "ai_bots": -20,
+        "tesla": -15,
+        "public_opinion": 15,
+        "finance": -10,
+        "legacy": -5
+      },
+      "right": {
+        "ai_bots": 15,
+        "tesla": 10,
+        "public_opinion": -10,
+        "finance": 10,
+        "legacy": 5
+      }
+    }
+  },
+  {
+    "text": "Tim Cook criticizes your companies' user interfaces as 'cluttered and unintuitive' compared to Apple's 'elegant simplicity.'",
+    "rightResponse": "'Heck yeah! \"Our interfaces prioritize functionality and user agency over simplistic design that limits capabilities.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Different design philosophies serve different needs! Perhaps we could learn from each other's approaches?\" Maybe in a parallel universe.'",
+    "emojis": [
+      "📱",
+      "🎨",
+      "👎"
+    ],
+    "impact": {
+      "left": {
+        "tesla": -10,
+        "public_opinion": 15,
+        "x_twitter": -10,
+        "legacy": -5,
+        "ai_bots": -5
+      },
+      "right": {
+        "tesla": 10,
+        "public_opinion": -10,
+        "x_twitter": 10,
+        "legacy": 5,
+        "ai_bots": 5
+      }
+    }
+  },
+  {
+    "text": "Tim Cook suggests Apple could buy X (Twitter) and 'restore its reputation with advertisers and the public.'",
+    "rightResponse": "'Heck yeah! \"X is not for sale at any price. Its mission as a free speech platform is too important to compromise with corporate control.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"An interesting proposal! Apple's design expertise could certainly enhance X's user experience!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "💰",
+      "𝕏",
+      "🍎"
+    ],
+    "impact": {
+      "left": {
+        "x_twitter": -25,
+        "finance": 20,
+        "public_opinion": 15,
+        "legacy": -15,
+        "government": 10
+      },
+      "right": {
+        "x_twitter": 20,
+        "finance": -15,
+        "public_opinion": -10,
+        "legacy": 15,
+        "government": -10
+      }
+    }
+  },
+  {
+    "text": "Tim Cook claims Apple's satellite communications will be 'more reliable and user-friendly than Starlink' for emergency services.",
+    "rightResponse": "'Heck yeah! \"Limited emergency messaging is fundamentally different from Starlink's global broadband. They solve different problems.\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Different satellite communications systems can serve different needs! Emergency services deserve multiple options!\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🛰️",
+      "🍎",
+      "🆘"
+    ],
+    "impact": {
+      "left": {
+        "spacex": -15,
+        "public_opinion": 15,
+        "finance": -10,
+        "legacy": -5,
+        "government": 5
+      },
+      "right": {
+        "spacex": 15,
+        "public_opinion": -10,
+        "finance": 10,
+        "legacy": 5,
+        "government": -5
+      }
+    }
+  },
+  {
+    "text": "Tim Cook proposes a public debate on privacy, claiming Apple's approach is 'more responsible' than your companies' data practices.",
+    "rightResponse": "'Heck yeah! \"A public discussion on privacy approaches would benefit everyone! Let's compare notes transparently!\" Let's make it happen!'",
+    "leftResponse": "'No way! \"Privacy isn't advanced through public debates and soundbites, but through actual technical implementations and user choice.\" Maybe in a parallel universe.'",
+    "emojis": [
+      "🔒",
+      "🎭",
+      "📱"
+    ],
+    "impact": {
+      "left": {
+        "public_opinion": -10,
+        "x_twitter": -5,
+        "government": -10,
+        "legacy": 5,
+        "tesla": 10
+      },
+      "right": {
+        "public_opinion": 15,
+        "x_twitter": 10,
+        "government": 10,
+        "legacy": -5,
+        "tesla": -10
+      }
+    }
+  }
+]
