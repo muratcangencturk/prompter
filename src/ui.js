@@ -360,19 +360,23 @@ const setTheme = (theme) => {
 
 // When loading the page we want to respect the stored language preference. The
 // optional `fromSaved` flag signals that the value came from `localStorage` on
-// startup.  In this mode we still redirect if the stored language doesn't match
+// startup. In this mode we still redirect if the stored language doesn't match
 // the current page, as long as a target path exists. Any explicit override via
 // the `lang` query parameter (or by following a link from another language
-// version detected through `document.referrer`) continues to take precedence.
+// version detected through `document.referrer` when `fromSaved` is `false`)
+// continues to take precedence.
 const setLanguage = (lang, fromSaved = false) => {
   const params = new URLSearchParams(window.location.search);
   const paramLang = params.get('lang');
   const refLangEntry = Object.entries(LANGUAGE_PAGES).find(([, page]) =>
     document.referrer.includes(page)
   );
-  let overrideLang =
-    (paramLang && LANGUAGE_PAGES[paramLang] ? paramLang : null) ||
-    (refLangEntry ? refLangEntry[0] : null);
+  let overrideLang = null;
+  if (paramLang && LANGUAGE_PAGES[paramLang]) {
+    overrideLang = paramLang;
+  } else if (!fromSaved && refLangEntry) {
+    overrideLang = refLangEntry[0];
+  }
   let current = window.location.pathname.replace(/^\//, '');
   if (current === '') current = 'index.html';
   if (overrideLang) {
