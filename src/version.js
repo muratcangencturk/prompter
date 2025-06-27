@@ -47,23 +47,37 @@ export const startVersionCheck = async () => {
 };
 
 export const clearServiceWorkersAndCaches = () => {
+  if (sessionStorage.getItem('swCleaned')) {
+    return;
+  }
+
+  const tasks = [];
+
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-      .getRegistrations()
-      .then((regs) => {
-        for (const reg of regs) {
-          reg.unregister().catch(() => {});
-        }
-      })
-      .catch(() => {});
+    tasks.push(
+      navigator.serviceWorker
+        .getRegistrations()
+        .then((regs) => {
+          for (const reg of regs) {
+            reg.unregister().catch(() => {});
+          }
+        })
+        .catch(() => {})
+    );
   }
 
   if ('caches' in window) {
-    caches
-      .keys()
-      .then((keys) => Promise.all(keys.map((key) => caches.delete(key))))
-      .catch(() => {});
+    tasks.push(
+      caches
+        .keys()
+        .then((keys) => Promise.all(keys.map((key) => caches.delete(key))))
+        .catch(() => {})
+    );
   }
+
+  Promise.all(tasks).finally(() => {
+    sessionStorage.setItem('swCleaned', 'true');
+  });
 };
 
 // automatically run when imported
