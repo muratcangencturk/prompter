@@ -515,7 +515,7 @@ const renderSavedPrompts = (prompts) => {
       editRow.appendChild(saveEdit);
       editRow.appendChild(cancelEdit);
       item.replaceChild(editRow, actions);
-      // ensure icons render correctly when entering edit mode
+      // refresh icons for the new buttons
       window.lucide?.createIcons();
 
       cancelEdit.addEventListener('click', () => {
@@ -840,7 +840,7 @@ const renderSharedPrompts = async (prompts) => {
       editRow.appendChild(cancelEdit);
 
       item.replaceChild(editRow, likeRow);
-      // render icons for the temporary edit actions
+      // refresh icons for the new buttons
       window.lucide?.createIcons();
 
       cancelEdit.addEventListener('click', () => {
