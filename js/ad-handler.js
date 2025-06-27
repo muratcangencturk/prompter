@@ -9,12 +9,16 @@
   const delayMinutes = [2, 3, 4];
 
   function scheduleAd() {
+    // If sessionStorage previously failed, rely on a global flag to prevent
+    // repeated attempts and duplicate ads.
+    if (window.__adShownFallback) return;
+
     try {
       if (sessionStorage.getItem('adShown')) return;
       sessionStorage.setItem('adShown', 'yes');
     } catch {
-      // sessionStorage may be unavailable (incognito, old browser, etc.)
-      if (window.__adShownFallback) return;
+      // sessionStorage may be unavailable (incognito mode, old browsers, etc.).
+      // Mark with a fallback flag so future calls skip trying again.
       window.__adShownFallback = true;
     }
 
