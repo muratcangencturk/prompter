@@ -352,7 +352,25 @@ const setTheme = (theme) => {
   updateButtonTitles();
 };
 
-const setLanguage = (lang) => {
+// When loading the page we want to respect the stored language preference, but
+// opening `index.html` should not immediately redirect users away from the
+// page.  This function therefore supports an optional `fromSaved` flag which is
+// passed during initialization. When `fromSaved` is `true` the current page will
+// only redirect if an explicit override is present via a `lang` query parameter
+// or if the visitor followed a link from another language version (checked via
+// `document.referrer`).
+const setLanguage = (lang, fromSaved = false) => {
+  const params = new URLSearchParams(window.location.search);
+  const paramLang = params.get('lang');
+  const refLangEntry = Object.entries(LANGUAGE_PAGES).find(([, page]) =>
+    document.referrer.includes(page)
+  );
+  const overrideLang =
+    (paramLang && LANGUAGE_PAGES[paramLang] ? paramLang : null) ||
+    (refLangEntry ? refLangEntry[0] : null);
+  if (overrideLang) {
+    lang = overrideLang;
+  }
   const targetPage = LANGUAGE_PAGES[lang];
   if (targetPage) {
     // Some servers redirect /index.html to / which results in
@@ -361,7 +379,10 @@ const setLanguage = (lang) => {
     if (current === '') {
       current = 'index.html';
     }
-    if (current !== targetPage) {
+    const shouldRedirect =
+      current !== targetPage &&
+      (overrideLang || !fromSaved || current !== 'index.html');
+    if (shouldRedirect) {
       window.location.href = targetPage;
       localStorage.setItem('language', lang);
       return;
@@ -1423,7 +1444,9 @@ export const initializeApp = () => {
   };
 
   const savedLanguage = localStorage.getItem('language') || 'en';
-  setLanguage(savedLanguage);
+  // Avoid automatic redirects on the English homepage; allow query/referrer
+  // to override when desired.
+  setLanguage(savedLanguage, true);
 
   const savedTheme = localStorage.getItem('theme') || THEMES.DARK;
   setTheme(savedTheme);
