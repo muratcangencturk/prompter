@@ -45,39 +45,7 @@
           <span class="w-6 h-6 inline-flex items-center justify-center text-3xl" aria-hidden="true">&larr;</span>
         </a>
       </div>
-      <div class="hidden lg:block absolute top-0 right-0 w-64">
-        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg">
-          <h2 class="text-lg font-semibold mb-2 text-center">IBAN ile ödeme</h2>
-          <ul class="space-y-2 text-sm break-all">
-            <li class="flex items-center gap-1">
-              <span class="font-semibold">IBAN:</span>
-              <span id="iban-text" class="ml-1">TR060082900009491666598560</span>
-              <button
-                id="iban-copy"
-                class="p-1.5 rounded-md bg-white/20 hover:bg-white/30 focus:outline-none"
-                aria-label="IBAN kopyala"
-              >
-                <i data-lucide="copy" class="w-4 h-4" aria-hidden="true"></i>
-              </button>
-            </li>
-            <li class="flex items-center gap-1">
-              <span class="font-semibold">Alıcı adı:</span>
-              <span id="recipient-text" class="ml-1">Muratcan Gençtürk</span>
-              <button
-                id="recipient-copy"
-                class="p-1.5 rounded-md bg-white/20 hover:bg-white/30 focus:outline-none"
-                aria-label="Alıcı adı kopyala"
-              >
-                <i data-lucide="copy" class="w-4 h-4" aria-hidden="true"></i>
-              </button>
-            </li>
-            <li>
-              <span class="font-semibold">Açıklama:</span>
-              <p class="ml-1">Bu bölüme sadece Prompter'a kayıtlı e-mail adresinizi yazınız.</p>
-            </li>
-          </ul>
-        </div>
-      </div>
+
     <div class="max-w-md mx-auto bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg">
       <h1 class="text-2xl font-bold mb-4 text-center">Prompter Pro</h1>
       <p class="mb-2 text-center">
@@ -131,8 +99,41 @@
           geri
         </a>
       </div>
-    </div>
-      <script>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg max-w-md mx-auto mt-4">
+        <h2 class="text-lg font-semibold mb-2 text-center">IBAN ile ödeme</h2>
+        <ul class="space-y-2 text-sm break-all">
+          <li class="flex items-center gap-1">
+            <span class="font-semibold">IBAN:</span>
+            <span id="iban-text" class="ml-1">TR060082900009491666598560</span>
+            <button
+              id="iban-copy"
+              class="p-1.5 rounded-md bg-white/20 hover:bg-white/30 focus:outline-none"
+              aria-label="IBAN kopyala"
+            >
+              <i data-lucide="clipboard-copy" class="w-4 h-4" aria-hidden="true"></i>
+            </button>
+          </li>
+          <li class="flex items-center gap-1">
+            <span class="font-semibold">Alıcı adı:</span>
+            <span id="recipient-text" class="ml-1">Muratcan Gençtürk</span>
+            <button
+              id="recipient-copy"
+              class="p-1.5 rounded-md bg-white/20 hover:bg-white/30 focus:outline-none"
+              aria-label="Alıcı adı kopyala"
+            >
+              <i data-lucide="clipboard-copy" class="w-4 h-4" aria-hidden="true"></i>
+            </button>
+          </li>
+          <li class="flex items-center gap-1">
+            <span class="font-semibold">Açıklama:</span>
+            <span class="ml-1">Bu bölüme sadece Prompter'a kayıtlı e-mail adresinizi yazınız.</span>
+          </li>
+        </ul>
+      </div>
+
+        <script>
         document.getElementById('payment-link')?.addEventListener('click', () => {
           window.open('https://turkplay.gumroad.com/l/prompter', '_blank');
         });
