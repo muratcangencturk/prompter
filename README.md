@@ -252,7 +252,7 @@ All pages also load `/js/ad-handler.js` at the bottom of the document:
 
 This small script waits for the user to scroll or click. On the first interaction it schedules a new tab with one of the URLs defined in the `adLinks` array inside `ad-handler.js`. The link opens after a random 2–4 minute delay. Access to `sessionStorage` is wrapped in a `try/catch`; if it fails, a `window.__adShownFallback` flag prevents additional pop-up attempts so the ad appears only once per browser session.
 
-To disable the pop-up entirely, remove the snippet above from each HTML file or clear the `adLinks` list in `js/ad-handler.js`.
+To customize the destinations, edit the `adLinks` array in `js/ad-handler.js` with your own URLs. Setting this list to empty or removing the `<script src="/js/ad-handler.js"></script>` tag from each HTML page disables the pop-up entirely.
 
 ## FAQ
 
