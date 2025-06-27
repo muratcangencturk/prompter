@@ -169,6 +169,7 @@
         unsharePostByUser,
         addComment,
         getComments,
+        deletePost,
       } from './src/blog.js';
       import { getUserProfile } from './src/user.js';
       import { onAuth } from './src/auth.js';
@@ -279,6 +280,25 @@
         likeRow.appendChild(likeBtn);
         likeRow.appendChild(likeCount);
         likeRow.appendChild(commentContainer);
+        if (appState?.currentUser && appState.currentUser.uid === p.userId) {
+          const delBtn = document.createElement('button');
+          delBtn.className =
+            'delete-post p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
+          delBtn.innerHTML =
+            '<i data-lucide="trash" class="w-4 h-4" aria-hidden="true"></i>';
+          delBtn.addEventListener('click', async () => {
+            delBtn.disabled = true;
+            try {
+              await deletePost(p.id);
+              card.classList.add('fade-out');
+              setTimeout(() => card.remove(), 300);
+            } catch (err) {
+              console.error('Failed to delete post:', err);
+              delBtn.disabled = false;
+            }
+          });
+          likeRow.appendChild(delBtn);
+        }
         card.appendChild(likeRow);
 
         const commentsWrap = document.createElement('div');
