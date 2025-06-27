@@ -24,6 +24,7 @@ import { appState, THEMES } from './state.js';
 import { categories } from './prompts.js';
 import { BASE_URL } from './config.js';
 import { linkify } from './linkify.js';
+import { sanitizeHTML, setSanitizedHTML } from './sanitize.js';
 
 const uiText = {
   en: {
@@ -220,6 +221,7 @@ const fetchName = async (uid) => {
   if (prof?.email) {
     display += ` (${prof.email})`;
   }
+  display = sanitizeHTML(display);
   profileCache[uid] = display;
   return display;
 };
@@ -442,7 +444,7 @@ const renderSavedPrompts = (prompts) => {
     textContainer.className = 'prompt-text-box overflow-hidden max-h-40';
 
     const pEl = document.createElement('p');
-    pEl.innerHTML = linkify(text);
+    setSanitizedHTML(pEl, linkify(text));
     textContainer.appendChild(pEl);
     textWrap.appendChild(textContainer);
 
@@ -666,7 +668,7 @@ const renderSharedPrompts = async (prompts) => {
     textContainer.className = 'prompt-text-box overflow-hidden max-h-40';
 
     const text = document.createElement('p');
-    text.innerHTML = linkify(p.text);
+    setSanitizedHTML(text, linkify(p.text));
     textContainer.appendChild(text);
     textWrap.appendChild(textContainer);
 
@@ -993,11 +995,13 @@ const renderSharedPrompts = async (prompts) => {
 
       const span = document.createElement('span');
       span.className = 'flex-1';
-      span.innerHTML = n
-        ? `<a href="user.html?uid=${c.userId}" class="underline">${n}</a>: ${linkify(
-            c.text
-          )}`
-        : linkify(c.text);
+      span.innerHTML = sanitizeHTML(
+        n
+          ? `<a href="user.html?uid=${c.userId}" class="underline">${n}</a>: ${linkify(
+              c.text
+            )}`
+          : linkify(c.text)
+      );
       d.appendChild(span);
 
       if (appState.currentUser && c.userId === appState.currentUser.uid) {

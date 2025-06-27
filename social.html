@@ -126,6 +126,7 @@
       import { promptScore } from './src/scoring.js';
       import { appState } from './src/state.js';
       import { linkify } from './src/linkify.js';
+      import { sanitizeHTML, setSanitizedHTML } from './src/sanitize.js';
       import { timeAgo } from './src/timeago.js';
       import { categories } from './src/prompts.js?v=66';
       import { BASE_URL } from './src/config.js';
@@ -222,8 +223,9 @@
       const fetchName = async (uid) => {
         if (profileCache[uid]) return profileCache[uid];
         const prof = await getUserProfile(uid);
-        profileCache[uid] = prof?.name || 'Unknown User';
-        return profileCache[uid];
+        const n = sanitizeHTML(prof?.name || 'Unknown User');
+        profileCache[uid] = n;
+        return n;
       };
 
       const urlParams = new URLSearchParams(window.location.search);
@@ -318,7 +320,10 @@
 
         const nameEl = document.createElement('p');
         nameEl.className = 'text-blue-200 text-xs mt-1 underline';
-        nameEl.innerHTML = `<a href="user.html?uid=${p.userId}">${name}</a>`;
+        setSanitizedHTML(
+          nameEl,
+          `<a href="user.html?uid=${p.userId}">${name}</a>`
+        );
 
         const catEl = document.createElement('p');
         catEl.className = 'text-blue-200 text-xs';
@@ -670,11 +675,13 @@
 
           const span = document.createElement('span');
           span.className = 'flex-1';
-          span.innerHTML = n
-            ? `<a href="user.html?uid=${c.userId}" class="underline">${n}</a>: ${linkify(
-                c.text
-              )}`
-            : linkify(c.text);
+          span.innerHTML = sanitizeHTML(
+            n
+              ? `<a href="user.html?uid=${c.userId}" class="underline">${n}</a>: ${linkify(
+                  c.text
+                )}`
+              : linkify(c.text)
+          );
           d.appendChild(span);
 
           if (appState.currentUser && c.userId === appState.currentUser.uid) {
