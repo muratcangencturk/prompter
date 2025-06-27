@@ -25,7 +25,8 @@
     {
       "files": [
         "scripts/*.js",
-        "functions/*.js"
+        "functions/*.js",
+        "functions/test/*.js"
       ],
       "env": {
         "node": true
