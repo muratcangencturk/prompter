@@ -127,9 +127,6 @@ project, install the dependencies by running:
 npm install
 ```
 
-This command also installs **Puppeteer**, which downloads a headless Chrome
-binary used by `scripts/check-reload.js`.
-
 You **must** run `npm install` at least once (and whenever `package.json`
 changes) before executing `npm test` so the linter can access its tooling.
 
@@ -230,27 +227,34 @@ Firestore may take several minutes to build the indexes after deployment. During
 this period queries on the Social page can throw `failed-precondition` errors and
 show "Failed to load prompts."
 
+## Advertising (Google AdSense)
+
+All pages include the standard AdSense loader in the `<head>` tag:
+
+```html
+<script
+  async
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5886415182402616"
+  crossorigin="anonymous"
+></script>
+```
+
+
+The script fetches Google's ad library asynchronously using your publisher ID (`client`). After it loads you can place `<ins class="adsbygoogle">` elements in the body to display ads. See [the AdSense documentation](https://support.google.com/adsense/answer/9271723) for details on creating and customizing ad units.
+
 ## FAQ
 
 ### How do I update the production build?
 
-Run `npm run build` after any production change. This command regenerates build artifacts and increments the version in `manifest.json`. `src/version.js` can poll this file every five minutes and reload the page when the version changes. This check is disabled by default; see below for how to enable it.
+Run `npm run build` after any production change. This command regenerates build artifacts and increments the version in `manifest.json`. Open pages check the manifest every five minutes and reload automatically when the version changes.
 
 ## Automatic reloads and service worker
 
-All pages include `src/version.js`, which provides a `startVersionCheck()`
-function that polls `manifest.json` every five minutes and reloads the page when
-the `version` field changes. The call to `startVersionCheck()` is currently
-commented out, so no automatic reload occurs by default. To re-enable it,
-uncomment the invocation near the bottom of `src/version.js`.
+All pages include `src/version.js`, which fetches `manifest.json` every five minutes.
+If the `version` field changes the page reloads so users receive the latest build.
 The `sw.js` file acts as a kill-switch service worker — it unregisters older service
 workers and clears cached files. Keep it deployed for a short time after updates to
 clean outdated clients.
-
-The build process intentionally leaves all `navigator.serviceWorker.register`
-calls commented out in the HTML files. `scripts/build-prompts.js` only adds
-cache-busting query strings and does not modify these comments. Leave the
-registration disabled unless offline support is explicitly required.
 
 Run `npm run build` whenever you modify production files to increment the manifest
 version and trigger this refresh mechanism.

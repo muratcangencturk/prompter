@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Space - Prompter</title>
     <base href="./" />
-    <link rel="manifest" href="manifest.json?v=65" />
+    <link rel="manifest" href="manifest.json?v=64" />
     <meta name="theme-color" content="#000000" />
     <meta
       http-equiv="Cache-Control"
@@ -79,8 +79,8 @@
           return { cdn: cdnScript, local: localScript, loadPromise };
         }
         window.lucideScripts = loadWithFallback(
-          'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=65',
-          'lucide.min.js?v=65'
+          'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=64',
+          'lucide.min.js?v=64'
         );
         window.lucideScripts.loadPromise.finally(() => {
           const appContainer = document.getElementById('app-container');
@@ -90,11 +90,11 @@
         });
       })();
     </script>
-    <link rel="stylesheet" href="css/tailwind.css?v=65" />
-    <link rel="stylesheet" href="css/app.css?v=65" />
-    <script type="module" src="src/init-app.js?v=65"></script>
-    <script nomodule src="dist/init-app.js?v=65"></script>
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=65" />
+    <link rel="stylesheet" href="css/tailwind.css?v=64" />
+    <link rel="stylesheet" href="css/app.css?v=64" />
+    <script type="module" src="src/init-app.js?v=64"></script>
+    <script nomodule src="dist/init-app.js?v=64"></script>
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=64" />
     <script>
       (function () {
         const linkEl = document.getElementById('theme-css');
@@ -108,7 +108,7 @@
         }
       })();
     </script>
-    <script type="module" src="src/version.js?v=65"></script>
+    <script type="module" src="src/version.js?v=64"></script>
   </head>
   <body class="min-h-screen p-4">
     <div id="loading-screen">
@@ -134,7 +134,7 @@
             >
           </a>
           <img
-            src="icons/logo.svg?v=65"
+            src="icons/logo.svg?v=64"
             alt="Prompter logo"
             class="w-12 h-12 sm:w-14 sm:h-14"
           />
