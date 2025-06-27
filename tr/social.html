@@ -690,12 +690,15 @@
           saveEdit.addEventListener('click', async () => {
             saveEdit.disabled = true;
             try {
+              console.log('Updating text for prompt', p.id);
               await updatePromptText(p.id, textarea.value);
+              console.log('Prompt updated successfully', p.id);
               p.text = textarea.value;
               text.textContent = textarea.value;
               cancelEdit.click();
             } catch (err) {
               console.error('Failed to update text:', err);
+              alert('Unable to update the prompt. Please try again.');
               saveEdit.disabled = false;
             }
           });
