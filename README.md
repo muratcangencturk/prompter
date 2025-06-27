@@ -242,6 +242,18 @@ All pages include the standard AdSense loader in the `<head>` tag:
 
 The script fetches Google's ad library asynchronously using your publisher ID (`client`). After it loads you can place `<ins class="adsbygoogle">` elements in the body to display ads. See [the AdSense documentation](https://support.google.com/adsense/answer/9271723) for details on creating and customizing ad units.
 
+## Pop-up ad handler
+
+All pages also load `/js/ad-handler.js` at the bottom of the document:
+
+```html
+<script src="/js/ad-handler.js"></script>
+```
+
+This small script waits for the user to scroll or click. On the first interaction it schedules a new tab with one of the URLs defined in the `adLinks` array inside `ad-handler.js`. The link opens after a random 2–4 minute delay. A flag stored in `sessionStorage`—or a fallback variable when storage is unavailable—ensures the ad only appears once per browser session.
+
+To disable the pop-up entirely, remove the snippet above from each HTML file or clear the `adLinks` list in `js/ad-handler.js`.
+
 ## FAQ
 
 ### How do I update the production build?
