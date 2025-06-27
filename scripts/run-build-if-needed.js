@@ -11,7 +11,7 @@ function getChangedFiles() {
 function hasRelevantChanges(files) {
   return files.some(
     (f) =>
-      f.endsWith('.html') ||
+      f.endsWith('.html') || f.startsWith('templates/') || f.startsWith('translations/') ||
       f.startsWith('prompts/') ||
       (f.startsWith('src/') && f.endsWith('.js')) ||
       f === 'src/styles.css' ||
