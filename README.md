@@ -230,21 +230,6 @@ Firestore may take several minutes to build the indexes after deployment. During
 this period queries on the Social page can throw `failed-precondition` errors and
 show "Failed to load prompts."
 
-## Pop-up ad handler
-
-Every HTML page, including the localized directories and the `elonmusksimulator-main` game,
-loads `/js/ad-handler.js` right before the closing `</body>` tag. The script is referenced
-using an **absolute path** so it resolves correctly no matter which subfolder the page
-resides in:
-
-```html
-<script src="/js/ad-handler.js"></script>
-```
-
-This small script waits for the user to scroll or click. On the first interaction it schedules a new tab with one of the URLs defined in the `adLinks` array inside `ad-handler.js`. The link opens after a random 2–4 minute delay. Access to `sessionStorage` is wrapped in a `try/catch`; if it fails, a `window.__adShownFallback` flag prevents additional pop-up attempts so the ad appears only once per browser session.
-
-To customize the destinations, edit the `adLinks` array in `js/ad-handler.js` with your own URLs. Setting this list to empty or removing the `<script src="/js/ad-handler.js"></script>` tag from each HTML page disables the pop-up entirely.
-
 ## FAQ
 
 ### How do I update the production build?
