@@ -862,8 +862,9 @@
 
       let unsubscribe = null;
 
-      const startListener = async () => {
+      const startListener = async (user) => {
         if (unsubscribe) unsubscribe();
+        filterAndRender();
         const constraints = [where('shared', '==', true)];
 
         constraints.push(orderBy('createdAt', 'desc'));
@@ -897,8 +898,7 @@
           if (u) updateLastSocialVisit(u.uid, Date.now());
         });
         promptSearch?.addEventListener('input', debouncedFilter);
-        onAuth(startListener);
-        startListener();
+        onAuth((u) => startListener(u));
       }
 
       document.addEventListener('DOMContentLoaded', init);
