@@ -220,7 +220,8 @@
           loginRequired: 'Login required',
         },
         tr: {
-          loginRequiredSaveShare: 'Promptları kaydetmek veya paylaşmak için giriş yapın.',
+          loginRequiredSaveShare:
+            'Promptları kaydetmek veya paylaşmak için giriş yapın.',
           promptSaved: 'Prompt kaydedildi!',
           saveFailed: 'Prompt kaydedilemedi. Lütfen tekrar deneyin.',
           loginRequiredLike: 'Promptları beğenmek için giriş yapın.',
@@ -228,19 +229,27 @@
           loginRequired: 'Giriş gerekli',
         },
         es: {
-          loginRequiredSaveShare: 'Debes iniciar sesión para guardar o compartir prompts.',
+          loginRequiredSaveShare:
+            'Debes iniciar sesión para guardar o compartir prompts.',
           promptSaved: '¡Prompt guardado!',
-          saveFailed: 'No se pudo guardar el prompt. Por favor inténtalo de nuevo.',
-          loginRequiredLike: 'Debes iniciar sesión para dar me gusta a los prompts.',
-          loginRequiredSharePrompt: 'Debes iniciar sesión para compartir prompts.',
+          saveFailed:
+            'No se pudo guardar el prompt. Por favor inténtalo de nuevo.',
+          loginRequiredLike:
+            'Debes iniciar sesión para dar me gusta a los prompts.',
+          loginRequiredSharePrompt:
+            'Debes iniciar sesión para compartir prompts.',
           loginRequired: 'Se requiere inicio de sesión',
         },
         fr: {
-          loginRequiredSaveShare: 'Vous devez vous connecter pour enregistrer ou partager des prompts.',
+          loginRequiredSaveShare:
+            'Vous devez vous connecter pour enregistrer ou partager des prompts.',
           promptSaved: 'Prompt enregistré !',
-          saveFailed: 'Échec de l\'enregistrement du prompt. Veuillez réessayer.',
-          loginRequiredLike: 'Vous devez vous connecter pour aimer les prompts.',
-          loginRequiredSharePrompt: 'Vous devez vous connecter pour partager des prompts.',
+          saveFailed:
+            "Échec de l'enregistrement du prompt. Veuillez réessayer.",
+          loginRequiredLike:
+            'Vous devez vous connecter pour aimer les prompts.',
+          loginRequiredSharePrompt:
+            'Vous devez vous connecter pour partager des prompts.',
           loginRequired: 'Connexion requise',
         },
         zh: {
@@ -252,7 +261,8 @@
           loginRequired: '需要登录',
         },
         hi: {
-          loginRequiredSaveShare: 'प्रॉम्प्ट सहेजने या साझा करने के लिए लॉगिन करें।',
+          loginRequiredSaveShare:
+            'प्रॉम्प्ट सहेजने या साझा करने के लिए लॉगिन करें।',
           promptSaved: 'प्रॉम्प्ट सहेजा गया!',
           saveFailed: 'प्रॉम्प्ट सहेजने में विफल। कृपया पुनः प्रयास करें।',
           loginRequiredLike: 'प्रॉम्प्ट पसंद करने के लिए लॉगिन करें।',
@@ -443,7 +453,8 @@
         const likeSummary = document.createElement('p');
         likeSummary.className = 'text-xs text-blue-200 mt-1';
         const likeList = document.createElement('div');
-        likeList.className = 'hidden text-xs space-y-1 absolute left-0 mt-1 bg-black/80 p-1 rounded-md z-10';
+        likeList.className =
+          'hidden text-xs space-y-1 absolute left-0 mt-1 bg-black/80 p-1 rounded-md z-10';
         const likeWrapper = document.createElement('div');
         likeWrapper.className = 'relative inline-block';
         likeWrapper.appendChild(likeSummary);
@@ -649,6 +660,8 @@
         text.addEventListener('click', () => {
           if (appState.currentUser && p.userId === appState.currentUser.uid) {
             editBtn.click();
+          } else {
+            alert(msgs[appState.language].loginRequired);
           }
         });
 
