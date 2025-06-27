@@ -41,6 +41,7 @@ const uiText = {
     langFrLabel: 'Switch to French',
     langZhLabel: 'Switch to Chinese',
     appLogoAlt: 'Prompter logo',
+    loginText: 'Login',
     loginRequired: 'Login required',
     loginRequiredShare: 'Login required to share',
     loginRequiredSaveShare: 'Login required to save or share prompts.',
@@ -82,6 +83,7 @@ const uiText = {
     langFrLabel: "Fransızca'ya geç",
     langZhLabel: "Çince'ye geç",
     appLogoAlt: 'Prompter logosu',
+    loginText: 'Giriş',
     loginRequired: 'Giriş gerekli',
     loginRequiredShare: 'Paylaşmak için giriş yapın',
     loginRequiredSaveShare:
@@ -124,6 +126,7 @@ const uiText = {
     langFrLabel: 'Cambiar a francés',
     langZhLabel: 'Cambiar a chino',
     appLogoAlt: 'Logo de Prompter',
+    loginText: 'Iniciar Sesión',
     loginRequired: 'Se requiere inicio de sesión',
     loginRequiredShare: 'Debes iniciar sesión para compartir',
     loginRequiredSaveShare:
@@ -169,6 +172,7 @@ const uiText = {
     langFrLabel: 'Passer au français',
     langZhLabel: 'Passer au chinois',
     appLogoAlt: 'Logo de Prompter',
+    loginText: 'Connexion',
     loginRequired: 'Connexion requise',
     loginRequiredShare: 'Connexion requise pour partager',
     loginRequiredSaveShare:
@@ -212,6 +216,7 @@ const uiText = {
     langFrLabel: '切换到法语',
     langZhLabel: '切换到中文',
     appLogoAlt: 'Prompter 标志',
+    loginText: '登录',
     loginRequired: '需要登录',
     loginRequiredShare: '登录后才能分享',
     loginRequiredSaveShare: '需要登录才能保存或分享提示。',
@@ -253,6 +258,7 @@ const uiText = {
     langFrLabel: 'फ्रेंच पर स्विच करें',
     langZhLabel: 'चीनी पर स्विच करें',
     appLogoAlt: 'Prompter लोगो',
+    loginText: 'लॉगिन',
     loginRequired: 'लॉगिन आवश्यक है',
     loginRequiredShare: 'शेयर करने के लिए लॉगिन करें',
     loginRequiredSaveShare: 'प्रॉम्प्ट सहेजने या साझा करने के लिए लॉगिन करें।',
@@ -434,6 +440,10 @@ const setLanguage = (lang, fromSaved = false) => {
   document.getElementById('app-stats').textContent = uiText[lang].appStats;
   document.getElementById('footer-prompter').textContent =
     uiText[lang].footerPrompter;
+  const loginLink = document.getElementById('login-link');
+  if (loginLink) {
+    loginLink.textContent = uiText[lang].loginText;
+  }
   langEnButton.title = uiText[lang].langEnLabel;
   langEnButton.setAttribute('aria-label', uiText[lang].langEnLabel);
   langTrButton.title = uiText[lang].langTrLabel;
