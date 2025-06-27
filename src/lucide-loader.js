@@ -70,8 +70,8 @@ export function loadWithFallback(primary, local) {
 }
 
 window.lucideScripts = loadWithFallback(
-  'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=65',
-  'lucide.min.js?v=65',
+  'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=66',
+  'lucide.min.js?v=66',
 );
 
 window.lucideScripts.loadPromise.finally(() => {
