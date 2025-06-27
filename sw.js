@@ -1,23 +1,34 @@
-self.addEventListener('install', () => {
+const CACHE_VERSION = 'v1';
+const CACHE_NAME = `prompter-${CACHE_VERSION}`;
+const ASSETS = [
+  '/',
+  'index.html',
+  'css/tailwind.css',
+  'css/app.css',
+  'css/theme-dark.css',
+  'css/theme-light.css',
+  'src/init-app.js',
+  'src/version.js',
+  'src/lucide-loader.js',
+  'lucide.min.js',
+  'manifest.json',
+  'icons/logo.svg',
+];
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
+  );
   self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
   const cleanup = async () => {
     await self.clients.claim();
-    try {
-      const keys = await caches.keys();
-      await Promise.all(keys.map((k) => caches.delete(k)));
-    } catch {
-      // ignore
-    }
-
-    try {
-      await self.registration.unregister();
-    } catch {
-      // ignore
-    }
-
+    const keys = await caches.keys();
+    await Promise.all(
+      keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k))
+    );
     const clients = await self.clients.matchAll({
       type: 'window',
       includeUncontrolled: true,
@@ -26,6 +37,21 @@ self.addEventListener('activate', (event) => {
       client.navigate(client.url);
     });
   };
-
   event.waitUntil(cleanup());
+});
+
+self.addEventListener('fetch', (event) => {
+  if (event.request.method !== 'GET') return;
+  event.respondWith(
+    caches.match(event.request).then(
+      (cached) =>
+        cached ||
+        fetch(event.request).catch(() => {
+          if (event.request.mode === 'navigate') {
+            return caches.match('index.html');
+          }
+          return undefined;
+        })
+    )
+  );
 });

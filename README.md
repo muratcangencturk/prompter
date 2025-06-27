@@ -8,14 +8,14 @@ Prompt templates are stored in small JSON files under the `prompts/` directory a
 
 ## Features
 
-- Requires an internet connection
+- Works offline after the first load
 - Fast loading thanks to lightweight JSON prompt files
 - Light and dark themes
 - English, Turkish, Spanish, Hindi, French and Chinese interface
 - Twelve prompt categories with over 53M combinations per language (more than 318M across EN, TR, ES, HI, FR and ZH)
 - Quick access to Top 10 rankings via the award icon
 
-This **AI prompt generator** delivers **creative prompt ideas** in a lightweight web app that runs directly in your browser. An internet connection is required.
+This **AI prompt generator** delivers **creative prompt ideas** in a lightweight web app that runs directly in your browser. Core pages are cached for offline use after the first visit.
 
 ## Opening the application
 
@@ -25,7 +25,7 @@ It is recommended to serve the project directory with a simple HTTP server for r
 python3 -m http.server
 ```
 
-and then visit `http://localhost:8000`. This ensures the JSON prompt files load correctly. The generator still requires an internet connection.
+and then visit `http://localhost:8000`. This ensures the JSON prompt files load correctly. The generator fetches prompt data online but cached pages open offline.
 
 Opening `index.html` over `file://` URLs is not supported. Browsers block JavaScript modules when loaded from the file system, so the application cannot initialize. Always serve the directory over HTTP using a command such as `python3 -m http.server` and then visit `http://localhost:8000`.
 
@@ -263,19 +263,14 @@ The script fetches Google's ad library asynchronously using your publisher ID (`
 
 Run `npm run build` after any production change. This command regenerates build artifacts and increments the version in `manifest.json`. Open pages check the manifest every five minutes and reload automatically when the version changes.
 
-## Automatic reloads and service worker
+## Offline support and refresh strategy
 
-All pages include `src/version.js`, which fetches `manifest.json` every five minutes.
-If the `version` field changes the page reloads so users receive the latest build.
-The `sw.js` file acts as a kill-switch service worker — it unregisters older service
-workers and clears cached files. Keep it deployed for a short time after updates to
-clean outdated clients.
+All pages include `src/version.js`, which checks `manifest.json` every five minutes.
+If the `version` field changes, a banner prompts users to refresh. The service worker in
+`sw.js` precaches essential files for offline access. During activation it deletes old caches
+and reloads open pages so updates are applied immediately.
 
-After deploying a new build, users may need to clear their browser cache or open
-the site in an incognito window to remove stale service workers.
-
-Run `npm run build` whenever you modify production files to increment the manifest
-version and trigger this refresh mechanism.
+Run `npm run build` whenever you modify production files to increment the manifest version and trigger this refresh mechanism.
 
 ## License
 
