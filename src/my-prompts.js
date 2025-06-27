@@ -1,6 +1,7 @@
 import { appState, THEMES } from './state.js';
 import { onAuth } from './auth.js';
 import { getUserSavedPrompts } from './prompt.js';
+import { BASE_URL } from './config.js';
 
 const LANGUAGE_PAGES = {
   en: 'index.html',
@@ -246,7 +247,7 @@ const renderList = () => {
 
 const sharePrompt = (prompt, baseUrl) => {
   if (!prompt) return;
-  const link = ' https://prompterai.space';
+  const link = ` ${BASE_URL}`;
   const url = `${baseUrl}${encodeURIComponent(`${prompt}${link}`)}`;
   window.open(url, '_blank');
 };

@@ -1,6 +1,6 @@
 import { appState, THEMES } from './state.js';
 import { categories, ICON_FALLBACKS, generatePrompt } from './prompts.js';
-import { SITE_URL } from './config.js';
+import { BASE_URL } from './config.js';
 
 const LANGUAGE_PAGES = {
   en: 'index.html',
@@ -981,7 +981,7 @@ const handleGenerate = async () => {
 
 const sharePrompt = (prompt, baseUrl) => {
   if (!prompt) return;
-  const link = ` ${SITE_URL}`;
+  const link = ` ${BASE_URL}`;
   const url = `${baseUrl}${encodeURIComponent(`${prompt}${link}`)}`;
   window.open(url, '_blank');
 };

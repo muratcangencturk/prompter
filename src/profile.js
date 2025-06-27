@@ -22,6 +22,7 @@ import {
 import { listenNotifications, markNotificationRead } from './notifications.js';
 import { appState, THEMES } from './state.js';
 import { categories } from './prompts.js';
+import { BASE_URL } from './config.js';
 import { linkify } from './linkify.js';
 
 const uiText = {
@@ -414,7 +415,7 @@ const markAllNotificationsRead = async () => {
 
 const sharePrompt = (prompt, baseUrl) => {
   if (!prompt) return;
-  const link = ' https://prompterai.space';
+  const link = ` ${BASE_URL}`;
   const url = `${baseUrl}${encodeURIComponent(`${prompt}${link}`)}`;
   window.open(url, '_blank');
 };

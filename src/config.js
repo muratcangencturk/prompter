@@ -1,1 +1,1 @@
-export const SITE_URL = 'https://prompterai.space';
+export const BASE_URL = 'https://prompterai.space';
