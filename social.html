@@ -615,21 +615,15 @@
         editBtn.innerHTML =
           '<i data-lucide="pencil" class="w-4 h-4" aria-hidden="true"></i>';
 
-        text.addEventListener('click', () => {
+        const startEdit = () => {
           if (appState.currentUser && p.userId === appState.currentUser.uid) {
-            editBtn.click();
+            showEdit();
           } else {
             alert(msgs[appState.language].loginRequired);
           }
-        });
+        };
 
-        const unshareBtn = document.createElement('button');
-        unshareBtn.className =
-          'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-        unshareBtn.innerHTML =
-          '<i data-lucide="trash" class="w-4 h-4" aria-hidden="true"></i>';
-
-        editBtn.addEventListener('click', () => {
+        const showEdit = () => {
           const textarea = document.createElement('textarea');
           textarea.className = 'w-full p-2 rounded-md bg-black/30';
           textarea.value = p.text;
@@ -670,7 +664,17 @@
               saveEdit.disabled = false;
             }
           });
-        });
+        };
+
+        text.addEventListener('click', startEdit);
+        editBtn.addEventListener('click', startEdit);
+
+        const unshareBtn = document.createElement('button');
+        unshareBtn.className =
+          'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+        unshareBtn.innerHTML =
+          '<i data-lucide="trash" class="w-4 h-4" aria-hidden="true"></i>';
+
 
         unshareBtn.addEventListener('click', async () => {
           unshareBtn.disabled = true;
@@ -751,9 +755,11 @@
 
         likeRow.appendChild(saveBtn);
         likeRow.appendChild(twitterBtn);
+        likeRow.appendChild(editBtn);
         if (appState.currentUser && p.userId === appState.currentUser.uid) {
-          likeRow.appendChild(editBtn);
           likeRow.appendChild(unshareBtn);
+        } else {
+          editBtn.disabled = true;
         }
         const commentToggleBtn = document.createElement('button');
         commentToggleBtn.className =

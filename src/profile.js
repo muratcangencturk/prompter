@@ -486,33 +486,15 @@ const renderSavedPrompts = (prompts) => {
       'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
     editBtn.innerHTML =
       '<i data-lucide="pencil" class="w-4 h-4" aria-hidden="true"></i>';
+    if (!appState.currentUser) {
+      editBtn.disabled = true;
+    }
 
-    // allow direct click on the prompt text to start editing
-    pEl.addEventListener('click', () => editBtn.click());
-
-    const shareBtn = document.createElement('button');
-    shareBtn.className =
-      'history-share p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-    shareBtn.title = 'Share on Twitter';
-    shareBtn.setAttribute('aria-label', 'Share on Twitter');
-    shareBtn.innerHTML =
-      '<i data-lucide="twitter" class="w-3 h-3" aria-hidden="true"></i>';
-
-    const siteShareBtn = document.createElement('button');
-    siteShareBtn.className =
-      'history-site-share p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-    siteShareBtn.title = 'Share on Prompter';
-    siteShareBtn.setAttribute('aria-label', 'Share on Prompter');
-    siteShareBtn.innerHTML =
-      '<i data-lucide="share-2" class="w-3 h-3" aria-hidden="true"></i>';
-
-    const delBtn = document.createElement('button');
-    delBtn.className =
-      'history-delete p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-    delBtn.innerHTML =
-      '<i data-lucide="trash" class="w-3 h-3" aria-hidden="true"></i>';
-
-    editBtn.addEventListener('click', () => {
+    const startEdit = () => {
+      if (!appState.currentUser) {
+        alert(uiText[appState.language].loginRequired);
+        return;
+      }
       const textarea = document.createElement('textarea');
       textarea.className = 'w-full p-2 rounded-md bg-black/30';
       textarea.value = pEl.textContent;
@@ -547,7 +529,33 @@ const renderSavedPrompts = (prompts) => {
         pEl.textContent = textarea.value;
         cancelEdit.click();
       });
-    });
+    };
+
+    // allow direct click on the prompt text to start editing
+    pEl.addEventListener('click', startEdit);
+    editBtn.addEventListener('click', startEdit);
+
+    const shareBtn = document.createElement('button');
+    shareBtn.className =
+      'history-share p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+    shareBtn.title = 'Share on Twitter';
+    shareBtn.setAttribute('aria-label', 'Share on Twitter');
+    shareBtn.innerHTML =
+      '<i data-lucide="twitter" class="w-3 h-3" aria-hidden="true"></i>';
+
+    const siteShareBtn = document.createElement('button');
+    siteShareBtn.className =
+      'history-site-share p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+    siteShareBtn.title = 'Share on Prompter';
+    siteShareBtn.setAttribute('aria-label', 'Share on Prompter');
+    siteShareBtn.innerHTML =
+      '<i data-lucide="share-2" class="w-3 h-3" aria-hidden="true"></i>';
+
+    const delBtn = document.createElement('button');
+    delBtn.className =
+      'history-delete p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+    delBtn.innerHTML =
+      '<i data-lucide="trash" class="w-3 h-3" aria-hidden="true"></i>';
 
     copyBtn.addEventListener('click', () => {
       navigator.clipboard
@@ -802,7 +810,15 @@ const renderSharedPrompts = async (prompts) => {
     delBtn.innerHTML =
       '<i data-lucide="trash" class="w-3 h-3" aria-hidden="true"></i>';
 
-    editBtn.addEventListener('click', () => {
+    const startEdit = () => {
+      if (appState.currentUser && p.userId === appState.currentUser.uid) {
+        showEdit();
+      } else {
+        alert(uiText[appState.language].loginRequired);
+      }
+    };
+
+    const showEdit = () => {
       const textarea = document.createElement('textarea');
       textarea.className = 'w-full p-2 rounded-md bg-black/30';
       textarea.value = p.text;
@@ -844,7 +860,10 @@ const renderSharedPrompts = async (prompts) => {
           saveEdit.disabled = false;
         }
       });
-    });
+    };
+
+    text.addEventListener('click', startEdit);
+    editBtn.addEventListener('click', startEdit);
 
     copyBtn.addEventListener('click', () => {
       navigator.clipboard
@@ -1008,9 +1027,13 @@ const renderSharedPrompts = async (prompts) => {
     });
 
     likeRow.appendChild(editBtn);
-    likeRow.appendChild(siteShareBtn);
+    if (appState.currentUser && p.userId === appState.currentUser.uid) {
+      likeRow.appendChild(siteShareBtn);
+      likeRow.appendChild(delBtn);
+    } else {
+      editBtn.disabled = true;
+    }
     likeRow.appendChild(shareBtn);
-    likeRow.appendChild(delBtn);
     likeRow.appendChild(likeContainer);
     likeRow.appendChild(commentContainer);
 
