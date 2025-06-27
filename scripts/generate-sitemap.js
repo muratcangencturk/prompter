@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const BASE_URL = 'https://prompterai.space';
+const BASE_URL = process.env.SITE_URL || 'https://prompterai.space';
 
 const rootDir = path.join(__dirname, '..');
 
