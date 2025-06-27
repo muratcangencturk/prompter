@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="hi">
+<html lang="{{LANG}}">
   <head>
     <script>
       if (location.protocol === 'file:') {
@@ -28,7 +28,7 @@
       content="upgrade-insecure-requests"
     />
     <title>PROMPTER</title>
-    <base href="../" />
+    <base href="{{BASE_HREF}}" />
     <link rel="icon" type="image/svg+xml" href="/icons/logo.svg?v=66" />
     <link rel="manifest" href="manifest.json?v=66" />
     <meta name="theme-color" content="#000000" />
@@ -40,16 +40,16 @@
     <meta http-equiv="Expires" content="0" />
     <meta
       name="description"
-      content="इंटरनेट कनेक्शन की आवश्यकता वाला रचनात्मक एआई प्रॉम्प्ट जनरेटर."
+      content="{{DESCRIPTION}}"
     />
     <meta
       name="keywords"
-      content="एआई प्रॉम्प्ट, प्रॉम्प्ट जनरेटर, रचनात्मक प्रॉम्प्ट, एआई प्रॉम्प्टर, प्रॉम्प्ट निर्माता"
+      content="{{KEYWORDS}}"
     />
     <meta name="robots" content="index,follow" />
     <meta property="og:title" content="PROMPTER" />
     <meta
-      property="og:description" content="इंटरनेट कनेक्शन की आवश्यकता वाला रचनात्मक एआई प्रॉम्प्ट जनरेटर."
+      property="og:description" content="{{DESCRIPTION}}"
     />
     <meta property="og:image" content="/icons/logo.svg?v=66" />
     <meta property="og:image:alt" content="Prompter logo" />
@@ -57,34 +57,24 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="PROMPTER" />
     <meta
-      name="twitter:description" content="इंटरनेट कनेक्शन की आवश्यकता वाला रचनात्मक एआई प्रॉम्प्ट जनरेटर."
+      name="twitter:description" content="{{DESCRIPTION}}"
     />
     <meta name="twitter:image" content="/icons/logo.svg?v=66" />
-    <meta property="og:url" content="https://prompterai.space/hi/" />
+    <meta property="og:url" content="{{CANONICAL_URL}}" />
     <meta property="og:site_name" content="Prompter" />
-    <meta property="og:locale" content="hi" />
-    <meta name="twitter:url" content="https://prompterai.space/hi/" />
-    <meta property="og:locale:alternate" content="en" />
-    <meta property="og:locale:alternate" content="es" />
-    <meta property="og:locale:alternate" content="fr" />
-    <meta property="og:locale:alternate" content="tr" />
-    <meta property="og:locale:alternate" content="zh" />
-    <link rel="canonical" href="https://prompterai.space/hi/" />
-    <link rel="alternate" href="https://prompterai.space/" hreflang="x-default" />
-    <link rel="alternate" href="https://prompterai.space/" hreflang="en" />
-    <link rel="alternate" href="https://prompterai.space/es/" hreflang="es" />
-    <link rel="alternate" href="https://prompterai.space/fr/" hreflang="fr" />
-    <link rel="alternate" href="https://prompterai.space/hi/" hreflang="hi" />
-    <link rel="alternate" href="https://prompterai.space/tr/" hreflang="tr" />
-    <link rel="alternate" href="https://prompterai.space/zh/" hreflang="zh" />
+    <meta property="og:locale" content="{{LANG}}" />
+    <meta name="twitter:url" content="{{CANONICAL_URL}}" />
+    {{OG_ALTERNATES}}
+    <link rel="canonical" href="{{CANONICAL_URL}}" />
+    {{ALTERNATE_LINKS}}
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "url": "https://prompterai.space/hi/",
+        "url": "{{CANONICAL_URL}}",
         "name": "Prompter",
         "alternateName": "Prompter",
-        "inLanguage": ["en", "es", "fr", "hi", "tr", "zh"],
+        "inLanguage": {{IN_LANGUAGES}},
         "publisher": {
           "@type": "Organization",
           "name": "Prompter"
@@ -98,16 +88,16 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Prompter क्या है?",
+            "name": "{{FAQ_QUESTION}}",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Prompter एक वेब ऐप है जो AI मॉडलों के लिए रचनात्मक प्रॉम्प्ट बनाता है।"
+              "text": "{{FAQ_ANSWER}}"
             }
           }
         ]
       }
     </script>
-    <script>localStorage.setItem('language', 'hi');</script>
+    {{SET_LANGUAGE}}
     <script type="module" src="src/lucide-loader.js?v=66"></script>
     <link rel="stylesheet" href="css/tailwind.css?v=66" />
     <link rel="stylesheet" href="css/app.css?v=66" />
