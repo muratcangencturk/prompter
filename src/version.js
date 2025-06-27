@@ -47,11 +47,17 @@ export const startVersionCheck = async () => {
 };
 
 export const clearServiceWorkersAndCaches = () => {
+  // If sessionStorage previously threw an error, rely on a global flag so we
+  // don't continually attempt storage access on subsequent calls.
+  if (window.__swCleanedFallback) return;
+
   let cleaned = false;
   try {
     cleaned = sessionStorage.getItem('swCleaned');
   } catch {
-    // ignore storage access errors
+    // sessionStorage can throw in some environments (e.g. private browsing).
+    // Remember the failure so later calls skip storage entirely.
+    window.__swCleanedFallback = true;
   }
 
   if (cleaned) {
@@ -61,7 +67,8 @@ export const clearServiceWorkersAndCaches = () => {
   try {
     sessionStorage.setItem('swCleaned', 'true');
   } catch {
-    // ignore storage access errors
+    // Mark fallback on failure so we only attempt cleanup once per page load.
+    window.__swCleanedFallback = true;
   }
 
   const tasks = [];
