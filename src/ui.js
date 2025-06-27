@@ -352,13 +352,12 @@ const setTheme = (theme) => {
   updateButtonTitles();
 };
 
-// When loading the page we want to respect the stored language preference, but
-// opening `index.html` should not immediately redirect users away from the
-// page.  This function therefore supports an optional `fromSaved` flag which is
-// passed during initialization. When `fromSaved` is `true` the current page will
-// only redirect if an explicit override is present via a `lang` query parameter
-// or if the visitor followed a link from another language version (checked via
-// `document.referrer`).
+// When loading the page we want to respect the stored language preference. The
+// optional `fromSaved` flag signals that the value came from `localStorage` on
+// startup.  In this mode we still redirect if the stored language doesn't match
+// the current page, as long as a target path exists. Any explicit override via
+// the `lang` query parameter (or by following a link from another language
+// version detected through `document.referrer`) continues to take precedence.
 const setLanguage = (lang, fromSaved = false) => {
   const params = new URLSearchParams(window.location.search);
   const paramLang = params.get('lang');
@@ -370,7 +369,7 @@ const setLanguage = (lang, fromSaved = false) => {
     (refLangEntry ? refLangEntry[0] : null);
   let current = window.location.pathname.replace(/^\//, '');
   if (current === '') current = 'index.html';
-  if (overrideLang && (!fromSaved || current !== LANGUAGE_PAGES[lang])) {
+  if (overrideLang) {
     lang = overrideLang;
   }
   const targetPage = LANGUAGE_PAGES[lang];
@@ -381,9 +380,7 @@ const setLanguage = (lang, fromSaved = false) => {
     if (current === '') {
       current = 'index.html';
     }
-    const shouldRedirect =
-      current !== targetPage &&
-      (overrideLang || !fromSaved || current !== 'index.html');
+    const shouldRedirect = current !== targetPage;
     if (shouldRedirect) {
       window.location.href = targetPage;
       localStorage.setItem('language', lang);
@@ -793,7 +790,9 @@ const setLanguage = (lang, fromSaved = false) => {
       );
     }
   }
-  localStorage.setItem('language', lang);
+  if (!fromSaved) {
+    localStorage.setItem('language', lang);
+  }
   updateButtonTitles();
   renderHistory();
 };
@@ -1446,8 +1445,8 @@ export const initializeApp = () => {
   };
 
   const savedLanguage = localStorage.getItem('language') || 'en';
-  // Avoid automatic redirects on the English homepage; allow query/referrer
-  // to override when desired.
+  // Apply the stored language preference. The call may redirect to the matching
+  // language page unless a query parameter specifies a different one.
   setLanguage(savedLanguage, true);
 
   const savedTheme = localStorage.getItem('theme') || THEMES.DARK;
