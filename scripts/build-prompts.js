@@ -97,13 +97,28 @@ function updateBaseHref(html, href) {
   return html.replace(/<base\s+href="[^"]*"\s*\/?>(?=)/i, `<base href="${href}" />`);
 }
 
-function updateHtmlFiles(version, baseHref) {
+function updateSiteUrl(html, siteUrl) {
+  return html.replace(/__SITE_URL__/g, siteUrl);
+}
+
+function updateConfigFile(siteUrl) {
+  const configPath = path.join(rootDir, 'src', 'config.js');
+  let contents = fs.readFileSync(configPath, 'utf8');
+  contents = contents.replace(/__SITE_URL__/g, siteUrl);
+  fs.writeFileSync(configPath, contents);
+  console.log(`Updated ${path.relative(rootDir, configPath)}`);
+}
+
+function updateHtmlFiles(version, baseHref, siteUrl) {
   const htmlFiles = getHtmlFiles(rootDir);
   for (const file of htmlFiles) {
     const original = fs.readFileSync(file, 'utf8');
     let updated = appendVersionToAssets(original, version);
     if (baseHref) {
       updated = updateBaseHref(updated, baseHref);
+    }
+    if (siteUrl) {
+      updated = updateSiteUrl(updated, siteUrl);
     }
     fs.writeFileSync(file, updated);
     console.log(`Updated ${path.relative(rootDir, file)}`);
@@ -121,4 +136,6 @@ console.log(`Wrote ${outputFile}`);
 
 const version = bumpManifestVersion();
 const baseHref = process.env.BASE_HREF;
-updateHtmlFiles(version, baseHref);
+const siteUrl = process.env.SITE_URL || 'https://prompterai.space';
+updateHtmlFiles(version, baseHref, siteUrl);
+updateConfigFile(siteUrl);
