@@ -229,14 +229,8 @@ show "Failed to load prompts."
 
 ## Advertising
 
-Earlier versions used a pop‑up ad handler. Ads are now tied to small icon
-links instead. Pages insert third‑party code inside `<div class="ad-slot">`
-elements. After the page finishes loading, `hideEmptyAdSlots()` in
-`src/main.js` runs to remove any empty containers.
-
-Icons such as the **Pro** button trigger ads by opening external links with
-`window.open()` in a new tab. This icon‑based approach replaces the old
-pop‑up behavior and keeps the interface unobtrusive.
+Prompter previously embedded Google AdSense ads, but all advertising code has
+been removed. The application no longer loads any ad snippets or links.
 
 ## FAQ
 
