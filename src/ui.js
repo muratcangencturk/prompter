@@ -365,17 +365,19 @@ const setLanguage = (lang, fromSaved = false) => {
   const refLangEntry = Object.entries(LANGUAGE_PAGES).find(([, page]) =>
     document.referrer.includes(page)
   );
-  const overrideLang =
+  let overrideLang =
     (paramLang && LANGUAGE_PAGES[paramLang] ? paramLang : null) ||
     (refLangEntry ? refLangEntry[0] : null);
-  if (overrideLang) {
+  let current = window.location.pathname.replace(/^\//, '');
+  if (current === '') current = 'index.html';
+  if (overrideLang && (!fromSaved || current !== LANGUAGE_PAGES[lang])) {
     lang = overrideLang;
   }
   const targetPage = LANGUAGE_PAGES[lang];
   if (targetPage) {
     // Some servers redirect /index.html to / which results in
     // window.location.pathname being "". Normalize to avoid loops.
-    let current = window.location.pathname.replace(/^\//, '');
+    current = window.location.pathname.replace(/^\//, '');
     if (current === '') {
       current = 'index.html';
     }
