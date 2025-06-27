@@ -146,8 +146,8 @@
             id="back-link"
             href="tr/"
             class="p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50"
-            title="Back"
-            aria-label="Back"
+            title="Geri"
+            aria-label="Geri"
           >
             <span
               class="w-6 h-6 inline-flex items-center justify-center text-3xl"
@@ -277,7 +277,7 @@
       const fetchName = async (uid) => {
         if (profileCache[uid]) return profileCache[uid];
         const prof = await getUserProfile(uid);
-        profileCache[uid] = prof?.name || 'Unknown User';
+        profileCache[uid] = prof?.name || 'Bilinmeyen Kullanıcı';
         return profileCache[uid];
       };
 
@@ -377,7 +377,7 @@
 
         const catEl = document.createElement('p');
         catEl.className = 'text-blue-200 text-xs';
-        catEl.textContent = categoryMap[p.category] || p.category || 'random';
+        catEl.textContent = categoryMap[p.category] || p.category || 'rastgele';
 
         const likeRow = document.createElement('div');
         likeRow.className = 'flex items-center gap-2 mt-2';
@@ -385,8 +385,8 @@
         const saveBtn = document.createElement('button');
         saveBtn.className =
           'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-        saveBtn.title = 'Save prompt';
-        saveBtn.setAttribute('aria-label', 'Save prompt');
+        saveBtn.title = "Prompt'u kaydet";
+        saveBtn.setAttribute('aria-label', "Prompt'u kaydet");
         saveBtn.innerHTML =
           '<i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>';
         saveBtn.addEventListener('click', async () => {
@@ -620,8 +620,8 @@
         const twitterBtn = document.createElement('button');
         twitterBtn.className =
           'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
-        twitterBtn.title = 'Share on Twitter';
-        twitterBtn.setAttribute('aria-label', 'Share on Twitter');
+        twitterBtn.title = "Twitter'da paylaş";
+        twitterBtn.setAttribute('aria-label', "Twitter'da paylaş");
         twitterBtn.innerHTML =
           '<i data-lucide="twitter" class="w-4 h-4" aria-hidden="true"></i>';
         const updateTwitterIcon = () => {
@@ -698,7 +698,7 @@
               cancelEdit.click();
             } catch (err) {
               console.error('Failed to update text:', err);
-              alert('Unable to update the prompt. Please try again.');
+              alert('Prompt güncellenemedi. Lütfen tekrar deneyin.');
               saveEdit.disabled = false;
             }
           });
@@ -729,7 +729,7 @@
         commentForm.className = 'flex items-center gap-2 mt-1';
         const commentInput = document.createElement('input');
         commentInput.type = 'text';
-        commentInput.placeholder = 'Add a comment...';
+        commentInput.placeholder = 'Yorum ekle...';
         commentInput.className = 'flex-1 p-1 rounded-md bg-black/30';
         const commentBtn = document.createElement('button');
         commentBtn.type = 'submit';
@@ -737,7 +737,7 @@
           'px-2 py-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200';
         commentBtn.innerHTML =
           '<i data-lucide="send" class="w-4 h-4" aria-hidden="true"></i>';
-        commentBtn.setAttribute('aria-label', 'Send comment');
+        commentBtn.setAttribute('aria-label', 'Yorumu gönder');
         commentForm.appendChild(commentInput);
         commentForm.appendChild(commentBtn);
         commentsWrap.appendChild(commentForm);
@@ -829,7 +829,7 @@
         if (!prompts || prompts.length === 0) {
           const msg = document.createElement('p');
           msg.className = 'text-blue-200 text-sm text-center';
-          msg.textContent = 'No shared prompts yet.';
+          msg.textContent = 'Henüz paylaşılan prompt yok.';
           list.appendChild(msg);
           return;
         }
@@ -918,9 +918,9 @@
             const list = document.getElementById('all-prompts');
             if (err.code === 'failed-precondition') {
               list.textContent =
-                'Firestore indexes are still building. Please refresh later.';
+                'Firestore dizinleri henüz oluşturuluyor. Lütfen daha sonra yenileyin.';
             } else if (err.code === 'permission-denied') {
-              list.textContent = 'You don’t have permission to read prompts.';
+              list.textContent = 'Prompts okuma izniniz yok.';
             } else {
               list.textContent = err.message;
             }
