@@ -230,26 +230,6 @@ Firestore may take several minutes to build the indexes after deployment. During
 this period queries on the Social page can throw `failed-precondition` errors and
 show "Failed to load prompts."
 
-## Advertising (Google AdSense)
-
-The repository initially documented that every page loaded the standard AdSense
-loader. After reviewing the HTML files no such script tag was present. Pages
-function correctly without the loader.
-
-For testing the script was temporarily added to `index.html`:
-
-```html
-<script
-  async
-  src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5886415182402616'
-  crossorigin="anonymous"
-></script>
-```
-
-Loading the page with this tag did not trigger reload loops in a headless
-browser test, indicating the script itself is not responsible for page reloads.
-Other pages remain unchanged and do not include the AdSense loader.
-
 ## Pop-up ad handler
 
 All pages also load `/js/ad-handler.js` at the bottom of the document:
