@@ -811,10 +811,7 @@
           .querySelectorAll('[data-id]')
           .forEach((c) => existing.set(c.dataset.id, c));
         if (!prompts || prompts.length === 0) {
-          const msg = document.createElement('p');
-          msg.className = 'text-blue-200 text-sm text-center';
-          msg.textContent = 'No shared prompts yet.';
-          list.appendChild(msg);
+          list.innerHTML = '';
           return;
         }
         const names = await Promise.all(
@@ -857,9 +854,10 @@
         if (targetPromptId) highlightPrompt(targetPromptId);
       }
 
-      let loadedPrompts = [];
+      let loadedPrompts = null;
 
       function filterAndRender() {
+        if (loadedPrompts === null) return;
         let filtered = loadedPrompts;
         const term = promptSearch?.value?.trim().toLowerCase();
         if (term) {
@@ -885,7 +883,14 @@
 
       const startListener = async (user) => {
         if (unsubscribe) unsubscribe();
-        filterAndRender();
+        loadedPrompts = null;
+        const list = document.getElementById('all-prompts');
+        list.innerHTML = '';
+        const loading = document.createElement('p');
+        loading.id = 'prompts-loading';
+        loading.className = 'text-blue-200 text-sm text-center';
+        loading.textContent = 'Loading...';
+        list.appendChild(loading);
         const constraints = [where('shared', '==', true)];
 
         constraints.push(orderBy('createdAt', 'desc'));
@@ -894,13 +899,23 @@
         unsubscribe = onSnapshot(
           q,
           async (snap) => {
+            if (loading.parentElement) loading.remove();
             let prompts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
             loadedPrompts = prompts;
-            filterAndRender();
+            if (prompts.length === 0) {
+              list.innerHTML = '';
+              const msg = document.createElement('p');
+              msg.className = 'text-blue-200 text-sm text-center';
+              msg.textContent = 'No shared prompts yet.';
+              list.appendChild(msg);
+            } else {
+              filterAndRender();
+            }
           },
           (err) => {
             console.error('Failed to load prompts:', err);
             const list = document.getElementById('all-prompts');
+            if (loading.parentElement) loading.remove();
             if (err.code === 'failed-precondition') {
               list.textContent =
                 'Firestore indexes are still building. Please refresh later.';
