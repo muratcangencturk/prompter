@@ -127,6 +127,9 @@ project, install the dependencies by running:
 npm install
 ```
 
+This command also installs **Puppeteer**, which downloads a headless Chrome
+binary used by `scripts/check-reload.js`.
+
 You **must** run `npm install` at least once (and whenever `package.json`
 changes) before executing `npm test` so the linter can access its tooling.
 
