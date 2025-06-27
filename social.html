@@ -185,6 +185,8 @@
         updatePromptText,
         addComment,
         getComments,
+        updateComment,
+        deleteComment,
         unsharePrompt,
         saveUserPrompt,
         sharePromptByUser,
@@ -720,16 +722,102 @@
         commentForm.appendChild(commentBtn);
         commentsWrap.appendChild(commentForm);
 
+        const refreshComments = async () => {
+          const all = await getComments(p.id);
+          commentList.innerHTML = '';
+          commentNum = all.length;
+          commentCount.textContent = commentNum.toString();
+          for (const c of all) {
+            await renderComment(c);
+          }
+        };
+
         const renderComment = async (c) => {
           const n = await fetchName(c.userId);
           const d = document.createElement('div');
-          d.className = 'bg-white/5 rounded-md px-2 py-1 text-sm';
-          d.innerHTML = n
-            ? `<a href="user.html?uid=${
-                c.userId
-              }" class="underline">${n}</a>: ${linkify(c.text)}`
+          d.className =
+            'bg-white/5 rounded-md px-2 py-1 text-sm flex items-start justify-between gap-2';
+
+          const span = document.createElement('span');
+          span.className = 'flex-1';
+          span.innerHTML = n
+            ? `<a href="user.html?uid=${c.userId}" class="underline">${n}</a>: ${linkify(
+                c.text
+              )}`
             : linkify(c.text);
+          d.appendChild(span);
+
+          if (appState.currentUser && c.userId === appState.currentUser.uid) {
+            const actions = document.createElement('div');
+            actions.className = 'flex items-center gap-1';
+            const editC = document.createElement('button');
+            editC.className =
+              'p-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+            editC.innerHTML =
+              '<i data-lucide="pencil" class="w-3 h-3" aria-hidden="true"></i>';
+            const delC = document.createElement('button');
+            delC.className =
+              'p-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+            delC.innerHTML =
+              '<i data-lucide="trash" class="w-3 h-3" aria-hidden="true"></i>';
+            actions.appendChild(editC);
+            actions.appendChild(delC);
+            d.appendChild(actions);
+
+            editC.addEventListener('click', () => {
+              const textarea = document.createElement('textarea');
+              textarea.className = 'w-full p-1 rounded-md bg-black/30';
+              textarea.value = c.text;
+              d.insertBefore(textarea, span);
+              d.removeChild(span);
+
+              const editRow = document.createElement('div');
+              editRow.className = 'flex items-center gap-1';
+              const saveBtn = document.createElement('button');
+              saveBtn.className =
+                'p-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+              saveBtn.innerHTML =
+                '<i data-lucide="save" class="w-3 h-3" aria-hidden="true"></i>';
+              const cancelBtn = document.createElement('button');
+              cancelBtn.className =
+                'p-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+              cancelBtn.innerHTML =
+                '<i data-lucide="x" class="w-3 h-3" aria-hidden="true"></i>';
+              editRow.appendChild(saveBtn);
+              editRow.appendChild(cancelBtn);
+              d.replaceChild(editRow, actions);
+
+              cancelBtn.addEventListener('click', () => {
+                d.replaceChild(span, textarea);
+                d.replaceChild(actions, editRow);
+              });
+
+              saveBtn.addEventListener('click', async () => {
+                saveBtn.disabled = true;
+                try {
+                  await updateComment(p.id, c.id, textarea.value);
+                  await refreshComments();
+                } catch (err) {
+                  console.error('Failed to update comment:', err);
+                  saveBtn.disabled = false;
+                }
+              });
+            });
+
+            delC.addEventListener('click', async () => {
+              delC.disabled = true;
+              try {
+                await deleteComment(p.id, c.id);
+                await refreshComments();
+              } catch (err) {
+                console.error('Failed to delete comment:', err);
+                delC.disabled = false;
+              }
+            });
+          }
+
           commentList.appendChild(d);
+          window.lucide?.createIcons();
         };
 
         for (const c of commentsArr) {
@@ -747,12 +835,7 @@
           commentBtn.disabled = true;
           try {
             await addComment(p.id, appState.currentUser.uid, textVal);
-            await renderComment({
-              text: textVal,
-              userId: appState.currentUser.uid,
-            });
-            commentNum += 1;
-            commentCount.textContent = commentNum.toString();
+            await refreshComments();
             commentInput.value = '';
           } finally {
             commentBtn.disabled = false;

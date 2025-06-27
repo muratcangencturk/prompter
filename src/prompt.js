@@ -8,6 +8,7 @@ import {
   orderBy,
   serverTimestamp,
   updateDoc,
+  deleteDoc,
   doc,
   increment,
   arrayUnion,
@@ -196,6 +197,18 @@ export const getComments = async (promptId) => {
   );
   const snap = await getDocs(q);
   return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+};
+
+export const updateComment = (promptId, commentId, newText) =>
+  updateDoc(doc(db, `prompts/${promptId}/comments/${commentId}`), {
+    text: newText,
+  });
+
+export const deleteComment = async (promptId, commentId) => {
+  await deleteDoc(doc(db, `prompts/${promptId}/comments/${commentId}`));
+  await updateDoc(doc(db, 'prompts', promptId), {
+    commentCount: increment(-1),
+  });
 };
 
 export const getNewestPromptTimestamp = async () => {
