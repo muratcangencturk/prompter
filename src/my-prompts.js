@@ -246,7 +246,8 @@ const renderList = () => {
 
 const sharePrompt = (prompt, baseUrl) => {
   if (!prompt) return;
-  const url = `${baseUrl}${encodeURIComponent(prompt)}`;
+  const link = ' https://prompterai.space';
+  const url = `${baseUrl}${encodeURIComponent(`${prompt}${link}`)}`;
   window.open(url, '_blank');
 };
 
