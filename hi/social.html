@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="hi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prompter Social</title>
+    <base href="../" />
+    <link rel="manifest" href="manifest.json?v=65" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <script>
+      (function () {
+        function addScript(src, onLoad) {
+          const s = document.createElement('script');
+          s.src = src;
+          s.async = true;
+          if (onLoad) {
+            s.addEventListener('load', onLoad, { once: true });
+          }
+          document.head.appendChild(s);
+          return s;
+        }
+
+        function fetchWithTimeout(url, timeout = 500) {
+          return Promise.race([
+            fetch(url, { method: 'HEAD', mode: 'no-cors' }),
+            new Promise((_, reject) =>
+              setTimeout(() => reject(new Error('timeout')), timeout)
+            ),
+          ]);
+        }
+
+        function loadWithFallback(primary, local) {
+          let cdnScript = null;
+          let localScript = null;
+          let resolveLoad;
+          const loadPromise = new Promise((resolve) => {
+            resolveLoad = resolve;
+          });
+
+          const addLocal = () => {
+            if (!localScript) {
+              localScript = document.createElement('script');
+              localScript.src = local;
+              localScript.async = true;
+              localScript.addEventListener('load', resolveLoad, { once: true });
+              document.head.appendChild(localScript);
+            }
+          };
+
+          if (!primary || !navigator.onLine) {
+            addLocal();
+            return { cdn: null, local: localScript, loadPromise };
+          }
+
+          // Try CDN first with local fallback if the request fails
+          let fallbackTimer = null;
+
+          // Set up fallback timer (500ms to quickly load local icons if CDN is slow)
+          fallbackTimer = setTimeout(() => {
+            addLocal();
+            fallbackTimer = null;
+          }, 500);
+
+          // Try to fetch from CDN first
+          fetchWithTimeout(primary).catch(() => {
+            if (fallbackTimer) {
+              clearTimeout(fallbackTimer);
+              fallbackTimer = null;
+            }
+            addLocal();
+          });
+
+          // Add CDN script
+          cdnScript = addScript(primary, () => {
+            if (fallbackTimer) {
+              clearTimeout(fallbackTimer);
+              fallbackTimer = null;
+            }
+            resolveLoad();
+          });
+
+          cdnScript.onerror = () => {
+            if (fallbackTimer) {
+              clearTimeout(fallbackTimer);
+              fallbackTimer = null;
+            }
+            addLocal();
+          };
+
+          return { cdn: cdnScript, local: localScript, loadPromise };
+        }
+
+        window.lucideScripts = loadWithFallback(
+          'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=65',
+          'lucide.min.js?v=65'
+        );
+        window.lucideScripts.loadPromise.finally(() => {
+          const appContainer = document.getElementById('app-container');
+          const loadingScreen = document.getElementById('loading-screen');
+          if (appContainer) appContainer.style.visibility = 'visible';
+          if (loadingScreen) loadingScreen.classList.add('hidden');
+        });
+      })();
+    </script>
+    <link rel="stylesheet" href="css/tailwind.css?v=65" />
+    <link rel="stylesheet" href="css/app.css?v=65" />
+    <script type="module" src="src/init-app.js?v=65"></script>
+    <script nomodule src="dist/init-app.js?v=65"></script>
+    <!--
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      }
+    </script>
+    -->
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=65" />
+    <script>
+      (function () {
+        const linkEl = document.getElementById('theme-css');
+        if (!linkEl) return;
+        const version = linkEl.getAttribute('href').split('?')[1];
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          linkEl.href = `css/theme-${savedTheme}.css${
+            version ? `?${version}` : ''
+          }`;
+        }
+      })();
+    </script>
+    <script type="module" src="src/version.js?v=65"></script>
+  </head>
+  <body class="min-h-screen p-4">
+    <div id="loading-screen">
+      <div class="spinner" aria-label="Loading"></div>
+    </div>
+    <div id="app-container" class="w-full" style="visibility: hidden">
+      <header class="flex items-center w-full mt-4 mb-6">
+        <div class="flex items-center gap-2">
+          <a
+            id="back-link"
+            href="index.html"
+            class="p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50"
+            title="Back"
+            aria-label="Back"
+          >
+            <span
+              class="w-6 h-6 inline-flex items-center justify-center text-3xl"
+              aria-hidden="true"
+              >&larr;</span
+            >
+          </a>
+          <img
+            src="icons/logo.svg?v=65"
+            alt="Prompter logo"
+            class="w-12 h-12 sm:w-14 sm:h-14"
+          />
+          <div class="ml-1">
+            <h1 class="text-xl sm:text-2xl font-bold leading-tight">
+              Prompter
+            </h1>
+            <p class="text-sm text-blue-200 sm:text-base">Prompter Social</p>
+          </div>
+        </div>
+        <div class="ml-auto flex flex-col items-start gap-1">
+          <input
+            id="prompt-search"
+            type="text"
+            placeholder="खोजें..."
+            class="bg-black/20 border border-white/20 rounded-md text-sm px-1 focus:outline-none focus:ring-2 focus:ring-white/50 mt-1"
+          />
+        </div>
+      </header>
+      <div id="all-prompts" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+    </div>
+    <script type="module">
+      import {
+        likePrompt,
+        unlikePrompt,
+        updatePromptText,
+        addComment,
+        getComments,
+        unsharePrompt,
+        saveUserPrompt,
+        sharePromptByUser,
+        unsharePromptByUser,
+        incrementSaveCount,
+        incrementShareCount,
+      } from './src/prompt.js';
+      import { promptScore } from './src/scoring.js';
+      import { appState } from './src/state.js';
+      import { linkify } from './src/linkify.js';
+      import { timeAgo } from './src/timeago.js';
+      import { categories } from './src/prompts.js?v=65';
+      import {
+        getUserProfile,
+        getFollowingIds,
+        updateLastSocialVisit,
+        getUserByName,
+      } from './src/user.js';
+      import {
+        collection,
+        query,
+        where,
+        orderBy,
+        onSnapshot,
+      } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
+      import { db } from './src/firebase.js';
+      import { onAuth } from './src/auth.js';
+
+      const msgs = {
+        en: {
+          loginRequiredSaveShare: 'Login required to save or share prompts.',
+          promptSaved: 'Prompt saved!',
+          saveFailed: 'Failed to save prompt. Please try again.',
+          loginRequiredLike: 'You need to log in to like prompts.',
+          loginRequiredSharePrompt: 'You need to log in to share prompts.',
+          loginRequired: 'Login required',
+        },
+        tr: {
+          loginRequiredSaveShare: 'Promptları kaydetmek veya paylaşmak için giriş yapın.',
+          promptSaved: 'Prompt kaydedildi!',
+          saveFailed: 'Prompt kaydedilemedi. Lütfen tekrar deneyin.',
+          loginRequiredLike: 'Promptları beğenmek için giriş yapın.',
+          loginRequiredSharePrompt: 'Promptları paylaşmak için giriş yapın.',
+          loginRequired: 'Giriş gerekli',
+        },
+        es: {
+          loginRequiredSaveShare: 'Debes iniciar sesión para guardar o compartir prompts.',
+          promptSaved: '¡Prompt guardado!',
+          saveFailed: 'No se pudo guardar el prompt. Por favor inténtalo de nuevo.',
+          loginRequiredLike: 'Debes iniciar sesión para dar me gusta a los prompts.',
+          loginRequiredSharePrompt: 'Debes iniciar sesión para compartir prompts.',
+          loginRequired: 'Se requiere inicio de sesión',
+        },
+        fr: {
+          loginRequiredSaveShare: 'Vous devez vous connecter pour enregistrer ou partager des prompts.',
+          promptSaved: 'Prompt enregistré !',
+          saveFailed: 'Échec de l\'enregistrement du prompt. Veuillez réessayer.',
+          loginRequiredLike: 'Vous devez vous connecter pour aimer les prompts.',
+          loginRequiredSharePrompt: 'Vous devez vous connecter pour partager des prompts.',
+          loginRequired: 'Connexion requise',
+        },
+        zh: {
+          loginRequiredSaveShare: '需要登录才能保存或分享提示。',
+          promptSaved: '提示已保存!',
+          saveFailed: '保存提示失败。请再试一次。',
+          loginRequiredLike: '需要登录才能点赞提示。',
+          loginRequiredSharePrompt: '需要登录才能分享提示。',
+          loginRequired: '需要登录',
+        },
+        hi: {
+          loginRequiredSaveShare: 'प्रॉम्प्ट सहेजने या साझा करने के लिए लॉगिन करें।',
+          promptSaved: 'प्रॉम्प्ट सहेजा गया!',
+          saveFailed: 'प्रॉम्प्ट सहेजने में विफल। कृपया पुनः प्रयास करें।',
+          loginRequiredLike: 'प्रॉम्प्ट पसंद करने के लिए लॉगिन करें।',
+          loginRequiredSharePrompt: 'प्रॉम्प्ट साझा करने के लिए लॉगिन करें।',
+          loginRequired: 'लॉगिन आवश्यक है',
+        },
+      };
+
+      const setTheme = (theme) => {
+        const linkEl = document.getElementById('theme-css');
+        const version = linkEl.getAttribute('href').split('?')[1];
+        linkEl.href = `css/theme-${theme}.css${version ? `?${version}` : ''}`;
+        localStorage.setItem('theme', theme);
+      };
+
+      const profileCache = {};
+      const categoryMap = Object.fromEntries(
+        categories.map((c) => [c.id, c.name[appState.language] || c.id])
+      );
+      const commentsOpenMap = new Map();
+      const promptSearch = document.getElementById('prompt-search');
+      const fetchName = async (uid) => {
+        if (profileCache[uid]) return profileCache[uid];
+        const prof = await getUserProfile(uid);
+        profileCache[uid] = prof?.name || 'Unknown User';
+        return profileCache[uid];
+      };
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const targetPromptId =
+        urlParams.get('prompt') || window.location.hash.replace('#', '');
+
+      const sharePrompt = (prompt, baseUrl) => {
+        if (!prompt) return;
+        const link = ' https://prompterai.space';
+        const url = `${baseUrl}${encodeURIComponent(`${prompt}${link}`)}`;
+        window.open(url, '_blank');
+      };
+
+      const highlightPrompt = (id) => {
+        const card = document.querySelector(`[data-id="${id}"]`);
+        if (!card) return;
+        card.classList.add('ring-2', 'ring-yellow-400');
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => {
+          card.classList.remove('ring-2', 'ring-yellow-400');
+        }, 2000);
+      };
+
+      
+
+      const createCard = async (p, name, commentsArr) => {
+        const card = document.createElement('div');
+        card.dataset.id = p.id;
+        card.className =
+          'col-span-1 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg relative';
+
+        const textWrap = document.createElement('div');
+        textWrap.className = 'relative pr-6';
+
+        const textContainer = document.createElement('div');
+        textContainer.className = 'prompt-text-box overflow-hidden max-h-40';
+
+        const text = document.createElement('p');
+        text.innerHTML = linkify(p.text);
+        textContainer.appendChild(text);
+        textWrap.appendChild(textContainer);
+
+        const showMore = document.createElement('span');
+        showMore.className = 'text-blue-200 text-xs underline cursor-pointer';
+        showMore.textContent = 'Show more';
+        const toggleText = () => {
+          textContainer.classList.toggle('overflow-hidden');
+          textContainer.classList.toggle('max-h-40');
+          showMore.textContent = textContainer.classList.contains(
+            'overflow-hidden'
+          )
+            ? 'Show more'
+            : 'Show less';
+        };
+        showMore.addEventListener('click', toggleText);
+        requestAnimationFrame(() => {
+          if (textContainer.scrollHeight > textContainer.offsetHeight) {
+            textWrap.appendChild(showMore);
+          }
+        });
+
+        const copyBtn = document.createElement('button');
+        copyBtn.className =
+          'history-copy absolute top-0 right-0 p-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+        copyBtn.title = appState.language === 'tr' ? 'Kopyala' : 'Copy prompt';
+        copyBtn.setAttribute('aria-label', copyBtn.title);
+        copyBtn.innerHTML =
+          '<i data-lucide="copy" class="w-2 h-2" aria-hidden="true"></i>';
+        textWrap.appendChild(copyBtn);
+
+        const copyFeedback = document.createElement('span');
+        const copyTexts = {
+          tr: 'Kopyalandı!',
+          es: '¡Copiado!',
+          fr: 'Copié!',
+          zh: '已复制!',
+          hi: 'कॉपी किया गया!',
+          en: 'Copied!',
+        };
+        copyFeedback.className =
+          'absolute -top-3 right-0 text-green-400 text-xs hidden';
+        copyFeedback.textContent = copyTexts[appState.language] || 'Copied!';
+        textWrap.appendChild(copyFeedback);
+
+        copyBtn.addEventListener('click', () => {
+          navigator.clipboard
+            .writeText(p.text)
+            .then(() => {
+              copyFeedback.classList.remove('hidden');
+              setTimeout(() => copyFeedback.classList.add('hidden'), 1000);
+            })
+            .catch((err) => console.error('Failed to copy text:', err));
+        });
+
+        const nameEl = document.createElement('p');
+        nameEl.className = 'text-blue-200 text-xs mt-1 underline';
+        nameEl.innerHTML = `<a href="user.html?uid=${p.userId}">${name}</a>`;
+
+        const catEl = document.createElement('p');
+        catEl.className = 'text-blue-200 text-xs';
+        catEl.textContent = categoryMap[p.category] || p.category || 'random';
+
+        const likeRow = document.createElement('div');
+        likeRow.className = 'flex items-center gap-2 mt-2';
+
+        const saveBtn = document.createElement('button');
+        saveBtn.className =
+          'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+        saveBtn.title = 'Save prompt';
+        saveBtn.setAttribute('aria-label', 'Save prompt');
+        saveBtn.innerHTML =
+          '<i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>';
+        saveBtn.addEventListener('click', async () => {
+          saveBtn.disabled = true;
+          try {
+            if (!appState.currentUser) {
+              alert(msgs[appState.language].loginRequiredSaveShare);
+              saveBtn.disabled = false;
+              return;
+            }
+            appState.savedPrompts.push(p.text);
+            localStorage.setItem(
+              'savedPrompts',
+              JSON.stringify(appState.savedPrompts)
+            );
+            await saveUserPrompt(p.text, appState.currentUser.uid);
+            await incrementSaveCount(p.id);
+            alert(msgs[appState.language].promptSaved);
+            saveBtn.classList.toggle('active');
+            const icon = saveBtn.querySelector('svg');
+            if (icon)
+              icon.setAttribute(
+                'fill',
+                saveBtn.classList.contains('active') ? 'currentColor' : 'none'
+              );
+          } catch (err) {
+            console.error('Failed to save prompt:', err);
+            alert(msgs[appState.language].saveFailed);
+          } finally {
+            saveBtn.disabled = false;
+          }
+        });
+
+        const likeBtn = document.createElement('button');
+        likeBtn.className =
+          'like-btn p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+        likeBtn.innerHTML =
+          '<i data-lucide="heart" class="w-4 h-4" aria-hidden="true"></i>';
+
+        let likes = p.likes || 0;
+        const likeCount = document.createElement('span');
+        likeCount.className = 'text-xs';
+        const updateLikeText = () => {
+          likeCount.textContent = likes.toString();
+        };
+        updateLikeText();
+
+        const likeContainer = document.createElement('div');
+        likeContainer.className = 'flex items-center gap-1';
+        likeContainer.appendChild(likeBtn);
+        likeContainer.appendChild(likeCount);
+
+        let likedBy = p.likedBy || [];
+        const likeSummary = document.createElement('p');
+        likeSummary.className = 'text-xs text-blue-200 mt-1';
+        const likeList = document.createElement('div');
+        likeList.className = 'hidden text-xs space-y-1 absolute left-0 mt-1 bg-black/80 p-1 rounded-md z-10';
+        const likeWrapper = document.createElement('div');
+        likeWrapper.className = 'relative inline-block';
+        likeWrapper.appendChild(likeSummary);
+        likeWrapper.appendChild(likeList);
+        let listToggled = false;
+        let wrapperHover = false;
+        let listHover = false;
+        const showList = () => {
+          likeList.classList.remove('hidden');
+        };
+        const maybeHideList = () => {
+          if (!listToggled && !wrapperHover && !listHover) {
+            likeList.classList.add('hidden');
+          }
+        };
+        likeWrapper.addEventListener('mouseenter', () => {
+          wrapperHover = true;
+          showList();
+        });
+        likeWrapper.addEventListener('mouseleave', () => {
+          wrapperHover = false;
+          maybeHideList();
+        });
+        likeList.addEventListener('mouseenter', () => {
+          listHover = true;
+        });
+        likeList.addEventListener('mouseleave', () => {
+          listHover = false;
+          maybeHideList();
+        });
+        const toggleList = () => {
+          listToggled = !listToggled;
+          if (listToggled) showList();
+          else maybeHideList();
+        };
+
+        const renderLikeSummary = async () => {
+          if (!likedBy.length) {
+            likeSummary.style.display = 'none';
+            likeList.innerHTML = '';
+            return;
+          }
+          likeSummary.style.display = '';
+          const names = [];
+          for (const uid of likedBy) {
+            names.push(await fetchName(uid));
+          }
+          likeList.innerHTML = names
+            .map(
+              (n, idx) =>
+                `<div class="px-2"><a href="user.html?uid=${likedBy[idx]}" class="underline">${n}</a></div>`
+            )
+            .join('');
+
+          const first = names.slice(0, 3);
+          let summary = '';
+          if (first.length === 1) summary = first[0];
+          else if (first.length === 2) summary = `${first[0]} and ${first[1]}`;
+          else summary = `${first[0]}, ${first[1]} and ${first[2]}`;
+
+          if (names.length > first.length) {
+            const others = names.length - first.length;
+            summary += ` and <span class="like-others-toggle underline cursor-pointer">${others} others</span>`;
+          }
+
+          likeSummary.innerHTML = `${summary} liked this`;
+
+          const toggle = likeSummary.querySelector('.like-others-toggle');
+          if (toggle) {
+            toggle.addEventListener('click', toggleList);
+          }
+        };
+
+        const liked =
+          appState.currentUser &&
+          p.likedBy &&
+          p.likedBy.includes(appState.currentUser.uid);
+        if (liked) {
+          likeBtn.classList.add('active');
+        }
+
+        const updateLikeIcon = () => {
+          const svg = likeBtn.querySelector('svg');
+          if (svg)
+            svg.setAttribute(
+              'fill',
+              likeBtn.classList.contains('active') ? 'currentColor' : 'none'
+            );
+        };
+
+        likeBtn.addEventListener('click', async () => {
+          if (!appState.currentUser) {
+            alert(msgs[appState.language].loginRequiredLike);
+            return;
+          }
+          likeBtn.disabled = true;
+          const already = likeBtn.classList.contains('active');
+          try {
+            if (already) {
+              await unlikePrompt(p.id, appState.currentUser.uid);
+              likes -= 1;
+              updateLikeText();
+              appState.likedPrompts = appState.likedPrompts.filter(
+                (id) => id !== p.id
+              );
+              likedBy = likedBy.filter((id) => id !== appState.currentUser.uid);
+              likeBtn.classList.remove('active');
+            } else {
+              await likePrompt(p.id, appState.currentUser.uid);
+              likes += 1;
+              updateLikeText();
+              appState.likedPrompts.push(p.id);
+              likedBy.push(appState.currentUser.uid);
+              likeBtn.classList.add('active');
+            }
+            localStorage.setItem(
+              'likedPrompts',
+              JSON.stringify(appState.likedPrompts)
+            );
+            updateLikeIcon();
+            await renderLikeSummary();
+          } catch (err) {
+            console.error('Failed to toggle like:', err);
+          } finally {
+            likeBtn.disabled = false;
+          }
+        });
+
+
+        const twitterBtn = document.createElement('button');
+        twitterBtn.className =
+          'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+        twitterBtn.title = 'Share on Twitter';
+        twitterBtn.setAttribute('aria-label', 'Share on Twitter');
+        twitterBtn.innerHTML =
+          '<i data-lucide="twitter" class="w-4 h-4" aria-hidden="true"></i>';
+        const updateTwitterIcon = () => {
+          const svg = twitterBtn.querySelector('svg');
+          if (svg)
+            svg.setAttribute(
+              'fill',
+              twitterBtn.classList.contains('active') ? 'currentColor' : 'none'
+            );
+        };
+        updateTwitterIcon();
+        twitterBtn.addEventListener('click', () => {
+          twitterBtn.classList.toggle('active');
+          updateTwitterIcon();
+          sharePrompt(p.text, 'https://twitter.com/intent/tweet?text=');
+          incrementShareCount(p.id);
+        });
+
+        const editBtn = document.createElement('button');
+        editBtn.className =
+          'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+        editBtn.innerHTML =
+          '<i data-lucide="pencil" class="w-4 h-4" aria-hidden="true"></i>';
+
+        text.addEventListener('click', () => {
+          if (appState.currentUser && p.userId === appState.currentUser.uid) {
+            editBtn.click();
+          }
+        });
+
+        const unshareBtn = document.createElement('button');
+        unshareBtn.className =
+          'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+        unshareBtn.innerHTML =
+          '<i data-lucide="trash" class="w-4 h-4" aria-hidden="true"></i>';
+
+        editBtn.addEventListener('click', () => {
+          const textarea = document.createElement('textarea');
+          textarea.className = 'w-full p-2 rounded-md bg-black/30';
+          textarea.value = p.text;
+          textWrap.replaceChild(textarea, text);
+
+          const editRow = document.createElement('div');
+          editRow.className = 'flex items-center gap-2 mt-2';
+          const saveEdit = document.createElement('button');
+          saveEdit.className =
+            'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+          saveEdit.innerHTML =
+            '<i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>';
+          const cancelEdit = document.createElement('button');
+          cancelEdit.className =
+            'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+          cancelEdit.innerHTML =
+            '<i data-lucide="x" class="w-4 h-4" aria-hidden="true"></i>';
+          editRow.appendChild(saveEdit);
+          editRow.appendChild(cancelEdit);
+
+          card.replaceChild(editRow, likeRow);
+          window.lucide?.createIcons();
+
+          cancelEdit.addEventListener('click', () => {
+            textWrap.replaceChild(text, textarea);
+            card.replaceChild(likeRow, editRow);
+          });
+
+          saveEdit.addEventListener('click', async () => {
+            saveEdit.disabled = true;
+            try {
+              await updatePromptText(p.id, textarea.value);
+              p.text = textarea.value;
+              text.textContent = textarea.value;
+              cancelEdit.click();
+            } catch (err) {
+              console.error('Failed to update text:', err);
+              saveEdit.disabled = false;
+            }
+          });
+        });
+
+        unshareBtn.addEventListener('click', async () => {
+          unshareBtn.disabled = true;
+          try {
+            await unsharePrompt(p.id, appState.currentUser.uid);
+            card.remove();
+          } catch (err) {
+            console.error('Failed to unshare:', err);
+            unshareBtn.disabled = false;
+          }
+        });
+
+        updateLikeIcon();
+        await renderLikeSummary();
+
+        const commentsWrap = document.createElement('div');
+        commentsWrap.className = 'mt-2 space-y-1 hidden';
+        if (commentsOpenMap.get(p.id)) {
+          commentsWrap.classList.remove('hidden');
+        }
+        const commentList = document.createElement('div');
+        commentsWrap.appendChild(commentList);
+        const commentForm = document.createElement('form');
+        commentForm.className = 'flex items-center gap-2 mt-1';
+        const commentInput = document.createElement('input');
+        commentInput.type = 'text';
+        commentInput.placeholder = 'Add a comment...';
+        commentInput.className = 'flex-1 p-1 rounded-md bg-black/30';
+        const commentBtn = document.createElement('button');
+        commentBtn.type = 'submit';
+        commentBtn.className =
+          'px-2 py-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200';
+        commentBtn.innerHTML =
+          '<i data-lucide="send" class="w-4 h-4" aria-hidden="true"></i>';
+        commentBtn.setAttribute('aria-label', 'Send comment');
+        commentForm.appendChild(commentInput);
+        commentForm.appendChild(commentBtn);
+        commentsWrap.appendChild(commentForm);
+
+        const renderComment = async (c) => {
+          const n = await fetchName(c.userId);
+          const d = document.createElement('div');
+          d.className = 'bg-white/5 rounded-md px-2 py-1 text-sm';
+          d.innerHTML = n
+            ? `<a href="user.html?uid=${c.userId}" class="underline">${n}</a>: ${linkify(c.text)}`
+            : linkify(c.text);
+          commentList.appendChild(d);
+        };
+
+        for (const c of commentsArr) {
+          await renderComment(c);
+        }
+
+        commentForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          if (!appState.currentUser) {
+            alert(msgs[appState.language].loginRequired);
+            return;
+          }
+          const textVal = commentInput.value.trim();
+          if (!textVal) return;
+          commentBtn.disabled = true;
+          try {
+            await addComment(p.id, appState.currentUser.uid, textVal);
+            await renderComment({
+              text: textVal,
+              userId: appState.currentUser.uid,
+            });
+            commentNum += 1;
+            commentCount.textContent = commentNum.toString();
+            commentInput.value = '';
+          } finally {
+            commentBtn.disabled = false;
+          }
+        });
+
+        likeRow.appendChild(saveBtn);
+        likeRow.appendChild(twitterBtn);
+        if (appState.currentUser && p.userId === appState.currentUser.uid) {
+          likeRow.appendChild(editBtn);
+          likeRow.appendChild(unshareBtn);
+        }
+        const commentToggleBtn = document.createElement('button');
+        commentToggleBtn.className =
+          'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
+        commentToggleBtn.innerHTML =
+          '<i data-lucide="message-circle" class="w-4 h-4" aria-hidden="true"></i>';
+        commentToggleBtn.addEventListener('click', () => {
+          const hidden = commentsWrap.classList.toggle('hidden');
+          commentsOpenMap.set(p.id, !hidden);
+        });
+
+        const commentCount = document.createElement('span');
+        commentCount.className = 'text-xs';
+        let commentNum = commentsArr.length;
+        commentCount.textContent = commentNum.toString();
+
+        const commentContainer = document.createElement('div');
+        commentContainer.className = 'flex items-center gap-1';
+        commentContainer.appendChild(commentToggleBtn);
+        commentContainer.appendChild(commentCount);
+
+        likeRow.appendChild(likeContainer);
+        likeRow.appendChild(commentContainer);
+
+        card.appendChild(textWrap);
+        card.appendChild(nameEl);
+        card.appendChild(catEl);
+        const timeEl = document.createElement('p');
+        timeEl.className = 'text-blue-200 text-xs';
+        if (p.createdAt && p.createdAt.toMillis) {
+          timeEl.textContent = timeAgo(p.createdAt.toMillis(), appState.language);
+        }
+        card.appendChild(timeEl);
+        card.appendChild(likeRow);
+        card.appendChild(likeWrapper);
+        card.appendChild(commentsWrap);
+
+        return card;
+      };
+
+      async function render(prompts) {
+        const list = document.getElementById('all-prompts');
+        const scrollY = window.scrollY;
+        const existing = new Map();
+        list
+          .querySelectorAll('[data-id]')
+          .forEach((c) => existing.set(c.dataset.id, c));
+        if (!prompts || prompts.length === 0) {
+          const msg = document.createElement('p');
+          msg.className = 'text-blue-200 text-sm text-center';
+          msg.textContent = 'No shared prompts yet.';
+          list.appendChild(msg);
+          return;
+        }
+        const names = await Promise.all(
+          prompts.map((p) => fetchName(p.userId))
+        );
+        const commentsArr = await Promise.all(
+          prompts.map((p) => getComments(p.id))
+        );
+        const idSet = new Set(prompts.map((p) => p.id));
+        existing.forEach((el, id) => {
+          if (!idSet.has(id)) {
+            el.remove();
+            commentsOpenMap.delete(id);
+          }
+        });
+        for (let i = 0; i < prompts.length; i++) {
+          const p = prompts[i];
+          const comments = commentsArr[i];
+          const name = names[i];
+          const existingCard = existing.get(p.id);
+          const newCard = await createCard(p, name, comments);
+          newCard._data = p;
+          if (existingCard && list.contains(existingCard)) {
+            list.replaceChild(newCard, existingCard);
+            existing.delete(p.id);
+          } else {
+            const ref = list.children[i];
+            if (ref) list.insertBefore(newCard, ref);
+            else list.appendChild(newCard);
+          }
+        }
+        window.lucide?.createIcons();
+        document.querySelectorAll('#all-prompts .like-btn').forEach((b) => {
+          const svg = b.querySelector('svg');
+          if (svg && b.classList.contains('active')) {
+            svg.setAttribute('fill', 'currentColor');
+          }
+        });
+        window.scrollTo(0, scrollY);
+        if (targetPromptId) highlightPrompt(targetPromptId);
+      }
+
+      let loadedPrompts = [];
+
+      function filterAndRender() {
+        let filtered = loadedPrompts;
+        const term = promptSearch?.value?.trim().toLowerCase();
+        if (term) {
+          filtered = filtered.filter((p) =>
+            p.text.toLowerCase().includes(term)
+          );
+        }
+        render(filtered);
+      }
+
+      const debounce = (fn, delay = 300) => {
+        let t;
+        return (...args) => {
+          clearTimeout(t);
+          t = setTimeout(() => fn(...args), delay);
+        };
+      };
+
+      const debouncedFilter = debounce(filterAndRender, 300);
+      promptSearch?.addEventListener('input', debouncedFilter);
+
+      let unsubscribe = null;
+
+      const startListener = async () => {
+        if (unsubscribe) unsubscribe();
+        const constraints = [where('shared', '==', true)];
+
+        constraints.push(orderBy('createdAt', 'desc'));
+        const q = query(collection(db, 'prompts'), ...constraints);
+
+        unsubscribe = onSnapshot(
+          q,
+          async (snap) => {
+            let prompts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+            loadedPrompts = prompts;
+            filterAndRender();
+          },
+          (err) => {
+            console.error('Failed to load prompts:', err);
+            const list = document.getElementById('all-prompts');
+            if (err.code === 'failed-precondition') {
+              list.textContent =
+                'Firestore indexes are still building. Please refresh later.';
+            } else if (err.code === 'permission-denied') {
+              list.textContent = 'You don’t have permission to read prompts.';
+            } else {
+              list.textContent = err.message;
+            }
+          }
+        );
+      };
+
+      function init() {
+        localStorage.setItem('socialLastVisit', Date.now().toString());
+        onAuth((u) => {
+          if (u) updateLastSocialVisit(u.uid, Date.now());
+        });
+        promptSearch?.addEventListener('input', debouncedFilter);
+        onAuth(startListener);
+        startListener();
+      }
+
+      document.addEventListener('DOMContentLoaded', init);
+    </script>
+  </body>
+</html>

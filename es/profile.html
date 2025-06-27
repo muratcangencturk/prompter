@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil - Prompter</title>
+    <base href="../" />
+    <link rel="manifest" href="manifest.json?v=65" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <script>
+      (function () {
+        function addScript(src, onLoad) {
+          const s = document.createElement('script');
+          s.src = src;
+          s.async = true;
+          if (onLoad) {
+            s.addEventListener('load', onLoad, { once: true });
+          }
+          document.head.appendChild(s);
+          return s;
+        }
+
+        function fetchWithTimeout(url, timeout = 500) {
+          return Promise.race([
+            fetch(url, { method: 'HEAD', mode: 'no-cors' }),
+            new Promise((_, reject) =>
+              setTimeout(() => reject(new Error('timeout')), timeout)
+            ),
+          ]);
+        }
+
+        function loadWithFallback(primary, local) {
+          let cdnScript = null;
+          let localScript = null;
+          let resolveLoad;
+          const loadPromise = new Promise((resolve) => {
+            resolveLoad = resolve;
+          });
+
+          const addLocal = () => {
+            if (!localScript) {
+              localScript = document.createElement('script');
+              localScript.src = local;
+              localScript.async = true;
+              localScript.addEventListener('load', resolveLoad, { once: true });
+              document.head.appendChild(localScript);
+            }
+          };
+
+          if (!primary || !navigator.onLine) {
+            addLocal();
+            return { cdn: null, local: localScript, loadPromise };
+          }
+
+          let fallbackTimer = null;
+          fallbackTimer = setTimeout(() => {
+            addLocal();
+            fallbackTimer = null;
+          }, 500);
+
+          fetchWithTimeout(primary).catch(() => {
+            if (fallbackTimer) {
+              clearTimeout(fallbackTimer);
+              fallbackTimer = null;
+            }
+            addLocal();
+          });
+
+          cdnScript = addScript(primary, () => {
+            if (fallbackTimer) {
+              clearTimeout(fallbackTimer);
+              fallbackTimer = null;
+            }
+            resolveLoad();
+          });
+
+          cdnScript.onerror = () => {
+            if (fallbackTimer) {
+              clearTimeout(fallbackTimer);
+              fallbackTimer = null;
+            }
+            addLocal();
+          };
+
+          return { cdn: cdnScript, local: localScript, loadPromise };
+        }
+
+        window.lucideScripts = loadWithFallback(
+          'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js?v=65',
+          'lucide.min.js?v=65'
+        );
+        window.lucideScripts.loadPromise.finally(() => {
+          const appContainer = document.getElementById('app-container');
+          const loadingScreen = document.getElementById('loading-screen');
+          if (appContainer) appContainer.style.visibility = 'visible';
+          if (loadingScreen) loadingScreen.classList.add('hidden');
+        });
+      })();
+    </script>
+    <link rel="stylesheet" href="css/tailwind.css?v=65" />
+    <link rel="stylesheet" href="css/app.css?v=65" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=65" />
+    <script type="module" src="src/init-app.js?v=65"></script>
+    <script nomodule src="dist/init-app.js?v=65"></script>
+    <!--
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      }
+    </script>
+    -->
+    <script>
+      (function () {
+        const linkEl = document.getElementById('theme-css');
+        if (!linkEl) return;
+        const version = linkEl.getAttribute('href').split('?')[1];
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          linkEl.href = `css/theme-${savedTheme}.css${
+            version ? `?${version}` : ''
+          }`;
+        }
+      })();
+    </script>
+    <script type="module" src="src/profile.js?v=65"></script>
+    <script nomodule src="dist/profile.js?v=65"></script>
+    <script type="module" src="src/version.js?v=65"></script>
+  </head>
+  <body class="min-h-screen p-4">
+    <div id="loading-screen">
+      <div class="spinner" aria-label="Loading"></div>
+    </div>
+    <div id="app-container" class="w-full" style="visibility: hidden">
+      <header class="flex items-center justify-between w-full mt-4 mb-6">
+        <div class="flex items-center gap-2">
+          <a
+            id="back-link"
+            href="index.html"
+            class="p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50"
+            title="Back"
+            aria-label="Back"
+          >
+            <span
+              class="w-6 h-6 inline-flex items-center justify-center text-3xl"
+              aria-hidden="true"
+              >&larr;</span
+            >
+          </a>
+          <img
+            id="app-logo"
+            src="icons/logo.svg?v=65"
+            alt="Prompter logo"
+            class="w-12 h-12 sm:w-14 sm:h-14"
+          />
+          <div class="ml-1">
+            <h1
+              id="page-title"
+              class="text-xl sm:text-2xl font-bold leading-tight"
+            >
+              Prompter
+            </h1>
+            <p class="text-sm text-blue-200 sm:text-base">Perfil</p>
+          </div>
+        </div>
+        <div class="flex flex-col items-end gap-2 relative">
+          <div class="flex items-center gap-2">
+            <button
+              id="theme-light"
+              class="p-1.5 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50"
+              title="Light Theme"
+              aria-label="Light Theme"
+            >
+              <i data-lucide="sun" class="w-5 h-5" aria-hidden="true"></i>
+            </button>
+            <button
+              id="theme-dark"
+              class="p-1.5 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50"
+              title="Dark Theme"
+              aria-label="Dark Theme"
+            >
+              <i data-lucide="moon" class="w-5 h-5" aria-hidden="true"></i>
+            </button>
+            <button
+              id="notifications-btn"
+              class="p-1.5 rounded-md focus:outline-none focus:ring-2 focus:ring-white/50 relative"
+              title="Notifications"
+              aria-label="Notifications"
+            >
+              <i data-lucide="bell" class="w-5 h-5" aria-hidden="true"></i>
+              <span
+                id="notification-count"
+                class="hidden absolute -top-1 -right-1 bg-red-500 text-xs rounded-full w-4 h-4 flex items-center justify-center"
+              ></span>
+            </button>
+            <a
+              href="dm.html"
+              class="p-1.5 rounded-md focus:outline-none focus:ring-2 focus:ring-white/50"
+              title="Messages"
+              aria-label="Messages"
+            >
+              <i
+                data-lucide="message-circle"
+                class="w-5 h-5"
+                aria-hidden="true"
+              ></i>
+            </a>
+          </div>
+          <button
+            id="logout"
+            class="mt-2 bg-white/20 hover:bg-white/30 p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 flex items-center gap-1"
+          >
+            <i data-lucide="log-out" class="w-4 h-4" aria-hidden="true"></i>
+            <span>Cerrar sesión</span>
+          </button>
+          <p id="user-email" class="text-blue-200 text-xs"></p>
+          <div
+            id="notifications-panel"
+            class="hidden absolute right-0 mt-10 bg-black/80 backdrop-blur-md p-2 rounded-md border border-white/20 text-sm w-64 max-h-60 overflow-y-auto"
+          ></div>
+        </div>
+      </header>
+      <div class="mb-4"></div>
+      <div id="bio-wrapper" class="mb-2">
+        <p
+          id="user-bio"
+          class="text-blue-200 whitespace-pre-line cursor-pointer"
+        ></p>
+        <span
+          id="edit-bio-hint"
+          class="text-blue-200 text-xs underline cursor-pointer"
+          >Editar biografía</span
+        >
+      </div>
+      <div
+        id="bio-edit-row"
+        class="flex flex-col gap-2 mb-2 hidden"
+      >
+        <textarea
+          id="bio-input"
+          rows="3"
+          class="p-1 rounded-md w-full max-w-sm bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+        ></textarea>
+        <button
+          id="bio-update-btn"
+          class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
+        >
+          <i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div id="user-name-wrapper" class="mb-2 flex items-center justify-start gap-1">
+        <span id="username-label" class="text-white">Nombre de usuario:</span>
+        <p id="user-name" class="text-blue-200 cursor-pointer"></p>
+        <button
+          id="edit-name-btn"
+          class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
+          title="Editar nombre de usuario"
+        >
+          <i data-lucide="pencil" class="w-4 h-4" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div id="name-edit-row" class="flex justify-center gap-2 mb-2 hidden">
+        <input
+          id="name-input"
+          type="text"
+          class="p-1 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+        />
+        <button
+          id="name-update-btn"
+          class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
+        >
+          <i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="space-x-2 text-sm text-blue-200 my-4 text-center">
+        <span>Prompts: <span id="stat-prompts">0</span></span>
+        <span>Likes: <span id="stat-likes">0</span></span>
+        <span>Comentarios: <span id="stat-comments">0</span></span>
+        <span>Guardados: <span id="stat-saves">0</span></span>
+        <span>Compartidos: <span id="stat-shares">0</span></span>
+        <span>Siguiendo: <a id="stat-following" href="#" class="underline">0</a></span>
+        <span>Seguidores: <a id="stat-followers" href="#" class="underline">0</a></span>
+      </div>
+      <div id="following-list" class="hidden mb-4 text-center space-y-1"></div>
+      <div id="followers-list" class="hidden mb-4 text-center space-y-1"></div>
+      <section class="mb-6">
+        <h2 class="text-xl font-semibold mb-2">
+          <span id="saved-title-text">Prompts guardados</span> (<span
+            id="saved-count"
+            >0</span
+          >)
+        </h2>
+        <div
+          id="saved-list"
+          class="grid grid-cols-1 md:grid-cols-2 gap-4"
+        ></div>
+      </section>
+
+      <section class="mb-6">
+        <h2 class="text-xl font-semibold mb-2">
+          <span id="shared-title-text">Prompts compartidos</span> (<span
+            id="shared-count"
+            >0</span
+          >)
+        </h2>
+        <div
+          id="shared-list"
+          class="grid grid-cols-1 md:grid-cols-2 gap-4"
+        ></div>
+      </section>
+    </div>
+  </body>
+</html>
