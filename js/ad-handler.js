@@ -13,10 +13,15 @@
     // repeated attempts and duplicate ads.
     if (window.__adShownFallback) return;
 
+    let storageFailed = false;
     try {
       if (sessionStorage.getItem('adShown')) return;
       sessionStorage.setItem('adShown', 'yes');
-    } catch {
+    } catch (err) {
+      storageFailed = true;
+    }
+
+    if (storageFailed) {
       // sessionStorage may be unavailable (incognito mode, old browsers, etc.).
       // Mark with a fallback flag so future calls skip trying again.
       window.__adShownFallback = true;
