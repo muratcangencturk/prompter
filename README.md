@@ -44,7 +44,23 @@ disabled.
 
 ## Authentication
 
-Prompter uses Firebase Email/Password authentication configured in `src/firebase.js`.
+Prompter uses Firebase Email/Password authentication. Provide your Firebase
+credentials in a `firebase.config.json` file at the project root or expose them
+via `window.firebaseConfig` before the scripts load.
+The JSON file should follow this structure:
+
+```json
+{
+  "apiKey": "YOUR_API_KEY",
+  "authDomain": "YOUR_PROJECT.firebaseapp.com",
+  "projectId": "YOUR_PROJECT",
+  "storageBucket": "YOUR_PROJECT.appspot.com",
+  "messagingSenderId": "YOUR_SENDER_ID",
+  "appId": "YOUR_APP_ID",
+  "measurementId": "YOUR_MEASUREMENT_ID"
+}
+```
+
 Enable that sign‑in method in your Firebase console and add your domain (for example `localhost`) to the list of authorized domains.
 Serve the app using a simple HTTP server such as `python3 -m http.server` so Firebase initializes correctly.
 Synchronization of saved prompts with Firebase requires a logged-in session. When not authenticated, prompts are only stored locally.
@@ -89,7 +105,6 @@ Prompter offers a variety of prompt themes. Select a category by clicking its ic
 Prompter includes **12 categories** in total—the **Random** plus 11 themed options listed above. Each prompt is composed of four parts. Most categories now have **52** openings and endings and around **51** middle lines. The **AI** set now has **62** entries for its first and last sections, while **Ideas** and **Perspective** gained extra variations. As a result, most categories generate **7,033,104** prompts each. **Perspective** yields **7,030,503**, **Ideas** produces **8,642,816** and **AI** reaches **14,303,524**. In total the 11 themed categories provide **86,241,675** unique prompts per language—**517,450,050** across English, Turkish, Spanish, Hindi, French and Chinese.
 
 If icon fonts fail to load, the app falls back to emoji symbols so the buttons remain visible.
-
 
 Example: click the **Video** icon, then press **Generate New Prompt** to create a video-related idea.
 
@@ -239,7 +254,6 @@ All pages include the standard AdSense loader in the `<head>` tag:
   crossorigin="anonymous"
 ></script>
 ```
-
 
 The script fetches Google's ad library asynchronously using your publisher ID (`client`). After it loads you can place `<ins class="adsbygoogle">` elements in the body to display ads. See [the AdSense documentation](https://support.google.com/adsense/answer/9271723) for details on creating and customizing ad units.
 
