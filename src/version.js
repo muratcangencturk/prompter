@@ -93,4 +93,4 @@ export const clearServiceWorkersAndCaches = () => {
 
 // automatically run when imported
 // startVersionCheck();
-clearServiceWorkersAndCaches();
+// clearServiceWorkersAndCaches();
