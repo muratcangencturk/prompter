@@ -227,20 +227,16 @@ Firestore may take several minutes to build the indexes after deployment. During
 this period queries on the Social page can throw `failed-precondition` errors and
 show "Failed to load prompts."
 
-## Advertising (Google AdSense)
+## Advertising
 
-All pages include the standard AdSense loader in the `<head>` tag:
+Earlier versions used a pop‑up ad handler. Ads are now tied to small icon
+links instead. Pages insert third‑party code inside `<div class="ad-slot">`
+elements. After the page finishes loading, `hideEmptyAdSlots()` in
+`src/main.js` runs to remove any empty containers.
 
-```html
-<script
-  async
-  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5886415182402616"
-  crossorigin="anonymous"
-></script>
-```
-
-
-The script fetches Google's ad library asynchronously using your publisher ID (`client`). After it loads you can place `<ins class="adsbygoogle">` elements in the body to display ads. See [the AdSense documentation](https://support.google.com/adsense/answer/9271723) for details on creating and customizing ad units.
+Icons such as the **Pro** button trigger ads by opening external links with
+`window.open()` in a new tab. This icon‑based approach replaces the old
+pop‑up behavior and keeps the interface unobtrusive.
 
 ## FAQ
 
