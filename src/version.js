@@ -47,55 +47,23 @@ export const startVersionCheck = async () => {
 };
 
 export const clearServiceWorkersAndCaches = () => {
-  // If sessionStorage previously threw an error, rely on a global flag so we
-  // don't continually attempt storage access on subsequent calls.
-  if (window.__swCleanedFallback) return;
-
-  let cleaned = false;
-  try {
-    cleaned = sessionStorage.getItem('swCleaned');
-  } catch {
-    // sessionStorage can throw in some environments (e.g. private browsing).
-    // Remember the failure so later calls skip storage entirely.
-    window.__swCleanedFallback = true;
-  }
-
-  if (cleaned) {
-    return;
-  }
-
-  try {
-    sessionStorage.setItem('swCleaned', 'true');
-  } catch {
-    // Mark fallback on failure so we only attempt cleanup once per page load.
-    window.__swCleanedFallback = true;
-  }
-
-  const tasks = [];
-
   if ('serviceWorker' in navigator) {
-    tasks.push(
-      navigator.serviceWorker
-        .getRegistrations()
-        .then((regs) => {
-          for (const reg of regs) {
-            reg.unregister().catch(() => {});
-          }
-        })
-        .catch(() => {})
-    );
+    navigator.serviceWorker
+      .getRegistrations()
+      .then((regs) => {
+        for (const reg of regs) {
+          reg.unregister().catch(() => {});
+        }
+      })
+      .catch(() => {});
   }
 
   if ('caches' in window) {
-    tasks.push(
-      caches
-        .keys()
-        .then((keys) => Promise.all(keys.map((key) => caches.delete(key))))
-        .catch(() => {})
-    );
+    caches
+      .keys()
+      .then((keys) => Promise.all(keys.map((key) => caches.delete(key))))
+      .catch(() => {});
   }
-
-  Promise.all(tasks).catch(() => {});
 };
 
 // automatically run when imported
