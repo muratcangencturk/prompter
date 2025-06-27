@@ -47,8 +47,21 @@ export const startVersionCheck = async () => {
 };
 
 export const clearServiceWorkersAndCaches = () => {
-  if (sessionStorage.getItem('swCleaned')) {
+  let cleaned = false;
+  try {
+    cleaned = sessionStorage.getItem('swCleaned');
+  } catch {
+    // ignore storage access errors
+  }
+
+  if (cleaned) {
     return;
+  }
+
+  try {
+    sessionStorage.setItem('swCleaned', 'true');
+  } catch {
+    // ignore storage access errors
   }
 
   const tasks = [];
@@ -75,9 +88,7 @@ export const clearServiceWorkersAndCaches = () => {
     );
   }
 
-  Promise.all(tasks).finally(() => {
-    sessionStorage.setItem('swCleaned', 'true');
-  });
+  Promise.all(tasks).catch(() => {});
 };
 
 // automatically run when imported
