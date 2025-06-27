@@ -140,7 +140,7 @@ const updateTexts = () => {
   themeLightButton.setAttribute('aria-label', uiText[appState.language].light);
   themeDarkButton.title = uiText[appState.language].dark;
   themeDarkButton.setAttribute('aria-label', uiText[appState.language].dark);
-  const backLink = document.querySelector('a[href="index.html"]');
+  const backLink = document.getElementById('back-link');
   if (backLink) {
     backLink.title = uiText[appState.language].back;
     backLink.setAttribute('aria-label', uiText[appState.language].back);
