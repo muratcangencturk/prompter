@@ -3,11 +3,11 @@ import { categories, ICON_FALLBACKS, generatePrompt } from './prompts.js';
 
 const LANGUAGE_PAGES = {
   en: 'index.html',
-  tr: 'tr/index.html',
-  es: 'es/index.html',
-  fr: 'fr/index.html',
-  zh: 'zh/index.html',
-  hi: 'hi/index.html',
+  tr: 'tr/',
+  es: 'es/',
+  fr: 'fr/',
+  zh: 'zh/',
+  hi: 'hi/',
 };
 
 const uiText = {

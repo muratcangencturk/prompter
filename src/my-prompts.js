@@ -4,11 +4,11 @@ import { getUserSavedPrompts } from './prompt.js';
 
 const LANGUAGE_PAGES = {
   en: 'index.html',
-  tr: 'tr/index.html',
-  es: 'es/index.html',
-  fr: 'fr/index.html',
-  zh: 'zh/index.html',
-  hi: 'hi/index.html',
+  tr: 'tr/',
+  es: 'es/',
+  fr: 'fr/',
+  zh: 'zh/',
+  hi: 'hi/',
 };
 import {
   collection,

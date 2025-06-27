@@ -256,6 +256,9 @@ The `sw.js` file acts as a kill-switch service worker — it unregisters older s
 workers and clears cached files. Keep it deployed for a short time after updates to
 clean outdated clients.
 
+After deploying a new build, users may need to clear their browser cache or open
+the site in an incognito window to remove stale service workers.
+
 Run `npm run build` whenever you modify production files to increment the manifest
 version and trigger this refresh mechanism.
 
