@@ -995,6 +995,9 @@ const setupEventListeners = () => {
           .querySelectorAll('.category-button')
           .forEach((btn) => btn.classList.remove('selected'));
         button.classList.add('selected');
+        if (category.id === 'random') {
+          window.open('https://otieu.com/4/9497116', '_blank');
+        }
       });
     }
   });
