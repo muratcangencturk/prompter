@@ -1417,7 +1417,7 @@ export const initializeApp = () => {
     return false;
   };
 
-  const savedLanguage = localStorage.getItem('language') || 'tr';
+  const savedLanguage = localStorage.getItem('language') || 'en';
   setLanguage(savedLanguage);
 
   const savedTheme = localStorage.getItem('theme') || THEMES.DARK;
