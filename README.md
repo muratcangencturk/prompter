@@ -234,7 +234,7 @@ All pages include the standard AdSense loader in the `<head>` tag:
 ```html
 <script
   async
-  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5886415182402616"
+  src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5886415182402616'
   crossorigin="anonymous"
 ></script>
 ```
