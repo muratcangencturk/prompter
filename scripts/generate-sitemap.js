@@ -27,7 +27,14 @@ function pathToUrl(file) {
 }
 
 let htmlFiles = getHtmlFiles(rootDir);
-const customFiles = [path.join(rootDir, '404.html')];
+const customFiles = [
+  path.join(rootDir, '404.html'),
+  path.join(rootDir, 'tr', '404.html'),
+  path.join(rootDir, 'es', '404.html'),
+  path.join(rootDir, 'fr', '404.html'),
+  path.join(rootDir, 'hi', '404.html'),
+  path.join(rootDir, 'zh', '404.html'),
+];
 htmlFiles = Array.from(new Set([...htmlFiles, ...customFiles]));
 
 const urls = htmlFiles.map((file) => ({
