@@ -263,12 +263,15 @@ To customize the destinations, edit the `adLinks` array in `js/ad-handler.js` wi
 
 ### How do I update the production build?
 
-Run `npm run build` after any production change. This command regenerates build artifacts and increments the version in `manifest.json`. Open pages check the manifest every five minutes and reload automatically when the version changes.
+Run `npm run build` after any production change. This command regenerates build artifacts and increments the version in `manifest.json`. `src/version.js` can poll this file every five minutes and reload the page when the version changes. This check is disabled by default; see below for how to enable it.
 
 ## Automatic reloads and service worker
 
-All pages include `src/version.js`, which fetches `manifest.json` every five minutes.
-If the `version` field changes the page reloads so users receive the latest build.
+All pages include `src/version.js`, which provides a `startVersionCheck()`
+function that polls `manifest.json` every five minutes and reloads the page when
+the `version` field changes. The call to `startVersionCheck()` is currently
+commented out, so no automatic reload occurs by default. To re-enable it,
+uncomment the invocation near the bottom of `src/version.js`.
 The `sw.js` file acts as a kill-switch service worker — it unregisters older service
 workers and clears cached files. Keep it deployed for a short time after updates to
 clean outdated clients.
