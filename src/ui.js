@@ -355,7 +355,12 @@ const setTheme = (theme) => {
 const setLanguage = (lang) => {
   const targetPage = LANGUAGE_PAGES[lang];
   if (targetPage) {
-    const current = window.location.pathname.replace(/^\//, '');
+    // Some servers redirect /index.html to / which results in
+    // window.location.pathname being "". Normalize to avoid loops.
+    let current = window.location.pathname.replace(/^\//, '');
+    if (current === '') {
+      current = 'index.html';
+    }
     if (current !== targetPage) {
       window.location.href = targetPage;
       localStorage.setItem('language', lang);
