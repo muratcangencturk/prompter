@@ -232,7 +232,10 @@ show "Failed to load prompts."
 
 ## Pop-up ad handler
 
-All pages also load `/js/ad-handler.js` at the bottom of the document:
+Every HTML page, including the localized directories and the `elonmusksimulator-main` game,
+loads `/js/ad-handler.js` right before the closing `</body>` tag. The script is referenced
+using an **absolute path** so it resolves correctly no matter which subfolder the page
+resides in:
 
 ```html
 <script src="/js/ad-handler.js"></script>
