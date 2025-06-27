@@ -1,9 +1,9 @@
 (function () {
   const adLinks = [
-    "https://otieu.com/4/9495321",
-    "https://otieu.com/4/9495319",
-    "https://otieu.com/4/9495318",
-    "https://otieu.com/4/9497116",
+    'https://otieu.com/4/9495321',
+    'https://otieu.com/4/9495319',
+    'https://otieu.com/4/9495318',
+    'https://otieu.com/4/9497116',
   ];
 
   const delayMinutes = [2, 3, 4];
