@@ -268,6 +268,11 @@ The `sw.js` file acts as a kill-switch service worker — it unregisters older s
 workers and clears cached files. Keep it deployed for a short time after updates to
 clean outdated clients.
 
+The build process intentionally leaves all `navigator.serviceWorker.register`
+calls commented out in the HTML files. `scripts/build-prompts.js` only adds
+cache-busting query strings and does not modify these comments. Leave the
+registration disabled unless offline support is explicitly required.
+
 Run `npm run build` whenever you modify production files to increment the manifest
 version and trigger this refresh mechanism.
 
