@@ -3,7 +3,7 @@ import { onAuth } from './auth.js';
 import { appState } from './state.js';
 import { getUserSavedPrompts } from './prompt.js';
 
-loadFirebaseConfig()
+window.firebaseInitPromise = loadFirebaseConfig()
   .then((config) => {
     initFirebase(config);
     onAuth(async (user) => {
@@ -12,9 +12,7 @@ loadFirebaseConfig()
       try {
         const docs = await getUserSavedPrompts(user.uid);
         const texts = docs.map((d) => d.text);
-        const merged = Array.from(
-          new Set([...appState.savedPrompts, ...texts]),
-        );
+        const merged = Array.from(new Set([...appState.savedPrompts, ...texts]));
         localStorage.setItem('savedPrompts', JSON.stringify(merged));
         appState.savedPrompts = merged;
       } catch (err) {

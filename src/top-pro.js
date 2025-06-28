@@ -53,4 +53,7 @@ const load = async () => {
   }
 };
 
-document.addEventListener('DOMContentLoaded', load);
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.firebaseInitPromise) window.firebaseInitPromise.then(load);
+  else load();
+});
