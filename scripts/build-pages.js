@@ -55,6 +55,7 @@ function build() {
       ].join('\n    ');
       const inLanguages = `[${translations.map(o => `"${o.code}"`).join(', ')}]`;
       const params = {
+        ...t,
         LANG: lang,
         BASE_HREF: baseHref,
         DESCRIPTION: t[`${pageKey}_description`] || t.description,
