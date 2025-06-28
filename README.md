@@ -64,6 +64,7 @@ The JSON file should follow this structure:
 Enable that sign‑in method in your Firebase console and add your domain (for example `localhost`) to the list of authorized domains.
 Serve the app using a simple HTTP server such as `python3 -m http.server` so Firebase initializes correctly.
 Synchronization of saved prompts with Firebase requires a logged-in session. When not authenticated, prompts are only stored locally.
+Firestore caching is enabled via `enableIndexedDbPersistence`. Persistence errors are ignored so the app works even when offline caching cannot be activated.
 
 ### Versioning
 
