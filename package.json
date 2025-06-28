@@ -32,6 +32,6 @@
     "jsdom": "^24.0.0"
   },
   "dependencies": {
-    "dompurify": "^2.4.4"
+    "dompurify": "^3.2.6"
   }
 }
