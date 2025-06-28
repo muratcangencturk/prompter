@@ -4,7 +4,9 @@ This guide explains how to set up the project, run tests, lint and format the co
 
 ## Setup
 
-1. Install **Node.js** (v18 or later).
+1. Install **Node.js** (v22 or later). Cloud Functions deploy on Node 18, but
+   the dependencies are compatible with newer releases so local development
+   works best on Node 22.
 2. Clone the repository and navigate into it:
    ```bash
    git clone <your-fork-url>
