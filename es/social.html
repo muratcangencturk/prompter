@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     <title>Prompter Social</title>
     <base href="../" />
-    <link rel="manifest" href="manifest.json?v=69" />
+    <link rel="manifest" href="manifest.json?v=70" />
     <meta name="theme-color" content="#000000" />
     <meta
       http-equiv="Cache-Control"
@@ -19,14 +19,14 @@
     <meta name="robots" content="index,follow" />
     <meta property="og:title" content="Prompter Social" />
     <meta property="og:description" content="Enlaces para conectar con otros usuarios de Prompter." />
-    <meta property="og:image" content="/icons/logo.svg?v=69" />
+    <meta property="og:image" content="/icons/logo.svg?v=70" />
     <meta property="og:image:alt" content="Prompter logo" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Prompter Social" />
     <meta name="twitter:description" content="Enlaces para conectar con otros usuarios de Prompter." />
-    <meta name="twitter:image" content="/icons/logo.svg?v=69" />
-    <meta property="og:url" content="https://prompterai.space/es/social.html" />
+    <meta name="twitter:image" content="/icons/logo.svg?v=70" />
+    <meta property="og:url" content="/es/social.html" />
     <meta property="og:site_name" content="Prompter" />
     <meta property="og:locale" content="es" />
 <meta property="og:locale:alternate" content="en" />
@@ -35,26 +35,42 @@
     <meta property="og:locale:alternate" content="tr" />
     <meta property="og:locale:alternate" content="zh" />
 
-    <meta name="twitter:url" content="https://prompterai.space/es/social.html" />
-    <script type="module" src="/src/lucide-loader.js?v=69"></script>
-    <link rel="stylesheet" href="css/tailwind.css?v=69" />
-    <link rel="stylesheet" href="css/app.css?v=69" />
-    <script type="module" src="/src/init-app.js?v=69"></script>
-    <script nomodule src="/dist/init-app.js?v=69"></script>
+    <meta name="twitter:url" content="/es/social.html" />
+    <script type="module" src="/src/lucide-loader.js?v=70"></script>
+    <link rel="stylesheet" href="css/tailwind.css?v=70" />
+    <link rel="stylesheet" href="css/app.css?v=70" />
+    <script type="module" src="/src/init-app.js?v=70"></script>
+    <script nomodule src="/dist/init-app.js?v=70"></script>
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('sw.js').catch(() => {});
       }
     </script>
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=69" />
-<link rel="canonical" href="https://prompterai.space/es/social.html" />
-<link rel="alternate" href="https://prompterai.space/social.html" hreflang="x-default" />
-    <link rel="alternate" href="https://prompterai.space/social.html" hreflang="en" />
-    <link rel="alternate" href="https://prompterai.space/es/social.html" hreflang="es" />
-    <link rel="alternate" href="https://prompterai.space/fr/social.html" hreflang="fr" />
-    <link rel="alternate" href="https://prompterai.space/hi/social.html" hreflang="hi" />
-    <link rel="alternate" href="https://prompterai.space/tr/social.html" hreflang="tr" />
-    <link rel="alternate" href="https://prompterai.space/zh/social.html" hreflang="zh" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=70" />
+<link rel="canonical" href="/es/social.html" />
+<link rel="alternate" href="/social.html" hreflang="x-default" />
+    <link rel="alternate" href="/social.html" hreflang="en" />
+    <link rel="alternate" href="/es/social.html" hreflang="es" />
+    <link rel="alternate" href="/fr/social.html" hreflang="fr" />
+    <link rel="alternate" href="/hi/social.html" hreflang="hi" />
+    <link rel="alternate" href="/tr/social.html" hreflang="tr" />
+    <link rel="alternate" href="/zh/social.html" hreflang="zh" />
+<script>
+      (function () {
+        var path = '/es/social.html';
+        var url = location.origin + path;
+        var c = document.querySelector('link[rel="canonical"]');
+        if (c) c.href = url;
+        var og = document.querySelector('meta[property="og:url"]');
+        if (og) og.content = url;
+        var tw = document.querySelector('meta[name="twitter:url"]');
+        if (tw) tw.content = url;
+        document.querySelectorAll('link[rel="alternate"]').forEach(function(a){
+          var href = a.getAttribute('href');
+          if(href.startsWith('/')) a.href = location.origin + href;
+        });
+      })();
+    </script>
     <script>
       (function () {
         const linkEl = document.getElementById('theme-css');
@@ -68,7 +84,7 @@
         }
       })();
     </script>
-    <script type="module" src="/src/version.js?v=69"></script>
+    <script type="module" src="/src/version.js?v=70"></script>
   </head>
   <body class="min-h-screen p-4">
     <div id="loading-screen">
@@ -91,7 +107,7 @@
             >
           </a>
           <img
-            src="/icons/logo.svg?v=69"
+            src="/icons/logo.svg?v=70"
             alt="Prompter logo"
             class="w-12 h-12 sm:w-14 sm:h-14"
           />
@@ -134,7 +150,7 @@
       import { linkify } from '/src/linkify.js';
       import { sanitizeHTML, setSanitizedHTML } from '/src/sanitize.js';
       import { timeAgo } from '/src/timeago.js';
-      import { categories } from '/src/prompts.js?v=69';
+      import { categories } from '/src/prompts.js?v=70';
       import { BASE_URL } from '/src/config.js';
       import {
         getUserProfile,

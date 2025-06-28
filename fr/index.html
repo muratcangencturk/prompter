@@ -27,8 +27,8 @@
     />
     <title>PROMPTER</title>
     <base href="../" />
-    <link rel="icon" type="image/svg+xml" href="/icons/logo.svg?v=69" />
-    <link rel="manifest" href="manifest.json?v=69" />
+    <link rel="icon" type="image/svg+xml" href="/icons/logo.svg?v=70" />
+    <link rel="manifest" href="manifest.json?v=70" />
     <meta name="theme-color" content="#000000" />
     <meta
       http-equiv="Cache-Control"
@@ -49,7 +49,7 @@
     <meta
       property="og:description" content="Générateur de prompts créatifs pour l'IA nécessitant une connexion Internet."
     />
-    <meta property="og:image" content="/icons/logo.svg?v=69" />
+    <meta property="og:image" content="/icons/logo.svg?v=70" />
     <meta property="og:image:alt" content="Logo de Prompter" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -57,29 +57,45 @@
     <meta
       name="twitter:description" content="Générateur de prompts créatifs pour l'IA nécessitant une connexion Internet."
     />
-    <meta name="twitter:image" content="/icons/logo.svg?v=69" />
-    <meta property="og:url" content="https://prompterai.space/fr/" />
+    <meta name="twitter:image" content="/icons/logo.svg?v=70" />
+    <meta property="og:url" content="/fr/" />
     <meta property="og:site_name" content="Prompter" />
     <meta property="og:locale" content="fr" />
-    <meta name="twitter:url" content="https://prompterai.space/fr/" />
+    <meta name="twitter:url" content="/fr/" />
     <meta property="og:locale:alternate" content="en" />
     <meta property="og:locale:alternate" content="es" />
     <meta property="og:locale:alternate" content="hi" />
     <meta property="og:locale:alternate" content="tr" />
     <meta property="og:locale:alternate" content="zh" />
-    <link rel="canonical" href="https://prompterai.space/fr/" />
-    <link rel="alternate" href="https://prompterai.space/" hreflang="x-default" />
-    <link rel="alternate" href="https://prompterai.space/" hreflang="en" />
-    <link rel="alternate" href="https://prompterai.space/es/" hreflang="es" />
-    <link rel="alternate" href="https://prompterai.space/fr/" hreflang="fr" />
-    <link rel="alternate" href="https://prompterai.space/hi/" hreflang="hi" />
-    <link rel="alternate" href="https://prompterai.space/tr/" hreflang="tr" />
-    <link rel="alternate" href="https://prompterai.space/zh/" hreflang="zh" />
+    <link rel="canonical" href="/fr/" />
+    <link rel="alternate" href="/" hreflang="x-default" />
+    <link rel="alternate" href="/" hreflang="en" />
+    <link rel="alternate" href="/es/" hreflang="es" />
+    <link rel="alternate" href="/fr/" hreflang="fr" />
+    <link rel="alternate" href="/hi/" hreflang="hi" />
+    <link rel="alternate" href="/tr/" hreflang="tr" />
+    <link rel="alternate" href="/zh/" hreflang="zh" />
+<script>
+      (function () {
+        var path = '/fr/';
+        var url = location.origin + path;
+        var c = document.querySelector('link[rel="canonical"]');
+        if (c) c.href = url;
+        var og = document.querySelector('meta[property="og:url"]');
+        if (og) og.content = url;
+        var tw = document.querySelector('meta[name="twitter:url"]');
+        if (tw) tw.content = url;
+        document.querySelectorAll('link[rel="alternate"]').forEach(function(a){
+          var href = a.getAttribute('href');
+          if(href.startsWith('/')) a.href = location.origin + href;
+        });
+      })();
+    </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "url": "https://prompterai.space/fr/",
+        "url": "/fr/",
         "name": "Prompter",
         "alternateName": "Prompter",
         "inLanguage": ["en", "es", "fr", "hi", "tr", "zh"],
@@ -106,10 +122,10 @@
       }
     </script>
     <script>localStorage.setItem('language', 'fr');</script>
-    <script type="module" src="/src/lucide-loader.js?v=69"></script>
-    <link rel="stylesheet" href="css/tailwind.css?v=69" />
-    <link rel="stylesheet" href="css/app.css?v=69" />
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=69" />
+    <script type="module" src="/src/lucide-loader.js?v=70"></script>
+    <link rel="stylesheet" href="css/tailwind.css?v=70" />
+    <link rel="stylesheet" href="css/app.css?v=70" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=70" />
     <script>
       (function () {
         const linkEl = document.getElementById('theme-css');
@@ -121,7 +137,7 @@
         }
       })();
     </script>
-    <script type="module" src="/src/version.js?v=69"></script>
+    <script type="module" src="/src/version.js?v=70"></script>
   </head>
   <body class="min-h-screen p-4">
     <noscript>
@@ -357,7 +373,7 @@
       <!-- Header -->
       <div class="text-center mb-3 pt-4">
         <img
-          src="/icons/logo.svg?v=69"
+          src="/icons/logo.svg?v=70"
           alt="Logo de Prompter"
           class="mx-auto mb-4 w-16 h-16"
           id="app-logo"
@@ -540,17 +556,17 @@
           aria-label="WhatsApp Group"
         >
           <img
-            src="icons/whatsapp.svg?v=69"
+            src="icons/whatsapp.svg?v=70"
             class="w-6 h-6"
             alt="Logo WhatsApp"
           />
         </a>
       </div>
     </div>
-    <script type="module" src="/src/init-app.js?v=69"></script>
-    <script nomodule src="/dist/init-app.js?v=69"></script>
-    <script type="module" src="/src/main.js?v=69"></script>
-    <script nomodule src="/dist/main.js?v=69"></script>
+    <script type="module" src="/src/init-app.js?v=70"></script>
+    <script nomodule src="/dist/init-app.js?v=70"></script>
+    <script type="module" src="/src/main.js?v=70"></script>
+    <script nomodule src="/dist/main.js?v=70"></script>
     <script type="module">
       import { app, firebaseReady } from '/src/firebase.js';
       import { onAuth } from '/src/auth.js';

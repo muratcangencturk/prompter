@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     <title>Direct Messages - Prompter</title>
     <base href="./" />
-    <link rel="manifest" href="manifest.json?v=69" />
+    <link rel="manifest" href="manifest.json?v=70" />
     <meta name="theme-color" content="#000000" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
@@ -16,14 +16,14 @@
     <meta name="robots" content="index,follow" />
     <meta property="og:title" content="Direct Messages - Prompter" />
     <meta property="og:description" content="Creative AI prompt generator that requires an internet connection." />
-    <meta property="og:image" content="/icons/logo.svg?v=69" />
+    <meta property="og:image" content="/icons/logo.svg?v=70" />
     <meta property="og:image:alt" content="Prompter logo" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Direct Messages - Prompter" />
     <meta name="twitter:description" content="Creative AI prompt generator that requires an internet connection." />
-    <meta name="twitter:image" content="/icons/logo.svg?v=69" />
-    <meta property="og:url" content="https://prompterai.space/dm.html" />
+    <meta name="twitter:image" content="/icons/logo.svg?v=70" />
+    <meta property="og:url" content="/dm.html" />
     <meta property="og:site_name" content="Prompter" />
     <meta property="og:locale" content="en" />
 <meta property="og:locale:alternate" content="es" />
@@ -32,23 +32,39 @@
     <meta property="og:locale:alternate" content="tr" />
     <meta property="og:locale:alternate" content="zh" />
 
-    <meta name="twitter:url" content="https://prompterai.space/dm.html" />
-    <link rel="canonical" href="https://prompterai.space/dm.html" />
-<link rel="alternate" href="https://prompterai.space/dm.html" hreflang="x-default" />
-    <link rel="alternate" href="https://prompterai.space/dm.html" hreflang="en" />
-    <link rel="alternate" href="https://prompterai.space/es/dm.html" hreflang="es" />
-    <link rel="alternate" href="https://prompterai.space/fr/dm.html" hreflang="fr" />
-    <link rel="alternate" href="https://prompterai.space/hi/dm.html" hreflang="hi" />
-    <link rel="alternate" href="https://prompterai.space/tr/dm.html" hreflang="tr" />
-    <link rel="alternate" href="https://prompterai.space/zh/dm.html" hreflang="zh" />
-    <link rel="stylesheet" href="css/tailwind.css?v=69" />
-    <link rel="stylesheet" href="css/app.css?v=69" />
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=69" />
-    <script type="module" src="/src/init-app.js?v=69"></script>
-    <script nomodule src="/dist/init-app.js?v=69"></script>
-    <script type="module" src="/src/dm.js?v=69"></script>
-    <script nomodule src="dist/dm.js?v=69"></script>
-    <script type="module" src="/src/version.js?v=69"></script>
+    <meta name="twitter:url" content="/dm.html" />
+    <link rel="canonical" href="/dm.html" />
+<link rel="alternate" href="/dm.html" hreflang="x-default" />
+    <link rel="alternate" href="/dm.html" hreflang="en" />
+    <link rel="alternate" href="/es/dm.html" hreflang="es" />
+    <link rel="alternate" href="/fr/dm.html" hreflang="fr" />
+    <link rel="alternate" href="/hi/dm.html" hreflang="hi" />
+    <link rel="alternate" href="/tr/dm.html" hreflang="tr" />
+    <link rel="alternate" href="/zh/dm.html" hreflang="zh" />
+<script>
+      (function () {
+        var path = '/dm.html';
+        var url = location.origin + path;
+        var c = document.querySelector('link[rel="canonical"]');
+        if (c) c.href = url;
+        var og = document.querySelector('meta[property="og:url"]');
+        if (og) og.content = url;
+        var tw = document.querySelector('meta[name="twitter:url"]');
+        if (tw) tw.content = url;
+        document.querySelectorAll('link[rel="alternate"]').forEach(function(a){
+          var href = a.getAttribute('href');
+          if(href.startsWith('/')) a.href = location.origin + href;
+        });
+      })();
+    </script>
+    <link rel="stylesheet" href="css/tailwind.css?v=70" />
+    <link rel="stylesheet" href="css/app.css?v=70" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=70" />
+    <script type="module" src="/src/init-app.js?v=70"></script>
+    <script nomodule src="/dist/init-app.js?v=70"></script>
+    <script type="module" src="/src/dm.js?v=70"></script>
+    <script nomodule src="dist/dm.js?v=70"></script>
+    <script type="module" src="/src/version.js?v=70"></script>
   </head>
   <body class="min-h-screen p-4">
     <div id="app-container" class="w-full">
@@ -57,7 +73,7 @@
           <a id="back-link" href="/" class="p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50" aria-label="Back">
             <span class="w-6 h-6 inline-flex items-center justify-center text-3xl" aria-hidden="true">&larr;</span>
           </a>
-          <img src="/icons/logo.svg?v=69" alt="Prompter logo" class="w-12 h-12 sm:w-14 sm:h-14" />
+          <img src="/icons/logo.svg?v=70" alt="Prompter logo" class="w-12 h-12 sm:w-14 sm:h-14" />
           <div class="ml-1">
             <h1 class="text-xl sm:text-2xl font-bold leading-tight">Prompter</h1>
             <p class="text-sm text-blue-200 sm:text-base">Direct Messages</p>
