@@ -75,6 +75,25 @@ function getHtmlFiles(dir) {
   return files;
 }
 
+function getServedHtmlFiles(dir) {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  let files = [];
+  for (const entry of entries) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      if (
+        ['node_modules', 'templates', 'translations', 'prompts', 'scripts', 'test', 'elonmusksimulator-main'].includes(entry.name)
+      ) {
+        continue;
+      }
+      files = files.concat(getServedHtmlFiles(full));
+    } else if (entry.isFile() && entry.name.endsWith('.html')) {
+      files.push(full);
+    }
+  }
+  return files;
+}
+
 function appendVersionToAssets(html, version) {
   const assetRegex = /(src|href|content)=("|')(?!https?:\/\/|\/\/|mailto:|#)([^"'>]+)(\2)/g;
   const extPattern = /\.(js|css|svg|png|jpe?g|webp|gif|json|ico)$/i;
@@ -124,6 +143,41 @@ function updateRobotsFile(siteUrl) {
   console.log(`Updated ${path.relative(rootDir, robotsPath)}`);
 }
 
+function gatherAssets() {
+  const htmlFiles = getServedHtmlFiles(rootDir);
+  const assetRegex = /(src|href|content)=("|')(?!https?:\/\/|\/\/|mailto:|#)([^"'>]+)(\2)/g;
+  const extPattern = /\.(js|css|svg|png|jpe?g|webp|gif|json|ico)$/i;
+  const assets = new Set(['/']);
+  for (const file of htmlFiles) {
+    const rel = path.relative(rootDir, file).replace(/\\/g, '/');
+    assets.add(rel);
+    const html = fs.readFileSync(file, 'utf8');
+    let m;
+    while ((m = assetRegex.exec(html))) {
+      let url = m[3];
+      if (url.endsWith('.html')) continue;
+      const base = url.split(/[?#]/)[0];
+      if (!extPattern.test(base)) continue;
+      if (url.startsWith('/')) url = url.slice(1);
+      url = url.replace(/^\.\//, '');
+      while (url.startsWith('../')) url = url.slice(3);
+      assets.add(url);
+    }
+  }
+  return Array.from(assets).sort();
+}
+
+function updateServiceWorker(version) {
+  const swPath = path.join(rootDir, 'sw.js');
+  let sw = fs.readFileSync(swPath, 'utf8');
+  const assets = gatherAssets();
+  const assetLines = assets.map((a) => `  '${a}'`).join(',\n');
+  sw = sw.replace(/const CACHE_VERSION = 'v\d+';/, `const CACHE_VERSION = 'v${version}';`);
+  sw = sw.replace(/const ASSETS = \[[^\]]*\]/s, `const ASSETS = [\n${assetLines}\n]`);
+  fs.writeFileSync(swPath, sw);
+  console.log(`Updated ${path.relative(rootDir, swPath)}`);
+}
+
 function updateHtmlFiles(version, baseHref, siteUrl) {
   const htmlFiles = getHtmlFiles(rootDir);
   for (const file of htmlFiles) {
@@ -155,3 +209,4 @@ const siteUrl = process.env.SITE_URL || 'https://prompterai.space';
 updateHtmlFiles(version, baseHref, siteUrl);
 updateConfigFile(siteUrl);
 updateRobotsFile(siteUrl);
+updateServiceWorker(version);
