@@ -1,9 +1,9 @@
 import { doc, getDoc } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
-import { db } from './firebase.js';
+import { db, withRetry } from './firebase.js';
 
 const fetchPromptText = async (id) => {
   try {
-    const snap = await getDoc(doc(db, 'prompts', id));
+    const snap = await withRetry(() => getDoc(doc(db, 'prompts', id)));
     return snap.exists() ? snap.data().text : id;
   } catch {
     return id;
@@ -38,7 +38,7 @@ const showMessage = (msg) => {
 
 const load = async () => {
   try {
-    const snap = await getDoc(doc(db, 'stats', 'topPrompts'));
+    const snap = await withRetry(() => getDoc(doc(db, 'stats', 'topPrompts')));
     if (!snap.exists()) {
       console.error('topPrompts document does not exist');
       showMessage('Rankings are not available.');

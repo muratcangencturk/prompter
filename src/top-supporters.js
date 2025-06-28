@@ -1,5 +1,5 @@
 import { doc, getDoc } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
-import { db } from './firebase.js';
+import { db, withRetry } from './firebase.js';
 import { getUserProfile } from './user.js';
 
 const fetchName = async (uid) => {
@@ -39,7 +39,7 @@ const showMessage = (msg) => {
 
 const load = async () => {
   try {
-    const snap = await getDoc(doc(db, 'stats', 'topSupporters'));
+    const snap = await withRetry(() => getDoc(doc(db, 'stats', 'topSupporters')));
     if (!snap.exists()) {
       console.error('topSupporters document does not exist');
       showMessage('Rankings are not available.');

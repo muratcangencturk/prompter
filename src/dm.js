@@ -8,7 +8,7 @@ import {
   onSnapshot,
   serverTimestamp,
 } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
-import { db } from './firebase.js';
+import { db, withRetry } from './firebase.js';
 
 let currentUser = null;
 let unsubscribeMsgs = null;
@@ -67,11 +67,13 @@ messageForm.addEventListener('submit', async (e) => {
   const convId = messageForm.dataset.convId;
   const text = messageInput.value.trim();
   if (!convId || !text) return;
-  await addDoc(collection(db, `conversations/${convId}/messages`), {
-    text,
-    userId: currentUser.uid,
-    createdAt: serverTimestamp(),
-  });
+  await withRetry(() =>
+    addDoc(collection(db, `conversations/${convId}/messages`), {
+      text,
+      userId: currentUser.uid,
+      createdAt: serverTimestamp(),
+    })
+  );
   messageInput.value = '';
 });
 
@@ -85,12 +87,14 @@ createConvBtn.addEventListener('click', async () => {
       [currentUser.uid, ...membersRaw.split(',').map((m) => m.trim()).filter(Boolean)]
     )
   );
-  await addDoc(collection(db, 'conversations'), {
-    name: name || '',
-    members,
-    createdBy: currentUser.uid,
-    createdAt: serverTimestamp(),
-  });
+  await withRetry(() =>
+    addDoc(collection(db, 'conversations'), {
+      name: name || '',
+      members,
+      createdBy: currentUser.uid,
+      createdAt: serverTimestamp(),
+    })
+  );
 });
 
 onAuth((user) => {

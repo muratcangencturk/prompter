@@ -8,7 +8,7 @@ import {
   doc,
   updateDoc,
 } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
-import { db } from './firebase.js';
+import { db, withRetry } from './firebase.js';
 
 export const sendNotification = (uid, data) => {
   const { promptId, target, targetId, ...rest } = data || {};
@@ -16,14 +16,18 @@ export const sendNotification = (uid, data) => {
   if (promptId) payload.promptId = promptId;
   else if (targetId) payload.promptId = targetId;
   else if (target) payload.target = target;
-  return addDoc(collection(db, `users/${uid}/notifications`), {
-    ...payload,
-    createdAt: serverTimestamp(),
-  });
+  return withRetry(() =>
+    addDoc(collection(db, `users/${uid}/notifications`), {
+      ...payload,
+      createdAt: serverTimestamp(),
+    })
+  );
 };
 
 export const markNotificationRead = (uid, id) =>
-  updateDoc(doc(db, `users/${uid}/notifications/${id}`), { read: true });
+  withRetry(() =>
+    updateDoc(doc(db, `users/${uid}/notifications/${id}`), { read: true })
+  );
 
 export const listenNotifications = (uid, cb) => {
   const q = query(
