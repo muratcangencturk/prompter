@@ -125,9 +125,11 @@ const computeRankings = async () => {
 
 exports.aggregateInteractions = aggregateInteractions;
 
-exports.scheduledComputeRankings = functions.pubsub
-  .schedule('every 24 hours')
-  .onRun(computeRankings);
+if (functions.pubsub && typeof functions.pubsub.schedule === 'function') {
+  exports.scheduledComputeRankings = functions.pubsub
+    .schedule('every 24 hours')
+    .onRun(computeRankings);
+}
 
 exports.computeRankings = functions.https.onRequest(async (req, res) => {
   await computeRankings();
