@@ -11,8 +11,9 @@ import { onAuth } from './auth.js';
 import { getUserPrompts } from './prompt.js';
 import { categories } from './prompts.js';
 
-const categoryMap = Object.fromEntries(categories.map((c) => [c.id, c.name.en]));
-
+const categoryMap = Object.fromEntries(
+  categories.map((c) => [c.id, c.name.en])
+);
 
 const getParam = (key) => new URLSearchParams(window.location.search).get(key);
 
@@ -26,7 +27,8 @@ const renderPrompts = async (prompts) => {
 
   for (const p of prompts) {
     likes += p.likes || (Array.isArray(p.likedBy) ? p.likedBy.length : 0);
-    shares += p.shareCount || (Array.isArray(p.sharedBy) ? p.sharedBy.length : 0);
+    shares +=
+      p.shareCount || (Array.isArray(p.sharedBy) ? p.sharedBy.length : 0);
     saves += p.saveCount || 0;
     comments += p.commentCount || 0;
 
@@ -43,7 +45,8 @@ const renderPrompts = async (prompts) => {
     list.appendChild(card);
   }
 
-  document.getElementById('stat-prompts').textContent = prompts.length.toString();
+  document.getElementById('stat-prompts').textContent =
+    prompts.length.toString();
   document.getElementById('stat-likes').textContent = likes.toString();
   document.getElementById('stat-comments').textContent = comments.toString();
   document.getElementById('stat-saves').textContent = saves.toString();
@@ -84,12 +87,23 @@ const init = async () => {
   document.getElementById('user-name').textContent = name || uid;
   const bioEl = document.getElementById('user-bio');
   if (bioEl) bioEl.textContent = bio;
+  const schemaEl = document.getElementById('person-schema');
+  if (schemaEl) {
+    schemaEl.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: name || uid,
+      description: bio,
+    });
+  }
 
   const updateFollowCounts = async () => {
     followingIds = await getFollowingIds(uid);
     followerIds = await getFollowerIds(uid);
-    if (followingLink) followingLink.textContent = followingIds.length.toString();
-    if (followersLink) followersLink.textContent = followerIds.length.toString();
+    if (followingLink)
+      followingLink.textContent = followingIds.length.toString();
+    if (followersLink)
+      followersLink.textContent = followerIds.length.toString();
   };
   await updateFollowCounts();
 
