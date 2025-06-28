@@ -56,11 +56,7 @@ export function initFirebase(config) {
   app = initializeApp(config);
   auth = getAuth(app);
   db = getFirestore(app);
-  if (typeof window !== 'undefined' && 'indexedDB' in window) {
-    enableIndexedDbPersistence(db).catch(() =>
-      console.warn('Firestore persistence could not be enabled')
-    );
-  }
+  enableIndexedDbPersistence(db).catch(() => {});
   pendingAuthCallbacks.forEach((cb) => onAuthStateChanged(auth, cb));
   pendingAuthCallbacks.length = 0;
   readyResolve();
