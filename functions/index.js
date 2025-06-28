@@ -1,7 +1,17 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 
-admin.initializeApp();
+const appOptions = {};
+if (process.env.FIREBASE_SERVICE_ACCOUNT) {
+  try {
+    const svc = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+    appOptions.credential = admin.credential.cert(svc);
+  } catch (err) {
+    console.error('Failed to parse FIREBASE_SERVICE_ACCOUNT:', err);
+  }
+}
+
+admin.initializeApp(appOptions);
 const db = admin.firestore();
 const promptScore = (d = {}) => (d.likes || 0) + (d.saveCount || 0) + (d.shareCount || 0);
 const collectorScore = ({ likes = 0, saves = 0, shares = 0 } = {}) =>
