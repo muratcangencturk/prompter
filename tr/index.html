@@ -554,10 +554,12 @@
     <script type="module" src="src/main.js?v=67"></script>
     <script nomodule src="dist/main.js?v=67"></script>
     <script type="module">
-      import { app } from './src/firebase.js';
+      import { app, firebaseReady } from './src/firebase.js';
       import { onAuth } from './src/auth.js';
       import { appState } from './src/state.js';
       import { getAnalytics } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js';
+
+      await firebaseReady;
       const analytics = getAnalytics(app);
 
       const loginLink = document.getElementById('login-link');
