@@ -1,4 +1,9 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js';
 import { auth } from './firebase.js';
 
 export const pendingAuthCallbacks = [];
@@ -17,4 +22,11 @@ export const onAuth = (cb) => {
     return;
   }
   onAuthStateChanged(auth, cb);
+};
+
+export const runPendingAuthCallbacks = () => {
+  if (auth) {
+    pendingAuthCallbacks.forEach((cb) => onAuthStateChanged(auth, cb));
+    pendingAuthCallbacks.length = 0;
+  }
 };

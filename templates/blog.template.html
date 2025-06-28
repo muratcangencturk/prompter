@@ -587,8 +587,12 @@
       });
 
       document.addEventListener('DOMContentLoaded', () => {
-        onAuth(startListener);
-        startListener();
+        const run = () => {
+          onAuth(startListener);
+          startListener();
+        };
+        if (window.firebaseInitPromise) window.firebaseInitPromise.then(run);
+        else run();
       });
     </script>
   </body>

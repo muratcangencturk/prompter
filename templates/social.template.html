@@ -961,7 +961,10 @@
         onAuth((u) => startListener(u));
       }
 
-      document.addEventListener('DOMContentLoaded', init);
+      document.addEventListener('DOMContentLoaded', () => {
+        if (window.firebaseInitPromise) window.firebaseInitPromise.then(init);
+        else init();
+      });
     </script>
   </body>
 </html>
