@@ -9,4 +9,10 @@ export const login = (email, password) =>
 
 export const logout = () => signOut(auth);
 
-export const onAuth = (cb) => onAuthStateChanged(auth, cb);
+export const onAuth = (cb) => {
+  if (!auth) {
+    cb(null);
+    return;
+  }
+  onAuthStateChanged(auth, cb);
+};
