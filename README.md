@@ -275,6 +275,18 @@ node scripts/migrate-user-names.js
 
 Keep service‑account keys private and do not store them in the repository.
 
+### `FIREBASE_SERVICE_ACCOUNT`
+
+The Cloud Functions in `functions/` and Node scripts in `scripts/` also check
+this variable for service‑account credentials. Set it to the JSON contents of
+your key when a file path is inconvenient:
+
+```bash
+export FIREBASE_SERVICE_ACCOUNT="$(cat service-account.json)"
+```
+
+The JSON will be parsed and passed to `initializeApp()` as a credential.
+
 ## Advertising
 
 Prompter no longer loads Google AdSense scripts and currently does not display
