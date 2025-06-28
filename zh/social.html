@@ -36,11 +36,11 @@
     <meta property="og:locale:alternate" content="tr" />
 
     <meta name="twitter:url" content="https://prompterai.space/zh/social.html" />
-    <script type="module" src="src/lucide-loader.js?v=67"></script>
+    <script type="module" src="/src/lucide-loader.js?v=67"></script>
     <link rel="stylesheet" href="css/tailwind.css?v=67" />
     <link rel="stylesheet" href="css/app.css?v=67" />
-    <script type="module" src="src/init-app.js?v=67"></script>
-    <script nomodule src="dist/init-app.js?v=67"></script>
+    <script type="module" src="/src/init-app.js?v=67"></script>
+    <script nomodule src="/dist/init-app.js?v=67"></script>
     <!--
     <script>
       if ('serviceWorker' in navigator) {
@@ -70,7 +70,7 @@
         }
       })();
     </script>
-    <script type="module" src="src/version.js?v=67"></script>
+    <script type="module" src="/src/version.js?v=67"></script>
   </head>
   <body class="min-h-screen p-4">
     <div id="loading-screen">
@@ -130,20 +130,20 @@
         unsharePromptByUser,
         incrementSaveCount,
         incrementShareCount,
-      } from './src/prompt.js';
-      import { promptScore } from './src/scoring.js';
-      import { appState } from './src/state.js';
-      import { linkify } from './src/linkify.js';
-      import { sanitizeHTML, setSanitizedHTML } from './src/sanitize.js';
-      import { timeAgo } from './src/timeago.js';
-      import { categories } from './src/prompts.js?v=67';
-      import { BASE_URL } from './src/config.js';
+      } from '/src/prompt.js';
+      import { promptScore } from '/src/scoring.js';
+      import { appState } from '/src/state.js';
+      import { linkify } from '/src/linkify.js';
+      import { sanitizeHTML, setSanitizedHTML } from '/src/sanitize.js';
+      import { timeAgo } from '/src/timeago.js';
+      import { categories } from '/src/prompts.js?v=67';
+      import { BASE_URL } from '/src/config.js';
       import {
         getUserProfile,
         getFollowingIds,
         updateLastSocialVisit,
         getUserByName,
-      } from './src/user.js';
+      } from '/src/user.js';
       import {
         collection,
         query,
@@ -151,8 +151,8 @@
         orderBy,
         onSnapshot,
       } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
-      import { db } from './src/firebase.js';
-      import { onAuth } from './src/auth.js';
+      import { db } from '/src/firebase.js';
+      import { onAuth } from '/src/auth.js';
 
       const msgs = {
         en: {

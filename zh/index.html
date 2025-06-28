@@ -108,7 +108,7 @@
       }
     </script>
     <script>localStorage.setItem('language', 'zh');</script>
-    <script type="module" src="src/lucide-loader.js?v=67"></script>
+    <script type="module" src="/src/lucide-loader.js?v=67"></script>
     <link rel="stylesheet" href="css/tailwind.css?v=67" />
     <link rel="stylesheet" href="css/app.css?v=67" />
     <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=67" />
@@ -123,7 +123,7 @@
         }
       })();
     </script>
-    <script type="module" src="src/version.js?v=67"></script>
+    <script type="module" src="/src/version.js?v=67"></script>
   </head>
   <body class="min-h-screen p-4">
     <noscript>
@@ -549,14 +549,14 @@
         </a>
       </div>
     </div>
-    <script type="module" src="src/init-app.js?v=67"></script>
-    <script nomodule src="dist/init-app.js?v=67"></script>
-    <script type="module" src="src/main.js?v=67"></script>
-    <script nomodule src="dist/main.js?v=67"></script>
+    <script type="module" src="/src/init-app.js?v=67"></script>
+    <script nomodule src="/dist/init-app.js?v=67"></script>
+    <script type="module" src="/src/main.js?v=67"></script>
+    <script nomodule src="/dist/main.js?v=67"></script>
     <script type="module">
-      import { app, firebaseReady } from './src/firebase.js';
-      import { onAuth } from './src/auth.js';
-      import { appState } from './src/state.js';
+      import { app, firebaseReady } from '/src/firebase.js';
+      import { onAuth } from '/src/auth.js';
+      import { appState } from '/src/state.js';
       import { getAnalytics } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js';
 
       const init = () => {
@@ -574,7 +574,7 @@
         });
       };
 
-      window.firebaseInitPromise.then(init);
+      if (window.firebaseInitPromise) window.firebaseInitPromise.then(init); else init();
     </script>
   </body>
 </html>
