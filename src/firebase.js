@@ -1,17 +1,28 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js';
 import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js';
-import { getFirestore } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
+import {
+  getFirestore,
+  enableIndexedDbPersistence,
+} from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
 import { pendingAuthCallbacks } from './auth.js';
 
-export async function loadFirebaseConfig() {
+export async function loadFirebaseConfig(retries = 3) {
   if (window.firebaseConfig) {
     return window.firebaseConfig;
   }
-  const res = await fetch('/firebase.config.json');
-  if (!res.ok) {
-    throw new Error('Firebase configuration not found');
+  while (retries > 0) {
+    try {
+      const res = await fetch('/firebase.config.json');
+      if (!res.ok) throw new Error('Firebase configuration not found');
+      const cfg = await res.json();
+      window.firebaseConfig = cfg;
+      return cfg;
+    } catch (err) {
+      retries -= 1;
+      if (!retries) throw err;
+      await new Promise((r) => setTimeout(r, 1000));
+    }
   }
-  return res.json();
 }
 
 export let app;
@@ -27,6 +38,11 @@ export function initFirebase(config) {
   app = initializeApp(config);
   auth = getAuth(app);
   db = getFirestore(app);
+  if (typeof window !== 'undefined' && 'indexedDB' in window) {
+    enableIndexedDbPersistence(db).catch(() =>
+      console.warn('Firestore persistence could not be enabled')
+    );
+  }
   pendingAuthCallbacks.forEach((cb) => onAuthStateChanged(auth, cb));
   pendingAuthCallbacks.length = 0;
   readyResolve();
