@@ -8,10 +8,10 @@ const DOMPurify = createDOMPurify(window);
 const sanitizeHTML = (html) => DOMPurify.sanitize(html);
 
 function linkify(text) {
-  const urlRegex = /(https?:\/\/[^\s]+)/g;
-  const html = text.replace(urlRegex, (url) => {
+  const urlRegex = /(https?:\/\/[^\s]+?)([).]+)?(?=\s|$)/g;
+  const html = text.replace(urlRegex, (match, url, punctuation = '') => {
     const safeUrl = url.replace(/"/g, '&quot;');
-    return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer" class="underline">${url}</a>`;
+    return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer" class="underline">${url}</a>${punctuation}`;
   });
   return sanitizeHTML(html);
 }
@@ -49,4 +49,10 @@ runTest('linkify adds rel="noopener noreferrer" to links', () => {
   const text = 'visit https://example.com';
   const result = linkify(text);
   assert(/rel="noopener noreferrer"/.test(result));
+});
+
+runTest('linkify excludes trailing punctuation from URLs', () => {
+  const text = 'visit https://example.com).';
+  const result = linkify(text);
+  assert(/https:\/\/example\.com<\/a>\)\./.test(result));
 });
