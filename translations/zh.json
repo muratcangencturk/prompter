@@ -3,5 +3,9 @@
   "description": "需要互联网连接的创意AI提示生成器.",
   "keywords": "AI提示, 提示生成器, 创意提示, AI提示器, 提示制作器",
   "faq_question": "Prompter是什么？",
-  "faq_answer": "Prompter是一个网页应用，可以为AI模型生成创意提示。"
+  "faq_answer": "Prompter是一个网页应用，可以为AI模型生成创意提示。",
+  "login_description": "登录到提示器以保存您喜欢的提示。",
+  "login_keywords": "登录，提示节省，保存提示，登录，提示帐户",
+  "profile_description": "管理您的帐户详细信息和保存的提示",
+  "profile_keywords": "个人资料，保存的提示，帐户设置，用户配置文件"
 }

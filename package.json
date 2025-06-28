@@ -9,7 +9,7 @@
     "pretest": "node scripts/check-node-modules.js",
     "test": "npm run lint && npm run lint:prompts && node test/security.test.js",
     "lint:prompts": "node scripts/check-prompts.js",
-    "build": "node scripts/build-pages.js && node scripts/build-prompts.js",
+    "build": "node scripts/build-pages.js && node scripts/build-prompts.js && node scripts/update-meta.js",
     "build:es5": "babel src --out-dir dist --presets=@babel/preset-env",
     "build:sitemap": "node scripts/generate-sitemap.js",
     "build:css": "npx tailwindcss -i src/styles.css -o css/tailwind.css",

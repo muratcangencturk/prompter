@@ -3,5 +3,9 @@
   "description": "Creative AI prompt generator that requires an internet connection.",
   "keywords": "AI prompts, prompt generator, creative prompts, AI prompter, prompt maker",
   "faq_question": "What is Prompter?",
-  "faq_answer": "Prompter is a web app that generates creative prompts for AI models."
+  "faq_answer": "Prompter is a web app that generates creative prompts for AI models.",
+  "login_description": "Log in to Prompter to save your favorite prompts.",
+  "login_keywords": "login, prompt saver, save prompts, sign in, prompt account",
+  "profile_description": "Manage your account details and saved prompts.",
+  "profile_keywords": "profile, saved prompts, account settings, user profile"
 }

@@ -3,5 +3,9 @@
   "description": "İnternet bağlantısı gerektiren yaratıcı yapay zeka komut üreticisi.",
   "keywords": "yapay zeka komutları, komut üreticisi, yaratıcı komutlar, yapay zeka komut aracı, komut oluşturucu",
   "faq_question": "Prompter nedir?",
-  "faq_answer": "Prompter, yaratıcı yapay zeka komutları üreten bir web uygulamasıdır."
+  "faq_answer": "Prompter, yaratıcı yapay zeka komutları üreten bir web uygulamasıdır.",
+  "login_description": "En sevdiğiniz istemleri kaydetmek için Prompter'a giriş yapın.",
+  "login_keywords": "Giriş, istemi koruyucu, istemleri kaydet, oturum açın, hızlı hesap",
+  "profile_description": "Hesap bilgilerinizi ve kaydedilmiş istemlerinizi yönetin",
+  "profile_keywords": "Profil, kaydedilmiş istemler, hesap ayarları, kullanıcı profili"
 }
