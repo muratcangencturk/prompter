@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     <title>Introduction - Prompter</title>
-    <link rel="icon" type="image/svg+xml" href="/icons/logo.svg?v=69" />
-    <link rel="manifest" href="manifest.json?v=69" />
+    <link rel="icon" type="image/svg+xml" href="/icons/logo.svg?v=70" />
+    <link rel="manifest" href="manifest.json?v=70" />
     <meta name="theme-color" content="#000000" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
@@ -16,14 +16,14 @@
     <meta name="robots" content="index,follow" />
     <meta property="og:title" content="Introduction - Prompter" />
     <meta property="og:description" content="Prompter का उपयोग कैसे करें इसका परिचय।" />
-    <meta property="og:image" content="/icons/logo.svg?v=69" />
+    <meta property="og:image" content="/icons/logo.svg?v=70" />
     <meta property="og:image:alt" content="Prompter logo" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Introduction - Prompter" />
     <meta name="twitter:description" content="Prompter का उपयोग कैसे करें इसका परिचय।" />
-    <meta name="twitter:image" content="/icons/logo.svg?v=69" />
-    <meta property="og:url" content="https://prompterai.space/hi/intro.html" />
+    <meta name="twitter:image" content="/icons/logo.svg?v=70" />
+    <meta property="og:url" content="/hi/intro.html" />
     <meta property="og:site_name" content="Prompter" />
     <meta property="og:locale" content="hi" />
 <meta property="og:locale:alternate" content="en" />
@@ -32,19 +32,35 @@
     <meta property="og:locale:alternate" content="tr" />
     <meta property="og:locale:alternate" content="zh" />
 
-    <meta name="twitter:url" content="https://prompterai.space/hi/intro.html" />
-    <link rel="stylesheet" href="css/tailwind.css?v=69" />
-    <link rel="stylesheet" href="css/app.css?v=69" />
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=69" />
-    <link rel="canonical" href="https://prompterai.space/hi/intro.html" />
-<link rel="alternate" href="https://prompterai.space/intro.html" hreflang="x-default" />
-    <link rel="alternate" href="https://prompterai.space/intro.html" hreflang="en" />
-    <link rel="alternate" href="https://prompterai.space/es/intro.html" hreflang="es" />
-    <link rel="alternate" href="https://prompterai.space/fr/intro.html" hreflang="fr" />
-    <link rel="alternate" href="https://prompterai.space/hi/intro.html" hreflang="hi" />
-    <link rel="alternate" href="https://prompterai.space/tr/intro.html" hreflang="tr" />
-    <link rel="alternate" href="https://prompterai.space/zh/intro.html" hreflang="zh" />
-    <script type="module" src="/src/version.js?v=69"></script>
+    <meta name="twitter:url" content="/hi/intro.html" />
+    <link rel="stylesheet" href="css/tailwind.css?v=70" />
+    <link rel="stylesheet" href="css/app.css?v=70" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=70" />
+    <link rel="canonical" href="/hi/intro.html" />
+<link rel="alternate" href="/intro.html" hreflang="x-default" />
+    <link rel="alternate" href="/intro.html" hreflang="en" />
+    <link rel="alternate" href="/es/intro.html" hreflang="es" />
+    <link rel="alternate" href="/fr/intro.html" hreflang="fr" />
+    <link rel="alternate" href="/hi/intro.html" hreflang="hi" />
+    <link rel="alternate" href="/tr/intro.html" hreflang="tr" />
+    <link rel="alternate" href="/zh/intro.html" hreflang="zh" />
+<script>
+      (function () {
+        var path = '/hi/intro.html';
+        var url = location.origin + path;
+        var c = document.querySelector('link[rel="canonical"]');
+        if (c) c.href = url;
+        var og = document.querySelector('meta[property="og:url"]');
+        if (og) og.content = url;
+        var tw = document.querySelector('meta[name="twitter:url"]');
+        if (tw) tw.content = url;
+        document.querySelectorAll('link[rel="alternate"]').forEach(function(a){
+          var href = a.getAttribute('href');
+          if(href.startsWith('/')) a.href = location.origin + href;
+        });
+      })();
+    </script>
+    <script type="module" src="/src/version.js?v=70"></script>
   </head>
   <body class="bg-black text-white min-h-screen p-4">
     <h1 class="text-2xl font-bold mb-4">Welcome to Prompter</h1>
