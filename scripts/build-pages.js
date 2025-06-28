@@ -21,10 +21,14 @@ function render(template, params) {
   }, template);
 }
 
-function urlFor(lang, page) {
+function pathFor(lang, page) {
   const prefix = lang === 'en' ? '' : `/${lang}`;
   const pathPart = page === 'index.html' ? '/' : `/${page}`;
-  return `${siteUrl}${prefix}${pathPart}`;
+  return `${prefix}${pathPart}`;
+}
+
+function urlFor(lang, page) {
+  return `${siteUrl}${pathFor(lang, page)}`;
 }
 
 function build() {
@@ -41,15 +45,16 @@ function build() {
     for (const t of translations) {
       const lang = t.code;
       const baseHref = lang === 'en' ? './' : '../';
+      const canonicalPath = pathFor(lang, page);
       const canonical = urlFor(lang, page);
       const ogAlternates = translations
         .filter(o => o.code !== lang)
         .map(o => `<meta property="og:locale:alternate" content="${o.code}" />`)
         .join('\n    ');
       const alternateLinks = [
-        `<link rel="alternate" href="${urlFor('en', page)}" hreflang="x-default" />`,
+        `<link rel="alternate" href="${pathFor('en', page)}" hreflang="x-default" />`,
         ...translations.map(o => {
-          const href = urlFor(o.code, page);
+          const href = pathFor(o.code, page);
           return `<link rel="alternate" href="${href}" hreflang="${o.code}" />`;
         }),
       ].join('\n    ');
@@ -61,6 +66,7 @@ function build() {
         DESCRIPTION: t[`${pageKey}_description`] || t.description,
         KEYWORDS: t[`${pageKey}_keywords`] || t.keywords,
         CANONICAL_URL: canonical,
+        PAGE_PATH: canonicalPath,
         ALTERNATE_LINKS: alternateLinks,
         OG_ALTERNATES: ogAlternates,
         IN_LANGUAGES: inLanguages,

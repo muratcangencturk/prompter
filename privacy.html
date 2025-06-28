@@ -5,25 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     <title>Legal - Prompter</title>
-    <link rel="icon" type="image/svg+xml" href="/icons/logo.svg?v=69" />
-    <link rel="manifest" href="manifest.json?v=69" />
+    <link rel="icon" type="image/svg+xml" href="/icons/logo.svg?v=70" />
+    <link rel="manifest" href="manifest.json?v=70" />
     <meta name="theme-color" content="#000000" />
       <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
       <meta http-equiv="Pragma" content="no-cache" />
       <meta http-equiv="Expires" content="0" />
-    <meta name="description" content="Prompter privacy information and policy." />
+    <meta name="description" content="How Prompter protects your data and privacy." />
     <meta name="keywords" content="privacy, data protection, prompter privacy" />
     <meta name="robots" content="index,follow" />
     <meta property="og:title" content="Legal - Prompter" />
-    <meta property="og:description" content="Prompter privacy information and policy." />
-    <meta property="og:image" content="/icons/logo.svg?v=69" />
+    <meta property="og:description" content="How Prompter protects your data and privacy." />
+    <meta property="og:image" content="/icons/logo.svg?v=70" />
     <meta property="og:image:alt" content="Prompter logo" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Legal - Prompter" />
-    <meta name="twitter:description" content="Prompter privacy information and policy." />
-    <meta name="twitter:image" content="/icons/logo.svg?v=69" />
-    <meta property="og:url" content="https://prompterai.space/privacy.html" />
+    <meta name="twitter:description" content="How Prompter protects your data and privacy." />
+    <meta name="twitter:image" content="/icons/logo.svg?v=70" />
+    <meta property="og:url" content="/privacy.html" />
     <meta property="og:site_name" content="Prompter" />
     <meta property="og:locale" content="en" />
 <meta property="og:locale:alternate" content="es" />
@@ -32,24 +32,40 @@
     <meta property="og:locale:alternate" content="tr" />
     <meta property="og:locale:alternate" content="zh" />
 
-    <meta name="twitter:url" content="https://prompterai.space/privacy.html" />
+    <meta name="twitter:url" content="/privacy.html" />
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('sw.js').catch(() => {});
       }
     </script>
-    <link rel="stylesheet" href="css/tailwind.css?v=69" />
-    <link rel="stylesheet" href="css/app.css?v=69" />
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=69" />
-    <link rel="canonical" href="https://prompterai.space/privacy.html" />
-<link rel="alternate" href="https://prompterai.space/privacy.html" hreflang="x-default" />
-    <link rel="alternate" href="https://prompterai.space/privacy.html" hreflang="en" />
-    <link rel="alternate" href="https://prompterai.space/es/privacy.html" hreflang="es" />
-    <link rel="alternate" href="https://prompterai.space/fr/privacy.html" hreflang="fr" />
-    <link rel="alternate" href="https://prompterai.space/hi/privacy.html" hreflang="hi" />
-    <link rel="alternate" href="https://prompterai.space/tr/privacy.html" hreflang="tr" />
-    <link rel="alternate" href="https://prompterai.space/zh/privacy.html" hreflang="zh" />
-    <meta property="og:url" content="https://prompterai.space/privacy.html" />
+    <link rel="stylesheet" href="css/tailwind.css?v=70" />
+    <link rel="stylesheet" href="css/app.css?v=70" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=70" />
+    <link rel="canonical" href="/privacy.html" />
+<link rel="alternate" href="/privacy.html" hreflang="x-default" />
+    <link rel="alternate" href="/privacy.html" hreflang="en" />
+    <link rel="alternate" href="/es/privacy.html" hreflang="es" />
+    <link rel="alternate" href="/fr/privacy.html" hreflang="fr" />
+    <link rel="alternate" href="/hi/privacy.html" hreflang="hi" />
+    <link rel="alternate" href="/tr/privacy.html" hreflang="tr" />
+    <link rel="alternate" href="/zh/privacy.html" hreflang="zh" />
+<script>
+      (function () {
+        var path = '/privacy.html';
+        var url = location.origin + path;
+        var c = document.querySelector('link[rel="canonical"]');
+        if (c) c.href = url;
+        var og = document.querySelector('meta[property="og:url"]');
+        if (og) og.content = url;
+        var tw = document.querySelector('meta[name="twitter:url"]');
+        if (tw) tw.content = url;
+        document.querySelectorAll('link[rel="alternate"]').forEach(function(a){
+          var href = a.getAttribute('href');
+          if(href.startsWith('/')) a.href = location.origin + href;
+        });
+      })();
+    </script>
+    <meta property="og:url" content="/privacy.html" />
     <meta property="og:site_name" content="Prompter" />
     <meta property="og:locale" content="en" />
 <meta property="og:locale:alternate" content="es" />
@@ -58,8 +74,8 @@
     <meta property="og:locale:alternate" content="tr" />
     <meta property="og:locale:alternate" content="zh" />
 
-    <meta name="twitter:url" content="https://prompterai.space/privacy.html" />
-    <script type="module" src="/src/version.js?v=69"></script>
+    <meta name="twitter:url" content="/privacy.html" />
+    <script type="module" src="/src/version.js?v=70"></script>
   </head>
   <body class="bg-black text-white min-h-screen p-4">
       <h1 class="text-2xl font-bold mb-4">Legal</h1>
