@@ -21,5 +21,13 @@
   "user_description": "Bir kullanıcının paylaştığı istemleri ve profilini görüntüleyin.",
   "user_keywords": "kullanıcı profili, paylaşılan istemler",
   "prompter_logo_alt": "Prompter logosu",
-  "whatsapp_logo_alt": "WhatsApp logosu"
+  "whatsapp_logo_alt": "WhatsApp logosu",
+  "top_description": "En iyi kullanıcıları, istemleri ve destekçileri keşfedin.",
+  "top_keywords": "en iyi istemler, en iyi kullanıcılar, prompter sıralamaları",
+  "top_prompts_description": "Beğeni ve kaydetmeye göre sıralanan en popüler istemler.",
+  "top_prompts_keywords": "en iyi istemler, en popüler, istem sıralaması",
+  "top_creators_description": "Etkileşime göre sıralanan önde gelen istem oluşturucular.",
+  "top_creators_keywords": "en iyi oluşturucular, istem oluşturucu, sıralama",
+  "top_collectors_description": "Toplanan istem sayısına göre sıralanan kullanıcılar.",
+  "top_collectors_keywords": "en iyi koleksiyoncular, prompter kullanıcıları, sıralama"
 }
