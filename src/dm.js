@@ -10,6 +10,16 @@ import {
 } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
 import { db, withRetry } from './firebase.js';
 
+const MAX_MESSAGE_LENGTH = 500;
+const MAX_NAME_LENGTH = 50;
+// Allow letters, numbers, punctuation and whitespace
+const allowedChars = /^[\p{L}\p{N}\p{P}\p{Zs}]+$/u;
+
+const sanitizeText = (str) => str.replace(/[<>]/g, '');
+
+const isValidInput = (str, maxLen) =>
+  !!str && str.length <= maxLen && allowedChars.test(str);
+
 let currentUser = null;
 let unsubscribeMsgs = null;
 
@@ -67,9 +77,14 @@ messageForm.addEventListener('submit', async (e) => {
   const convId = messageForm.dataset.convId;
   const text = messageInput.value.trim();
   if (!convId || !text) return;
+  if (!isValidInput(text, MAX_MESSAGE_LENGTH)) {
+    alert('Message contains invalid characters or is too long.');
+    return;
+  }
+  const cleanText = sanitizeText(text);
   await withRetry(() =>
     addDoc(collection(db, `conversations/${convId}/messages`), {
-      text,
+      text: cleanText,
       userId: currentUser.uid,
       createdAt: serverTimestamp(),
     })
@@ -80,6 +95,10 @@ messageForm.addEventListener('submit', async (e) => {
 createConvBtn.addEventListener('click', async () => {
   if (!currentUser) return;
   const name = prompt('Group name');
+  if (name && !isValidInput(name.trim(), MAX_NAME_LENGTH)) {
+    alert('Conversation name contains invalid characters or is too long.');
+    return;
+  }
   const membersRaw = prompt('Comma-separated user IDs');
   if (!membersRaw) return;
   const members = Array.from(
@@ -89,7 +108,7 @@ createConvBtn.addEventListener('click', async () => {
   );
   await withRetry(() =>
     addDoc(collection(db, 'conversations'), {
-      name: name || '',
+      name: name ? sanitizeText(name.trim()) : '',
       members,
       createdBy: currentUser.uid,
       createdAt: serverTimestamp(),
