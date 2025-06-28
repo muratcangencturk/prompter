@@ -6,7 +6,7 @@ import {
 } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js';
 import { auth } from './firebase.js';
 
-const pendingAuthCallbacks = [];
+export const pendingAuthCallbacks = [];
 
 export const register = (email, password) =>
   createUserWithEmailAndPassword(auth, email, password);
