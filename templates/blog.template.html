@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
     <title>Space - Prompter</title>
     <base href="{{BASE_HREF}}" />
     <link rel="manifest" href="manifest.json?v=67" />
@@ -29,7 +32,7 @@
     <meta property="og:url" content="{{CANONICAL_URL}}" />
     <meta property="og:site_name" content="Prompter" />
     <meta property="og:locale" content="{{LANG}}" />
-{{OG_ALTERNATES}}
+    {{OG_ALTERNATES}}
 
     <meta name="twitter:url" content="{{CANONICAL_URL}}" />
     <script type="module" src="/src/lucide-loader.js?v=67"></script>
@@ -38,8 +41,16 @@
     <script type="module" src="/src/init-app.js?v=67"></script>
     <script nomodule src="/dist/init-app.js?v=67"></script>
     <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=67" />
-<link rel="canonical" href="{{CANONICAL_URL}}" />
-{{ALTERNATE_LINKS}}
+    <link rel="canonical" href="{{CANONICAL_URL}}" />
+    {{ALTERNATE_LINKS}}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Prompter Blog",
+        "url": "{{CANONICAL_URL}}"
+      }
+    </script>
     <script>
       (function () {
         const linkEl = document.getElementById('theme-css');
