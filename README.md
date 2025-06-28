@@ -249,6 +249,32 @@ show "Failed to load prompts."
 
 If you encounter `Cannot read properties of undefined (reading 'onAuthStateChanged')` on the Social page, your Firebase configuration is missing. Create a `firebase.config.json` file (using `firebase.config.example.json` as a template) or set `window.firebaseConfig` before loading the scripts.
 
+## CLI and script credentials
+
+Some maintenance tasks rely on the Firebase CLI or Node scripts in the `functions/` and `scripts/` folders. These tools require credentials to access your Firebase project.
+
+### `FIREBASE_TOKEN`
+
+Export a token when running Firebase CLI commands so deployments work without an interactive login:
+
+```bash
+export FIREBASE_TOKEN=YOUR_TOKEN
+firebase deploy --only firestore:indexes
+```
+
+Generate the token with `firebase login:ci`. **Never commit your token.**
+
+### `GOOGLE_APPLICATION_CREDENTIALS`
+
+Scripts that use the Firebase Admin SDK need a service‑account key when executed locally. Provide the path to the JSON key via `GOOGLE_APPLICATION_CREDENTIALS`:
+
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json
+node scripts/migrate-user-names.js
+```
+
+Keep service‑account keys private and do not store them in the repository.
+
 ## Advertising
 
 Prompter no longer loads Google AdSense scripts and currently does not display
