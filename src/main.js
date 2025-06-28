@@ -85,6 +85,7 @@ const hideEmptyAdSlots = () => {
 };
 
 const checkForNewPrompts = async (uid) => {
+  if (!db) return;
   if (!socialBadge) {
     socialBadge = document.getElementById('social-new-badge');
   }
@@ -121,20 +122,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (wasHidden) markAllNotificationsRead();
   });
 
-  checkForNewPrompts();
+  const start = () => {
+    checkForNewPrompts();
 
-  onAuth((user) => {
-    appState.currentUser = user;
-    if (!user) {
-      notifications = [];
-      renderNotifications();
-      unsubscribeNotifications?.();
-      checkForNewPrompts();
-      return;
-    }
-    initNotifications(user.uid);
-    checkForNewPrompts(user.uid);
-  });
+    onAuth((user) => {
+      appState.currentUser = user;
+      if (!user) {
+        notifications = [];
+        renderNotifications();
+        unsubscribeNotifications?.();
+        checkForNewPrompts();
+        return;
+      }
+      initNotifications(user.uid);
+      checkForNewPrompts(user.uid);
+    });
+  };
+
+  if (window.firebaseInitPromise) window.firebaseInitPromise.then(start);
+  else start();
+
   if (window.lucide && typeof window.lucide.createIcons === 'function') {
     window.lucide.createIcons();
   }

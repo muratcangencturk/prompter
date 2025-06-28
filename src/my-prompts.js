@@ -417,4 +417,7 @@ const init = () => {
 
 };
 
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.firebaseInitPromise) window.firebaseInitPromise.then(init);
+  else init();
+});
