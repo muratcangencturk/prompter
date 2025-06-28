@@ -7,7 +7,7 @@
     "format": "prettier --write \"**/*.{js,json,md,css,html}\"",
     "prepare": "husky install",
     "pretest": "node scripts/check-node-modules.js",
-    "test": "npm run lint && npm run lint:prompts && node test/security.test.js",
+    "test": "npm run lint && npm run lint:prompts && node test/security.test.js && node test/prompt.test.mjs && node test/user.test.mjs",
     "lint:prompts": "node scripts/check-prompts.js",
     "build": "node scripts/build-pages.js && node scripts/build-prompts.js && node scripts/update-meta.js",
     "build:es5": "babel src --out-dir dist --presets=@babel/preset-env",
