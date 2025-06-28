@@ -7,5 +7,7 @@
   "login_description": "Inicie sesión en Prompter para guardar sus indicaciones favoritas.",
   "login_keywords": "Iniciar sesión, indicar ahorro, guardar indicaciones, iniciar sesión, cuenta de indicación",
   "profile_description": "Administre los detalles de su cuenta y las indicaciones guardadas",
-  "profile_keywords": "perfil, indicaciones guardadas, configuración de cuenta, perfil de usuario"
+  "profile_keywords": "perfil, indicaciones guardadas, configuración de cuenta, perfil de usuario",
+  "prompter_logo_alt": "Logo de Prompter",
+  "whatsapp_logo_alt": "Logo de WhatsApp"
 }
