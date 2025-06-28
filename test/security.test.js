@@ -11,7 +11,7 @@ function linkify(text) {
   const urlRegex = /(https?:\/\/[^\s]+)/g;
   const html = text.replace(urlRegex, (url) => {
     const safeUrl = url.replace(/"/g, '&quot;');
-    return `<a href="${safeUrl}" target="_blank" class="underline">${url}</a>`;
+    return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer" class="underline">${url}</a>`;
   });
   return sanitizeHTML(html);
 }
@@ -43,4 +43,10 @@ runTest('linkify sanitizes malicious strings', () => {
   const malicious = 'visit https://example.com <img src=x onerror=alert(1)>';
   const clean = linkify(malicious);
   assert(!/onerror/i.test(clean) && !/script/i.test(clean));
+});
+
+runTest('linkify adds rel="noopener noreferrer" to links', () => {
+  const text = 'visit https://example.com';
+  const result = linkify(text);
+  assert(/rel="noopener noreferrer"/.test(result));
 });
