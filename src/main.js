@@ -4,6 +4,7 @@ import { listenNotifications, markNotificationRead } from './notifications.js';
 import { appState } from './state.js';
 import { getNewestPromptTimestamp } from './prompt.js';
 import { getLastSocialVisit } from './user.js';
+import { db } from './firebase.js';
 
 let notificationBtn;
 let notificationCountEl;
