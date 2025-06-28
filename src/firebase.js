@@ -19,7 +19,10 @@ export async function loadFirebaseConfig(retries = 3) {
       return cfg;
     } catch (err) {
       retries -= 1;
-      if (!retries) throw err;
+      if (!retries) {
+        console.error('Failed to load Firebase config:', err);
+        return null;
+      }
       await new Promise((r) => setTimeout(r, 1000));
     }
   }
