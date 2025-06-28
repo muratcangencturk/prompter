@@ -18,9 +18,13 @@ export let app;
 export let auth;
 export let db;
 
+let readyResolve;
+export const firebaseReady = new Promise((resolve) => {
+  readyResolve = resolve;
+});
+
 export function initFirebase(config) {
   app = initializeApp(config);
   auth = getAuth(app);
   db = getFirestore(app);
   runPendingAuthCallbacks();
-}
