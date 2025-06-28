@@ -1,6 +1,6 @@
 import { appState, THEMES } from './state.js';
 import { categories, ICON_FALLBACKS, generatePrompt } from './prompts.js';
-import { BASE_URL } from './config.js';
+import { BASE_URL, AD_LINK } from './config.js';
 
 const LANGUAGE_PAGES = {
   en: 'index.html',
@@ -996,8 +996,8 @@ const setupEventListeners = () => {
           .querySelectorAll('.category-button')
           .forEach((btn) => btn.classList.remove('selected'));
         button.classList.add('selected');
-        if (category.id === 'random') {
-          window.open('https://otieu.com/4/9497116', '_blank');
+        if (category.id === 'random' && AD_LINK) {
+          window.open(AD_LINK, '_blank');
         }
       });
     }
