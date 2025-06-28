@@ -3,5 +3,9 @@
   "description": "Générateur de prompts créatifs pour l'IA nécessitant une connexion Internet.",
   "keywords": "prompts IA, générateur de prompts, prompts créatifs, prompteur IA, créateur de prompts",
   "faq_question": "Qu'est-ce que Prompter ?",
-  "faq_answer": "Prompter est une application web qui génère des prompts créatifs pour les modèles d'IA."
+  "faq_answer": "Prompter est une application web qui génère des prompts créatifs pour les modèles d'IA.",
+  "login_description": "Connectez-vous à Prompter pour enregistrer vos invites préférées.",
+  "login_keywords": "Connexion, invite Saver, enregistrer les invites, connecter, inviter le compte",
+  "profile_description": "Gérez les détails de votre compte et les invites enregistrées",
+  "profile_keywords": "profil, invites enregistrées, paramètres de compte, profil utilisateur"
 }
