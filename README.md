@@ -215,9 +215,13 @@ href="/subdir/">` when serving from `/subdir/`.
 - You can automatically rewrite the `<base>` tags by setting the `BASE_HREF`
   environment variable when running `npm run build`, e.g. `BASE_HREF=/subdir/
 npm run build`.
-- In `scripts/generate-sitemap.js` replace the `BASE_URL` constant and run
-  `npm run build:sitemap` to regenerate `sitemap.xml`.
-- Update the `Sitemap:` line inside `robots.txt` with your new domain.
+- Set the `SITE_URL` environment variable when running the build commands, for example:
+
+```bash
+SITE_URL=https://example.com npm run build && npm run build:sitemap
+```
+
+This updates `sitemap.xml` and `robots.txt` with your domain.
 - Run `npm run build:es5` before deploying so older browsers load the transpiled scripts.
 
 ## Deployment

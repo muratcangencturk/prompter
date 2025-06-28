@@ -109,6 +109,21 @@ function updateConfigFile(siteUrl) {
   console.log(`Updated ${path.relative(rootDir, configPath)}`);
 }
 
+function updateRobotsFile(siteUrl) {
+  const robotsPath = path.join(rootDir, 'robots.txt');
+  if (!fs.existsSync(robotsPath)) return;
+  let contents = fs.readFileSync(robotsPath, 'utf8');
+  const sanitized = siteUrl.replace(/\/+$/, '');
+  const line = `Sitemap: ${sanitized}/sitemap.xml`;
+  if (/^Sitemap:/m.test(contents)) {
+    contents = contents.replace(/^Sitemap:.*/m, line);
+  } else {
+    contents += `\n${line}\n`;
+  }
+  fs.writeFileSync(robotsPath, contents);
+  console.log(`Updated ${path.relative(rootDir, robotsPath)}`);
+}
+
 function updateHtmlFiles(version, baseHref, siteUrl) {
   const htmlFiles = getHtmlFiles(rootDir);
   for (const file of htmlFiles) {
@@ -139,3 +154,4 @@ const baseHref = process.env.BASE_HREF;
 const siteUrl = process.env.SITE_URL || 'https://prompterai.space';
 updateHtmlFiles(version, baseHref, siteUrl);
 updateConfigFile(siteUrl);
+updateRobotsFile(siteUrl);
