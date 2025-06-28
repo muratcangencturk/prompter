@@ -15,7 +15,7 @@ import {
   arrayRemove,
   limit,
 } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
-import { db } from './firebase.js';
+import { db, withRetry } from './firebase.js';
 import { sendNotification } from './notifications.js';
 
 const samplePrompts = [
@@ -43,37 +43,41 @@ export const savePrompt = async (
       where('userId', '==', userId),
       where('text', '==', text)
     );
-    const snap = await getDocs(q);
+    const snap = await withRetry(() => getDocs(q));
     if (!snap.empty) {
       const ref = snap.docs[0].ref;
-      await updateDoc(ref, {
-        category,
-        shared: true,
-        sharedBy: arrayUnion(userId),
-        shareCount: increment(1),
-        userName,
-        userEmail,
-      });
+      await withRetry(() =>
+        updateDoc(ref, {
+          category,
+          shared: true,
+          sharedBy: arrayUnion(userId),
+          shareCount: increment(1),
+          userName,
+          userEmail,
+        })
+      );
       return ref;
     }
   } catch (err) {
     console.error('Failed to check existing prompt:', err);
   }
-  return addDoc(collection(db, 'prompts'), {
-    text,
-    userId,
-    userName,
-    userEmail,
-    category,
-    createdAt: serverTimestamp(),
-    likes: 0,
-    likedBy: [],
-    sharedBy: [userId],
-    shared: true,
-    saveCount: 0,
-    shareCount: 1,
-    commentCount: 0,
-  });
+  return withRetry(() =>
+    addDoc(collection(db, 'prompts'), {
+      text,
+      userId,
+      userName,
+      userEmail,
+      category,
+      createdAt: serverTimestamp(),
+      likes: 0,
+      likedBy: [],
+      sharedBy: [userId],
+      shared: true,
+      saveCount: 0,
+      shareCount: 1,
+      commentCount: 0,
+    })
+  );
 };
 
 export const getUserPrompts = async (userId) => {
@@ -83,7 +87,7 @@ export const getUserPrompts = async (userId) => {
     where('sharedBy', 'array-contains', userId)
   );
   try {
-    const snap = await getDocs(q);
+    const snap = await withRetry(() => getDocs(q));
     const prompts = snap.docs.map((d) => ({
       id: d.id,
       category: d.get('category') || 'random',
@@ -103,7 +107,7 @@ export const getAllPrompts = async () => {
     where('shared', '==', true),
     orderBy('createdAt', 'desc')
   );
-  const snap = await getDocs(q);
+  const snap = await withRetry(() => getDocs(q));
   return snap.docs
     .map((d) => ({
       id: d.id,
@@ -114,11 +118,13 @@ export const getAllPrompts = async () => {
 };
 
 export const likePrompt = async (promptId, userId) => {
-  await updateDoc(doc(db, 'prompts', promptId), {
-    likes: increment(1),
-    likedBy: arrayUnion(userId),
-  });
-  const snap = await getDoc(doc(db, 'prompts', promptId));
+  await withRetry(() =>
+    updateDoc(doc(db, 'prompts', promptId), {
+      likes: increment(1),
+      likedBy: arrayUnion(userId),
+    })
+  );
+  const snap = await withRetry(() => getDoc(doc(db, 'prompts', promptId)));
   const owner = snap.exists() ? snap.data().userId : null;
   if (owner && owner !== userId) {
     await sendNotification(owner, { type: 'like', promptId, from: userId });
@@ -126,64 +132,82 @@ export const likePrompt = async (promptId, userId) => {
 };
 
 export const unlikePrompt = (promptId, userId) =>
-  updateDoc(doc(db, 'prompts', promptId), {
-    likes: increment(-1),
-    likedBy: arrayRemove(userId),
-  });
+  withRetry(() =>
+    updateDoc(doc(db, 'prompts', promptId), {
+      likes: increment(-1),
+      likedBy: arrayRemove(userId),
+    })
+  );
 
 export const unsharePrompt = (promptId, userId) =>
-  updateDoc(doc(db, 'prompts', promptId), {
-    sharedBy: arrayRemove(userId),
-    shared: false,
-  });
+  withRetry(() =>
+    updateDoc(doc(db, 'prompts', promptId), {
+      sharedBy: arrayRemove(userId),
+      shared: false,
+    })
+  );
 
 export const sharePromptByUser = (promptId, userId) =>
-  updateDoc(doc(db, 'prompts', promptId), {
-    sharedBy: arrayUnion(userId),
-    shared: true,
-    shareCount: increment(1),
-  });
+  withRetry(() =>
+    updateDoc(doc(db, 'prompts', promptId), {
+      sharedBy: arrayUnion(userId),
+      shared: true,
+      shareCount: increment(1),
+    })
+  );
 
 export const unsharePromptByUser = (promptId, userId) =>
-  updateDoc(doc(db, 'prompts', promptId), {
-    sharedBy: arrayRemove(userId),
-    shareCount: increment(-1),
-  });
+  withRetry(() =>
+    updateDoc(doc(db, 'prompts', promptId), {
+      sharedBy: arrayRemove(userId),
+      shareCount: increment(-1),
+    })
+  );
 
 export const saveUserPrompt = (text, userId) =>
-  addDoc(collection(db, `users/${userId}/savedPrompts`), {
-    text,
-    createdAt: serverTimestamp(),
-  });
+  withRetry(() =>
+    addDoc(collection(db, `users/${userId}/savedPrompts`), {
+      text,
+      createdAt: serverTimestamp(),
+    })
+  );
 
 export const incrementSaveCount = (promptId) =>
-  updateDoc(doc(db, 'prompts', promptId), { saveCount: increment(1) });
+  withRetry(() =>
+    updateDoc(doc(db, 'prompts', promptId), { saveCount: increment(1) })
+  );
 
 export const incrementShareCount = (promptId, delta = 1) =>
-  updateDoc(doc(db, 'prompts', promptId), { shareCount: increment(delta) });
+  withRetry(() =>
+    updateDoc(doc(db, 'prompts', promptId), { shareCount: increment(delta) })
+  );
 
 export const getUserSavedPrompts = async (userId) => {
   const q = query(
     collection(db, `users/${userId}/savedPrompts`),
     orderBy('createdAt', 'desc')
   );
-  const snap = await getDocs(q);
+  const snap = await withRetry(() => getDocs(q));
   return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
 };
 
 export const updatePromptText = (promptId, newText) =>
-  updateDoc(doc(db, 'prompts', promptId), { text: newText });
+  withRetry(() => updateDoc(doc(db, 'prompts', promptId), { text: newText }));
 
 export const addComment = async (promptId, userId, text) => {
-  await addDoc(collection(db, `prompts/${promptId}/comments`), {
-    text,
-    userId,
-    createdAt: serverTimestamp(),
-  });
-  await updateDoc(doc(db, 'prompts', promptId), {
-    commentCount: increment(1),
-  });
-  const snap = await getDoc(doc(db, 'prompts', promptId));
+  await withRetry(() =>
+    addDoc(collection(db, `prompts/${promptId}/comments`), {
+      text,
+      userId,
+      createdAt: serverTimestamp(),
+    })
+  );
+  await withRetry(() =>
+    updateDoc(doc(db, 'prompts', promptId), {
+      commentCount: increment(1),
+    })
+  );
+  const snap = await withRetry(() => getDoc(doc(db, 'prompts', promptId)));
   const owner = snap.exists() ? snap.data().userId : null;
   if (owner && owner !== userId) {
     await sendNotification(owner, { type: 'comment', promptId, from: userId });
@@ -195,20 +219,26 @@ export const getComments = async (promptId) => {
     collection(db, `prompts/${promptId}/comments`),
     orderBy('createdAt', 'asc')
   );
-  const snap = await getDocs(q);
+  const snap = await withRetry(() => getDocs(q));
   return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
 };
 
 export const updateComment = (promptId, commentId, newText) =>
-  updateDoc(doc(db, `prompts/${promptId}/comments/${commentId}`), {
-    text: newText,
-  });
+  withRetry(() =>
+    updateDoc(doc(db, `prompts/${promptId}/comments/${commentId}`), {
+      text: newText,
+    })
+  );
 
 export const deleteComment = async (promptId, commentId) => {
-  await deleteDoc(doc(db, `prompts/${promptId}/comments/${commentId}`));
-  await updateDoc(doc(db, 'prompts', promptId), {
-    commentCount: increment(-1),
-  });
+  await withRetry(() =>
+    deleteDoc(doc(db, `prompts/${promptId}/comments/${commentId}`))
+  );
+  await withRetry(() =>
+    updateDoc(doc(db, 'prompts', promptId), {
+      commentCount: increment(-1),
+    })
+  );
 };
 
 export const getNewestPromptTimestamp = async () => {
@@ -218,7 +248,7 @@ export const getNewestPromptTimestamp = async () => {
     orderBy('createdAt', 'desc'),
     limit(1)
   );
-  const snap = await getDocs(q);
+  const snap = await withRetry(() => getDocs(q));
   if (snap.empty) return null;
   const ts = snap.docs[0].get('createdAt');
   return ts ? ts.toMillis() : null;

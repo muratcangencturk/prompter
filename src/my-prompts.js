@@ -20,7 +20,7 @@ import {
   orderBy,
   onSnapshot,
 } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
-import { db } from './firebase.js';
+import { db, withRetry } from './firebase.js';
 
 const uiText = {
   en: {
@@ -326,9 +326,11 @@ const setupEvents = () => {
           JSON.stringify(appState.savedPrompts)
         );
         if (appState.currentUser && savedPromptIds[idx]) {
-          updateDoc(
-            doc(db, `users/${appState.currentUser.uid}/savedPrompts`, savedPromptIds[idx]),
-            { text: textarea.value }
+          withRetry(() =>
+            updateDoc(
+              doc(db, `users/${appState.currentUser.uid}/savedPrompts`, savedPromptIds[idx]),
+              { text: textarea.value }
+            )
           ).catch((err) => console.error('Failed to update prompt:', err));
         }
         showFeedback(saveBtn.nextElementSibling);
@@ -345,8 +347,10 @@ const setupEvents = () => {
           JSON.stringify(appState.savedPrompts)
         );
         if (appState.currentUser && savedPromptIds[idx]) {
-          deleteDoc(
-            doc(db, `users/${appState.currentUser.uid}/savedPrompts`, savedPromptIds[idx])
+          withRetry(() =>
+            deleteDoc(
+              doc(db, `users/${appState.currentUser.uid}/savedPrompts`, savedPromptIds[idx])
+            )
           ).catch((err) => console.error('Failed to delete prompt:', err));
         }
         renderList();
