@@ -173,8 +173,7 @@
       }
 
       document.addEventListener('DOMContentLoaded', () => {
-        if (window.firebaseInitPromise) window.firebaseInitPromise.then(init);
-        else init();
+        window.firebaseInitPromise.then(init);
       });
     </script>
     <script type="module" src="src/version.js?v=67"></script>

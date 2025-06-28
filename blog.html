@@ -601,8 +601,7 @@
           onAuth(startListener);
           startListener();
         };
-        if (window.firebaseInitPromise) window.firebaseInitPromise.then(run);
-        else run();
+        window.firebaseInitPromise.then(run);
       });
     </script>
   </body>
