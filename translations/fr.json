@@ -7,5 +7,7 @@
   "login_description": "Connectez-vous à Prompter pour enregistrer vos invites préférées.",
   "login_keywords": "Connexion, invite Saver, enregistrer les invites, connecter, inviter le compte",
   "profile_description": "Gérez les détails de votre compte et les invites enregistrées",
-  "profile_keywords": "profil, invites enregistrées, paramètres de compte, profil utilisateur"
+  "profile_keywords": "profil, invites enregistrées, paramètres de compte, profil utilisateur",
+  "prompter_logo_alt": "Logo de Prompter",
+  "whatsapp_logo_alt": "Logo WhatsApp"
 }

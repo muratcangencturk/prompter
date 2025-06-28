@@ -51,6 +51,8 @@ function build() {
       IN_LANGUAGES: inLanguages,
       FAQ_QUESTION: t.faq_question,
       FAQ_ANSWER: t.faq_answer,
+      PROMPTER_LOGO_ALT: t.prompter_logo_alt,
+      WHATSAPP_LOGO_ALT: t.whatsapp_logo_alt,
       SET_LANGUAGE: lang === 'en' ? '' : `<script>localStorage.setItem('language', '${lang}');</script>`,
     };
     let html = render(template, params);
