@@ -247,6 +247,8 @@ Firestore may take several minutes to build the indexes after deployment. During
 this period queries on the Social page can throw `failed-precondition` errors and
 show "Failed to load prompts."
 
+If you encounter `Cannot read properties of undefined (reading 'onAuthStateChanged')` on the Social page, your Firebase configuration is missing. Create a `firebase.config.json` file (using `firebase.config.example.json` as a template) or set `window.firebaseConfig` before loading the scripts.
+
 ## Advertising
 
 Prompter no longer loads Google AdSense scripts and currently does not display
