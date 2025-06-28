@@ -1,8 +1,12 @@
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 const CACHE_NAME = `prompter-${CACHE_VERSION}`;
 const ASSETS = [
   '/',
   'index.html',
+  // TODO: generate this list automatically during the build process
+  'blog.html',
+  'pro.html',
+  'social.html',
   'css/tailwind.css',
   'css/app.css',
   'css/theme-dark.css',
