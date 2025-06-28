@@ -36,11 +36,11 @@
     <meta property="og:locale:alternate" content="zh" />
 
     <meta name="twitter:url" content="https://prompterai.space/fr/blog.html" />
-    <script type="module" src="src/lucide-loader.js?v=67"></script>
+    <script type="module" src="/src/lucide-loader.js?v=67"></script>
     <link rel="stylesheet" href="css/tailwind.css?v=67" />
     <link rel="stylesheet" href="css/app.css?v=67" />
-    <script type="module" src="src/init-app.js?v=67"></script>
-    <script nomodule src="dist/init-app.js?v=67"></script>
+    <script type="module" src="/src/init-app.js?v=67"></script>
+    <script nomodule src="/dist/init-app.js?v=67"></script>
     <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=67" />
 <link rel="canonical" href="https://prompterai.space/fr/blog.html" />
 <link rel="alternate" href="https://prompterai.space/blog.html" hreflang="x-default" />
@@ -63,7 +63,7 @@
         }
       })();
     </script>
-    <script type="module" src="src/version.js?v=67"></script>
+    <script type="module" src="/src/version.js?v=67"></script>
   </head>
   <body class="min-h-screen p-4">
     <div id="loading-screen">
@@ -151,18 +151,18 @@
         deletePost,
         updatePostText,
         postScore,
-      } from './src/blog.js';
-      import { BASE_URL } from './src/config.js';
+      } from '/src/blog.js';
+      import { BASE_URL } from '/src/config.js';
       import {
         getUserProfile,
         getFollowingIds,
         getUserByName,
-      } from './src/user.js';
-      import { onAuth } from './src/auth.js';
-      import { appState } from './src/state.js';
-      import { linkify } from './src/linkify.js';
-      import { sanitizeHTML, setSanitizedHTML } from './src/sanitize.js';
-      import { timeAgo } from './src/timeago.js';
+      } from '/src/user.js';
+      import { onAuth } from '/src/auth.js';
+      import { appState } from '/src/state.js';
+      import { linkify } from '/src/linkify.js';
+      import { sanitizeHTML, setSanitizedHTML } from '/src/sanitize.js';
+      import { timeAgo } from '/src/timeago.js';
       const msgs = {
         en: { loginRequired: 'Login required' },
         tr: { loginRequired: 'Giriş gerekli' },
@@ -178,7 +178,7 @@
         orderBy,
         onSnapshot,
       } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
-      import { db } from './src/firebase.js';
+      import { db } from '/src/firebase.js';
 
       const profileCache = {};
       const fetchName = async (uid) => {
