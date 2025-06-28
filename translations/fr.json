@@ -8,6 +8,18 @@
   "login_keywords": "Connexion, invite Saver, enregistrer les invites, connecter, inviter le compte",
   "profile_description": "Gérez les détails de votre compte et les invites enregistrées",
   "profile_keywords": "profil, invites enregistrées, paramètres de compte, profil utilisateur",
+  "privacy_description": "Informations sur la confidentialité de Prompter.",
+  "privacy_keywords": "confidentialité, protection des données, confidentialité prompter",
+  "terms_description": "Conditions d'utilisation de Prompter.",
+  "terms_keywords": "conditions d'utilisation, conditions prompter",
+  "blog_description": "Articles et actualités sur Prompter.",
+  "blog_keywords": "blog, mises à jour, articles, nouvelles prompter",
+  "intro_description": "Introduction à l'utilisation de Prompter.",
+  "intro_keywords": "introduction, guide, fonctionnement",
+  "social_description": "Liens pour se connecter avec d'autres utilisateurs de Prompter.",
+  "social_keywords": "social, communauté, liens utilisateur",
+  "user_description": "Voir les invites partagées et le profil d'un utilisateur.",
+  "user_keywords": "profil utilisateur, invites partagées",
   "prompter_logo_alt": "Logo de Prompter",
   "whatsapp_logo_alt": "Logo WhatsApp"
 }

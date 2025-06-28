@@ -8,6 +8,18 @@
   "login_keywords": "Giriş, istemi koruyucu, istemleri kaydet, oturum açın, hızlı hesap",
   "profile_description": "Hesap bilgilerinizi ve kaydedilmiş istemlerinizi yönetin",
   "profile_keywords": "Profil, kaydedilmiş istemler, hesap ayarları, kullanıcı profili",
+  "privacy_description": "Prompter gizlilik bilgileri ve politikası.",
+  "privacy_keywords": "gizlilik, veri koruma, prompter gizlilik",
+  "terms_description": "Prompter kullanım şartları.",
+  "terms_keywords": "kullanım şartları, prompter şartları",
+  "blog_description": "Prompter hakkında makaleler ve güncellemeler.",
+  "blog_keywords": "blog, güncellemeler, makaleler, prompter haberleri",
+  "intro_description": "Prompter'ı kullanmaya giriş.",
+  "intro_keywords": "tanıtım, rehber, nasıl çalışır",
+  "social_description": "Diğer Prompter kullanıcılarıyla bağlantı kurmak için bağlantılar.",
+  "social_keywords": "sosyal, topluluk, kullanıcı bağlantıları",
+  "user_description": "Bir kullanıcının paylaştığı istemleri ve profilini görüntüleyin.",
+  "user_keywords": "kullanıcı profili, paylaşılan istemler",
   "prompter_logo_alt": "Prompter logosu",
   "whatsapp_logo_alt": "WhatsApp logosu"
 }

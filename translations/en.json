@@ -8,6 +8,18 @@
   "login_keywords": "login, prompt saver, save prompts, sign in, prompt account",
   "profile_description": "Manage your account details and saved prompts.",
   "profile_keywords": "profile, saved prompts, account settings, user profile",
+  "privacy_description": "Prompter privacy information and policy.",
+  "privacy_keywords": "privacy, data protection, prompter privacy",
+  "terms_description": "Terms of use for Prompter.",
+  "terms_keywords": "terms of use, prompter terms",
+  "blog_description": "Articles and updates about Prompter.",
+  "blog_keywords": "blog, updates, articles, prompter news",
+  "intro_description": "Introduction to using Prompter.",
+  "intro_keywords": "introduction, guide, how it works",
+  "social_description": "Links to connect with other Prompter users.",
+  "social_keywords": "social, community, user links",
+  "user_description": "View a user's shared prompts and profile.",
+  "user_keywords": "user profile, shared prompts",
   "prompter_logo_alt": "Prompter logo",
   "whatsapp_logo_alt": "WhatsApp logo"
 }
