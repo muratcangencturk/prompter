@@ -21,5 +21,13 @@
   "user_description": "查看用户分享的提示和个人资料。",
   "user_keywords": "用户个人资料, 分享的提示",
   "prompter_logo_alt": "Prompter标志",
-  "whatsapp_logo_alt": "WhatsApp标志"
+  "whatsapp_logo_alt": "WhatsApp标志",
+  "top_description": "探索最受欢迎的用户、提示和支持者。",
+  "top_keywords": "热门提示, 顶级用户, prompter 排行",
+  "top_prompts_description": "按点赞和收藏排序的最受欢迎提示。",
+  "top_prompts_keywords": "热门提示, 最受欢迎, 提示排名",
+  "top_creators_description": "按互动量排名的顶级提示创作者。",
+  "top_creators_keywords": "顶级创作者, 提示创作者, 排行",
+  "top_collectors_description": "按收藏提示数量排名的用户。",
+  "top_collectors_keywords": "顶级收藏者, prompter 用户, 排行"
 }

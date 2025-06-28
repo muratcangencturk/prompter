@@ -21,5 +21,13 @@
   "user_description": "View a user's shared prompts and profile.",
   "user_keywords": "user profile, shared prompts",
   "prompter_logo_alt": "Prompter logo",
-  "whatsapp_logo_alt": "WhatsApp logo"
+  "whatsapp_logo_alt": "WhatsApp logo",
+  "top_description": "Explore top users, prompts and supporters.",
+  "top_keywords": "top prompts, top users, prompter rankings",
+  "top_prompts_description": "Most popular prompts ranked by likes and saves.",
+  "top_prompts_keywords": "top prompts, most popular prompts, prompt rankings",
+  "top_creators_description": "Leading prompt creators ranked by engagement.",
+  "top_creators_keywords": "top creators, prompt creators, ranking",
+  "top_collectors_description": "Power users ranked by prompts collected.",
+  "top_collectors_keywords": "top collectors, prompter users, ranking"
 }

@@ -21,5 +21,13 @@
   "user_description": "किसी उपयोगकर्ता के साझा किए गए प्रॉम्प्ट और प्रोफ़ाइल देखें।",
   "user_keywords": "उपयोगकर्ता प्रोफ़ाइल, साझा प्रॉम्प्ट",
   "prompter_logo_alt": "Prompter लोगो",
-  "whatsapp_logo_alt": "WhatsApp लोगो"
+  "whatsapp_logo_alt": "WhatsApp लोगो",
+  "top_description": "शीर्ष उपयोगकर्ता, प्रॉम्प्ट और समर्थकों को देखें.",
+  "top_keywords": "शीर्ष प्रॉम्प्ट, शीर्ष उपयोगकर्ता, prompter रैंकिंग",
+  "top_prompts_description": "सबसे धैन और सेव के अनुसार प्रॉम्प्ट.",
+  "top_prompts_keywords": "शीर्ष प्रॉम्प्ट, सबसे लोकप्रिय, प्रॉम्प्ट रैंकिंग",
+  "top_creators_description": "सबसे अधिक सहभागिता वाले प्रॉम्प्ट निर्माता.",
+  "top_creators_keywords": "शीर्ष निर्माता, प्रॉम्प्ट निर्माता, रैंकिंग",
+  "top_collectors_description": "संग्रहित प्रॉम्प्ट की संख्या पर आधारित उपयोगकर्ता.",
+  "top_collectors_keywords": "शीर्ष कलेक्टर, prompter उपयोगकर्ता, रैंकिंग"
 }

@@ -21,5 +21,13 @@
   "user_description": "Voir les invites partagées et le profil d'un utilisateur.",
   "user_keywords": "profil utilisateur, invites partagées",
   "prompter_logo_alt": "Logo de Prompter",
-  "whatsapp_logo_alt": "Logo WhatsApp"
+  "whatsapp_logo_alt": "Logo WhatsApp",
+  "top_description": "Découvrez les meilleurs utilisateurs, prompts et supporters.",
+  "top_keywords": "top prompts, meilleurs utilisateurs, classement prompter",
+  "top_prompts_description": "Prompts les plus populaires classés par mentions J'aime et sauvegardes.",
+  "top_prompts_keywords": "meilleurs prompts, plus populaires, classement prompts",
+  "top_creators_description": "Créateurs de prompts en tête selon l'engagement.",
+  "top_creators_keywords": "top créateurs, créateurs de prompts, classement",
+  "top_collectors_description": "Utilisateurs actifs classés par prompts collectés.",
+  "top_collectors_keywords": "top collectionneurs, utilisateurs prompter, classement"
 }
