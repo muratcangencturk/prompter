@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     <title>Profil - Prompter</title>
     <base href="../" />
-    <link rel="manifest" href="manifest.json?v=66" />
+    <link rel="manifest" href="manifest.json?v=67" />
     <meta name="theme-color" content="#000000" />
     <meta
       http-equiv="Cache-Control"
@@ -19,29 +19,37 @@
     <meta name="robots" content="index,follow" />
     <meta property="og:title" content="Profil - Prompter" />
     <meta property="og:description" content="Gérez les détails de votre compte et les invites enregistrées" />
-    <meta property="og:image" content="/icons/logo.svg?v=66" />
-    <meta property="og:image:alt" content="Logo de Prompter" />
+    <meta property="og:image" content="/icons/logo.svg?v=67" />
+    <meta property="og:image:alt" content="Prompter logo" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Profil - Prompter" />
     <meta name="twitter:description" content="Gérez les détails de votre compte et les invites enregistrées" />
-    <meta name="twitter:image" content="/icons/logo.svg?v=66" />
-    <meta property="og:url" content="https://prompterai.space/" />
+    <meta name="twitter:image" content="/icons/logo.svg?v=67" />
+    <meta property="og:url" content="https://prompterai.space/fr/profile.html" />
     <meta property="og:site_name" content="Prompter" />
     <meta property="og:locale" content="fr" />
 <meta property="og:locale:alternate" content="en" />
-    <meta property="og:locale:alternate" content="tr" />
     <meta property="og:locale:alternate" content="es" />
-    <meta property="og:locale:alternate" content="zh" />
     <meta property="og:locale:alternate" content="hi" />
+    <meta property="og:locale:alternate" content="tr" />
+    <meta property="og:locale:alternate" content="zh" />
 
-    <meta name="twitter:url" content="https://prompterai.space/" />
-    <script type="module" src="src/lucide-loader.js?v=66"></script>
-    <link rel="stylesheet" href="css/tailwind.css?v=66" />
-    <link rel="stylesheet" href="css/app.css?v=66" />
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=66" />
-    <script type="module" src="src/init-app.js?v=66"></script>
-    <script nomodule src="dist/init-app.js?v=66"></script>
+    <meta name="twitter:url" content="https://prompterai.space/fr/profile.html" />
+    <script type="module" src="src/lucide-loader.js?v=67"></script>
+    <link rel="stylesheet" href="css/tailwind.css?v=67" />
+    <link rel="stylesheet" href="css/app.css?v=67" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=67" />
+<link rel="canonical" href="https://prompterai.space/fr/profile.html" />
+<link rel="alternate" href="https://prompterai.space/profile.html" hreflang="x-default" />
+    <link rel="alternate" href="https://prompterai.space/profile.html" hreflang="en" />
+    <link rel="alternate" href="https://prompterai.space/es/profile.html" hreflang="es" />
+    <link rel="alternate" href="https://prompterai.space/fr/profile.html" hreflang="fr" />
+    <link rel="alternate" href="https://prompterai.space/hi/profile.html" hreflang="hi" />
+    <link rel="alternate" href="https://prompterai.space/tr/profile.html" hreflang="tr" />
+    <link rel="alternate" href="https://prompterai.space/zh/profile.html" hreflang="zh" />
+    <script type="module" src="src/init-app.js?v=67"></script>
+    <script nomodule src="dist/init-app.js?v=67"></script>
     <!--
     <script>
       if ('serviceWorker' in navigator) {
@@ -62,16 +70,9 @@
         }
       })();
     </script>
-    <script type="module" src="src/profile.js?v=66"></script>
-    <script nomodule src="dist/profile.js?v=66"></script>
-    <script type="module" src="src/version.js?v=66"></script>
-    <link rel="alternate" href="https://prompterai.space/profile.html" hreflang="x-default" />
-    <link rel="alternate" href="https://prompterai.space/profile.html" hreflang="en" />
-    <link rel="alternate" href="https://prompterai.space/es/profile.html" hreflang="es" />
-    <link rel="alternate" href="https://prompterai.space/fr/profile.html" hreflang="fr" />
-    <link rel="alternate" href="https://prompterai.space/hi/profile.html" hreflang="hi" />
-    <link rel="alternate" href="https://prompterai.space/tr/profile.html" hreflang="tr" />
-    <link rel="alternate" href="https://prompterai.space/zh/profile.html" hreflang="zh" />
+    <script type="module" src="src/profile.js?v=67"></script>
+    <script nomodule src="dist/profile.js?v=67"></script>
+    <script type="module" src="src/version.js?v=67"></script>
   </head>
   <body class="min-h-screen p-4">
     <div id="loading-screen">
@@ -95,8 +96,8 @@
           </a>
           <img
             id="app-logo"
-            src="/icons/logo.svg?v=66"
-            alt="Logo de Prompter"
+            src="/icons/logo.svg?v=67"
+            alt="Prompter logo"
             class="w-12 h-12 sm:w-14 sm:h-14"
           />
           <div class="ml-1">
@@ -157,7 +158,7 @@
             class="mt-2 bg-white/20 hover:bg-white/30 p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 flex items-center gap-1"
           >
             <i data-lucide="log-out" class="w-4 h-4" aria-hidden="true"></i>
-            <span>Déconnexion</span>
+            <span>Çıkış Yap</span>
           </button>
           <p id="user-email" class="text-blue-200 text-xs"></p>
           <div
@@ -175,7 +176,7 @@
         <span
           id="edit-bio-hint"
           class="text-blue-200 text-xs underline cursor-pointer"
-          >Modifier la bio</span
+          >Biyografiyi Düzenle</span
         >
       </div>
       <div
@@ -195,12 +196,12 @@
         </button>
       </div>
       <div id="user-name-wrapper" class="mb-2 flex items-center justify-start gap-1">
-        <span id="username-label" class="text-white">Nom d'utilisateur:</span>
+        <span id="username-label" class="text-white">Kullanıcı Adı:</span>
         <p id="user-name" class="text-blue-200 cursor-pointer"></p>
         <button
           id="edit-name-btn"
           class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
-          title="Modifier le nom d'utilisateur"
+          title="Kullanıcı adını düzenle"
         >
           <i data-lucide="pencil" class="w-4 h-4" aria-hidden="true"></i>
         </button>
@@ -219,19 +220,19 @@
         </button>
       </div>
       <div class="space-x-2 text-sm text-blue-200 my-4 text-center">
-        <span>Prompts: <span id="stat-prompts">0</span></span>
-        <span>Likes: <span id="stat-likes">0</span></span>
-        <span>Commentaires: <span id="stat-comments">0</span></span>
-        <span>Enregistrements: <span id="stat-saves">0</span></span>
-        <span>Partages: <span id="stat-shares">0</span></span>
-        <span>Abonnements: <a id="stat-following" href="#" class="underline">0</a></span>
-        <span>Abonnés: <a id="stat-followers" href="#" class="underline">0</a></span>
+        <span>Promptlar: <span id="stat-prompts">0</span></span>
+        <span>Beğeniler: <span id="stat-likes">0</span></span>
+        <span>Yorumlar: <span id="stat-comments">0</span></span>
+        <span>Kaydetmeler: <span id="stat-saves">0</span></span>
+        <span>Paylaşımlar: <span id="stat-shares">0</span></span>
+        <span>Takip Edilen: <a id="stat-following" href="#" class="underline">0</a></span>
+        <span>Takipçiler: <a id="stat-followers" href="#" class="underline">0</a></span>
       </div>
       <div id="following-list" class="hidden mb-4 text-center space-y-1"></div>
       <div id="followers-list" class="hidden mb-4 text-center space-y-1"></div>
       <section class="mb-6">
         <h2 class="text-xl font-semibold mb-2">
-          <span id="saved-title-text">Prompts enregistrés</span> (<span
+          <span id="saved-title-text">Kaydedilen Promptlar</span> (<span
             id="saved-count"
             >0</span
           >)
@@ -244,7 +245,7 @@
 
       <section class="mb-6">
         <h2 class="text-xl font-semibold mb-2">
-          <span id="shared-title-text">Prompts partagés</span> (<span
+          <span id="shared-title-text">Paylaşılan Promptlar</span> (<span
             id="shared-count"
             >0</span
           >)

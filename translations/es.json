@@ -8,6 +8,18 @@
   "login_keywords": "Iniciar sesión, indicar ahorro, guardar indicaciones, iniciar sesión, cuenta de indicación",
   "profile_description": "Administre los detalles de su cuenta y las indicaciones guardadas",
   "profile_keywords": "perfil, indicaciones guardadas, configuración de cuenta, perfil de usuario",
+  "privacy_description": "Información y política de privacidad de Prompter.",
+  "privacy_keywords": "privacidad, protección de datos, privacidad prompter",
+  "terms_description": "Términos de uso de Prompter.",
+  "terms_keywords": "términos de uso, términos prompter",
+  "blog_description": "Artículos y novedades sobre Prompter.",
+  "blog_keywords": "blog, actualizaciones, artículos, noticias prompter",
+  "intro_description": "Introducción a cómo usar Prompter.",
+  "intro_keywords": "introducción, guía, cómo funciona",
+  "social_description": "Enlaces para conectar con otros usuarios de Prompter.",
+  "social_keywords": "social, comunidad, enlaces de usuario",
+  "user_description": "Ver los prompts y el perfil compartidos de un usuario.",
+  "user_keywords": "perfil de usuario, prompts compartidos",
   "prompter_logo_alt": "Logo de Prompter",
   "whatsapp_logo_alt": "Logo de WhatsApp"
 }

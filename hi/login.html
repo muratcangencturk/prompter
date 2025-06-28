@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="hi">
   <head>
     <script>
       if (location.protocol === 'file:') {
@@ -25,8 +25,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     <title>Prompter Login</title>
-    <base href="./" />
-    <link rel="manifest" href="manifest.json?v=66" />
+    <base href="../" />
+    <link rel="manifest" href="manifest.json?v=67" />
     <meta name="theme-color" content="#000000" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
@@ -36,37 +36,37 @@
     <meta name="robots" content="index,follow" />
     <meta property="og:title" content="Prompter Login" />
     <meta property="og:description" content="अपने पसंदीदा संकेतों को बचाने के लिए प्रॉम्प्टर में लॉग इन करें." />
-    <meta property="og:image" content="/icons/logo.svg?v=66" />
-    <meta property="og:image:alt" content="Prompter लोगो" />
+    <meta property="og:image" content="/icons/logo.svg?v=67" />
+    <meta property="og:image:alt" content="Prompter logo" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Prompter Login" />
     <meta name="twitter:description" content="अपने पसंदीदा संकेतों को बचाने के लिए प्रॉम्प्टर में लॉग इन करें." />
-    <meta name="twitter:image" content="/icons/logo.svg?v=66" />
-    <meta property="og:url" content="https://prompterai.space/" />
+    <meta name="twitter:image" content="/icons/logo.svg?v=67" />
+    <meta property="og:url" content="https://prompterai.space/hi/login.html" />
     <meta property="og:site_name" content="Prompter" />
     <meta property="og:locale" content="hi" />
 <meta property="og:locale:alternate" content="en" />
-    <meta property="og:locale:alternate" content="tr" />
     <meta property="og:locale:alternate" content="es" />
-    <meta property="og:locale:alternate" content="zh" />
     <meta property="og:locale:alternate" content="fr" />
+    <meta property="og:locale:alternate" content="tr" />
+    <meta property="og:locale:alternate" content="zh" />
 
-    <meta name="twitter:url" content="https://prompterai.space/" />
+    <meta name="twitter:url" content="https://prompterai.space/hi/login.html" />
     <link rel="canonical" href="https://prompterai.space/hi/login.html" />
-    <link rel="alternate" href="https://prompterai.space/login.html" hreflang="x-default" />
+<link rel="alternate" href="https://prompterai.space/login.html" hreflang="x-default" />
     <link rel="alternate" href="https://prompterai.space/login.html" hreflang="en" />
     <link rel="alternate" href="https://prompterai.space/es/login.html" hreflang="es" />
     <link rel="alternate" href="https://prompterai.space/fr/login.html" hreflang="fr" />
     <link rel="alternate" href="https://prompterai.space/hi/login.html" hreflang="hi" />
     <link rel="alternate" href="https://prompterai.space/tr/login.html" hreflang="tr" />
     <link rel="alternate" href="https://prompterai.space/zh/login.html" hreflang="zh" />
-    <link rel="stylesheet" href="css/tailwind.css?v=66" />
-    <link rel="stylesheet" href="css/app.css?v=66" />
-    <script type="module" src="src/init-app.js?v=66"></script>
-    <script nomodule src="dist/init-app.js?v=66"></script>
-    <script type="module" src="src/lucide-loader.js?v=66"></script>
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=66" />
+    <link rel="stylesheet" href="css/tailwind.css?v=67" />
+    <link rel="stylesheet" href="css/app.css?v=67" />
+    <script type="module" src="src/init-app.js?v=67"></script>
+    <script nomodule src="dist/init-app.js?v=67"></script>
+    <script type="module" src="src/lucide-loader.js?v=67"></script>
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=67" />
     <script>
       (function () {
         const linkEl = document.getElementById('theme-css');
@@ -78,8 +78,8 @@
         }
       })();
     </script>
-    <script type="module" src="src/auth.js?v=66"></script>
-    <script nomodule src="dist/auth.js?v=66"></script>
+    <script type="module" src="src/auth.js?v=67"></script>
+    <script nomodule src="dist/auth.js?v=67"></script>
     <script type="module">
       import { login, register, onAuth } from './src/auth.js';
       import { setUserProfile, getUserByName } from './src/user.js';
@@ -174,7 +174,7 @@
 
       document.addEventListener('DOMContentLoaded', init);
     </script>
-    <script type="module" src="src/version.js?v=66"></script>
+    <script type="module" src="src/version.js?v=67"></script>
   </head>
   <body class="min-h-screen p-4">
     <div id="app-container" class="max-w-md mx-auto relative mt-16">
@@ -199,18 +199,18 @@
         id="login-form"
         class="bg-white/10 backdrop-blur-md rounded-2xl p-4 mb-2 border border-white/20 shadow-lg space-y-2"
       >
-        <h2 class="text-lg font-semibold mb-2">लॉगिन</h2>
+        <h2 class="text-lg font-semibold mb-2">Login</h2>
         <input
           id="login-email"
           type="email"
-          placeholder="ईमेल"
+          placeholder="Email"
           required
           class="w-full p-2 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
         />
         <input
           id="login-password"
           type="password"
-          placeholder="पासवर्ड"
+          placeholder="Password"
           required
           class="w-full p-2 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
         />
@@ -218,21 +218,21 @@
           type="submit"
           class="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 font-bold py-2 rounded-lg transition-all duration-300 ease-in-out"
         >
-          लॉगिन
+          Log In
         </button>
         <p class="text-center text-sm mt-2">
-          <a href="#" id="show-register" class="underline">रजिस्टर करें</a>
+          <a href="#" id="show-register" class="underline">Register</a>
         </p>
       </form>
       <form
         id="register-form"
         class="hidden bg-white/10 backdrop-blur-md rounded-2xl p-4 mb-2 border border-white/20 shadow-lg space-y-2"
       >
-        <h2 class="text-lg font-semibold mb-2">रजिस्टर</h2>
+        <h2 class="text-lg font-semibold mb-2">Register</h2>
         <input
           id="register-email"
           type="email"
-          placeholder="ईमेल"
+          placeholder="Email"
           required
           class="w-full p-2 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
         />
@@ -246,7 +246,7 @@
         <input
           id="register-password"
           type="password"
-          placeholder="पासवर्ड"
+          placeholder="Password"
           required
           class="w-full p-2 rounded-md bg-black/30 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
         />
@@ -254,10 +254,10 @@
           type="submit"
           class="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 font-bold py-2 rounded-lg transition-all duration-300 ease-in-out"
         >
-          रजिस्टर करें
+          Register
         </button>
         <p class="text-center text-sm mt-2">
-          <a href="#" id="show-login" class="underline">लॉगिन पर वापस जाएँ</a>
+          <a href="#" id="show-login" class="underline">Back to Login</a>
         </p>
       </form>
     </div>

@@ -8,6 +8,18 @@
   "login_keywords": "登录，提示节省，保存提示，登录，提示帐户",
   "profile_description": "管理您的帐户详细信息和保存的提示",
   "profile_keywords": "个人资料，保存的提示，帐户设置，用户配置文件",
+  "privacy_description": "Prompter 的隐私信息和政策。",
+  "privacy_keywords": "隐私, 数据保护, prompter 隐私",
+  "terms_description": "Prompter 的使用条款。",
+  "terms_keywords": "使用条款, prompter 条款",
+  "blog_description": "关于 Prompter 的文章和更新。",
+  "blog_keywords": "博客, 更新, 文章, prompter 新闻",
+  "intro_description": "如何使用 Prompter 的介绍。",
+  "intro_keywords": "介绍, 指南, 工作原理",
+  "social_description": "与其他 Prompter 用户联系的链接。",
+  "social_keywords": "社交, 社区, 用户链接",
+  "user_description": "查看用户分享的提示和个人资料。",
+  "user_keywords": "用户个人资料, 分享的提示",
   "prompter_logo_alt": "Prompter标志",
   "whatsapp_logo_alt": "WhatsApp标志"
 }

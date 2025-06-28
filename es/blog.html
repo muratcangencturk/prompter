@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     <title>Space - Prompter</title>
     <base href="../" />
-    <link rel="manifest" href="manifest.json?v=66" />
+    <link rel="manifest" href="manifest.json?v=67" />
     <meta name="theme-color" content="#000000" />
     <meta
       http-equiv="Cache-Control"
@@ -14,34 +14,42 @@
     />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <meta name="description" content="Creative AI prompt generator that requires an internet connection." />
-    <meta name="keywords" content="AI prompts, prompt generator, creative prompts, AI prompter, prompt maker" />
+    <meta name="description" content="Artículos y novedades sobre Prompter." />
+    <meta name="keywords" content="blog, actualizaciones, artículos, noticias prompter" />
     <meta name="robots" content="index,follow" />
     <meta property="og:title" content="Space - Prompter" />
-    <meta property="og:description" content="Creative AI prompt generator that requires an internet connection." />
-    <meta property="og:image" content="/icons/logo.svg?v=66" />
-    <meta property="og:image:alt" content="Logo de Prompter" />
+    <meta property="og:description" content="Artículos y novedades sobre Prompter." />
+    <meta property="og:image" content="/icons/logo.svg?v=67" />
+    <meta property="og:image:alt" content="Prompter logo" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Space - Prompter" />
-    <meta name="twitter:description" content="Creative AI prompt generator that requires an internet connection." />
-    <meta name="twitter:image" content="/icons/logo.svg?v=66" />
-    <meta property="og:url" content="https://prompterai.space/" />
+    <meta name="twitter:description" content="Artículos y novedades sobre Prompter." />
+    <meta name="twitter:image" content="/icons/logo.svg?v=67" />
+    <meta property="og:url" content="https://prompterai.space/es/blog.html" />
     <meta property="og:site_name" content="Prompter" />
     <meta property="og:locale" content="es" />
 <meta property="og:locale:alternate" content="en" />
-    <meta property="og:locale:alternate" content="tr" />
-    <meta property="og:locale:alternate" content="zh" />
     <meta property="og:locale:alternate" content="fr" />
     <meta property="og:locale:alternate" content="hi" />
+    <meta property="og:locale:alternate" content="tr" />
+    <meta property="og:locale:alternate" content="zh" />
 
-    <meta name="twitter:url" content="https://prompterai.space/" />
-    <script type="module" src="src/lucide-loader.js?v=66"></script>
-    <link rel="stylesheet" href="css/tailwind.css?v=66" />
-    <link rel="stylesheet" href="css/app.css?v=66" />
-    <script type="module" src="src/init-app.js?v=66"></script>
-    <script nomodule src="dist/init-app.js?v=66"></script>
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=66" />
+    <meta name="twitter:url" content="https://prompterai.space/es/blog.html" />
+    <script type="module" src="src/lucide-loader.js?v=67"></script>
+    <link rel="stylesheet" href="css/tailwind.css?v=67" />
+    <link rel="stylesheet" href="css/app.css?v=67" />
+    <script type="module" src="src/init-app.js?v=67"></script>
+    <script nomodule src="dist/init-app.js?v=67"></script>
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=67" />
+<link rel="canonical" href="https://prompterai.space/es/blog.html" />
+<link rel="alternate" href="https://prompterai.space/blog.html" hreflang="x-default" />
+    <link rel="alternate" href="https://prompterai.space/blog.html" hreflang="en" />
+    <link rel="alternate" href="https://prompterai.space/es/blog.html" hreflang="es" />
+    <link rel="alternate" href="https://prompterai.space/fr/blog.html" hreflang="fr" />
+    <link rel="alternate" href="https://prompterai.space/hi/blog.html" hreflang="hi" />
+    <link rel="alternate" href="https://prompterai.space/tr/blog.html" hreflang="tr" />
+    <link rel="alternate" href="https://prompterai.space/zh/blog.html" hreflang="zh" />
     <script>
       (function () {
         const linkEl = document.getElementById('theme-css');
@@ -55,14 +63,7 @@
         }
       })();
     </script>
-    <script type="module" src="src/version.js?v=66"></script>
-    <link rel="alternate" href="https://prompterai.space/blog.html" hreflang="x-default" />
-    <link rel="alternate" href="https://prompterai.space/blog.html" hreflang="en" />
-    <link rel="alternate" href="https://prompterai.space/es/blog.html" hreflang="es" />
-    <link rel="alternate" href="https://prompterai.space/fr/blog.html" hreflang="fr" />
-    <link rel="alternate" href="https://prompterai.space/hi/blog.html" hreflang="hi" />
-    <link rel="alternate" href="https://prompterai.space/tr/blog.html" hreflang="tr" />
-    <link rel="alternate" href="https://prompterai.space/zh/blog.html" hreflang="zh" />
+    <script type="module" src="src/version.js?v=67"></script>
   </head>
   <body class="min-h-screen p-4">
     <div id="loading-screen">
@@ -77,10 +78,10 @@
         <div class="flex items-center gap-2">
           <a
             id="back-link"
-            href="es/"
+            href="index.html"
             class="p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50"
-            title="Atrás"
-            aria-label="Atrás"
+            title="Back"
+            aria-label="Back"
           >
             <span
               class="w-6 h-6 inline-flex items-center justify-center text-3xl"
@@ -88,9 +89,38 @@
               >&larr;</span
             >
           </a>
+          <img
+            src="/icons/logo.svg?v=67"
+            alt="Prompter logo"
+            class="w-12 h-12 sm:w-14 sm:h-14"
+          />
           <h1 class="text-xl sm:text-2xl font-bold leading-tight ml-1">
             Space
           </h1>
+        </div>
+        <div class="ml-auto flex flex-col items-start gap-1">
+          <label class="text-sm inline-flex items-center gap-1">
+            <input
+              id="following-filter"
+              type="checkbox"
+              class="form-checkbox"
+            />
+            Only following
+          </label>
+          <label class="text-sm inline-flex items-center gap-1">
+            <input id="prompter-filter" type="checkbox" class="form-checkbox" />
+            Prompter
+          </label>
+          <label class="text-sm inline-flex items-center gap-1">
+            <input id="popular-filter" type="checkbox" class="form-checkbox" />
+            Popular
+          </label>
+          <input
+            id="post-search"
+            type="text"
+            placeholder="Search..."
+            class="bg-black/20 border border-white/20 rounded-md text-sm px-1 focus:outline-none focus:ring-2 focus:ring-white/50 mt-1"
+          />
         </div>
       </header>
       <div class="mb-4">
@@ -98,16 +128,16 @@
           id="blog-input"
           class="w-full p-2 rounded-md bg-black/30"
           rows="3"
-          placeholder="Escribe algo..."
+          placeholder="Write something..."
         ></textarea>
         <button
           id="post-btn"
           class="mt-2 px-3 py-1 rounded-lg bg-white/20 hover:bg-white/30 transition-all"
         >
-          Publicar
+          Post
         </button>
       </div>
-      <div id="blog-list" class="space-y-4"></div>
+      <div id="blog-list" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
     </div>
     <script type="module">
       import {
@@ -118,13 +148,33 @@
         unsharePostByUser,
         addComment,
         getComments,
+        deletePost,
+        updatePostText,
+        postScore,
       } from './src/blog.js';
-      import { getUserProfile } from './src/user.js';
+      import { BASE_URL } from './src/config.js';
+      import {
+        getUserProfile,
+        getFollowingIds,
+        getUserByName,
+      } from './src/user.js';
       import { onAuth } from './src/auth.js';
       import { appState } from './src/state.js';
+      import { linkify } from './src/linkify.js';
+      import { sanitizeHTML, setSanitizedHTML } from './src/sanitize.js';
+      import { timeAgo } from './src/timeago.js';
+      const msgs = {
+        en: { loginRequired: 'Login required' },
+        tr: { loginRequired: 'Giriş gerekli' },
+        es: { loginRequired: 'Se requiere inicio de sesión' },
+        fr: { loginRequired: 'Connexion requise' },
+        zh: { loginRequired: '需要登录' },
+        hi: { loginRequired: 'लॉगिन आवश्यक है' },
+      };
       import {
         collection,
         query,
+        where,
         orderBy,
         onSnapshot,
       } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
@@ -134,7 +184,7 @@
       const fetchName = async (uid) => {
         if (profileCache[uid]) return profileCache[uid];
         const prof = await getUserProfile(uid);
-        const name = prof?.name || 'Unknown User';
+        const name = sanitizeHTML(prof?.name || 'Unknown User');
         profileCache[uid] = name;
         return name;
       };
@@ -145,14 +195,55 @@
         card.className =
           'bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg';
 
+        const textWrap = document.createElement('div');
+        textWrap.className = 'relative pr-6';
+
+        const textContainer = document.createElement('div');
+        textContainer.className = 'prompt-text-box overflow-hidden max-h-40';
+
         const text = document.createElement('p');
-        text.textContent = p.text;
-        card.appendChild(text);
+        text.innerHTML = linkify(p.text);
+        textContainer.appendChild(text);
+        textWrap.appendChild(textContainer);
+
+        const showMore = document.createElement('span');
+        showMore.className = 'text-blue-200 text-xs underline cursor-pointer';
+        showMore.textContent = 'Show more';
+        const toggleText = () => {
+          textContainer.classList.toggle('overflow-hidden');
+          textContainer.classList.toggle('max-h-40');
+          showMore.textContent = textContainer.classList.contains(
+            'overflow-hidden'
+          )
+            ? 'Show more'
+            : 'Show less';
+        };
+        showMore.addEventListener('click', toggleText);
+        requestAnimationFrame(() => {
+          if (textContainer.scrollHeight > textContainer.offsetHeight) {
+            textWrap.appendChild(showMore);
+          }
+        });
+
+        card.appendChild(textWrap);
 
         const nameEl = document.createElement('p');
         nameEl.className = 'text-blue-200 text-xs mt-1 underline';
-        nameEl.innerHTML = `<a href="user.html?uid=${p.userId}">${name}</a>`;
+        setSanitizedHTML(
+          nameEl,
+          `<a href="user.html?uid=${p.userId}">${name}</a>`
+        );
         card.appendChild(nameEl);
+
+        const timeEl = document.createElement('p');
+        timeEl.className = 'text-blue-200 text-xs';
+        if (p.createdAt && p.createdAt.toMillis) {
+          timeEl.textContent = timeAgo(
+            p.createdAt.toMillis(),
+            appState.language
+          );
+        }
+        card.appendChild(timeEl);
 
         const likeRow = document.createElement('div');
         likeRow.className = 'flex items-center gap-2 mt-2';
@@ -188,7 +279,7 @@
 
         likeBtn.addEventListener('click', async () => {
           if (!appState?.currentUser) {
-            alert('Se requiere iniciar sesión');
+            alert(msgs[appState.language].loginRequired);
             return;
           }
           likeBtn.disabled = true;
@@ -210,6 +301,18 @@
           }
         });
 
+        const twitterBtn = document.createElement('button');
+        twitterBtn.className =
+          'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
+        twitterBtn.innerHTML =
+          '<i data-lucide="twitter" class="w-4 h-4" aria-hidden="true"></i>';
+        twitterBtn.addEventListener('click', () => {
+          const url =
+            'https://twitter.com/intent/tweet?text=' +
+            encodeURIComponent(p.text + ` ${BASE_URL}`);
+          window.open(url, '_blank');
+        });
+
         const commentToggleBtn = document.createElement('button');
         commentToggleBtn.className =
           'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
@@ -228,6 +331,82 @@
         likeRow.appendChild(likeBtn);
         likeRow.appendChild(likeCount);
         likeRow.appendChild(commentContainer);
+        likeRow.appendChild(twitterBtn);
+        if (appState?.currentUser && appState.currentUser.uid === p.userId) {
+          const editBtn = document.createElement('button');
+          editBtn.className =
+            'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
+          editBtn.innerHTML =
+            '<i data-lucide="pencil" class="w-4 h-4" aria-hidden="true"></i>';
+
+          text.addEventListener('click', () => {
+            if (appState.currentUser && p.userId === appState.currentUser.uid) {
+              editBtn.click();
+            }
+          });
+
+          editBtn.addEventListener('click', () => {
+            const textarea = document.createElement('textarea');
+            textarea.className = 'w-full p-2 rounded-md bg-black/30';
+            textarea.value = p.text;
+            textContainer.replaceChild(textarea, text);
+
+            const editRow = document.createElement('div');
+            editRow.className = 'flex items-center gap-2 mt-2';
+            const saveEdit = document.createElement('button');
+            saveEdit.className =
+              'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
+            saveEdit.innerHTML =
+              '<i data-lucide="save" class="w-4 h-4" aria-hidden="true"></i>';
+            const cancelEdit = document.createElement('button');
+            cancelEdit.className =
+              'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
+            cancelEdit.innerHTML =
+              '<i data-lucide="x" class="w-4 h-4" aria-hidden="true"></i>';
+            editRow.appendChild(saveEdit);
+            editRow.appendChild(cancelEdit);
+
+            card.replaceChild(editRow, likeRow);
+            window.lucide?.createIcons();
+
+            cancelEdit.addEventListener('click', () => {
+              textContainer.replaceChild(text, textarea);
+              card.replaceChild(likeRow, editRow);
+            });
+
+            saveEdit.addEventListener('click', async () => {
+              saveEdit.disabled = true;
+              try {
+                await updatePostText(p.id, textarea.value);
+                p.text = textarea.value;
+                text.textContent = textarea.value;
+                cancelEdit.click();
+              } catch (err) {
+                console.error('Failed to update text:', err);
+                saveEdit.disabled = false;
+              }
+            });
+          });
+
+          const delBtn = document.createElement('button');
+          delBtn.className =
+            'delete-post p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all focus:outline-none focus:ring-2 focus:ring-white/50';
+          delBtn.innerHTML =
+            '<i data-lucide="trash" class="w-4 h-4" aria-hidden="true"></i>';
+          delBtn.addEventListener('click', async () => {
+            delBtn.disabled = true;
+            try {
+              await deletePost(p.id);
+              card.classList.add('fade-out');
+              setTimeout(() => card.remove(), 300);
+            } catch (err) {
+              console.error('Failed to delete post:', err);
+              delBtn.disabled = false;
+            }
+          });
+          likeRow.appendChild(editBtn);
+          likeRow.appendChild(delBtn);
+        }
         card.appendChild(likeRow);
 
         const commentsWrap = document.createElement('div');
@@ -238,7 +417,7 @@
         commentForm.className = 'flex items-center gap-2 mt-1';
         const commentInput = document.createElement('input');
         commentInput.type = 'text';
-        commentInput.placeholder = 'Agrega un comentario...';
+        commentInput.placeholder = 'Add a comment...';
         commentInput.className = 'flex-1 p-1 rounded-md bg-black/30';
         const commentBtn = document.createElement('button');
         commentBtn.type = 'submit';
@@ -259,7 +438,9 @@
           const n = await fetchName(c.userId);
           const d = document.createElement('div');
           d.className = 'bg-white/5 rounded-md px-2 py-1 text-sm';
-          d.innerHTML = `<span class="underline">${n}</span>: ${c.text}`;
+          d.innerHTML = sanitizeHTML(
+            `<span class="underline">${n}</span>: ${linkify(c.text)}`
+          );
           commentList.appendChild(d);
         };
         for (const c of comments) {
@@ -268,7 +449,7 @@
         commentForm.addEventListener('submit', async (e) => {
           e.preventDefault();
           if (!appState?.currentUser) {
-            alert('Se requiere iniciar sesión');
+            alert(msgs[appState.language].loginRequired);
             return;
           }
           const textVal = commentInput.value.trim();
@@ -295,7 +476,7 @@
       const postBtn = document.getElementById('post-btn');
       postBtn?.addEventListener('click', async () => {
         if (!appState?.currentUser) {
-          alert('Se requiere iniciar sesión');
+          alert(msgs[appState.language].loginRequired);
           return;
         }
         const text = blogInput.value.trim();
@@ -314,30 +495,106 @@
         }
       });
 
+      const followingFilter = document.getElementById('following-filter');
+      const popularFilter = document.getElementById('popular-filter');
+      const prompterFilter = document.getElementById('prompter-filter');
+      const postSearch = document.getElementById('post-search');
+
+      let followingIds = [];
+      let prompterUser = null;
+      let loadedPosts = [];
       let unsubscribe = null;
-      const startListener = () => {
-        if (unsubscribe) unsubscribe();
-        const q = query(
-          collection(db, 'blogPosts'),
-          orderBy('createdAt', 'desc')
+
+      const refreshFollowing = async () => {
+        if (!appState.currentUser) {
+          followingIds = [];
+          return;
+        }
+        followingIds = await getFollowingIds(appState.currentUser.uid);
+      };
+
+      const loadPrompter = async () => {
+        if (!prompterUser) {
+          prompterUser = await getUserByName('Prompter');
+        }
+      };
+
+      const render = async (posts) => {
+        const names = await Promise.all(posts.map((p) => fetchName(p.userId)));
+        const commentsArr = await Promise.all(
+          posts.map((p) => getComments(p.id))
         );
-        unsubscribe = onSnapshot(q, async (snap) => {
-          const posts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
-          const names = await Promise.all(
-            posts.map((p) => fetchName(p.userId))
-          );
-          const commentsArr = await Promise.all(
-            posts.map((p) => getComments(p.id))
-          );
-          const list = document.getElementById('blog-list');
-          list.innerHTML = '';
-          for (let i = 0; i < posts.length; i++) {
-            const card = await createCard(posts[i], names[i], commentsArr[i]);
-            list.appendChild(card);
+        const list = document.getElementById('blog-list');
+        list.innerHTML = '';
+        for (let i = 0; i < posts.length; i++) {
+          const card = await createCard(posts[i], names[i], commentsArr[i]);
+          list.appendChild(card);
+        }
+        window.lucide?.createIcons();
+      };
+
+      function filterAndRender() {
+        let posts = loadedPosts;
+        const term = postSearch?.value?.trim().toLowerCase();
+        if (term) {
+          posts = posts.filter((p) => p.text.toLowerCase().includes(term));
+        }
+        if (followingFilter?.checked) {
+          posts = posts.filter((p) => followingIds.includes(p.userId));
+        }
+        if (prompterFilter?.checked) {
+          if (prompterUser)
+            posts = posts.filter((p) => p.userId === prompterUser.id);
+          else posts = [];
+        }
+        if (popularFilter?.checked) {
+          posts = [...posts].sort((a, b) => postScore(b) - postScore(a));
+        }
+        render(posts);
+      }
+
+      const debounce = (fn, delay = 300) => {
+        let t;
+        return (...args) => {
+          clearTimeout(t);
+          t = setTimeout(() => fn(...args), delay);
+        };
+      };
+
+      const debouncedFilter = debounce(filterAndRender, 300);
+      postSearch?.addEventListener('input', debouncedFilter);
+      popularFilter?.addEventListener('change', filterAndRender);
+      popularFilter?.addEventListener('click', filterAndRender);
+
+      const startListener = async () => {
+        if (unsubscribe) unsubscribe();
+        await refreshFollowing();
+        await loadPrompter();
+        const constraints = [];
+        if (followingFilter?.checked) {
+          if (followingIds.length > 0) {
+            constraints.push(where('userId', 'in', followingIds.slice(0, 10)));
+          } else {
+            loadedPosts = [];
+            render([]);
+            return;
           }
-          window.lucide?.createIcons();
+        }
+        if (prompterFilter?.checked && prompterUser) {
+          constraints.push(where('userId', '==', prompterUser.id));
+        }
+        constraints.push(orderBy('createdAt', 'desc'));
+        const q = query(collection(db, 'blogPosts'), ...constraints);
+        unsubscribe = onSnapshot(q, (snap) => {
+          loadedPosts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+          filterAndRender();
         });
       };
+
+      ['change', 'click'].forEach((evt) => {
+        followingFilter?.addEventListener(evt, startListener);
+        prompterFilter?.addEventListener(evt, startListener);
+      });
 
       document.addEventListener('DOMContentLoaded', () => {
         onAuth(startListener);
