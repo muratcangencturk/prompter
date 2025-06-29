@@ -78,6 +78,7 @@ const ASSETS = [
   'profile.html',
   'social',
   'social.html',
+  'space.html',
   'src/auth.js?v=72',
   'src/dm.js?v=72',
   'src/init-app.js?v=72',
