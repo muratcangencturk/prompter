@@ -28,6 +28,7 @@ python3 -m http.server
 and then visit `http://localhost:8000`. This ensures the JSON prompt files load correctly. The generator fetches prompt data online but cached pages open offline.
 
 Opening `index.html` over `file://` URLs is not supported. Browsers block JavaScript modules when loaded from the file system, so the application cannot initialize. Always serve the directory over HTTP using a command such as `python3 -m http.server` and then visit `http://localhost:8000`.
+A server that rewrites extensionless URLs like `/blog` to `/blog.html` is required for the service worker's asset list to match. Simple servers such as `python3 -m http.server` do not provide this rewrite and will cause caching errors when pages are accessed without the `.html` extension.
 
 ## Browser support
 
