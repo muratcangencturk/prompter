@@ -603,6 +603,7 @@ const renderSavedPrompts = (prompts) => {
       const textarea = document.createElement('textarea');
       textarea.className = 'w-full p-2 rounded-md bg-black/30';
       textarea.value = pEl.textContent;
+      if (!textWrap.contains(pEl)) return;
       textWrap.replaceChild(textarea, pEl);
 
       const editRow = document.createElement('div');
@@ -619,7 +620,8 @@ const renderSavedPrompts = (prompts) => {
         '<i data-lucide="x" class="w-4 h-4" aria-hidden="true"></i>';
       editRow.appendChild(saveEdit);
       editRow.appendChild(cancelEdit);
-      if (item.contains(actions)) item.replaceChild(editRow, actions);
+      if (!item.contains(actions)) return;
+      item.replaceChild(editRow, actions);
       // refresh icons for the new buttons
       window.lucide?.createIcons();
 
@@ -934,6 +936,7 @@ const renderSharedPrompts = async (prompts) => {
       const textarea = document.createElement('textarea');
       textarea.className = 'w-full p-2 rounded-md bg-black/30';
       textarea.value = p.text;
+      if (!textWrap.contains(text)) return;
       textWrap.replaceChild(textarea, text);
 
       const editRow = document.createElement('div');
@@ -951,7 +954,8 @@ const renderSharedPrompts = async (prompts) => {
       editRow.appendChild(saveEdit);
       editRow.appendChild(cancelEdit);
 
-      if (item.contains(likeRow)) item.replaceChild(editRow, likeRow);
+      if (!item.contains(likeRow)) return;
+      item.replaceChild(editRow, likeRow);
       // refresh icons for the new buttons
       window.lucide?.createIcons();
 
