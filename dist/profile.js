@@ -10,6 +10,8 @@ var _prompts = require("./prompts.js");
 var _config = require("./config.js");
 var _linkify = require("./linkify.js");
 var _sanitize = require("./sanitize.js");
+var _firebaseFirestore = require("https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js");
+var _firebase = require("./firebase.js");
 function _regeneratorValues(e) { if (null != e) { var t = e["function" == typeof Symbol && Symbol.iterator || "@@iterator"], r = 0; if (t) return t.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) return { next: function next() { return e && r >= e.length && (e = void 0), { value: e && e[r++], done: !e }; } }; } throw new TypeError(_typeof(e) + " is not iterable"); }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -22,6 +24,11 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
 function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { var o = function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); }; o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
@@ -190,6 +197,8 @@ var langZhButton;
 var langHiButton;
 var currentLangLabel;
 var sharedPromptsData = [];
+var unsubscribePrompts = null;
+var CACHE_LIMIT = 50;
 var currentUserName = '';
 var currentUserBio = '';
 var nameWrapper;
@@ -210,7 +219,6 @@ var notifications = [];
 var unsubscribeNotifications;
 var followerIds = [];
 var followingIds = [];
-var editing = false;
 var profileCache = {};
 var fetchName = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(uid) {
@@ -466,7 +474,7 @@ var showSharedLoadError = function showSharedLoadError(retryFn) {
 };
 var _loadPromptsForUser = /*#__PURE__*/function () {
   var _ref4 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(user) {
-    var cacheKey, cached, prompts, savedDocs, savedTexts, merged, _t2, _t3;
+    var cacheKey, cached, q, savedDocs, savedTexts, merged, _t2;
     return _regenerator().w(function (_context4) {
       while (1) switch (_context4.n) {
         case 0:
@@ -486,32 +494,32 @@ var _loadPromptsForUser = /*#__PURE__*/function () {
           } catch (err) {
             console.warn('Failed to parse profile cache:', err);
           }
+          if (unsubscribePrompts) unsubscribePrompts();
+          q = (0, _firebaseFirestore.query)((0, _firebaseFirestore.collection)(_firebase.db, 'prompts'), (0, _firebaseFirestore.where)('userId', '==', user.uid), (0, _firebaseFirestore.where)('sharedBy', 'array-contains', user.uid), (0, _firebaseFirestore.orderBy)('createdAt', 'desc'));
+          unsubscribePrompts = (0, _firebaseFirestore.onSnapshot)(q, function (snap) {
+            var prompts = snap.docs.map(function (d) {
+              return _objectSpread({
+                id: d.id,
+                category: d.get('category') || 'random'
+              }, d.data());
+            });
+            sharedPromptsData = prompts;
+            _renderSharedPrompts(sharedPromptsData);
+            try {
+              localStorage.setItem(cacheKey, JSON.stringify(prompts.slice(0, CACHE_LIMIT)));
+            } catch (err) {
+              console.warn('Failed to store profile cache:', err);
+            }
+          }, function (err) {
+            console.error('Failed to load prompts:', err);
+            showSharedLoadError(function () {
+              return _loadPromptsForUser(user);
+            });
+          });
           _context4.p = 2;
           _context4.n = 3;
-          return (0, _prompt.getUserPrompts)(user.uid);
-        case 3:
-          prompts = _context4.v;
-          sharedPromptsData = prompts;
-          _renderSharedPrompts(sharedPromptsData);
-          try {
-            localStorage.setItem(cacheKey, JSON.stringify(prompts));
-          } catch (err) {
-            console.warn('Failed to store profile cache:', err);
-          }
-          _context4.n = 5;
-          break;
-        case 4:
-          _context4.p = 4;
-          _t2 = _context4.v;
-          console.error('Failed to load prompts:', _t2);
-          showSharedLoadError(function () {
-            return _loadPromptsForUser(user);
-          });
-        case 5:
-          _context4.p = 5;
-          _context4.n = 6;
           return (0, _prompt.getUserSavedPrompts)(user.uid);
-        case 6:
+        case 3:
           savedDocs = _context4.v;
           savedTexts = savedDocs.map(function (p) {
             return p.text;
@@ -520,19 +528,19 @@ var _loadPromptsForUser = /*#__PURE__*/function () {
           _state.appState.savedPrompts = merged;
           localStorage.setItem('savedPrompts', JSON.stringify(merged));
           _renderSavedPrompts(_state.appState.savedPrompts);
-          _context4.n = 8;
+          _context4.n = 5;
           break;
-        case 7:
-          _context4.p = 7;
-          _t3 = _context4.v;
-          console.error('Failed to load prompts:', _t3);
+        case 4:
+          _context4.p = 4;
+          _t2 = _context4.v;
+          console.error('Failed to load prompts:', _t2);
           showSavedLoadError(function () {
             return _loadPromptsForUser(user);
           });
-        case 8:
+        case 5:
           return _context4.a(2);
       }
-    }, _callee4, null, [[5, 7], [2, 4]]);
+    }, _callee4, null, [[2, 4]]);
   }));
   return function loadPromptsForUser(_x2) {
     return _ref4.apply(this, arguments);
@@ -592,6 +600,7 @@ var _renderSavedPrompts = function renderSavedPrompts(prompts) {
     if (!_state.appState.currentUser) {
       editBtn.disabled = true;
     }
+    var editing = false;
     var startEdit = function startEdit() {
       var _window$lucide;
       if (editing) return;
@@ -599,11 +608,12 @@ var _renderSavedPrompts = function renderSavedPrompts(prompts) {
         alert(uiText[_state.appState.language].loginRequired);
         return;
       }
+      if (!textWrap.contains(pEl)) return;
       editing = true;
       var textarea = document.createElement('textarea');
       textarea.className = 'w-full p-2 rounded-md bg-black/30';
       textarea.value = pEl.textContent;
-      if (textWrap.contains(pEl)) textWrap.replaceChild(textarea, pEl);
+      textWrap.replaceChild(textarea, pEl);
       var editRow = document.createElement('div');
       editRow.className = 'flex items-center gap-2 mt-2';
       var saveEdit = document.createElement('button');
@@ -657,7 +667,7 @@ var _renderSavedPrompts = function renderSavedPrompts(prompts) {
       });
     });
     siteShareBtn.addEventListener('click', /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5() {
-      var svg, _t4;
+      var svg, _t3;
       return _regenerator().w(function (_context5) {
         while (1) switch (_context5.n) {
           case 0:
@@ -683,8 +693,8 @@ var _renderSavedPrompts = function renderSavedPrompts(prompts) {
             break;
           case 4:
             _context5.p = 4;
-            _t4 = _context5.v;
-            console.error(_t4);
+            _t3 = _context5.v;
+            console.error(_t3);
             alert(uiText[_state.appState.language].shareFailed);
           case 5:
             _context5.p = 5;
@@ -727,7 +737,7 @@ var _renderSavedPrompts = function renderSavedPrompts(prompts) {
 var _renderSharedPrompts = /*#__PURE__*/function () {
   var _ref6 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee13(prompts) {
     var _window$lucide3;
-    var list, p, _iterator, _step, _loop, _t11;
+    var list, p, _iterator, _step, _loop, _t10;
     return _regenerator().w(function (_context14) {
       while (1) switch (_context14.n) {
         case 0:
@@ -748,7 +758,7 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
           _context14.p = 2;
           _loop = /*#__PURE__*/_regenerator().m(function _loop() {
             var _categories$find;
-            var _step$value, idx, p, item, textWrap, textContainer, text, showMore, toggleText, copyBtn, copyFeedback, nameEl, catEl, likeRow, likeBtn, likes, likeCount, updateLikeText, likeContainer, liked, updateLikeIcon, editBtn, shareBtn, delBtn, startEdit, showEdit, siteShareBtn, updateSiteShareIcon, updateShareIcon2, commentToggleBtn, commentsWrap, commentList, commentForm, commentInput, commentBtn, refreshComments, renderComment, existingComments, commentNum, commentCount, commentContainer, _iterator3, _step3, c, _t10;
+            var _step$value, idx, p, item, textWrap, textContainer, text, showMore, toggleText, copyBtn, copyFeedback, nameEl, catEl, likeRow, likeBtn, likes, likeCount, updateLikeText, likeContainer, liked, updateLikeIcon, editBtn, shareBtn, delBtn, editing, startEdit, showEdit, siteShareBtn, updateSiteShareIcon, updateShareIcon2, commentToggleBtn, commentsWrap, commentList, commentForm, commentInput, commentBtn, refreshComments, renderComment, existingComments, commentNum, commentCount, commentContainer, _iterator3, _step3, c, _t1;
             return _regenerator().w(function (_context13) {
               while (1) switch (_context13.n) {
                 case 0:
@@ -820,7 +830,7 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                     if (svg) svg.setAttribute('fill', likeBtn.classList.contains('active') ? 'currentColor' : 'none');
                   };
                   likeBtn.addEventListener('click', /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6() {
-                    var already, _t5;
+                    var already, _t4;
                     return _regenerator().w(function (_context6) {
                       while (1) switch (_context6.n) {
                         case 0:
@@ -864,8 +874,8 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                           break;
                         case 7:
                           _context6.p = 7;
-                          _t5 = _context6.v;
-                          console.error('Failed to toggle like:', _t5);
+                          _t4 = _context6.v;
+                          console.error('Failed to toggle like:', _t4);
                         case 8:
                           _context6.p = 8;
                           likeBtn.disabled = false;
@@ -889,6 +899,7 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                   delBtn = document.createElement('button');
                   delBtn.className = 'history-delete p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
                   delBtn.innerHTML = '<i data-lucide="trash" class="w-3 h-3" aria-hidden="true"></i>';
+                  editing = false;
                   startEdit = function startEdit() {
                     if (editing) return;
                     if (_state.appState.currentUser && p.userId === _state.appState.currentUser.uid) {
@@ -900,11 +911,12 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                   showEdit = function showEdit() {
                     var _window$lucide4;
                     if (editing) return;
+                    if (!textWrap.contains(text)) return;
                     editing = true;
                     var textarea = document.createElement('textarea');
                     textarea.className = 'w-full p-2 rounded-md bg-black/30';
                     textarea.value = p.text;
-                    if (textWrap.contains(text)) textWrap.replaceChild(textarea, text);
+                    textWrap.replaceChild(textarea, text);
                     var editRow = document.createElement('div');
                     editRow.className = 'flex items-center gap-2 mt-2';
                     var saveEdit = document.createElement('button');
@@ -924,7 +936,7 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                       editing = false;
                     });
                     saveEdit.addEventListener('click', /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7() {
-                      var _t6;
+                      var _t5;
                       return _regenerator().w(function (_context7) {
                         while (1) switch (_context7.n) {
                           case 0:
@@ -940,8 +952,8 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                             break;
                           case 3:
                             _context7.p = 3;
-                            _t6 = _context7.v;
-                            console.error('Failed to update text:', _t6);
+                            _t5 = _context7.v;
+                            console.error('Failed to update text:', _t5);
                             saveEdit.disabled = false;
                           case 4:
                             return _context7.a(2);
@@ -974,7 +986,7 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                   };
                   updateSiteShareIcon();
                   siteShareBtn.addEventListener('click', /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8() {
-                    var _t7;
+                    var _t6;
                     return _regenerator().w(function (_context8) {
                       while (1) switch (_context8.n) {
                         case 0:
@@ -996,8 +1008,8 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                           break;
                         case 4:
                           _context8.p = 4;
-                          _t7 = _context8.v;
-                          console.error('Failed to unshare:', _t7);
+                          _t6 = _context8.v;
+                          console.error('Failed to unshare:', _t6);
                         case 5:
                           _context8.p = 5;
                           siteShareBtn.disabled = false;
@@ -1019,7 +1031,7 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                     (0, _prompt.incrementShareCount)(p.id);
                   });
                   delBtn.addEventListener('click', /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee9() {
-                    var _t8;
+                    var _t7;
                     return _regenerator().w(function (_context9) {
                       while (1) switch (_context9.n) {
                         case 0:
@@ -1036,8 +1048,8 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                           break;
                         case 4:
                           _context9.p = 4;
-                          _t8 = _context9.v;
-                          console.error('Failed to delete:', _t8);
+                          _t7 = _context9.v;
+                          console.error('Failed to delete:', _t7);
                           delBtn.disabled = false;
                         case 5:
                           return _context9.a(2);
@@ -1067,7 +1079,7 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                   commentsWrap.appendChild(commentForm);
                   refreshComments = /*#__PURE__*/function () {
                     var _ref1 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee0() {
-                      var all, _iterator2, _step2, c, _t9;
+                      var all, _iterator2, _step2, c, _t8;
                       return _regenerator().w(function (_context0) {
                         while (1) switch (_context0.n) {
                           case 0:
@@ -1097,8 +1109,8 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                             break;
                           case 6:
                             _context0.p = 6;
-                            _t9 = _context0.v;
-                            _iterator2.e(_t9);
+                            _t8 = _context0.v;
+                            _iterator2.e(_t8);
                           case 7:
                             _context0.p = 7;
                             _iterator2.f();
@@ -1163,7 +1175,7 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                                   d.replaceChild(actions, editRow);
                                 });
                                 saveBtn.addEventListener('click', /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee1() {
-                                  var _t0;
+                                  var _t9;
                                   return _regenerator().w(function (_context1) {
                                     while (1) switch (_context1.n) {
                                       case 0:
@@ -1179,8 +1191,8 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                                         break;
                                       case 4:
                                         _context1.p = 4;
-                                        _t0 = _context1.v;
-                                        console.error('Failed to update comment:', _t0);
+                                        _t9 = _context1.v;
+                                        console.error('Failed to update comment:', _t9);
                                         saveBtn.disabled = false;
                                       case 5:
                                         return _context1.a(2);
@@ -1189,7 +1201,7 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                                 })));
                               });
                               delC.addEventListener('click', /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee10() {
-                                var _t1;
+                                var _t0;
                                 return _regenerator().w(function (_context10) {
                                   while (1) switch (_context10.n) {
                                     case 0:
@@ -1205,8 +1217,8 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                                       break;
                                     case 4:
                                       _context10.p = 4;
-                                      _t1 = _context10.v;
-                                      console.error('Failed to delete comment:', _t1);
+                                      _t0 = _context10.v;
+                                      console.error('Failed to delete comment:', _t0);
                                       delC.disabled = false;
                                     case 5:
                                       return _context10.a(2);
@@ -1256,8 +1268,8 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                   break;
                 case 6:
                   _context13.p = 6;
-                  _t10 = _context13.v;
-                  _iterator3.e(_t10);
+                  _t1 = _context13.v;
+                  _iterator3.e(_t1);
                 case 7:
                   _context13.p = 7;
                   _iterator3.f();
@@ -1345,8 +1357,8 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
           break;
         case 6:
           _context14.p = 6;
-          _t11 = _context14.v;
-          _iterator.e(_t11);
+          _t10 = _context14.v;
+          _iterator.e(_t10);
         case 7:
           _context14.p = 7;
           _iterator.f();
@@ -1469,7 +1481,7 @@ var init = function init() {
   (_nameWrapper = nameWrapper) === null || _nameWrapper === void 0 || _nameWrapper.addEventListener('click', showNameEdit);
   (_editNameBtn = editNameBtn) === null || _editNameBtn === void 0 || _editNameBtn.addEventListener('click', showNameEdit);
   (_nameUpdateBtn = nameUpdateBtn) === null || _nameUpdateBtn === void 0 || _nameUpdateBtn.addEventListener('click', /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee15() {
-    var newName, _nameEditRow, _nameWrapper2, nameEl, _t12;
+    var newName, _nameEditRow, _nameWrapper2, nameEl, _t11;
     return _regenerator().w(function (_context16) {
       while (1) switch (_context16.n) {
         case 0:
@@ -1504,8 +1516,8 @@ var init = function init() {
           break;
         case 5:
           _context16.p = 5;
-          _t12 = _context16.v;
-          console.error('Failed to update name:', _t12);
+          _t11 = _context16.v;
+          console.error('Failed to update name:', _t11);
         case 6:
           _context16.p = 6;
           nameUpdateBtn.disabled = false;
@@ -1526,7 +1538,7 @@ var init = function init() {
     (_window$lucide6 = window.lucide) === null || _window$lucide6 === void 0 || _window$lucide6.createIcons();
   });
   (_bioUpdateBtn = bioUpdateBtn) === null || _bioUpdateBtn === void 0 || _bioUpdateBtn.addEventListener('click', /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee16() {
-    var newBio, _bioEditRow, _bioWrapper2, _editBioHint2, bioEl, _t13;
+    var newBio, _bioEditRow, _bioWrapper2, _editBioHint2, bioEl, _t12;
     return _regenerator().w(function (_context17) {
       while (1) switch (_context17.n) {
         case 0:
@@ -1554,8 +1566,8 @@ var init = function init() {
           break;
         case 4:
           _context17.p = 4;
-          _t13 = _context17.v;
-          console.error('Failed to update bio:', _t13);
+          _t12 = _context17.v;
+          console.error('Failed to update bio:', _t12);
         case 5:
           _context17.p = 5;
           bioUpdateBtn.disabled = false;
@@ -1587,49 +1599,26 @@ var init = function init() {
   (_document$getElementB = document.getElementById('logout')) === null || _document$getElementB === void 0 || _document$getElementB.addEventListener('click', _auth.logout);
   window.addEventListener('storage', /*#__PURE__*/function () {
     var _ref17 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee17(e) {
-      var saved, prompts, _t14, _t15;
+      var saved;
       return _regenerator().w(function (_context18) {
         while (1) switch (_context18.n) {
           case 0:
-            if (!(e.key === 'savedPrompts')) {
-              _context18.n = 7;
-              break;
+            if (e.key === 'savedPrompts') {
+              try {
+                saved = e.newValue ? JSON.parse(e.newValue) : [];
+                _state.appState.savedPrompts = saved;
+                _renderSavedPrompts(saved);
+                if (_state.appState.currentUser) {
+                  _loadPromptsForUser(_state.appState.currentUser);
+                }
+              } catch (err) {
+                console.error('Failed to parse savedPrompts from storage event:', err);
+              }
             }
-            _context18.p = 1;
-            saved = e.newValue ? JSON.parse(e.newValue) : [];
-            _state.appState.savedPrompts = saved;
-            _renderSavedPrompts(saved);
-            if (!_state.appState.currentUser) {
-              _context18.n = 5;
-              break;
-            }
-            _context18.p = 2;
-            _context18.n = 3;
-            return (0, _prompt.getUserPrompts)(_state.appState.currentUser.uid);
-          case 3:
-            prompts = _context18.v;
-            sharedPromptsData = prompts;
-            _renderSharedPrompts(sharedPromptsData);
-            _context18.n = 5;
-            break;
-          case 4:
-            _context18.p = 4;
-            _t14 = _context18.v;
-            console.error('Failed to load prompts:', _t14);
-            showSharedLoadError(function () {
-              return _loadPromptsForUser(_state.appState.currentUser);
-            });
-          case 5:
-            _context18.n = 7;
-            break;
-          case 6:
-            _context18.p = 6;
-            _t15 = _context18.v;
-            console.error('Failed to parse savedPrompts from storage event:', _t15);
-          case 7:
+          case 1:
             return _context18.a(2);
         }
-      }, _callee17, null, [[2, 4], [1, 6]]);
+      }, _callee17);
     }));
     return function (_x8) {
       return _ref17.apply(this, arguments);
@@ -1638,7 +1627,7 @@ var init = function init() {
   (0, _auth.onAuth)(/*#__PURE__*/function () {
     var _ref18 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee18(user) {
       var _loginBtn, _window$lucide8;
-      var logoutBtn, header, loginBtn, _bioEditRow2, _bioWrapper3, _editBioHint3, _nameEditRow2, _nameWrapper3, _unsubscribeNotificat2, _window$lucide7, nameEl, bioEl, _nameEditRow3, _nameWrapper4, _bioEditRow3, _bioWrapper4, _editBioHint4, profile, name, _nameEl, bio, _bioEl, _t16;
+      var logoutBtn, header, loginBtn, _bioEditRow2, _bioWrapper3, _editBioHint3, _nameEditRow2, _nameWrapper3, _unsubscribeNotificat2, _unsubscribePrompts, _window$lucide7, nameEl, bioEl, _nameEditRow3, _nameWrapper4, _bioEditRow3, _bioWrapper4, _editBioHint4, profile, name, _nameEl, bio, _bioEl, _t13;
       return _regenerator().w(function (_context19) {
         while (1) switch (_context19.n) {
           case 0:
@@ -1676,6 +1665,7 @@ var init = function init() {
             notifications = [];
             _renderNotifications();
             (_unsubscribeNotificat2 = unsubscribeNotifications) === null || _unsubscribeNotificat2 === void 0 || _unsubscribeNotificat2();
+            (_unsubscribePrompts = unsubscribePrompts) === null || _unsubscribePrompts === void 0 || _unsubscribePrompts();
             return _context19.a(2);
           case 1:
             (_loginBtn = loginBtn) === null || _loginBtn === void 0 || _loginBtn.remove();
@@ -1720,8 +1710,8 @@ var init = function init() {
             break;
           case 6:
             _context19.p = 6;
-            _t16 = _context19.v;
-            console.error('Failed to load profile:', _t16);
+            _t13 = _context19.v;
+            console.error('Failed to load profile:', _t13);
           case 7:
             _context19.n = 8;
             return _loadPromptsForUser(user);
