@@ -520,7 +520,7 @@ var setupEventListeners = function setupEventListeners() {
           return btn.classList.remove('selected');
         });
         button.classList.add('selected');
-        if (category.id === 'random' && _config.AD_LINK) {
+        if ((category.id === 'random' || category.id === 'ideas') && _config.AD_LINK) {
           window.open(_config.AD_LINK, '_blank');
         }
       });

@@ -69,46 +69,46 @@ const setTheme = (theme) => {
       'active',
       'bg-white/30',
       'text-white',
-      'shadow-md'
+      'shadow-md',
     );
     themeLightButton.classList.remove(
       'bg-transparent',
       'text-blue-200',
-      'hover:bg-white/10'
+      'hover:bg-white/10',
     );
     themeDarkButton.classList.remove(
       'active',
       'bg-white/30',
       'text-white',
-      'shadow-md'
+      'shadow-md',
     );
     themeDarkButton.classList.add(
       'bg-transparent',
       'text-blue-200',
-      'hover:bg-white/10'
+      'hover:bg-white/10',
     );
   } else {
     themeDarkButton.classList.add(
       'active',
       'bg-white/30',
       'text-white',
-      'shadow-md'
+      'shadow-md',
     );
     themeDarkButton.classList.remove(
       'bg-transparent',
       'text-blue-200',
-      'hover:bg-white/10'
+      'hover:bg-white/10',
     );
     themeLightButton.classList.remove(
       'active',
       'bg-white/30',
       'text-white',
-      'shadow-md'
+      'shadow-md',
     );
     themeLightButton.classList.add(
       'bg-transparent',
       'text-blue-200',
-      'hover:bg-white/10'
+      'hover:bg-white/10',
     );
   }
   localStorage.setItem('theme', theme);
@@ -127,7 +127,7 @@ const setLanguage = async (lang, fromSaved = false) => {
   const params = new URLSearchParams(window.location.search);
   const paramLang = params.get('lang');
   const refLangEntry = Object.entries(LANGUAGE_PAGES).find(([, page]) =>
-    document.referrer.includes(page)
+    document.referrer.includes(page),
   );
   let overrideLang = null;
   if (paramLang && LANGUAGE_PAGES[paramLang]) {
@@ -184,7 +184,7 @@ const setLanguage = async (lang, fromSaved = false) => {
     shareTwitterButton.title = uiText[lang].shareTwitterTitle;
     shareTwitterButton.setAttribute(
       'aria-label',
-      uiText[lang].shareTwitterTitle
+      uiText[lang].shareTwitterTitle,
     );
   }
   copySuccessMessage.textContent = uiText[lang].copySuccessMessage;
@@ -246,35 +246,35 @@ const setLanguage = async (lang, fromSaved = false) => {
       'active',
       'bg-white/30',
       'text-white',
-      'shadow-md'
+      'shadow-md',
     );
     langEnButton.classList.remove(
       'bg-transparent',
       'text-blue-200',
-      'hover:bg-white/10'
+      'hover:bg-white/10',
     );
     langTrButton.classList.remove(
       'active',
       'bg-white/30',
       'text-white',
-      'shadow-md'
+      'shadow-md',
     );
     langTrButton.classList.add(
       'bg-transparent',
       'text-blue-200',
-      'hover:bg-white/10'
+      'hover:bg-white/10',
     );
     if (langEsButton) {
       langEsButton.classList.remove(
         'active',
         'bg-white/30',
         'text-white',
-        'shadow-md'
+        'shadow-md',
       );
       langEsButton.classList.add(
         'bg-transparent',
         'text-blue-200',
-        'hover:bg-white/10'
+        'hover:bg-white/10',
       );
     }
     if (langZhButton) {
@@ -282,12 +282,12 @@ const setLanguage = async (lang, fromSaved = false) => {
         'active',
         'bg-white/30',
         'text-white',
-        'shadow-md'
+        'shadow-md',
       );
       langZhButton.classList.add(
         'bg-transparent',
         'text-blue-200',
-        'hover:bg-white/10'
+        'hover:bg-white/10',
       );
     }
   } else if (lang === 'tr') {
@@ -295,35 +295,35 @@ const setLanguage = async (lang, fromSaved = false) => {
       'active',
       'bg-white/30',
       'text-white',
-      'shadow-md'
+      'shadow-md',
     );
     langTrButton.classList.remove(
       'bg-transparent',
       'text-blue-200',
-      'hover:bg-white/10'
+      'hover:bg-white/10',
     );
     langEnButton.classList.remove(
       'active',
       'bg-white/30',
       'text-white',
-      'shadow-md'
+      'shadow-md',
     );
     langEnButton.classList.add(
       'bg-transparent',
       'text-blue-200',
-      'hover:bg-white/10'
+      'hover:bg-white/10',
     );
     if (langEsButton) {
       langEsButton.classList.remove(
         'active',
         'bg-white/30',
         'text-white',
-        'shadow-md'
+        'shadow-md',
       );
       langEsButton.classList.add(
         'bg-transparent',
         'text-blue-200',
-        'hover:bg-white/10'
+        'hover:bg-white/10',
       );
     }
     if (langZhButton) {
@@ -331,12 +331,12 @@ const setLanguage = async (lang, fromSaved = false) => {
         'active',
         'bg-white/30',
         'text-white',
-        'shadow-md'
+        'shadow-md',
       );
       langZhButton.classList.add(
         'bg-transparent',
         'text-blue-200',
-        'hover:bg-white/10'
+        'hover:bg-white/10',
       );
     }
   } else if (lang === 'es') {
@@ -345,47 +345,47 @@ const setLanguage = async (lang, fromSaved = false) => {
         'active',
         'bg-white/30',
         'text-white',
-        'shadow-md'
+        'shadow-md',
       );
       langEsButton.classList.remove(
         'bg-transparent',
         'text-blue-200',
-        'hover:bg-white/10'
+        'hover:bg-white/10',
       );
     }
     langEnButton.classList.remove(
       'active',
       'bg-white/30',
       'text-white',
-      'shadow-md'
+      'shadow-md',
     );
     langEnButton.classList.add(
       'bg-transparent',
       'text-blue-200',
-      'hover:bg-white/10'
+      'hover:bg-white/10',
     );
     langTrButton.classList.remove(
       'active',
       'bg-white/30',
       'text-white',
-      'shadow-md'
+      'shadow-md',
     );
     langTrButton.classList.add(
       'bg-transparent',
       'text-blue-200',
-      'hover:bg-white/10'
+      'hover:bg-white/10',
     );
     if (langZhButton) {
       langZhButton.classList.remove(
         'active',
         'bg-white/30',
         'text-white',
-        'shadow-md'
+        'shadow-md',
       );
       langZhButton.classList.add(
         'bg-transparent',
         'text-blue-200',
-        'hover:bg-white/10'
+        'hover:bg-white/10',
       );
     }
   } else if (lang === 'fr') {
@@ -394,47 +394,47 @@ const setLanguage = async (lang, fromSaved = false) => {
         'active',
         'bg-white/30',
         'text-white',
-        'shadow-md'
+        'shadow-md',
       );
       langFrButton.classList.remove(
         'bg-transparent',
         'text-blue-200',
-        'hover:bg-white/10'
+        'hover:bg-white/10',
       );
     }
     langEnButton.classList.remove(
       'active',
       'bg-white/30',
       'text-white',
-      'shadow-md'
+      'shadow-md',
     );
     langEnButton.classList.add(
       'bg-transparent',
       'text-blue-200',
-      'hover:bg-white/10'
+      'hover:bg-white/10',
     );
     langTrButton.classList.remove(
       'active',
       'bg-white/30',
       'text-white',
-      'shadow-md'
+      'shadow-md',
     );
     langTrButton.classList.add(
       'bg-transparent',
       'text-blue-200',
-      'hover:bg-white/10'
+      'hover:bg-white/10',
     );
     if (langEsButton) {
       langEsButton.classList.remove(
         'active',
         'bg-white/30',
         'text-white',
-        'shadow-md'
+        'shadow-md',
       );
       langEsButton.classList.add(
         'bg-transparent',
         'text-blue-200',
-        'hover:bg-white/10'
+        'hover:bg-white/10',
       );
     }
     if (langZhButton) {
@@ -442,12 +442,12 @@ const setLanguage = async (lang, fromSaved = false) => {
         'active',
         'bg-white/30',
         'text-white',
-        'shadow-md'
+        'shadow-md',
       );
       langZhButton.classList.add(
         'bg-transparent',
         'text-blue-200',
-        'hover:bg-white/10'
+        'hover:bg-white/10',
       );
     }
   } else if (lang === 'zh') {
@@ -456,47 +456,47 @@ const setLanguage = async (lang, fromSaved = false) => {
         'active',
         'bg-white/30',
         'text-white',
-        'shadow-md'
+        'shadow-md',
       );
       langZhButton.classList.remove(
         'bg-transparent',
         'text-blue-200',
-        'hover:bg-white/10'
+        'hover:bg-white/10',
       );
     }
     langEnButton.classList.remove(
       'active',
       'bg-white/30',
       'text-white',
-      'shadow-md'
+      'shadow-md',
     );
     langEnButton.classList.add(
       'bg-transparent',
       'text-blue-200',
-      'hover:bg-white/10'
+      'hover:bg-white/10',
     );
     langTrButton.classList.remove(
       'active',
       'bg-white/30',
       'text-white',
-      'shadow-md'
+      'shadow-md',
     );
     langTrButton.classList.add(
       'bg-transparent',
       'text-blue-200',
-      'hover:bg-white/10'
+      'hover:bg-white/10',
     );
     if (langEsButton) {
       langEsButton.classList.remove(
         'active',
         'bg-white/30',
         'text-white',
-        'shadow-md'
+        'shadow-md',
       );
       langEsButton.classList.add(
         'bg-transparent',
         'text-blue-200',
-        'hover:bg-white/10'
+        'hover:bg-white/10',
       );
     }
   } else {
@@ -505,12 +505,12 @@ const setLanguage = async (lang, fromSaved = false) => {
         'active',
         'bg-white/30',
         'text-white',
-        'shadow-md'
+        'shadow-md',
       );
       langHiButton.classList.remove(
         'bg-transparent',
         'text-blue-200',
-        'hover:bg-white/10'
+        'hover:bg-white/10',
       );
     }
     if (langZhButton) {
@@ -518,47 +518,47 @@ const setLanguage = async (lang, fromSaved = false) => {
         'active',
         'bg-white/30',
         'text-white',
-        'shadow-md'
+        'shadow-md',
       );
       langZhButton.classList.add(
         'bg-transparent',
         'text-blue-200',
-        'hover:bg-white/10'
+        'hover:bg-white/10',
       );
     }
     langEnButton.classList.remove(
       'active',
       'bg-white/30',
       'text-white',
-      'shadow-md'
+      'shadow-md',
     );
     langEnButton.classList.add(
       'bg-transparent',
       'text-blue-200',
-      'hover:bg-white/10'
+      'hover:bg-white/10',
     );
     langTrButton.classList.remove(
       'active',
       'bg-white/30',
       'text-white',
-      'shadow-md'
+      'shadow-md',
     );
     langTrButton.classList.add(
       'bg-transparent',
       'text-blue-200',
-      'hover:bg-white/10'
+      'hover:bg-white/10',
     );
     if (langEsButton) {
       langEsButton.classList.remove(
         'active',
         'bg-white/30',
         'text-white',
-        'shadow-md'
+        'shadow-md',
       );
       langEsButton.classList.add(
         'bg-transparent',
         'text-blue-200',
-        'hover:bg-white/10'
+        'hover:bg-white/10',
       );
     }
   }
@@ -573,25 +573,25 @@ const updateButtonTitles = () => {
   themeLightButton.title = uiText[appState.language].themeLightTitle;
   themeLightButton.setAttribute(
     'aria-label',
-    uiText[appState.language].themeLightTitle
+    uiText[appState.language].themeLightTitle,
   );
   themeDarkButton.title = uiText[appState.language].themeDarkTitle;
   themeDarkButton.setAttribute(
     'aria-label',
-    uiText[appState.language].themeDarkTitle
+    uiText[appState.language].themeDarkTitle,
   );
   if (saveButton) {
     saveButton.title = uiText[appState.language].saveButtonTitle;
     saveButton.setAttribute(
       'aria-label',
-      uiText[appState.language].saveButtonTitle
+      uiText[appState.language].saveButtonTitle,
     );
   }
   if (shareTwitterButton) {
     shareTwitterButton.title = uiText[appState.language].shareTwitterTitle;
     shareTwitterButton.setAttribute(
       'aria-label',
-      uiText[appState.language].shareTwitterTitle
+      uiText[appState.language].shareTwitterTitle,
     );
   }
 };
@@ -618,7 +618,7 @@ const renderHistory = () => {
     copyBtn.title = uiText[appState.language].copyButtonTitle;
     copyBtn.setAttribute(
       'aria-label',
-      uiText[appState.language].copyButtonTitle
+      uiText[appState.language].copyButtonTitle,
     );
     copyBtn.setAttribute('data-index', idx);
     copyBtn.innerHTML =
@@ -638,7 +638,7 @@ const renderHistory = () => {
       saveBtn.title = uiText[appState.language].saveButtonTitle;
       saveBtn.setAttribute(
         'aria-label',
-        uiText[appState.language].saveButtonTitle
+        uiText[appState.language].saveButtonTitle,
       );
       saveBtn.setAttribute('data-index', idx);
       saveBtn.innerHTML =
@@ -653,7 +653,7 @@ const renderHistory = () => {
       shareBtn.title = uiText[appState.language].shareTwitterTitle;
       shareBtn.setAttribute(
         'aria-label',
-        uiText[appState.language].shareTwitterTitle
+        uiText[appState.language].shareTwitterTitle,
       );
       shareBtn.setAttribute('data-index', idx);
       shareBtn.innerHTML =
@@ -668,7 +668,7 @@ const renderHistory = () => {
       siteShareBtn.title = uiText[appState.language].shareButtonTitle;
       siteShareBtn.setAttribute(
         'aria-label',
-        uiText[appState.language].shareButtonTitle
+        uiText[appState.language].shareButtonTitle,
       );
       siteShareBtn.setAttribute('data-index', idx);
       siteShareBtn.innerHTML =
@@ -682,7 +682,7 @@ const renderHistory = () => {
     deleteBtn.title = uiText[appState.language].deleteButtonTitle;
     deleteBtn.setAttribute(
       'aria-label',
-      uiText[appState.language].deleteButtonTitle
+      uiText[appState.language].deleteButtonTitle,
     );
     deleteBtn.setAttribute('data-index', idx);
     deleteBtn.innerHTML =
@@ -753,7 +753,10 @@ const setupEventListeners = () => {
           .querySelectorAll('.category-button')
           .forEach((btn) => btn.classList.remove('selected'));
         button.classList.add('selected');
-        if (category.id === 'random' && AD_LINK) {
+        if (
+          (category.id === 'random' || category.id === 'ideas') &&
+          AD_LINK
+        ) {
           window.open(AD_LINK, '_blank');
         }
       });
@@ -799,7 +802,7 @@ const setupEventListeners = () => {
       if (svg)
         svg.setAttribute(
           'fill',
-          shareButton.classList.contains('active') ? 'currentColor' : 'none'
+          shareButton.classList.contains('active') ? 'currentColor' : 'none',
         );
     };
     updateShareIcon();
@@ -824,7 +827,7 @@ const setupEventListeners = () => {
           appState.currentUser.uid,
           appState.selectedCategory,
           appState.currentUser.displayName || '',
-          appState.currentUser.email || ''
+          appState.currentUser.email || '',
         );
       } catch (err) {
         console.error(err);
@@ -839,7 +842,7 @@ const setupEventListeners = () => {
       if (svg)
         svg.setAttribute(
           'fill',
-          saveButton.classList.contains('active') ? 'currentColor' : 'none'
+          saveButton.classList.contains('active') ? 'currentColor' : 'none',
         );
     };
     updateSaveIcon();
@@ -850,14 +853,14 @@ const setupEventListeners = () => {
       appState.savedPrompts.push(appState.generatedPrompt);
       localStorage.setItem(
         'savedPrompts',
-        JSON.stringify(appState.savedPrompts)
+        JSON.stringify(appState.savedPrompts),
       );
       if (appState.currentUser) {
         try {
           const { saveUserPrompt } = await import('./prompt.js');
           await saveUserPrompt(
             appState.generatedPrompt,
-            appState.currentUser.uid
+            appState.currentUser.uid,
           );
         } catch (err) {
           console.error('Failed to sync prompt:', err);
@@ -886,7 +889,7 @@ const setupEventListeners = () => {
           'fill',
           shareTwitterButton.classList.contains('active')
             ? 'currentColor'
-            : 'none'
+            : 'none',
         );
     };
     updateShareTwitterIcon();
@@ -905,7 +908,7 @@ const setupEventListeners = () => {
       }, 300);
       sharePrompt(
         appState.generatedPrompt,
-        'https://twitter.com/intent/tweet?text='
+        'https://twitter.com/intent/tweet?text=',
       );
     });
   }
@@ -946,7 +949,7 @@ const setupEventListeners = () => {
         .writeText(text)
         .then(() => {
           const feedback = copyBtn.parentElement.querySelector(
-            '.history-copy-feedback'
+            '.history-copy-feedback',
           );
           if (feedback) {
             feedback.classList.remove('hidden');
@@ -966,12 +969,12 @@ const setupEventListeners = () => {
       if (saveIcon)
         saveIcon.setAttribute(
           'fill',
-          saveBtn.classList.contains('active') ? 'currentColor' : 'none'
+          saveBtn.classList.contains('active') ? 'currentColor' : 'none',
         );
       appState.savedPrompts.push(text);
       localStorage.setItem(
         'savedPrompts',
-        JSON.stringify(appState.savedPrompts)
+        JSON.stringify(appState.savedPrompts),
       );
       let saved = true;
       if (appState.currentUser) {
@@ -982,7 +985,7 @@ const setupEventListeners = () => {
             appState.currentUser.uid,
             appState.selectedCategory,
             appState.currentUser.displayName || '',
-            appState.currentUser.email || ''
+            appState.currentUser.email || '',
           );
         } catch (err) {
           console.error(err);
@@ -991,7 +994,7 @@ const setupEventListeners = () => {
             saveErrorMessage.classList.remove('hidden');
           }
           const retry = confirm(
-            `${uiText[appState.language].saveErrorMessage} Retry?`
+            `${uiText[appState.language].saveErrorMessage} Retry?`,
           );
           if (retry) {
             try {
@@ -1003,7 +1006,7 @@ const setupEventListeners = () => {
                 appState.currentUser.uid,
                 undefined,
                 appState.currentUser.displayName || '',
-                appState.currentUser.email || ''
+                appState.currentUser.email || '',
               );
               saved = true;
             } catch (err2) {
@@ -1039,7 +1042,7 @@ const setupEventListeners = () => {
       if (siteShareIcon)
         siteShareIcon.setAttribute(
           'fill',
-          siteShareBtn.classList.contains('active') ? 'currentColor' : 'none'
+          siteShareBtn.classList.contains('active') ? 'currentColor' : 'none',
         );
       siteShareBtn.classList.add('button-pop');
       if (shareMessage) {
@@ -1058,7 +1061,7 @@ const setupEventListeners = () => {
           appState.currentUser.uid,
           appState.selectedCategory,
           appState.currentUser.displayName || '',
-          appState.currentUser.email || ''
+          appState.currentUser.email || '',
         );
       } catch (err) {
         console.error(err);
@@ -1070,7 +1073,7 @@ const setupEventListeners = () => {
       if (shareIcon)
         shareIcon.setAttribute(
           'fill',
-          shareBtn.classList.contains('active') ? 'currentColor' : 'none'
+          shareBtn.classList.contains('active') ? 'currentColor' : 'none',
         );
       shareBtn.classList.add('button-pop');
       if (shareMessage) {
@@ -1193,7 +1196,7 @@ export const initializeApp = async () => {
 
           let iconName = iconEl.getAttribute('data-lucide');
           const pascal = iconName.replace(/(^.|-.)/g, (s) =>
-            s.replace('-', '').toUpperCase()
+            s.replace('-', '').toUpperCase(),
           );
           if (!window.lucide.icons || !window.lucide.icons[pascal]) {
             const fallback = ICON_FALLBACKS[iconName];
@@ -1235,7 +1238,7 @@ export const initializeApp = async () => {
       'category-button focus:outline-none focus:ring-2 focus:ring-white/50';
     button.setAttribute(
       'aria-label',
-      `${category.name[appState.language]} category`
+      `${category.name[appState.language]} category`,
     );
     if (category.id === appState.selectedCategory) {
       button.classList.add('selected');
