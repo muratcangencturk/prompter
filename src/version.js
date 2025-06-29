@@ -25,23 +25,8 @@ export const startVersionCheck = async () => {
       currentManifestVersion &&
       newVersion !== currentManifestVersion
     ) {
-      if (!document.getElementById('update-banner')) {
-        const banner = document.createElement('div');
-        banner.id = 'update-banner';
-        banner.textContent = 'A new version is available.';
-        banner.style.cssText =
-          'background:#fef08a;color:#000;padding:8px;text-align:center;font-size:14px;position:sticky;top:0;z-index:1000;';
-        const btn = document.createElement('button');
-        btn.textContent = 'Refresh';
-        btn.style.cssText =
-          'margin-left:8px;text-decoration:underline;font-weight:bold;background:transparent;border:none;cursor:pointer;color:inherit;';
-        btn.addEventListener('click', () => {
-          clearServiceWorkersAndCaches();
-          location.reload();
-        });
-        banner.appendChild(btn);
-        document.body.prepend(banner);
-      }
+      clearServiceWorkersAndCaches();
+      location.reload();
     }
   }, 5 * 60 * 1000);
 };
