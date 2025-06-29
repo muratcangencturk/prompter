@@ -213,7 +213,6 @@ let unsubscribeNotifications;
 let followerIds = [];
 let followingIds = [];
 
-let editing = false;
 
 const profileCache = {};
 const fetchName = async (uid) => {
@@ -560,17 +559,20 @@ const renderSavedPrompts = (prompts) => {
       editBtn.disabled = true;
     }
 
+    let editing = false;
+
     const startEdit = () => {
       if (editing) return;
       if (!appState.currentUser) {
         alert(uiText[appState.language].loginRequired);
         return;
       }
+      if (!textWrap.contains(pEl)) return;
       editing = true;
       const textarea = document.createElement('textarea');
       textarea.className = 'w-full p-2 rounded-md bg-black/30';
       textarea.value = pEl.textContent;
-      if (textWrap.contains(pEl)) textWrap.replaceChild(textarea, pEl);
+      textWrap.replaceChild(textarea, pEl);
 
       const editRow = document.createElement('div');
       editRow.className = 'flex items-center gap-2 mt-2';
@@ -883,6 +885,8 @@ const renderSharedPrompts = async (prompts) => {
     delBtn.innerHTML =
       '<i data-lucide="trash" class="w-3 h-3" aria-hidden="true"></i>';
 
+    let editing = false;
+
     const startEdit = () => {
       if (editing) return;
       if (appState.currentUser && p.userId === appState.currentUser.uid) {
@@ -894,11 +898,12 @@ const renderSharedPrompts = async (prompts) => {
 
     const showEdit = () => {
       if (editing) return;
+      if (!textWrap.contains(text)) return;
       editing = true;
       const textarea = document.createElement('textarea');
       textarea.className = 'w-full p-2 rounded-md bg-black/30';
       textarea.value = p.text;
-      if (textWrap.contains(text)) textWrap.replaceChild(textarea, text);
+      textWrap.replaceChild(textarea, text);
 
       const editRow = document.createElement('div');
       editRow.className = 'flex items-center gap-2 mt-2';
