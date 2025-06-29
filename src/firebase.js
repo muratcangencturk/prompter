@@ -12,7 +12,7 @@ export async function loadFirebaseConfig(retries = 3) {
   }
   while (retries > 0) {
     try {
-      const res = await fetch('/firebase.config.json');
+      const res = await fetch('firebase.config.json');
       if (!res.ok) throw new Error('Firebase configuration not found');
       const cfg = await res.json();
       window.firebaseConfig = cfg;
