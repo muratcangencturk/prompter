@@ -422,6 +422,54 @@ const sharePrompt = (prompt, baseUrl) => {
   window.open(url, '_blank');
 };
 
+const LOAD_ERROR_MESSAGE =
+  'Could not load prompts. Please check your connection.';
+
+const showLoadError = (listId, retryFn) => {
+  const list = document.getElementById(listId);
+  if (!list) return;
+  list.innerHTML = '';
+  const p = document.createElement('p');
+  p.className = 'text-center text-blue-200 text-sm';
+  p.textContent = LOAD_ERROR_MESSAGE;
+  list.appendChild(p);
+  if (retryFn) {
+    const btn = document.createElement('button');
+    btn.textContent = 'Retry';
+    btn.className = 'block mx-auto underline mt-2 text-blue-200';
+    btn.addEventListener('click', retryFn);
+    list.appendChild(btn);
+  }
+};
+
+const showSavedLoadError = (retryFn) => showLoadError('saved-list', retryFn);
+
+const showSharedLoadError = (retryFn) => showLoadError('shared-list', retryFn);
+
+const loadPromptsForUser = async (user) => {
+  if (!user) return;
+  try {
+    const prompts = await getUserPrompts(user.uid);
+    sharedPromptsData = prompts;
+    renderSharedPrompts(sharedPromptsData);
+  } catch (err) {
+    console.error('Failed to load prompts:', err);
+    showSharedLoadError(() => loadPromptsForUser(user));
+  }
+
+  try {
+    const savedDocs = await getUserSavedPrompts(user.uid);
+    const savedTexts = savedDocs.map((p) => p.text);
+    const merged = Array.from(new Set([...appState.savedPrompts, ...savedTexts]));
+    appState.savedPrompts = merged;
+    localStorage.setItem('savedPrompts', JSON.stringify(merged));
+    renderSavedPrompts(appState.savedPrompts);
+  } catch (err) {
+    console.error('Failed to load prompts:', err);
+    showSavedLoadError(() => loadPromptsForUser(user));
+  }
+};
+
 const renderSavedPrompts = (prompts) => {
   const list = document.getElementById('saved-list');
   list.innerHTML = '';
@@ -1305,6 +1353,9 @@ const init = () => {
             renderSharedPrompts(sharedPromptsData);
           } catch (err) {
             console.error('Failed to load prompts:', err);
+            showSharedLoadError(() =>
+              loadPromptsForUser(appState.currentUser)
+            );
           }
         }
       } catch (err) {
@@ -1385,22 +1436,7 @@ const init = () => {
     } catch (err) {
       console.error('Failed to load profile:', err);
     }
-    try {
-      const prompts = await getUserPrompts(user.uid);
-      sharedPromptsData = prompts;
-      renderSharedPrompts(sharedPromptsData);
-
-      const savedDocs = await getUserSavedPrompts(user.uid);
-      const savedTexts = savedDocs.map((p) => p.text);
-      const merged = Array.from(
-        new Set([...appState.savedPrompts, ...savedTexts])
-      );
-      appState.savedPrompts = merged;
-      localStorage.setItem('savedPrompts', JSON.stringify(merged));
-      renderSavedPrompts(appState.savedPrompts);
-    } catch (err) {
-      console.error('Failed to load prompts:', err);
-    }
+    await loadPromptsForUser(user);
     window.lucide?.createIcons();
     document.querySelectorAll('#shared-list .like-btn').forEach((b) => {
       const svg = b.querySelector('svg');
