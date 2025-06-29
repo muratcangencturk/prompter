@@ -213,6 +213,8 @@ let unsubscribeNotifications;
 let followerIds = [];
 let followingIds = [];
 
+let editing = false;
+
 const profileCache = {};
 const fetchName = async (uid) => {
   if (profileCache[uid]) return profileCache[uid];
@@ -544,14 +546,16 @@ const renderSavedPrompts = (prompts) => {
     }
 
     const startEdit = () => {
+      if (editing) return;
       if (!appState.currentUser) {
         alert(uiText[appState.language].loginRequired);
         return;
       }
+      editing = true;
       const textarea = document.createElement('textarea');
       textarea.className = 'w-full p-2 rounded-md bg-black/30';
       textarea.value = pEl.textContent;
-      textWrap.replaceChild(textarea, pEl);
+      if (textWrap.contains(pEl)) textWrap.replaceChild(textarea, pEl);
 
       const editRow = document.createElement('div');
       editRow.className = 'flex items-center gap-2 mt-2';
@@ -567,13 +571,14 @@ const renderSavedPrompts = (prompts) => {
         '<i data-lucide="x" class="w-4 h-4" aria-hidden="true"></i>';
       editRow.appendChild(saveEdit);
       editRow.appendChild(cancelEdit);
-      item.replaceChild(editRow, actions);
+      if (item.contains(actions)) item.replaceChild(editRow, actions);
       // refresh icons for the new buttons
       window.lucide?.createIcons();
 
       cancelEdit.addEventListener('click', () => {
-        textWrap.replaceChild(pEl, textarea);
-        item.replaceChild(actions, editRow);
+        if (textWrap.contains(textarea)) textWrap.replaceChild(pEl, textarea);
+        if (item.contains(editRow)) item.replaceChild(actions, editRow);
+        editing = false;
       });
 
       saveEdit.addEventListener('click', () => {
@@ -847,7 +852,7 @@ const renderSharedPrompts = async (prompts) => {
     editBtn.innerHTML =
       '<i data-lucide="pencil" class="w-4 h-4" aria-hidden="true"></i>';
     // clicking the prompt text also starts editing
-    text.addEventListener('click', () => editBtn.click());
+    text.addEventListener('click', startEdit);
 
     const shareBtn = document.createElement('button');
     shareBtn.className =
@@ -864,6 +869,7 @@ const renderSharedPrompts = async (prompts) => {
       '<i data-lucide="trash" class="w-3 h-3" aria-hidden="true"></i>';
 
     const startEdit = () => {
+      if (editing) return;
       if (appState.currentUser && p.userId === appState.currentUser.uid) {
         showEdit();
       } else {
@@ -872,10 +878,12 @@ const renderSharedPrompts = async (prompts) => {
     };
 
     const showEdit = () => {
+      if (editing) return;
+      editing = true;
       const textarea = document.createElement('textarea');
       textarea.className = 'w-full p-2 rounded-md bg-black/30';
       textarea.value = p.text;
-      textWrap.replaceChild(textarea, text);
+      if (textWrap.contains(text)) textWrap.replaceChild(textarea, text);
 
       const editRow = document.createElement('div');
       editRow.className = 'flex items-center gap-2 mt-2';
@@ -892,13 +900,14 @@ const renderSharedPrompts = async (prompts) => {
       editRow.appendChild(saveEdit);
       editRow.appendChild(cancelEdit);
 
-      item.replaceChild(editRow, likeRow);
+      if (item.contains(likeRow)) item.replaceChild(editRow, likeRow);
       // refresh icons for the new buttons
       window.lucide?.createIcons();
 
       cancelEdit.addEventListener('click', () => {
-        textWrap.replaceChild(text, textarea);
-        item.replaceChild(likeRow, editRow);
+        if (textWrap.contains(textarea)) textWrap.replaceChild(text, textarea);
+        if (item.contains(editRow)) item.replaceChild(likeRow, editRow);
+        editing = false;
       });
 
       saveEdit.addEventListener('click', async () => {
@@ -915,7 +924,6 @@ const renderSharedPrompts = async (prompts) => {
       });
     };
 
-    text.addEventListener('click', startEdit);
     editBtn.addEventListener('click', startEdit);
 
     copyBtn.addEventListener('click', () => {
