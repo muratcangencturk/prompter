@@ -3,6 +3,7 @@ const CACHE_NAME = `prompter-${CACHE_VERSION}`;
 const ASSETS = [
   '/',
   '404.html',
+  'blog',
   'blog.html',
   'css/app.css?v=74',
   'css/tailwind.css?v=74',
@@ -72,8 +73,10 @@ const ASSETS = [
   'login.html',
   'manifest.json?v=74',
   'privacy.html',
+  'pro',
   'pro.html',
   'profile.html',
+  'social',
   'social.html',
   'space.html',
   'src/auth.js?v=74',
