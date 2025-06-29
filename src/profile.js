@@ -450,10 +450,25 @@ const showSharedLoadError = (retryFn) => showLoadError('shared-list', retryFn);
 
 const loadPromptsForUser = async (user) => {
   if (!user) return;
+  const cacheKey = `profileCache_${user.uid}`;
+  try {
+    const cached = localStorage.getItem(cacheKey);
+    if (cached) {
+      sharedPromptsData = JSON.parse(cached);
+      renderSharedPrompts(sharedPromptsData);
+    }
+  } catch (err) {
+    console.warn('Failed to parse profile cache:', err);
+  }
   try {
     const prompts = await getUserPrompts(user.uid);
     sharedPromptsData = prompts;
     renderSharedPrompts(sharedPromptsData);
+    try {
+      localStorage.setItem(cacheKey, JSON.stringify(prompts));
+    } catch (err) {
+      console.warn('Failed to store profile cache:', err);
+    }
   } catch (err) {
     console.error('Failed to load prompts:', err);
     showSharedLoadError(() => loadPromptsForUser(user));

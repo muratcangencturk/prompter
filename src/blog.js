@@ -41,13 +41,28 @@ export const createPost = async (
 };
 
 export const getAllPosts = async () => {
+  const cacheKey = 'blogCache';
+  try {
+    const cached = localStorage.getItem(cacheKey);
+    if (cached) {
+      return JSON.parse(cached);
+    }
+  } catch {
+    /* ignore */
+  }
   const q = query(
     collection(db, 'blogPosts'),
     where('shared', '==', true),
     orderBy('createdAt', 'desc')
   );
   const snap = await withRetry(() => getDocs(q));
-  return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+  const posts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+  try {
+    localStorage.setItem(cacheKey, JSON.stringify(posts));
+  } catch {
+    /* ignore */
+  }
+  return posts;
 };
 
 export const likePost = async (postId, userId) => {

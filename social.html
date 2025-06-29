@@ -904,6 +904,18 @@
       }
 
       let loadedPrompts = null;
+      const SOCIAL_CACHE_KEY = 'socialCache';
+      const loadCachedPrompts = () => {
+        try {
+          const cached = localStorage.getItem(SOCIAL_CACHE_KEY);
+          if (cached) {
+            loadedPrompts = JSON.parse(cached);
+            filterAndRender();
+          }
+        } catch (err) {
+          console.warn('Failed to parse social cache:', err);
+        }
+      };
 
       function filterAndRender() {
         if (loadedPrompts === null) return;
@@ -951,6 +963,11 @@
             if (loading.parentElement) loading.remove();
             let prompts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
             loadedPrompts = prompts;
+            try {
+              localStorage.setItem(SOCIAL_CACHE_KEY, JSON.stringify(prompts));
+            } catch (err) {
+              console.warn('Failed to store social cache:', err);
+            }
             if (prompts.length === 0) {
               list.innerHTML = '';
               const msg = document.createElement('p');
@@ -982,6 +999,7 @@
         onAuth((u) => {
           if (u) updateLastSocialVisit(u.uid, Date.now());
         });
+        loadCachedPrompts();
         promptSearch?.addEventListener('input', debouncedFilter);
         onAuth((u) => startListener(u));
       }
