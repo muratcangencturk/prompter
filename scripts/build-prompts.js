@@ -49,7 +49,6 @@ function buildPrompts() {
   return result;
 }
 
-
 function bumpManifestVersion() {
   const manifest = readJSON(manifestFile);
   const current = parseInt(manifest.version, 10);
@@ -82,7 +81,15 @@ function getServedHtmlFiles(dir) {
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) {
       if (
-        ['node_modules', 'templates', 'translations', 'prompts', 'scripts', 'test', 'elonmusksimulator-main'].includes(entry.name)
+        [
+          'node_modules',
+          'templates',
+          'translations',
+          'prompts',
+          'scripts',
+          'test',
+          'elonmusksimulator-main',
+        ].includes(entry.name)
       ) {
         continue;
       }
@@ -95,7 +102,8 @@ function getServedHtmlFiles(dir) {
 }
 
 function appendVersionToAssets(html, version) {
-  const assetRegex = /(src|href|content)=("|')(?!https?:\/\/|\/\/|mailto:|#)([^"'>]+)(\2)/g;
+  const assetRegex =
+    /(src|href|content)=("|')(?!https?:\/\/|\/\/|mailto:|#)([^"'>]+)(\2)/g;
   const extPattern = /\.(js|css|svg|png|jpe?g|webp|gif|json|ico)$/i;
   let result = html.replace(assetRegex, (m, attr, quote, url) => {
     // Skip anchors to other html pages
@@ -107,13 +115,22 @@ function appendVersionToAssets(html, version) {
     const sep = cleaned.includes('?') ? '&' : '?';
     return `${attr}=${quote}${cleaned}${sep}v=${version}${quote}`;
   });
-  result = result.replace(/lucide\.min\.js(?:\?v=\d+)?/g, `lucide.min.js?v=${version}`);
-  result = result.replace(/prompts\.js(?:\?v=\d+)?/g, `prompts.js?v=${version}`);
+  result = result.replace(
+    /lucide\.min\.js(?:\?v=\d+)?/g,
+    `lucide.min.js?v=${version}`
+  );
+  result = result.replace(
+    /prompts\.js(?:\?v=\d+)?/g,
+    `prompts.js?v=${version}`
+  );
   return result;
 }
 
 function updateBaseHref(html, href) {
-  return html.replace(/<base\s+href="[^"]*"\s*\/?>(?=)/i, `<base href="${href}" />`);
+  return html.replace(
+    /<base\s+href="[^"]*"\s*\/?>(?=)/i,
+    `<base href="${href}" />`
+  );
 }
 
 function updateSiteUrl(html, siteUrl) {
@@ -145,13 +162,14 @@ function updateRobotsFile(siteUrl) {
 
 function gatherAssets() {
   const htmlFiles = getServedHtmlFiles(rootDir);
-  const assetRegex = /(src|href|content)=("|')(?!https?:\/\/|\/\/|mailto:|#)([^"'>]+)(\2)/g;
+  const assetRegex =
+    /(src|href|content)=("|')(?!https?:\/\/|\/\/|mailto:|#)([^"'>]+)(\2)/g;
   const extPattern = /\.(js|css|svg|png|jpe?g|webp|gif|json|ico)$/i;
   const assets = new Set(['/']);
   for (const file of htmlFiles) {
     const rel = path.relative(rootDir, file).replace(/\\/g, '/');
     assets.add(rel);
-    if (['blog.html', 'pro.html', 'social.html'].includes(rel)) {
+    if (rel.endsWith('.html') && rel !== 'index.html') {
       assets.add(rel.replace(/\.html$/, ''));
     }
     const html = fs.readFileSync(file, 'utf8');
@@ -175,8 +193,14 @@ function updateServiceWorker(version) {
   let sw = fs.readFileSync(swPath, 'utf8');
   const assets = gatherAssets();
   const assetLines = assets.map((a) => `  '${a}'`).join(',\n');
-  sw = sw.replace(/const CACHE_VERSION = 'v\d+';/, `const CACHE_VERSION = 'v${version}';`);
-  sw = sw.replace(/const ASSETS = \[[^\]]*\]/s, `const ASSETS = [\n${assetLines}\n]`);
+  sw = sw.replace(
+    /const CACHE_VERSION = 'v\d+';/,
+    `const CACHE_VERSION = 'v${version}';`
+  );
+  sw = sw.replace(
+    /const ASSETS = \[[^\]]*\]/s,
+    `const ASSETS = [\n${assetLines}\n]`
+  );
   fs.writeFileSync(swPath, sw);
   console.log(`Updated ${path.relative(rootDir, swPath)}`);
 }
