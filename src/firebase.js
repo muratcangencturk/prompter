@@ -4,6 +4,7 @@ import {
 
   initializeFirestore,
   persistentLocalCache,
+  persistentMultipleTabManager,
 } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
 import { pendingAuthCallbacks } from './auth.js';
 
@@ -57,7 +58,9 @@ export function initFirebase(config) {
   app = initializeApp(config);
   auth = getAuth(app);
   db = initializeFirestore(app, {
-    cache: persistentLocalCache(),
+    localCache: persistentLocalCache({
+      tabManager: persistentMultipleTabManager(),
+    }),
   });
   pendingAuthCallbacks.forEach((cb) => onAuthStateChanged(auth, cb));
   pendingAuthCallbacks.length = 0;
