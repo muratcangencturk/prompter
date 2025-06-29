@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
@@ -9,7 +9,7 @@
     />
     <title>Space - Prompter</title>
     <base href="../" />
-    <link rel="manifest" href="manifest.json?v=74" />
+    <link rel="manifest" href="manifest.json?v=75" />
     <meta name="theme-color" content="#000000" />
     <meta
       http-equiv="Cache-Control"
@@ -22,13 +22,13 @@
     <meta name="robots" content="index,follow" />
     <meta property="og:title" content="Space - Prompter" />
     <meta property="og:description" content="Actualités et ressources de l'équipe Prompter." />
-    <meta property="og:image" content="/icons/logo.svg?v=74" />
+    <meta property="og:image" content="/icons/logo.svg?v=75" />
     <meta property="og:image:alt" content="Prompter logo" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Space - Prompter" />
     <meta name="twitter:description" content="Actualités et ressources de l'équipe Prompter." />
-    <meta name="twitter:image" content="/icons/logo.svg?v=74" />
+    <meta name="twitter:image" content="/icons/logo.svg?v=75" />
     <meta property="og:url" content="/fr/blog.html" />
     <meta property="og:site_name" content="Prompter" />
     <meta property="og:locale" content="fr" />
@@ -39,12 +39,12 @@
     <meta property="og:locale:alternate" content="zh" />
 
     <meta name="twitter:url" content="/fr/blog.html" />
-    <script type="module" src="/src/lucide-loader.js?v=74"></script>
-    <link rel="stylesheet" href="css/tailwind.css?v=74" />
-    <link rel="stylesheet" href="css/app.css?v=74" />
-    <script type="module" src="/src/init-app.js?v=74"></script>
-    <script nomodule src="/dist/init-app.js?v=74"></script>
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=74" />
+    <script type="module" src="/src/lucide-loader.js?v=75"></script>
+    <link rel="stylesheet" href="css/tailwind.css?v=75" />
+    <link rel="stylesheet" href="css/app.css?v=75" />
+    <script type="module" src="/src/init-app.js?v=75"></script>
+    <script nomodule src="/dist/init-app.js?v=75"></script>
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=75" />
     <link rel="canonical" href="/fr/blog.html" />
     <link rel="alternate" href="/blog.html" hreflang="x-default" />
     <link rel="alternate" href="/blog.html" hreflang="en" />
@@ -53,7 +53,7 @@
     <link rel="alternate" href="/hi/blog.html" hreflang="hi" />
     <link rel="alternate" href="/tr/blog.html" hreflang="tr" />
     <link rel="alternate" href="/zh/blog.html" hreflang="zh" />
-<script>
+    <script>
       (function () {
         var path = '/fr/blog.html';
         var url = location.origin + path;
@@ -63,10 +63,12 @@
         if (og) og.content = url;
         var tw = document.querySelector('meta[name="twitter:url"]');
         if (tw) tw.content = url;
-        document.querySelectorAll('link[rel="alternate"]').forEach(function(a){
-          var href = a.getAttribute('href');
-          if(href.startsWith('/')) a.href = location.origin + href;
-        });
+        document
+          .querySelectorAll('link[rel="alternate"]')
+          .forEach(function (a) {
+            var href = a.getAttribute('href');
+            if (href.startsWith('/')) a.href = location.origin + href;
+          });
       })();
     </script>
     <script type="application/ld+json">
@@ -103,8 +105,8 @@
         }
       })();
     </script>
-    <script type="module" src="/src/version.js?v=74"></script>
-    <link rel="prefetch" href="translations/ui/fr.json?v=74" as="fetch" />
+    <script type="module" src="/src/version.js?v=75"></script>
+    <link rel="prefetch" href="translations/ui/fr.json?v=75" as="fetch" />
   </head>
   <body class="min-h-screen p-4">
     <div id="loading-screen">
@@ -131,7 +133,7 @@
             >
           </a>
           <img
-            src="/icons/logo.svg?v=74"
+            src="/icons/logo.svg?v=75"
             alt="Prompter logo"
             class="w-12 h-12 sm:w-14 sm:h-14"
           />
@@ -254,7 +256,7 @@
           textContainer.classList.toggle('overflow-hidden');
           textContainer.classList.toggle('max-h-40');
           showMore.textContent = textContainer.classList.contains(
-            'overflow-hidden'
+            'overflow-hidden',
           )
             ? 'Show more'
             : 'Show less';
@@ -272,7 +274,7 @@
         nameEl.className = 'text-blue-200 text-xs mt-1 underline';
         setSanitizedHTML(
           nameEl,
-          `<a href="user.html?uid=${p.userId}">${name}</a>`
+          `<a href="user.html?uid=${p.userId}">${name}</a>`,
         );
         card.appendChild(nameEl);
 
@@ -281,7 +283,7 @@
         if (p.createdAt && p.createdAt.toMillis) {
           timeEl.textContent = timeAgo(
             p.createdAt.toMillis(),
-            appState.language
+            appState.language,
           );
         }
         card.appendChild(timeEl);
@@ -313,7 +315,7 @@
           if (svg)
             svg.setAttribute(
               'fill',
-              likeBtn.classList.contains('active') ? 'currentColor' : 'none'
+              likeBtn.classList.contains('active') ? 'currentColor' : 'none',
             );
         };
         updateLikeIcon();
@@ -480,7 +482,7 @@
           const d = document.createElement('div');
           d.className = 'bg-white/5 rounded-md px-2 py-1 text-sm';
           d.innerHTML = sanitizeHTML(
-            `<span class="underline">${n}</span>: ${linkify(c.text)}`
+            `<span class="underline">${n}</span>: ${linkify(c.text)}`,
           );
           commentList.appendChild(d);
         };
@@ -528,7 +530,7 @@
             text,
             appState.currentUser.uid,
             appState.currentUser.displayName || '',
-            appState.currentUser.email || ''
+            appState.currentUser.email || '',
           );
           blogInput.value = '';
         } finally {
@@ -543,8 +545,22 @@
 
       let followingIds = [];
       let prompterUser = null;
+      const CACHE_KEY = 'blogCache';
+      const CACHE_LIMIT = 50;
       let loadedPosts = [];
       let unsubscribe = null;
+
+      function loadCache() {
+        try {
+          const cached = localStorage.getItem(CACHE_KEY);
+          if (cached) {
+            loadedPosts = JSON.parse(cached);
+            filterAndRender();
+          }
+        } catch (err) {
+          console.warn('Failed to parse blog cache:', err);
+        }
+      }
 
       const refreshFollowing = async () => {
         if (!appState.currentUser) {
@@ -563,7 +579,7 @@
       const render = async (posts) => {
         const names = await Promise.all(posts.map((p) => fetchName(p.userId)));
         const commentsArr = await Promise.all(
-          posts.map((p) => getComments(p.id))
+          posts.map((p) => getComments(p.id)),
         );
         const list = document.getElementById('blog-list');
         list.innerHTML = '';
@@ -628,6 +644,14 @@
         const q = query(collection(db, 'blogPosts'), ...constraints);
         unsubscribe = onSnapshot(q, (snap) => {
           loadedPosts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+          try {
+            localStorage.setItem(
+              CACHE_KEY,
+              JSON.stringify(loadedPosts.slice(0, CACHE_LIMIT)),
+            );
+          } catch (err) {
+            console.warn('Failed to store blog cache:', err);
+          }
           filterAndRender();
         });
       };
@@ -639,6 +663,7 @@
 
       document.addEventListener('DOMContentLoaded', () => {
         const run = () => {
+          loadCache();
           onAuth(startListener);
           startListener();
         };

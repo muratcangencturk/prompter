@@ -228,7 +228,7 @@ const ASSETS = [
   'zh/top-prompts.html',
   'zh/top.html',
   'zh/user',
-  'zh/user.html',
+  'zh/user.html'
 ];
 
 self.addEventListener('install', (event) => {
