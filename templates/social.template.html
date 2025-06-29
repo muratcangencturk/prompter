@@ -1,9 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{LANG}}">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
     <title>Prompter Social</title>
     <base href="{{BASE_HREF}}" />
     <link rel="manifest" href="manifest.json?v=74" />
@@ -29,7 +32,7 @@
     <meta property="og:url" content="{{PAGE_PATH}}" />
     <meta property="og:site_name" content="Prompter" />
     <meta property="og:locale" content="{{LANG}}" />
-{{OG_ALTERNATES}}
+    {{OG_ALTERNATES}}
 
     <meta name="twitter:url" content="{{PAGE_PATH}}" />
     <script type="module" src="/src/lucide-loader.js?v=74"></script>
@@ -43,9 +46,9 @@
       }
     </script>
     <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=74" />
-<link rel="canonical" href="{{PAGE_PATH}}" />
-{{ALTERNATE_LINKS}}
-<script>
+    <link rel="canonical" href="{{PAGE_PATH}}" />
+    {{ALTERNATE_LINKS}}
+    <script>
       (function () {
         var path = '{{PAGE_PATH}}';
         var url = location.origin + path;
@@ -55,10 +58,12 @@
         if (og) og.content = url;
         var tw = document.querySelector('meta[name="twitter:url"]');
         if (tw) tw.content = url;
-        document.querySelectorAll('link[rel="alternate"]').forEach(function(a){
-          var href = a.getAttribute('href');
-          if(href.startsWith('/')) a.href = location.origin + href;
-        });
+        document
+          .querySelectorAll('link[rel="alternate"]')
+          .forEach(function (a) {
+            var href = a.getAttribute('href');
+            if (href.startsWith('/')) a.href = location.origin + href;
+          });
       })();
     </script>
     <script>
@@ -228,7 +233,7 @@
 
       const profileCache = {};
       const categoryMap = Object.fromEntries(
-        categories.map((c) => [c.id, c.name[appState.language] || c.id])
+        categories.map((c) => [c.id, c.name[appState.language] || c.id]),
       );
       const commentsOpenMap = new Map();
       const promptSearch = document.getElementById('prompt-search');
@@ -285,7 +290,7 @@
           textContainer.classList.toggle('overflow-hidden');
           textContainer.classList.toggle('max-h-40');
           showMore.textContent = textContainer.classList.contains(
-            'overflow-hidden'
+            'overflow-hidden',
           )
             ? 'Show more'
             : 'Show less';
@@ -334,7 +339,7 @@
         nameEl.className = 'text-blue-200 text-xs mt-1 underline';
         setSanitizedHTML(
           nameEl,
-          `<a href="user.html?uid=${p.userId}">${name}</a>`
+          `<a href="user.html?uid=${p.userId}">${name}</a>`,
         );
 
         const catEl = document.createElement('p');
@@ -363,7 +368,7 @@
             appState.savedPrompts.push(p.text);
             localStorage.setItem(
               'savedPrompts',
-              JSON.stringify(appState.savedPrompts)
+              JSON.stringify(appState.savedPrompts),
             );
             await saveUserPrompt(p.text, appState.currentUser.uid);
             await incrementSaveCount(p.id);
@@ -373,7 +378,7 @@
             if (icon)
               icon.setAttribute(
                 'fill',
-                saveBtn.classList.contains('active') ? 'currentColor' : 'none'
+                saveBtn.classList.contains('active') ? 'currentColor' : 'none',
               );
           } catch (err) {
             console.error('Failed to save prompt:', err);
@@ -458,7 +463,7 @@
           likeList.innerHTML = names
             .map(
               (n, idx) =>
-                `<div class="px-2"><a href="user.html?uid=${likedBy[idx]}" class="underline">${n}</a></div>`
+                `<div class="px-2"><a href="user.html?uid=${likedBy[idx]}" class="underline">${n}</a></div>`,
             )
             .join('');
 
@@ -494,7 +499,7 @@
           if (svg)
             svg.setAttribute(
               'fill',
-              likeBtn.classList.contains('active') ? 'currentColor' : 'none'
+              likeBtn.classList.contains('active') ? 'currentColor' : 'none',
             );
         };
 
@@ -511,7 +516,7 @@
               likes -= 1;
               updateLikeText();
               appState.likedPrompts = appState.likedPrompts.filter(
-                (id) => id !== p.id
+                (id) => id !== p.id,
               );
               likedBy = likedBy.filter((id) => id !== appState.currentUser.uid);
               likeBtn.classList.remove('active');
@@ -525,7 +530,7 @@
             }
             localStorage.setItem(
               'likedPrompts',
-              JSON.stringify(appState.likedPrompts)
+              JSON.stringify(appState.likedPrompts),
             );
             updateLikeIcon();
             await renderLikeSummary();
@@ -548,7 +553,7 @@
           if (svg)
             svg.setAttribute(
               'fill',
-              twitterBtn.classList.contains('active') ? 'currentColor' : 'none'
+              twitterBtn.classList.contains('active') ? 'currentColor' : 'none',
             );
         };
         updateTwitterIcon();
@@ -602,7 +607,8 @@
           window.lucide?.createIcons();
 
           cancelEdit.addEventListener('click', () => {
-            if (textWrap.contains(textarea)) textWrap.replaceChild(text, textarea);
+            if (textWrap.contains(textarea))
+              textWrap.replaceChild(text, textarea);
             if (card.contains(editRow)) card.replaceChild(likeRow, editRow);
             editing = false;
           });
@@ -629,7 +635,6 @@
           'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
         unshareBtn.innerHTML =
           '<i data-lucide="trash" class="w-4 h-4" aria-hidden="true"></i>';
-
 
         unshareBtn.addEventListener('click', async () => {
           unshareBtn.disabled = true;
@@ -690,9 +695,9 @@
           span.innerHTML = sanitizeHTML(
             n
               ? `<a href="user.html?uid=${c.userId}" class="underline">${n}</a>: ${linkify(
-                  c.text
+                  c.text,
                 )}`
-              : linkify(c.text)
+              : linkify(c.text),
           );
           d.appendChild(span);
 
@@ -830,7 +835,7 @@
         if (p.createdAt && p.createdAt.toMillis) {
           timeEl.textContent = timeAgo(
             p.createdAt.toMillis(),
-            appState.language
+            appState.language,
           );
         }
         card.appendChild(timeEl);
@@ -853,10 +858,10 @@
           return;
         }
         const names = await Promise.all(
-          prompts.map((p) => fetchName(p.userId))
+          prompts.map((p) => fetchName(p.userId)),
         );
         const commentsArr = await Promise.all(
-          prompts.map((p) => getComments(p.id))
+          prompts.map((p) => getComments(p.id)),
         );
         const idSet = new Set(prompts.map((p) => p.id));
         existing.forEach((el, id) => {
@@ -892,7 +897,21 @@
         if (targetPromptId) highlightPrompt(targetPromptId);
       }
 
+      const CACHE_KEY = 'socialCache';
+      const CACHE_LIMIT = 50;
       let loadedPrompts = null;
+
+      function loadCache() {
+        try {
+          const cached = localStorage.getItem(CACHE_KEY);
+          if (cached) {
+            loadedPrompts = JSON.parse(cached);
+            filterAndRender();
+          }
+        } catch (err) {
+          console.warn('Failed to parse social cache:', err);
+        }
+      }
 
       function filterAndRender() {
         if (loadedPrompts === null) return;
@@ -900,7 +919,7 @@
         const term = promptSearch?.value?.trim().toLowerCase();
         if (term) {
           filtered = filtered.filter((p) =>
-            p.text.toLowerCase().includes(term)
+            p.text.toLowerCase().includes(term),
           );
         }
         render(filtered);
@@ -921,14 +940,17 @@
 
       const startListener = async (user) => {
         if (unsubscribe) unsubscribe();
-        loadedPrompts = null;
         const list = document.getElementById('all-prompts');
-        list.innerHTML = '';
         const loading = document.createElement('p');
         loading.id = 'prompts-loading';
         loading.className = 'text-blue-200 text-sm text-center';
         loading.textContent = 'Loading...';
-        list.appendChild(loading);
+        if (!loadedPrompts) {
+          list.innerHTML = '';
+          list.appendChild(loading);
+        } else if (!list.querySelector('#prompts-loading')) {
+          list.appendChild(loading);
+        }
         const constraints = [where('shared', '==', true)];
 
         constraints.push(orderBy('createdAt', 'desc'));
@@ -940,6 +962,14 @@
             if (loading.parentElement) loading.remove();
             let prompts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
             loadedPrompts = prompts;
+            try {
+              localStorage.setItem(
+                CACHE_KEY,
+                JSON.stringify(prompts.slice(0, CACHE_LIMIT)),
+              );
+            } catch (err) {
+              console.warn('Failed to store social cache:', err);
+            }
             if (prompts.length === 0) {
               list.innerHTML = '';
               const msg = document.createElement('p');
@@ -962,12 +992,13 @@
             } else {
               list.textContent = err.message;
             }
-          }
+          },
         );
       };
 
       function init() {
         localStorage.setItem('socialLastVisit', Date.now().toString());
+        loadCache();
         onAuth((u) => {
           if (u) updateLastSocialVisit(u.uid, Date.now());
         });
