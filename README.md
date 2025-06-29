@@ -319,3 +319,13 @@ Prompter uses [TailwindCSS](https://tailwindcss.com/) and [Lucide](https://lucid
 ## Disclaimer
 
 The prompt files are provided "AS IS" and may produce unexpected content. Review generated outputs carefully before using or sharing them. See the "Disclaimer of Warranty" section in the [Apache 2.0 License](LICENSE) for details.
+
+## Troubleshooting
+
+If pages fail to load and show an `ERR_FAILED` error, outdated service workers or caches may be stuck in the browser. Click the **Refresh** banner that appears when a new version is detected to clear them. You can also open the browser console and run:
+
+```javascript
+window.clearServiceWorkersAndCaches();
+```
+
+This removes all service workers and cached files for the site, forcing a clean reload.
