@@ -1,8 +1,8 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js';
 import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js';
 import {
-  getFirestore,
-  enableIndexedDbPersistence,
+  initializeFirestore,
+  persistentLocalCache,
 } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
 import { pendingAuthCallbacks } from './auth.js';
 
@@ -55,8 +55,9 @@ export const firebaseReady = new Promise((resolve) => {
 export function initFirebase(config) {
   app = initializeApp(config);
   auth = getAuth(app);
-  db = getFirestore(app);
-  enableIndexedDbPersistence(db).catch(() => {});
+  db = initializeFirestore(app, {
+    cache: persistentLocalCache(),
+  });
   pendingAuthCallbacks.forEach((cb) => onAuthStateChanged(auth, cb));
   pendingAuthCallbacks.length = 0;
   readyResolve();
