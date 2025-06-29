@@ -151,6 +151,9 @@ function gatherAssets() {
   for (const file of htmlFiles) {
     const rel = path.relative(rootDir, file).replace(/\\/g, '/');
     assets.add(rel);
+    if (['blog.html', 'pro.html', 'social.html'].includes(rel)) {
+      assets.add(rel.replace(/\.html$/, ''));
+    }
     const html = fs.readFileSync(file, 'utf8');
     let m;
     while ((m = assetRegex.exec(html))) {
