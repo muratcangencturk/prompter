@@ -1,6 +1,5 @@
 import { onAuth, logout } from './auth.js';
 import {
-  getUserPrompts,
   likePrompt,
   unlikePrompt,
   getUserSavedPrompts,
@@ -25,6 +24,14 @@ import { categories } from './prompts.js';
 import { BASE_URL } from './config.js';
 import { linkify } from './linkify.js';
 import { sanitizeHTML, setSanitizedHTML } from './sanitize.js';
+import {
+  collection,
+  query,
+  where,
+  orderBy,
+  onSnapshot,
+} from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
+import { db } from './firebase.js';
 
 const uiText = {
   en: {
@@ -192,6 +199,8 @@ let langZhButton;
 let langHiButton;
 let currentLangLabel;
 let sharedPromptsData = [];
+let unsubscribePrompts = null;
+const CACHE_LIMIT = 50;
 let currentUserName = '';
 let currentUserBio = '';
 let nameWrapper;
@@ -212,7 +221,6 @@ let notifications = [];
 let unsubscribeNotifications;
 let followerIds = [];
 let followingIds = [];
-
 
 const profileCache = {};
 const fetchName = async (uid) => {
@@ -251,14 +259,14 @@ const updateTexts = () => {
     themeLightButton.title = uiText[appState.language].themeLightTitle;
     themeLightButton.setAttribute(
       'aria-label',
-      uiText[appState.language].themeLightTitle
+      uiText[appState.language].themeLightTitle,
     );
   }
   if (themeDarkButton) {
     themeDarkButton.title = uiText[appState.language].themeDarkTitle;
     themeDarkButton.setAttribute(
       'aria-label',
-      uiText[appState.language].themeDarkTitle
+      uiText[appState.language].themeDarkTitle,
     );
   }
   const backLink = document.getElementById('back-link');
@@ -282,42 +290,42 @@ const updateTexts = () => {
     langEnButton.title = uiText[appState.language].langEnLabel;
     langEnButton.setAttribute(
       'aria-label',
-      uiText[appState.language].langEnLabel
+      uiText[appState.language].langEnLabel,
     );
   }
   if (langTrButton) {
     langTrButton.title = uiText[appState.language].langTrLabel;
     langTrButton.setAttribute(
       'aria-label',
-      uiText[appState.language].langTrLabel
+      uiText[appState.language].langTrLabel,
     );
   }
   if (langEsButton) {
     langEsButton.title = uiText[appState.language].langEsLabel;
     langEsButton.setAttribute(
       'aria-label',
-      uiText[appState.language].langEsLabel
+      uiText[appState.language].langEsLabel,
     );
   }
   if (langFrButton) {
     langFrButton.title = uiText[appState.language].langFrLabel;
     langFrButton.setAttribute(
       'aria-label',
-      uiText[appState.language].langFrLabel
+      uiText[appState.language].langFrLabel,
     );
   }
   if (langZhButton) {
     langZhButton.title = uiText[appState.language].langZhLabel;
     langZhButton.setAttribute(
       'aria-label',
-      uiText[appState.language].langZhLabel
+      uiText[appState.language].langZhLabel,
     );
   }
   if (langHiButton) {
     langHiButton.title = uiText[appState.language].langHiLabel;
     langHiButton.setAttribute(
       'aria-label',
-      uiText[appState.language].langHiLabel
+      uiText[appState.language].langHiLabel,
     );
   }
   if (currentLangLabel) {
@@ -407,8 +415,8 @@ const markAllNotificationsRead = async () => {
     unread.map((n) =>
       markNotificationRead(appState.currentUser.uid, n.id).catch((err) => {
         console.error('Failed to mark notification read:', err);
-      })
-    )
+      }),
+    ),
   );
   unread.forEach((n) => {
     n.read = true;
@@ -459,24 +467,47 @@ const loadPromptsForUser = async (user) => {
   } catch (err) {
     console.warn('Failed to parse profile cache:', err);
   }
-  try {
-    const prompts = await getUserPrompts(user.uid);
-    sharedPromptsData = prompts;
-    renderSharedPrompts(sharedPromptsData);
-    try {
-      localStorage.setItem(cacheKey, JSON.stringify(prompts));
-    } catch (err) {
-      console.warn('Failed to store profile cache:', err);
-    }
-  } catch (err) {
-    console.error('Failed to load prompts:', err);
-    showSharedLoadError(() => loadPromptsForUser(user));
-  }
+
+  if (unsubscribePrompts) unsubscribePrompts();
+
+  const q = query(
+    collection(db, 'prompts'),
+    where('userId', '==', user.uid),
+    where('sharedBy', 'array-contains', user.uid),
+    orderBy('createdAt', 'desc'),
+  );
+
+  unsubscribePrompts = onSnapshot(
+    q,
+    (snap) => {
+      const prompts = snap.docs.map((d) => ({
+        id: d.id,
+        category: d.get('category') || 'random',
+        ...d.data(),
+      }));
+      sharedPromptsData = prompts;
+      renderSharedPrompts(sharedPromptsData);
+      try {
+        localStorage.setItem(
+          cacheKey,
+          JSON.stringify(prompts.slice(0, CACHE_LIMIT)),
+        );
+      } catch (err) {
+        console.warn('Failed to store profile cache:', err);
+      }
+    },
+    (err) => {
+      console.error('Failed to load prompts:', err);
+      showSharedLoadError(() => loadPromptsForUser(user));
+    },
+  );
 
   try {
     const savedDocs = await getUserSavedPrompts(user.uid);
     const savedTexts = savedDocs.map((p) => p.text);
-    const merged = Array.from(new Set([...appState.savedPrompts, ...savedTexts]));
+    const merged = Array.from(
+      new Set([...appState.savedPrompts, ...savedTexts]),
+    );
     appState.savedPrompts = merged;
     localStorage.setItem('savedPrompts', JSON.stringify(merged));
     renderSavedPrompts(appState.savedPrompts);
@@ -535,7 +566,7 @@ const renderSavedPrompts = (prompts) => {
     copyBtn.title = uiText[appState.language].copyButtonTitle;
     copyBtn.setAttribute(
       'aria-label',
-      uiText[appState.language].copyButtonTitle
+      uiText[appState.language].copyButtonTitle,
     );
     copyBtn.innerHTML =
       '<i data-lucide="copy" class="w-2 h-2" aria-hidden="true"></i>';
@@ -654,7 +685,7 @@ const renderSavedPrompts = (prompts) => {
       if (svg) {
         svg.setAttribute(
           'fill',
-          siteShareBtn.classList.contains('active') ? 'currentColor' : 'none'
+          siteShareBtn.classList.contains('active') ? 'currentColor' : 'none',
         );
         svg.setAttribute('stroke', 'currentColor');
       }
@@ -665,7 +696,7 @@ const renderSavedPrompts = (prompts) => {
           appState.currentUser.uid,
           appState.selectedCategory,
           appState.currentUser.displayName || '',
-          appState.currentUser.email || ''
+          appState.currentUser.email || '',
         );
       } catch (err) {
         console.error(err);
@@ -680,7 +711,7 @@ const renderSavedPrompts = (prompts) => {
       if (svg)
         svg.setAttribute(
           'fill',
-          shareBtn.classList.contains('active') ? 'currentColor' : 'none'
+          shareBtn.classList.contains('active') ? 'currentColor' : 'none',
         );
     };
     updateShareIcon();
@@ -689,7 +720,7 @@ const renderSavedPrompts = (prompts) => {
       updateShareIcon();
       sharePrompt(
         pEl.textContent || '',
-        'https://twitter.com/intent/tweet?text='
+        'https://twitter.com/intent/tweet?text=',
       );
     });
 
@@ -765,7 +796,7 @@ const renderSharedPrompts = async (prompts) => {
     copyBtn.title = uiText[appState.language].copyButtonTitle;
     copyBtn.setAttribute(
       'aria-label',
-      uiText[appState.language].copyButtonTitle
+      uiText[appState.language].copyButtonTitle,
     );
     copyBtn.innerHTML =
       '<i data-lucide="copy" class="w-2 h-2" aria-hidden="true"></i>';
@@ -822,7 +853,7 @@ const renderSharedPrompts = async (prompts) => {
       if (svg)
         svg.setAttribute(
           'fill',
-          likeBtn.classList.contains('active') ? 'currentColor' : 'none'
+          likeBtn.classList.contains('active') ? 'currentColor' : 'none',
         );
     };
 
@@ -839,7 +870,7 @@ const renderSharedPrompts = async (prompts) => {
           likes -= 1;
           updateLikeText();
           appState.likedPrompts = appState.likedPrompts.filter(
-            (id) => id !== p.id
+            (id) => id !== p.id,
           );
           likeBtn.classList.remove('active');
         } else {
@@ -851,7 +882,7 @@ const renderSharedPrompts = async (prompts) => {
         }
         localStorage.setItem(
           'likedPrompts',
-          JSON.stringify(appState.likedPrompts)
+          JSON.stringify(appState.likedPrompts),
         );
         updateLikeIcon();
       } catch (err) {
@@ -971,7 +1002,7 @@ const renderSharedPrompts = async (prompts) => {
       if (svg) {
         svg.setAttribute(
           'fill',
-          siteShareBtn.classList.contains('active') ? 'currentColor' : 'none'
+          siteShareBtn.classList.contains('active') ? 'currentColor' : 'none',
         );
         svg.setAttribute('stroke', 'currentColor');
       }
@@ -1000,7 +1031,7 @@ const renderSharedPrompts = async (prompts) => {
       if (svg)
         svg.setAttribute(
           'fill',
-          shareBtn.classList.contains('active') ? 'currentColor' : 'none'
+          shareBtn.classList.contains('active') ? 'currentColor' : 'none',
         );
     };
     updateShareIcon2();
@@ -1009,7 +1040,7 @@ const renderSharedPrompts = async (prompts) => {
       updateShareIcon2();
       sharePrompt(
         text.textContent || '',
-        'https://twitter.com/intent/tweet?text='
+        'https://twitter.com/intent/tweet?text=',
       );
       incrementShareCount(p.id);
     });
@@ -1074,9 +1105,9 @@ const renderSharedPrompts = async (prompts) => {
       span.innerHTML = sanitizeHTML(
         n
           ? `<a href="user.html?uid=${c.userId}" class="underline">${n}</a>: ${linkify(
-              c.text
+              c.text,
             )}`
-          : linkify(c.text)
+          : linkify(c.text),
       );
       d.appendChild(span);
 
@@ -1250,7 +1281,7 @@ const init = () => {
       return;
     }
     const names = await Promise.all(
-      ids.map((id) => getUserProfile(id).then((p) => p?.name || id))
+      ids.map((id) => getUserProfile(id).then((p) => p?.name || id)),
     );
     ids.forEach((id, idx) => {
       const a = document.createElement('a');
@@ -1375,16 +1406,7 @@ const init = () => {
         appState.savedPrompts = saved;
         renderSavedPrompts(saved);
         if (appState.currentUser) {
-          try {
-            const prompts = await getUserPrompts(appState.currentUser.uid);
-            sharedPromptsData = prompts;
-            renderSharedPrompts(sharedPromptsData);
-          } catch (err) {
-            console.error('Failed to load prompts:', err);
-            showSharedLoadError(() =>
-              loadPromptsForUser(appState.currentUser)
-            );
-          }
+          loadPromptsForUser(appState.currentUser);
         }
       } catch (err) {
         console.error('Failed to parse savedPrompts from storage event:', err);
@@ -1426,6 +1448,7 @@ const init = () => {
       notifications = [];
       renderNotifications();
       unsubscribeNotifications?.();
+      unsubscribePrompts?.();
       return;
     }
     loginBtn?.remove();
@@ -1438,7 +1461,7 @@ const init = () => {
         profile && typeof profile.name === 'string' ? profile.name.trim() : '';
       if (!name) {
         console.warn(
-          'User profile is missing a name. Check registration logic.'
+          'User profile is missing a name. Check registration logic.',
         );
       }
       currentUserName = name;
