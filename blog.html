@@ -544,6 +544,18 @@
       let followingIds = [];
       let prompterUser = null;
       let loadedPosts = [];
+      const BLOG_CACHE_KEY = 'blogCache';
+      const loadCachedPosts = () => {
+        try {
+          const cached = localStorage.getItem(BLOG_CACHE_KEY);
+          if (cached) {
+            loadedPosts = JSON.parse(cached);
+            filterAndRender();
+          }
+        } catch (err) {
+          console.warn('Failed to parse blog cache:', err);
+        }
+      };
       let unsubscribe = null;
 
       const refreshFollowing = async () => {
@@ -629,6 +641,11 @@
         unsubscribe = onSnapshot(q, (snap) => {
           loadedPosts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
           filterAndRender();
+          try {
+            localStorage.setItem(BLOG_CACHE_KEY, JSON.stringify(loadedPosts));
+          } catch (err) {
+            console.warn('Failed to store blog cache:', err);
+          }
         });
       };
 
@@ -639,6 +656,7 @@
 
       document.addEventListener('DOMContentLoaded', () => {
         const run = () => {
+          loadCachedPosts();
           onAuth(startListener);
           startListener();
         };
