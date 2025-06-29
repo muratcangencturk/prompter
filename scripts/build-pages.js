@@ -76,7 +76,8 @@ function build() {
         WHATSAPP_LOGO_ALT: t.whatsapp_logo_alt,
         SET_LANGUAGE: lang === 'en' ? '' : `<script>localStorage.setItem('language', '${lang}');</script>`,
       };
-      const html = render(template, params);
+      let html = render(template, params);
+      html = html.replace('</head>', `  <link rel="prefetch" href="translations/ui/${lang}.json" as="fetch" />\n  </head>`);
       const outDir = lang === 'en' ? root : path.join(root, lang);
       if (lang !== 'en') fs.mkdirSync(outDir, { recursive: true });
       fs.writeFileSync(path.join(outDir, page), html);

@@ -11,265 +11,21 @@ const LANGUAGE_PAGES = {
   hi: 'hi/',
 };
 
-const uiText = {
-  en: {
-    appTitle: 'PROMPTER',
-    appSubtitle:
-      'Prompt generator for AI - the ultimate prompt engineering online space',
-    chooseStyleTitle: 'Select Your Prompt Inspiration',
-    generateButtonText: 'Generate New Prompt',
-    yourPromptTitle: 'Your Prompt',
-    copyButtonTitle: 'Copy to clipboard',
-    shareButtonTitle: 'Share on Prompter',
-    shareTwitterTitle: 'Share on Twitter',
-    saveButtonTitle: 'Save prompt (login required to sync online)',
-    deleteButtonTitle: 'Delete prompt',
-    historyTitle: 'Previous Prompts',
-    clearHistoryTitle: 'Clear history',
-    copySuccessMessage: 'Prompt copied successfully!',
-    saveSuccessMessage: 'Prompt saved!',
-    saveErrorMessage: 'Failed to save prompt.',
-    shareMessage: 'Sharing...',
-    saveFeedback: 'Saved!',
-    appStats: 'Prompts that will unlock the potential of your mind',
-    footerPrompter: 'Prompter',
-    randomCategory: 'Random',
-    themeLightTitle: 'Light Theme',
-    themeDarkTitle: 'Dark Theme',
-    langEnLabel: 'Switch to English',
-    langTrLabel: 'Switch to Turkish',
-    langEsLabel: 'Switch to Spanish',
-    langFrLabel: 'Switch to French',
-    langZhLabel: 'Switch to Chinese',
-    appLogoAlt: 'Prompter logo',
-    loginText: 'Login',
-    loginRequired: 'Login required',
-    loginRequiredShare: 'Login required to share',
-    loginRequiredSaveShare: 'Login required to save or share prompts.',
-    loginRequiredLike: 'You need to log in to like prompts.',
-    loginRequiredSharePrompt: 'You need to log in to share prompts.',
-    copyFailed: 'Failed to copy prompt. Please try again.',
-    shareFailed: 'Failed to share prompt. Please try again.',
-    internetRequired: 'Internet connection required.',
-    errorGenerating: 'Error generating prompt. Please try again.',
-  },
-  tr: {
-    appTitle: 'PROMPTER',
-    appSubtitle:
-      'YZ için prompt üretici - prompt mühendisliğinin online adresi',
-    chooseStyleTitle: 'Prompt İlhamınızı Seçin',
-    generateButtonText: 'Yeni Prompt Üret',
-    yourPromptTitle: 'Promptunuz',
-    historyBottom: 'Geçmiş aşağıda',
-    copyButtonTitle: 'Panoya kopyala',
-    shareButtonTitle: "Prompter'da paylaş",
-    shareTwitterTitle: "Twitter'da paylaş",
-    saveButtonTitle: 'Promptu kaydet (online senkronizasyon için giriş yapın)',
-    deleteButtonTitle: 'Sil',
-    historyTitle: 'Önceki Promptlar',
-    clearHistoryTitle: 'Geçmişi temizle',
-    copySuccessMessage: 'Kopyalandı!',
-    saveSuccessMessage: 'Kaydedildi!',
-    saveErrorMessage: 'Prompt kaydedilemedi.',
-    shareMessage: 'Paylaşılıyor...',
-    saveFeedback: 'Kaydedildi!',
-    appStats: 'Zihninizin potansiyelini açığa çıkaracak promptlar',
-    footerPrompter: 'Prompter',
-    randomCategory: 'Rastgele',
-    themeLightTitle: 'Açık Tema',
-    themeDarkTitle: 'Koyu Tema',
-    langEnLabel: "İngilizce'ye geç",
-    langTrLabel: "Türkçe'ye geç",
-    langEsLabel: "İspanyolca'ya geç",
-    langFrLabel: "Fransızca'ya geç",
-    langZhLabel: "Çince'ye geç",
-    appLogoAlt: 'Prompter logosu',
-    loginText: 'Giriş',
-    loginRequired: 'Giriş gerekli',
-    loginRequiredShare: 'Paylaşmak için giriş yapın',
-    loginRequiredSaveShare:
-      'Promptları kaydetmek veya paylaşmak için giriş yapın.',
-    loginRequiredLike: 'Promptları beğenmek için giriş yapın.',
-    loginRequiredSharePrompt: 'Promptları paylaşmak için giriş yapın.',
-    copyFailed: 'Prompt kopyalanamadı. Lütfen tekrar deneyin.',
-    shareFailed: 'Prompt paylaşılamadı. Lütfen tekrar deneyin.',
-    internetRequired: 'İnternet bağlantısı gerekli.',
-    errorGenerating:
-      'Prompt oluşturulurken hata oluştu. Lütfen tekrar deneyin.',
-  },
-  es: {
-    appTitle: 'PROMPTER',
-    appSubtitle: 'Generador de prompts para IA - creatividad ilimitada',
-    chooseStyleTitle: 'Selecciona tu inspiración de prompt',
-    generateButtonText: 'Generar nuevo prompt',
-    yourPromptTitle: 'Tu prompt',
-    historyBottom: 'El historial de prompts está en la parte inferior',
-    copyButtonTitle: 'Copiar al portapapeles',
-    shareButtonTitle: 'Compartir en Prompter',
-    shareTwitterTitle: 'Compartir en Twitter',
-    saveButtonTitle: 'Guardar prompt (inicia sesión para sincronizar en línea)',
-    deleteButtonTitle: 'Eliminar',
-    historyTitle: 'Prompts anteriores',
-    clearHistoryTitle: 'Borrar historial',
-    copySuccessMessage: '¡Copiado!',
-    saveSuccessMessage: '¡Guardado!',
-    saveErrorMessage: 'No se pudo guardar el prompt.',
-    shareMessage: 'Compartiendo...',
-    saveFeedback: '¡Guardado!',
-    appStats: 'Prompts que liberarán el potencial de tu mente',
-    footerPrompter: 'Prompter',
-    randomCategory: 'Aleatorio',
-    themeLightTitle: 'Tema Claro',
-    themeDarkTitle: 'Tema Oscuro',
-    langEnLabel: 'Cambiar a inglés',
-    langTrLabel: 'Cambiar a turco',
-    langEsLabel: 'Cambiar a español',
-    langFrLabel: 'Cambiar a francés',
-    langZhLabel: 'Cambiar a chino',
-    appLogoAlt: 'Logo de Prompter',
-    loginText: 'Iniciar Sesión',
-    loginRequired: 'Se requiere inicio de sesión',
-    loginRequiredShare: 'Debes iniciar sesión para compartir',
-    loginRequiredSaveShare:
-      'Debes iniciar sesión para guardar o compartir prompts.',
-    loginRequiredLike: 'Debes iniciar sesión para dar me gusta a los prompts.',
-    loginRequiredSharePrompt: 'Debes iniciar sesión para compartir prompts.',
-    copyFailed: 'No se pudo copiar el prompt. Por favor inténtalo de nuevo.',
-    shareFailed:
-      'No se pudo compartir el prompt. Por favor inténtalo de nuevo.',
-    internetRequired: 'Se requiere conexión a Internet.',
-    errorGenerating:
-      'Error al generar el prompt. Por favor inténtalo de nuevo.',
-  },
-  fr: {
-    appTitle: 'PROMPTER',
-    appSubtitle:
-      "Générateur de prompts pour IA - l'espace ultime de l'ingénierie des prompts en ligne",
-    chooseStyleTitle: 'Sélectionnez votre inspiration de prompt',
-    generateButtonText: 'Générer un nouveau prompt',
-    yourPromptTitle: 'Votre prompt',
-    historyBottom: "L'historique des prompts est en bas",
-    copyButtonTitle: 'Copier dans le presse-papiers',
-    shareButtonTitle: 'Partager sur Prompter',
-    shareTwitterTitle: 'Partager sur Twitter',
-    saveButtonTitle:
-      'Enregistrer le prompt (connexion requise pour la synchronisation en ligne)',
-    deleteButtonTitle: 'Supprimer le prompt',
-    historyTitle: 'Prompts précédents',
-    clearHistoryTitle: "Effacer l'historique",
-    copySuccessMessage: 'Prompt copié !',
-    saveSuccessMessage: 'Prompt enregistré !',
-    saveErrorMessage: "Échec de l'enregistrement du prompt.",
-    shareMessage: 'Partage en cours...',
-    saveFeedback: 'Enregistré !',
-    appStats: 'Des prompts qui libéreront le potentiel de votre esprit',
-    footerPrompter: 'Prompter',
-    randomCategory: 'Aléatoire',
-    themeLightTitle: 'Thème clair',
-    themeDarkTitle: 'Thème sombre',
-    langEnLabel: "Passer à l'anglais",
-    langTrLabel: 'Passer au turc',
-    langEsLabel: "Passer à l'espagnol",
-    langFrLabel: 'Passer au français',
-    langZhLabel: 'Passer au chinois',
-    appLogoAlt: 'Logo de Prompter',
-    loginText: 'Connexion',
-    loginRequired: 'Connexion requise',
-    loginRequiredShare: 'Connexion requise pour partager',
-    loginRequiredSaveShare:
-      'Vous devez vous connecter pour enregistrer ou partager des prompts.',
-    loginRequiredLike: 'Vous devez vous connecter pour aimer les prompts.',
-    loginRequiredSharePrompt:
-      'Vous devez vous connecter pour partager des prompts.',
-    copyFailed: 'Échec de la copie du prompt. Veuillez réessayer.',
-    shareFailed: 'Échec du partage du prompt. Veuillez réessayer.',
-    internetRequired: 'Connexion Internet requise.',
-    errorGenerating:
-      'Erreur lors de la génération du prompt. Veuillez réessayer.',
-  },
-  zh: {
-    appTitle: 'PROMPTER',
-    appSubtitle: '面向AI的提示生成器 - 终极提示工程在线空间',
-    chooseStyleTitle: '选择你的提示灵感',
-    generateButtonText: '生成新的提示',
-    yourPromptTitle: '你的提示',
-    historyBottom: '提示历史在底部',
-    copyButtonTitle: '复制到剪贴板',
-    shareButtonTitle: '在 Prompter 上分享',
-    shareTwitterTitle: '在 Twitter 上分享',
-    saveButtonTitle: '保存提示（登录后才能在线同步）',
-    deleteButtonTitle: '删除提示',
-    historyTitle: '之前的提示',
-    clearHistoryTitle: '清除历史',
-    copySuccessMessage: '已复制!',
-    saveSuccessMessage: '已保存!',
-    saveErrorMessage: '保存提示失败。',
-    shareMessage: '正在分享...',
-    saveFeedback: '已保存!',
-    appStats: '激发你思维潜力的提示',
-    footerPrompter: 'Prompter',
-    randomCategory: '随机',
-    themeLightTitle: '浅色主题',
-    themeDarkTitle: '深色主题',
-    langEnLabel: '切换到英文',
-    langTrLabel: '切换到土耳其语',
-    langEsLabel: '切换到西班牙语',
-    langFrLabel: '切换到法语',
-    langZhLabel: '切换到中文',
-    appLogoAlt: 'Prompter 标志',
-    loginText: '登录',
-    loginRequired: '需要登录',
-    loginRequiredShare: '登录后才能分享',
-    loginRequiredSaveShare: '需要登录才能保存或分享提示。',
-    loginRequiredLike: '需要登录才能点赞提示。',
-    loginRequiredSharePrompt: '需要登录才能分享提示。',
-    copyFailed: '复制提示失败。请再试一次。',
-    shareFailed: '分享提示失败。请再试一次。',
-    internetRequired: '需要连接互联网。',
-    errorGenerating: '生成提示时出错。请再试一次。',
-  },
-  hi: {
-    appTitle: 'PROMPTER',
-    appSubtitle:
-      'एआई के लिए प्रॉम्प्ट जनरेटर - सर्वश्रेष्ठ प्रॉम्प्ट इंजीनियरिंग ऑनलाइन स्पेस',
-    chooseStyleTitle: 'अपनी प्रॉम्प्ट प्रेरणा चुनें',
-    generateButtonText: 'नया प्रॉम्प्ट बनाएं',
-    yourPromptTitle: 'आपका प्रॉम्प्ट',
-    historyBottom: 'प्रॉम्प्ट इतिहास नीचे है',
-    copyButtonTitle: 'क्लिपबोर्ड पर कॉपी करें',
-    shareButtonTitle: 'Prompter पर साझा करें',
-    shareTwitterTitle: 'ट्विटर पर साझा करें',
-    saveButtonTitle: 'प्रॉम्प्ट सहेजें (ऑनलाइन सिंक के लिए लॉगिन आवश्यक)',
-    deleteButtonTitle: 'प्रॉम्प्ट हटाएं',
-    historyTitle: 'पिछले प्रॉम्प्ट',
-    clearHistoryTitle: 'इतिहास साफ करें',
-    copySuccessMessage: 'प्रॉम्प्ट सफलतापूर्वक कॉपी हुआ!',
-    saveSuccessMessage: 'प्रॉम्प्ट सहेजा गया!',
-    saveErrorMessage: 'प्रॉम्प्ट सहेजने में विफल।',
-    shareMessage: 'साझा किया जा रहा है...',
-    saveFeedback: 'सहेजा गया!',
-    appStats: 'ऐसे प्रॉम्प्ट जो आपके दिमाग की क्षमता को खोलेंगे',
-    footerPrompter: 'Prompter',
-    randomCategory: 'रैंडम',
-    themeLightTitle: 'लाइट थीम',
-    themeDarkTitle: 'डार्क थीम',
-    langEnLabel: 'अंग्रेजी पर स्विच करें',
-    langTrLabel: 'तुर्की पर स्विच करें',
-    langEsLabel: 'स्पेनिश पर स्विच करें',
-    langFrLabel: 'फ्रेंच पर स्विच करें',
-    langZhLabel: 'चीनी पर स्विच करें',
-    appLogoAlt: 'Prompter लोगो',
-    loginText: 'लॉगिन',
-    loginRequired: 'लॉगिन आवश्यक है',
-    loginRequiredShare: 'शेयर करने के लिए लॉगिन करें',
-    loginRequiredSaveShare: 'प्रॉम्प्ट सहेजने या साझा करने के लिए लॉगिन करें।',
-    loginRequiredLike: 'प्रॉम्प्ट पसंद करने के लिए लॉगिन करें।',
-    loginRequiredSharePrompt: 'प्रॉम्प्ट साझा करने के लिए लॉगिन करें।',
-    copyFailed: 'प्रॉम्प्ट कॉपी करने में विफल। कृपया पुनः प्रयास करें।',
-    shareFailed: 'प्रॉम्प्ट साझा करने में विफल। कृपया पुनः प्रयास करें।',
-    internetRequired: 'इंटरनेट कनेक्शन आवश्यक है।',
-    errorGenerating: 'प्रॉम्प्ट जनरेट करने में त्रुटि। कृपया पुनः प्रयास करें।',
-  },
+const uiText = {};
+
+const loadUiText = async (lang) => {
+  if (uiText[lang]) return uiText[lang];
+  try {
+    const res = await fetch(`/translations/ui/${lang}.json`);
+    if (!res.ok) throw new Error('Failed to load');
+    const data = await res.json();
+    uiText[lang] = data;
+    return data;
+  } catch (err) {
+    console.error('Failed to load UI translations for', lang, err);
+    if (lang !== 'en') return loadUiText('en');
+    return {};
+  }
 };
 
 let categoryButtonsContainer;
@@ -366,7 +122,8 @@ const setTheme = (theme) => {
 // the `lang` query parameter (or by following a link from another language
 // version detected through `document.referrer` when `fromSaved` is `false`)
 // continues to take precedence.
-const setLanguage = (lang, fromSaved = false) => {
+const setLanguage = async (lang, fromSaved = false) => {
+  await loadUiText(lang);
   const params = new URLSearchParams(window.location.search);
   const paramLang = params.get('lang');
   const refLangEntry = Object.entries(LANGUAGE_PAGES).find(([, page]) =>
@@ -1386,7 +1143,7 @@ const setupEventListeners = () => {
   themeDarkButton.addEventListener('click', () => setTheme(THEMES.DARK));
 };
 
-export const initializeApp = () => {
+export const initializeApp = async () => {
   categoryButtonsContainer = document.getElementById('category-buttons');
   generateButton = document.getElementById('generate-button');
   promptDisplayArea = document.getElementById('prompt-display-area');
@@ -1465,7 +1222,7 @@ export const initializeApp = () => {
   const savedLanguage = localStorage.getItem('language') || 'en';
   // Apply the stored language preference. The call may redirect to the matching
   // language page unless a query parameter specifies a different one.
-  setLanguage(savedLanguage, true);
+  await setLanguage(savedLanguage, true);
 
   const savedTheme = localStorage.getItem('theme') || THEMES.DARK;
   setTheme(savedTheme);
