@@ -46,7 +46,7 @@ disabled.
 
 Prompter uses Firebase Email/Password authentication. Provide your Firebase
 credentials in a `firebase.config.json` file that can be fetched relative to the
-deployed base URL (for example `https://example.com/app/firebase.config.json`)
+deployed base URL (for example `./firebase.config.json` when served from `https://example.com/app/`)
 or expose them via `window.firebaseConfig` before the scripts load.
 The JSON file should follow this structure:
 
