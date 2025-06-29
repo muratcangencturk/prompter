@@ -1,12 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
     <title>Prompter Social</title>
     <base href="../" />
-    <link rel="manifest" href="manifest.json?v=74" />
+    <link rel="manifest" href="manifest.json?v=75" />
     <meta name="theme-color" content="#000000" />
     <meta
       http-equiv="Cache-Control"
@@ -19,43 +22,43 @@
     <meta name="robots" content="index,follow" />
     <meta property="og:title" content="Prompter Social" />
     <meta property="og:description" content="Enlaces para conectar con otros usuarios de Prompter." />
-    <meta property="og:image" content="/icons/logo.svg?v=74" />
+    <meta property="og:image" content="/icons/logo.svg?v=75" />
     <meta property="og:image:alt" content="Prompter logo" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Prompter Social" />
     <meta name="twitter:description" content="Enlaces para conectar con otros usuarios de Prompter." />
-    <meta name="twitter:image" content="/icons/logo.svg?v=74" />
+    <meta name="twitter:image" content="/icons/logo.svg?v=75" />
     <meta property="og:url" content="/es/social.html" />
     <meta property="og:site_name" content="Prompter" />
     <meta property="og:locale" content="es" />
-<meta property="og:locale:alternate" content="en" />
+    <meta property="og:locale:alternate" content="en" />
     <meta property="og:locale:alternate" content="fr" />
     <meta property="og:locale:alternate" content="hi" />
     <meta property="og:locale:alternate" content="tr" />
     <meta property="og:locale:alternate" content="zh" />
 
     <meta name="twitter:url" content="/es/social.html" />
-    <script type="module" src="/src/lucide-loader.js?v=74"></script>
-    <link rel="stylesheet" href="css/tailwind.css?v=74" />
-    <link rel="stylesheet" href="css/app.css?v=74" />
-    <script type="module" src="/src/init-app.js?v=74"></script>
-    <script nomodule src="/dist/init-app.js?v=74"></script>
+    <script type="module" src="/src/lucide-loader.js?v=75"></script>
+    <link rel="stylesheet" href="css/tailwind.css?v=75" />
+    <link rel="stylesheet" href="css/app.css?v=75" />
+    <script type="module" src="/src/init-app.js?v=75"></script>
+    <script nomodule src="/dist/init-app.js?v=75"></script>
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('sw.js').catch(() => {});
       }
     </script>
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=74" />
-<link rel="canonical" href="/es/social.html" />
-<link rel="alternate" href="/social.html" hreflang="x-default" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=75" />
+    <link rel="canonical" href="/es/social.html" />
+    <link rel="alternate" href="/social.html" hreflang="x-default" />
     <link rel="alternate" href="/social.html" hreflang="en" />
     <link rel="alternate" href="/es/social.html" hreflang="es" />
     <link rel="alternate" href="/fr/social.html" hreflang="fr" />
     <link rel="alternate" href="/hi/social.html" hreflang="hi" />
     <link rel="alternate" href="/tr/social.html" hreflang="tr" />
     <link rel="alternate" href="/zh/social.html" hreflang="zh" />
-<script>
+    <script>
       (function () {
         var path = '/es/social.html';
         var url = location.origin + path;
@@ -65,10 +68,12 @@
         if (og) og.content = url;
         var tw = document.querySelector('meta[name="twitter:url"]');
         if (tw) tw.content = url;
-        document.querySelectorAll('link[rel="alternate"]').forEach(function(a){
-          var href = a.getAttribute('href');
-          if(href.startsWith('/')) a.href = location.origin + href;
-        });
+        document
+          .querySelectorAll('link[rel="alternate"]')
+          .forEach(function (a) {
+            var href = a.getAttribute('href');
+            if (href.startsWith('/')) a.href = location.origin + href;
+          });
       })();
     </script>
     <script>
@@ -84,8 +89,8 @@
         }
       })();
     </script>
-    <script type="module" src="/src/version.js?v=74"></script>
-    <link rel="prefetch" href="translations/ui/es.json?v=74" as="fetch" />
+    <script type="module" src="/src/version.js?v=75"></script>
+    <link rel="prefetch" href="translations/ui/es.json?v=75" as="fetch" />
   </head>
   <body class="min-h-screen p-4">
     <div id="loading-screen">
@@ -108,7 +113,7 @@
             >
           </a>
           <img
-            src="/icons/logo.svg?v=74"
+            src="/icons/logo.svg?v=75"
             alt="Prompter logo"
             class="w-12 h-12 sm:w-14 sm:h-14"
           />
@@ -151,7 +156,7 @@
       import { linkify } from '/src/linkify.js';
       import { sanitizeHTML, setSanitizedHTML } from '/src/sanitize.js';
       import { timeAgo } from '/src/timeago.js';
-      import { categories } from '/src/prompts.js?v=74';
+      import { categories } from '/src/prompts.js?v=75';
       import { BASE_URL } from '/src/config.js';
       import {
         getUserProfile,
@@ -239,7 +244,7 @@
 
       const profileCache = {};
       const categoryMap = Object.fromEntries(
-        categories.map((c) => [c.id, c.name[appState.language] || c.id])
+        categories.map((c) => [c.id, c.name[appState.language] || c.id]),
       );
       const commentsOpenMap = new Map();
       const promptSearch = document.getElementById('prompt-search');
@@ -296,7 +301,7 @@
           textContainer.classList.toggle('overflow-hidden');
           textContainer.classList.toggle('max-h-40');
           showMore.textContent = textContainer.classList.contains(
-            'overflow-hidden'
+            'overflow-hidden',
           )
             ? 'Show more'
             : 'Show less';
@@ -345,7 +350,7 @@
         nameEl.className = 'text-blue-200 text-xs mt-1 underline';
         setSanitizedHTML(
           nameEl,
-          `<a href="user.html?uid=${p.userId}">${name}</a>`
+          `<a href="user.html?uid=${p.userId}">${name}</a>`,
         );
 
         const catEl = document.createElement('p');
@@ -374,7 +379,7 @@
             appState.savedPrompts.push(p.text);
             localStorage.setItem(
               'savedPrompts',
-              JSON.stringify(appState.savedPrompts)
+              JSON.stringify(appState.savedPrompts),
             );
             await saveUserPrompt(p.text, appState.currentUser.uid);
             await incrementSaveCount(p.id);
@@ -384,7 +389,7 @@
             if (icon)
               icon.setAttribute(
                 'fill',
-                saveBtn.classList.contains('active') ? 'currentColor' : 'none'
+                saveBtn.classList.contains('active') ? 'currentColor' : 'none',
               );
           } catch (err) {
             console.error('Failed to save prompt:', err);
@@ -469,7 +474,7 @@
           likeList.innerHTML = names
             .map(
               (n, idx) =>
-                `<div class="px-2"><a href="user.html?uid=${likedBy[idx]}" class="underline">${n}</a></div>`
+                `<div class="px-2"><a href="user.html?uid=${likedBy[idx]}" class="underline">${n}</a></div>`,
             )
             .join('');
 
@@ -505,7 +510,7 @@
           if (svg)
             svg.setAttribute(
               'fill',
-              likeBtn.classList.contains('active') ? 'currentColor' : 'none'
+              likeBtn.classList.contains('active') ? 'currentColor' : 'none',
             );
         };
 
@@ -522,7 +527,7 @@
               likes -= 1;
               updateLikeText();
               appState.likedPrompts = appState.likedPrompts.filter(
-                (id) => id !== p.id
+                (id) => id !== p.id,
               );
               likedBy = likedBy.filter((id) => id !== appState.currentUser.uid);
               likeBtn.classList.remove('active');
@@ -536,7 +541,7 @@
             }
             localStorage.setItem(
               'likedPrompts',
-              JSON.stringify(appState.likedPrompts)
+              JSON.stringify(appState.likedPrompts),
             );
             updateLikeIcon();
             await renderLikeSummary();
@@ -559,7 +564,7 @@
           if (svg)
             svg.setAttribute(
               'fill',
-              twitterBtn.classList.contains('active') ? 'currentColor' : 'none'
+              twitterBtn.classList.contains('active') ? 'currentColor' : 'none',
             );
         };
         updateTwitterIcon();
@@ -613,7 +618,8 @@
           window.lucide?.createIcons();
 
           cancelEdit.addEventListener('click', () => {
-            if (textWrap.contains(textarea)) textWrap.replaceChild(text, textarea);
+            if (textWrap.contains(textarea))
+              textWrap.replaceChild(text, textarea);
             if (card.contains(editRow)) card.replaceChild(likeRow, editRow);
             editing = false;
           });
@@ -640,7 +646,6 @@
           'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
         unshareBtn.innerHTML =
           '<i data-lucide="trash" class="w-4 h-4" aria-hidden="true"></i>';
-
 
         unshareBtn.addEventListener('click', async () => {
           unshareBtn.disabled = true;
@@ -701,9 +706,9 @@
           span.innerHTML = sanitizeHTML(
             n
               ? `<a href="user.html?uid=${c.userId}" class="underline">${n}</a>: ${linkify(
-                  c.text
+                  c.text,
                 )}`
-              : linkify(c.text)
+              : linkify(c.text),
           );
           d.appendChild(span);
 
@@ -841,7 +846,7 @@
         if (p.createdAt && p.createdAt.toMillis) {
           timeEl.textContent = timeAgo(
             p.createdAt.toMillis(),
-            appState.language
+            appState.language,
           );
         }
         card.appendChild(timeEl);
@@ -864,10 +869,10 @@
           return;
         }
         const names = await Promise.all(
-          prompts.map((p) => fetchName(p.userId))
+          prompts.map((p) => fetchName(p.userId)),
         );
         const commentsArr = await Promise.all(
-          prompts.map((p) => getComments(p.id))
+          prompts.map((p) => getComments(p.id)),
         );
         const idSet = new Set(prompts.map((p) => p.id));
         existing.forEach((el, id) => {
@@ -903,7 +908,21 @@
         if (targetPromptId) highlightPrompt(targetPromptId);
       }
 
+      const CACHE_KEY = 'socialCache';
+      const CACHE_LIMIT = 50;
       let loadedPrompts = null;
+
+      function loadCache() {
+        try {
+          const cached = localStorage.getItem(CACHE_KEY);
+          if (cached) {
+            loadedPrompts = JSON.parse(cached);
+            filterAndRender();
+          }
+        } catch (err) {
+          console.warn('Failed to parse social cache:', err);
+        }
+      }
 
       function filterAndRender() {
         if (loadedPrompts === null) return;
@@ -911,7 +930,7 @@
         const term = promptSearch?.value?.trim().toLowerCase();
         if (term) {
           filtered = filtered.filter((p) =>
-            p.text.toLowerCase().includes(term)
+            p.text.toLowerCase().includes(term),
           );
         }
         render(filtered);
@@ -932,14 +951,17 @@
 
       const startListener = async (user) => {
         if (unsubscribe) unsubscribe();
-        loadedPrompts = null;
         const list = document.getElementById('all-prompts');
-        list.innerHTML = '';
         const loading = document.createElement('p');
         loading.id = 'prompts-loading';
         loading.className = 'text-blue-200 text-sm text-center';
         loading.textContent = 'Loading...';
-        list.appendChild(loading);
+        if (!loadedPrompts) {
+          list.innerHTML = '';
+          list.appendChild(loading);
+        } else if (!list.querySelector('#prompts-loading')) {
+          list.appendChild(loading);
+        }
         const constraints = [where('shared', '==', true)];
 
         constraints.push(orderBy('createdAt', 'desc'));
@@ -951,6 +973,14 @@
             if (loading.parentElement) loading.remove();
             let prompts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
             loadedPrompts = prompts;
+            try {
+              localStorage.setItem(
+                CACHE_KEY,
+                JSON.stringify(prompts.slice(0, CACHE_LIMIT)),
+              );
+            } catch (err) {
+              console.warn('Failed to store social cache:', err);
+            }
             if (prompts.length === 0) {
               list.innerHTML = '';
               const msg = document.createElement('p');
@@ -973,12 +1003,13 @@
             } else {
               list.textContent = err.message;
             }
-          }
+          },
         );
       };
 
       function init() {
         localStorage.setItem('socialLastVisit', Date.now().toString());
+        loadCache();
         onAuth((u) => {
           if (u) updateLastSocialVisit(u.uid, Date.now());
         });
