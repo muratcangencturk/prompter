@@ -600,14 +600,14 @@ const renderSavedPrompts = (prompts) => {
       }
       if (!textWrap.isConnected || !pEl.isConnected || !textWrap.contains(pEl))
         return;
-      editing = true;
       const textarea = document.createElement('textarea');
       textarea.className = 'w-full p-2 rounded-md bg-black/30';
       textarea.value = pEl.textContent;
       if (!textWrap.isConnected || !pEl.isConnected || !textWrap.contains(pEl))
         return;
-      if (pEl.parentNode) pEl.parentNode.replaceChild(textarea, pEl);
-
+      if (!pEl.parentNode) return;
+      pEl.parentNode.replaceChild(textarea, pEl);
+      
       const editRow = document.createElement('div');
       editRow.className = 'flex items-center gap-2 mt-2';
       const saveEdit = document.createElement('button');
@@ -624,6 +624,7 @@ const renderSavedPrompts = (prompts) => {
       editRow.appendChild(cancelEdit);
       if (!item.contains(actions)) return;
       item.replaceChild(editRow, actions);
+      editing = true;
       // refresh icons for the new buttons
       window.lucide?.createIcons();
 
@@ -924,13 +925,13 @@ const renderSharedPrompts = async (prompts) => {
       if (editing) return;
       if (!textWrap.isConnected || !text.isConnected || !textWrap.contains(text))
         return;
-      editing = true;
       const textarea = document.createElement('textarea');
       textarea.className = 'w-full p-2 rounded-md bg-black/30';
       textarea.value = p.text;
       if (!textWrap.isConnected || !text.isConnected || !textWrap.contains(text))
         return;
-      if (text.parentNode) text.parentNode.replaceChild(textarea, text);
+      if (!text.parentNode) return;
+      text.parentNode.replaceChild(textarea, text);
 
       const editRow = document.createElement('div');
       editRow.className = 'flex items-center gap-2 mt-2';
@@ -949,6 +950,7 @@ const renderSharedPrompts = async (prompts) => {
 
       if (!item.contains(likeRow)) return;
       item.replaceChild(editRow, likeRow);
+      editing = true;
       // refresh icons for the new buttons
       window.lucide?.createIcons();
 
