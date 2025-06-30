@@ -70,7 +70,7 @@ Firestore caching is enabled using `initializeFirestore` with `persistentLocalCa
 
 ### Versioning
 
-The `manifest.json` file includes a `version` field that increments on each build so deployments always serve the newest assets.
+The `manifest.json` file includes a `version` field that increments on each build so deployments always serve the newest assets. Running `npm run build` also updates `sw.js` and appends the version to JavaScript and CSS references in all HTML files. This ensures browsers fetch the latest files and old caches are purged.
 
 ## Customization
 
@@ -133,7 +133,7 @@ of strings. These arrays represent the beginning, topic, continuation and ending
 1. Add a new JSON file under `prompts/<language>/` following the structure above.
 2. Register the category in `src/main.js` with an icon, emoji and names.
 3. Provide corresponding files for other languages to offer translations—use the Hindi (`hi`) folder as a reference.
-4. Run `npm run build` to regenerate `prompts.js` and bump the version in `manifest.json` so deployments include your changes.
+4. Run `npm run build` to regenerate `prompts.js`, update `sw.js` and bump the version in `manifest.json`. The script also rewrites HTML files with versioned asset URLs so deployments include your changes.
 5. Run `node scripts/count-prompts.js` to see how many unique prompts each category provides per language.
 
 ## Development
@@ -231,7 +231,7 @@ This updates `sitemap.xml` and `robots.txt` with your domain.
 
 The site is published automatically using GitHub Pages. The workflow
 [`pages.yml`](.github/workflows/pages.yml) installs dependencies, runs
-`npm run build` (which executes `scripts/build-prompts.js`) and `npm run build:sitemap` to generate `prompts.js`, bump the version in `manifest.json`, create `sitemap.xml` and then upload the artifact using
+`npm run build` (which executes `scripts/build-prompts.js`) and `npm run build:sitemap` to generate `prompts.js`, bump the version in `manifest.json`, update `sw.js` and rewrite HTML files with versioned asset URLs before uploading the artifact using
 `actions/upload-pages-artifact` and `actions/deploy-pages`. Pushes to the
 `main` branch trigger a new deployment and the site becomes available at
 the repository's Pages URL.
@@ -299,7 +299,7 @@ any third‑party advertising.
 
 ### How do I update the production build?
 
-Run `npm run build` after any production change. This command regenerates build artifacts and increments the version in `manifest.json`. Open pages check the manifest every five minutes and reload automatically when the version changes.
+Run `npm run build` after any production change. This command regenerates build artifacts, updates `sw.js`, and increments the version in `manifest.json` while rewriting HTML files with the new asset version. Open pages check the manifest every five minutes and reload automatically when the version changes.
 
 ## Offline support and refresh strategy
 
@@ -308,7 +308,7 @@ If the `version` field changes, a banner prompts users to refresh. The service w
 `sw.js` precaches essential files for offline access. During activation it deletes old caches
 and reloads open pages so updates are applied immediately.
 
-Run `npm run build` whenever you modify production files to increment the manifest version and trigger this refresh mechanism.
+Run `npm run build` whenever you modify production files. The script updates `manifest.json`, rewrites HTML asset URLs and refreshes the cached files listed in `sw.js` so clients always receive the latest version.
 
 ## License
 
