@@ -920,15 +920,6 @@ const renderSharedPrompts = async (prompts) => {
 
     let editing = false;
 
-    const startEdit = () => {
-      if (editing) return;
-      if (appState.currentUser && p.userId === appState.currentUser.uid) {
-        showEdit();
-      } else {
-        alert(uiText[appState.language].loginRequired);
-      }
-    };
-
     const showEdit = () => {
       if (editing) return;
       if (!textWrap.isConnected || !text.isConnected || !textWrap.contains(text))
@@ -979,6 +970,15 @@ const renderSharedPrompts = async (prompts) => {
           saveEdit.disabled = false;
         }
       });
+    };
+
+    const startEdit = () => {
+      if (editing) return;
+      if (appState.currentUser && p.userId === appState.currentUser.uid) {
+        showEdit();
+      } else {
+        alert(uiText[appState.language].loginRequired);
+      }
     };
 
     text.addEventListener('click', startEdit);
