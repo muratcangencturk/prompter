@@ -613,6 +613,7 @@ var _renderSavedPrompts = function renderSavedPrompts(prompts) {
       var textarea = document.createElement('textarea');
       textarea.className = 'w-full p-2 rounded-md bg-black/30';
       textarea.value = pEl.textContent;
+      if (!textWrap.contains(pEl)) return;
       textWrap.replaceChild(textarea, pEl);
       var editRow = document.createElement('div');
       editRow.className = 'flex items-center gap-2 mt-2';
@@ -624,7 +625,8 @@ var _renderSavedPrompts = function renderSavedPrompts(prompts) {
       cancelEdit.innerHTML = '<i data-lucide="x" class="w-4 h-4" aria-hidden="true"></i>';
       editRow.appendChild(saveEdit);
       editRow.appendChild(cancelEdit);
-      if (item.contains(actions)) item.replaceChild(editRow, actions);
+      if (!item.contains(actions)) return;
+      item.replaceChild(editRow, actions);
       // refresh icons for the new buttons
       (_window$lucide = window.lucide) === null || _window$lucide === void 0 || _window$lucide.createIcons();
       cancelEdit.addEventListener('click', function () {
@@ -889,8 +891,6 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                   editBtn = document.createElement('button');
                   editBtn.className = 'p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
                   editBtn.innerHTML = '<i data-lucide="pencil" class="w-4 h-4" aria-hidden="true"></i>';
-                  // clicking the prompt text also starts editing
-                  text.addEventListener('click', startEdit);
                   shareBtn = document.createElement('button');
                   shareBtn.className = 'history-share p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
                   shareBtn.title = 'Share on Twitter';
@@ -916,6 +916,7 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                     var textarea = document.createElement('textarea');
                     textarea.className = 'w-full p-2 rounded-md bg-black/30';
                     textarea.value = p.text;
+                    if (!textWrap.contains(text)) return;
                     textWrap.replaceChild(textarea, text);
                     var editRow = document.createElement('div');
                     editRow.className = 'flex items-center gap-2 mt-2';
@@ -927,7 +928,8 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                     cancelEdit.innerHTML = '<i data-lucide="x" class="w-4 h-4" aria-hidden="true"></i>';
                     editRow.appendChild(saveEdit);
                     editRow.appendChild(cancelEdit);
-                    if (item.contains(likeRow)) item.replaceChild(editRow, likeRow);
+                    if (!item.contains(likeRow)) return;
+                    item.replaceChild(editRow, likeRow);
                     // refresh icons for the new buttons
                     (_window$lucide4 = window.lucide) === null || _window$lucide4 === void 0 || _window$lucide4.createIcons();
                     cancelEdit.addEventListener('click', function () {
@@ -961,6 +963,7 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                       }, _callee7, null, [[1, 3]]);
                     })));
                   };
+                  text.addEventListener('click', startEdit);
                   editBtn.addEventListener('click', startEdit);
                   copyBtn.addEventListener('click', function () {
                     navigator.clipboard.writeText(text.textContent || '').then(function () {
