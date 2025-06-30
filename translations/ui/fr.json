@@ -36,6 +36,7 @@
   "loginRequiredSharePrompt": "Vous devez vous connecter pour partager des prompts.",
   "copyFailed": "Échec de la copie du prompt. Veuillez réessayer.",
   "shareFailed": "Échec du partage du prompt. Veuillez réessayer.",
+  "loadErrorMessage": "Impossible de charger les prompts. Veuillez vérifier votre connexion.",
   "internetRequired": "Connexion Internet requise.",
   "errorGenerating": "Erreur lors de la génération du prompt. Veuillez réessayer."
 }

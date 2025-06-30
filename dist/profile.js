@@ -451,12 +451,13 @@ var sharePrompt = function sharePrompt(prompt, baseUrl) {
 };
 var LOAD_ERROR_MESSAGE = 'Could not load prompts. Please check your connection.';
 var showLoadError = function showLoadError(listId, retryFn) {
+  var message = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : uiText[_state.appState.language].loadErrorMessage || LOAD_ERROR_MESSAGE;
   var list = document.getElementById(listId);
   if (!list) return;
   list.innerHTML = '';
   var p = document.createElement('p');
   p.className = 'text-center text-blue-200 text-sm';
-  p.textContent = LOAD_ERROR_MESSAGE;
+  p.textContent = message;
   list.appendChild(p);
   if (retryFn) {
     var btn = document.createElement('button');
@@ -512,9 +513,16 @@ var _loadPromptsForUser = /*#__PURE__*/function () {
             }
           }, function (err) {
             console.error('Failed to load prompts:', err);
-            showSharedLoadError(function () {
-              return _loadPromptsForUser(user);
-            });
+            if (err && err.code === 'failed-precondition') {
+              var msg = "".concat(uiText[_state.appState.language].loadErrorMessage, " Deploy Firestore indexes and try again.");
+              showLoadError('shared-list', function () {
+                return _loadPromptsForUser(user);
+              }, msg);
+            } else {
+              showSharedLoadError(function () {
+                return _loadPromptsForUser(user);
+              });
+            }
           });
           _context4.p = 2;
           _context4.n = 3;
@@ -609,12 +617,12 @@ var _renderSavedPrompts = function renderSavedPrompts(prompts) {
         return;
       }
       if (!textWrap.isConnected || !pEl.isConnected || !textWrap.contains(pEl)) return;
-      editing = true;
       var textarea = document.createElement('textarea');
       textarea.className = 'w-full p-2 rounded-md bg-black/30';
       textarea.value = pEl.textContent;
       if (!textWrap.isConnected || !pEl.isConnected || !textWrap.contains(pEl)) return;
-      if (pEl.parentNode) pEl.parentNode.replaceChild(textarea, pEl);
+      if (!pEl.parentNode) return;
+      pEl.parentNode.replaceChild(textarea, pEl);
       var editRow = document.createElement('div');
       editRow.className = 'flex items-center gap-2 mt-2';
       var saveEdit = document.createElement('button');
@@ -627,6 +635,7 @@ var _renderSavedPrompts = function renderSavedPrompts(prompts) {
       editRow.appendChild(cancelEdit);
       if (!item.contains(actions)) return;
       item.replaceChild(editRow, actions);
+      editing = true;
       // refresh icons for the new buttons
       (_window$lucide = window.lucide) === null || _window$lucide === void 0 || _window$lucide.createIcons();
       cancelEdit.addEventListener('click', function () {
@@ -904,12 +913,12 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                     var _window$lucide4;
                     if (editing) return;
                     if (!textWrap.isConnected || !text.isConnected || !textWrap.contains(text)) return;
-                    editing = true;
                     var textarea = document.createElement('textarea');
                     textarea.className = 'w-full p-2 rounded-md bg-black/30';
                     textarea.value = p.text;
                     if (!textWrap.isConnected || !text.isConnected || !textWrap.contains(text)) return;
-                    if (text.parentNode) text.parentNode.replaceChild(textarea, text);
+                    if (!text.parentNode) return;
+                    text.parentNode.replaceChild(textarea, text);
                     var editRow = document.createElement('div');
                     editRow.className = 'flex items-center gap-2 mt-2';
                     var saveEdit = document.createElement('button');
@@ -922,6 +931,7 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                     editRow.appendChild(cancelEdit);
                     if (!item.contains(likeRow)) return;
                     item.replaceChild(editRow, likeRow);
+                    editing = true;
                     // refresh icons for the new buttons
                     (_window$lucide4 = window.lucide) === null || _window$lucide4 === void 0 || _window$lucide4.createIcons();
                     cancelEdit.addEventListener('click', function () {

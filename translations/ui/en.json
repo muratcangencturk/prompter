@@ -35,6 +35,7 @@
   "loginRequiredSharePrompt": "You need to log in to share prompts.",
   "copyFailed": "Failed to copy prompt. Please try again.",
   "shareFailed": "Failed to share prompt. Please try again.",
+  "loadErrorMessage": "Could not load prompts. Please check your connection.",
   "internetRequired": "Internet connection required.",
   "errorGenerating": "Error generating prompt. Please try again."
 }
