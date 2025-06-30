@@ -927,8 +927,6 @@ const renderSharedPrompts = async (prompts) => {
       }
     };
 
-    text.addEventListener('click', startEdit);
-
     const showEdit = () => {
       if (editing) return;
       if (!textWrap.contains(text)) return;
@@ -978,6 +976,8 @@ const renderSharedPrompts = async (prompts) => {
         }
       });
     };
+
+    text.addEventListener('click', startEdit);
 
     editBtn.addEventListener('click', startEdit);
 
