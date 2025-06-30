@@ -264,24 +264,26 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
   event.respondWith(
-    caches.match(event.request).then((cached) => {
-      if (cached) return cached;
-      return fetch(event.request)
-        .then((response) => {
-          if (
-            response.redirected ||
-            (response.status >= 301 && response.status <= 308)
-          ) {
-            return fetch(response.url);
-          }
-          return response;
-        })
-        .catch(() => {
+    fetch(event.request)
+      .then((response) => {
+        if (
+          response.redirected ||
+          (response.status >= 301 && response.status <= 308)
+        ) {
+          return fetch(response.url);
+        }
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+        return response;
+      })
+      .catch(() =>
+        caches.match(event.request).then((cached) => {
+          if (cached) return cached;
           if (event.request.mode === 'navigate') {
             return caches.match('index.html');
           }
           return undefined;
-        });
-    })
+        })
+      )
   );
 });

@@ -29,6 +29,17 @@ export const startVersionCheck = async () => {
       location.reload();
     }
   }, 5 * 60 * 1000);
+  window.addEventListener('online', async () => {
+    const newVersion = await fetchManifestVersion();
+    if (
+      newVersion &&
+      currentManifestVersion &&
+      newVersion !== currentManifestVersion
+    ) {
+      clearServiceWorkersAndCaches();
+      location.reload();
+    }
+  });
 };
 
 export const clearServiceWorkersAndCaches = () => {
