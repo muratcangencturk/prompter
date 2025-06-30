@@ -9,7 +9,7 @@
     />
     <title>Prompter Social</title>
     <base href="./" />
-    <link rel="manifest" href="manifest.json?v=75" />
+    <link rel="manifest" href="manifest.json?v=77" />
     <meta name="theme-color" content="#000000" />
     <meta
       http-equiv="Cache-Control"
@@ -22,13 +22,13 @@
     <meta name="robots" content="index,follow" />
     <meta property="og:title" content="Prompter Social" />
     <meta property="og:description" content="Links to connect with other Prompter users." />
-    <meta property="og:image" content="/icons/logo.svg?v=75" />
+    <meta property="og:image" content="/icons/logo.svg?v=77" />
     <meta property="og:image:alt" content="Prompter logo" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Prompter Social" />
     <meta name="twitter:description" content="Links to connect with other Prompter users." />
-    <meta name="twitter:image" content="/icons/logo.svg?v=75" />
+    <meta name="twitter:image" content="/icons/logo.svg?v=77" />
     <meta property="og:url" content="/social.html" />
     <meta property="og:site_name" content="Prompter" />
     <meta property="og:locale" content="en" />
@@ -39,17 +39,17 @@
     <meta property="og:locale:alternate" content="zh" />
 
     <meta name="twitter:url" content="/social.html" />
-    <script type="module" src="/src/lucide-loader.js?v=75"></script>
-    <link rel="stylesheet" href="css/tailwind.css?v=75" />
-    <link rel="stylesheet" href="css/app.css?v=75" />
-    <script type="module" src="/src/init-app.js?v=75"></script>
-    <script nomodule src="/dist/init-app.js?v=75"></script>
+    <script type="module" src="/src/lucide-loader.js?v=77"></script>
+    <link rel="stylesheet" href="css/tailwind.css?v=77" />
+    <link rel="stylesheet" href="css/app.css?v=77" />
+    <script type="module" src="/src/init-app.js?v=77"></script>
+    <script nomodule src="/dist/init-app.js?v=77"></script>
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('sw.js').catch(() => {});
       }
     </script>
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=75" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=77" />
     <link rel="canonical" href="/social.html" />
     <link rel="alternate" href="/social.html" hreflang="x-default" />
     <link rel="alternate" href="/social.html" hreflang="en" />
@@ -89,8 +89,8 @@
         }
       })();
     </script>
-    <script type="module" src="/src/version.js?v=75"></script>
-    <link rel="prefetch" href="translations/ui/en.json?v=75" as="fetch" />
+    <script type="module" src="/src/version.js?v=77"></script>
+    <link rel="prefetch" href="translations/ui/en.json?v=77" as="fetch" />
   </head>
   <body class="min-h-screen p-4">
     <div id="loading-screen">
@@ -113,7 +113,7 @@
             >
           </a>
           <img
-            src="/icons/logo.svg?v=75"
+            src="/icons/logo.svg?v=77"
             alt="Prompter logo"
             class="w-12 h-12 sm:w-14 sm:h-14"
           />
@@ -156,7 +156,7 @@
       import { linkify } from '/src/linkify.js';
       import { sanitizeHTML, setSanitizedHTML } from '/src/sanitize.js';
       import { timeAgo } from '/src/timeago.js';
-      import { categories } from '/src/prompts.js?v=75';
+      import { categories } from '/src/prompts.js?v=77';
       import { BASE_URL } from '/src/config.js';
       import {
         getUserProfile,
@@ -597,8 +597,7 @@
           const textarea = document.createElement('textarea');
           textarea.className = 'w-full p-2 rounded-md bg-black/30';
           textarea.value = p.text;
-          if (!textWrap.contains(text)) return;
-          textWrap.replaceChild(textarea, text);
+          if (textWrap.contains(text)) textWrap.replaceChild(textarea, text);
 
           const editRow = document.createElement('div');
           editRow.className = 'flex items-center gap-2 mt-2';
@@ -615,8 +614,7 @@
           editRow.appendChild(saveEdit);
           editRow.appendChild(cancelEdit);
 
-          if (!card.contains(likeRow)) return;
-          card.replaceChild(editRow, likeRow);
+          if (card.contains(likeRow)) card.replaceChild(editRow, likeRow);
           window.lucide?.createIcons();
 
           cancelEdit.addEventListener('click', () => {
