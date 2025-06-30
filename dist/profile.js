@@ -608,12 +608,12 @@ var _renderSavedPrompts = function renderSavedPrompts(prompts) {
         alert(uiText[_state.appState.language].loginRequired);
         return;
       }
-      if (!textWrap.contains(pEl)) return;
+      if (!textWrap.isConnected || !pEl.isConnected || !textWrap.contains(pEl)) return;
       editing = true;
       var textarea = document.createElement('textarea');
       textarea.className = 'w-full p-2 rounded-md bg-black/30';
       textarea.value = pEl.textContent;
-      if (!textWrap.contains(pEl)) return;
+      if (!textWrap.isConnected || !pEl.isConnected || !textWrap.contains(pEl)) return;
       textWrap.replaceChild(textarea, pEl);
       var editRow = document.createElement('div');
       editRow.className = 'flex items-center gap-2 mt-2';
@@ -760,7 +760,7 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
           _context14.p = 2;
           _loop = /*#__PURE__*/_regenerator().m(function _loop() {
             var _categories$find;
-            var _step$value, idx, p, item, textWrap, textContainer, text, showMore, toggleText, copyBtn, copyFeedback, nameEl, catEl, likeRow, likeBtn, likes, likeCount, updateLikeText, likeContainer, liked, updateLikeIcon, editBtn, shareBtn, delBtn, editing, startEdit, showEdit, siteShareBtn, updateSiteShareIcon, updateShareIcon2, commentToggleBtn, commentsWrap, commentList, commentForm, commentInput, commentBtn, refreshComments, renderComment, existingComments, commentNum, commentCount, commentContainer, _iterator3, _step3, c, _t1;
+            var _step$value, idx, p, item, textWrap, textContainer, text, showMore, toggleText, copyBtn, copyFeedback, nameEl, catEl, likeRow, likeBtn, likes, likeCount, updateLikeText, likeContainer, liked, updateLikeIcon, editBtn, shareBtn, delBtn, editing, showEdit, startEdit, siteShareBtn, updateSiteShareIcon, updateShareIcon2, commentToggleBtn, commentsWrap, commentList, commentForm, commentInput, commentBtn, refreshComments, renderComment, existingComments, commentNum, commentCount, commentContainer, _iterator3, _step3, c, _t1;
             return _regenerator().w(function (_context13) {
               while (1) switch (_context13.n) {
                 case 0:
@@ -900,23 +900,15 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                   delBtn.className = 'history-delete p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50';
                   delBtn.innerHTML = '<i data-lucide="trash" class="w-3 h-3" aria-hidden="true"></i>';
                   editing = false;
-                  startEdit = function startEdit() {
-                    if (editing) return;
-                    if (_state.appState.currentUser && p.userId === _state.appState.currentUser.uid) {
-                      showEdit();
-                    } else {
-                      alert(uiText[_state.appState.language].loginRequired);
-                    }
-                  };
                   showEdit = function showEdit() {
                     var _window$lucide4;
                     if (editing) return;
-                    if (!textWrap.contains(text)) return;
+                    if (!textWrap.isConnected || !text.isConnected || !textWrap.contains(text)) return;
                     editing = true;
                     var textarea = document.createElement('textarea');
                     textarea.className = 'w-full p-2 rounded-md bg-black/30';
                     textarea.value = p.text;
-                    if (!textWrap.contains(text)) return;
+                    if (!textWrap.isConnected || !text.isConnected || !textWrap.contains(text)) return;
                     textWrap.replaceChild(textarea, text);
                     var editRow = document.createElement('div');
                     editRow.className = 'flex items-center gap-2 mt-2';
@@ -962,6 +954,14 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                         }
                       }, _callee7, null, [[1, 3]]);
                     })));
+                  };
+                  startEdit = function startEdit() {
+                    if (editing) return;
+                    if (_state.appState.currentUser && p.userId === _state.appState.currentUser.uid) {
+                      showEdit();
+                    } else {
+                      alert(uiText[_state.appState.language].loginRequired);
+                    }
                   };
                   text.addEventListener('click', startEdit);
                   editBtn.addEventListener('click', startEdit);
