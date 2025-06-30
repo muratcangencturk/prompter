@@ -434,13 +434,17 @@ const sharePrompt = (prompt, baseUrl) => {
 const LOAD_ERROR_MESSAGE =
   'Could not load prompts. Please check your connection.';
 
-const showLoadError = (listId, retryFn) => {
+const showLoadError = (
+  listId,
+  retryFn,
+  message = uiText[appState.language].loadErrorMessage || LOAD_ERROR_MESSAGE,
+) => {
   const list = document.getElementById(listId);
   if (!list) return;
   list.innerHTML = '';
   const p = document.createElement('p');
   p.className = 'text-center text-blue-200 text-sm';
-  p.textContent = LOAD_ERROR_MESSAGE;
+  p.textContent = message;
   list.appendChild(p);
   if (retryFn) {
     const btn = document.createElement('button');
@@ -498,7 +502,12 @@ const loadPromptsForUser = async (user) => {
     },
     (err) => {
       console.error('Failed to load prompts:', err);
-      showSharedLoadError(() => loadPromptsForUser(user));
+      if (err && err.code === 'failed-precondition') {
+        const msg = `${uiText[appState.language].loadErrorMessage} Deploy Firestore indexes and try again.`;
+        showLoadError('shared-list', () => loadPromptsForUser(user), msg);
+      } else {
+        showSharedLoadError(() => loadPromptsForUser(user));
+      }
     },
   );
 

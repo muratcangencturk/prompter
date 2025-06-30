@@ -36,6 +36,7 @@
   "loginRequiredSharePrompt": "需要登录才能分享提示。",
   "copyFailed": "复制提示失败。请再试一次。",
   "shareFailed": "分享提示失败。请再试一次。",
+  "loadErrorMessage": "无法加载提示。请检查您的网络连接。",
   "internetRequired": "需要连接互联网。",
   "errorGenerating": "生成提示时出错。请再试一次。"
 }

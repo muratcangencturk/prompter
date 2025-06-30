@@ -36,6 +36,7 @@
   "loginRequiredSharePrompt": "Promptları paylaşmak için giriş yapın.",
   "copyFailed": "Prompt kopyalanamadı. Lütfen tekrar deneyin.",
   "shareFailed": "Prompt paylaşılamadı. Lütfen tekrar deneyin.",
+  "loadErrorMessage": "Promptlar yüklenemedi. Lütfen bağlantınızı kontrol edin.",
   "internetRequired": "İnternet bağlantısı gerekli.",
   "errorGenerating": "Prompt oluşturulurken hata oluştu. Lütfen tekrar deneyin."
 }
