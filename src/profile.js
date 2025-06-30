@@ -606,7 +606,7 @@ const renderSavedPrompts = (prompts) => {
       textarea.value = pEl.textContent;
       if (!textWrap.isConnected || !pEl.isConnected || !textWrap.contains(pEl))
         return;
-      textWrap.replaceChild(textarea, pEl);
+      if (pEl.parentNode) pEl.parentNode.replaceChild(textarea, pEl);
 
       const editRow = document.createElement('div');
       editRow.className = 'flex items-center gap-2 mt-2';
@@ -628,7 +628,7 @@ const renderSavedPrompts = (prompts) => {
       window.lucide?.createIcons();
 
       cancelEdit.addEventListener('click', () => {
-        if (textWrap.contains(textarea)) textWrap.replaceChild(pEl, textarea);
+        if (textarea.parentNode) textarea.parentNode.replaceChild(pEl, textarea);
         if (item.contains(editRow)) item.replaceChild(actions, editRow);
         editing = false;
       });
@@ -930,7 +930,7 @@ const renderSharedPrompts = async (prompts) => {
       textarea.value = p.text;
       if (!textWrap.isConnected || !text.isConnected || !textWrap.contains(text))
         return;
-      textWrap.replaceChild(textarea, text);
+      if (text.parentNode) text.parentNode.replaceChild(textarea, text);
 
       const editRow = document.createElement('div');
       editRow.className = 'flex items-center gap-2 mt-2';
@@ -953,7 +953,7 @@ const renderSharedPrompts = async (prompts) => {
       window.lucide?.createIcons();
 
       cancelEdit.addEventListener('click', () => {
-        if (textWrap.contains(textarea)) textWrap.replaceChild(text, textarea);
+        if (textarea.parentNode) textarea.parentNode.replaceChild(text, textarea);
         if (item.contains(editRow)) item.replaceChild(likeRow, editRow);
         editing = false;
       });

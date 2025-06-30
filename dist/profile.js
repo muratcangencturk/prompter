@@ -614,7 +614,7 @@ var _renderSavedPrompts = function renderSavedPrompts(prompts) {
       textarea.className = 'w-full p-2 rounded-md bg-black/30';
       textarea.value = pEl.textContent;
       if (!textWrap.isConnected || !pEl.isConnected || !textWrap.contains(pEl)) return;
-      textWrap.replaceChild(textarea, pEl);
+      if (pEl.parentNode) pEl.parentNode.replaceChild(textarea, pEl);
       var editRow = document.createElement('div');
       editRow.className = 'flex items-center gap-2 mt-2';
       var saveEdit = document.createElement('button');
@@ -630,7 +630,7 @@ var _renderSavedPrompts = function renderSavedPrompts(prompts) {
       // refresh icons for the new buttons
       (_window$lucide = window.lucide) === null || _window$lucide === void 0 || _window$lucide.createIcons();
       cancelEdit.addEventListener('click', function () {
-        if (textWrap.contains(textarea)) textWrap.replaceChild(pEl, textarea);
+        if (textarea.parentNode) textarea.parentNode.replaceChild(pEl, textarea);
         if (item.contains(editRow)) item.replaceChild(actions, editRow);
         editing = false;
       });
@@ -909,7 +909,7 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                     textarea.className = 'w-full p-2 rounded-md bg-black/30';
                     textarea.value = p.text;
                     if (!textWrap.isConnected || !text.isConnected || !textWrap.contains(text)) return;
-                    textWrap.replaceChild(textarea, text);
+                    if (text.parentNode) text.parentNode.replaceChild(textarea, text);
                     var editRow = document.createElement('div');
                     editRow.className = 'flex items-center gap-2 mt-2';
                     var saveEdit = document.createElement('button');
@@ -925,7 +925,7 @@ var _renderSharedPrompts = /*#__PURE__*/function () {
                     // refresh icons for the new buttons
                     (_window$lucide4 = window.lucide) === null || _window$lucide4 === void 0 || _window$lucide4.createIcons();
                     cancelEdit.addEventListener('click', function () {
-                      if (textWrap.contains(textarea)) textWrap.replaceChild(text, textarea);
+                      if (textarea.parentNode) textarea.parentNode.replaceChild(text, textarea);
                       if (item.contains(editRow)) item.replaceChild(likeRow, editRow);
                       editing = false;
                     });

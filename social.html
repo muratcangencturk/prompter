@@ -597,7 +597,7 @@
           const textarea = document.createElement('textarea');
           textarea.className = 'w-full p-2 rounded-md bg-black/30';
           textarea.value = p.text;
-          if (textWrap.contains(text)) textWrap.replaceChild(textarea, text);
+          if (text.parentNode) text.parentNode.replaceChild(textarea, text);
 
           const editRow = document.createElement('div');
           editRow.className = 'flex items-center gap-2 mt-2';
@@ -618,8 +618,8 @@
           window.lucide?.createIcons();
 
           cancelEdit.addEventListener('click', () => {
-            if (textWrap.contains(textarea))
-              textWrap.replaceChild(text, textarea);
+            if (textarea.parentNode)
+              textarea.parentNode.replaceChild(text, textarea);
             if (card.contains(editRow)) card.replaceChild(likeRow, editRow);
             editing = false;
           });
