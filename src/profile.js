@@ -598,12 +598,14 @@ const renderSavedPrompts = (prompts) => {
         alert(uiText[appState.language].loginRequired);
         return;
       }
-      if (!textWrap.contains(pEl)) return;
+      if (!textWrap.isConnected || !pEl.isConnected || !textWrap.contains(pEl))
+        return;
       editing = true;
       const textarea = document.createElement('textarea');
       textarea.className = 'w-full p-2 rounded-md bg-black/30';
       textarea.value = pEl.textContent;
-      if (!textWrap.contains(pEl)) return;
+      if (!textWrap.isConnected || !pEl.isConnected || !textWrap.contains(pEl))
+        return;
       textWrap.replaceChild(textarea, pEl);
 
       const editRow = document.createElement('div');
@@ -929,12 +931,14 @@ const renderSharedPrompts = async (prompts) => {
 
     const showEdit = () => {
       if (editing) return;
-      if (!textWrap.contains(text)) return;
+      if (!textWrap.isConnected || !text.isConnected || !textWrap.contains(text))
+        return;
       editing = true;
       const textarea = document.createElement('textarea');
       textarea.className = 'w-full p-2 rounded-md bg-black/30';
       textarea.value = p.text;
-      if (!textWrap.contains(text)) return;
+      if (!textWrap.isConnected || !text.isConnected || !textWrap.contains(text))
+        return;
       textWrap.replaceChild(textarea, text);
 
       const editRow = document.createElement('div');
