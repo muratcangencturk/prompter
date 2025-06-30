@@ -434,6 +434,9 @@ const sharePrompt = (prompt, baseUrl) => {
 const LOAD_ERROR_MESSAGE =
   'Could not load prompts. Please check your connection.';
 
+const INDEX_ERROR_MESSAGE =
+  'Missing Firestore indexes. See README \u201cUpdating Firestore Indexes\u201d.';
+
 const showLoadError = (listId, retryFn) => {
   const list = document.getElementById(listId);
   if (!list) return;
@@ -498,6 +501,9 @@ const loadPromptsForUser = async (user) => {
     },
     (err) => {
       console.error('Failed to load prompts:', err);
+      if (err.code === 'failed-precondition') {
+        alert(INDEX_ERROR_MESSAGE);
+      }
       showSharedLoadError(() => loadPromptsForUser(user));
     },
   );
@@ -513,6 +519,9 @@ const loadPromptsForUser = async (user) => {
     renderSavedPrompts(appState.savedPrompts);
   } catch (err) {
     console.error('Failed to load prompts:', err);
+    if (err.code === 'failed-precondition') {
+      alert(INDEX_ERROR_MESSAGE);
+    }
     showSavedLoadError(() => loadPromptsForUser(user));
   }
 };

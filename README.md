@@ -245,10 +245,10 @@ firebase deploy --only firestore:indexes
 ```
 
 Use a valid Firebase token when running the command above. Missing indexes will
-lead to empty results on the Social page until they are created.
-Firestore may take several minutes to build the indexes after deployment. During
-this period queries on the Social page can throw `failed-precondition` errors and
-show "Failed to load prompts."
+lead to "Could not load prompts" errors and empty results on the Social page
+until they are created. Firestore may take several minutes to build the indexes
+after deployment. During this period queries on the Social page can throw
+`failed-precondition` errors and show "Could not load prompts."
 
 If you encounter `Cannot read properties of undefined (reading 'onAuthStateChanged')` on the Social page, your Firebase configuration is missing. Create a `firebase.config.json` file (using `firebase.config.example.json` as a template) or set `window.firebaseConfig` before loading the scripts.
 
