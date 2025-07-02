@@ -62,5 +62,10 @@ export const clearServiceWorkersAndCaches = () => {
   }
 };
 
+// expose to global scope when available
+if (typeof window !== 'undefined') {
+  window.clearServiceWorkersAndCaches = clearServiceWorkersAndCaches;
+}
+
 // automatically run when imported
 startVersionCheck();
