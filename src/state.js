@@ -12,7 +12,9 @@ const readLocal = (key, fallback) => {
 export const appState = {
   generatedPrompt: '',
   selectedCategory: 'random',
-  useFullSentenceNext: false,
+  // tracks whether each category should use a full sentence prompt next
+  // { [categoryId]: boolean }
+  useFullSentenceNext: {},
   isGenerating: false,
   copySuccess: false,
   language: 'en',

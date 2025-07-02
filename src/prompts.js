@@ -256,24 +256,26 @@ export const generatePrompt = async () => {
     throw new Error('offline');
   }
   appState.isGenerating = true;
+  const toggleKey = appState.selectedCategory;
+  const useFullSentence = !!appState.useFullSentenceNext[toggleKey];
   let selectedCatId = appState.selectedCategory;
   const isRandom = selectedCatId === 'random';
 
+  if (useFullSentence) {
+    const sentences = await loadFullSentences(appState.language);
+    const prompt = getRandomElement(sentences);
+    appState.generatedPrompt = prompt;
+    appState.isGenerating = false;
+    appState.useFullSentenceNext[toggleKey] = !useFullSentence;
+    return { prompt, categoryId: isRandom ? 'random' : selectedCatId };
+  }
+
   if (isRandom) {
-    if (appState.useFullSentenceNext) {
-      const sentences = await loadFullSentences(appState.language);
-      const prompt = getRandomElement(sentences);
-      appState.generatedPrompt = prompt;
-      appState.isGenerating = false;
-      appState.useFullSentenceNext = false;
-      return { prompt, categoryId: 'random' };
-    }
     const availableCategories = categories.filter((c) => c.id !== 'random');
     selectedCatId =
       availableCategories[
         Math.floor(Math.random() * availableCategories.length)
       ].id;
-    appState.useFullSentenceNext = true;
   }
 
   const categoryData = await loadCategory(appState.language, selectedCatId);
@@ -304,5 +306,6 @@ export const generatePrompt = async () => {
 
   appState.generatedPrompt = newPrompt;
   appState.isGenerating = false;
+  appState.useFullSentenceNext[toggleKey] = !useFullSentence;
   return { prompt: newPrompt, categoryId: isRandom ? 'random' : selectedCatId };
 };
