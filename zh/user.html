@@ -2,45 +2,41 @@
 <html lang="zh">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="upgrade-insecure-requests"
-    />
-    <title>User - Prompter</title>
-    <base href="../" />
-    <link rel="manifest" href="manifest.json?v=80" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      http-equiv="Cache-Control"
-      content="no-cache, no-store, must-revalidate"
-    />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <meta name="description" content="浏览此用户共享的提示，并在提示器上了解有关其个人资料的更多信息。" />
-    <meta name="keywords" content="用户个人资料，共享提示，社区成员，提示作者" />
-    <meta name="robots" content="index,follow" />
-    <meta property="og:title" content="User - Prompter" />
-    <meta property="og:description" content="浏览此用户共享的提示，并在提示器上了解有关其个人资料的更多信息。" />
-    <meta property="og:image" content="/icons/logo.svg?v=80" />
-    <meta property="og:image:alt" content="Prompter logo" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="User - Prompter" />
-    <meta name="twitter:description" content="浏览此用户共享的提示，并在提示器上了解有关其个人资料的更多信息。" />
-    <meta name="twitter:image" content="/icons/logo.svg?v=80" />
-    <meta property="og:url" content="/zh/user.html" />
-    <meta property="og:site_name" content="Prompter" />
-    <meta property="og:locale" content="zh" />
-    <meta property="og:locale:alternate" content="en" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+<title>User - Prompter</title>
+<base href="../" />
+<link rel="preconnect" href="https://unpkg.com" crossorigin />
+<link rel="preconnect" href="https://www.gstatic.com" crossorigin />
+<link rel="icon" type="image/svg+xml" href="/icons/logo.svg?v=81" />
+<link rel="manifest" href="manifest.json?v=81" />
+<meta name="theme-color" content="#000000" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta name="description" content="查看用户分享的提示和个人资料。" />
+<meta name="keywords" content="用户个人资料, 分享的提示" />
+<meta name="robots" content="index,follow" />
+<meta property="og:title" content="User - Prompter" />
+<meta property="og:description" content="查看用户分享的提示和个人资料。" />
+<meta property="og:image" content="/icons/logo.svg?v=81" />
+<meta property="og:image:alt" content="Prompter标志" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="User - Prompter" />
+<meta name="twitter:description" content="查看用户分享的提示和个人资料。" />
+<meta name="twitter:image" content="/icons/logo.svg?v=81" />
+<meta property="og:url" content="/zh/user.html" />
+<meta property="og:site_name" content="Prompter" />
+<meta property="og:locale" content="zh" />
+<meta name="twitter:url" content="/zh/user.html" />
+<meta property="og:locale:alternate" content="en" />
     <meta property="og:locale:alternate" content="es" />
     <meta property="og:locale:alternate" content="fr" />
     <meta property="og:locale:alternate" content="hi" />
     <meta property="og:locale:alternate" content="tr" />
-
-    <meta name="twitter:url" content="/zh/user.html" />
-    <link rel="canonical" href="/zh/user.html" />
-    <link rel="alternate" href="/user.html" hreflang="x-default" />
+<link rel="canonical" href="/zh/user.html" />
+<link rel="alternate" href="/user.html" hreflang="x-default" />
     <link rel="alternate" href="/user.html" hreflang="en" />
     <link rel="alternate" href="/es/user.html" hreflang="es" />
     <link rel="alternate" href="/fr/user.html" hreflang="fr" />
@@ -48,19 +44,22 @@
     <link rel="alternate" href="/tr/user.html" hreflang="tr" />
     <link rel="alternate" href="/zh/user.html" hreflang="zh" />
 <script>
-      (function () {
-        var path = '/zh/user.html';
-        var url = location.origin + path;
-        var c = document.querySelector('link[rel="canonical"]');
-        if (c) c.href = url;
-        var og = document.querySelector('meta[property="og:url"]');
-        if (og) og.content = url;
-        var tw = document.querySelector('meta[name="twitter:url"]');
-        if (tw) tw.content = url;
-        document.querySelectorAll('link[rel="alternate"]').forEach(function(a){
-          var href = a.getAttribute('href');
-          if(href.startsWith('/')) a.href = location.origin + href;
-        });
+  (function () {
+    var path = '/zh/user.html';
+    var url = location.origin + path;
+    var c = document.querySelector('link[rel="canonical"]');
+    if (c) c.href = url;
+    var og = document.querySelector('meta[property="og:url"]');
+    if (og) og.content = url;
+    var tw = document.querySelector('meta[name="twitter:url"]');
+    if (tw) tw.content = url;
+    document.querySelectorAll('link[rel="alternate"]').forEach(function(a){
+      var href = a.getAttribute('href');
+      if(href.startsWith('/')) a.href = location.origin + href;
+    });
+  })();
+</script>
+
       })();
     </script>
     <script id="person-schema" type="application/ld+json">
@@ -71,32 +70,13 @@
         "description": ""
       }
     </script>
-    <link rel="stylesheet" href="css/tailwind.css?v=80" />
-    <script type="module" src="/src/lucide-loader.js?v=80"></script>
-    <link rel="stylesheet" href="css/app.css?v=80" />
-    <script type="module" src="/src/init-app.js?v=80"></script>
-    <script nomodule src="/dist/init-app.js?v=80"></script>
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=80" />
+    <link rel="stylesheet" href="css/tailwind.css?v=81" />
+    <script type="module" src="/src/lucide-loader.js?v=81"></script>
+    <link rel="stylesheet" href="css/app.css?v=81" />
+    <script type="module" src="/src/init-app.js?v=81"></script>
+    <script nomodule src="/dist/init-app.js?v=81"></script>
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=81" />
     <script>
-      (function () {
-        const linkEl = document.getElementById('theme-css');
-        if (!linkEl) return;
-        const version = linkEl.getAttribute('href').split('?')[1];
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-          linkEl.href = `css/theme-${savedTheme}.css${
-            version ? `?${version}` : ''
-          }`;
-        }
-      })();
-    </script>
-    <script type="module" src="/src/user-page.js?v=80"></script>
-    <script nomodule src="dist/user-page.js?v=80"></script>
-    <script type="module" src="/src/version.js?v=80"></script>
-    <link rel="prefetch" href="translations/ui/zh.json?v=80" as="fetch" />
-  </head>
-  <body class="min-h-screen p-4">
-    <div id="app-container" class="w-full">
       <header class="flex items-center justify-between w-full mt-4 mb-6">
         <div class="flex items-center gap-2">
           <a
@@ -113,7 +93,7 @@
             >
           </a>
           <img
-            src="/icons/logo.svg?v=80"
+            src="/icons/logo.svg?v=81"
             alt="Prompter logo"
             class="w-12 h-12 sm:w-14 sm:h-14"
           />
