@@ -1,7 +1,7 @@
 {
   "code": "es",
-  "description": "Generador de prompts creativos para IA que requiere conexión a Internet.",
-  "keywords": "prompts de IA, generador de prompts, prompts creativos, prompter de IA, creador de prompts",
+  "description": "Generador de prompts creativos para IA y ChatGPT que requiere conexión a Internet.",
+  "keywords": "prompts de IA, prompts de ChatGPT, generador de prompts, prompts creativos, prompter de IA, creador de prompts",
   "faq_question": "¿Qué es Prompter?",
   "faq_answer": "Prompter es una aplicación web que genera prompts creativos para inteligencia artificial.",
   "login_description": "Inicie sesión en Prompter para guardar sus indicaciones favoritas.",

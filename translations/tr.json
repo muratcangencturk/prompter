@@ -1,7 +1,7 @@
 {
   "code": "tr",
-  "description": "İnternet bağlantısı gerektiren yaratıcı yapay zeka komut üreticisi.",
-  "keywords": "yapay zeka komutları, komut üreticisi, yaratıcı komutlar, yapay zeka komut aracı, komut oluşturucu",
+  "description": "ChatGPT için yaratıcı yapay zeka komut üreticisi. İnternet bağlantısı gerektirir.",
+  "keywords": "yapay zeka komutları, chatGPT komutları, komut üreticisi, yaratıcı komutlar, yapay zeka komut aracı, komut oluşturucu",
   "faq_question": "Prompter nedir?",
   "faq_answer": "Prompter, yaratıcı yapay zeka komutları üreten bir web uygulamasıdır.",
   "login_description": "En sevdiğiniz istemleri kaydetmek için Prompter'a giriş yapın.",
