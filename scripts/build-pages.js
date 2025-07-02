@@ -6,6 +6,30 @@ const root = path.join(__dirname, '..');
 const templatesDir = path.join(root, 'templates');
 const translationsDir = path.join(root, 'translations');
 const siteUrl = process.env.SITE_URL || 'https://prompterai.space';
+const metaTemplate = fs.readFileSync(path.join(templatesDir, 'meta.html'), 'utf8');
+
+const titles = {
+  index: 'Prompter - AI Prompt Generator',
+  blog: 'Space - Prompter',
+  dm: 'Direct Messages - Prompter',
+  intro: 'Introduction - Prompter',
+  login: 'Prompter Login',
+  privacy: 'Legal - Prompter',
+  pro: 'Prompter Pro',
+  profile: 'Profil - Prompter',
+  social: 'Prompter Social',
+  terms: 'Terms - Prompter',
+  top_collectors: 'Top Collectors - Prompter',
+  top_creators: 'Top Creators - Prompter',
+  top_prompts: 'Top Prompts - Prompter',
+  top: 'Top Lists - Prompter',
+  user: 'User - Prompter',
+  '404': '404 - Page Not Found',
+};
+
+const ogTitles = {
+  index: 'PROMPTER',
+};
 
 function readTranslations() {
   const entries = fs.readdirSync(translationsDir);
@@ -76,6 +100,12 @@ function build() {
         WHATSAPP_LOGO_ALT: t.whatsapp_logo_alt,
         SET_LANGUAGE: lang === 'en' ? '' : `<script>localStorage.setItem('language', '${lang}');</script>`,
       };
+      const meta = render(metaTemplate, {
+        ...params,
+        TITLE: titles[pageKey] || 'Prompter',
+        OG_TITLE: ogTitles[pageKey] || titles[pageKey] || 'Prompter',
+      });
+      params.META = meta;
       let html = render(template, params);
       html = html.replace('</head>', `  <link rel="prefetch" href="translations/ui/${lang}.json" as="fetch" />\n  </head>`);
       const outDir = lang === 'en' ? root : path.join(root, lang);

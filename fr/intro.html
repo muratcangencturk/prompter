@@ -2,41 +2,40 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-    <title>Introduction - Prompter</title>
-    <link rel="icon" type="image/svg+xml" href="/icons/logo.svg?v=80" />
-    <link rel="manifest" href="manifest.json?v=80" />
-    <meta name="theme-color" content="#000000" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <meta name="description" content="Apprenez à démarrer avec ProMperter et créer des invites AI engageantes pour ChatGpt et plus encore." />
-    <meta name="keywords" content="Guide du promoteur, comment utiliser, tutoriel rapide, commencer à générer des invites AI" />
-    <meta name="robots" content="index,follow" />
-    <meta property="og:title" content="Introduction - Prompter" />
-    <meta property="og:description" content="Apprenez à démarrer avec ProMperter et créer des invites AI engageantes pour ChatGpt et plus encore." />
-    <meta property="og:image" content="/icons/logo.svg?v=80" />
-    <meta property="og:image:alt" content="Prompter logo" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Introduction - Prompter" />
-    <meta name="twitter:description" content="Apprenez à démarrer avec ProMperter et créer des invites AI engageantes pour ChatGpt et plus encore." />
-    <meta name="twitter:image" content="/icons/logo.svg?v=80" />
-    <meta property="og:url" content="/fr/intro.html" />
-    <meta property="og:site_name" content="Prompter" />
-    <meta property="og:locale" content="fr" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+<title>Introduction - Prompter</title>
+<base href="../" />
+<link rel="preconnect" href="https://unpkg.com" crossorigin />
+<link rel="preconnect" href="https://www.gstatic.com" crossorigin />
+<link rel="icon" type="image/svg+xml" href="/icons/logo.svg?v=81" />
+<link rel="manifest" href="manifest.json?v=81" />
+<meta name="theme-color" content="#000000" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta name="description" content="Introduction à l'utilisation de Prompter." />
+<meta name="keywords" content="introduction, guide, fonctionnement" />
+<meta name="robots" content="index,follow" />
+<meta property="og:title" content="Introduction - Prompter" />
+<meta property="og:description" content="Introduction à l'utilisation de Prompter." />
+<meta property="og:image" content="/icons/logo.svg?v=81" />
+<meta property="og:image:alt" content="Logo de Prompter" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Introduction - Prompter" />
+<meta name="twitter:description" content="Introduction à l'utilisation de Prompter." />
+<meta name="twitter:image" content="/icons/logo.svg?v=81" />
+<meta property="og:url" content="/fr/intro.html" />
+<meta property="og:site_name" content="Prompter" />
+<meta property="og:locale" content="fr" />
+<meta name="twitter:url" content="/fr/intro.html" />
 <meta property="og:locale:alternate" content="en" />
     <meta property="og:locale:alternate" content="es" />
     <meta property="og:locale:alternate" content="hi" />
     <meta property="og:locale:alternate" content="tr" />
     <meta property="og:locale:alternate" content="zh" />
-
-    <meta name="twitter:url" content="/fr/intro.html" />
-    <link rel="stylesheet" href="css/tailwind.css?v=80" />
-    <link rel="stylesheet" href="css/app.css?v=80" />
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=80" />
-    <link rel="canonical" href="/fr/intro.html" />
+<link rel="canonical" href="/fr/intro.html" />
 <link rel="alternate" href="/intro.html" hreflang="x-default" />
     <link rel="alternate" href="/intro.html" hreflang="en" />
     <link rel="alternate" href="/es/intro.html" hreflang="es" />
@@ -45,23 +44,27 @@
     <link rel="alternate" href="/tr/intro.html" hreflang="tr" />
     <link rel="alternate" href="/zh/intro.html" hreflang="zh" />
 <script>
-      (function () {
-        var path = '/fr/intro.html';
-        var url = location.origin + path;
-        var c = document.querySelector('link[rel="canonical"]');
-        if (c) c.href = url;
-        var og = document.querySelector('meta[property="og:url"]');
-        if (og) og.content = url;
-        var tw = document.querySelector('meta[name="twitter:url"]');
-        if (tw) tw.content = url;
-        document.querySelectorAll('link[rel="alternate"]').forEach(function(a){
-          var href = a.getAttribute('href');
-          if(href.startsWith('/')) a.href = location.origin + href;
-        });
-      })();
-    </script>
-    <script type="module" src="/src/version.js?v=80"></script>
-    <link rel="prefetch" href="translations/ui/fr.json?v=80" as="fetch" />
+  (function () {
+    var path = '/fr/intro.html';
+    var url = location.origin + path;
+    var c = document.querySelector('link[rel="canonical"]');
+    if (c) c.href = url;
+    var og = document.querySelector('meta[property="og:url"]');
+    if (og) og.content = url;
+    var tw = document.querySelector('meta[name="twitter:url"]');
+    if (tw) tw.content = url;
+    document.querySelectorAll('link[rel="alternate"]').forEach(function(a){
+      var href = a.getAttribute('href');
+      if(href.startsWith('/')) a.href = location.origin + href;
+    });
+  })();
+</script>
+
+    <link rel="stylesheet" href="css/tailwind.css?v=81" />
+    <link rel="stylesheet" href="css/app.css?v=81" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=81" />
+    <script type="module" src="/src/version.js?v=81"></script>
+    <link rel="prefetch" href="translations/ui/fr.json?v=81" as="fetch" />
   </head>
   <body class="bg-black text-white min-h-screen p-4">
     <h1 class="text-2xl font-bold mb-4">Welcome to Prompter</h1>
@@ -70,8 +73,3 @@
     <p class="mb-2">Use the <strong>copy</strong> and <strong>share</strong> buttons to reuse or publish prompts. Select the star icon to save favorites locally or online when signed in.</p>
     <p class="mb-2">Join the community WhatsApp group for updates and new ideas.</p>
     <p class="mb-2">Our vision is to spark creativity by making prompt generation quick, fun and accessible.</p>
-    <p class="mb-2">You can support Prompter by subscribing on the <a href="pro.html">Pro page</a> or by clicking the support button.</p>
-    <p class="mb-2">Şu aşamada en iyi sonuçları <strong>Random</strong> kategorisi vermektedir çünkü en yüksek işlem gücü bu sekme için tahsis edilmiştir.</p>
-    <a href="/" class="text-blue-400 underline">Return to Prompter</a>
-  </body>
-</html>

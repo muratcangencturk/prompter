@@ -2,40 +2,66 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-    <title>Prompter Pro</title>
-    <base href="../" />
-    <link rel="icon" type="image/svg+xml" href="/icons/logo.svg?v=80" />
-    <link rel="manifest" href="manifest.json?v=80" />
-    <meta name="theme-color" content="#000000" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <meta name="description" content="Acceda a las funciones avanzadas en Própter Pro para una generación de inmediato de ChatGPT más potente.Requiere una conexión a Internet." />
-    <meta name="keywords" content="indicaciones avanzadas, Própter Pro, características premium, herramientas de chatgpt, generador de inmediato de IA" />
-    <meta name="robots" content="index,follow" />
-    <meta property="og:title" content="Prompter Pro" />
-    <meta property="og:description" content="Acceda a las funciones avanzadas en Própter Pro para una generación de inmediato de ChatGPT más potente.Requiere una conexión a Internet." />
-    <meta property="og:image" content="/icons/logo.svg?v=80" />
-    <meta property="og:image:alt" content="Prompter logo" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Prompter Pro" />
-    <meta name="twitter:description" content="Acceda a las funciones avanzadas en Própter Pro para una generación de inmediato de ChatGPT más potente.Requiere una conexión a Internet." />
-    <meta name="twitter:image" content="/icons/logo.svg?v=80" />
-    <meta property="og:url" content="/es/pro.html" />
-    <meta property="og:site_name" content="Prompter" />
-    <meta property="og:locale" content="es" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+<title>Prompter Pro</title>
+<base href="../" />
+<link rel="preconnect" href="https://unpkg.com" crossorigin />
+<link rel="preconnect" href="https://www.gstatic.com" crossorigin />
+<link rel="icon" type="image/svg+xml" href="/icons/logo.svg?v=81" />
+<link rel="manifest" href="manifest.json?v=81" />
+<meta name="theme-color" content="#000000" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta name="description" content="Generador de prompts creativos para IA y ChatGPT que requiere conexión a Internet." />
+<meta name="keywords" content="prompts de IA, prompts de ChatGPT, generador de prompts, prompts creativos, prompter de IA, creador de prompts" />
+<meta name="robots" content="index,follow" />
+<meta property="og:title" content="Prompter Pro" />
+<meta property="og:description" content="Generador de prompts creativos para IA y ChatGPT que requiere conexión a Internet." />
+<meta property="og:image" content="/icons/logo.svg?v=81" />
+<meta property="og:image:alt" content="Logo de Prompter" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Prompter Pro" />
+<meta name="twitter:description" content="Generador de prompts creativos para IA y ChatGPT que requiere conexión a Internet." />
+<meta name="twitter:image" content="/icons/logo.svg?v=81" />
+<meta property="og:url" content="/es/pro.html" />
+<meta property="og:site_name" content="Prompter" />
+<meta property="og:locale" content="es" />
+<meta name="twitter:url" content="/es/pro.html" />
 <meta property="og:locale:alternate" content="en" />
     <meta property="og:locale:alternate" content="fr" />
     <meta property="og:locale:alternate" content="hi" />
     <meta property="og:locale:alternate" content="tr" />
     <meta property="og:locale:alternate" content="zh" />
+<link rel="canonical" href="/es/pro.html" />
+<link rel="alternate" href="/pro.html" hreflang="x-default" />
+    <link rel="alternate" href="/pro.html" hreflang="en" />
+    <link rel="alternate" href="/es/pro.html" hreflang="es" />
+    <link rel="alternate" href="/fr/pro.html" hreflang="fr" />
+    <link rel="alternate" href="/hi/pro.html" hreflang="hi" />
+    <link rel="alternate" href="/tr/pro.html" hreflang="tr" />
+    <link rel="alternate" href="/zh/pro.html" hreflang="zh" />
+<script>
+  (function () {
+    var path = '/es/pro.html';
+    var url = location.origin + path;
+    var c = document.querySelector('link[rel="canonical"]');
+    if (c) c.href = url;
+    var og = document.querySelector('meta[property="og:url"]');
+    if (og) og.content = url;
+    var tw = document.querySelector('meta[name="twitter:url"]');
+    if (tw) tw.content = url;
+    document.querySelectorAll('link[rel="alternate"]').forEach(function(a){
+      var href = a.getAttribute('href');
+      if(href.startsWith('/')) a.href = location.origin + href;
+    });
+  })();
+</script>
 
-    <meta name="twitter:url" content="/es/pro.html" />
-    <link rel="stylesheet" href="css/app.css?v=80" />
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=80" />
+    <link rel="stylesheet" href="css/app.css?v=81" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=81" />
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('sw.js').catch(() => {});
@@ -52,32 +78,9 @@
         }
       })();
     </script>
-    <script type="module" src="/src/version.js?v=80"></script>
-    <link rel="canonical" href="/es/pro.html" />
-<link rel="alternate" href="/pro.html" hreflang="x-default" />
-    <link rel="alternate" href="/pro.html" hreflang="en" />
-    <link rel="alternate" href="/es/pro.html" hreflang="es" />
-    <link rel="alternate" href="/fr/pro.html" hreflang="fr" />
-    <link rel="alternate" href="/hi/pro.html" hreflang="hi" />
-    <link rel="alternate" href="/tr/pro.html" hreflang="tr" />
-    <link rel="alternate" href="/zh/pro.html" hreflang="zh" />
-<script>
-      (function () {
-        var path = '/es/pro.html';
-        var url = location.origin + path;
-        var c = document.querySelector('link[rel="canonical"]');
-        if (c) c.href = url;
-        var og = document.querySelector('meta[property="og:url"]');
-        if (og) og.content = url;
-        var tw = document.querySelector('meta[name="twitter:url"]');
-        if (tw) tw.content = url;
-        document.querySelectorAll('link[rel="alternate"]').forEach(function(a){
-          var href = a.getAttribute('href');
-          if(href.startsWith('/')) a.href = location.origin + href;
-        });
-      })();
+    <script type="module" src="/src/version.js?v=81"></script>
     </script>
-    <link rel="prefetch" href="translations/ui/es.json?v=80" as="fetch" />
+    <link rel="prefetch" href="translations/ui/es.json?v=81" as="fetch" />
   </head>
   <body class="min-h-screen p-4">
     <div class="max-w-md mx-auto relative mt-16">
@@ -88,24 +91,6 @@
           class="p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 text-white"
           title="Back"
           aria-label="Back"
-        >
-          <span class="w-6 h-6 inline-flex items-center justify-center text-3xl" aria-hidden="true">&larr;</span>
-        </a>
-      </div>
-
-    <div class="max-w-md mx-auto bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg">
-      <h1 class="text-2xl font-bold mb-4 text-center">Prompter Pro</h1>
-      <p class="mb-2 text-center">
-        Desbloquea todas las funciones por solo <strong>79 TL / 1.99 USD</strong>.
-      </p>
-      <ul class="list-disc list-inside space-y-1 mb-4">
-        <li>Acceso temprano a nuevas funciones</li>
-        <li>Generación de prompts con modelos avanzados</li>
-        <li>Generación, guardado y compartido ilimitados de prompts</li>
-        <li>Acceso a prompts premium</li>
-        <li>Membresía al canal de Prompter en WhatsApp</li>
-        <li>Boletín diario de IA</li>
-        <li>Vota sobre el futuro de Prompter</li>
         <li>Apoya la idea y desarrollo de Prompter</li>
         <li>Acceso ilimitado al ecosistema de Prompter (incluyendo complementos actuales y futuros)</li>
       </ul>
