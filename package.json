@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Prompter web application",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint . && node scripts/check-alt.js",
     "format": "prettier --write \"**/*.{js,json,md,css,html}\"",
     "prepare": "husky install",
     "pretest": "node scripts/check-node-modules.js",
