@@ -1,7 +1,7 @@
 {
   "name": "Prompter",
   "short_name": "Prompter",
-  "description": "Prompt generator web app that requires an internet connection",
+  "description": "Free AI prompt generator for ChatGPT, Midjourney and more. Works offline after the first load",
   "theme_color": "#000000",
   "background_color": "#000000",
   "display": "standalone",

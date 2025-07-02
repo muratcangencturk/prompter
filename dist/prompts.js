@@ -300,7 +300,7 @@ var loadFullSentences = exports.loadFullSentences = /*#__PURE__*/function () {
 }();
 var generatePrompt = exports.generatePrompt = /*#__PURE__*/function () {
   var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
-    var selectedCatId, isRandom, sentences, prompt, availableCategories, categoryData, promptParts, newPrompt;
+    var toggleKey, useFullSentence, selectedCatId, isRandom, sentences, prompt, availableCategories, categoryData, promptParts, newPrompt;
     return _regenerator().w(function (_context3) {
       while (1) switch (_context3.n) {
         case 0:
@@ -311,13 +311,11 @@ var generatePrompt = exports.generatePrompt = /*#__PURE__*/function () {
           throw new Error('offline');
         case 1:
           _state.appState.isGenerating = true;
+          toggleKey = _state.appState.selectedCategory;
+          useFullSentence = !!_state.appState.useFullSentenceNext[toggleKey];
           selectedCatId = _state.appState.selectedCategory;
           isRandom = selectedCatId === 'random';
-          if (!isRandom) {
-            _context3.n = 4;
-            break;
-          }
-          if (!_state.appState.useFullSentenceNext) {
+          if (!useFullSentence) {
             _context3.n = 3;
             break;
           }
@@ -328,29 +326,29 @@ var generatePrompt = exports.generatePrompt = /*#__PURE__*/function () {
           prompt = getRandomElement(sentences);
           _state.appState.generatedPrompt = prompt;
           _state.appState.isGenerating = false;
-          _state.appState.useFullSentenceNext = false;
+          _state.appState.useFullSentenceNext[toggleKey] = !useFullSentence;
           return _context3.a(2, {
             prompt: prompt,
-            categoryId: 'random'
+            categoryId: isRandom ? 'random' : selectedCatId
           });
         case 3:
-          availableCategories = categories.filter(function (c) {
-            return c.id !== 'random';
-          });
-          selectedCatId = availableCategories[Math.floor(Math.random() * availableCategories.length)].id;
-          _state.appState.useFullSentenceNext = true;
-        case 4:
-          _context3.n = 5;
+          if (isRandom) {
+            availableCategories = categories.filter(function (c) {
+              return c.id !== 'random';
+            });
+            selectedCatId = availableCategories[Math.floor(Math.random() * availableCategories.length)].id;
+          }
+          _context3.n = 4;
           return loadCategory(_state.appState.language, selectedCatId);
-        case 5:
+        case 4:
           categoryData = _context3.v;
           if (!(!categoryData || !categoryData.parts || !Array.isArray(categoryData.parts))) {
-            _context3.n = 6;
+            _context3.n = 5;
             break;
           }
           _state.appState.isGenerating = false;
           throw new Error('Invalid category data');
-        case 6:
+        case 5:
           promptParts = categoryData.parts.map(function (partArray, idx) {
             if (!_state.appState.partHistory[idx]) {
               _state.appState.partHistory[idx] = [];
@@ -365,6 +363,7 @@ var generatePrompt = exports.generatePrompt = /*#__PURE__*/function () {
           newPrompt = categoryData.structure ? categoryData.structure(promptParts) : promptParts.join(' ');
           _state.appState.generatedPrompt = newPrompt;
           _state.appState.isGenerating = false;
+          _state.appState.useFullSentenceNext[toggleKey] = !useFullSentence;
           return _context3.a(2, {
             prompt: newPrompt,
             categoryId: isRandom ? 'random' : selectedCatId
