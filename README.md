@@ -309,7 +309,7 @@ Run `npm run build` after any production change. This command regenerates build 
 ## Offline support and refresh strategy
 
 All pages include `src/version.js`, which checks `manifest.json` every five minutes.
-If the `version` field changes, a banner prompts users to refresh. The service worker in
+When the `version` field changes, open pages reload automatically. The service worker in
 `sw.js` precaches essential files for offline access. During activation it deletes old caches
 and reloads open pages so updates are applied immediately.
 
