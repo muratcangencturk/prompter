@@ -2,17 +2,17 @@
 <html lang="{{LANG}}">
   <head>
     {{META}}
-    <script type="module" src="/src/lucide-loader.js?v=84"></script>
-    <link rel="stylesheet" href="css/tailwind.css?v=84" />
-    <link rel="stylesheet" href="css/app.css?v=84" />
-    <script type="module" src="/src/init-app.js?v=84"></script>
-    <script nomodule src="/dist/init-app.js?v=84"></script>
+    <script type="module" src="/src/lucide-loader.js?v=85"></script>
+    <link rel="stylesheet" href="css/tailwind.css?v=85" />
+    <link rel="stylesheet" href="css/app.css?v=85" />
+    <script type="module" src="/src/init-app.js?v=85"></script>
+    <script nomodule src="/dist/init-app.js?v=85"></script>
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('sw.js').catch(() => {});
       }
     </script>
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=84" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=85" />
     <script>
       (function () {
         const linkEl = document.getElementById('theme-css');
@@ -24,11 +24,11 @@
         }
       })();
     </script>
-    <script type="module" src="/src/version.js?v=84"></script>
+    <script type="module" src="/src/version.js?v=85"></script>
   </head>
   <body class="min-h-screen p-4">
           <img
-            src="/icons/logo.svg?v=84"
+            src="/icons/logo.svg?v=85"
             alt="Prompter logo"
             class="w-12 h-12 sm:w-14 sm:h-14"
           />
@@ -71,7 +71,7 @@
       import { linkify } from '/src/linkify.js';
       import { sanitizeHTML, setSanitizedHTML } from '/src/sanitize.js';
       import { timeAgo } from '/src/timeago.js';
-      import { categories } from '/src/prompts.js?v=84';
+      import { categories } from '/src/prompts.js?v=85';
       import { BASE_URL } from '/src/config.js';
       import {
         getUserProfile,
