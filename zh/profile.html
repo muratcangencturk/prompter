@@ -43,23 +43,6 @@
     <link rel="alternate" href="/hi/profile.html" hreflang="hi" />
     <link rel="alternate" href="/tr/profile.html" hreflang="tr" />
     <link rel="alternate" href="/zh/profile.html" hreflang="zh" />
-<script>
-  (function () {
-    var path = '/zh/profile.html';
-    var url = location.origin + path;
-    var c = document.querySelector('link[rel="canonical"]');
-    if (c) c.href = url;
-    var og = document.querySelector('meta[property="og:url"]');
-    if (og) og.content = url;
-    var tw = document.querySelector('meta[name="twitter:url"]');
-    if (tw) tw.content = url;
-    document.querySelectorAll('link[rel="alternate"]').forEach(function(a){
-      var href = a.getAttribute('href');
-      if(href.startsWith('/')) a.href = location.origin + href;
-    });
-  })();
-</script>
-
     <script type="module" src="/src/lucide-loader.js?v=83"></script>
     <link rel="stylesheet" href="css/tailwind.css?v=83" />
     <link rel="stylesheet" href="css/app.css?v=83" />
@@ -82,6 +65,7 @@
         }
       })();
     </script>
+    <script type="module" src="/src/version.js?v=81"></script>
     <link rel="prefetch" href="translations/ui/zh.json?v=83" as="fetch" />
   </head>
   <body class="min-h-screen p-4">
