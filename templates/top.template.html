@@ -2,28 +2,25 @@
 <html lang="{{LANG}}">
   <head>
     {{META}}
-      })();
-    </script>
-    <link rel="stylesheet" href="css/tailwind.css?v=81" />
-    <script type="module" src="/src/lucide-loader.js?v=81"></script>
-    <link rel="stylesheet" href="css/app.css?v=81" />
-    <script type="module" src="/src/init-app.js?v=81"></script>
-    <script nomodule src="/dist/init-app.js?v=81"></script>
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=81" />
+    <link rel="stylesheet" href="css/tailwind.css?v=83" />
+    <script type="module" src="/src/lucide-loader.js?v=83"></script>
+    <link rel="stylesheet" href="css/app.css?v=83" />
+    <script type="module" src="/src/init-app.js?v=83"></script>
+    <script nomodule src="/dist/init-app.js?v=83"></script>
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=83" />
     <script>
       (function () {
         const linkEl = document.getElementById('theme-css');
         if (!linkEl) return;
         const version = linkEl.getAttribute('href').split('?')[1];
         const savedTheme = localStorage.getItem('theme');
-        >
-          <span
-            class="w-6 h-6 inline-flex items-center justify-center text-3xl"
-            aria-hidden="true"
-            >&larr;</span
-          >
-        </a>
-      </div>
+        if (savedTheme) {
+          linkEl.href = `css/theme-${savedTheme}.css${version ? `?${version}` : ''}`;
+        }
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen p-4">
       <div
         class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-lg"
       >
@@ -73,10 +70,10 @@
         </a>
       </div>
     </div>
-    <script type="module" src="/src/top-creators.js?v=81"></script>
-    <script type="module" src="/src/top-collectors.js?v=81"></script>
-    <script type="module" src="/src/top-prompts.js?v=81"></script>
-    <script type="module" src="/src/top-supporters.js?v=81"></script>
-    <script type="module" src="/src/top-pro.js?v=81"></script>
+    <script type="module" src="/src/top-creators.js?v=83"></script>
+    <script type="module" src="/src/top-collectors.js?v=83"></script>
+    <script type="module" src="/src/top-prompts.js?v=83"></script>
+    <script type="module" src="/src/top-supporters.js?v=83"></script>
+    <script type="module" src="/src/top-pro.js?v=83"></script>
   </body>
 </html>

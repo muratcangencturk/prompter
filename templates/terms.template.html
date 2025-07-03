@@ -2,11 +2,21 @@
 <html lang="{{LANG}}">
   <head>
     {{META}}
-    <link rel="stylesheet" href="css/tailwind.css?v=81" />
-    <link rel="stylesheet" href="css/app.css?v=81" />
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=81" />
+    <link rel="stylesheet" href="css/tailwind.css?v=83" />
+    <link rel="stylesheet" href="css/app.css?v=83" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=83" />
+    <script>
+      (function () {
+        const linkEl = document.getElementById('theme-css');
+        if (!linkEl) return;
+        const version = linkEl.getAttribute('href').split('?')[1];
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          linkEl.href = `css/theme-${savedTheme}.css${version ? `?${version}` : ''}`;
+        }
+      })();
     </script>
-    <script type="module" src="/src/version.js?v=81"></script>
+    <script type="module" src="/src/version.js?v=83"></script>
   </head>
   <body class="bg-black text-white min-h-screen p-4">
       <h1 class="text-2xl font-bold mb-4">Terms of Use</h1>

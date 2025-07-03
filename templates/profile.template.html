@@ -2,18 +2,12 @@
 <html lang="{{LANG}}">
   <head>
     {{META}}
-    <script type="module" src="/src/lucide-loader.js?v=81"></script>
-    <link rel="stylesheet" href="css/tailwind.css?v=81" />
-    <link rel="stylesheet" href="css/app.css?v=81" />
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=81" />
-        document.querySelectorAll('link[rel="alternate"]').forEach(function(a){
-          var href = a.getAttribute('href');
-          if(href.startsWith('/')) a.href = location.origin + href;
-        });
-      })();
-    </script>
-    <script type="module" src="/src/init-app.js?v=81"></script>
-    <script nomodule src="/dist/init-app.js?v=81"></script>
+    <script type="module" src="/src/lucide-loader.js?v=83"></script>
+    <link rel="stylesheet" href="css/tailwind.css?v=83" />
+    <link rel="stylesheet" href="css/app.css?v=83" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=83" />
+    <script type="module" src="/src/init-app.js?v=83"></script>
+    <script nomodule src="/dist/init-app.js?v=83"></script>
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('sw.js').catch(() => {});
@@ -24,8 +18,16 @@
         const linkEl = document.getElementById('theme-css');
         if (!linkEl) return;
         const version = linkEl.getAttribute('href').split('?')[1];
-        <div class="flex items-center gap-2">
-          <a
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          linkEl.href = `css/theme-${savedTheme}.css${version ? `?${version}` : ''}`;
+        }
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen p-4">
+    <div class="flex items-center gap-2">
+      <a
             id="back-link"
             href="/"
             class="p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50"
@@ -40,7 +42,7 @@
           </a>
           <img
             id="app-logo"
-            src="/icons/logo.svg?v=81"
+            src="/icons/logo.svg?v=83"
             alt="Prompter logo"
             class="w-12 h-12 sm:w-14 sm:h-14"
           />
