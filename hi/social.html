@@ -8,8 +8,8 @@
 <base href="../" />
 <link rel="preconnect" href="https://unpkg.com" crossorigin />
 <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
-<link rel="icon" type="image/svg+xml" href="/icons/logo.svg?v=81" />
-<link rel="manifest" href="manifest.json?v=81" />
+<link rel="icon" type="image/svg+xml" href="/icons/logo.svg?v=83" />
+<link rel="manifest" href="manifest.json?v=83" />
 <meta name="theme-color" content="#000000" />
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
@@ -19,13 +19,13 @@
 <meta name="robots" content="index,follow" />
 <meta property="og:title" content="Prompter Social" />
 <meta property="og:description" content="अन्य Prompter उपयोगकर्ताओं से जुड़ने के लिए लिंक।" />
-<meta property="og:image" content="/icons/logo.svg?v=81" />
+<meta property="og:image" content="/icons/logo.svg?v=83" />
 <meta property="og:image:alt" content="Prompter लोगो" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Prompter Social" />
 <meta name="twitter:description" content="अन्य Prompter उपयोगकर्ताओं से जुड़ने के लिए लिंक।" />
-<meta name="twitter:image" content="/icons/logo.svg?v=81" />
+<meta name="twitter:image" content="/icons/logo.svg?v=83" />
 <meta property="og:url" content="/hi/social.html" />
 <meta property="og:site_name" content="Prompter" />
 <meta property="og:locale" content="hi" />
@@ -60,22 +60,17 @@
   })();
 </script>
 
-    <script type="module" src="/src/lucide-loader.js?v=81"></script>
-    <link rel="stylesheet" href="css/tailwind.css?v=81" />
-    <link rel="stylesheet" href="css/app.css?v=81" />
-    <script type="module" src="/src/init-app.js?v=81"></script>
-    <script nomodule src="/dist/init-app.js?v=81"></script>
+    <script type="module" src="/src/lucide-loader.js?v=83"></script>
+    <link rel="stylesheet" href="css/tailwind.css?v=83" />
+    <link rel="stylesheet" href="css/app.css?v=83" />
+    <script type="module" src="/src/init-app.js?v=83"></script>
+    <script nomodule src="/dist/init-app.js?v=83"></script>
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('sw.js').catch(() => {});
       }
     </script>
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=81" />
-            var href = a.getAttribute('href');
-            if (href.startsWith('/')) a.href = location.origin + href;
-          });
-      })();
-    </script>
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=83" />
     <script>
       (function () {
         const linkEl = document.getElementById('theme-css');
@@ -89,11 +84,12 @@
         }
       })();
     </script>
-    <script type="module" src="/src/version.js?v=81"></script>
-    <link rel="prefetch" href="translations/ui/hi.json?v=81" as="fetch" />
+    <script type="module" src="/src/version.js?v=83"></script>
+    <link rel="prefetch" href="translations/ui/hi.json?v=83" as="fetch" />
   </head>
+  <body class="min-h-screen p-4">
           <img
-            src="/icons/logo.svg?v=81"
+            src="/icons/logo.svg?v=83"
             alt="Prompter logo"
             class="w-12 h-12 sm:w-14 sm:h-14"
           />
@@ -136,7 +132,7 @@
       import { linkify } from '/src/linkify.js';
       import { sanitizeHTML, setSanitizedHTML } from '/src/sanitize.js';
       import { timeAgo } from '/src/timeago.js';
-      import { categories } from '/src/prompts.js?v=81';
+      import { categories } from '/src/prompts.js?v=83';
       import { BASE_URL } from '/src/config.js';
       import {
         getUserProfile,
