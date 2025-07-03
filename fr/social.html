@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
@@ -8,8 +8,8 @@
 <base href="../" />
 <link rel="preconnect" href="https://unpkg.com" crossorigin />
 <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
-<link rel="icon" type="image/svg+xml" href="/icons/logo.svg?v=83" />
-<link rel="manifest" href="manifest.json?v=83" />
+<link rel="icon" type="image/svg+xml" href="/icons/logo.svg?v=84" />
+<link rel="manifest" href="manifest.json?v=84" />
 <meta name="theme-color" content="#000000" />
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
@@ -19,13 +19,13 @@
 <meta name="robots" content="index,follow" />
 <meta property="og:title" content="Prompter Social" />
 <meta property="og:description" content="Liens pour se connecter avec d'autres utilisateurs de Prompter." />
-<meta property="og:image" content="/icons/logo.svg?v=83" />
+<meta property="og:image" content="/icons/logo.svg?v=84" />
 <meta property="og:image:alt" content="Logo de Prompter" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Prompter Social" />
 <meta name="twitter:description" content="Liens pour se connecter avec d'autres utilisateurs de Prompter." />
-<meta name="twitter:image" content="/icons/logo.svg?v=83" />
+<meta name="twitter:image" content="/icons/logo.svg?v=84" />
 <meta property="og:url" content="/fr/social.html" />
 <meta property="og:site_name" content="Prompter" />
 <meta property="og:locale" content="fr" />
@@ -43,34 +43,35 @@
     <link rel="alternate" href="/hi/social.html" hreflang="hi" />
     <link rel="alternate" href="/tr/social.html" hreflang="tr" />
     <link rel="alternate" href="/zh/social.html" hreflang="zh" />
-    <script type="module" src="/src/lucide-loader.js?v=83"></script>
-    <link rel="stylesheet" href="css/tailwind.css?v=83" />
-    <link rel="stylesheet" href="css/app.css?v=83" />
-    <script type="module" src="/src/init-app.js?v=83"></script>
-    <script nomodule src="/dist/init-app.js?v=83"></script>
+
+    <script type="module" src="/src/lucide-loader.js?v=84"></script>
+    <link rel="stylesheet" href="css/tailwind.css?v=84" />
+    <link rel="stylesheet" href="css/app.css?v=84" />
+    <script type="module" src="/src/init-app.js?v=84"></script>
+    <script nomodule src="/dist/init-app.js?v=84"></script>
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('sw.js').catch(() => {});
       }
     </script>
-      <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=83" />
-      <script>
-        (function () {
-          const linkEl = document.getElementById('theme-css');
-          if (!linkEl) return;
-          const version = linkEl.getAttribute('href').split('?')[1];
-          const savedTheme = localStorage.getItem('theme');
-          if (savedTheme) {
-            linkEl.href = `css/theme-${savedTheme}.css${version ? `?${version}` : ''}`;
-          }
-        })();
-      </script>
-    <script type="module" src="/src/version.js?v=83"></script>
-    <link rel="prefetch" href="translations/ui/fr.json?v=83" as="fetch" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=84" />
+    <script>
+      (function () {
+        const linkEl = document.getElementById('theme-css');
+        if (!linkEl) return;
+        const version = linkEl.getAttribute('href').split('?')[1];
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          linkEl.href = `css/theme-${savedTheme}.css${version ? `?${version}` : ''}`;
+        }
+      })();
+    </script>
+    <script type="module" src="/src/version.js?v=84"></script>
+    <link rel="prefetch" href="translations/ui/fr.json?v=84" as="fetch" />
   </head>
   <body class="min-h-screen p-4">
           <img
-            src="/icons/logo.svg?v=83"
+            src="/icons/logo.svg?v=84"
             alt="Prompter logo"
             class="w-12 h-12 sm:w-14 sm:h-14"
           />
@@ -113,7 +114,7 @@
       import { linkify } from '/src/linkify.js';
       import { sanitizeHTML, setSanitizedHTML } from '/src/sanitize.js';
       import { timeAgo } from '/src/timeago.js';
-      import { categories } from '/src/prompts.js?v=83';
+      import { categories } from '/src/prompts.js?v=84';
       import { BASE_URL } from '/src/config.js';
       import {
         getUserProfile,
