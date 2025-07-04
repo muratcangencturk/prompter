@@ -255,6 +255,19 @@ create it through the [Firebase console](https://console.firebase.google.com/u/0
 or deploy the definition in `firestore.indexes.json`. Without this index,
 prompts on a user's profile will fail to load.
 
+The entry in `firestore.indexes.json` looks like:
+
+```json
+{
+  "collectionGroup": "prompts",
+  "queryScope": "COLLECTION",
+  "fields": [
+    { "fieldPath": "userId", "order": "ASCENDING" },
+    { "fieldPath": "sharedBy", "arrayConfig": "CONTAINS" }
+  ]
+}
+```
+
 If you encounter `Cannot read properties of undefined (reading 'onAuthStateChanged')` on the Social page, your Firebase configuration is missing. Create a `firebase.config.json` file (using `firebase.config.example.json` as a template) or set `window.firebaseConfig` before loading the scripts.
 
 ## CLI and script credentials
