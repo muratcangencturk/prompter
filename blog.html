@@ -620,15 +620,20 @@
         prompterFilter?.addEventListener(evt, startListener);
       });
 
-      document.addEventListener('DOMContentLoaded', () => {
-        const run = () => {
-          loadCache();
-          onAuth(startListener);
-          startListener();
-        };
+      const run = () => {
+        loadCache();
+        onAuth(startListener);
+        startListener();
+      };
+      if (document.readyState !== 'loading') {
         if (window.firebaseInitPromise) window.firebaseInitPromise.then(run);
         else run();
-      });
+      } else {
+        document.addEventListener('DOMContentLoaded', () => {
+          if (window.firebaseInitPromise) window.firebaseInitPromise.then(run);
+          else run();
+        });
+      }
     </script>
   </body>
 </html>
