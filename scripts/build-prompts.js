@@ -110,8 +110,16 @@ function appendVersionToAssets(html, version) {
     if (url.endsWith('.html')) return m;
     const base = url.split(/[?#]/)[0];
     if (!extPattern.test(base)) return m;
-    // Remove existing version query parameter if present
-    const cleaned = url.replace(/[?&]v=\d+$/, '');
+    // Remove existing version query parameter or placeholder if present
+    let cleanedBase = base;
+    let query = url.split('?')[1] || '';
+    if (query) {
+      const params = query
+        .split('&')
+        .filter((p) => !/^v=(\d+|\{\{VERSION\}\}|VERSION)$/.test(p));
+      query = params.join('&');
+    }
+    const cleaned = query ? `${cleanedBase}?${query}` : cleanedBase;
     const sep = cleaned.includes('?') ? '&' : '?';
     return `${attr}=${quote}${cleaned}${sep}v=${version}${quote}`;
   });
