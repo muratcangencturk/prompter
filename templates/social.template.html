@@ -2,17 +2,17 @@
 <html lang="{{LANG}}">
   <head>
     {{META}}
-    <script type="module" src="/src/lucide-loader.js?v=88"></script>
-    <link rel="stylesheet" href="css/tailwind.css?v=88" />
-    <link rel="stylesheet" href="css/app.css?v=88" />
-    <script type="module" src="/src/init-app.js?v=88"></script>
-    <script nomodule src="/dist/init-app.js?v=88"></script>
+    <script type="module" src="/src/lucide-loader.js?v=89"></script>
+    <link rel="stylesheet" href="css/tailwind.css?v=89" />
+    <link rel="stylesheet" href="css/app.css?v=89" />
+    <script type="module" src="/src/init-app.js?v=89"></script>
+    <script nomodule src="/dist/init-app.js?v=89"></script>
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('sw.js').catch(() => {});
       }
     </script>
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=88" />
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=89" />
     <script>
       (function () {
         const linkEl = document.getElementById('theme-css');
@@ -24,7 +24,7 @@
         }
       })();
     </script>
-    <script type="module" src="/src/version.js?v=88"></script>
+    <script type="module" src="/src/version.js?v=89"></script>
   </head>
   <body class="min-h-screen p-4">
     <div
@@ -35,7 +35,7 @@
       <header class="flex items-center justify-between w-full mt-4 mb-6">
         <div class="flex items-center gap-2">
           <img
-            src="/icons/logo.svg?v=88"
+            src="/icons/logo.svg?v=89"
             alt="Prompter logo"
             class="w-12 h-12 sm:w-14 sm:h-14"
           />
@@ -78,7 +78,7 @@
       import { linkify } from '/src/linkify.js';
       import { sanitizeHTML, setSanitizedHTML } from '/src/sanitize.js';
       import { timeAgo } from '/src/timeago.js';
-      import { categories } from '/src/prompts.js?v=88';
+      import { categories } from '/src/prompts.js?v=89';
       import { BASE_URL } from '/src/config.js';
       import {
         getUserProfile,
