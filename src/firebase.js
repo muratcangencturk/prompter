@@ -23,6 +23,24 @@ export async function loadFirebaseConfig(retries = 3) {
       retries -= 1;
       if (!retries) {
         console.error('Failed to load Firebase config:', err);
+        const showBanner = () => {
+          if (document.getElementById('firebase-config-error')) return;
+          const banner = document.createElement('div');
+          banner.id = 'firebase-config-error';
+          banner.textContent = 'Missing Firebase configuration.';
+          banner.style.background = '#dc2626';
+          banner.style.color = '#fff';
+          banner.style.padding = '8px';
+          banner.style.textAlign = 'center';
+          banner.style.position = 'fixed';
+          banner.style.top = '0';
+          banner.style.left = '0';
+          banner.style.right = '0';
+          banner.style.zIndex = '1000';
+          document.body.prepend(banner);
+        };
+        if (document.body) showBanner();
+        else document.addEventListener('DOMContentLoaded', showBanner, { once: true });
         return null;
       }
       await new Promise((r) => setTimeout(r, 1000));
