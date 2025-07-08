@@ -67,6 +67,7 @@ Enable that sign‑in method in your Firebase console and add your domain (for e
 Serve the app using a simple HTTP server such as `python3 -m http.server` so Firebase initializes correctly.
 Synchronization of saved prompts with Firebase requires a logged-in session. When not authenticated, prompts are only stored locally.
 Firestore caching is enabled using `initializeFirestore` with `persistentLocalCache({ tabManager: persistentMultipleTabManager() })`. Persistence errors are ignored so the app works even when offline caching cannot be activated.
+If `firebase.config.json` cannot be fetched, a red banner reading "Missing Firebase configuration" appears at the top of the page and the Social and Profile pages skip their initialization.
 
 ### Versioning
 
@@ -269,7 +270,7 @@ The entry in `firestore.indexes.json` looks like:
 }
 ```
 
-If you encounter `Cannot read properties of undefined (reading 'onAuthStateChanged')` on the Social page, your Firebase configuration is missing. Create a `firebase.config.json` file (using `firebase.config.example.json` as a template) or set `window.firebaseConfig` before loading the scripts.
+If you encounter `Cannot read properties of undefined (reading 'onAuthStateChanged')` on the Social page, your Firebase configuration is missing. Create a `firebase.config.json` file (using `firebase.config.example.json` as a template) or set `window.firebaseConfig` before loading the scripts. When the file cannot be loaded, a "Missing Firebase configuration" banner is shown.
 
 ## CLI and script credentials
 

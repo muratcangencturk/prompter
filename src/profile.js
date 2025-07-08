@@ -1518,6 +1518,7 @@ const init = () => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (window.firebaseInitPromise) window.firebaseInitPromise.then(init);
+  if (window.firebaseInitPromise)
+    window.firebaseInitPromise.then(init).catch(() => {});
   else init();
 });

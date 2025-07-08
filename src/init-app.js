@@ -8,6 +8,7 @@ export let analytics;
 
 export const firebaseInitPromise = loadFirebaseConfig()
   .then((config) => {
+    if (!config) throw new Error('Missing Firebase config');
     initFirebase(config);
     analytics = getAnalytics(app);
     return new Promise((resolve) => {
@@ -30,6 +31,7 @@ export const firebaseInitPromise = loadFirebaseConfig()
   })
   .catch((err) => {
     console.error('Failed to initialize Firebase:', err);
+    throw err;
   });
 
 window.firebaseInitPromise = firebaseInitPromise;
