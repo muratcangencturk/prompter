@@ -8,8 +8,8 @@
 <base href="../" />
 <link rel="preconnect" href="https://unpkg.com" crossorigin />
 <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
-<link rel="icon" type="image/svg+xml" href="/icons/logo.svg?v=91" />
-<link rel="manifest" href="manifest.json?v=91" />
+<link rel="icon" type="image/svg+xml" href="/icons/logo.svg?v=92" />
+<link rel="manifest" href="manifest.json?v=92" />
 <meta name="theme-color" content="#000000" />
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
@@ -19,13 +19,13 @@
 <meta name="robots" content="index,follow" />
 <meta property="og:title" content="Space - Prompter" />
 <meta property="og:description" content="Noticias y recursos del equipo de Prompter." />
-<meta property="og:image" content="/icons/logo.svg?v=91" />
+<meta property="og:image" content="/icons/logo.svg?v=92" />
 <meta property="og:image:alt" content="Logo de Prompter" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Space - Prompter" />
 <meta name="twitter:description" content="Noticias y recursos del equipo de Prompter." />
-<meta name="twitter:image" content="/icons/logo.svg?v=91" />
+<meta name="twitter:image" content="/icons/logo.svg?v=92" />
 <meta property="og:url" content="/es/blog.html" />
 <meta property="og:site_name" content="Prompter" />
 <meta property="og:locale" content="es" />
@@ -44,12 +44,12 @@
     <link rel="alternate" href="/tr/blog.html" hreflang="tr" />
     <link rel="alternate" href="/zh/blog.html" hreflang="zh" />
 
-    <script type="module" src="/src/lucide-loader.js?v=91"></script>
-    <link rel="stylesheet" href="css/tailwind.css?v=91" />
-    <link rel="stylesheet" href="css/app.css?v=91" />
-    <script type="module" src="/src/init-app.js?v=91"></script>
-    <script nomodule src="/dist/init-app.js?v=91"></script>
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=91" />
+    <script type="module" src="src/lucide-loader.js?v=92"></script>
+    <link rel="stylesheet" href="css/tailwind.css?v=92" />
+    <link rel="stylesheet" href="css/app.css?v=92" />
+    <script type="module" src="src/init-app.js?v=92"></script>
+    <script nomodule src="dist/init-app.js?v=92"></script>
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=92" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -65,7 +65,7 @@
         "headline": "Space - Prompter",
         "description": "Noticias y recursos del equipo de Prompter.",
         "author": {
-    <link rel="prefetch" href="translations/ui/es.json?v=91" as="fetch" />
+    <link rel="prefetch" href="translations/ui/es.json?v=92" as="fetch" />
   </head>
   <body class="min-h-screen p-4">
     <div id="loading-screen">
@@ -92,7 +92,7 @@
             >
           </a>
           <img
-            src="/icons/logo.svg?v=91"
+            src="/icons/logo.svg?v=92"
             alt="Prompter logo"
             class="w-12 h-12 sm:w-14 sm:h-14"
           />
@@ -153,18 +153,18 @@
         deletePost,
         updatePostText,
         postScore,
-      } from '/src/blog.js';
-      import { BASE_URL } from '/src/config.js';
+      } from 'src/blog.js';
+      import { BASE_URL } from 'src/config.js';
       import {
         getUserProfile,
         getFollowingIds,
         getUserByName,
-      } from '/src/user.js';
-      import { onAuth } from '/src/auth.js';
-      import { appState } from '/src/state.js';
-      import { linkify } from '/src/linkify.js';
-      import { sanitizeHTML, setSanitizedHTML } from '/src/sanitize.js';
-      import { timeAgo } from '/src/timeago.js';
+      } from 'src/user.js';
+      import { onAuth } from 'src/auth.js';
+      import { appState } from 'src/state.js';
+      import { linkify } from 'src/linkify.js';
+      import { sanitizeHTML, setSanitizedHTML } from 'src/sanitize.js';
+      import { timeAgo } from 'src/timeago.js';
       const msgs = {
         en: { loginRequired: 'Login required' },
         tr: { loginRequired: 'Giriş gerekli' },
@@ -180,7 +180,7 @@
         orderBy,
         onSnapshot,
       } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
-      import { db } from '/src/firebase.js';
+      import { db } from 'src/firebase.js';
 
       const profileCache = {};
       const fetchName = async (uid) => {

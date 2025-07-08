@@ -215,6 +215,7 @@ Before deploying your own instance, update all references to the default domain
 - Ensure the `<base>` tag in every HTML file matches the path where the site is
   hosted. A mismatched value will break relative URLs. Example: `<base
 href="/subdir/">` when serving from `/subdir/`.
+- All pages now use relative script paths so the app also works when deployed inside a subdirectory.
 - You can automatically rewrite the `<base>` tags by setting the `BASE_HREF`
   environment variable when running `npm run build`, e.g. `BASE_HREF=/subdir/
 npm run build`.
