@@ -78,7 +78,25 @@
   </head>
   <body class="min-h-screen p-4">
     <div class="max-w-xl mx-auto relative mt-16">
-      <div class="absolute top-4 left-4">
-        <a
-          id="back-link"
-          href="/"
+    <div class="absolute top-4 left-4">
+      <a
+        id="back-link"
+        href="/"
+        class="p-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 text-white"
+        title="Back"
+        aria-label="Back"
+      >
+        <span
+          class="w-6 h-6 inline-flex items-center justify-center text-3xl"
+          aria-hidden="true"
+          >&larr;</span>
+      </a>
+    </div>
+    <h1 class="text-2xl font-bold mb-4 text-center">Top Prompts</h1>
+    <p class="text-xs text-blue-200 text-center mb-2">
+      Ranked by likes, saves and shares each prompt receives.
+    </p>
+    <div id="prompt-list" class="space-y-2"></div>
+  </div>
+</body>
+</html>
