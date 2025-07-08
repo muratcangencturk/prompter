@@ -2,12 +2,12 @@
 <html lang="{{LANG}}">
   <head>
     {{META}}
-    <script type="module" src="/src/lucide-loader.js?v=91"></script>
-    <link rel="stylesheet" href="css/tailwind.css?v=91" />
-    <link rel="stylesheet" href="css/app.css?v=91" />
-    <script type="module" src="/src/init-app.js?v=91"></script>
-    <script nomodule src="/dist/init-app.js?v=91"></script>
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=91" />
+    <script type="module" src="src/lucide-loader.js?v=92"></script>
+    <link rel="stylesheet" href="css/tailwind.css?v=92" />
+    <link rel="stylesheet" href="css/app.css?v=92" />
+    <script type="module" src="src/init-app.js?v=92"></script>
+    <script nomodule src="dist/init-app.js?v=92"></script>
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=92" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -49,7 +49,7 @@
             >
           </a>
           <img
-            src="/icons/logo.svg?v=91"
+            src="/icons/logo.svg?v=92"
             alt="Prompter logo"
             class="w-12 h-12 sm:w-14 sm:h-14"
           />
@@ -110,18 +110,18 @@
         deletePost,
         updatePostText,
         postScore,
-      } from '/src/blog.js';
-      import { BASE_URL } from '/src/config.js';
+      } from 'src/blog.js';
+      import { BASE_URL } from 'src/config.js';
       import {
         getUserProfile,
         getFollowingIds,
         getUserByName,
-      } from '/src/user.js';
-      import { onAuth } from '/src/auth.js';
-      import { appState } from '/src/state.js';
-      import { linkify } from '/src/linkify.js';
-      import { sanitizeHTML, setSanitizedHTML } from '/src/sanitize.js';
-      import { timeAgo } from '/src/timeago.js';
+      } from 'src/user.js';
+      import { onAuth } from 'src/auth.js';
+      import { appState } from 'src/state.js';
+      import { linkify } from 'src/linkify.js';
+      import { sanitizeHTML, setSanitizedHTML } from 'src/sanitize.js';
+      import { timeAgo } from 'src/timeago.js';
       const msgs = {
         en: { loginRequired: 'Login required' },
         tr: { loginRequired: 'Giriş gerekli' },
@@ -137,7 +137,7 @@
         orderBy,
         onSnapshot,
       } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
-      import { db } from '/src/firebase.js';
+      import { db } from 'src/firebase.js';
 
       const profileCache = {};
       const fetchName = async (uid) => {

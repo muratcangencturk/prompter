@@ -20,12 +20,12 @@
       }
     </script>
     {{META}}
-    <link rel="stylesheet" href="css/tailwind.css?v=91" />
-    <link rel="stylesheet" href="css/app.css?v=91" />
-    <script type="module" src="/src/init-app.js?v=91"></script>
-    <script nomodule src="/dist/init-app.js?v=91"></script>
-    <script type="module" src="/src/lucide-loader.js?v=91"></script>
-    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=91" />
+    <link rel="stylesheet" href="css/tailwind.css?v=92" />
+    <link rel="stylesheet" href="css/app.css?v=92" />
+    <script type="module" src="src/init-app.js?v=92"></script>
+    <script nomodule src="dist/init-app.js?v=92"></script>
+    <script type="module" src="src/lucide-loader.js?v=92"></script>
+    <link id="theme-css" rel="stylesheet" href="css/theme-dark.css?v=92" />
     <script>
       (function () {
         const linkEl = document.getElementById('theme-css');
@@ -37,11 +37,11 @@
         }
       })();
     </script>
-    <script type="module" src="/src/auth.js?v=91"></script>
-    <script nomodule src="dist/auth.js?v=91"></script>
+    <script type="module" src="src/auth.js?v=92"></script>
+    <script nomodule src="dist/auth.js?v=92"></script>
     <script type="module">
-      import { login, register, onAuth } from '/src/auth.js';
-      import { setUserProfile, getUserByName } from '/src/user.js';
+      import { login, register, onAuth } from 'src/auth.js';
+      import { setUserProfile, getUserByName } from 'src/user.js';
 
       function init() {
         const loginForm = document.getElementById('login-form');
@@ -136,7 +136,7 @@
         else init();
       });
     </script>
-    <script type="module" src="/src/version.js?v=91"></script>
+    <script type="module" src="src/version.js?v=92"></script>
   </head>
   <body class="min-h-screen p-4">
     <div id="app-container" class="max-w-md mx-auto relative mt-16">
